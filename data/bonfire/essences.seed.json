@@ -1,0 +1,5 @@
+[
+  { "id": "bestial", "identifier": "bestial", "name": "Bestial", "kind": "essence" },
+  { "id": "celestial", "identifier": "celestial", "name": "Celestial", "kind": "essence" },
+  { "id": "draconica", "identifier": "draconica", "name": "Dracônica", "kind": "essence" }
+]

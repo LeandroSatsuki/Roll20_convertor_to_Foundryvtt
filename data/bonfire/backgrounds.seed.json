@@ -1,0 +1,5 @@
+[
+  { "id": "espiao", "identifier": "espiao", "name": "Espião", "kind": "background", "aliases": ["Spy"] },
+  { "id": "soldado", "identifier": "soldado", "name": "Soldado", "kind": "background" },
+  { "id": "ex-soldado", "identifier": "ex-soldado", "name": "Ex-Soldado", "kind": "background", "aliases": ["Ex Soldado"] }
+]

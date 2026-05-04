@@ -1,0 +1,4 @@
+[
+  { "id": "clerigo", "identifier": "clerigo", "name": "Clérigo", "kind": "class", "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/jogadores-category" },
+  { "id": "guerreiro", "identifier": "guerreiro", "name": "Guerreiro", "kind": "class", "aliases": ["Fighter"], "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/jogadores-category" }
+]

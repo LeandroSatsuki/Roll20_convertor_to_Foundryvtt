@@ -1,0 +1,6 @@
+[
+  { "id": "potion-of-healing", "identifier": "potion-of-healing", "name": "Potion of Healing", "kind": "consumable" },
+  { "id": "explorers-pack", "identifier": "explorers-pack", "name": "Explorer's Pack", "kind": "equipment" },
+  { "id": "holy-symbol", "identifier": "holy-symbol", "name": "Holy Symbol", "kind": "equipment" },
+  { "id": "agua-benta", "identifier": "agua-benta", "name": "Água Benta", "kind": "consumable", "aliases": ["Agua Benta", "Holy Water"] }
+]

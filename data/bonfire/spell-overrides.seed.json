@@ -1,0 +1,10 @@
+[
+  { "id": "silvery-barbs", "identifier": "silvery-barbs", "name": "Silvery Barbs", "kind": "spellOverride", "status": "nerf" },
+  { "id": "wish", "identifier": "wish", "name": "Wish", "kind": "spellOverride", "status": "adjusted" },
+  { "id": "simulacrum", "identifier": "simulacrum", "name": "Simulacrum", "kind": "spellOverride", "status": "limited" },
+  { "id": "clone", "identifier": "clone", "name": "Clone", "kind": "spellOverride", "status": "limited" },
+  { "id": "planar-binding", "identifier": "planar-binding", "name": "Planar Binding", "kind": "spellOverride", "status": "limited" },
+  { "id": "planar-ally", "identifier": "planar-ally", "name": "Planar Ally", "kind": "spellOverride", "status": "rework" },
+  { "id": "create-spelljammer-realm", "identifier": "create-spelljammer-realm", "name": "Create Spelljammer Realm", "kind": "spellOverride", "status": "banned" },
+  { "id": "dream-of-the-blue-veil", "identifier": "dream-of-the-blue-veil", "name": "Dream of the Blue Veil", "kind": "spellOverride", "status": "banned" }
+]

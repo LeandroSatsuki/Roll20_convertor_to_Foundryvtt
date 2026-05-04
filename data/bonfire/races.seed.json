@@ -1,0 +1,4 @@
+[
+  { "id": "folken-limalumes", "identifier": "folken-limalumes", "name": "Folken Limalumes", "kind": "race" },
+  { "id": "humano-goruun", "identifier": "humano-goruun", "name": "Humano Goruun", "kind": "race", "aliases": ["Goruun"] }
+]

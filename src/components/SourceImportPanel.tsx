@@ -1,0 +1,35 @@
+import type { SheetCharacterParseResult } from '../lib/sheets/sheetTypes'
+import { PdfUploader } from './PdfUploader'
+import { SheetImportPanel } from './SheetImportPanel'
+
+type SourceImportPanelProps = {
+  file: File | null
+  onPdfFileChange: (file: File | null) => void
+  onPdfExtract: () => void
+  isExtracting: boolean
+  onSheetImported: (result: SheetCharacterParseResult) => void
+  onStatus: (status: string) => void
+  onNormalizedJsonImported: (file: File) => void
+}
+
+export function SourceImportPanel({ file, onPdfFileChange, onPdfExtract, isExtracting, onSheetImported, onStatus, onNormalizedJsonImported }: SourceImportPanelProps) {
+  return (
+    <section className="source-panel">
+      <div>
+        <h2>Fonte principal</h2>
+        <SheetImportPanel onImported={onSheetImported} onStatus={onStatus} />
+      </div>
+      <div>
+        <h2>Fallback PDF</h2>
+        <PdfUploader file={file} onFileChange={onPdfFileChange} onExtract={onPdfExtract} isExtracting={isExtracting} />
+      </div>
+      <div>
+        <h2>JSON normalizado</h2>
+        <label className="file-input">
+          <span>Importar JSON normalizado</span>
+          <input type="file" accept="application/json,.json" onChange={(event) => event.target.files?.[0] && onNormalizedJsonImported(event.target.files[0])} />
+        </label>
+      </div>
+    </section>
+  )
+}

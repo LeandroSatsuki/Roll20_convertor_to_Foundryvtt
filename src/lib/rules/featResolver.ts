@@ -1,0 +1,1 @@
+export { resolveFeature } from './featureResolver'

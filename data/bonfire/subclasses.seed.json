@@ -1,0 +1,4 @@
+[
+  { "id": "clerigo-do-caos", "identifier": "clerigo-do-caos", "name": "Clérigo do Caos", "kind": "subclass", "className": "Clérigo" },
+  { "id": "campeao", "identifier": "campeao", "name": "Campeão", "kind": "subclass", "className": "Guerreiro", "aliases": ["Champion"] }
+]

@@ -1,0 +1,1 @@
+export { mapWeaponAttack } from './mapWeapons'

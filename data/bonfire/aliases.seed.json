@@ -1,0 +1,7 @@
+[
+  { "from": "cleric", "to": "clerigo" },
+  { "from": "fighter", "to": "guerreiro" },
+  { "from": "channel-divinity", "to": "canalizar-divindade" },
+  { "from": "second-wind", "to": "retomar-folego" },
+  { "from": "action-surge", "to": "surto-de-acao" }
+]

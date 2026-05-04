@@ -1,0 +1,10 @@
+[
+  { "id": "silvery-barbs", "spellName": "Silvery Barbs", "status": "nerf", "description": "Magia nerfada.", "foundryNotes": "Revisar texto antes de importar.", "sourceUrl": "https://5e.tools/spells.html" },
+  { "id": "wish", "spellName": "Wish", "status": "adjusted", "description": "Magia ajustada.", "foundryNotes": "Revisar limites da campanha.", "sourceUrl": "https://5e.tools/spells.html" },
+  { "id": "simulacrum", "spellName": "Simulacrum", "status": "limited", "description": "Magia limitada.", "foundryNotes": "Revisar antes de liberar.", "sourceUrl": "https://5e.tools/spells.html" },
+  { "id": "clone", "spellName": "Clone", "status": "limited", "description": "Magia limitada.", "foundryNotes": "Revisar antes de liberar.", "sourceUrl": "https://5e.tools/spells.html" },
+  { "id": "planar-binding", "spellName": "Planar Binding", "status": "limited", "description": "Magia limitada.", "foundryNotes": "Revisar antes de liberar.", "sourceUrl": "https://5e.tools/spells.html" },
+  { "id": "planar-ally", "spellName": "Planar Ally", "status": "rework", "description": "Magia reworkada.", "foundryNotes": "Usar notas Bonfire.", "sourceUrl": "https://5e.tools/spells.html" },
+  { "id": "create-spelljammer-realm", "spellName": "Create Spelljammer Realm", "status": "banned", "description": "Magia vetada.", "foundryNotes": "Não importar como disponível.", "sourceUrl": "https://5e.tools/spells.html" },
+  { "id": "dream-of-the-blue-veil", "spellName": "Dream of the Blue Veil", "status": "banned", "description": "Magia vetada.", "foundryNotes": "Não importar como disponível.", "sourceUrl": "https://5e.tools/spells.html" }
+]

@@ -1,0 +1,7 @@
+[
+  { "id": "marca-anomala", "identifier": "marca-anomala", "name": "Marca Anômala", "kind": "feat" },
+  { "id": "raizes-profundas", "identifier": "raizes-profundas", "name": "Raízes Profundas", "kind": "feat" },
+  { "id": "robusto", "identifier": "robusto", "name": "Robusto", "kind": "feat" },
+  { "id": "mestre-ambidestria", "identifier": "mestre-ambidestria", "name": "Mestre da Ambidestria", "kind": "feat" },
+  { "id": "resiliente", "identifier": "resiliente", "name": "Resiliente", "kind": "feat", "aliases": ["Resiliente (Sabedoria)"] }
+]
