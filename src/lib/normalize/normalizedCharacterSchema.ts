@@ -48,6 +48,12 @@ export const normalizedCharacterSchema = z.object({
     alignment: fieldValueSchema(z.string()),
     xp: fieldValueSchema(z.number().nullable()).optional(),
   }),
+  media: z
+    .object({
+      avatarUrl: fieldValueSchema(z.string().nullable()).optional(),
+      tokenUrl: fieldValueSchema(z.string().nullable()).optional(),
+    })
+    .optional(),
   abilities: z.record(
     abilityKeySchema,
     z.object({

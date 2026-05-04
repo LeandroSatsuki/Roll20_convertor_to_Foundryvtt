@@ -129,6 +129,10 @@ export type NormalizedCharacter = {
     alignment: FieldValue<string>
     xp?: FieldValue<number | null>
   }
+  media?: {
+    avatarUrl?: FieldValue<string | null>
+    tokenUrl?: FieldValue<string | null>
+  }
   abilities: Record<AbilityKey, AbilityValue>
   proficiencyBonus: FieldValue<number>
   saves: Record<AbilityKey, SaveValue>

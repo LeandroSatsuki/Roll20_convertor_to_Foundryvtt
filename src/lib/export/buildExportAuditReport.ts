@@ -4,6 +4,7 @@ import { validateFoundryActorDeep } from '../foundry/validateFoundryActor'
 import type { NormalizedCharacter } from '../normalize/normalizedCharacterTypes'
 
 const blockingCodes = new Set([
+  'CHARACTER_NAME_IS_URL',
   'FOUNDRY_ACTOR_SYSTEM_MISSING',
   'FOUNDRY_ACTOR_UNDEFINED',
   'FOUNDRY_ITEM_IDENTIFIER_INVALID',
@@ -14,12 +15,25 @@ const blockingCodes = new Set([
   'FOUNDRY_ITEM_UNDEFINED',
   'FOUNDRY_SPELL_SLOT_VALUE_INVALID',
   'FOUNDRY_CLERIC5_SLOTS_INVALID',
+  'SHEET_CHARACTER_NAME_MISSING',
+  'SHEET_ABILITY_NOT_FOUND',
+  'SHEET_ABILITY_SCORE_MISSING',
+  'SHEET_AC_MISSING',
+  'SHEET_HP_MAX_MISSING',
+  'SHEET_PARSE_BLOCKED_LOW_CONFIDENCE',
+  'SHEET_TEMPLATE_LOW_CONFIDENCE',
 ])
 
 export function buildExportAuditReport(actor: FoundryActor | null, normalized?: NormalizedCharacter | null): FoundryExportAuditReport {
   const structuralValidations = actor ? validateFoundryActorDeep(actor) : [{ code: 'FOUNDRY_ACTOR_MISSING', severity: 'error' as const, message: 'Actor nao foi gerado.' }]
   const ruleValidations = actor ? collectRuleResolutionValidations(actor) : []
-  const validations = [...structuralValidations, ...ruleValidations]
+  const parserValidations = (normalized?.warnings ?? []).filter((warning) => warning.severity === 'error').map((warning) => ({
+    code: warning.code,
+    severity: 'error' as const,
+    message: warning.message,
+    path: warning.fieldPath,
+  }))
+  const validations = [...structuralValidations, ...ruleValidations, ...parserValidations]
   const errors = validations.filter((validation) => validation.severity === 'error')
   const warnings = validations.filter((validation) => validation.severity === 'warning')
   const blockingReasons = validations.filter((validation) => validation.severity === 'error' && blockingCodes.has(validation.code)).map(formatBlockingReason)

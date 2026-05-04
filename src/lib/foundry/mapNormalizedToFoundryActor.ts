@@ -16,9 +16,10 @@ export function mapNormalizedToFoundryActor(character: NormalizedCharacter): Fou
   actor.system.spells = mapSpells(character)
   actor.system.resources = mapResources(character)
 
+  const acValue = character.attributes.ac.value
   actor.system.attributes = {
     ...(actor.system.attributes as Record<string, unknown>),
-    ac: { calc: 'flat', flat: character.attributes.ac.value },
+    ac: typeof acValue === 'number' ? { calc: 'flat', flat: acValue } : { calc: 'default', flat: null },
     hp: {
       value: character.attributes.hp.value.value,
       max: character.attributes.hp.max.value,

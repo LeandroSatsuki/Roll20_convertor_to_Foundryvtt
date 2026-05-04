@@ -9,6 +9,7 @@ import { FoundryPreviewPanel } from './components/FoundryPreviewPanel'
 import { JsonPreview } from './components/JsonPreview'
 import { RuleResolutionReviewPanel } from './components/RuleResolutionReviewPanel'
 import { RuleStorePanel } from './components/RuleStorePanel'
+import { SheetParseDebugPanel } from './components/SheetParseDebugPanel'
 import { SourceImportPanel } from './components/SourceImportPanel'
 import { buildExportAuditReport } from './lib/export/buildExportAuditReport'
 import type { FoundryActor } from './lib/foundry/foundryTypes'
@@ -19,11 +20,11 @@ import type { NormalizedCharacter } from './lib/normalize/normalizedCharacterTyp
 import { extractPdfText } from './lib/pdf/extractPdfText'
 import type { ExtractedPdfPage } from './lib/pdf/types'
 import { parseRoll20Character } from './lib/parser/parseRoll20Character'
-import type { SheetCharacterParseResult } from './lib/sheets/sheetTypes'
+import type { SheetCharacterParseResult, SheetParseDebugInfo } from './lib/sheets/sheetTypes'
 import { validateFoundryActor } from './lib/validation/validateFoundryActor'
 import './App.css'
 
-type Tab = 'raw' | 'normalized' | 'review' | 'rules' | 'resolution' | 'audit' | 'foundry' | 'warnings'
+type Tab = 'raw' | 'normalized' | 'review' | 'rules' | 'resolution' | 'audit' | 'foundry' | 'warnings' | 'sheetDebug'
 
 function App() {
   const [file, setFile] = useState<File | null>(null)
@@ -35,6 +36,7 @@ function App() {
   const [isExtracting, setExtracting] = useState(false)
   const [status, setStatus] = useState('')
   const [workbookMeta, setWorkbookMeta] = useState<SheetCharacterParseResult['rawWorkbookMeta'] | null>(null)
+  const [sheetDebug, setSheetDebug] = useState<SheetParseDebugInfo | null>(null)
 
   const combinedText = useMemo(() => pages.map((page) => page.text).join('\n\n'), [pages])
   const actorExportBlockedReason = auditReport?.importReadiness.blockingReasons.join('\n') || undefined
@@ -47,6 +49,7 @@ function App() {
       const extracted = await extractPdfText(file)
       setPages(extracted.pages)
       setWorkbookMeta(null)
+      setSheetDebug(null)
       setActiveTab('raw')
       setStatus(`Texto extraído de ${extracted.pages.length} página(s).`)
     } catch (error) {
@@ -94,15 +97,17 @@ function App() {
 
   function handleSheetImported(result: SheetCharacterParseResult) {
     setWorkbookMeta(result.rawWorkbookMeta)
+    setSheetDebug(result.debug)
     setPages([])
     acceptCharacter(result.character, 'Planilha convertida. Revise as características resolvidas antes de exportar.')
-    setActiveTab('audit')
+    setActiveTab(result.debug.confidence === 'low' ? 'sheetDebug' : 'audit')
   }
 
   async function handleNormalizedJsonImported(jsonFile: File) {
     try {
       const parsed = JSON.parse(await jsonFile.text()) as NormalizedCharacter
       setWorkbookMeta(null)
+      setSheetDebug(null)
       setPages([])
       acceptCharacter(parsed, 'JSON normalizado importado.')
       setActiveTab('audit')
@@ -141,7 +146,12 @@ function App() {
       />
 
       {status ? <p className="status">{status}</p> : null}
-      {workbookMeta ? <p className="status">Template: {workbookMeta.detectedTemplate} ({workbookMeta.confidence}) | Abas: {workbookMeta.sheetNames.join(', ')}</p> : null}
+      {workbookMeta ? (
+        <p className="status">
+          Template: {workbookMeta.detectedTemplate} ({workbookMeta.confidence}) | Aba escolhida: {workbookMeta.selectedSheetName ?? 'nenhuma'} | Score: {workbookMeta.selectedSheetScore} | Anchors:{' '}
+          {workbookMeta.anchorsFound.map((anchor) => `${anchor.label} ${anchor.address}`).join(', ') || 'nenhum'}
+        </p>
+      ) : null}
       <ExportPanel normalized={character} actor={actor} auditReport={auditReport} blocked={!auditReport?.importReadiness.canExport} reason={actorExportBlockedReason} />
 
       <nav className="tabs" aria-label="Etapas">
@@ -154,6 +164,7 @@ function App() {
           ['audit', 'Auditoria Foundry'],
           ['foundry', 'JSON Foundry'],
           ['warnings', 'Avisos'],
+          ['sheetDebug', 'Debug planilha'],
         ].map(([id, label]) => (
           <button className={activeTab === id ? 'active' : ''} type="button" key={id} onClick={() => setActiveTab(id as Tab)}>
             {label}
@@ -175,6 +186,7 @@ function App() {
         {activeTab === 'audit' ? <ExportAuditPanel report={auditReport} /> : null}
         {activeTab === 'foundry' ? <FoundryPreviewPanel actor={actor} /> : null}
         {activeTab === 'warnings' ? <ConversionWarnings warnings={character?.warnings ?? []} /> : null}
+        {activeTab === 'sheetDebug' ? <SheetParseDebugPanel debug={sheetDebug} /> : null}
       </section>
     </main>
   )

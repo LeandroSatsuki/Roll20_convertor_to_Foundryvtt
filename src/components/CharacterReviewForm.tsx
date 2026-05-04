@@ -9,6 +9,7 @@ const abilityLabels = { str: 'FOR', dex: 'DES', con: 'CON', int: 'INT', wis: 'SA
 
 export function CharacterReviewForm({ character, onChange }: CharacterReviewFormProps) {
   if (!character) return <p className="empty">Converta o texto para revisar os campos.</p>
+  const nameLooksLikeUrl = /^https?:\/\//i.test(character.identity.name.value.trim())
 
   const update = (recipe: (draft: NormalizedCharacter) => void) => {
     const draft = structuredClone(character)
@@ -20,7 +21,9 @@ export function CharacterReviewForm({ character, onChange }: CharacterReviewForm
     <form className="review-form">
       <fieldset>
         <legend>Identidade</legend>
+        {nameLooksLikeUrl ? <p className="warning error">Nome parece URL de imagem/link. Corrija o nome antes de exportar.</p> : null}
         <Field label="Nome" value={character.identity.name.value} confidence={character.identity.name.confidence} onChange={(value) => update((draft) => void (draft.identity.name.value = value))} />
+        <Field label="Avatar URL" value={character.media?.avatarUrl?.value ?? ''} confidence={character.media?.avatarUrl?.confidence ?? 'low'} onChange={(value) => update((draft) => void ((draft.media ??= {}).avatarUrl = { value: value || null, confidence: value ? 'medium' : 'low' }))} />
         <Field label="Classe" value={character.identity.classText.value} confidence={character.identity.classText.confidence} onChange={(value) => update((draft) => void (draft.identity.classText.value = value))} />
         <Field label="Raça" value={character.identity.race.value} confidence={character.identity.race.confidence} onChange={(value) => update((draft) => void (draft.identity.race.value = value))} />
         <Field label="Antecedente" value={character.identity.background.value} confidence={character.identity.background.confidence} onChange={(value) => update((draft) => void (draft.identity.background.value = value))} />
@@ -31,7 +34,7 @@ export function CharacterReviewForm({ character, onChange }: CharacterReviewForm
         <legend>Atributos</legend>
         <div className="grid six">
           {(Object.keys(abilityLabels) as Array<keyof typeof abilityLabels>).map((key) => (
-            <NumberField key={key} label={abilityLabels[key]} value={character.abilities[key].score.value} confidence={character.abilities[key].score.confidence} onChange={(value) => update((draft) => void (draft.abilities[key].score.value = value))} />
+            <NumberField key={key} label={abilityLabels[key]} value={character.abilities[key].score.value} confidence={character.abilities[key].score.confidence} onChange={(value) => update((draft) => void (draft.abilities[key].score.value = value as number))} />
           ))}
         </div>
       </fieldset>
@@ -50,7 +53,7 @@ export function CharacterReviewForm({ character, onChange }: CharacterReviewForm
         <legend>Perícias</legend>
         <div className="skill-grid">
           {(Object.keys(character.skills) as SkillKey[]).map((key) => (
-            <NumberField key={key} label={character.skills[key].labelPtBr} value={character.skills[key].total.value} confidence={character.skills[key].total.confidence} onChange={(value) => update((draft) => void (draft.skills[key].total.value = value))} />
+            <NumberField key={key} label={character.skills[key].labelPtBr} value={character.skills[key].total.value} confidence={character.skills[key].total.confidence} onChange={(value) => update((draft) => void (draft.skills[key].total.value = value as number))} />
           ))}
         </div>
       </fieldset>
@@ -80,11 +83,11 @@ function Field({ label, value, confidence, onChange }: { label: string; value: s
   )
 }
 
-function NumberField({ label, value, confidence, onChange }: { label: string; value: number; confidence: string; onChange: (value: number) => void }) {
+function NumberField({ label, value, confidence, onChange }: { label: string; value: number | null; confidence: string; onChange: (value: number | null) => void }) {
   return (
     <label className={`field confidence-${confidence}`}>
       <span>{label}</span>
-      <input type="number" value={value} onChange={(event) => onChange(Number(event.target.value))} />
+      <input type="number" value={value ?? ''} onChange={(event) => onChange(event.target.value === '' ? null : Number(event.target.value))} />
     </label>
   )
 }

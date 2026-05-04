@@ -14,7 +14,8 @@ body {
 }
 
 button,
-input {
+input,
+select {
   font: inherit;
 }
 
@@ -107,6 +108,34 @@ button:disabled {
 
 .file-input input {
   display: none;
+}
+
+.sheet-import,
+.sheet-selector {
+  display: grid;
+  gap: 10px;
+}
+
+.sheet-selector {
+  grid-template-columns: minmax(260px, 1fr) auto;
+  align-items: end;
+}
+
+.field select {
+  width: 100%;
+  min-height: 36px;
+  border: 1px solid #bcc8c5;
+  border-radius: 6px;
+  padding: 6px 8px;
+  background: #fff;
+}
+
+.inline-toggle {
+  min-height: 36px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #3b474e;
 }
 
 .tabs {
@@ -256,6 +285,64 @@ legend {
 .audit-panel {
   display: grid;
   gap: 12px;
+}
+
+.sheet-debug {
+  display: grid;
+  gap: 14px;
+}
+
+.sheet-debug h2,
+.sheet-debug h3 {
+  margin: 0;
+  color: #1f4f5f;
+}
+
+.debug-summary,
+.debug-table {
+  display: grid;
+  gap: 6px;
+}
+
+.debug-summary {
+  grid-template-columns: max-content 1fr;
+}
+
+.debug-summary dt {
+  font-weight: 700;
+}
+
+.debug-summary dd {
+  margin: 0;
+}
+
+.debug-table {
+  overflow: auto;
+}
+
+.debug-table [role='row'] {
+  display: grid;
+  grid-template-columns: minmax(160px, 0.8fr) minmax(80px, 0.3fr) minmax(220px, 1.2fr) minmax(180px, 1fr) minmax(140px, 0.7fr);
+  gap: 8px;
+  align-items: center;
+  min-width: 940px;
+  border: 1px solid #d8e1de;
+  border-radius: 6px;
+  padding: 8px;
+}
+
+.debug-table.sheet-candidates [role='row'] {
+  grid-template-columns: minmax(150px, 0.8fr) 90px 70px 90px minmax(220px, 1.2fr) minmax(180px, 1fr) minmax(180px, 1fr);
+  min-width: 1100px;
+}
+
+.debug-table.name-candidates [role='row'] {
+  grid-template-columns: minmax(220px, 1fr) 90px minmax(160px, 0.8fr) 90px minmax(180px, 1fr);
+  min-width: 820px;
+}
+
+.debug-table [role='row'].rejected {
+  background: #fff9ec;
 }
 
 .audit-status {
