@@ -10,6 +10,7 @@ describe('pipkinDescriptions', () => {
     expect(audit.summary.describedItemCount).toBe(audit.summary.itemCount)
     expect(audit.summary.missingDescriptionCount).toBe(0)
     expect(audit.summary.errorCount).toBe(0)
+    expect(audit.summary.invalidIdentifierCount).toBe(0)
     expect(audit.importReadiness.canExport).toBe(true)
   })
 })

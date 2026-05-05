@@ -92,6 +92,7 @@ export type BonfireWeaponRule = {
 export type BonfireSpellOverrideRule = {
   id: string
   spellName: string
+  aliases?: string[]
   status: 'allowed' | 'banned' | 'limited' | 'adjusted' | 'buff' | 'nerf' | 'rework'
   description?: string
   shortDescription?: string

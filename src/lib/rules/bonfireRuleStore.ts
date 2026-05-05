@@ -1,6 +1,7 @@
-import { makeUniqueFoundryIdentifier, toFoundryIdentifier } from '../foundry/identifiers'
+import { makeUniqueFoundryIdentifier } from '../foundry/identifiers'
 import type { BonfireBackgroundRule, BonfireClassRule, BonfireFeatRule, BonfireRaceRule, BonfireSpellOverrideRule, BonfireSubclassRule, BonfireWeaponRule } from './bonfireTypes'
 import { bonfireBackgroundSeeds, bonfireClassSeeds, bonfireFeatSeeds, bonfireRaceSeeds, bonfireSpellOverrideSeeds, bonfireSubclassSeeds, bonfireWeaponSeeds } from './bonfireSeedRules'
+import { normalizeRuleLookupKey } from './store/bonfireAliases'
 
 export type BonfireRuleStore = {
   classes: BonfireClassRule[]
@@ -23,7 +24,7 @@ export const defaultBonfireRuleStore: BonfireRuleStore = {
 }
 
 export function ruleAliases(rule: { id: string; name: string; aliases?: string[] }): string[] {
-  return [rule.id, rule.name, ...(rule.aliases ?? [])].map((alias) => toFoundryIdentifier(alias))
+  return [rule.id, rule.name, ...(rule.aliases ?? [])].map((alias) => normalizeRuleLookupKey(alias))
 }
 
 export function uniqueRuleIdentifier(input: unknown, used: Set<string>, fallback = 'item'): string {

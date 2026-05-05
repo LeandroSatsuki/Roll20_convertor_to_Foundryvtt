@@ -125,7 +125,7 @@ function spellOverrideToEntity(rule: BonfireSpellOverrideRule): BonfireRuleEntit
     id: rule.id,
     identifier: toFoundryIdentifier(rule.id),
     name: rule.spellName,
-    aliases: [rule.spellName],
+    aliases: [rule.spellName, ...(rule.aliases ?? [])],
     kind: 'spellOverride',
     description: rule.baseDescription ?? rule.description,
     shortDescription: rule.shortDescription ?? rule.foundryNotes,

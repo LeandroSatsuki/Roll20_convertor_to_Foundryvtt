@@ -5,7 +5,7 @@
     "name": "Guidance",
     "kind": "spellOverride",
     "status": "allowed",
-    "baseDescription": "Truque divino que oferece um reforço breve de orientação, aumentando a chance de sucesso em uma tarefa importante."
+    "baseDescription": "Truque divino que oferece um reforco breve de orientacao, aumentando a chance de sucesso em uma tarefa importante."
   },
   {
     "id": "thaumaturgy",
@@ -13,7 +13,7 @@
     "name": "Thaumaturgy",
     "kind": "spellOverride",
     "status": "allowed",
-    "baseDescription": "Truque de manifestação divina com pequenos efeitos sensoriais, voz, tremor e sinais simbólicos."
+    "baseDescription": "Truque de manifestacao divina com pequenos efeitos sensoriais, voz, tremor e sinais simbolicos."
   },
   {
     "id": "sacred-flame",
@@ -21,7 +21,34 @@
     "name": "Sacred Flame",
     "kind": "spellOverride",
     "status": "allowed",
-    "baseDescription": "Chama sagrada que desce sobre o alvo como punição divina, exigindo resistência em vez de ataque."
+    "baseDescription": "Chama sagrada que desce sobre o alvo como punicao divina, exigindo resistencia em vez de ataque."
+  },
+  {
+    "id": "mind-sliver",
+    "identifier": "mind-sliver",
+    "name": "Mind Sliver",
+    "aliases": ["Mind Sliver (Taumaturgo)"],
+    "kind": "spellOverride",
+    "status": "allowed",
+    "baseDescription": "Ataque psiquico breve que fere a mente do alvo e fragiliza sua proxima resistencia."
+  },
+  {
+    "id": "protection-from-evil-and-good",
+    "identifier": "protection-from-evil-and-good",
+    "name": "Protection from Evil and Good",
+    "aliases": ["Protetion from Evil and Good"],
+    "kind": "spellOverride",
+    "status": "allowed",
+    "baseDescription": "Protecao espiritual contra certos tipos de criatura, prejudicando sua influencia e aproximacao."
+  },
+  {
+    "id": "augury",
+    "identifier": "augury",
+    "name": "Augury",
+    "aliases": ["Algury"],
+    "kind": "spellOverride",
+    "status": "allowed",
+    "baseDescription": "Divinacao breve para avaliar se um curso de acao tende a trazer bons ou maus pressagios no futuro imediato."
   },
   {
     "id": "silvery-barbs",
@@ -29,8 +56,8 @@
     "name": "Silvery Barbs",
     "kind": "spellOverride",
     "status": "nerf",
-    "baseDescription": "Resposta mágica rápida que desestabiliza o sucesso de um inimigo e fortalece um aliado com vantagem subsequente.",
-    "description": "No Bonfire, Silvery Barbs sofre ajuste para reduzir abuso reativo e explosão de controle fora de curva.",
+    "baseDescription": "Resposta magica rapida que desestabiliza o sucesso de um inimigo e fortalece um aliado com vantagem subsequente.",
+    "description": "No Bonfire, Silvery Barbs sofre ajuste para reduzir abuso reativo e explosao de controle fora de curva.",
     "shortDescription": "Silvery Barbs possui ajuste Bonfire."
   },
   {
@@ -39,7 +66,7 @@
     "name": "Dissonant Whispers",
     "kind": "spellOverride",
     "status": "allowed",
-    "baseDescription": "Sussurros psíquicos dolorosos que ferem a mente e podem forçar fuga imediata do alvo."
+    "baseDescription": "Sussurros psiquicos dolorosos que ferem a mente e podem forcar fuga imediata do alvo."
   },
   {
     "id": "hold-person",
@@ -55,7 +82,7 @@
     "name": "Dispel Magic",
     "kind": "spellOverride",
     "status": "allowed",
-    "baseDescription": "Desfaz efeitos mágicos ativos ao quebrar ou enfraquecer a sustentação de um encantamento."
+    "baseDescription": "Desfaz efeitos magicos ativos ao quebrar ou enfraquecer a sustentacao de um encantamento."
   },
   {
     "id": "remove-curse",
@@ -63,6 +90,6 @@
     "name": "Remove Curse",
     "kind": "spellOverride",
     "status": "allowed",
-    "baseDescription": "Ritual ou magia de purificação capaz de encerrar maldições em criaturas, itens ou influências persistentes."
+    "baseDescription": "Ritual ou magia de purificacao capaz de encerrar maldicoes em criaturas, itens ou influencias persistentes."
   }
 ]
