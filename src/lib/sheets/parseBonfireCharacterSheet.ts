@@ -7,8 +7,9 @@ import { resolveFeature } from '../rules/featureResolver'
 import { resolveWeaponOrEquipment } from '../rules/weaponResolver'
 import { detectBestCharacterSheet, findAnchorCell } from './detectSheetTemplate'
 import { normalizeSheetCellValue } from './readWorkbook'
-import { bonfireSheetAnchors, sectionAnchorAliases } from './sheetAnchors'
-import type { NameCandidate, SheetCell, SheetCharacterParseResult, SheetParseDebugInfo, WorkbookData, WorkbookSheet } from './sheetTypes'
+import { bonfireSheetAnchors, matchesAnyAnchor, sectionAnchorAliases } from './sheetAnchors'
+import type { ExtractedFieldDebugEntry, NameCandidate, SheetCell, SheetCharacterParseResult, SheetParseDebugInfo, SheetRegionCandidate, WorkbookData, WorkbookSheet } from './sheetTypes'
+import { foundryId } from '../foundry/ids'
 
 const abilityLabels: Record<AbilityKey, string[]> = {
   str: ['FORCA', 'STR', 'STRENGTH'],
@@ -82,6 +83,10 @@ const criticalFieldPaths = [
   'attributes.passivePerception',
 ]
 
+const PARSER_VERSION = '2.6.1'
+const PARSER_BUILD_ID = '2026-05-05-bonfire-log-v2-ui-diagnostic'
+const PARSER_SOURCE_MARKER = 'bonfire-log-v2-abilities-fixed'
+
 export function isUrlLike(value: unknown): boolean {
   return typeof value === 'string' && /^https?:\/\//i.test(value.trim())
 }
@@ -106,61 +111,98 @@ export function isProbablyTableHeaderOrNoise(value: string): boolean {
 
 type ParseSheetOptions = {
   selectedSheetName?: string
+  selectedRegionIndex?: number
+  selectedTemplateId?: 'bonfire-log-v2'
   includeHiddenSheets?: boolean
 }
 
 export function parseBonfireCharacterSheet(workbook: WorkbookData, options: ParseSheetOptions = {}): SheetCharacterParseResult {
-  const selectedBy = options.selectedSheetName ? 'manual' : 'auto'
+  const parseRunId = `parse-${foundryId(12)}`
+  const normalizedCharacterId = `normalized-${foundryId(12)}`
   const detection = detectBestCharacterSheet(workbook, options)
   const warnings: ConversionWarning[] = [...detection.warnings]
-  const sheet = detection.sheetName ? workbook.sheets.find((candidate) => candidate.name === detection.sheetName) : undefined
+  const sourceSheet = detection.selectedSheetName ? workbook.sheets.find((candidate) => candidate.name === detection.selectedSheetName) : undefined
+  const sheet = sourceSheet && detection.selectedRegion ? restrictSheetToRegion(sourceSheet, detection.selectedRegion) : undefined
 
   const debug: SheetParseDebugInfo = {
     workbookFileName: workbook.fileName,
+    parserVersion: PARSER_VERSION,
+    parserBuildId: PARSER_BUILD_ID,
+    parseRunId,
+    normalizedCharacterId,
+    actorBuildId: null,
+    auditBuildId: null,
+    generatedAt: new Date().toISOString(),
+    sourceCodeMarker: PARSER_SOURCE_MARKER,
     sheetNames: workbook.sheetNames,
-    selectedSheetName: sheet?.name ?? null,
-    selectedBy,
+    templateId: detection.templateId,
+    templateParserUsed: undefined,
+    parseBonfireLogV2SheetCalled: false,
+    selectedSheetName: sourceSheet?.name ?? null,
+    selectedRegion: detection.selectedRegion,
+    selectedBy: detection.selectedBy,
     selectedSheetScore: detection.score,
     confidence: detection.confidence,
     parseBlockedReason: detection.rejectionReasons.join(', ') || undefined,
     anchorsFound: detection.anchorsFound.map((anchor) => ({ label: anchor.label, address: anchor.cell, value: anchor.value })),
     sheetCandidates: detection.candidates,
+    regionCandidates: detection.regionCandidates,
+    ignoredOutsideRegion: detection.selectedRegion?.ignoredOutsideRegion ?? [],
+    discardedDuplicateAnchors: detection.discardedDuplicateAnchors,
+    blockedNameMatches: [],
     nameCandidates: [],
+    abilityBlockCandidates: [],
     extractedFields: [],
+    extractionAttempts: [],
+    finalExtractedFields: [],
   }
 
-  if (!sheet) {
-    const character = createEmptyCharacter(workbook, warnings)
-    character.warnings.push(makeWarning('SHEET_PARSE_BLOCKED_LOW_CONFIDENCE', 'Nenhuma aba de ficha foi detectada automaticamente; selecione a aba manualmente.', 'source.template', undefined, 'error'))
+  if (!sheet || !detection.selectedRegion) {
+    const character = createEmptyCharacter(workbook, warnings, parseRunId, normalizedCharacterId)
+    character.warnings.push(makeWarning('SHEET_TEMPLATE_LOW_CONFIDENCE', 'A planilha nao foi reconhecida como ficha Bonfire. Verifique se voce exportou a aba correta como .xlsx.', 'source.template', detection.selectedSheetName ?? undefined, 'error'))
+    character.warnings.push(makeWarning('SHEET_CHARACTER_REGION_NOT_FOUND', 'Não encontrei a região principal da ficha. Selecione manualmente a aba/região.', 'source.region', detection.selectedSheetName ?? undefined, 'error'))
     ensureCriticalDebugFields(debug)
     return buildResult(workbook, detection, debug, character)
   }
 
-  if (detection.confidence === 'low' || detection.rejectionReasons.includes('auxiliary-data')) {
-    const character = createEmptyCharacter(workbook, warnings)
-    const code = detection.rejectionReasons.includes('auxiliary-data') ? 'SHEET_LOOKS_LIKE_AUXILIARY_DATA' : 'SHEET_PARSE_BLOCKED_LOW_CONFIDENCE'
-    const message =
-      code === 'SHEET_LOOKS_LIKE_AUXILIARY_DATA'
-        ? 'A aba selecionada parece ser uma aba auxiliar/lista de dados, nao uma ficha de personagem.'
-        : 'Template nao detectado; dados nao foram preenchidos com defaults silenciosos.'
-    character.warnings.push(makeWarning(code, message, 'source.template', sheet.name, 'error'))
+  if (detection.rejectionReasons.includes('auxiliary-data')) {
+    const character = createEmptyCharacter(workbook, warnings, parseRunId, normalizedCharacterId)
+    character.warnings.push(makeWarning('SHEET_LOOKS_LIKE_AUXILIARY_DATA', 'A região selecionada parece ser uma região auxiliar/lista de dados, nao uma ficha de personagem.', 'source.region', sheet.name, 'error'))
     ensureCriticalDebugFields(debug)
     return buildResult(workbook, detection, debug, character)
   }
 
   const avatar = findAvatarUrl(sheet, debug)
-  const name = parseCharacterName(sheet, warnings, debug)
-  const player = valueForLabels(sheet, identityLabels.player, warnings, debug, 'identity.player', false)
-  const classText = valueForLabels(sheet, identityLabels.classText, warnings, debug, 'identity.classText')
-  const race = valueForLabels(sheet, identityLabels.race, warnings, debug, 'identity.race')
-  const background = valueForLabels(sheet, identityLabels.background, warnings, debug, 'identity.background')
-  const alignment = valueForLabels(sheet, identityLabels.alignment, warnings, debug, 'identity.alignment', false)
-  const parsedClass = parseClassText(classText.value)
-  const abilities = parseAbilitiesFromSheet(sheet, warnings, debug)
-  const proficiencyBonus = parseNumberField(sheet, ['BONUS DE PROFICIENCIA', 'PROFICIENCIA'], warnings, debug, 'proficiencyBonus', false)
-  const skills = parseSkillsFromSheet(sheet, abilities, proficiencyBonus.value ?? 0, warnings, debug)
-  const features = parseFeaturesFromSheet(sheet, parsedClass, race.value, background.value, warnings)
-  const equipment = parseEquipmentFromSheet(sheet, warnings)
+  const bonfireLogV2 =
+    detection.templateId === 'bonfire-log-v2'
+      ? (() => {
+          debug.templateParserUsed = 'parseBonfireLogV2Sheet'
+          debug.parseBonfireLogV2SheetCalled = true
+          return parseBonfireLogV2Sheet(sheet, detection.selectedRegion, warnings, debug)
+        })()
+      : null
+  const identity = bonfireLogV2?.identity ?? {
+    name: parseCharacterName(sheet, warnings, debug),
+    player: valueForLabels(sheet, identityLabels.player, warnings, debug, 'identity.player', false),
+    classText: valueForLabels(sheet, identityLabels.classText, warnings, debug, 'identity.classText'),
+    race: valueForLabels(sheet, identityLabels.race, warnings, debug, 'identity.race'),
+    background: valueForLabels(sheet, identityLabels.background, warnings, debug, 'identity.background'),
+    alignment: valueForLabels(sheet, identityLabels.alignment, warnings, debug, 'identity.alignment', false),
+  }
+  const name = identity.name
+  const player = identity.player
+  const classText = identity.classText
+  const race = identity.race
+  const background = identity.background
+  const alignment = identity.alignment
+  const parsedClass = bonfireLogV2?.parsedClass ?? parseClassText(classText.value)
+  const abilities = bonfireLogV2?.abilities ?? parseAbilitiesFromSheet(sheet, warnings, debug)
+  const proficiencyBonus = bonfireLogV2?.proficiencyBonus ?? parseNumberField(sheet, ['BONUS DE PROFICIENCIA', 'PROFICIENCIA'], warnings, debug, 'proficiencyBonus', false)
+  const skills = bonfireLogV2?.skills ?? parseSkillsFromSheet(sheet, abilities, proficiencyBonus.value ?? 0, warnings, debug)
+  const features = bonfireLogV2?.features ?? parseFeaturesFromSheet(sheet, parsedClass, race.value, background.value, warnings)
+  const equipment = bonfireLogV2?.equipment ?? parseEquipmentFromSheet(sheet, warnings)
+  const combat = bonfireLogV2?.combat ?? null
+  const gp = bonfireLogV2?.gp ?? (parseNumberField(sheet, ['PO', 'GP', 'OURO'], warnings, debug, 'currency.gp', false, 0) as FieldValue<number>)
   const attacks = equipment.filter((item) => item.category === 'weapon').map<NormalizedAttack>((item) => {
     const rule = resolveWeaponOrEquipment(item.name.value)
     return {
@@ -177,6 +219,7 @@ export function parseBonfireCharacterSheet(workbook: WorkbookData, options: Pars
     source: { type: 'bonfire-xlsx', fileName: workbook.fileName, extractedAt: new Date().toISOString() },
     identity: {
       name,
+      player,
       classText,
       classes: parsedClass.name ? [{ name: parsedClass.name, level: parsedClass.level }] : [],
       background,
@@ -190,21 +233,21 @@ export function parseBonfireCharacterSheet(workbook: WorkbookData, options: Pars
     saves: parseSavesFromClass(abilities, parsedClass.name, proficiencyBonus.value ?? 0),
     skills,
     attributes: {
-      ac: parseNullableNumberField(sheet, combatLabels.ac, warnings, debug, 'attributes.ac'),
-      initiative: parseNullableNumberField(sheet, combatLabels.initiative, warnings, debug, 'attributes.initiative', false),
-      speed: parseNullableNumberField(sheet, combatLabels.speed, warnings, debug, 'attributes.speed'),
+      ac: combat?.ac ?? parseNullableNumberField(sheet, combatLabels.ac, warnings, debug, 'attributes.ac'),
+      initiative: combat?.initiative ?? parseNullableNumberField(sheet, combatLabels.initiative, warnings, debug, 'attributes.initiative', false),
+      speed: combat?.speed ?? parseNullableNumberField(sheet, combatLabels.speed, warnings, debug, 'attributes.speed'),
       speedUnits: 'ft',
-      passivePerception: parseNullableNumberField(sheet, combatLabels.passivePerception, warnings, debug, 'attributes.passivePerception', false),
+      passivePerception: combat?.passivePerception ?? parseNullableNumberField(sheet, combatLabels.passivePerception, warnings, debug, 'attributes.passivePerception', false),
       hp: {
         value: parseNullableNumberField(sheet, ['PV ATUAL', 'PONTOS DE VIDA ATUAIS', 'CURRENT HIT POINTS'], warnings, debug, 'attributes.hp.value', false),
-        max: parseNullableNumberField(sheet, combatLabels.hpMax, warnings, debug, 'attributes.hp.max'),
+        max: combat?.hpMax ?? parseNullableNumberField(sheet, combatLabels.hpMax, warnings, debug, 'attributes.hp.max'),
         temp: field(null, 'low'),
         tempMax: field(null, 'low'),
       },
       hitDice: { total: field(parsedClass.level || null, parsedClass.level ? 'medium' : 'low'), spent: field(null, 'low') },
       senses: { darkvision: field(null, 'low') },
     },
-    currency: { cp: field(0, 'medium'), sp: field(0, 'medium'), ep: field(0, 'medium'), gp: parseNumberField(sheet, ['PO', 'GP', 'OURO'], warnings, debug, 'currency.gp', false, 0) as FieldValue<number>, pp: field(0, 'medium') },
+    currency: { cp: field(0, 'medium'), sp: field(0, 'medium'), ep: field(0, 'medium'), gp, pp: field(0, 'medium') },
     proficiencies: parseProficiencies(sheet),
     attacks,
     equipment,
@@ -220,9 +263,33 @@ export function parseBonfireCharacterSheet(workbook: WorkbookData, options: Pars
         raw: feature.raw,
       })),
     spells: buildClericSpellcasting(parsedClass.name, parsedClass.level),
+    pipeline: {
+      parserBuildId: PARSER_BUILD_ID,
+      parseRunId,
+      normalizedCharacterId,
+      actorBuildId: null,
+      auditBuildId: null,
+    },
     warnings,
   }
 
+  if (detection.templateId === 'bonfire-log-v2' && debug.parseBonfireLogV2SheetCalled !== true) {
+    character.warnings.push(
+      makeWarning(
+        'BONFIRE_LOG_V2_TEMPLATE_PARSER_NOT_CALLED',
+        'Template bonfire-log-v2 detectado, mas parseBonfireLogV2Sheet nao foi chamado. Isso indica fluxo incorreto na UI/parser.',
+        'source.template',
+        detection.selectedSheetName ?? undefined,
+        'error',
+      ),
+    )
+  }
+
+  finalizeExtractedFields(character, debug)
+  debug.normalizedDebugSnapshot = {
+    abilities: abilitySnapshot(character),
+  }
+  validateExtractedCharacter(character)
   addCriticalParserWarnings(character)
   if (player.value) character.warnings.push(makeWarning('PLAYER_NAME_PRESERVED', `Jogador informado na planilha: ${player.value}.`, 'source.player', player.raw, 'info'))
   ensureCriticalDebugFields(debug)
@@ -262,13 +329,17 @@ function buildResult(workbook: WorkbookData, detection: ReturnType<typeof detect
     character,
     rawWorkbookMeta: {
       sheetNames: workbook.sheetNames,
-      detectedTemplate: detection.confidence === 'low' ? 'unknown' : 'bonfire-character-sheet',
+      detectedTemplate: detection.templateId ?? (detection.confidence === 'low' ? 'unknown' : 'bonfire-character-sheet'),
+      templateId: detection.templateId,
       confidence: detection.confidence,
       selectedSheetName: debug.selectedSheetName,
+      selectedRegion: debug.selectedRegion,
       selectedSheetScore: detection.score,
       selectedBy: debug.selectedBy,
       anchorsFound: debug.anchorsFound,
       sheetCandidates: detection.candidates,
+      regionCandidates: detection.regionCandidates,
+      ignoredOutsideRegion: debug.ignoredOutsideRegion,
     },
     debug,
     warnings: character.warnings,
@@ -283,6 +354,9 @@ function parseCharacterName(sheet: WorkbookSheet, warnings: ConversionWarning[],
     const rejectedReason = rejectNameCandidate(candidate.cell)
     debugField(debug, 'identity.name.candidate', candidate.cell, !rejectedReason, rejectedReason ?? `distance ${candidate.distance}`)
     debug.nameCandidates.push(toNameCandidate(candidate, !rejectedReason, rejectedReason ?? undefined))
+    if (rejectedReason && /personagem|aparencia|personalidade/i.test(candidate.cell.value)) {
+      debug.blockedNameMatches.push({ value: candidate.cell.value, normalizedValue: normalizeSheetCellValue(candidate.cell.value), reason: rejectedReason })
+    }
     if (rejectedReason && isUrlLike(candidate.cell.value)) {
       warnings.push(makeWarning('NAME_CELL_LOOKS_LIKE_URL', 'Celula candidata a nome parece URL e foi rejeitada.', 'identity.name', `${candidate.cell.address}: ${candidate.cell.value}`, 'warning'))
     }
@@ -335,11 +409,20 @@ function nameCandidateScore(candidate: { cell: SheetCell; distance: number; pref
 function rejectNameCandidate(cell: SheetCell): string | null {
   const value = cell.value.trim()
   if (!value) return 'empty'
+  if (value.length > 80) return 'candidate is long descriptive text'
   if (isUrlLike(value)) return isImageUrlLike(value) ? 'image URL cannot be character name' : 'URL cannot be character name'
+  if (/^(apar[eê]ncia do personagem|tra[cç]os de personalidade|personalidade|log\/ficha)$/i.test(value)) return 'blocked descriptive phrase'
   if (isAnchorLabel(value)) return 'candidate is another label/anchor'
   if (isProbablyTableHeaderOrNoise(value)) return 'candidate is table header/noise'
   if (/^(artifice|artificer|associated skills|bludgeoning|piercing|slashing)$/i.test(normalizeSheetCellValue(value))) return 'candidate is auxiliary-list value'
   if (!/[a-zA-ZÀ-ÿ]/.test(value)) return 'candidate has no letters'
+  return null
+}
+
+function rejectNameLikeOrNoise(value: string): string | null {
+  if (isUrlLike(value)) return 'URL rejected'
+  if (isAnchorLabel(value)) return 'label/noise rejected'
+  if (isProbablyTableHeaderOrNoise(value)) return 'label/noise rejected'
   return null
 }
 
@@ -354,6 +437,512 @@ function toNameCandidate(candidate: { cell: SheetCell; distance: number; strateg
   }
 }
 
+function parseBonfireLogV2Sheet(sheet: WorkbookSheet, region: SheetRegionCandidate | undefined, warnings: ConversionWarning[], debug: SheetParseDebugInfo) {
+  const identity = parseBonfireLogIdentity(sheet, warnings, debug)
+  const parsedClass = parseClassText(identity.classText.value)
+  const abilities = parseBonfireLogAbilities(sheet, warnings, debug)
+  const proficiencyBonus = parseBonfireLogProficiencyBonus(sheet, parsedClass.level, warnings, debug)
+  const combat = parseBonfireLogCombat(sheet, identity.race.value, warnings, debug)
+  const skills = parseBonfireLogSkills(sheet, abilities, proficiencyBonus.value ?? 0, warnings, debug)
+  const passiveFromSkills = coercePassivePerceptionFromSkills(skills)
+  if (combat.passivePerception.value === null && passiveFromSkills !== null) {
+    combat.passivePerception = { ...field(passiveFromSkills, 'medium', 'derived from Percepcao total', ['Percepcao passiva derivada como 10 + Percepcao.']), source: 'derived-from-skills' }
+    debugField(debug, 'attributes.passivePerception', undefined, true, 'derived from Percepcao total')
+  }
+  const features = parseBonfireLogFeatures(sheet, parsedClass, identity.race.value, identity.background.value, warnings)
+  const equipment = parseBonfireLogEquipment(sheet, warnings)
+  const gp = parseBonfireLogCurrency(sheet, warnings, debug)
+  return { region, identity, parsedClass, abilities, proficiencyBonus, combat, skills, features, equipment, gp }
+}
+
+function parseBonfireLogIdentity(sheet: WorkbookSheet, warnings: ConversionWarning[], debug: SheetParseDebugInfo) {
+  const classText = extractTemplateTextValue(sheet, warnings, debug, 'identity.classText', {
+    labels: identityLabels.classText,
+    addresses: ['T5', 'U6', 'U5'],
+    range: { startAddress: 'T5', endAddress: 'W6' },
+  })
+  const race = extractTemplateTextValue(sheet, warnings, debug, 'identity.race', {
+    labels: identityLabels.race,
+    addresses: ['T7', 'U8', 'U7'],
+    range: { startAddress: 'T7', endAddress: 'W8' },
+  })
+  const background = parseBonfireLogBackground(sheet, warnings, debug)
+  const player = extractTemplateTextValue(sheet, warnings, debug, 'identity.player', {
+    labels: identityLabels.player,
+    addresses: ['AE5', 'AF5', 'AE6'],
+    required: false,
+  })
+  const alignment = valueForLabelsTemplateAware(sheet, identityLabels.alignment, warnings, debug, 'identity.alignment', false)
+  const name = parseBonfireLogName(sheet, warnings, debug)
+  return { name, player, classText, race, background, alignment }
+}
+
+function parseBonfireLogName(sheet: WorkbookSheet, warnings: ConversionWarning[], debug: SheetParseDebugInfo): FieldValue<string> {
+  const rangeCandidates = getCellsInAddressRange(sheet, 'C6', 'R7')
+    .filter((cell) => !rejectNameCandidate(cell))
+    .sort((left, right) => nameCandidateScore({ cell: right, distance: right.row + right.col, preference: 10 }) - nameCandidateScore({ cell: left, distance: left.row + left.col, preference: 10 }))
+
+  for (const cell of rangeCandidates) {
+    debug.nameCandidates.push({ value: cell.value, address: cell.address, strategy: 'template-name-range', distance: cell.row + cell.col, accepted: true })
+  }
+
+  const ranged = rangeCandidates[0]
+  if (ranged) {
+    debugField(debug, 'identity.name', ranged, true, 'template-name-range')
+    return { ...field(ranged.value.trim(), 'high', `${ranged.address}: ${ranged.value}`), source: 'sheet-template-bonfire-log' }
+  }
+
+  const anchored = parseCharacterName(sheet, warnings, debug)
+  if (anchored.value.trim()) return anchored
+
+  const topCells = sheet.cells
+    .filter((cell) => cell.row <= 15 && cell.col <= 24)
+    .filter((cell) => !isAnchorLabel(cell.value) && !isProbablyTableHeaderOrNoise(cell.value) && !isUrlLike(cell.value))
+    .filter((cell) => !rejectNameCandidate(cell))
+    .sort((left, right) => nameCandidateScore({ cell: right, distance: right.row + right.col, preference: 20 }) - nameCandidateScore({ cell: left, distance: left.row + left.col, preference: 20 }))
+
+  for (const cell of topCells) {
+    debug.nameCandidates.push({ value: cell.value, address: cell.address, strategy: 'template-top-region', distance: cell.row + cell.col, accepted: true })
+  }
+
+  const best = topCells[0]
+  if (!best) return anchored
+  debugField(debug, 'identity.name', best, true, 'template-top-region')
+  return { ...field(best.value.trim(), 'medium', `${best.address}: ${best.value}`), source: 'sheet-template-bonfire-log' }
+}
+
+function parseBonfireLogBackground(sheet: WorkbookSheet, warnings: ConversionWarning[], debug: SheetParseDebugInfo): FieldValue<string> {
+  const explicitCandidates = dedupeCells([
+    ...getCellsInAddressRange(sheet, 'C10', 'R12'),
+    ...['T10', 'U10', 'C11', 'D11', 'C12', 'D12'].map((address) => getCellByAddress(sheet, address)).filter(Boolean),
+  ] as SheetCell[])
+
+  for (const candidate of explicitCandidates) {
+    const rejectedReason = rejectBackgroundCandidate(candidate.value)
+    if (rejectedReason) {
+      debugField(debug, 'identity.background', candidate, false, rejectedReason)
+      continue
+    }
+    const matchingBackground = defaultBonfireRuleStore.backgrounds.find((background) => ruleMatchesText(background.name, background.aliases ?? [], candidate.value))
+    if (matchingBackground) {
+      debugField(debug, 'identity.background', candidate, true, 'matched Bonfire background rule')
+      return { ...field(candidate.value.trim(), 'high', `${candidate.address}: ${candidate.value}`), source: 'sheet-template-bonfire-log' }
+    }
+  }
+
+  const anchored = valueForLabelsTemplateAware(sheet, identityLabels.background, warnings, debug, 'identity.background', false)
+  if (anchored.value && !rejectBackgroundCandidate(anchored.value)) return anchored
+  if (anchored.value && rejectBackgroundCandidate(anchored.value)) debugField(debug, 'identity.background', undefined, false, 'rejected anchored background value')
+  warnings.push(makeWarning('BACKGROUND_NOT_FOUND_FOR_TEMPLATE', 'Antecedente nao encontrado no template bonfire-log-v2.', 'identity.background', undefined, 'warning'))
+  return field('', 'low')
+}
+
+function parseBonfireLogAbilities(sheet: WorkbookSheet, warnings: ConversionWarning[], debug: SheetParseDebugInfo): NormalizedCharacter['abilities'] {
+  const templateCells: Record<AbilityKey, { label: string; score: string[]; mod: string[] }> = {
+    str: { label: 'J17', score: ['K17', 'L17'], mod: ['I17', 'H17'] },
+    dex: { label: 'J18', score: ['K18', 'L18'], mod: ['I18', 'H18'] },
+    con: { label: 'J19', score: ['K19', 'L19'], mod: ['I19', 'H19'] },
+    int: { label: 'J20', score: ['K20', 'L20'], mod: ['I20', 'H20'] },
+    wis: { label: 'J21', score: ['K21', 'L21'], mod: ['I21', 'H21'] },
+    cha: { label: 'J22', score: ['K22', 'L22'], mod: ['I22', 'H22'] },
+  }
+  const abilities = {} as NormalizedCharacter['abilities']
+
+  for (const key of Object.keys(templateCells) as AbilityKey[]) {
+    const template = templateCells[key]
+    const labelCell = getCellByAddress(sheet, template.label) ?? findAnchorCellsInRange(sheet, abilityLabels[key], 'H16', 'L22')[0] ?? findAnchorCells(sheet, abilityLabels[key])[0]
+    const candidateCells = labelCell ? collectAbilityBlockCandidateCells(sheet, labelCell) : []
+    const scoreCell = labelCell ? selectAbilityScoreCell(candidateCells, key, debug, labelCell) : null
+    if (!labelCell || !scoreCell) {
+      warnings.push(makeWarning('ABILITY_SCORE_NOT_FOUND_FOR_TEMPLATE', `Score do atributo nao encontrado no template: ${abilityLabels[key][0]}.`, `abilities.${key}.score`, undefined, 'error'))
+      debugField(debug, `abilities.${key}.score`, undefined, false, 'ability score not found for template')
+      debug.abilityBlockCandidates.push({
+        ability: key,
+        labelAddress: labelCell?.address,
+        candidateCells: candidateCells.map((cell) => ({
+          address: cell.address,
+          rawValue: cell.value,
+          normalizedValue: normalizeSheetCellValue(cell.value),
+          accepted: false,
+          rejectedReason: describeAbilityCandidateRejection(cell, candidateCells),
+        })),
+      })
+      abilities[key] = { score: field(null as unknown as number, 'low'), mod: field(null as unknown as number, 'low') }
+      continue
+    }
+
+    const score = parseUnsignedInteger(scoreCell.value)
+    if (!isValidAbilityScore(scoreCell.value) || score === null) {
+      warnings.push(makeWarning('SHEET_ABILITY_SCORE_INVALID', `Atributo invalido: ${abilityLabels[key][0]}.`, `abilities.${key}.score`, `${scoreCell.address}: ${scoreCell.value}`, 'error'))
+      debugField(debug, `abilities.${key}.score`, scoreCell, false, 'invalid unsigned score')
+      abilities[key] = { score: field(null as unknown as number, 'low', `${scoreCell.address}: ${scoreCell.value}`), mod: field(null as unknown as number, 'low') }
+      continue
+    }
+
+    debug.abilityBlockCandidates.push({
+      ability: key,
+      labelAddress: labelCell.address,
+      candidateCells: candidateCells.map((cell) => ({
+        address: cell.address,
+        rawValue: cell.value,
+        normalizedValue: normalizeSheetCellValue(cell.value),
+        accepted: cell.address === scoreCell.address,
+        rejectedReason: cell.address === scoreCell.address ? undefined : describeAbilityCandidateRejection(cell, candidateCells),
+      })),
+      selectedCell: scoreCell.address,
+    })
+
+    const mod = abilityModifier(score)
+    debugField(debug, `abilities.${key}.score`, scoreCell, true, `template row ${labelCell.address}`)
+    debugField(debug, `abilities.${key}.mod`, scoreCell, true, `derived from ${scoreCell.address}`)
+    abilities[key] = {
+      score: field(score, 'high', `${scoreCell.address}: ${scoreCell.value}`),
+      mod: { ...field(mod, 'high', `${scoreCell.address}: ${scoreCell.value}`), source: 'derived-from-score' },
+    }
+  }
+
+  return abilities
+}
+
+function parseBonfireLogCombat(sheet: WorkbookSheet, raceName: string, warnings: ConversionWarning[], debug: SheetParseDebugInfo) {
+  const acAnchor = findAnchorCellInRange(sheet, combatLabels.ac, 'P14', 'S16') ?? findAnchorCell(sheet, combatLabels.ac)
+  const ac = findTemplateNumberFromAnchor(sheet, acAnchor, 'attributes.ac', warnings, debug, { required: true, min: 1, max: 40 })
+  const hpAnchor = findAnchorCellInRange(sheet, combatLabels.hpMax, 'R14', 'V17') ?? findAnchorCell(sheet, combatLabels.hpMax)
+  const hpMax = findTemplateNumberFromAnchor(sheet, hpAnchor, 'attributes.hp.max', warnings, debug, { required: true, min: 1, max: 999 })
+  const speedAnchor = findAnchorCellInRange(sheet, combatLabels.speed, 'T14', 'Z18') ?? findAnchorCell(sheet, combatLabels.speed)
+  const passiveAnchor = findAnchorCellInRange(sheet, combatLabels.passivePerception, 'F43', 'K46') ?? findAnchorCell(sheet, combatLabels.passivePerception)
+  const passivePerception = findTemplateNumberFromAnchor(sheet, passiveAnchor, 'attributes.passivePerception', warnings, debug, {
+    required: false,
+    min: 1,
+    max: 40,
+    rejectTextLike: true,
+  })
+  let speed = findTemplateNumberFromAnchor(sheet, speedAnchor, 'attributes.speed', warnings, debug, {
+    required: false,
+    min: 1,
+    max: 120,
+    blockedCellAddresses: [extractCellAddressFromRaw(hpMax.raw)].filter(Boolean) as string[],
+  })
+  if (speed.value === null) {
+    const raceRule = defaultBonfireRuleStore.races.find((candidate) => ruleMatchesText(candidate.name, candidate.aliases ?? [], raceName))
+    if (typeof raceRule?.speed === 'number') {
+      warnings.push(makeWarning('SPEED_FROM_RACE_RULE', `Velocidade nao encontrada na ficha; usando ${raceRule.speed} da raca ${raceRule.name}.`, 'attributes.speed', raceName, 'warning'))
+      speed = { ...field(raceRule.speed, 'medium', raceName, ['Velocidade nao encontrada na planilha; usando speed da raca no Rule Store.']), source: 'rule-store' }
+      debugField(debug, 'attributes.speed', undefined, true, `rule-store ${raceRule.name}`)
+    } else {
+      warnings.push(makeWarning('SHEET_SPEED_NOT_FOUND', 'Velocidade nao encontrada na planilha nem inferida pela raca.', 'attributes.speed', undefined, 'warning'))
+    }
+  } else {
+    speed = { ...speed, source: 'sheet' }
+  }
+
+  return {
+    ac,
+    initiative: parseNullableNumberFieldTemplateAware(sheet, combatLabels.initiative, warnings, debug, 'attributes.initiative', false),
+    hpMax,
+    speed,
+    passivePerception,
+  }
+}
+
+function parseBonfireLogSkills(sheet: WorkbookSheet, abilities: NormalizedCharacter['abilities'], proficiencyBonus: number, warnings: ConversionWarning[], debug: SheetParseDebugInfo): Record<SkillKey, SkillValue> {
+  const skills = {} as Record<SkillKey, SkillValue>
+  const rows = Array.from({ length: 18 }, (_, index) => 43 + index)
+
+  for (const key of Object.keys(skillDefinitions) as SkillKey[]) {
+    const definition = skillDefinitions[key]
+    const aliases = definition.aliases.flatMap((alias) => (alias === 'Arcanismo' ? [alias, 'Arcana'] : alias === 'Adestrar Animais' ? [alias, 'Lidar com Animais'] : [alias]))
+    const labelCell = rows
+      .map((row) => getCellOrMerged(sheet, row, 7))
+      .find((cell) => cell && aliases.some((alias) => normalizeSheetCellValue(alias) === cell.normalized))
+    const valueCell = labelCell ? getCellOrMerged(sheet, labelCell.row, labelCell.col + 1) : null
+    const parsed = valueCell ? parseSignedNumber(valueCell.value) : null
+    const abilityMod = typeof abilities[definition.ability].mod.value === 'number' ? abilities[definition.ability].mod.value : null
+
+    if (!labelCell || !valueCell || parsed === null || abilityMod === null) {
+      warnings.push(makeWarning('SHEET_SKILL_NOT_FOUND', `Pericia nao encontrada: ${definition.labelPtBr}.`, `skills.${key}`))
+      debugField(debug, `skills.${key}.total`, valueCell ?? undefined, false, labelCell ? 'skill total not found' : 'skill label not found')
+      skills[key] = {
+        labelPtBr: definition.labelPtBr,
+        ability: definition.ability,
+        total: field(null as unknown as number, 'low'),
+        proficiencyLevel: field(0 as const, 'low'),
+        bonus: field(null as unknown as number, 'low'),
+      }
+      continue
+    }
+
+    const inferred = inferSkill(parsed, abilityMod, proficiencyBonus)
+    debugField(debug, `skills.${key}.total`, valueCell, true, `skill row ${labelCell.address}`)
+    skills[key] = {
+      labelPtBr: definition.labelPtBr,
+      ability: definition.ability,
+      total: field(parsed, 'high', `${valueCell.address}: ${valueCell.value}`),
+      proficiencyLevel: field(inferred.proficiencyLevel, inferred.bonus === 0 ? 'high' : 'medium', `${valueCell.address}: ${valueCell.value}`),
+      bonus: field(inferred.bonus, inferred.bonus === 0 ? 'high' : 'medium', `${valueCell.address}: ${valueCell.value}`),
+    }
+  }
+
+  return skills
+}
+
+function parseBonfireLogFeatures(sheet: WorkbookSheet, parsedClass: { name: string; level: number; subclass?: string }, race: string, background: string, warnings: ConversionWarning[]): NormalizedFeature[] {
+  return parseFeaturesFromSheet(sheet, parsedClass, race, background, warnings)
+}
+
+function parseBonfireLogEquipment(sheet: WorkbookSheet, warnings: ConversionWarning[]): NormalizedEquipment[] {
+  return parseEquipmentFromSheet(sheet, warnings)
+}
+
+function parseBonfireLogCurrency(sheet: WorkbookSheet, warnings: ConversionWarning[], debug: SheetParseDebugInfo): FieldValue<number> {
+  const candidates = sheet.cells
+    .filter((cell) => cell.row >= 80)
+    .filter((cell) => ['po', 'gp', 'ouro'].includes(cell.normalized))
+    .flatMap((labelCell) => {
+      const next = getCellOrMerged(sheet, labelCell.row, labelCell.col + 1)
+      return next ? [{ labelCell, valueCell: next }] : []
+    })
+
+  for (const candidate of candidates) {
+    const priceLike = /\b(gp|po|sp|pp|cp|ep)\b/i.test(candidate.valueCell.value) || /\./.test(candidate.valueCell.value)
+    if (priceLike) {
+      debugField(debug, 'currency.gp', candidate.valueCell, false, 'item price rejected')
+      continue
+    }
+    const value = parseUnsignedInteger(candidate.valueCell.value)
+    if (value === null) {
+      debugField(debug, 'currency.gp', candidate.valueCell, false, 'not an integer coin total')
+      continue
+    }
+    debugField(debug, 'currency.gp', candidate.valueCell, true, `template coin label ${candidate.labelCell.address}`)
+    return { ...field(value, 'high', `${candidate.valueCell.address}: ${candidate.valueCell.value}`), source: 'sheet-template-bonfire-log' }
+  }
+
+  warnings.push(makeWarning('CURRENCY_GP_NOT_FOUND', 'Riqueza total em gp nao encontrada na area de moedas; usando 0.', 'currency.gp', undefined, 'warning'))
+  debugField(debug, 'currency.gp', undefined, false, 'not found')
+  return { ...field(0, 'low', undefined, ['Moedas nao encontradas na area esperada.']), source: 'default-zero' }
+}
+
+function parseBonfireLogProficiencyBonus(sheet: WorkbookSheet, totalLevel: number, warnings: ConversionWarning[], debug: SheetParseDebugInfo): FieldValue<number> {
+  const anchor = findAnchorCell(sheet, ['BONUS DE PROFICIENCIA', 'PROFICIENCIA'])
+  const fromSheet = findTemplateNumberFromAnchor(sheet, anchor, 'proficiencyBonus', warnings, debug, { required: false, min: 2, max: 6, allowSigned: true })
+  if (typeof fromSheet.value === 'number') return { ...field(fromSheet.value, fromSheet.confidence, fromSheet.raw, fromSheet.warnings), source: 'sheet' }
+  const derived = deriveProficiencyBonusFromLevel(totalLevel)
+  if (derived !== null) {
+    debugField(debug, 'proficiencyBonus', undefined, true, `derived from level ${totalLevel}`)
+    return { ...field(derived, 'medium', `level ${totalLevel}`, ['Bonus de proficiencia derivado do nivel total.']), source: 'derived-from-level' }
+  }
+  warnings.push(makeWarning('PROFICIENCY_BONUS_NOT_FOUND', 'Bonus de proficiencia nao encontrado nem derivado do nivel.', 'proficiencyBonus', undefined, 'error'))
+  return field(null as unknown as number, 'low')
+}
+
+function deriveProficiencyBonusFromLevel(totalLevel: number): number | null {
+  if (!Number.isInteger(totalLevel) || totalLevel < 1) return null
+  if (totalLevel <= 4) return 2
+  if (totalLevel <= 8) return 3
+  if (totalLevel <= 12) return 4
+  if (totalLevel <= 16) return 5
+  return 6
+}
+
+function coercePassivePerceptionFromSkills(skills: Record<SkillKey, SkillValue>): number | null {
+  const perception = skills.prc?.total.value
+  return typeof perception === 'number' ? 10 + perception : null
+}
+
+function rejectBackgroundCandidate(value: string): string | null {
+  const normalized = normalizeSheetCellValue(value).replace(/\s+/g, ' ')
+  if (!normalized) return 'empty'
+  if (isUrlLike(value)) return 'background is URL'
+  if (isAnchorLabel(value)) return 'background is another label'
+  if (isProbablyTableHeaderOrNoise(value)) return 'background is table noise'
+  if (['for', 'forca', 'str', 'destreza', 'dex', 'constituicao', 'con', 'inteligencia', 'int', 'sabedoria', 'sab', 'wis', 'carisma', 'car', 'cha'].includes(normalized)) return 'background is ability label'
+  return null
+}
+
+function extractTemplateTextValue(
+  sheet: WorkbookSheet,
+  warnings: ConversionWarning[],
+  debug: SheetParseDebugInfo,
+  fieldPath: string,
+  options: {
+    labels: string[]
+    addresses?: string[]
+    range?: { startAddress: string; endAddress: string }
+    required?: boolean
+  },
+): FieldValue<string> {
+  const required = options.required ?? true
+  const candidates = [
+    ...(options.addresses ?? []).map((address) => getCellByAddress(sheet, address)).filter(Boolean),
+    ...(options.range ? getCellsInAddressRange(sheet, options.range.startAddress, options.range.endAddress) : []),
+  ] as SheetCell[]
+
+  for (const candidate of dedupeCells(candidates)) {
+    const rejectedReason = fieldPath === 'identity.name' ? rejectNameCandidate(candidate) : rejectNameLikeOrNoise(candidate.value)
+    if (rejectedReason) {
+      debugField(debug, fieldPath, candidate, false, rejectedReason)
+      continue
+    }
+    debugField(debug, fieldPath, candidate, true, 'template-priority')
+    return { ...field(candidate.value.trim(), 'high', `${candidate.address}: ${candidate.value}`), source: 'sheet-template-bonfire-log' }
+  }
+
+  return valueForLabelsTemplateAware(sheet, options.labels, warnings, debug, fieldPath, required)
+}
+
+function findAnchorCellsInRange(sheet: WorkbookSheet, aliases: string[], startAddress: string, endAddress: string): SheetCell[] {
+  const bounds = getBoundsFromAddresses(startAddress, endAddress)
+  if (!bounds) return []
+  return sheet.cells.filter((cell) => cell.row >= bounds.startRow && cell.row <= bounds.endRow && cell.col >= bounds.startCol && cell.col <= bounds.endCol && matchesAnyAnchor(cell.value, aliases))
+}
+
+function findAnchorCellInRange(sheet: WorkbookSheet, aliases: string[], startAddress: string, endAddress: string): SheetCell | null {
+  return findAnchorCellsInRange(sheet, aliases, startAddress, endAddress)[0] ?? null
+}
+
+function findTemplateNumberFromAnchor(
+  sheet: WorkbookSheet,
+  anchor: SheetCell | null,
+  fieldPath: string,
+  warnings: ConversionWarning[],
+  debug: SheetParseDebugInfo,
+  options: {
+    required?: boolean
+    min?: number
+    max?: number
+    allowSigned?: boolean
+    rejectTextLike?: boolean
+    blockedCellAddresses?: string[]
+  },
+): FieldValue<number | null> {
+  const required = options.required ?? true
+  if (!anchor) {
+    if (required) warnings.push(makeWarning('SHEET_NUMBER_NOT_FOUND', `Numero nao encontrado na planilha: ${fieldPath}.`, fieldPath, undefined, 'warning'))
+    debugField(debug, fieldPath, undefined, false, 'anchor not found')
+    return field(null, 'low')
+  }
+
+  const candidates = [
+    ...collectCellsAroundAnchor(sheet, anchor, [
+      [0, 1],
+      [0, 2],
+      [0, 3],
+      [1, 0],
+      [1, 1],
+      [1, 2],
+      [-1, 0],
+      [-1, 1],
+    ]),
+  ]
+
+  for (const candidate of candidates) {
+    if ((options.blockedCellAddresses ?? []).includes(candidate.address)) {
+      debugField(debug, fieldPath, candidate, false, 'blocked candidate address')
+      continue
+    }
+    if (options.rejectTextLike && !/^[+-]?\d+$/.test(candidate.value.trim())) {
+      debugField(debug, fieldPath, candidate, false, 'text value rejected')
+      continue
+    }
+    const parsed = options.allowSigned ? parseSignedNumber(candidate.value) : parseUnsignedInteger(candidate.value)
+    if (parsed === null) {
+      debugField(debug, fieldPath, candidate, false, options.allowSigned ? 'not a signed number' : 'not an unsigned integer')
+      continue
+    }
+    if ((options.min !== undefined && parsed < options.min) || (options.max !== undefined && parsed > options.max)) {
+      debugField(debug, fieldPath, candidate, false, 'out of allowed range')
+      continue
+    }
+    debugField(debug, fieldPath, candidate, true, `anchor ${anchor.address}`)
+    return { ...field(parsed, 'high', `${candidate.address}: ${candidate.value}`), source: 'sheet-template-bonfire-log' }
+  }
+
+  if (required) warnings.push(makeWarning('SHEET_NUMBER_NOT_FOUND', `Numero nao encontrado na planilha: ${fieldPath}.`, fieldPath, anchor.value, 'warning'))
+  debugField(debug, fieldPath, undefined, false, 'not found near anchor')
+  return field(null, 'low')
+}
+
+function collectAbilityBlockCandidateCells(sheet: WorkbookSheet, labelCell: SheetCell): SheetCell[] {
+  return dedupeCells(
+    [
+      [0, -3],
+      [0, -2],
+      [0, -1],
+      [0, 1],
+      [0, 2],
+      [0, 3],
+      [-1, 1],
+      [1, 1],
+    ]
+      .map(([rowOffset, colOffset]) => getCellOrMerged(sheet, labelCell.row + rowOffset, labelCell.col + colOffset))
+      .filter(Boolean) as SheetCell[],
+  )
+}
+
+function selectAbilityScoreCell(candidates: SheetCell[], ability: AbilityKey, debug: SheetParseDebugInfo, labelCell: SheetCell): SheetCell | null {
+  const validCandidates = candidates
+    .map((cell) => ({ cell, score: scoreAbilityCandidate(cell, candidates) }))
+    .filter((candidate) => candidate.score > Number.NEGATIVE_INFINITY)
+    .sort((left, right) => right.score - left.score)
+  if (!validCandidates.length) return null
+  const selected = validCandidates[0].cell
+  if (selected) return selected
+  debugField(debug, `abilities.${ability}.score`, undefined, false, `no candidate survived near ${labelCell.address}`)
+  return null
+}
+
+function scoreAbilityCandidate(cell: SheetCell, neighbors: SheetCell[]): number {
+  if (isSignedModifierLike(cell.value)) return Number.NEGATIVE_INFINITY
+  if (!/^\d+$/.test(cell.value.trim())) return Number.NEGATIVE_INFINITY
+  const parsed = parseUnsignedInteger(cell.value)
+  if (parsed === null || parsed < 1 || parsed > 30) return Number.NEGATIVE_INFINITY
+  if (cell.col <= 8) return Number.NEGATIVE_INFINITY
+
+  let score = 0
+  if (cell.col === 10) score += 100
+  if (cell.col === 11) score += 40
+  if (parsed >= 3) score += 20
+  if (parsed < 3 && neighbors.some((neighbor) => neighbor.address !== cell.address && isValidAbilityScore(neighbor.value) && parseUnsignedInteger(neighbor.value)! >= 3)) score -= 60
+  score -= Math.abs(cell.col - 10) * 10
+  return score
+}
+
+function describeAbilityCandidateRejection(cell: SheetCell, neighbors: SheetCell[]): string {
+  if (isSignedModifierLike(cell.value)) return 'signed modifier-like value'
+  if (!/^\d+$/.test(cell.value.trim())) return 'not an unsigned integer'
+  const parsed = parseUnsignedInteger(cell.value)
+  if (parsed === null || parsed < 1 || parsed > 30) return 'outside valid ability score range'
+  if (cell.col <= 8) return 'candidate is in an auxiliary column'
+  if (parsed < 3 && neighbors.some((neighbor) => neighbor.address !== cell.address && isValidAbilityScore(neighbor.value) && parseUnsignedInteger(neighbor.value)! >= 3)) return 'too small; better nearby score exists'
+  return 'lower-priority nearby candidate'
+}
+
+function collectCellsAroundAnchor(sheet: WorkbookSheet, anchor: SheetCell, offsets: Array<[number, number]>): SheetCell[] {
+  return dedupeCells(
+    offsets
+      .map(([rowOffset, colOffset]) => getCellOrMerged(sheet, anchor.row + rowOffset, anchor.col + colOffset))
+      .filter(Boolean) as SheetCell[],
+  )
+}
+
+function parseUnsignedInteger(value: string): number | null {
+  const trimmed = value.trim()
+  if (!/^\d+$/.test(trimmed)) return null
+  return Number.parseInt(trimmed, 10)
+}
+
+function isValidAbilityScore(value: string): boolean {
+  const trimmed = value.trim()
+  if (!/^\d+$/.test(trimmed)) return false
+  const parsed = Number.parseInt(trimmed, 10)
+  return parsed >= 1 && parsed <= 30
+}
+
+function isSignedModifierLike(value: string): boolean {
+  return /^[+-]\d+$/.test(value.trim())
+}
+
 function valueForLabels(sheet: WorkbookSheet, labels: string[], warnings: ConversionWarning[], debug: SheetParseDebugInfo, fieldPath: string, required = true): FieldValue<string> {
   for (const candidate of findCandidateValuesNearLabels(sheet, labels)) {
     const rejectedReason = isUrlLike(candidate.value.value) ? 'URL rejected' : isAnchorLabel(candidate.value.value) || isProbablyTableHeaderOrNoise(candidate.value.value) ? 'label/noise rejected' : null
@@ -362,6 +951,21 @@ function valueForLabels(sheet: WorkbookSheet, labels: string[], warnings: Conver
       continue
     }
     debugField(debug, fieldPath, candidate.value, true, `anchor ${candidate.anchor.address}`)
+    return field(candidate.value.value, 'high', `${candidate.anchor.value}: ${candidate.value.value}`)
+  }
+  if (required) warnings.push(makeWarning('SHEET_FIELD_NOT_FOUND', `Campo nao encontrado na planilha: ${labels[0]}.`, fieldPath))
+  debugField(debug, fieldPath, undefined, false, 'not found')
+  return field('', 'low')
+}
+
+function valueForLabelsTemplateAware(sheet: WorkbookSheet, labels: string[], warnings: ConversionWarning[], debug: SheetParseDebugInfo, fieldPath: string, required = true): FieldValue<string> {
+  for (const candidate of findCandidateValuesNearLabels(sheet, labels, true)) {
+    const rejectedReason = rejectNameLikeOrNoise(candidate.value.value)
+    if (rejectedReason) {
+      debugField(debug, fieldPath, candidate.value, false, rejectedReason)
+      continue
+    }
+    debugField(debug, fieldPath, candidate.value, true, `template anchor ${candidate.anchor.address}`)
     return field(candidate.value.value, 'high', `${candidate.anchor.value}: ${candidate.value.value}`)
   }
   if (required) warnings.push(makeWarning('SHEET_FIELD_NOT_FOUND', `Campo nao encontrado na planilha: ${labels[0]}.`, fieldPath))
@@ -382,6 +986,17 @@ function parseNumberField(sheet: WorkbookSheet, labels: string[], warnings: Conv
 
 function parseNullableNumberField(sheet: WorkbookSheet, labels: string[], warnings: ConversionWarning[], debug: SheetParseDebugInfo, fieldPath: string, required = true): FieldValue<number | null> {
   return parseNumberField(sheet, labels, warnings, debug, fieldPath, required)
+}
+
+function parseNullableNumberFieldTemplateAware(sheet: WorkbookSheet, labels: string[], warnings: ConversionWarning[], debug: SheetParseDebugInfo, fieldPath: string, required = true): FieldValue<number | null> {
+  const found = findNumericValueNearLabels(sheet, labels, true)
+  if (found) {
+    debugField(debug, fieldPath, found.cell, true, `template anchor ${found.anchor.address}`)
+    return field(found.value, 'high', `${found.anchor.value}: ${found.cell.value}`)
+  }
+  if (required) warnings.push(makeWarning('SHEET_NUMBER_NOT_FOUND', `Numero nao encontrado na planilha: ${labels[0]}.`, fieldPath))
+  debugField(debug, fieldPath, undefined, false, 'not found')
+  return field(null, 'low')
 }
 
 function parseAbilitiesFromSheet(sheet: WorkbookSheet, warnings: ConversionWarning[], debug: SheetParseDebugInfo): NormalizedCharacter['abilities'] {
@@ -536,7 +1151,7 @@ function collectSimpleSectionValues(sheet: WorkbookSheet, labels: string[]): Arr
   return values
 }
 
-function findCandidateValuesNearLabels(sheet: WorkbookSheet, labels: string[]): Array<{ anchor: SheetCell; value: SheetCell }> {
+function findCandidateValuesNearLabels(sheet: WorkbookSheet, labels: string[], wide = false): Array<{ anchor: SheetCell; value: SheetCell }> {
   const anchors = findAnchorCells(sheet, labels)
   return anchors.flatMap((anchor) => {
     const positions = [
@@ -548,6 +1163,9 @@ function findCandidateValuesNearLabels(sheet: WorkbookSheet, labels: string[]): 
       [anchor.row - 1, anchor.col],
       [anchor.row, anchor.col - 1],
     ]
+    if (wide) {
+      positions.push([anchor.row, anchor.col + 4], [anchor.row + 1, anchor.col + 2], [anchor.row - 1, anchor.col + 2], [anchor.row + 2, anchor.col], [anchor.row - 2, anchor.col])
+    }
     return positions.flatMap(([row, col]) => {
       const cell = getCellOrMerged(sheet, row, col)
       return cell && cell.address !== anchor.address ? [{ anchor, value: cell }] : []
@@ -555,8 +1173,8 @@ function findCandidateValuesNearLabels(sheet: WorkbookSheet, labels: string[]): 
   })
 }
 
-function findNumericValueNearLabels(sheet: WorkbookSheet, labels: string[]): { anchor: SheetCell; cell: SheetCell; value: number } | null {
-  for (const candidate of findCandidateValuesNearLabels(sheet, labels)) {
+function findNumericValueNearLabels(sheet: WorkbookSheet, labels: string[], wide = false): { anchor: SheetCell; cell: SheetCell; value: number } | null {
+  for (const candidate of findCandidateValuesNearLabels(sheet, labels, wide)) {
     if (isAnchorLabel(candidate.value.value) || isUrlLike(candidate.value.value)) continue
     const parsed = parseSignedNumber(candidate.value.value)
     if (parsed !== null) return { anchor: candidate.anchor, cell: candidate.value, value: parsed }
@@ -577,8 +1195,7 @@ function findAbilityScore(sheet: WorkbookSheet, labels: string[]): { anchor: She
 
 function findSkillValue(sheet: WorkbookSheet, section: SheetCell, aliases: string[]): { anchor: SheetCell; cell: SheetCell; value: number } | null {
   const maxRow = Math.min(sheet.rows.length - 1, section.row + 40)
-  const normalizedAliases = aliases.map(normalizeSheetCellValue)
-  const labelCell = sheet.cells.find((cell) => cell.row > section.row && cell.row <= maxRow && normalizedAliases.some((alias) => cell.normalized === alias || cell.normalized.includes(alias)))
+  const labelCell = sheet.cells.find((cell) => cell.row > section.row && cell.row <= maxRow && matchesAnyAnchor(cell.value, aliases, 'phrase', 4))
   if (!labelCell) return null
   const candidates = [getCellOrMerged(sheet, labelCell.row, labelCell.col + 1), getCellOrMerged(sheet, labelCell.row, labelCell.col - 1), getCellOrMerged(sheet, labelCell.row, labelCell.col + 2), getCellOrMerged(sheet, labelCell.row + 1, labelCell.col)].filter(Boolean) as SheetCell[]
   for (const cell of candidates) {
@@ -589,8 +1206,24 @@ function findSkillValue(sheet: WorkbookSheet, section: SheetCell, aliases: strin
 }
 
 function findAnchorCells(sheet: WorkbookSheet, aliases: string[]): SheetCell[] {
-  const normalizedAliases = aliases.map(normalizeSheetCellValue)
-  return sheet.cells.filter((cell) => normalizedAliases.includes(cell.normalized) || normalizedAliases.some((alias) => alias.length >= 3 && cell.normalized.includes(alias)))
+  return sheet.cells.filter((cell) => matchesAnyAnchor(cell.value, aliases))
+}
+
+function getCellByAddress(sheet: WorkbookSheet, address: string): SheetCell | null {
+  return sheet.cells.find((cell) => cell.address === address) ?? null
+}
+
+function getCellsInAddressRange(sheet: WorkbookSheet, startAddress: string, endAddress: string): SheetCell[] {
+  const start = parseA1Address(startAddress)
+  const end = parseA1Address(endAddress)
+  if (!start || !end) return []
+  const startRow = Math.min(start.row, end.row)
+  const endRow = Math.max(start.row, end.row)
+  const startCol = Math.min(start.col, end.col)
+  const endCol = Math.max(start.col, end.col)
+  return dedupeCells(
+    sheet.cells.filter((cell) => cell.row >= startRow && cell.row <= endRow && cell.col >= startCol && cell.col <= endCol),
+  )
 }
 
 function getCellOrMerged(sheet: WorkbookSheet, row: number, col: number): SheetCell | null {
@@ -599,6 +1232,45 @@ function getCellOrMerged(sheet: WorkbookSheet, row: number, col: number): SheetC
   const merge = sheet.merges.find((candidate) => row >= candidate.startRow && row <= candidate.endRow && col >= candidate.startCol && col <= candidate.endCol)
   if (!merge) return null
   return sheet.cells.find((cell) => cell.row === merge.startRow && cell.col === merge.startCol) ?? null
+}
+
+function parseA1Address(address: string): { row: number; col: number } | null {
+  const match = /^([A-Z]+)(\d+)$/i.exec(address.trim())
+  if (!match) return null
+  const [, letters, rowText] = match
+  let col = 0
+  for (const letter of letters.toUpperCase()) col = col * 26 + (letter.charCodeAt(0) - 64)
+  return { row: Number.parseInt(rowText, 10) - 1, col: col - 1 }
+}
+
+function getBoundsFromAddresses(startAddress: string, endAddress: string): { startRow: number; endRow: number; startCol: number; endCol: number } | null {
+  const start = parseA1Address(startAddress)
+  const end = parseA1Address(endAddress)
+  if (!start || !end) return null
+  return {
+    startRow: Math.min(start.row, end.row),
+    endRow: Math.max(start.row, end.row),
+    startCol: Math.min(start.col, end.col),
+    endCol: Math.max(start.col, end.col),
+  }
+}
+
+function dedupeCells(cells: SheetCell[]): SheetCell[] {
+  const seen = new Set<string>()
+  return cells.filter((cell) => {
+    const key = `${cell.address}:${cell.mergeSourceAddress ?? ''}`
+    if (seen.has(key)) return false
+    seen.add(key)
+    return true
+  })
+}
+
+function restrictSheetToRegion(sheet: WorkbookSheet, region: SheetRegionCandidate): WorkbookSheet {
+  const { bounds } = region
+  const cells = sheet.cells.filter((cell) => cell.row >= bounds.startRow && cell.row <= bounds.endRow && cell.col >= bounds.startCol && cell.col <= bounds.endCol)
+  const rows = sheet.rows.map((row, rowIndex) => row.map((value, colIndex) => (rowIndex >= bounds.startRow && rowIndex <= bounds.endRow && colIndex >= bounds.startCol && colIndex <= bounds.endCol ? value : '')))
+  const merges = sheet.merges.filter((merge) => merge.startRow >= bounds.startRow && merge.endRow <= bounds.endRow && merge.startCol >= bounds.startCol && merge.endCol <= bounds.endCol)
+  return { ...sheet, rows, cells, merges }
 }
 
 function findAvatarUrl(sheet: WorkbookSheet, debug: SheetParseDebugInfo): { value: string; raw: string } | null {
@@ -679,7 +1351,7 @@ function buildClericSpellcasting(className: string, level: number): NormalizedCh
   return { spellcastingClass: field(isCleric ? 'Clerigo' : null, isCleric ? 'high' : 'low'), ability: field(isCleric ? 'wis' : null, isCleric ? 'high' : 'low'), saveDc: field(null, 'low'), attackBonus: field(null, 'low'), cantrips: [], levels }
 }
 
-function createEmptyCharacter(workbook: WorkbookData, warnings: ConversionWarning[]): NormalizedCharacter {
+function createEmptyCharacter(workbook: WorkbookData, warnings: ConversionWarning[], parseRunId: string, normalizedCharacterId: string): NormalizedCharacter {
   const abilities = Object.fromEntries((Object.keys(abilityLabels) as AbilityKey[]).map((key) => [key, { score: field(null as unknown as number, 'low'), mod: field(null as unknown as number, 'low') }])) as NormalizedCharacter['abilities']
   const saves = Object.fromEntries((Object.keys(abilityLabels) as AbilityKey[]).map((key) => [key, { total: field(null as unknown as number, 'low'), proficient: field(false, 'low'), bonus: field(null as unknown as number, 'low') }])) as NormalizedCharacter['saves']
   const skills = Object.fromEntries(
@@ -691,7 +1363,7 @@ function createEmptyCharacter(workbook: WorkbookData, warnings: ConversionWarnin
 
   return {
     source: { type: 'bonfire-xlsx', fileName: workbook.fileName, extractedAt: new Date().toISOString() },
-    identity: { name: field('', 'low'), classText: field('', 'low'), classes: [], background: field('', 'low'), race: field('', 'low'), alignment: field('', 'low'), xp: field(null, 'low') },
+    identity: { name: field('', 'low'), player: field('', 'low'), classText: field('', 'low'), classes: [], background: field('', 'low'), race: field('', 'low'), alignment: field('', 'low'), xp: field(null, 'low') },
     abilities,
     proficiencyBonus: field(null as unknown as number, 'low'),
     saves,
@@ -713,7 +1385,150 @@ function createEmptyCharacter(workbook: WorkbookData, warnings: ConversionWarnin
     features: [],
     resources: [],
     spells: buildClericSpellcasting('', 0),
+    pipeline: {
+      parserBuildId: PARSER_BUILD_ID,
+      parseRunId,
+      normalizedCharacterId,
+      actorBuildId: null,
+      auditBuildId: null,
+    },
     warnings,
+  }
+}
+
+function finalizeExtractedFields(character: NormalizedCharacter, debug: SheetParseDebugInfo) {
+  setExtractedField({ character, debug, fieldPath: 'identity.name', extracted: character.identity.name })
+  if (character.identity.player) setExtractedField({ character, debug, fieldPath: 'identity.player', extracted: character.identity.player })
+  setExtractedField({ character, debug, fieldPath: 'identity.classText', extracted: character.identity.classText })
+  setExtractedField({ character, debug, fieldPath: 'identity.race', extracted: character.identity.race })
+  setExtractedField({ character, debug, fieldPath: 'identity.background', extracted: character.identity.background })
+  setExtractedField({ character, debug, fieldPath: 'identity.alignment', extracted: character.identity.alignment })
+  setExtractedField({ character, debug, fieldPath: 'proficiencyBonus', extracted: character.proficiencyBonus })
+  setExtractedField({ character, debug, fieldPath: 'currency.gp', extracted: character.currency.gp })
+
+  for (const key of Object.keys(abilityLabels) as AbilityKey[]) {
+    setExtractedField({ character, debug, fieldPath: `abilities.${key}.score`, extracted: character.abilities[key].score })
+    setExtractedField({ character, debug, fieldPath: `abilities.${key}.mod`, extracted: character.abilities[key].mod })
+  }
+
+  setExtractedField({ character, debug, fieldPath: 'attributes.ac', extracted: character.attributes.ac })
+  setExtractedField({ character, debug, fieldPath: 'attributes.initiative', extracted: character.attributes.initiative })
+  setExtractedField({ character, debug, fieldPath: 'attributes.speed', extracted: character.attributes.speed })
+  setExtractedField({ character, debug, fieldPath: 'attributes.passivePerception', extracted: character.attributes.passivePerception })
+  setExtractedField({ character, debug, fieldPath: 'attributes.hp.max', extracted: character.attributes.hp.max })
+  setExtractedField({ character, debug, fieldPath: 'attributes.hp.value', extracted: character.attributes.hp.value })
+}
+
+function setExtractedField({
+  character,
+  debug,
+  fieldPath,
+  extracted,
+}: {
+  character: NormalizedCharacter
+  debug: SheetParseDebugInfo
+  fieldPath: string
+  extracted: FieldValue<unknown> | undefined
+}) {
+  if (!extracted) return
+  setFieldValueAtPath(character, fieldPath, extracted)
+  const accepted = isAcceptedExtractedValue(extracted.value)
+  const entry: ExtractedFieldDebugEntry = {
+    fieldPath,
+    cellAddress: extractCellAddressFromRaw(extracted.raw),
+    rawValue: normalizeRawDisplay(extracted.raw),
+    normalizedValue: typeof extracted.value === 'string' ? normalizeSheetCellValue(extracted.value) : extracted.value === null || extracted.value === undefined ? undefined : String(extracted.value),
+    accepted,
+    reason: accepted ? extracted.source ?? extracted.raw ?? 'final extracted value' : 'not found',
+    rejectedReason: accepted ? undefined : 'not found',
+  }
+  const existingIndex = debug.finalExtractedFields.findIndex((candidate) => candidate.fieldPath === fieldPath)
+  if (existingIndex >= 0) debug.finalExtractedFields[existingIndex] = entry
+  else debug.finalExtractedFields.push(entry)
+}
+
+function setFieldValueAtPath(target: Record<string, unknown>, fieldPath: string, value: unknown) {
+  const segments = fieldPath.split('.')
+  let current: Record<string, unknown> = target
+  for (const segment of segments.slice(0, -1)) {
+    const next = current[segment]
+    if (!next || typeof next !== 'object') return
+    current = next as Record<string, unknown>
+  }
+  current[segments.at(-1) as string] = value
+}
+
+function isAcceptedExtractedValue(value: unknown): boolean {
+  if (value === null || value === undefined) return false
+  if (typeof value === 'string') return Boolean(value.trim())
+  return true
+}
+
+function extractCellAddressFromRaw(raw?: string): string | undefined {
+  if (!raw) return undefined
+  const match = /\b([A-Z]+[0-9]+)\b/.exec(raw)
+  return match?.[1]
+}
+
+function normalizeRawDisplay(raw?: string): string | undefined {
+  if (!raw) return undefined
+  const colonIndex = raw.indexOf(':')
+  return colonIndex >= 0 ? raw.slice(colonIndex + 1).trim() : raw
+}
+
+function ruleMatchesText(name: string, aliases: string[], value: string): boolean {
+  const normalizedValue = normalizeSheetCellValue(value)
+  if (!normalizedValue) return false
+  return [name, ...aliases].some((candidate) => normalizeSheetCellValue(candidate) === normalizedValue)
+}
+
+function validateExtractedCharacter(character: NormalizedCharacter) {
+  for (const key of Object.keys(abilityLabels) as AbilityKey[]) {
+    const score = character.abilities[key].score
+    const raw = score.raw ?? ''
+    const invalid =
+      typeof score.value !== 'number' ||
+      !Number.isInteger(score.value) ||
+      score.value < 1 ||
+      score.value > 30 ||
+      /^[-+]/.test(normalizeRawDisplay(raw) ?? '')
+    if (invalid) {
+      character.warnings.push(makeWarning('SHEET_ABILITY_SCORE_INVALID', `Atributo invalido para ${key}.`, `abilities.${key}.score`, raw || undefined, 'error'))
+    }
+  }
+
+  if (rejectBackgroundCandidate(character.identity.background.value)) {
+    character.warnings.push(
+      makeWarning(
+        'BACKGROUND_INVALID_TEMPLATE_VALUE',
+        'Antecedente extraido parece ser label de atributo ou valor invalido.',
+        'identity.background',
+        character.identity.background.raw ?? character.identity.background.value,
+        'error',
+      ),
+    )
+  }
+
+  const passive = character.attributes.passivePerception
+  if (passive.value !== null && (typeof passive.value !== 'number' || !Number.isInteger(passive.value))) {
+    character.warnings.push(makeWarning('PASSIVE_PERCEPTION_INVALID', 'Percepcao passiva precisa ser numero inteiro ou nula.', 'attributes.passivePerception', passive.raw, 'error'))
+  }
+
+  const speed = character.attributes.speed
+  const hpMax = character.attributes.hp.max
+  if (
+    typeof speed.value === 'number' &&
+    typeof hpMax.value === 'number' &&
+    speed.value === hpMax.value &&
+    extractCellAddressFromRaw(speed.raw) &&
+    extractCellAddressFromRaw(speed.raw) === extractCellAddressFromRaw(hpMax.raw)
+  ) {
+    character.warnings.push(makeWarning('SHEET_SPEED_LOOKS_LIKE_HP_DUPLICATE', 'Velocidade parece ter sido lida da mesma celula de PV maximo.', 'attributes.speed', speed.raw, 'error'))
+  }
+
+  const gp = character.currency.gp
+  if (typeof gp.value !== 'number' || !Number.isFinite(gp.value) || /\b(gp|po|sp|pp|cp|ep)\b/i.test(gp.raw ?? '') || /\./.test(gp.raw ?? '')) {
+    character.warnings.push(makeWarning('CURRENCY_GP_INVALID', 'O valor de gp parece vir de preco de item ou nao e um total valido.', 'currency.gp', gp.raw, 'error'))
   }
 }
 
@@ -728,10 +1543,21 @@ function addCriticalParserWarnings(character: NormalizedCharacter) {
 }
 
 function ensureCriticalDebugFields(debug: SheetParseDebugInfo) {
-  const present = new Set(debug.extractedFields.map((entry) => entry.fieldPath))
+  const present = new Set(debug.finalExtractedFields.map((entry) => entry.fieldPath))
   for (const fieldPath of criticalFieldPaths) {
-    if (!present.has(fieldPath)) debugField(debug, fieldPath, undefined, false, 'not evaluated')
+    if (!present.has(fieldPath)) {
+      debug.finalExtractedFields.push({
+        fieldPath,
+        accepted: false,
+        reason: 'not evaluated',
+        rejectedReason: 'not evaluated',
+      })
+    }
   }
+}
+
+function abilitySnapshot(character: NormalizedCharacter): Record<string, number | null> {
+  return Object.fromEntries((Object.keys(abilityLabels) as AbilityKey[]).map((key) => [key, character.abilities[key].score.value ?? null]))
 }
 
 function dedupeByName(features: NormalizedFeature[]): NormalizedFeature[] {
@@ -745,7 +1571,7 @@ function dedupeByName(features: NormalizedFeature[]): NormalizedFeature[] {
 }
 
 function debugField(debug: SheetParseDebugInfo, fieldPath: string, cell: SheetCell | undefined, accepted: boolean, reason?: string) {
-  debug.extractedFields.push({
+  const entry: ExtractedFieldDebugEntry = {
     fieldPath,
     cellAddress: cell?.address,
     rawValue: cell?.value,
@@ -755,5 +1581,7 @@ function debugField(debug: SheetParseDebugInfo, fieldPath: string, cell: SheetCe
     accepted,
     reason,
     rejectedReason: accepted ? undefined : reason,
-  })
+  }
+  debug.extractedFields.push(entry)
+  debug.extractionAttempts.push(entry)
 }

@@ -27,6 +27,7 @@ export type FieldValue<T> = {
   raw?: string
   confidence: Confidence
   warnings?: string[]
+  source?: string
 }
 
 export type AbilityValue = {
@@ -112,6 +113,14 @@ export type ConversionWarning = {
   raw?: string
 }
 
+export type PipelineTrace = {
+  parserBuildId: string
+  parseRunId: string
+  normalizedCharacterId: string
+  actorBuildId?: string | null
+  auditBuildId?: string | null
+}
+
 export type NormalizedCharacter = {
   source: {
     type: SourceType
@@ -122,6 +131,7 @@ export type NormalizedCharacter = {
   }
   identity: {
     name: FieldValue<string>
+    player?: FieldValue<string>
     classText: FieldValue<string>
     classes: Array<{ name: string; level: number; subclass?: string }>
     background: FieldValue<string>
@@ -177,5 +187,6 @@ export type NormalizedCharacter = {
     cantrips: NormalizedSpell[]
     levels: Record<string, { slotsMax: FieldValue<number>; slotsUsed: FieldValue<number>; spells: NormalizedSpell[] }>
   }
+  pipeline?: PipelineTrace
   warnings: ConversionWarning[]
 }

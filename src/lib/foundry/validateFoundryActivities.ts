@@ -1,6 +1,6 @@
 import { isRecord, validation, type FoundryValidationResult } from './foundryValidationReport'
 
-const allowedActivityTypes = new Set(['attack', 'damage', 'heal', 'save', 'utility', 'check', 'summon', 'enchant'])
+const allowedActivityTypes = new Set(['attack', 'damage', 'heal', 'save', 'utility', 'check', 'summon', 'enchant', 'cast'])
 
 export function validateFoundryActivities(activities: unknown, path: string, itemName?: string, itemId?: string): FoundryValidationResult[] {
   if (activities === undefined) return []

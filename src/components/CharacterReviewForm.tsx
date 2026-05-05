@@ -22,7 +22,18 @@ export function CharacterReviewForm({ character, onChange }: CharacterReviewForm
       <fieldset>
         <legend>Identidade</legend>
         {nameLooksLikeUrl ? <p className="warning error">Nome parece URL de imagem/link. Corrija o nome antes de exportar.</p> : null}
-        <Field label="Nome" value={character.identity.name.value} confidence={character.identity.name.confidence} onChange={(value) => update((draft) => void (draft.identity.name.value = value))} />
+        <Field
+          label="Nome"
+          value={character.identity.name.value}
+          confidence={character.identity.name.confidence}
+          onChange={(value) =>
+            update((draft) => {
+              draft.identity.name.value = value
+              draft.identity.name.source = value.trim() ? 'manual-review' : draft.identity.name.source
+              if (value.trim()) draft.identity.name.confidence = 'medium'
+            })
+          }
+        />
         <Field label="Avatar URL" value={character.media?.avatarUrl?.value ?? ''} confidence={character.media?.avatarUrl?.confidence ?? 'low'} onChange={(value) => update((draft) => void ((draft.media ??= {}).avatarUrl = { value: value || null, confidence: value ? 'medium' : 'low' }))} />
         <Field label="Classe" value={character.identity.classText.value} confidence={character.identity.classText.confidence} onChange={(value) => update((draft) => void (draft.identity.classText.value = value))} />
         <Field label="Raça" value={character.identity.race.value} confidence={character.identity.race.confidence} onChange={(value) => update((draft) => void (draft.identity.race.value = value))} />

@@ -11,13 +11,13 @@ describe('featureResolutionPipeline', () => {
     const workbook = await readWorkbook(new Uint8Array(readFileSync('samples/Pipkin.xlsx')), 'Pipkin.xlsx')
     const { character } = parseBonfireCharacterSheet(workbook)
     const result = resolveCharacterRules(character)
-    const byName = new Map(result.resolutions.map((resolution) => [resolution.rawName, resolution]))
+    const byName = new Map(result.resolutions.map((resolution) => [normalizeKey(resolution.rawName), resolution]))
 
-    expect(byName.get('Conjuração')?.confidence).toBe('high')
-    expect(byName.get('Canalizar Divindade')?.confidence).toBe('high')
-    expect(byName.get('Clérigo do Caos')?.confidence).toBe('high')
-    expect(byName.get('Agilidade dos Pequeninos')?.kind).toBe('raceFeature')
-    expect(byName.get('Marca Anômala')?.kind).toBe('feat')
+    expect(byName.get(normalizeKey('Conjuração'))?.confidence).toBe('high')
+    expect(byName.get(normalizeKey('Canalizar Divindade'))?.confidence).toBe('high')
+    expect(byName.get(normalizeKey('Clérigo do Caos'))?.confidence).toBe('high')
+    expect(byName.get(normalizeKey('Agilidade dos Pequeninos'))?.kind).toBe('raceFeature')
+    expect(byName.get(normalizeKey('Marca Anômala'))?.kind).toBe('feat')
     expect(result.unresolvedRules.length).toBeLessThan(character.features.length)
   })
 
@@ -35,4 +35,11 @@ describe('featureResolutionPipeline', () => {
     expect(byName.get('Resiliente (Sabedoria)')?.kind).toBe('feat')
   })
 })
+
+function normalizeKey(value: string): string {
+  return value
+    .normalize('NFD')
+    .replace(/\p{Diacritic}/gu, '')
+    .toLowerCase()
+}
 

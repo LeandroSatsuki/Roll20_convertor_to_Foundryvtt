@@ -1,7 +1,8 @@
 import type { FoundryActor } from '../foundry/foundryTypes'
 import type { FoundryExportAuditReport, FoundryValidationResult } from '../foundry/foundryValidationReport'
 import { validateFoundryActorDeep } from '../foundry/validateFoundryActor'
-import type { NormalizedCharacter } from '../normalize/normalizedCharacterTypes'
+import type { AbilityKey, NormalizedCharacter } from '../normalize/normalizedCharacterTypes'
+import { getItemAutomationMeta } from '../foundry/items'
 
 const blockingCodes = new Set([
   'CHARACTER_NAME_IS_URL',
@@ -17,9 +18,16 @@ const blockingCodes = new Set([
   'FOUNDRY_CLERIC5_SLOTS_INVALID',
   'SHEET_CHARACTER_NAME_MISSING',
   'SHEET_ABILITY_NOT_FOUND',
+  'SHEET_ABILITY_SCORE_INVALID',
   'SHEET_ABILITY_SCORE_MISSING',
   'SHEET_AC_MISSING',
+  'BACKGROUND_INVALID_TEMPLATE_VALUE',
+  'PASSIVE_PERCEPTION_INVALID',
+  'CURRENCY_GP_INVALID',
+  'SHEET_SPEED_LOOKS_LIKE_HP_DUPLICATE',
   'SHEET_HP_MAX_MISSING',
+  'BONFIRE_LOG_V2_TEMPLATE_PARSER_NOT_CALLED',
+  'SHEET_CHARACTER_REGION_NOT_FOUND',
   'SHEET_PARSE_BLOCKED_LOW_CONFIDENCE',
   'SHEET_TEMPLATE_LOW_CONFIDENCE',
 ])
@@ -49,9 +57,16 @@ export function buildExportAuditReport(actor: FoundryActor | null, normalized?: 
 
   const items = actor?.items ?? []
   const ruleStats = summarizeRuleResolution(items)
+  const automationStats = summarizeItemAutomation(items)
+  const pipeline = normalized?.pipeline
   return {
     actorName: actor?.name ?? normalized?.identity.name.value ?? '',
     generatedAt: new Date().toISOString(),
+    parserBuildId: pipeline?.parserBuildId,
+    parseRunId: pipeline?.parseRunId,
+    normalizedCharacterId: pipeline?.normalizedCharacterId,
+    actorBuildId: pipeline?.actorBuildId ?? getActorConverterFlag(actor, 'actorBuildId'),
+    auditBuildId: pipeline?.auditBuildId ?? getActorConverterFlag(actor, 'auditBuildId'),
     sourceType: normalized?.source.type ?? 'unknown',
     sourceFileName: normalized?.source.fileName,
     summary: {
@@ -70,8 +85,40 @@ export function buildExportAuditReport(actor: FoundryActor | null, normalized?: 
       unresolvedCount: ruleStats.unknown,
       manuallyResolvedCount: ruleStats.manual,
       genericItemCount: ruleStats.generic,
+      automatedFullCount: automationStats.full,
+      automatedPartialCount: automationStats.partial,
+      automatedNoneCount: automationStats.none,
+      activitiesCount: automationStats.activitiesCount,
+      invalidActivitiesCount: automationStats.invalidActivitiesCount,
+      usesConfiguredCount: automationStats.usesConfiguredCount,
+      recoveryConfiguredCount: automationStats.recoveryConfiguredCount,
     },
     validations,
+    auditDebug: {
+      parserBuildId: pipeline?.parserBuildId ?? getActorConverterFlag(actor, 'parserBuildId') ?? undefined,
+      parseRunId: pipeline?.parseRunId ?? getActorConverterFlag(actor, 'parseRunId') ?? undefined,
+      normalizedCharacterId: pipeline?.normalizedCharacterId ?? getActorConverterFlag(actor, 'normalizedCharacterId') ?? undefined,
+      actorBuildId: pipeline?.actorBuildId ?? getActorConverterFlag(actor, 'actorBuildId'),
+      auditBuildId: pipeline?.auditBuildId ?? getActorConverterFlag(actor, 'auditBuildId'),
+      normalizedDebugSnapshot: {
+        abilities: collectNormalizedAbilities(normalized),
+      },
+      actorInputSnapshot: {
+        abilities: getActorInputAbilitySnapshot(actor),
+      },
+      abilitiesBeforeActorBuild: collectNormalizedAbilities(normalized),
+      abilitiesInsideActor: collectActorAbilities(actor),
+      itemNames: items.map((item) => item.name),
+      automationSummary: {
+        automatedFullCount: automationStats.full,
+        automatedPartialCount: automationStats.partial,
+        automatedNoneCount: automationStats.none,
+        activitiesCount: automationStats.activitiesCount,
+        invalidActivitiesCount: automationStats.invalidActivitiesCount,
+        usesConfiguredCount: automationStats.usesConfiguredCount,
+        recoveryConfiguredCount: automationStats.recoveryConfiguredCount,
+      },
+    },
     unresolvedFeatures,
     importReadiness: {
       canExport: blockingReasons.length === 0,
@@ -79,6 +126,34 @@ export function buildExportAuditReport(actor: FoundryActor | null, normalized?: 
       blockingReasons,
     },
   }
+}
+
+const abilityKeys: AbilityKey[] = ['str', 'dex', 'con', 'int', 'wis', 'cha']
+
+function summarizeItemAutomation(items: FoundryActor['items']): {
+  full: number
+  partial: number
+  none: number
+  activitiesCount: number
+  invalidActivitiesCount: number
+  usesConfiguredCount: number
+  recoveryConfiguredCount: number
+} {
+  return items.reduce(
+    (summary, item) => {
+      const automation = getItemAutomationMeta(item)
+      const level = automation?.level ?? 'none'
+      if (level === 'full') summary.full += 1
+      else if (level === 'partial') summary.partial += 1
+      else summary.none += 1
+      summary.activitiesCount += automation?.activitiesCreated.length ?? 0
+      summary.invalidActivitiesCount += automation?.invalidActivitiesCount ?? 0
+      if (automation?.usesConfigured) summary.usesConfiguredCount += 1
+      if (automation?.recoveryConfigured) summary.recoveryConfiguredCount += 1
+      return summary
+    },
+    { full: 0, partial: 0, none: 0, activitiesCount: 0, invalidActivitiesCount: 0, usesConfiguredCount: 0, recoveryConfiguredCount: 0 },
+  )
 }
 
 function formatBlockingReason(result: FoundryValidationResult): string {
@@ -151,4 +226,42 @@ function getRuleResolution(item: FoundryActor['items'][number]): Record<string, 
   const converterFlags = flags?.['roll20-to-foundry'] as Record<string, unknown> | undefined
   const resolution = converterFlags?.ruleResolution
   return resolution && typeof resolution === 'object' ? (resolution as Record<string, unknown>) : null
+}
+
+function collectNormalizedAbilities(normalized?: NormalizedCharacter | null): Record<string, number | null> {
+  if (!normalized) return Object.fromEntries(abilityKeys.map((key) => [key, null]))
+  return Object.fromEntries(abilityKeys.map((key) => [key, normalized.abilities[key].score.value ?? null]))
+}
+
+function collectActorAbilities(actor: FoundryActor | null): Record<string, number | null> {
+  const abilities = (actor?.system as Record<string, unknown> | undefined)?.abilities as Record<string, unknown> | undefined
+  return Object.fromEntries(
+    abilityKeys.map((key) => {
+      const value = abilities?.[key]
+      const numeric = value && typeof value === 'object' ? (value as Record<string, unknown>).value : null
+      return [key, typeof numeric === 'number' ? numeric : null]
+    }),
+  )
+}
+
+function getActorConverterFlag(actor: FoundryActor | null, key: string): string | null {
+  const flags = actor?.flags as Record<string, unknown> | undefined
+  const converterFlags = flags?.['roll20-to-foundry'] as Record<string, unknown> | undefined
+  const value = converterFlags?.[key]
+  return typeof value === 'string' ? value : null
+}
+
+function getActorInputAbilitySnapshot(actor: FoundryActor | null): Record<string, number | null> {
+  const flags = actor?.flags as Record<string, unknown> | undefined
+  const converterFlags = flags?.['roll20-to-foundry'] as Record<string, unknown> | undefined
+  const snapshot = converterFlags?.actorInputSnapshot
+  if (!snapshot || typeof snapshot !== 'object' || Array.isArray(snapshot)) return Object.fromEntries(abilityKeys.map((key) => [key, null]))
+  const abilities = (snapshot as Record<string, unknown>).abilities
+  if (!abilities || typeof abilities !== 'object' || Array.isArray(abilities)) return Object.fromEntries(abilityKeys.map((key) => [key, null]))
+  return Object.fromEntries(
+    abilityKeys.map((key) => {
+      const value = (abilities as Record<string, unknown>)[key]
+      return [key, typeof value === 'number' ? value : null]
+    }),
+  )
 }

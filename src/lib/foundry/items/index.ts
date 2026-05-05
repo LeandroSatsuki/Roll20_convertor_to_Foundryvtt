@@ -1,0 +1,597 @@
+import type { AbilityKey, NormalizedAttack, NormalizedEquipment, NormalizedFeature, NormalizedResource, NormalizedSpell } from '../../normalize/normalizedCharacterTypes'
+import { resolveFeature } from '../../rules/featureResolver'
+import { defaultBonfireRuleStore } from '../../rules/bonfireRuleStore'
+import { resolveWeaponOrEquipment } from '../../rules/weaponResolver'
+import type { FeatureResolution } from '../../rules/bonfireTypes'
+import { createAttackActivity, createCastActivity, createHealActivity, createUtilityActivity, validateActivityShape, type FoundryActivityShape } from '../activities'
+import type { FoundryItem } from '../foundryTypes'
+import { foundryId } from '../ids'
+import { toFoundryIdentifier } from '../identifiers'
+import { escapeHtml, itemStats } from '../mapWeapons'
+
+export type ItemAutomationLevel = 'full' | 'partial' | 'none'
+
+export type ItemAutomationMeta = {
+  level: ItemAutomationLevel
+  sourceCodeMarker: string
+  activitiesCreated: Array<{ id: string; type: string; name: string }>
+  invalidActivitiesCount: number
+  warnings: string[]
+  usesConfigured: boolean
+  recoveryConfigured: boolean
+  structuredAutomationConfigured: boolean
+}
+
+type BaseItemBuildOptions = {
+  name: string
+  type: string
+  img: string
+  identifier: string
+  description: string
+  sourceBook: string
+  converterFlags: Record<string, unknown>
+  system?: Record<string, unknown>
+  automation?: {
+    requestedLevel: ItemAutomationLevel
+    activities?: FoundryActivityShape[]
+    warnings?: string[]
+    usesConfigured?: boolean
+    recoveryConfigured?: boolean
+    structuredAutomationConfigured?: boolean
+  }
+}
+
+type FeatureContext = {
+  className?: string
+  level?: number
+  subclass?: string
+  race?: string
+  background?: string
+}
+
+const automationSourceCodeMarker = 'foundry-item-automation-v1'
+const defaultSource = { rules: '2024', book: 'Bonfire Tales / Sheet', page: '', license: '' }
+
+export function buildGenericItem(options: BaseItemBuildOptions): FoundryItem {
+  const item: FoundryItem = {
+    _id: foundryId(),
+    name: options.name,
+    type: options.type,
+    img: options.img,
+    system: {
+      identifier: options.identifier,
+      description: { value: `<p>${escapeHtml(options.description)}</p>`, chat: '' },
+      source: { ...defaultSource, book: options.sourceBook },
+      uses: { spent: null, max: '', recovery: [] },
+      activities: {},
+      ...(options.system ?? {}),
+    },
+    effects: [],
+    folder: null,
+    flags: {
+      'roll20-to-foundry': { ...options.converterFlags },
+    },
+    _stats: itemStats(),
+  }
+
+  return applyAutomation(item, options.automation)
+}
+
+export function buildFeatItem(options: {
+  feature?: NormalizedFeature
+  resource?: NormalizedResource
+  identifier: string
+  context: FeatureContext
+  spellcastingAbility?: AbilityKey | null
+}): FoundryItem {
+  const name = options.feature?.name.value ?? options.resource?.label.value ?? 'Unknown Feature'
+  const raw = options.feature?.raw ?? options.resource?.raw ?? name
+  const resolution = resolveFeature(raw || name, { ...options.context, section: options.feature?.sourceType ?? 'action' }, defaultBonfireRuleStore)
+  const description = resolution.description || options.feature?.description.value || raw
+  const max = typeof resolution.uses?.max === 'number' ? resolution.uses.max : options.feature?.uses?.max.value ?? options.resource?.max.value ?? null
+  const currentValue = options.feature?.uses?.value.value ?? options.resource?.value.value ?? null
+  const spent = typeof max === 'number' && typeof currentValue === 'number' ? Math.max(max - currentValue, 0) : typeof max === 'number' ? 0 : null
+  const recovery = mapRecoveryEntries(options.feature?.uses?.recovery ?? options.resource?.recovery.value ?? resolution.uses?.recovery)
+  const activationType = resolution.activation ?? options.feature?.activation?.type ?? inferFeatureActivation(name)
+  const usesConfigured = max !== null
+  const recoveryConfigured = recovery.length > 0
+  const activities: FoundryActivityShape[] = []
+  const warnings = resolution.warnings.map((warning) => warning.message)
+  let requestedLevel: ItemAutomationLevel = 'none'
+  let structuredAutomationConfigured = usesConfigured || recoveryConfigured
+  const system: Record<string, unknown> = {
+    activation: { type: activationType, cost: null, condition: '' },
+    uses: {
+      spent,
+      max: max ?? '',
+      recovery,
+    },
+  }
+
+  if (resolution.kind === 'spellcasting' || /conjura[cç][aã]o/i.test(name)) {
+    system.spellcasting = { ability: options.spellcastingAbility ?? 'wis', progression: 'full', preparation: 'prepared' }
+    activities.push(
+      createCastActivity({
+        name,
+        activationType: 'special',
+        ability: options.spellcastingAbility ?? 'wis',
+        progression: 'full',
+        preparation: 'prepared',
+        consumesSpellSlot: false,
+        notes: 'Spellcasting bridge generated by the converter.',
+      }),
+    )
+    requestedLevel = options.spellcastingAbility ? 'full' : 'partial'
+    structuredAutomationConfigured = true
+    if (!options.spellcastingAbility) warnings.push('Habilidade de conjuração não estava explícita; revisar item Conjuração.')
+  } else if (/Canalizar Divindade/i.test(name)) {
+    activities.push(
+      createUtilityActivity({
+        name,
+        activationType: 'action',
+        notes: 'Uses configured from Bonfire rule resolution.',
+      }),
+    )
+    requestedLevel = 'full'
+    structuredAutomationConfigured = true
+  }
+
+  return buildGenericItem({
+    name: resolution.confidence === 'low' ? name : resolution.resolvedName,
+    type: 'feat',
+    img: resolution.kind === 'spellcasting' ? 'icons/svg/book.svg' : 'icons/svg/item-bag.svg',
+    identifier: options.identifier,
+    description,
+    sourceBook: resolution.kind === 'spellcasting' ? 'Bonfire Tales' : 'Bonfire Tales / Sheet',
+    converterFlags: {
+      rawName: raw,
+      resolvedKind: resolution.kind,
+      confidence: resolution.confidence,
+      source: 'bonfire-rule-store',
+      sourceUrl: resolution.sourceUrl,
+      warnings,
+      ruleResolution: toRuleResolution(resolution, raw, raw),
+    },
+    system,
+    automation: {
+      requestedLevel,
+      activities,
+      warnings,
+      usesConfigured,
+      recoveryConfigured,
+      structuredAutomationConfigured,
+    },
+  })
+}
+
+export function buildWeaponItem(attack: NormalizedAttack, identifier: string): FoundryItem {
+  const rule = resolveWeaponOrEquipment(attack.name.value)
+  const formula = attack.damageFormula.value ?? rule?.damage ?? ''
+  const damage = parseDamageFormula(formula)
+  const damageType = attack.damageType.value ?? rule?.damageType ?? ''
+  const mode = rule?.properties.includes('ammunition') ? 'ranged' : 'melee'
+  const ability = mode === 'ranged' ? 'dex' : 'str'
+  const activities: FoundryActivityShape[] = []
+  const warnings: string[] = []
+  let requestedLevel: ItemAutomationLevel = 'partial'
+
+  if (damage.formula && damageType) {
+    activities.push(
+      createAttackActivity({
+        name: attack.name.value,
+        activationType: 'action',
+        ability,
+        mode,
+        classification: 'weapon',
+        damageFormula: damage.formula,
+        damageType,
+        attackBonus: attack.attackBonus.value,
+        range: mode === 'ranged' ? { value: 80, long: 320, units: 'ft' } : undefined,
+        notes: 'Weapon activity generated from attack row and Bonfire item rule.',
+      }),
+    )
+    requestedLevel = 'full'
+  } else {
+    warnings.push('Arma exportada sem activity porque dano/tipo não ficaram seguros.')
+  }
+
+  return buildGenericItem({
+    name: attack.name.value,
+    type: 'weapon',
+    img: 'icons/weapons/bows/shortbow-recurve-leather-brown.webp',
+    identifier,
+    description: attack.raw || attack.name.value,
+    sourceBook: 'Roll20 PDF',
+    converterFlags: {
+      source: 'roll20-pdf',
+      confidence: attack.name.confidence,
+      raw: attack.raw,
+      warnings,
+      ruleResolution: {
+        rawName: attack.raw || attack.name.value,
+        resolvedName: rule?.name ?? attack.name.value,
+        kind: 'weapon',
+        confidence: rule ? 'high' : 'low',
+        score: rule ? 100 : 0,
+        ruleId: rule?.id,
+        sourceUrl: rule?.sourceUrl,
+        candidates: rule ? [{ ruleId: rule.id, name: rule.name, kind: 'weapon', score: 100, confidence: 'high' }] : [],
+        manuallyResolved: false,
+      },
+    },
+    system: {
+      equipped: true,
+      proficient: 1,
+      type: { value: mode === 'ranged' ? 'simpleR' : 'simpleM', baseItem: '' },
+      damage: {
+        base: {
+          number: damage.number,
+          denomination: damage.denomination,
+          bonus: damage.bonus,
+          types: damageType ? [damageType] : [],
+          custom: { enabled: Boolean(damage.formula), formula: damage.formula },
+        },
+      },
+      range: { value: mode === 'ranged' ? 80 : null, long: mode === 'ranged' ? 320 : null, units: 'ft' },
+    },
+    automation: {
+      requestedLevel,
+      activities,
+      warnings,
+      structuredAutomationConfigured: true,
+    },
+  })
+}
+
+export function buildArmorItem(item: NormalizedEquipment, identifier: string): FoundryItem {
+  const rule = resolveWeaponOrEquipment(item.name.value)
+  const warnings: string[] = []
+  let structuredAutomationConfigured = false
+  let requestedLevel: ItemAutomationLevel = 'partial'
+  const system: Record<string, unknown> = {
+    quantity: item.quantity.value,
+    equipped: true,
+  }
+
+  if (rule?.category === 'shield' || /shield/i.test(item.name.value)) {
+    system.armor = { type: 'shield', value: 2 }
+    structuredAutomationConfigured = true
+    requestedLevel = 'full'
+  } else if (/scale mail/i.test(item.name.value) || rule?.id === 'scale-mail') {
+    system.armor = { type: 'medium', value: 14, dex: 2 }
+    system.stealth = { disadvantage: true }
+    structuredAutomationConfigured = true
+    requestedLevel = 'full'
+  } else if (rule) {
+    system.armor = { type: rule.category, value: null }
+    warnings.push('Armadura reconhecida, mas sem automação específica além do tipo.')
+    structuredAutomationConfigured = true
+  } else {
+    warnings.push('Armadura exportada com shape genérico; revisar AC manualmente.')
+  }
+
+  return buildGenericItem({
+    name: item.name.value,
+    type: 'equipment',
+    img: /shield/i.test(item.name.value) ? 'icons/equipment/shield/heater-crystal-blue.webp' : 'icons/equipment/chest/breastplate-layered-steel.webp',
+    identifier,
+    description: rule?.properties.join(', ') || item.raw,
+    sourceBook: 'Bonfire Tales / Sheet',
+    converterFlags: {
+      rawName: item.raw,
+      resolvedKind: rule?.category === 'shield' ? 'armor' : 'armor',
+      confidence: item.name.confidence,
+      source: 'bonfire-xlsx',
+      sourceUrl: rule?.sourceUrl,
+      warnings,
+      ruleResolution: {
+        rawName: item.raw || item.name.value,
+        resolvedName: rule?.name ?? item.name.value,
+        kind: 'armor',
+        confidence: rule ? 'high' : 'low',
+        score: rule ? 100 : 0,
+        ruleId: rule?.id,
+        sourceUrl: rule?.sourceUrl,
+        candidates: rule ? [{ ruleId: rule.id, name: rule.name, kind: 'armor', score: 100, confidence: 'high' }] : [],
+        manuallyResolved: false,
+      },
+    },
+    system,
+    automation: {
+      requestedLevel,
+      warnings,
+      structuredAutomationConfigured,
+    },
+  })
+}
+
+export function buildConsumableItem(item: NormalizedEquipment, identifier: string): FoundryItem {
+  const rule = resolveWeaponOrEquipment(item.name.value)
+  const warnings: string[] = []
+  const activities: FoundryActivityShape[] = []
+  let usesConfigured = false
+  let recoveryConfigured = false
+  let requestedLevel: ItemAutomationLevel = 'none'
+  let structuredAutomationConfigured = false
+  const system: Record<string, unknown> = {
+    quantity: item.quantity.value,
+    type: { value: 'consumable' },
+  }
+
+  if (/Potion of Healing/i.test(item.name.value)) {
+    activities.push(
+      createHealActivity({
+        name: item.name.value,
+        activationType: 'action',
+        formula: '2d4+2',
+        notes: 'Standard potion healing formula.',
+      }),
+    )
+    system.uses = {
+      spent: 0,
+      max: 1,
+      recovery: [],
+    }
+    system.consumableType = 'potion'
+    usesConfigured = true
+    structuredAutomationConfigured = true
+    requestedLevel = 'full'
+  } else if (/[ÁA]gua Benta|Holy Water/i.test(item.name.value)) {
+    system.consumableType = 'gear'
+    warnings.push('Água Benta exportada sem activity de dano porque a aplicação segura não ficou determinada.')
+    structuredAutomationConfigured = true
+    requestedLevel = 'partial'
+  } else {
+    warnings.push('Consumível exportado com shape genérico.')
+  }
+
+  return buildGenericItem({
+    name: item.name.value,
+    type: 'consumable',
+    img: 'icons/consumables/potions/potion-bottle-red.webp',
+    identifier,
+    description: rule?.properties.join(', ') || item.raw,
+    sourceBook: 'Bonfire Tales / Sheet',
+    converterFlags: {
+      rawName: item.raw,
+      resolvedKind: 'consumable',
+      confidence: item.name.confidence,
+      source: 'bonfire-xlsx',
+      sourceUrl: rule?.sourceUrl,
+      warnings,
+      ruleResolution: {
+        rawName: item.raw || item.name.value,
+        resolvedName: rule?.name ?? item.name.value,
+        kind: 'consumable',
+        confidence: rule ? 'high' : 'low',
+        score: rule ? 100 : 0,
+        ruleId: rule?.id,
+        sourceUrl: rule?.sourceUrl,
+        candidates: rule ? [{ ruleId: rule.id, name: rule.name, kind: 'consumable', score: 100, confidence: 'high' }] : [],
+        manuallyResolved: false,
+      },
+    },
+    system,
+    automation: {
+      requestedLevel,
+      activities,
+      warnings,
+      usesConfigured,
+      recoveryConfigured,
+      structuredAutomationConfigured,
+    },
+  })
+}
+
+export function buildEquipmentItem(item: NormalizedEquipment, identifier: string): FoundryItem {
+  const rule = resolveWeaponOrEquipment(item.name.value)
+  const warnings: string[] = []
+  const isHolySymbol = /Holy Symbol|S[íi]mbolo Sagrado/i.test(item.name.value)
+  const itemType = isHolySymbol ? 'equipment' : item.category === 'tool' ? 'tool' : 'equipment'
+  const system: Record<string, unknown> = {
+    quantity: item.quantity.value,
+    equipped: false,
+  }
+  let structuredAutomationConfigured = false
+  let requestedLevel: ItemAutomationLevel = 'none'
+
+  if (isHolySymbol) {
+    system.type = { value: 'focus' }
+    system.focus = { spellcasting: true, class: 'cleric' }
+    structuredAutomationConfigured = true
+    requestedLevel = 'full'
+  } else if (rule) {
+    system.type = { value: rule.category }
+    structuredAutomationConfigured = true
+    requestedLevel = 'partial'
+  }
+
+  return buildGenericItem({
+    name: item.name.value,
+    type: itemType,
+    img: isHolySymbol ? 'icons/sundries/symbols/cross-star-gold.webp' : 'icons/svg/item-bag.svg',
+    identifier,
+    description: rule?.properties.join(', ') || item.raw,
+    sourceBook: 'Bonfire Tales / Sheet',
+    converterFlags: {
+      rawName: item.raw,
+      resolvedKind: rule?.category ?? item.category,
+      confidence: item.name.confidence,
+      source: 'bonfire-xlsx',
+      sourceUrl: rule?.sourceUrl,
+      warnings,
+      ruleResolution: {
+        rawName: item.raw || item.name.value,
+        resolvedName: rule?.name ?? item.name.value,
+        kind: rule?.category ?? item.category,
+        confidence: rule ? 'high' : 'low',
+        score: rule ? 100 : 0,
+        ruleId: rule?.id,
+        sourceUrl: rule?.sourceUrl,
+        candidates: rule ? [{ ruleId: rule.id, name: rule.name, kind: rule.category, score: 100, confidence: 'high' }] : [],
+        manuallyResolved: false,
+      },
+    },
+    system,
+    automation: {
+      requestedLevel,
+      warnings,
+      structuredAutomationConfigured,
+    },
+  })
+}
+
+export function buildSpellItem(spell: NormalizedSpell): FoundryItem {
+  return buildGenericItem({
+    name: spell.name.value,
+    type: 'spell',
+    img: 'icons/svg/book.svg',
+    identifier: toFoundryIdentifier(spell.name.value, 'spell'),
+    description: spell.raw,
+    sourceBook: 'Bonfire Tales / Sheet',
+    converterFlags: {
+      source: 'sheet',
+      confidence: spell.name.confidence,
+      raw: spell.raw,
+      ruleResolution: {
+        rawName: spell.name.value,
+        resolvedName: spell.name.value,
+        kind: 'spell',
+        confidence: spell.name.confidence,
+        score: spell.name.confidence === 'high' ? 100 : 50,
+        candidates: [],
+        manuallyResolved: false,
+      },
+    },
+    system: {
+      level: spell.level,
+    },
+    automation: {
+      requestedLevel: 'none',
+    },
+  })
+}
+
+export function getItemAutomationMeta(item: FoundryItem): ItemAutomationMeta | null {
+  const flags = item.flags?.['roll20-to-foundry']
+  if (!flags || typeof flags !== 'object' || Array.isArray(flags)) return null
+  const automation = (flags as Record<string, unknown>).automation
+  if (!automation || typeof automation !== 'object' || Array.isArray(automation)) return null
+  return automation as ItemAutomationMeta
+}
+
+function applyAutomation(item: FoundryItem, automation?: BaseItemBuildOptions['automation']): FoundryItem {
+  const attempted = automation?.activities ?? []
+  const activityMap: Record<string, FoundryActivityShape> = {}
+  const activityWarnings = [...(automation?.warnings ?? [])]
+  const activitiesCreated: ItemAutomationMeta['activitiesCreated'] = []
+  let invalidActivitiesCount = 0
+
+  attempted.forEach((activity) => {
+    const validation = validateActivityShape(activity)
+    if (!validation.valid) {
+      invalidActivitiesCount += 1
+      activityWarnings.push(`${activity.name}: ${validation.errors.join(' ')}`)
+      return
+    }
+    activityMap[activity._id] = activity
+    activitiesCreated.push({ id: activity._id, type: activity.type, name: activity.name })
+  })
+
+  item.system.activities = activityMap
+  const structuredAutomationConfigured = Boolean(automation?.structuredAutomationConfigured)
+  const usesConfigured = Boolean(automation?.usesConfigured || hasUsesConfigured(item.system.uses))
+  const recoveryConfigured = Boolean(automation?.recoveryConfigured || hasRecoveryConfigured(item.system.uses))
+  const hasAnyAutomation = structuredAutomationConfigured || usesConfigured || recoveryConfigured || activitiesCreated.length > 0
+  const requestedLevel = automation?.requestedLevel ?? 'none'
+  const level = resolveAutomationLevel(requestedLevel, hasAnyAutomation, invalidActivitiesCount)
+  ;(item.flags['roll20-to-foundry'] as Record<string, unknown>).automation = {
+    level,
+    sourceCodeMarker: automationSourceCodeMarker,
+    activitiesCreated,
+    invalidActivitiesCount,
+    warnings: Array.from(new Set(activityWarnings.filter(Boolean))),
+    usesConfigured,
+    recoveryConfigured,
+    structuredAutomationConfigured,
+  } satisfies ItemAutomationMeta
+  return item
+}
+
+function resolveAutomationLevel(requestedLevel: ItemAutomationLevel, hasAnyAutomation: boolean, invalidActivitiesCount: number): ItemAutomationLevel {
+  if (invalidActivitiesCount > 0) return 'partial'
+  if (!hasAnyAutomation) return 'none'
+  if (requestedLevel === 'none') return hasAnyAutomation ? 'partial' : 'none'
+  return requestedLevel
+}
+
+function toRuleResolution(resolution: FeatureResolution, rawName: string, fallbackName: string): Record<string, unknown> {
+  return {
+    rawName,
+    resolvedName: resolution.resolvedName || fallbackName,
+    kind: resolution.kind,
+    confidence: resolution.confidence,
+    score: resolution.score ?? 0,
+    ruleId: resolution.ruleId,
+    sourceUrl: resolution.sourceUrl,
+    candidates: resolution.candidates ?? [],
+    manuallyResolved: resolution.manuallyResolved ?? false,
+  }
+}
+
+function mapRecoveryEntries(recovery: string | undefined): Array<{ period: string; type: string }> {
+  switch (recovery) {
+    case 'sr':
+      return [{ period: 'sr', type: 'recoverAll' }]
+    case 'lr':
+      return [{ period: 'lr', type: 'recoverAll' }]
+    case 'sr-lr':
+      return [
+        { period: 'sr', type: 'recoverAll' },
+        { period: 'lr', type: 'recoverAll' },
+      ]
+    case 'day':
+      return [{ period: 'day', type: 'recoverAll' }]
+    case 'charges':
+      return [{ period: 'charges', type: 'recoverAll' }]
+    default:
+      return []
+  }
+}
+
+function inferFeatureActivation(name: string): string {
+  if (/Canalizar Divindade/i.test(name)) return 'action'
+  if (/Conjura[cç][aã]o/i.test(name)) return 'special'
+  return 'special'
+}
+
+function hasUsesConfigured(uses: unknown): boolean {
+  if (!uses || typeof uses !== 'object' || Array.isArray(uses)) return false
+  const max = (uses as Record<string, unknown>).max
+  return max !== null && max !== undefined && max !== ''
+}
+
+function hasRecoveryConfigured(uses: unknown): boolean {
+  if (!uses || typeof uses !== 'object' || Array.isArray(uses)) return false
+  const recovery = (uses as Record<string, unknown>).recovery
+  return Array.isArray(recovery) && recovery.length > 0
+}
+
+function parseDamageFormula(formula: string): { formula: string; number: number | null; denomination: number | null; bonus: string } {
+  const trimmed = formula.trim()
+  const match = trimmed.match(/^(\d+)d(\d+)([+-]\d+)?$/i)
+  if (!match) {
+    return {
+      formula: trimmed,
+      number: null,
+      denomination: null,
+      bonus: trimmed,
+    }
+  }
+  return {
+    formula: trimmed,
+    number: Number(match[1]),
+    denomination: Number(match[2]),
+    bonus: match[3] ?? '',
+  }
+}

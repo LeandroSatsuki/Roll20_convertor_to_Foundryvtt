@@ -1,0 +1,2629 @@
+{
+  "name": "Pipkin \"Sorte Grande\"",
+  "type": "character",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "currency": {
+      "cp": 0,
+      "sp": 0,
+      "ep": 0,
+      "gp": 1225,
+      "pp": 0
+    },
+    "abilities": {
+      "str": {
+        "value": 8,
+        "proficient": 0,
+        "max": null,
+        "bonuses": {
+          "check": "",
+          "save": ""
+        },
+        "check": {
+          "roll": {
+            "min": null,
+            "max": null,
+            "mode": 0
+          }
+        },
+        "save": {
+          "roll": {
+            "min": null,
+            "max": null,
+            "mode": 0
+          }
+        }
+      },
+      "dex": {
+        "value": 14,
+        "proficient": 0,
+        "max": null,
+        "bonuses": {
+          "check": "",
+          "save": ""
+        },
+        "check": {
+          "roll": {
+            "min": null,
+            "max": null,
+            "mode": 0
+          }
+        },
+        "save": {
+          "roll": {
+            "min": null,
+            "max": null,
+            "mode": 0
+          }
+        }
+      },
+      "con": {
+        "value": 12,
+        "proficient": 0,
+        "max": null,
+        "bonuses": {
+          "check": "",
+          "save": ""
+        },
+        "check": {
+          "roll": {
+            "min": null,
+            "max": null,
+            "mode": 0
+          }
+        },
+        "save": {
+          "roll": {
+            "min": null,
+            "max": null,
+            "mode": 0
+          }
+        }
+      },
+      "int": {
+        "value": 10,
+        "proficient": 0,
+        "max": null,
+        "bonuses": {
+          "check": "",
+          "save": ""
+        },
+        "check": {
+          "roll": {
+            "min": null,
+            "max": null,
+            "mode": 0
+          }
+        },
+        "save": {
+          "roll": {
+            "min": null,
+            "max": null,
+            "mode": 0
+          }
+        }
+      },
+      "wis": {
+        "value": 18,
+        "proficient": 1,
+        "max": null,
+        "bonuses": {
+          "check": "",
+          "save": ""
+        },
+        "check": {
+          "roll": {
+            "min": null,
+            "max": null,
+            "mode": 0
+          }
+        },
+        "save": {
+          "roll": {
+            "min": null,
+            "max": null,
+            "mode": 0
+          }
+        }
+      },
+      "cha": {
+        "value": 14,
+        "proficient": 1,
+        "max": null,
+        "bonuses": {
+          "check": "",
+          "save": ""
+        },
+        "check": {
+          "roll": {
+            "min": null,
+            "max": null,
+            "mode": 0
+          }
+        },
+        "save": {
+          "roll": {
+            "min": null,
+            "max": null,
+            "mode": 0
+          }
+        }
+      }
+    },
+    "skills": {
+      "acr": {
+        "value": 0,
+        "ability": "dex",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      },
+      "ani": {
+        "value": 0,
+        "ability": "wis",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      },
+      "arc": {
+        "value": 1,
+        "ability": "int",
+        "bonuses": {
+          "check": "1",
+          "passive": ""
+        },
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      },
+      "ath": {
+        "value": 0,
+        "ability": "str",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      },
+      "dec": {
+        "value": 1,
+        "ability": "cha",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      },
+      "his": {
+        "value": 0,
+        "ability": "int",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      },
+      "ins": {
+        "value": 1,
+        "ability": "wis",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      },
+      "itm": {
+        "value": 0,
+        "ability": "cha",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      },
+      "inv": {
+        "value": 0,
+        "ability": "int",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      },
+      "med": {
+        "value": 0,
+        "ability": "wis",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      },
+      "nat": {
+        "value": 0,
+        "ability": "int",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      },
+      "prc": {
+        "value": 0,
+        "ability": "wis",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      },
+      "prf": {
+        "value": 0,
+        "ability": "cha",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      },
+      "per": {
+        "value": 1,
+        "ability": "cha",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      },
+      "rel": {
+        "value": 0,
+        "ability": "int",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      },
+      "slt": {
+        "value": 1,
+        "ability": "dex",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      },
+      "ste": {
+        "value": 0,
+        "ability": "dex",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      },
+      "sur": {
+        "value": 1,
+        "ability": "wis",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      }
+    },
+    "spells": {
+      "spell1": {
+        "value": 4,
+        "override": null,
+        "bonuses": {
+          "save": "",
+          "attack": ""
+        }
+      },
+      "spell2": {
+        "value": 3,
+        "override": null,
+        "bonuses": {
+          "save": "",
+          "attack": ""
+        }
+      },
+      "spell3": {
+        "value": 2,
+        "override": null,
+        "bonuses": {
+          "save": "",
+          "attack": ""
+        }
+      },
+      "spell4": {
+        "value": 0,
+        "override": null,
+        "bonuses": {
+          "save": "",
+          "attack": ""
+        }
+      },
+      "spell5": {
+        "value": 0,
+        "override": null,
+        "bonuses": {
+          "save": "",
+          "attack": ""
+        }
+      },
+      "spell6": {
+        "value": 0,
+        "override": null,
+        "bonuses": {
+          "save": "",
+          "attack": ""
+        }
+      },
+      "spell7": {
+        "value": 0,
+        "override": null,
+        "bonuses": {
+          "save": "",
+          "attack": ""
+        }
+      },
+      "spell8": {
+        "value": 0,
+        "override": null,
+        "bonuses": {
+          "save": "",
+          "attack": ""
+        }
+      },
+      "spell9": {
+        "value": 0,
+        "override": null,
+        "bonuses": {
+          "save": "",
+          "attack": ""
+        }
+      }
+    },
+    "attributes": {
+      "ac": {
+        "calc": "flat",
+        "flat": 18
+      },
+      "hp": {
+        "value": null,
+        "max": 33,
+        "temp": null,
+        "tempmax": null
+      },
+      "movement": {
+        "burrow": null,
+        "climb": null,
+        "fly": null,
+        "swim": null,
+        "walk": 25,
+        "units": "ft",
+        "hover": false
+      },
+      "senses": {
+        "darkvision": null,
+        "blindsight": null,
+        "tremorsense": null,
+        "truesight": null,
+        "units": "ft",
+        "special": ""
+      },
+      "init": {
+        "ability": "",
+        "bonus": ""
+      },
+      "spellcasting": "wis"
+    },
+    "details": {
+      "alignment": "",
+      "biography": {
+        "value": "<section><h2>Roll20 PDF Conversion Notes</h2><p>Dados incertos foram preservados para revisão.</p><h3>Características detectadas</h3><ul><li>Sorte Incontrolável</li><li>Mente Genial</li><li>Agilidade dos Pequeninos</li><li>Fala Silenciosa</li><li>Conjuração</li><li>Ordem Sagrada</li><li>Ritos Sacros</li><li>Canalizar Divindade</li><li>Clérigo do Caos</li><li>Autoridade Sagrada</li><li>Marca Anômala</li><li>Raízes Profundas</li><li>Dedos Leves</li><li>Escapista</li></ul><h3>Avisos</h3><ul><li>Secao sem valores detectados: TALENTOS EXTRAS.</li><li>Secao sem valores detectados: CARACTERISTICAS &amp; TRACOS.</li><li>Jogador informado na planilha: Satsuki.</li></ul></section>",
+        "public": ""
+      },
+      "race": "Folken Limalumes",
+      "background": "Espião",
+      "type": {
+        "value": "humanoid",
+        "subtype": "",
+        "swarm": "",
+        "custom": ""
+      }
+    },
+    "traits": {
+      "size": "med"
+    },
+    "resources": {
+      "primary": {
+        "value": 2,
+        "max": 2,
+        "sr": true,
+        "lr": false,
+        "label": "Canalizar Divindade"
+      },
+      "secondary": {
+        "value": null,
+        "max": null,
+        "sr": false,
+        "lr": false,
+        "label": ""
+      },
+      "tertiary": {
+        "value": null,
+        "max": null,
+        "sr": false,
+        "lr": false,
+        "label": ""
+      }
+    },
+    "tools": {
+      "armas-simples": {
+        "value": 1,
+        "ability": "int",
+        "bonuses": {
+          "check": ""
+        }
+      },
+      "armaduras-leves-medias-e-escudos": {
+        "value": 1,
+        "ability": "int",
+        "bonuses": {
+          "check": ""
+        }
+      }
+    }
+  },
+  "prototypeToken": {
+    "name": "Pipkin \"Sorte Grande\"",
+    "displayName": 20,
+    "actorLink": true,
+    "disposition": 1,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1
+  },
+  "items": [
+    {
+      "_id": "czhbbP3frKHEa8gw",
+      "name": "Clérigo",
+      "type": "class",
+      "img": "icons/svg/book.svg",
+      "system": {
+        "identifier": "clerigo",
+        "description": {
+          "value": "<p>Classe extraida da ficha Roll20 PDF.</p>",
+          "chat": ""
+        },
+        "levels": 5,
+        "hitDice": "d10",
+        "source": {
+          "rules": "2024",
+          "book": "Roll20 PDF",
+          "page": "",
+          "license": ""
+        },
+        "advancement": []
+      },
+      "effects": [],
+      "folder": null,
+      "flags": {
+        "roll20-to-foundry": {
+          "source": "roll20-pdf",
+          "confidence": "high",
+          "raw": "Clérigo 5",
+          "ruleResolution": {
+            "rawName": "Clérigo",
+            "resolvedName": "Clérigo",
+            "kind": "class",
+            "confidence": "high",
+            "score": 170,
+            "ruleId": "clerigo",
+            "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/clerigo-article",
+            "candidates": [
+              {
+                "ruleId": "clerigo",
+                "name": "Clérigo",
+                "kind": "class",
+                "score": 170,
+                "confidence": "high"
+              }
+            ],
+            "manuallyResolved": false
+          }
+        }
+      },
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "dnd5e",
+        "systemVersion": "5.2.4",
+        "createdTime": 1777955977941,
+        "modifiedTime": 1777955977941
+      }
+    },
+    {
+      "_id": "1qTwq7pDLNsolYCY",
+      "name": "Espião",
+      "type": "background",
+      "img": "icons/svg/book.svg",
+      "system": {
+        "identifier": "espiao",
+        "description": {
+          "value": "<p>Antecedente extraido do PDF.</p>",
+          "chat": ""
+        },
+        "source": {
+          "rules": "2024",
+          "book": "Roll20 PDF",
+          "page": "",
+          "license": ""
+        },
+        "uses": {
+          "spent": null,
+          "max": "",
+          "recovery": []
+        },
+        "activities": {}
+      },
+      "effects": [],
+      "folder": null,
+      "flags": {
+        "roll20-to-foundry": {
+          "source": "roll20-pdf",
+          "confidence": "high",
+          "sourceType": "background",
+          "raw": "C11: Espião",
+          "ruleResolution": {
+            "rawName": "Espião",
+            "resolvedName": "Espião",
+            "kind": "background",
+            "confidence": "high",
+            "score": 170,
+            "ruleId": "espiao",
+            "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/jogadores-category",
+            "candidates": [
+              {
+                "ruleId": "espiao",
+                "name": "Espião",
+                "kind": "background",
+                "score": 170,
+                "confidence": "high"
+              }
+            ],
+            "manuallyResolved": false
+          },
+          "automation": {
+            "level": "none",
+            "sourceCodeMarker": "foundry-item-automation-v1",
+            "activitiesCreated": [],
+            "invalidActivitiesCount": 0,
+            "warnings": [],
+            "usesConfigured": false,
+            "recoveryConfigured": false,
+            "structuredAutomationConfigured": false
+          }
+        }
+      },
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "dnd5e",
+        "systemVersion": "5.2.4",
+        "createdTime": 1777955977941,
+        "modifiedTime": 1777955977941
+      }
+    },
+    {
+      "_id": "oQgcZsCPtp93qf3e",
+      "name": "Folken Limalumes",
+      "type": "feat",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "identifier": "folken-limalumes",
+        "description": {
+          "value": "<p>Raca extraida do PDF; revisar tipo species/race.</p>",
+          "chat": ""
+        },
+        "source": {
+          "rules": "2024",
+          "book": "Roll20 PDF",
+          "page": "",
+          "license": ""
+        },
+        "uses": {
+          "spent": null,
+          "max": "",
+          "recovery": []
+        },
+        "activities": {}
+      },
+      "effects": [],
+      "folder": null,
+      "flags": {
+        "roll20-to-foundry": {
+          "source": "roll20-pdf",
+          "confidence": "high",
+          "sourceType": "race",
+          "raw": "T7: Folken Limalumes",
+          "ruleResolution": {
+            "rawName": "Folken Limalumes",
+            "resolvedName": "Folken Limalumes",
+            "kind": "race",
+            "confidence": "high",
+            "score": 170,
+            "ruleId": "folken-limalumes",
+            "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/humanoides-category",
+            "candidates": [
+              {
+                "ruleId": "folken-limalumes",
+                "name": "Folken Limalumes",
+                "kind": "race",
+                "score": 170,
+                "confidence": "high"
+              }
+            ],
+            "manuallyResolved": false
+          },
+          "automation": {
+            "level": "none",
+            "sourceCodeMarker": "foundry-item-automation-v1",
+            "activitiesCreated": [],
+            "invalidActivitiesCount": 0,
+            "warnings": [],
+            "usesConfigured": false,
+            "recoveryConfigured": false,
+            "structuredAutomationConfigured": false
+          }
+        }
+      },
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "dnd5e",
+        "systemVersion": "5.2.4",
+        "createdTime": 1777955977942,
+        "modifiedTime": 1777955977942
+      }
+    },
+    {
+      "_id": "9xNYSUoIjUs30nY4",
+      "name": "Sorte Incontrolável",
+      "type": "feat",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "identifier": "sorte-incontrolavel",
+        "description": {
+          "value": "<p>Traço racial de sorte anômala.</p>",
+          "chat": ""
+        },
+        "source": {
+          "rules": "2024",
+          "book": "Bonfire Tales / Sheet",
+          "page": "",
+          "license": ""
+        },
+        "uses": {
+          "spent": null,
+          "max": "",
+          "recovery": []
+        },
+        "activities": {},
+        "activation": {
+          "type": "special",
+          "cost": null,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "flags": {
+        "roll20-to-foundry": {
+          "rawName": "Sorte Incontrolável",
+          "resolvedKind": "raceFeature",
+          "confidence": "high",
+          "source": "bonfire-rule-store",
+          "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/humanoides-category",
+          "warnings": [],
+          "ruleResolution": {
+            "rawName": "Sorte Incontrolável",
+            "resolvedName": "Sorte Incontrolável",
+            "kind": "raceFeature",
+            "confidence": "high",
+            "score": 200,
+            "ruleId": "folken-sorte-incontrolavel",
+            "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/humanoides-category",
+            "candidates": [
+              {
+                "ruleId": "folken-sorte-incontrolavel",
+                "name": "Sorte Incontrolável",
+                "kind": "raceFeature",
+                "score": 200,
+                "confidence": "high"
+              }
+            ],
+            "manuallyResolved": false
+          },
+          "automation": {
+            "level": "none",
+            "sourceCodeMarker": "foundry-item-automation-v1",
+            "activitiesCreated": [],
+            "invalidActivitiesCount": 0,
+            "warnings": [],
+            "usesConfigured": false,
+            "recoveryConfigured": false,
+            "structuredAutomationConfigured": false
+          }
+        }
+      },
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "dnd5e",
+        "systemVersion": "5.2.4",
+        "createdTime": 1777955977942,
+        "modifiedTime": 1777955977942
+      }
+    },
+    {
+      "_id": "1SDbeahtsWa1eABm",
+      "name": "Mente Genial",
+      "type": "feat",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "identifier": "mente-genial",
+        "description": {
+          "value": "<p>Traço mental dos Folken.</p>",
+          "chat": ""
+        },
+        "source": {
+          "rules": "2024",
+          "book": "Bonfire Tales / Sheet",
+          "page": "",
+          "license": ""
+        },
+        "uses": {
+          "spent": null,
+          "max": "",
+          "recovery": []
+        },
+        "activities": {},
+        "activation": {
+          "type": "special",
+          "cost": null,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "flags": {
+        "roll20-to-foundry": {
+          "rawName": "Mente Genial",
+          "resolvedKind": "raceFeature",
+          "confidence": "high",
+          "source": "bonfire-rule-store",
+          "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/humanoides-category",
+          "warnings": [],
+          "ruleResolution": {
+            "rawName": "Mente Genial",
+            "resolvedName": "Mente Genial",
+            "kind": "raceFeature",
+            "confidence": "high",
+            "score": 200,
+            "ruleId": "folken-mente-genial",
+            "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/humanoides-category",
+            "candidates": [
+              {
+                "ruleId": "folken-mente-genial",
+                "name": "Mente Genial",
+                "kind": "raceFeature",
+                "score": 200,
+                "confidence": "high"
+              }
+            ],
+            "manuallyResolved": false
+          },
+          "automation": {
+            "level": "none",
+            "sourceCodeMarker": "foundry-item-automation-v1",
+            "activitiesCreated": [],
+            "invalidActivitiesCount": 0,
+            "warnings": [],
+            "usesConfigured": false,
+            "recoveryConfigured": false,
+            "structuredAutomationConfigured": false
+          }
+        }
+      },
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "dnd5e",
+        "systemVersion": "5.2.4",
+        "createdTime": 1777955977943,
+        "modifiedTime": 1777955977943
+      }
+    },
+    {
+      "_id": "OyerF1zj0Y2MAAhd",
+      "name": "Agilidade dos Pequeninos",
+      "type": "feat",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "identifier": "agilidade-dos-pequeninos",
+        "description": {
+          "value": "<p>Agilidade racial de criatura pequena.</p>",
+          "chat": ""
+        },
+        "source": {
+          "rules": "2024",
+          "book": "Bonfire Tales / Sheet",
+          "page": "",
+          "license": ""
+        },
+        "uses": {
+          "spent": null,
+          "max": "",
+          "recovery": []
+        },
+        "activities": {},
+        "activation": {
+          "type": "special",
+          "cost": null,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "flags": {
+        "roll20-to-foundry": {
+          "rawName": "Agilidade dos Pequeninos",
+          "resolvedKind": "raceFeature",
+          "confidence": "high",
+          "source": "bonfire-rule-store",
+          "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/humanoides-category",
+          "warnings": [],
+          "ruleResolution": {
+            "rawName": "Agilidade dos Pequeninos",
+            "resolvedName": "Agilidade dos Pequeninos",
+            "kind": "raceFeature",
+            "confidence": "high",
+            "score": 200,
+            "ruleId": "folken-agilidade-pequeninos",
+            "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/humanoides-category",
+            "candidates": [
+              {
+                "ruleId": "folken-agilidade-pequeninos",
+                "name": "Agilidade dos Pequeninos",
+                "kind": "raceFeature",
+                "score": 200,
+                "confidence": "high"
+              }
+            ],
+            "manuallyResolved": false
+          },
+          "automation": {
+            "level": "none",
+            "sourceCodeMarker": "foundry-item-automation-v1",
+            "activitiesCreated": [],
+            "invalidActivitiesCount": 0,
+            "warnings": [],
+            "usesConfigured": false,
+            "recoveryConfigured": false,
+            "structuredAutomationConfigured": false
+          }
+        }
+      },
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "dnd5e",
+        "systemVersion": "5.2.4",
+        "createdTime": 1777955977943,
+        "modifiedTime": 1777955977943
+      }
+    },
+    {
+      "_id": "MFsZdCzTXL1n8VbV",
+      "name": "Fala Silenciosa",
+      "type": "feat",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "identifier": "fala-silenciosa",
+        "description": {
+          "value": "<p>Comunicação silenciosa racial.</p>",
+          "chat": ""
+        },
+        "source": {
+          "rules": "2024",
+          "book": "Bonfire Tales / Sheet",
+          "page": "",
+          "license": ""
+        },
+        "uses": {
+          "spent": null,
+          "max": "",
+          "recovery": []
+        },
+        "activities": {},
+        "activation": {
+          "type": "special",
+          "cost": null,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "flags": {
+        "roll20-to-foundry": {
+          "rawName": "Fala Silenciosa",
+          "resolvedKind": "raceFeature",
+          "confidence": "high",
+          "source": "bonfire-rule-store",
+          "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/humanoides-category",
+          "warnings": [],
+          "ruleResolution": {
+            "rawName": "Fala Silenciosa",
+            "resolvedName": "Fala Silenciosa",
+            "kind": "raceFeature",
+            "confidence": "high",
+            "score": 200,
+            "ruleId": "folken-fala-silenciosa",
+            "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/humanoides-category",
+            "candidates": [
+              {
+                "ruleId": "folken-fala-silenciosa",
+                "name": "Fala Silenciosa",
+                "kind": "raceFeature",
+                "score": 200,
+                "confidence": "high"
+              }
+            ],
+            "manuallyResolved": false
+          },
+          "automation": {
+            "level": "none",
+            "sourceCodeMarker": "foundry-item-automation-v1",
+            "activitiesCreated": [],
+            "invalidActivitiesCount": 0,
+            "warnings": [],
+            "usesConfigured": false,
+            "recoveryConfigured": false,
+            "structuredAutomationConfigured": false
+          }
+        }
+      },
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "dnd5e",
+        "systemVersion": "5.2.4",
+        "createdTime": 1777955977943,
+        "modifiedTime": 1777955977943
+      }
+    },
+    {
+      "_id": "vg8TFqQFaBzco15G",
+      "name": "Conjuração",
+      "type": "feat",
+      "img": "icons/svg/book.svg",
+      "system": {
+        "identifier": "conjuracao",
+        "description": {
+          "value": "<p>Sabedoria é a habilidade de conjuração de Clérigo. Seed resumido; revisar texto completo na fonte da mesa.</p>",
+          "chat": ""
+        },
+        "source": {
+          "rules": "2024",
+          "book": "Bonfire Tales",
+          "page": "",
+          "license": ""
+        },
+        "uses": {
+          "spent": null,
+          "max": "",
+          "recovery": []
+        },
+        "activities": {
+          "9Z8bIFsZO6DhtzNi": {
+            "_id": "9Z8bIFsZO6DhtzNi",
+            "name": "Conjuração",
+            "activation": {
+              "type": "special",
+              "cost": 1,
+              "condition": ""
+            },
+            "notes": "Spellcasting bridge generated by the converter.",
+            "type": "cast",
+            "spellcasting": {
+              "ability": "wis",
+              "preparation": "prepared",
+              "progression": "full"
+            },
+            "consumption": {
+              "spellSlot": false
+            }
+          }
+        },
+        "activation": {
+          "type": "special",
+          "cost": null,
+          "condition": ""
+        },
+        "spellcasting": {
+          "ability": "wis",
+          "progression": "full",
+          "preparation": "prepared"
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "flags": {
+        "roll20-to-foundry": {
+          "rawName": "Conjuração",
+          "resolvedKind": "spellcasting",
+          "confidence": "high",
+          "source": "bonfire-rule-store",
+          "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/clerigo-article",
+          "warnings": [],
+          "ruleResolution": {
+            "rawName": "Conjuração",
+            "resolvedName": "Conjuração",
+            "kind": "spellcasting",
+            "confidence": "high",
+            "score": 230,
+            "ruleId": "clerigo-conjuracao",
+            "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/clerigo-article",
+            "candidates": [
+              {
+                "ruleId": "clerigo-conjuracao",
+                "name": "Conjuração",
+                "kind": "spellcasting",
+                "score": 230,
+                "confidence": "high"
+              }
+            ],
+            "manuallyResolved": false
+          },
+          "automation": {
+            "level": "full",
+            "sourceCodeMarker": "foundry-item-automation-v1",
+            "activitiesCreated": [
+              {
+                "id": "9Z8bIFsZO6DhtzNi",
+                "type": "cast",
+                "name": "Conjuração"
+              }
+            ],
+            "invalidActivitiesCount": 0,
+            "warnings": [],
+            "usesConfigured": false,
+            "recoveryConfigured": false,
+            "structuredAutomationConfigured": true
+          }
+        }
+      },
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "dnd5e",
+        "systemVersion": "5.2.4",
+        "createdTime": 1777955977943,
+        "modifiedTime": 1777955977943
+      }
+    },
+    {
+      "_id": "V8rSFlHe3i5ftegN",
+      "name": "Ordem Sagrada",
+      "type": "feat",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "identifier": "ordem-sagrada",
+        "description": {
+          "value": "<p>Escolha ligada ao ofício sagrado do Clérigo.</p>",
+          "chat": ""
+        },
+        "source": {
+          "rules": "2024",
+          "book": "Bonfire Tales / Sheet",
+          "page": "",
+          "license": ""
+        },
+        "uses": {
+          "spent": null,
+          "max": "",
+          "recovery": []
+        },
+        "activities": {},
+        "activation": {
+          "type": "special",
+          "cost": null,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "flags": {
+        "roll20-to-foundry": {
+          "rawName": "Ordem Sagrada",
+          "resolvedKind": "classFeature",
+          "confidence": "high",
+          "source": "bonfire-rule-store",
+          "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/clerigo-article",
+          "warnings": [],
+          "ruleResolution": {
+            "rawName": "Ordem Sagrada",
+            "resolvedName": "Ordem Sagrada",
+            "kind": "classFeature",
+            "confidence": "high",
+            "score": 230,
+            "ruleId": "clerigo-ordem-sagrada",
+            "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/clerigo-article",
+            "candidates": [
+              {
+                "ruleId": "clerigo-ordem-sagrada",
+                "name": "Ordem Sagrada",
+                "kind": "classFeature",
+                "score": 230,
+                "confidence": "high"
+              }
+            ],
+            "manuallyResolved": false
+          },
+          "automation": {
+            "level": "none",
+            "sourceCodeMarker": "foundry-item-automation-v1",
+            "activitiesCreated": [],
+            "invalidActivitiesCount": 0,
+            "warnings": [],
+            "usesConfigured": false,
+            "recoveryConfigured": false,
+            "structuredAutomationConfigured": false
+          }
+        }
+      },
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "dnd5e",
+        "systemVersion": "5.2.4",
+        "createdTime": 1777955977943,
+        "modifiedTime": 1777955977943
+      }
+    },
+    {
+      "_id": "vN5WExHyzAOBeBAt",
+      "name": "Ritos Sacros",
+      "type": "feat",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "identifier": "ritos-sacros",
+        "description": {
+          "value": "<p>Ritos e leitura espiritual de locais sagrados ou profanados.</p>",
+          "chat": ""
+        },
+        "source": {
+          "rules": "2024",
+          "book": "Bonfire Tales / Sheet",
+          "page": "",
+          "license": ""
+        },
+        "uses": {
+          "spent": null,
+          "max": "",
+          "recovery": []
+        },
+        "activities": {},
+        "activation": {
+          "type": "special",
+          "cost": null,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "flags": {
+        "roll20-to-foundry": {
+          "rawName": "Ritos Sacros",
+          "resolvedKind": "classFeature",
+          "confidence": "high",
+          "source": "bonfire-rule-store",
+          "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/clerigo-article",
+          "warnings": [],
+          "ruleResolution": {
+            "rawName": "Ritos Sacros",
+            "resolvedName": "Ritos Sacros",
+            "kind": "classFeature",
+            "confidence": "high",
+            "score": 230,
+            "ruleId": "clerigo-ritos-sacros",
+            "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/clerigo-article",
+            "candidates": [
+              {
+                "ruleId": "clerigo-ritos-sacros",
+                "name": "Ritos Sacros",
+                "kind": "classFeature",
+                "score": 230,
+                "confidence": "high"
+              }
+            ],
+            "manuallyResolved": false
+          },
+          "automation": {
+            "level": "none",
+            "sourceCodeMarker": "foundry-item-automation-v1",
+            "activitiesCreated": [],
+            "invalidActivitiesCount": 0,
+            "warnings": [],
+            "usesConfigured": false,
+            "recoveryConfigured": false,
+            "structuredAutomationConfigured": false
+          }
+        }
+      },
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "dnd5e",
+        "systemVersion": "5.2.4",
+        "createdTime": 1777955977943,
+        "modifiedTime": 1777955977943
+      }
+    },
+    {
+      "_id": "pGpRbEqPropZakw4",
+      "name": "Canalizar Divindade",
+      "type": "feat",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "identifier": "canalizar-divindade",
+        "description": {
+          "value": "<p>Recurso sagrado do Clérigo. No nível 5 tem 2 usos; recuperar parcialmente em descanso curto e totalmente em descanso longo requer revisão no Foundry.</p>",
+          "chat": ""
+        },
+        "source": {
+          "rules": "2024",
+          "book": "Bonfire Tales / Sheet",
+          "page": "",
+          "license": ""
+        },
+        "uses": {
+          "spent": 0,
+          "max": 2,
+          "recovery": [
+            {
+              "period": "sr",
+              "type": "recoverAll"
+            }
+          ]
+        },
+        "activities": {
+          "VXiI8mLJlHpm2KLy": {
+            "_id": "VXiI8mLJlHpm2KLy",
+            "name": "Canalizar Divindade",
+            "activation": {
+              "type": "action",
+              "cost": 1,
+              "condition": ""
+            },
+            "notes": "Uses configured from Bonfire rule resolution.",
+            "type": "utility"
+          }
+        },
+        "activation": {
+          "type": "action",
+          "cost": null,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "flags": {
+        "roll20-to-foundry": {
+          "rawName": "Canalizar Divindade",
+          "resolvedKind": "resource",
+          "confidence": "high",
+          "source": "bonfire-rule-store",
+          "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/clerigo-article",
+          "warnings": [],
+          "ruleResolution": {
+            "rawName": "Canalizar Divindade",
+            "resolvedName": "Canalizar Divindade",
+            "kind": "resource",
+            "confidence": "high",
+            "score": 230,
+            "ruleId": "clerigo-canalizar-divindade",
+            "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/clerigo-article",
+            "candidates": [
+              {
+                "ruleId": "clerigo-canalizar-divindade",
+                "name": "Canalizar Divindade",
+                "kind": "resource",
+                "score": 230,
+                "confidence": "high"
+              }
+            ],
+            "manuallyResolved": false
+          },
+          "automation": {
+            "level": "full",
+            "sourceCodeMarker": "foundry-item-automation-v1",
+            "activitiesCreated": [
+              {
+                "id": "VXiI8mLJlHpm2KLy",
+                "type": "utility",
+                "name": "Canalizar Divindade"
+              }
+            ],
+            "invalidActivitiesCount": 0,
+            "warnings": [],
+            "usesConfigured": true,
+            "recoveryConfigured": true,
+            "structuredAutomationConfigured": true
+          }
+        }
+      },
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "dnd5e",
+        "systemVersion": "5.2.4",
+        "createdTime": 1777955977944,
+        "modifiedTime": 1777955977944
+      }
+    },
+    {
+      "_id": "9tnS4OpLeQp66s27",
+      "name": "Clérigo do Caos",
+      "type": "feat",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "identifier": "clerigo-do-caos",
+        "description": {
+          "value": "<p>Marcador de subclasse do Domínio do Caos.</p>",
+          "chat": ""
+        },
+        "source": {
+          "rules": "2024",
+          "book": "Bonfire Tales / Sheet",
+          "page": "",
+          "license": ""
+        },
+        "uses": {
+          "spent": null,
+          "max": "",
+          "recovery": []
+        },
+        "activities": {},
+        "activation": {
+          "type": "special",
+          "cost": null,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "flags": {
+        "roll20-to-foundry": {
+          "rawName": "Clérigo do Caos",
+          "resolvedKind": "subclassFeature",
+          "confidence": "high",
+          "source": "bonfire-rule-store",
+          "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/clerigo-article",
+          "warnings": [],
+          "ruleResolution": {
+            "rawName": "Clérigo do Caos",
+            "resolvedName": "Clérigo do Caos",
+            "kind": "subclassFeature",
+            "confidence": "high",
+            "score": 230,
+            "ruleId": "clerigo-do-caos-marker",
+            "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/clerigo-article",
+            "candidates": [
+              {
+                "ruleId": "clerigo-do-caos-marker",
+                "name": "Clérigo do Caos",
+                "kind": "subclassFeature",
+                "score": 230,
+                "confidence": "high"
+              },
+              {
+                "ruleId": "clerigo-do-caos",
+                "name": "Clérigo do Caos",
+                "kind": "subclass",
+                "score": 210,
+                "confidence": "high"
+              }
+            ],
+            "manuallyResolved": false
+          },
+          "automation": {
+            "level": "none",
+            "sourceCodeMarker": "foundry-item-automation-v1",
+            "activitiesCreated": [],
+            "invalidActivitiesCount": 0,
+            "warnings": [],
+            "usesConfigured": false,
+            "recoveryConfigured": false,
+            "structuredAutomationConfigured": false
+          }
+        }
+      },
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "dnd5e",
+        "systemVersion": "5.2.4",
+        "createdTime": 1777955977944,
+        "modifiedTime": 1777955977944
+      }
+    },
+    {
+      "_id": "w91BrpC73dsS4bCT",
+      "name": "Autoridade Sagrada",
+      "type": "feat",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "identifier": "autoridade-sagrada",
+        "description": {
+          "value": "<p>A autoridade do Clérigo se aprofunda no quinto nível.</p>",
+          "chat": ""
+        },
+        "source": {
+          "rules": "2024",
+          "book": "Bonfire Tales / Sheet",
+          "page": "",
+          "license": ""
+        },
+        "uses": {
+          "spent": null,
+          "max": "",
+          "recovery": []
+        },
+        "activities": {},
+        "activation": {
+          "type": "special",
+          "cost": null,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "flags": {
+        "roll20-to-foundry": {
+          "rawName": "Autoridade Sagrada",
+          "resolvedKind": "classFeature",
+          "confidence": "high",
+          "source": "bonfire-rule-store",
+          "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/clerigo-article",
+          "warnings": [],
+          "ruleResolution": {
+            "rawName": "Autoridade Sagrada",
+            "resolvedName": "Autoridade Sagrada",
+            "kind": "classFeature",
+            "confidence": "high",
+            "score": 230,
+            "ruleId": "clerigo-autoridade-sagrada",
+            "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/clerigo-article",
+            "candidates": [
+              {
+                "ruleId": "clerigo-autoridade-sagrada",
+                "name": "Autoridade Sagrada",
+                "kind": "classFeature",
+                "score": 230,
+                "confidence": "high"
+              }
+            ],
+            "manuallyResolved": false
+          },
+          "automation": {
+            "level": "none",
+            "sourceCodeMarker": "foundry-item-automation-v1",
+            "activitiesCreated": [],
+            "invalidActivitiesCount": 0,
+            "warnings": [],
+            "usesConfigured": false,
+            "recoveryConfigured": false,
+            "structuredAutomationConfigured": false
+          }
+        }
+      },
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "dnd5e",
+        "systemVersion": "5.2.4",
+        "createdTime": 1777955977944,
+        "modifiedTime": 1777955977944
+      }
+    },
+    {
+      "_id": "PIi6KVBvqKfgJsvP",
+      "name": "Marca Anômala",
+      "type": "feat",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "identifier": "marca-anomala",
+        "description": {
+          "value": "<p>Talento homebrew com seed resumido.</p>",
+          "chat": ""
+        },
+        "source": {
+          "rules": "2024",
+          "book": "Bonfire Tales / Sheet",
+          "page": "",
+          "license": ""
+        },
+        "uses": {
+          "spent": null,
+          "max": "",
+          "recovery": []
+        },
+        "activities": {},
+        "activation": {
+          "type": "special",
+          "cost": null,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "flags": {
+        "roll20-to-foundry": {
+          "rawName": "Marca Anômala",
+          "resolvedKind": "feat",
+          "confidence": "high",
+          "source": "bonfire-rule-store",
+          "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/jogadores-category",
+          "warnings": [],
+          "ruleResolution": {
+            "rawName": "Marca Anômala",
+            "resolvedName": "Marca Anômala",
+            "kind": "feat",
+            "confidence": "high",
+            "score": 170,
+            "ruleId": "marca-anomala",
+            "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/jogadores-category",
+            "candidates": [
+              {
+                "ruleId": "marca-anomala",
+                "name": "Marca Anômala",
+                "kind": "feat",
+                "score": 170,
+                "confidence": "high"
+              }
+            ],
+            "manuallyResolved": false
+          },
+          "automation": {
+            "level": "none",
+            "sourceCodeMarker": "foundry-item-automation-v1",
+            "activitiesCreated": [],
+            "invalidActivitiesCount": 0,
+            "warnings": [],
+            "usesConfigured": false,
+            "recoveryConfigured": false,
+            "structuredAutomationConfigured": false
+          }
+        }
+      },
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "dnd5e",
+        "systemVersion": "5.2.4",
+        "createdTime": 1777955977944,
+        "modifiedTime": 1777955977944
+      }
+    },
+    {
+      "_id": "09NgRNHQdSDAhhkh",
+      "name": "Raízes Profundas",
+      "type": "feat",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "identifier": "raizes-profundas",
+        "description": {
+          "value": "<p>Talento homebrew com seed resumido.</p>",
+          "chat": ""
+        },
+        "source": {
+          "rules": "2024",
+          "book": "Bonfire Tales / Sheet",
+          "page": "",
+          "license": ""
+        },
+        "uses": {
+          "spent": null,
+          "max": "",
+          "recovery": []
+        },
+        "activities": {},
+        "activation": {
+          "type": "special",
+          "cost": null,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "flags": {
+        "roll20-to-foundry": {
+          "rawName": "Raízes profundas",
+          "resolvedKind": "feat",
+          "confidence": "high",
+          "source": "bonfire-rule-store",
+          "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/jogadores-category",
+          "warnings": [],
+          "ruleResolution": {
+            "rawName": "Raízes profundas",
+            "resolvedName": "Raízes Profundas",
+            "kind": "feat",
+            "confidence": "high",
+            "score": 170,
+            "ruleId": "raizes-profundas",
+            "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/jogadores-category",
+            "candidates": [
+              {
+                "ruleId": "raizes-profundas",
+                "name": "Raízes Profundas",
+                "kind": "feat",
+                "score": 170,
+                "confidence": "high"
+              }
+            ],
+            "manuallyResolved": false
+          },
+          "automation": {
+            "level": "none",
+            "sourceCodeMarker": "foundry-item-automation-v1",
+            "activitiesCreated": [],
+            "invalidActivitiesCount": 0,
+            "warnings": [],
+            "usesConfigured": false,
+            "recoveryConfigured": false,
+            "structuredAutomationConfigured": false
+          }
+        }
+      },
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "dnd5e",
+        "systemVersion": "5.2.4",
+        "createdTime": 1777955977944,
+        "modifiedTime": 1777955977944
+      }
+    },
+    {
+      "_id": "cYrI5nfTPVQhN4rY",
+      "name": "Dedos Leves",
+      "type": "feat",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "identifier": "dedos-leves",
+        "description": {
+          "value": "<p>Destreza manual dos Folken.</p>",
+          "chat": ""
+        },
+        "source": {
+          "rules": "2024",
+          "book": "Bonfire Tales / Sheet",
+          "page": "",
+          "license": ""
+        },
+        "uses": {
+          "spent": null,
+          "max": "",
+          "recovery": []
+        },
+        "activities": {},
+        "activation": {
+          "type": "special",
+          "cost": null,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "flags": {
+        "roll20-to-foundry": {
+          "rawName": "Dedos Leves",
+          "resolvedKind": "raceFeature",
+          "confidence": "high",
+          "source": "bonfire-rule-store",
+          "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/humanoides-category",
+          "warnings": [],
+          "ruleResolution": {
+            "rawName": "Dedos Leves",
+            "resolvedName": "Dedos Leves",
+            "kind": "raceFeature",
+            "confidence": "high",
+            "score": 200,
+            "ruleId": "folken-dedos-leves",
+            "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/humanoides-category",
+            "candidates": [
+              {
+                "ruleId": "folken-dedos-leves",
+                "name": "Dedos Leves",
+                "kind": "raceFeature",
+                "score": 200,
+                "confidence": "high"
+              },
+              {
+                "ruleId": "background-espiao-dedos-leves",
+                "name": "Dedos Leves",
+                "kind": "backgroundFeature",
+                "score": 80,
+                "confidence": "medium"
+              }
+            ],
+            "manuallyResolved": false
+          },
+          "automation": {
+            "level": "none",
+            "sourceCodeMarker": "foundry-item-automation-v1",
+            "activitiesCreated": [],
+            "invalidActivitiesCount": 0,
+            "warnings": [],
+            "usesConfigured": false,
+            "recoveryConfigured": false,
+            "structuredAutomationConfigured": false
+          }
+        }
+      },
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "dnd5e",
+        "systemVersion": "5.2.4",
+        "createdTime": 1777955977944,
+        "modifiedTime": 1777955977944
+      }
+    },
+    {
+      "_id": "JNWCpGExUAHZhfEJ",
+      "name": "Escapista",
+      "type": "feat",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "identifier": "escapista",
+        "description": {
+          "value": "<p>Facilidade para escapar de problemas.</p>",
+          "chat": ""
+        },
+        "source": {
+          "rules": "2024",
+          "book": "Bonfire Tales / Sheet",
+          "page": "",
+          "license": ""
+        },
+        "uses": {
+          "spent": null,
+          "max": "",
+          "recovery": []
+        },
+        "activities": {},
+        "activation": {
+          "type": "special",
+          "cost": null,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "flags": {
+        "roll20-to-foundry": {
+          "rawName": "Escapista",
+          "resolvedKind": "raceFeature",
+          "confidence": "high",
+          "source": "bonfire-rule-store",
+          "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/humanoides-category",
+          "warnings": [],
+          "ruleResolution": {
+            "rawName": "Escapista",
+            "resolvedName": "Escapista",
+            "kind": "raceFeature",
+            "confidence": "high",
+            "score": 200,
+            "ruleId": "folken-escapista",
+            "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/humanoides-category",
+            "candidates": [
+              {
+                "ruleId": "folken-escapista",
+                "name": "Escapista",
+                "kind": "raceFeature",
+                "score": 200,
+                "confidence": "high"
+              }
+            ],
+            "manuallyResolved": false
+          },
+          "automation": {
+            "level": "none",
+            "sourceCodeMarker": "foundry-item-automation-v1",
+            "activitiesCreated": [],
+            "invalidActivitiesCount": 0,
+            "warnings": [],
+            "usesConfigured": false,
+            "recoveryConfigured": false,
+            "structuredAutomationConfigured": false
+          }
+        }
+      },
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "dnd5e",
+        "systemVersion": "5.2.4",
+        "createdTime": 1777955977944,
+        "modifiedTime": 1777955977944
+      }
+    },
+    {
+      "_id": "OY1VwFULdbSu5Ghd",
+      "name": "Shortbow",
+      "type": "weapon",
+      "img": "icons/weapons/bows/shortbow-recurve-leather-brown.webp",
+      "system": {
+        "identifier": "shortbow",
+        "description": {
+          "value": "<p>Shortbow</p>",
+          "chat": ""
+        },
+        "source": {
+          "rules": "2024",
+          "book": "Roll20 PDF",
+          "page": "",
+          "license": ""
+        },
+        "uses": {
+          "spent": null,
+          "max": "",
+          "recovery": []
+        },
+        "activities": {
+          "dGthCPxW5pqCqShb": {
+            "_id": "dGthCPxW5pqCqShb",
+            "name": "Shortbow",
+            "activation": {
+              "type": "action",
+              "cost": 1,
+              "condition": ""
+            },
+            "notes": "Weapon activity generated from attack row and Bonfire item rule.",
+            "type": "attack",
+            "attack": {
+              "ability": "dex",
+              "classification": "weapon",
+              "mode": "ranged",
+              "bonus": null
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "1d6",
+                  "type": "piercing"
+                }
+              ]
+            },
+            "range": {
+              "value": 80,
+              "long": 320,
+              "units": "ft"
+            }
+          }
+        },
+        "equipped": true,
+        "proficient": 1,
+        "type": {
+          "value": "simpleR",
+          "baseItem": ""
+        },
+        "damage": {
+          "base": {
+            "number": 1,
+            "denomination": 6,
+            "bonus": "",
+            "types": [
+              "piercing"
+            ],
+            "custom": {
+              "enabled": true,
+              "formula": "1d6"
+            }
+          }
+        },
+        "range": {
+          "value": 80,
+          "long": 320,
+          "units": "ft"
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "flags": {
+        "roll20-to-foundry": {
+          "source": "roll20-pdf",
+          "confidence": "high",
+          "raw": "Shortbow",
+          "warnings": [],
+          "ruleResolution": {
+            "rawName": "Shortbow",
+            "resolvedName": "Shortbow",
+            "kind": "weapon",
+            "confidence": "high",
+            "score": 100,
+            "ruleId": "shortbow",
+            "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/jogadores-category",
+            "candidates": [
+              {
+                "ruleId": "shortbow",
+                "name": "Shortbow",
+                "kind": "weapon",
+                "score": 100,
+                "confidence": "high"
+              }
+            ],
+            "manuallyResolved": false
+          },
+          "automation": {
+            "level": "full",
+            "sourceCodeMarker": "foundry-item-automation-v1",
+            "activitiesCreated": [
+              {
+                "id": "dGthCPxW5pqCqShb",
+                "type": "attack",
+                "name": "Shortbow"
+              }
+            ],
+            "invalidActivitiesCount": 0,
+            "warnings": [],
+            "usesConfigured": false,
+            "recoveryConfigured": false,
+            "structuredAutomationConfigured": true
+          }
+        }
+      },
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "dnd5e",
+        "systemVersion": "5.2.4",
+        "createdTime": 1777955977945,
+        "modifiedTime": 1777955977945
+      }
+    },
+    {
+      "_id": "J6EQlybUHkolqJkX",
+      "name": "Scale Mail",
+      "type": "equipment",
+      "img": "icons/equipment/chest/breastplate-layered-steel.webp",
+      "system": {
+        "identifier": "scale-mail",
+        "description": {
+          "value": "<p>medium armor</p>",
+          "chat": ""
+        },
+        "source": {
+          "rules": "2024",
+          "book": "Bonfire Tales / Sheet",
+          "page": "",
+          "license": ""
+        },
+        "uses": {
+          "spent": null,
+          "max": "",
+          "recovery": []
+        },
+        "activities": {},
+        "quantity": 1,
+        "equipped": true,
+        "armor": {
+          "type": "medium",
+          "value": 14,
+          "dex": 2
+        },
+        "stealth": {
+          "disadvantage": true
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "flags": {
+        "roll20-to-foundry": {
+          "rawName": "Scale Mail",
+          "resolvedKind": "armor",
+          "confidence": "high",
+          "source": "bonfire-xlsx",
+          "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/jogadores-category",
+          "warnings": [],
+          "ruleResolution": {
+            "rawName": "Scale Mail",
+            "resolvedName": "Scale Mail",
+            "kind": "armor",
+            "confidence": "high",
+            "score": 100,
+            "ruleId": "scale-mail",
+            "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/jogadores-category",
+            "candidates": [
+              {
+                "ruleId": "scale-mail",
+                "name": "Scale Mail",
+                "kind": "armor",
+                "score": 100,
+                "confidence": "high"
+              }
+            ],
+            "manuallyResolved": false
+          },
+          "automation": {
+            "level": "full",
+            "sourceCodeMarker": "foundry-item-automation-v1",
+            "activitiesCreated": [],
+            "invalidActivitiesCount": 0,
+            "warnings": [],
+            "usesConfigured": false,
+            "recoveryConfigured": false,
+            "structuredAutomationConfigured": true
+          }
+        }
+      },
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "dnd5e",
+        "systemVersion": "5.2.4",
+        "createdTime": 1777955977945,
+        "modifiedTime": 1777955977945
+      }
+    },
+    {
+      "_id": "gJHvshsiFgKSLXrI",
+      "name": "Shield",
+      "type": "equipment",
+      "img": "icons/equipment/shield/heater-crystal-blue.webp",
+      "system": {
+        "identifier": "shield",
+        "description": {
+          "value": "<p>shield</p>",
+          "chat": ""
+        },
+        "source": {
+          "rules": "2024",
+          "book": "Bonfire Tales / Sheet",
+          "page": "",
+          "license": ""
+        },
+        "uses": {
+          "spent": null,
+          "max": "",
+          "recovery": []
+        },
+        "activities": {},
+        "quantity": 1,
+        "equipped": true,
+        "armor": {
+          "type": "shield",
+          "value": 2
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "flags": {
+        "roll20-to-foundry": {
+          "rawName": "Shield",
+          "resolvedKind": "armor",
+          "confidence": "high",
+          "source": "bonfire-xlsx",
+          "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/jogadores-category",
+          "warnings": [],
+          "ruleResolution": {
+            "rawName": "Shield",
+            "resolvedName": "Shield",
+            "kind": "armor",
+            "confidence": "high",
+            "score": 100,
+            "ruleId": "shield",
+            "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/jogadores-category",
+            "candidates": [
+              {
+                "ruleId": "shield",
+                "name": "Shield",
+                "kind": "armor",
+                "score": 100,
+                "confidence": "high"
+              }
+            ],
+            "manuallyResolved": false
+          },
+          "automation": {
+            "level": "full",
+            "sourceCodeMarker": "foundry-item-automation-v1",
+            "activitiesCreated": [],
+            "invalidActivitiesCount": 0,
+            "warnings": [],
+            "usesConfigured": false,
+            "recoveryConfigured": false,
+            "structuredAutomationConfigured": true
+          }
+        }
+      },
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "dnd5e",
+        "systemVersion": "5.2.4",
+        "createdTime": 1777955977945,
+        "modifiedTime": 1777955977945
+      }
+    },
+    {
+      "_id": "AbGHjzI5IWgBts2C",
+      "name": "Potion of Healing",
+      "type": "consumable",
+      "img": "icons/consumables/potions/potion-bottle-red.webp",
+      "system": {
+        "identifier": "potion-of-healing",
+        "description": {
+          "value": "<p>healing</p>",
+          "chat": ""
+        },
+        "source": {
+          "rules": "2024",
+          "book": "Bonfire Tales / Sheet",
+          "page": "",
+          "license": ""
+        },
+        "uses": {
+          "spent": 0,
+          "max": 1,
+          "recovery": []
+        },
+        "activities": {
+          "7MkKQD22p2P7spML": {
+            "_id": "7MkKQD22p2P7spML",
+            "name": "Potion of Healing",
+            "activation": {
+              "type": "action",
+              "cost": 1,
+              "condition": ""
+            },
+            "notes": "Standard potion healing formula.",
+            "type": "heal",
+            "healing": {
+              "formula": "2d4+2"
+            }
+          }
+        },
+        "quantity": 1,
+        "type": {
+          "value": "consumable"
+        },
+        "consumableType": "potion"
+      },
+      "effects": [],
+      "folder": null,
+      "flags": {
+        "roll20-to-foundry": {
+          "rawName": "Potion of Healing",
+          "resolvedKind": "consumable",
+          "confidence": "high",
+          "source": "bonfire-xlsx",
+          "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/jogadores-category",
+          "warnings": [],
+          "ruleResolution": {
+            "rawName": "Potion of Healing",
+            "resolvedName": "Potion of Healing",
+            "kind": "consumable",
+            "confidence": "high",
+            "score": 100,
+            "ruleId": "potion-of-healing",
+            "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/jogadores-category",
+            "candidates": [
+              {
+                "ruleId": "potion-of-healing",
+                "name": "Potion of Healing",
+                "kind": "consumable",
+                "score": 100,
+                "confidence": "high"
+              }
+            ],
+            "manuallyResolved": false
+          },
+          "automation": {
+            "level": "full",
+            "sourceCodeMarker": "foundry-item-automation-v1",
+            "activitiesCreated": [
+              {
+                "id": "7MkKQD22p2P7spML",
+                "type": "heal",
+                "name": "Potion of Healing"
+              }
+            ],
+            "invalidActivitiesCount": 0,
+            "warnings": [],
+            "usesConfigured": true,
+            "recoveryConfigured": false,
+            "structuredAutomationConfigured": true
+          }
+        }
+      },
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "dnd5e",
+        "systemVersion": "5.2.4",
+        "createdTime": 1777955977946,
+        "modifiedTime": 1777955977946
+      }
+    },
+    {
+      "_id": "WX1y6i1j1NF3dJng",
+      "name": "Explorer's Pack",
+      "type": "equipment",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "identifier": "explorers-pack",
+        "description": {
+          "value": "<p>pack</p>",
+          "chat": ""
+        },
+        "source": {
+          "rules": "2024",
+          "book": "Bonfire Tales / Sheet",
+          "page": "",
+          "license": ""
+        },
+        "uses": {
+          "spent": null,
+          "max": "",
+          "recovery": []
+        },
+        "activities": {},
+        "quantity": 1,
+        "equipped": false,
+        "type": {
+          "value": "equipment"
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "flags": {
+        "roll20-to-foundry": {
+          "rawName": "Explorer's Pack",
+          "resolvedKind": "equipment",
+          "confidence": "high",
+          "source": "bonfire-xlsx",
+          "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/jogadores-category",
+          "warnings": [],
+          "ruleResolution": {
+            "rawName": "Explorer's Pack",
+            "resolvedName": "Explorer's Pack",
+            "kind": "equipment",
+            "confidence": "high",
+            "score": 100,
+            "ruleId": "explorers-pack",
+            "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/jogadores-category",
+            "candidates": [
+              {
+                "ruleId": "explorers-pack",
+                "name": "Explorer's Pack",
+                "kind": "equipment",
+                "score": 100,
+                "confidence": "high"
+              }
+            ],
+            "manuallyResolved": false
+          },
+          "automation": {
+            "level": "partial",
+            "sourceCodeMarker": "foundry-item-automation-v1",
+            "activitiesCreated": [],
+            "invalidActivitiesCount": 0,
+            "warnings": [],
+            "usesConfigured": false,
+            "recoveryConfigured": false,
+            "structuredAutomationConfigured": true
+          }
+        }
+      },
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "dnd5e",
+        "systemVersion": "5.2.4",
+        "createdTime": 1777955977946,
+        "modifiedTime": 1777955977946
+      }
+    },
+    {
+      "_id": "h6vLaPBQGZ3dSwGV",
+      "name": "Holy Symbol",
+      "type": "equipment",
+      "img": "icons/sundries/symbols/cross-star-gold.webp",
+      "system": {
+        "identifier": "holy-symbol",
+        "description": {
+          "value": "<p>spellcasting focus</p>",
+          "chat": ""
+        },
+        "source": {
+          "rules": "2024",
+          "book": "Bonfire Tales / Sheet",
+          "page": "",
+          "license": ""
+        },
+        "uses": {
+          "spent": null,
+          "max": "",
+          "recovery": []
+        },
+        "activities": {},
+        "quantity": 1,
+        "equipped": false,
+        "type": {
+          "value": "focus"
+        },
+        "focus": {
+          "spellcasting": true,
+          "class": "cleric"
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "flags": {
+        "roll20-to-foundry": {
+          "rawName": "Holy Symbol",
+          "resolvedKind": "focus",
+          "confidence": "high",
+          "source": "bonfire-xlsx",
+          "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/jogadores-category",
+          "warnings": [],
+          "ruleResolution": {
+            "rawName": "Holy Symbol",
+            "resolvedName": "Holy Symbol",
+            "kind": "focus",
+            "confidence": "high",
+            "score": 100,
+            "ruleId": "holy-symbol",
+            "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/jogadores-category",
+            "candidates": [
+              {
+                "ruleId": "holy-symbol",
+                "name": "Holy Symbol",
+                "kind": "focus",
+                "score": 100,
+                "confidence": "high"
+              }
+            ],
+            "manuallyResolved": false
+          },
+          "automation": {
+            "level": "full",
+            "sourceCodeMarker": "foundry-item-automation-v1",
+            "activitiesCreated": [],
+            "invalidActivitiesCount": 0,
+            "warnings": [],
+            "usesConfigured": false,
+            "recoveryConfigured": false,
+            "structuredAutomationConfigured": true
+          }
+        }
+      },
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "dnd5e",
+        "systemVersion": "5.2.4",
+        "createdTime": 1777955977946,
+        "modifiedTime": 1777955977946
+      }
+    },
+    {
+      "_id": "4DWDtiYr9TAzMJf5",
+      "name": "Água Benta",
+      "type": "consumable",
+      "img": "icons/consumables/potions/potion-bottle-red.webp",
+      "system": {
+        "identifier": "agua-benta",
+        "description": {
+          "value": "<p>holy water</p>",
+          "chat": ""
+        },
+        "source": {
+          "rules": "2024",
+          "book": "Bonfire Tales / Sheet",
+          "page": "",
+          "license": ""
+        },
+        "uses": {
+          "spent": null,
+          "max": "",
+          "recovery": []
+        },
+        "activities": {},
+        "quantity": 1,
+        "type": {
+          "value": "consumable"
+        },
+        "consumableType": "gear"
+      },
+      "effects": [],
+      "folder": null,
+      "flags": {
+        "roll20-to-foundry": {
+          "rawName": "Água Benta",
+          "resolvedKind": "consumable",
+          "confidence": "high",
+          "source": "bonfire-xlsx",
+          "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/jogadores-category",
+          "warnings": [
+            "Água Benta exportada sem activity de dano porque a aplicação segura não ficou determinada."
+          ],
+          "ruleResolution": {
+            "rawName": "Água Benta",
+            "resolvedName": "Água Benta",
+            "kind": "consumable",
+            "confidence": "high",
+            "score": 100,
+            "ruleId": "agua-benta",
+            "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/jogadores-category",
+            "candidates": [
+              {
+                "ruleId": "agua-benta",
+                "name": "Água Benta",
+                "kind": "consumable",
+                "score": 100,
+                "confidence": "high"
+              }
+            ],
+            "manuallyResolved": false
+          },
+          "automation": {
+            "level": "partial",
+            "sourceCodeMarker": "foundry-item-automation-v1",
+            "activitiesCreated": [],
+            "invalidActivitiesCount": 0,
+            "warnings": [
+              "Água Benta exportada sem activity de dano porque a aplicação segura não ficou determinada."
+            ],
+            "usesConfigured": false,
+            "recoveryConfigured": false,
+            "structuredAutomationConfigured": true
+          }
+        }
+      },
+      "_stats": {
+        "coreVersion": "13.351",
+        "systemId": "dnd5e",
+        "systemVersion": "5.2.4",
+        "createdTime": 1777955977946,
+        "modifiedTime": 1777955977946
+      }
+    }
+  ],
+  "effects": [],
+  "flags": {
+    "roll20-to-foundry": {
+      "source": "bonfire-xlsx",
+      "fileName": "Pipkin.xlsx",
+      "parserBuildId": "2026-05-05-bonfire-log-v2-ui-diagnostic",
+      "parseRunId": "parse-ZFIUcwfuPg11",
+      "normalizedCharacterId": "normalized-2pu6IeBxV5Dk",
+      "actorBuildId": "actor-JH9e7vVAImvJ",
+      "auditBuildId": "audit-j4NCJpCtC0Am",
+      "abilitiesBeforeActorBuild": {
+        "str": 8,
+        "dex": 14,
+        "con": 12,
+        "int": 10,
+        "wis": 18,
+        "cha": 14
+      },
+      "actorInputSnapshot": {
+        "abilities": {
+          "str": 8,
+          "dex": 14,
+          "con": 12,
+          "int": 10,
+          "wis": 18,
+          "cha": 14
+        }
+      },
+      "warnings": [
+        {
+          "code": "SHEET_SECTION_EMPTY",
+          "severity": "info",
+          "message": "Secao sem valores detectados: TALENTOS EXTRAS.",
+          "fieldPath": "features",
+          "raw": "TALENTOS EXTRAS"
+        },
+        {
+          "code": "SHEET_SECTION_EMPTY",
+          "severity": "info",
+          "message": "Secao sem valores detectados: CARACTERISTICAS & TRACOS.",
+          "fieldPath": "features",
+          "raw": "CARACTERISTICAS & TRACOS"
+        },
+        {
+          "code": "PLAYER_NAME_PRESERVED",
+          "severity": "info",
+          "message": "Jogador informado na planilha: Satsuki.",
+          "fieldPath": "source.player",
+          "raw": "AE5: Satsuki"
+        }
+      ],
+      "sourceNormalizedCharacter": {
+        "fileName": "Pipkin.xlsx",
+        "sourceType": "bonfire-xlsx"
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "dnd5e",
+    "systemVersion": "5.2.4",
+    "createdTime": 1777955977940,
+    "modifiedTime": 1777955977940
+  }
+}

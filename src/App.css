@@ -166,7 +166,8 @@ button:disabled {
 
 .page-list,
 .warnings,
-.resource-list {
+.resource-list,
+.automation-list {
   display: grid;
   gap: 12px;
 }
@@ -285,6 +286,50 @@ legend {
 .audit-panel {
   display: grid;
   gap: 12px;
+}
+
+.automation-panel {
+  display: grid;
+  gap: 12px;
+}
+
+.automation-card {
+  border: 1px solid #d8e1de;
+  border-radius: 8px;
+  padding: 12px;
+  display: grid;
+  gap: 8px;
+}
+
+.automation-card.full {
+  background: #eef9f1;
+}
+
+.automation-card.partial {
+  background: #fff9ec;
+}
+
+.automation-card.none {
+  background: #f7f9f8;
+}
+
+.automation-card-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.automation-card-header span {
+  border: 1px solid #d8e1de;
+  border-radius: 999px;
+  padding: 3px 8px;
+  font-size: 12px;
+}
+
+.automation-warnings {
+  display: grid;
+  gap: 4px;
 }
 
 .sheet-debug {

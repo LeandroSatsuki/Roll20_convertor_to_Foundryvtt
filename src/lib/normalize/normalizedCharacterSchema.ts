@@ -125,6 +125,15 @@ export const normalizedCharacterSchema = z.object({
       }),
     ),
   }),
+  pipeline: z
+    .object({
+      parserBuildId: z.string(),
+      parseRunId: z.string(),
+      normalizedCharacterId: z.string(),
+      actorBuildId: z.string().nullable().optional(),
+      auditBuildId: z.string().nullable().optional(),
+    })
+    .optional(),
   warnings: z.array(
     z.object({
       code: z.string(),

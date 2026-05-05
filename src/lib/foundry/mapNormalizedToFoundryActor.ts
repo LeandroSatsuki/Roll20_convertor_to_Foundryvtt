@@ -10,6 +10,14 @@ import { mapSpells } from './mapSpells'
 
 export function mapNormalizedToFoundryActor(character: NormalizedCharacter): FoundryActor {
   const actor = createFoundryActorTemplate(character.identity.name.value || 'Unnamed Roll20 Character')
+  const abilitySnapshot = {
+    str: character.abilities.str.score.value ?? null,
+    dex: character.abilities.dex.score.value ?? null,
+    con: character.abilities.con.score.value ?? null,
+    int: character.abilities.int.score.value ?? null,
+    wis: character.abilities.wis.score.value ?? null,
+    cha: character.abilities.cha.score.value ?? null,
+  }
   actor.system.currency = Object.fromEntries(Object.entries(character.currency).map(([coin, value]) => [coin, value.value]))
   actor.system.abilities = mapAbilities(character)
   actor.system.skills = mapSkills(character)
@@ -61,6 +69,15 @@ export function mapNormalizedToFoundryActor(character: NormalizedCharacter): Fou
     'roll20-to-foundry': {
       source: character.source.type,
       fileName: character.source.fileName,
+      parserBuildId: character.pipeline?.parserBuildId,
+      parseRunId: character.pipeline?.parseRunId,
+      normalizedCharacterId: character.pipeline?.normalizedCharacterId,
+      actorBuildId: character.pipeline?.actorBuildId ?? null,
+      auditBuildId: character.pipeline?.auditBuildId ?? null,
+      abilitiesBeforeActorBuild: abilitySnapshot,
+      actorInputSnapshot: {
+        abilities: abilitySnapshot,
+      },
       warnings: character.warnings,
     },
   }

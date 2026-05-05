@@ -19,6 +19,13 @@ export function FoundryValidationPanel({ report }: { report: FoundryExportAuditR
         <span>Rules low: {report.summary.resolvedLowCount}</span>
         <span>Unknown: {report.summary.unresolvedCount}</span>
         <span>Genéricos: {report.summary.genericItemCount}</span>
+        <span>Auto full: {report.summary.automatedFullCount}</span>
+        <span>Auto parcial: {report.summary.automatedPartialCount}</span>
+        <span>Auto none: {report.summary.automatedNoneCount}</span>
+        <span>Activities: {report.summary.activitiesCount}</span>
+        <span>Activities inválidas: {report.summary.invalidActivitiesCount}</span>
+        <span>Uses configurados: {report.summary.usesConfiguredCount}</span>
+        <span>Recovery configurado: {report.summary.recoveryConfiguredCount}</span>
       </div>
       {report.importReadiness.blockingReasons.length ? (
         <div className="audit-blockers">

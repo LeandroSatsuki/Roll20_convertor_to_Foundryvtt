@@ -14,10 +14,26 @@ export function SheetParseDebugPanel({ debug }: { debug: SheetParseDebugInfo | n
       <dl className="debug-summary">
         <dt>Arquivo</dt>
         <dd>{debug.workbookFileName}</dd>
+        <dt>Parser version</dt>
+        <dd>{debug.parserVersion}</dd>
+        <dt>Parser build</dt>
+        <dd>{debug.parserBuildId}</dd>
+        <dt>Generated at</dt>
+        <dd>{debug.generatedAt}</dd>
+        <dt>Source marker</dt>
+        <dd>{debug.sourceCodeMarker}</dd>
         <dt>Abas encontradas</dt>
         <dd>{debug.sheetNames.join(', ') || 'Nenhuma'}</dd>
+        <dt>Template</dt>
+        <dd>{debug.templateId ?? 'auto'}</dd>
+        <dt>Template parser</dt>
+        <dd>{debug.templateParserUsed ?? '-'}</dd>
+        <dt>parseBonfireLogV2Sheet</dt>
+        <dd>{String(debug.parseBonfireLogV2SheetCalled)}</dd>
         <dt>Aba escolhida</dt>
         <dd>{debug.selectedSheetName ?? 'Nenhuma'}</dd>
+        <dt>Região escolhida</dt>
+        <dd>{debug.selectedRegion ? formatBounds(debug.selectedRegion.bounds) : 'Nenhuma'}</dd>
         <dt>Score da aba</dt>
         <dd>{debug.selectedSheetScore}</dd>
         <dt>Confianca</dt>
@@ -27,6 +43,36 @@ export function SheetParseDebugPanel({ debug }: { debug: SheetParseDebugInfo | n
         <dt>Bloqueio</dt>
         <dd>{debug.parseBlockedReason ?? '-'}</dd>
       </dl>
+
+      <h3>Regiões candidatas</h3>
+      {debug.regionCandidates.length ? (
+        <div className="debug-table sheet-candidates" role="table" aria-label="Regiões candidatas">
+          <div role="row">
+            <strong>Aba</strong>
+            <strong>Bounds</strong>
+            <strong>Score</strong>
+            <strong>Confidence</strong>
+            <strong>Positivos</strong>
+            <strong>Categorias</strong>
+            <strong>Negativos dentro</strong>
+            <strong>Ignorados fora</strong>
+          </div>
+          {debug.regionCandidates.map((candidate, index) => (
+            <div role="row" key={`${candidate.sheetName}-${candidate.bounds.startRow}-${candidate.bounds.startCol}-${index}`}>
+              <span>{candidate.sheetName}</span>
+              <code>{formatBounds(candidate.bounds)}</code>
+              <span>{candidate.score}</span>
+              <span>{candidate.confidence}</span>
+              <span>{candidate.positiveAnchors.map((anchor) => `${anchor.label} ${anchor.address}`).join(', ') || '-'}</span>
+              <span>{candidate.anchorCategories.join(', ') || '-'}</span>
+              <span>{candidate.negativeAnchors.map((anchor) => `${anchor.label} ${anchor.address}`).join(', ') || '-'}</span>
+              <span>{candidate.ignoredOutsideRegion?.map((anchor) => `${anchor.label} ${anchor.address}`).join(', ') || '-'}</span>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p className="empty">Nenhuma região candidata calculada.</p>
+      )}
 
       <h3>Score de todas as abas</h3>
       {debug.sheetCandidates.length ? (
@@ -100,8 +146,90 @@ export function SheetParseDebugPanel({ debug }: { debug: SheetParseDebugInfo | n
         <p className="empty">Nenhum anchor de ficha encontrado.</p>
       )}
 
-      <h3>Celulas usadas</h3>
-      {debug.extractedFields.length ? (
+      <h3>Anchors deduplicadas por merge</h3>
+      {debug.discardedDuplicateAnchors.length ? (
+        <div className="debug-table" role="table" aria-label="Anchors deduplicadas">
+          <div role="row">
+            <strong>Label</strong>
+            <strong>Celula</strong>
+            <strong>Origem do merge</strong>
+          </div>
+          {debug.discardedDuplicateAnchors.map((anchor) => (
+            <div role="row" key={`${anchor.label}-${anchor.address}`}>
+              <span>{anchor.label}</span>
+              <code>{anchor.address}</code>
+              <span>{anchor.mergeSourceAddress ?? '-'}</span>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p className="empty">Nenhuma anchor descartada por merge duplicado.</p>
+      )}
+
+      <h3>Blocked name matches</h3>
+      {debug.blockedNameMatches.length ? (
+        <div className="debug-table" role="table" aria-label="Blocked name matches">
+          <div role="row">
+            <strong>Valor</strong>
+            <strong>Normalizado</strong>
+            <strong>Motivo</strong>
+          </div>
+          {debug.blockedNameMatches.map((entry, index) => (
+            <div role="row" key={`${entry.normalizedValue}-${index}`}>
+              <span>{entry.value}</span>
+              <span>{entry.normalizedValue}</span>
+              <span>{entry.reason}</span>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p className="empty">Nenhum match de nome bloqueado.</p>
+      )}
+
+      <h3>Ability Block Candidates</h3>
+      {debug.abilityBlockCandidates.length ? (
+        <div className="debug-table" role="table" aria-label="Ability block candidates">
+          <div role="row">
+            <strong>Atributo</strong>
+            <strong>Label</strong>
+            <strong>Candidatos</strong>
+            <strong>Selecionada</strong>
+          </div>
+          {debug.abilityBlockCandidates.map((entry) => (
+            <div role="row" key={`${entry.ability}-${entry.labelAddress ?? 'none'}`}>
+              <span>{entry.ability}</span>
+              <code>{entry.labelAddress ?? '-'}</code>
+              <span>{entry.candidateCells.map((cell) => `${cell.address ?? '-'}=${cell.rawValue ?? '-'} (${cell.accepted ? 'ok' : cell.rejectedReason ?? 'rej'})`).join(', ')}</span>
+              <code>{entry.selectedCell ?? '-'}</code>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p className="empty">Nenhum candidato do bloco de atributos registrado.</p>
+      )}
+
+      <h3>Negativos ignorados fora da região</h3>
+      {debug.ignoredOutsideRegion.length ? (
+        <div className="debug-table" role="table" aria-label="Negativos ignorados fora da região">
+          <div role="row">
+            <strong>Label</strong>
+            <strong>Celula</strong>
+            <strong>Valor</strong>
+          </div>
+          {debug.ignoredOutsideRegion.map((anchor) => (
+            <div role="row" key={`${anchor.label}-${anchor.address}`}>
+              <span>{anchor.label}</span>
+              <code>{anchor.address}</code>
+              <span>{anchor.value}</span>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p className="empty">Nenhum negativo ignorado fora da região.</p>
+      )}
+
+      <h3>Campos finais aplicados</h3>
+      {debug.finalExtractedFields.length ? (
         <div className="debug-table" role="table" aria-label="Campos extraidos">
           <div role="row">
             <strong>Campo</strong>
@@ -110,7 +238,7 @@ export function SheetParseDebugPanel({ debug }: { debug: SheetParseDebugInfo | n
             <strong>Normalizado</strong>
             <strong>Status</strong>
           </div>
-          {debug.extractedFields.map((field, index) => (
+          {debug.finalExtractedFields.map((field, index) => (
             <div role="row" key={`${field.fieldPath}-${field.cellAddress ?? 'none'}-${index}`} className={field.accepted ? 'accepted' : 'rejected'}>
               <span>{field.fieldPath}</span>
               <code>{field.cellAddress ?? '-'}</code>
@@ -126,8 +254,39 @@ export function SheetParseDebugPanel({ debug }: { debug: SheetParseDebugInfo | n
       ) : (
         <p className="empty">Nenhuma celula extraida.</p>
       )}
+
+      <h3>Tentativas de extracao</h3>
+      {debug.extractionAttempts.length ? (
+        <div className="debug-table" role="table" aria-label="Tentativas de extracao">
+          <div role="row">
+            <strong>Campo</strong>
+            <strong>Celula</strong>
+            <strong>Valor bruto</strong>
+            <strong>Normalizado</strong>
+            <strong>Status</strong>
+          </div>
+          {debug.extractionAttempts.map((field, index) => (
+            <div role="row" key={`${field.fieldPath}-${field.cellAddress ?? 'none'}-${index}`} className={field.accepted ? 'accepted' : 'rejected'}>
+              <span>{field.fieldPath}</span>
+              <code>{field.cellAddress ?? '-'}</code>
+              <span>{field.rawValue ?? '-'}</span>
+              <span>{field.normalizedValue ?? '-'}</span>
+              <span>
+                {field.accepted ? 'aceito' : field.rejectedReason ?? field.reason ?? 'rejeitado'}
+                {field.inheritedFromMerge ? ` | merge de ${field.mergeSourceAddress}` : ''}
+              </span>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p className="empty">Nenhuma tentativa registrada.</p>
+      )}
     </section>
   )
+}
+
+function formatBounds(bounds: { startRow: number; endRow: number; startCol: number; endCol: number }) {
+  return `L${bounds.startRow + 1}-L${bounds.endRow + 1}, C${bounds.startCol + 1}-C${bounds.endCol + 1}`
 }
 
 function downloadDebugJson(debug: SheetParseDebugInfo) {
