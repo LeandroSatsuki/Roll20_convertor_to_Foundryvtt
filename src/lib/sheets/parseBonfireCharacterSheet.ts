@@ -10,6 +10,9 @@ import { normalizeSheetCellValue } from './readWorkbook'
 import { bonfireSheetAnchors, matchesAnyAnchor, sectionAnchorAliases } from './sheetAnchors'
 import type { ExtractedFieldDebugEntry, NameCandidate, SheetCell, SheetCharacterParseResult, SheetParseDebugInfo, SheetRegionCandidate, WorkbookData, WorkbookSheet } from './sheetTypes'
 import { foundryId } from '../foundry/ids'
+import { bonfireV21AbilitySpecs, bonfireV21EquipmentRangeSources, bonfireV21FieldSpecs, bonfireV21SaveRangeSources, bonfireV21SkillLabelRangeSources, bonfireV21SkillValueRangeSources, bonfireV21SpellRanges, bonfireV21Template } from './templates/bonfireV21Template'
+import { getCellsFromWorkbookRef, getSheet as getWorkbookSheet } from './templates/cellRange'
+import { getNamedRangeValue, normalizeNamedRangeRef } from './templates/namedRanges'
 
 const abilityLabels: Record<AbilityKey, string[]> = {
   str: ['FORCA', 'STR', 'STRENGTH'],
@@ -83,9 +86,9 @@ const criticalFieldPaths = [
   'attributes.passivePerception',
 ]
 
-const PARSER_VERSION = '2.6.1'
-const PARSER_BUILD_ID = '2026-05-05-bonfire-log-v2-ui-diagnostic'
-const PARSER_SOURCE_MARKER = 'bonfire-log-v2-abilities-fixed'
+const PARSER_VERSION = '2.7.0'
+const PARSER_BUILD_ID = '2026-05-05-bonfire-v21-template'
+const PARSER_SOURCE_MARKER = 'bonfire-v21-template-fixed'
 
 export function isUrlLike(value: unknown): boolean {
   return typeof value === 'string' && /^https?:\/\//i.test(value.trim())
@@ -112,14 +115,17 @@ export function isProbablyTableHeaderOrNoise(value: string): boolean {
 type ParseSheetOptions = {
   selectedSheetName?: string
   selectedRegionIndex?: number
-  selectedTemplateId?: 'bonfire-log-v2'
+  selectedTemplateId?: 'bonfire-log-v2' | 'bonfire-v2.1' | 'automatic'
   includeHiddenSheets?: boolean
 }
 
 export function parseBonfireCharacterSheet(workbook: WorkbookData, options: ParseSheetOptions = {}): SheetCharacterParseResult {
+  const requestedTemplateId = resolveRequestedTemplateId(workbook, options)
+  if (requestedTemplateId === 'bonfire-v2.1') return parseBonfireV21Workbook(workbook, options)
+
   const parseRunId = `parse-${foundryId(12)}`
   const normalizedCharacterId = `normalized-${foundryId(12)}`
-  const detection = detectBestCharacterSheet(workbook, options)
+  const detection = detectBestCharacterSheet(workbook, { ...options, selectedTemplateId: options.selectedTemplateId === 'bonfire-log-v2' ? 'bonfire-log-v2' : undefined })
   const warnings: ConversionWarning[] = [...detection.warnings]
   const sourceSheet = detection.selectedSheetName ? workbook.sheets.find((candidate) => candidate.name === detection.selectedSheetName) : undefined
   const sheet = sourceSheet && detection.selectedRegion ? restrictSheetToRegion(sourceSheet, detection.selectedRegion) : undefined
@@ -134,7 +140,11 @@ export function parseBonfireCharacterSheet(workbook: WorkbookData, options: Pars
     auditBuildId: null,
     generatedAt: new Date().toISOString(),
     sourceCodeMarker: PARSER_SOURCE_MARKER,
+    templateUsed: detection.templateId ?? 'automatic',
+    readMode: 'automatic',
     sheetNames: workbook.sheetNames,
+    selectedSheets: detection.selectedSheetName ? [detection.selectedSheetName] : [],
+    ignoredSheets: workbook.sheetNames.filter((sheetName) => sheetName !== detection.selectedSheetName),
     templateId: detection.templateId,
     templateParserUsed: undefined,
     parseBonfireLogV2SheetCalled: false,
@@ -161,6 +171,30 @@ export function parseBonfireCharacterSheet(workbook: WorkbookData, options: Pars
     const character = createEmptyCharacter(workbook, warnings, parseRunId, normalizedCharacterId)
     character.warnings.push(makeWarning('SHEET_TEMPLATE_LOW_CONFIDENCE', 'A planilha nao foi reconhecida como ficha Bonfire. Verifique se voce exportou a aba correta como .xlsx.', 'source.template', detection.selectedSheetName ?? undefined, 'error'))
     character.warnings.push(makeWarning('SHEET_CHARACTER_REGION_NOT_FOUND', 'Não encontrei a região principal da ficha. Selecione manualmente a aba/região.', 'source.region', detection.selectedSheetName ?? undefined, 'error'))
+    ensureCriticalDebugFields(debug)
+    return buildResult(workbook, detection, debug, character)
+  }
+
+  if (detection.selectedRegion.confidence === 'low') {
+    const character = createEmptyCharacter(workbook, warnings, parseRunId, normalizedCharacterId)
+    character.warnings.push(
+      makeWarning(
+        'SHEET_TEMPLATE_LOW_CONFIDENCE',
+        'A planilha nao foi reconhecida com confianca suficiente como ficha Bonfire. Verifique se a aba/regiao escolhida e a ficha principal.',
+        'source.template',
+        (detection.selectedSheetName ?? detection.sheetName) || undefined,
+        'error',
+      ),
+    )
+    character.warnings.push(
+      makeWarning(
+        'SHEET_PARSE_BLOCKED_LOW_CONFIDENCE',
+        'A importacao foi bloqueada porque a aba/regiao selecionada parece nao ser a ficha principal.',
+        'source.region',
+        (detection.selectedSheetName ?? detection.sheetName) || undefined,
+        'error',
+      ),
+    )
     ensureCriticalDebugFields(debug)
     return buildResult(workbook, detection, debug, character)
   }
@@ -296,6 +330,822 @@ export function parseBonfireCharacterSheet(workbook: WorkbookData, options: Pars
   return buildResult(workbook, detection, debug, character)
 }
 
+const bonfireV21SkillOrder: SkillKey[] = ['acr', 'ani', 'arc', 'ath', 'dec', 'his', 'ins', 'itm', 'inv', 'med', 'nat', 'prc', 'prf', 'per', 'rel', 'slt', 'ste', 'sur']
+const bonfireV21AbilityOrder: AbilityKey[] = ['str', 'dex', 'con', 'int', 'wis', 'cha']
+const bonfireV21SkillKeyOrder: SkillKey[] = ['acr', 'ani', 'arc', 'ath', 'dec', 'his', 'ins', 'itm', 'inv', 'med', 'nat', 'prc', 'prf', 'per', 'rel', 'slt', 'ste', 'sur']
+
+function resolveRequestedTemplateId(workbook: WorkbookData, options: ParseSheetOptions): 'bonfire-log-v2' | 'bonfire-v2.1' | undefined {
+  if (options.selectedTemplateId === 'automatic') return undefined
+  if (options.selectedTemplateId === 'bonfire-v2.1' || options.selectedTemplateId === 'bonfire-log-v2') return options.selectedTemplateId
+  if (options.selectedSheetName || typeof options.selectedRegionIndex === 'number') return undefined
+  return looksLikeBonfireV21Workbook(workbook) ? 'bonfire-v2.1' : undefined
+}
+
+function looksLikeBonfireV21Workbook(workbook: WorkbookData): boolean {
+  return workbook.sheetNames.includes('LOG') && (workbook.sheetNames.includes('Personagem') || workbook.sheetNames.includes('Magias'))
+}
+
+function parseBonfireV21Workbook(workbook: WorkbookData, _options: ParseSheetOptions): SheetCharacterParseResult {
+  const parseRunId = `parse-${foundryId(12)}`
+  const normalizedCharacterId = `normalized-${foundryId(12)}`
+  const selectedSheets = [...bonfireV21Template.selectedSheets]
+  const ignoredSheets = workbook.sheetNames.filter((sheetName) => !selectedSheets.includes(sheetName))
+  const logSheet = getWorkbookSheet(workbook, 'LOG')
+  const debug: SheetParseDebugInfo = {
+    workbookFileName: workbook.fileName,
+    parserVersion: PARSER_VERSION,
+    parserBuildId: PARSER_BUILD_ID,
+    parseRunId,
+    normalizedCharacterId,
+    actorBuildId: null,
+    auditBuildId: null,
+    generatedAt: new Date().toISOString(),
+    sourceCodeMarker: PARSER_SOURCE_MARKER,
+    templateUsed: 'bonfire-v2.1',
+    readMode: 'bonfire-v2.1',
+    sheetNames: workbook.sheetNames,
+    selectedSheets,
+    ignoredSheets,
+    templateId: 'bonfire-v2.1',
+    templateParserUsed: 'parseBonfireV21Workbook',
+    parseBonfireLogV2SheetCalled: false,
+    selectedSheetName: logSheet?.name ?? 'LOG',
+    selectedRegion: undefined,
+    selectedBy: 'template',
+    selectedSheetScore: 100,
+    confidence: 'high',
+    parseBlockedReason: undefined,
+    anchorsFound: [],
+    sheetCandidates: [],
+    regionCandidates: [],
+    ignoredOutsideRegion: [],
+    discardedDuplicateAnchors: [],
+    blockedNameMatches: [],
+    nameCandidates: [],
+    abilityBlockCandidates: [],
+    extractedFields: [],
+    extractionAttempts: [],
+    finalExtractedFields: [],
+  }
+  const warnings: ConversionWarning[] = []
+
+  if (!logSheet) {
+    const character = createEmptyCharacter(workbook, warnings, parseRunId, normalizedCharacterId)
+    addTemplateIssue(warnings, debug, {
+      code: 'TEMPLATE_FIELD_MISSING',
+      severity: 'error',
+      message: 'A aba LOG e obrigatoria para o template Bonfire v2.1.',
+      fieldPath: 'source.sheet.LOG',
+      sourceType: 'static',
+      source: 'LOG',
+      accepted: false,
+      reason: 'required LOG sheet missing',
+    })
+    ensureCriticalDebugFields(debug)
+    return {
+      character,
+      rawWorkbookMeta: {
+        sheetNames: workbook.sheetNames,
+        selectedSheets,
+        ignoredSheets,
+        readMode: 'bonfire-v2.1',
+        detectedTemplate: 'bonfire-v2.1',
+        templateId: 'bonfire-v2.1',
+        confidence: 'high',
+        selectedSheetName: 'LOG',
+        selectedSheetScore: 100,
+        selectedBy: 'template',
+        anchorsFound: [],
+        sheetCandidates: [],
+        regionCandidates: [],
+        ignoredOutsideRegion: [],
+      },
+      debug,
+      warnings: character.warnings,
+    }
+  }
+
+  const identityName = resolveTemplateTextField(workbook, debug, warnings, bonfireV21FieldSpecs.find((fieldSpec) => fieldSpec.fieldPath === 'identity.name')!)
+  const classText = resolveTemplateTextField(workbook, debug, warnings, bonfireV21FieldSpecs.find((fieldSpec) => fieldSpec.fieldPath === 'identity.classText')!)
+  const player = resolveTemplateTextField(workbook, debug, warnings, bonfireV21FieldSpecs.find((fieldSpec) => fieldSpec.fieldPath === 'identity.player')!, false)
+  const race = resolveTemplateTextField(workbook, debug, warnings, bonfireV21FieldSpecs.find((fieldSpec) => fieldSpec.fieldPath === 'identity.race')!)
+  const background = resolveTemplateTextField(workbook, debug, warnings, bonfireV21FieldSpecs.find((fieldSpec) => fieldSpec.fieldPath === 'identity.background')!)
+  const proficiencyBonus = resolveTemplateNumberField(workbook, debug, warnings, bonfireV21FieldSpecs.find((fieldSpec) => fieldSpec.fieldPath === 'proficiencyBonus')!) as NormalizedCharacter['proficiencyBonus']
+  const ac = resolveTemplateNumberField(workbook, debug, warnings, bonfireV21FieldSpecs.find((fieldSpec) => fieldSpec.fieldPath === 'attributes.ac')!)
+  const hpMax = resolveTemplateNumberField(workbook, debug, warnings, bonfireV21FieldSpecs.find((fieldSpec) => fieldSpec.fieldPath === 'attributes.hp.max')!)
+  const speed = resolveTemplateMovementField(workbook, debug, warnings, bonfireV21FieldSpecs.find((fieldSpec) => fieldSpec.fieldPath === 'attributes.speed')!)
+  const passivePerception = resolveTemplateDirectNumberField(workbook, debug, warnings, bonfireV21FieldSpecs.find((fieldSpec) => fieldSpec.fieldPath === 'attributes.passivePerception')!, false)
+  const gpValue = resolveTemplateNumberField(workbook, debug, warnings, bonfireV21FieldSpecs.find((fieldSpec) => fieldSpec.fieldPath === 'currency.gp')!, false)
+  const gp = (typeof gpValue.value === 'number' ? gpValue : { ...field(0, 'low'), source: 'bonfire-v2.1' }) as FieldValue<number>
+  const parsedClass = parseClassText(classText.value)
+  const abilities = parseBonfireV21Abilities(workbook, debug, warnings)
+  const saves = parseBonfireV21Saves(workbook, abilities, proficiencyBonus.value ?? 0, debug, warnings)
+  const skills = parseBonfireV21Skills(workbook, abilities, proficiencyBonus.value ?? 0, debug, warnings)
+  const equipment = parseBonfireV21Equipment(workbook, debug, warnings)
+  const features = buildBonfireV21Features(parsedClass, race.value, background.value)
+  const spells = parseBonfireV21Spells(workbook, parsedClass, debug, warnings)
+  const avatar = findAvatarUrl(logSheet, debug)
+
+  const character: NormalizedCharacter = {
+    source: { type: 'bonfire-xlsx', fileName: workbook.fileName, extractedAt: new Date().toISOString() },
+    identity: {
+      name: identityName,
+      player,
+      classText,
+      classes: parsedClass.name ? [{ name: parsedClass.name, level: parsedClass.level }] : [],
+      background,
+      race,
+      alignment: field('', 'low', undefined, undefined),
+      xp: field(null, 'low'),
+    },
+    media: avatar ? { avatarUrl: { ...field(avatar.value, 'high', avatar.raw), source: 'bonfire-v2.1' } } : undefined,
+    abilities,
+    proficiencyBonus,
+    saves,
+    skills,
+    attributes: {
+      ac,
+      initiative: field(null, 'low'),
+      speed: speed.value,
+      speedUnits: speed.units,
+      passivePerception,
+      hp: {
+        value: field(null, 'low'),
+        max: hpMax,
+        temp: field(null, 'low'),
+        tempMax: field(null, 'low'),
+      },
+      hitDice: { total: field(parsedClass.level || null, parsedClass.level ? 'medium' : 'low'), spent: field(null, 'low') },
+      senses: { darkvision: field(null, 'low') },
+    },
+    currency: { cp: field(0, 'low'), sp: field(0, 'low'), ep: field(0, 'low'), gp, pp: field(0, 'low') },
+    proficiencies: { tools: field([], 'low'), languages: field([], 'low'), weapons: field([], 'low'), armor: field([], 'low') },
+    attacks: equipment
+      .filter((item) => item.category === 'weapon')
+      .map((item) => {
+        const rule = resolveWeaponOrEquipment(item.name.value)
+        return {
+          name: item.name,
+          attackBonus: field(null, 'low', item.raw),
+          damageFormula: field(rule?.damage ?? null, rule?.damage ? 'medium' : 'low', item.raw),
+          damageType: field(rule?.damageType ?? null, rule?.damageType ? 'medium' : 'low', item.raw),
+          category: 'weapon' as const,
+          raw: item.raw,
+        }
+      }),
+    equipment,
+    features,
+    resources: [],
+    spells,
+    pipeline: {
+      parserBuildId: PARSER_BUILD_ID,
+      parseRunId,
+      normalizedCharacterId,
+      actorBuildId: null,
+      auditBuildId: null,
+    },
+    warnings,
+  }
+
+  finalizeExtractedFields(character, debug)
+  debug.normalizedDebugSnapshot = { abilities: abilitySnapshot(character) }
+  validateExtractedCharacter(character)
+  addCriticalParserWarnings(character)
+  ensureCriticalDebugFields(debug)
+
+  return {
+    character,
+    rawWorkbookMeta: {
+      sheetNames: workbook.sheetNames,
+      selectedSheets,
+      ignoredSheets,
+      readMode: 'bonfire-v2.1',
+      detectedTemplate: 'bonfire-v2.1',
+      templateId: 'bonfire-v2.1',
+      confidence: 'high',
+      selectedSheetName: 'LOG',
+      selectedSheetScore: 100,
+      selectedBy: 'template',
+      anchorsFound: [],
+      sheetCandidates: [],
+      regionCandidates: [],
+      ignoredOutsideRegion: [],
+    },
+    debug,
+    warnings: character.warnings,
+  }
+}
+
+function parseBonfireV21Abilities(workbook: WorkbookData, debug: SheetParseDebugInfo, warnings: ConversionWarning[]): NormalizedCharacter['abilities'] {
+  const result = {} as NormalizedCharacter['abilities']
+  for (const abilityKey of bonfireV21AbilityOrder) {
+    const spec = bonfireV21AbilitySpecs[abilityKey]
+    const modifier = resolveTemplateNumericSources(workbook, spec.modifierSources, `abilities.${abilityKey}.mod`, debug, warnings, false)
+    const score = resolveTemplateNumericSources(workbook, spec.scoreSources, `abilities.${abilityKey}.score`, debug, warnings, false)
+    const modifierOnly = modifier.value !== null && score.value === null
+    if (modifierOnly) {
+      const message = `O template encontrou apenas modificador de atributo para ${abilityKey}. Informe a celula ou named range do valor base do atributo.`
+      warnings.push(makeWarning('ABILITY_SCORE_MISSING_MODIFIER_ONLY', message, `abilities.${abilityKey}.score`, modifier.raw, 'error'))
+      markTemplateFieldIssue(debug, `abilities.${abilityKey}.score`, 'ABILITY_SCORE_MISSING_MODIFIER_ONLY', message)
+    }
+
+    let finalScore = score
+    let finalModifier = modifier
+    if (score.value !== null && modifier.value === null) {
+      finalModifier = { ...field(abilityModifier(score.value), 'medium', score.raw), source: 'derived-from-score' }
+      pushTemplateFinalField(debug, {
+        fieldPath: `abilities.${abilityKey}.mod`,
+        sourceType: 'derived',
+        source: `abilities.${abilityKey}.score`,
+        rawValue: score.raw,
+        parsedValue: String(finalModifier.value),
+        accepted: true,
+        reason: 'calculated from score',
+      })
+    }
+
+    result[abilityKey] = {
+      score: { ...(finalScore as FieldValue<number>), source: finalScore.source ?? 'bonfire-v2.1' },
+      mod: { ...(finalModifier as FieldValue<number>), source: finalModifier.source ?? 'bonfire-v2.1' },
+    }
+  }
+  return result
+}
+
+function parseBonfireV21Saves(
+  workbook: WorkbookData,
+  abilities: NormalizedCharacter['abilities'],
+  proficiencyBonus: number,
+  debug: SheetParseDebugInfo,
+  warnings: ConversionWarning[],
+): NormalizedCharacter['saves'] {
+  const values = resolveTemplateNumberList(workbook, bonfireV21SaveRangeSources, 'saves', debug, warnings, false)
+  const saves = {} as NormalizedCharacter['saves']
+  for (const [index, abilityKey] of bonfireV21AbilityOrder.entries()) {
+    const total = values[index] ?? null
+    const abilityMod = abilities[abilityKey].mod.value
+    const proficient = typeof total === 'number' && typeof abilityMod === 'number' ? total >= abilityMod + proficiencyBonus : false
+    const bonus = typeof total === 'number' && typeof abilityMod === 'number' ? total - abilityMod - (proficient ? proficiencyBonus : 0) : null
+    saves[abilityKey] = {
+      total: { ...field((total ?? null) as unknown as number, total === null ? 'low' : 'medium', total === null ? undefined : String(total)), source: 'bonfire-v2.1' },
+      proficient: { ...field(proficient, total === null ? 'low' : 'medium'), source: 'bonfire-v2.1' },
+      bonus: { ...field((bonus ?? null) as unknown as number, total === null ? 'low' : 'medium'), source: 'bonfire-v2.1' },
+    }
+  }
+  return saves
+}
+
+function parseBonfireV21Skills(
+  workbook: WorkbookData,
+  abilities: NormalizedCharacter['abilities'],
+  proficiencyBonus: number,
+  debug: SheetParseDebugInfo,
+  warnings: ConversionWarning[],
+): Record<SkillKey, SkillValue> {
+  const totals = resolveTemplateNumberList(workbook, bonfireV21SkillValueRangeSources, 'skills', debug, warnings, false)
+  const labels = resolveTemplateTextList(workbook, bonfireV21SkillLabelRangeSources, 'skills.labels', debug, warnings, false)
+  const orderedKeys = labels.length === bonfireV21SkillOrder.length ? remapSkillKeysFromLabels(labels) : bonfireV21SkillOrder
+  const skills = {} as Record<SkillKey, SkillValue>
+
+  bonfireV21SkillKeyOrder.forEach((skillKey, index) => {
+    const definition = skillDefinitions[skillKey]
+    const resolvedSkillKey = orderedKeys[index] ?? skillKey
+    const resolvedDefinition = skillDefinitions[resolvedSkillKey]
+    const total = totals[index] ?? null
+    if (typeof total !== 'number') {
+      warnings.push(makeWarning('TEMPLATE_FIELD_MISSING', `Pericia nao encontrada para ${definition.labelPtBr}.`, `skills.${skillKey}.total`, undefined, 'warning'))
+      skills[skillKey] = {
+        labelPtBr: definition.labelPtBr,
+        ability: definition.ability,
+        total: { ...field(null as unknown as number, 'low'), source: 'bonfire-v2.1' },
+        proficiencyLevel: { ...field(0 as const, 'low'), source: 'bonfire-v2.1' },
+        bonus: { ...field(null as unknown as number, 'low'), source: 'bonfire-v2.1' },
+      }
+      return
+    }
+    const inferred = inferSkill(total, abilities[resolvedDefinition.ability].mod.value ?? 0, proficiencyBonus)
+    skills[skillKey] = {
+      labelPtBr: definition.labelPtBr,
+      ability: definition.ability,
+      total: { ...field(total, 'high', String(total)), source: 'bonfire-v2.1' },
+      proficiencyLevel: { ...field(inferred.proficiencyLevel, 'medium', String(total)), source: 'bonfire-v2.1' },
+      bonus: { ...field(inferred.bonus, inferred.bonus === 0 ? 'high' : 'medium', String(total)), source: 'bonfire-v2.1' },
+    }
+  })
+
+  return skills
+}
+
+function parseBonfireV21Equipment(workbook: WorkbookData, debug: SheetParseDebugInfo, warnings: ConversionWarning[]): NormalizedEquipment[] {
+  const values = resolveTemplateTextList(workbook, bonfireV21EquipmentRangeSources, 'equipment', debug, warnings, false)
+  if (!values.length) warnings.push(makeWarning('EQUIPMENT_RANGE_EMPTY', 'Nenhum equipamento foi encontrado nas ranges do template Bonfire v2.1.', 'equipment', bonfireV21EquipmentRangeSources.join(', '), 'warning'))
+  return values
+    .filter((value) => isValidEquipmentName(value))
+    .map((value) => {
+      const rule = resolveWeaponOrEquipment(value)
+      const category = normalizeEquipmentCategory(rule?.category)
+      if (!rule) warnings.push(makeWarning('RULE_NOT_FOUND', `${value} nao foi encontrado no Rule Store; exportado como equipment generico.`, 'equipment', value, 'warning'))
+      return {
+        name: { ...field(value, rule ? 'high' : 'low', value), source: 'bonfire-v2.1' },
+        quantity: { ...field(1, 'medium', value), source: 'bonfire-v2.1' },
+        category,
+        raw: value,
+      }
+    })
+}
+
+function normalizeEquipmentCategory(category?: string): NormalizedEquipment['category'] {
+  if (category === 'simple' || category === 'martial') return 'weapon'
+  if (category === 'shield') return 'armor'
+  if (category === 'focus') return 'equipment'
+  if (category === 'armor' || category === 'consumable' || category === 'equipment' || category === 'tool' || category === 'loot' || category === 'weapon' || category === 'unknown') return category
+  return 'equipment'
+}
+
+function parseBonfireV21Spells(
+  workbook: WorkbookData,
+  parsedClass: { name: string; level: number; subclass?: string },
+  debug: SheetParseDebugInfo,
+  warnings: ConversionWarning[],
+): NormalizedCharacter['spells'] {
+  const spells = buildClericSpellcasting(parsedClass.name, parsedClass.level)
+  if (!getWorkbookSheet(workbook, 'Magias')) return spells
+  const cantrips = bonfireV21SpellRanges.cantrips.flatMap((source) => resolveTemplateTextList(workbook, [source], `spells.cantrips`, debug, warnings, false))
+  spells.cantrips = cantrips.map((name) => ({ name: { ...field(name, 'high', name), source: 'bonfire-v2.1' }, level: 0, raw: name, prepared: true }))
+
+  for (let level = 1; level <= 9; level += 1) {
+    const fieldPath = `spells.levels.spell${level}`
+    const values = resolveTemplateTextList(workbook, bonfireV21SpellRanges[`spell${level}` as keyof typeof bonfireV21SpellRanges], fieldPath, debug, warnings, false)
+    if (!values.length) warnings.push(makeWarning('SPELL_RANGE_EMPTY', `Nenhuma magia encontrada para spell${level} no template Bonfire v2.1.`, fieldPath, undefined, 'warning'))
+    spells.levels[`spell${level}`].spells = values.map((name) => ({ name: { ...field(name, 'high', name), source: 'bonfire-v2.1' }, level, raw: name, prepared: true }))
+  }
+
+  return spells
+}
+
+function buildBonfireV21Features(parsedClass: { name: string; level: number; subclass?: string }, race: string, background: string): NormalizedFeature[] {
+  const features: NormalizedFeature[] = []
+  const seen = new Set<string>()
+
+  const classRule = defaultBonfireRuleStore.classes.find((candidate) => ruleMatchesText(candidate.name, candidate.aliases ?? [], parsedClass.name))
+  if (classRule) {
+    const featureEntries = Object.entries(classRule.featuresByLevel ?? {})
+      .map(([level, items]) => ({ level: Number(level), items }))
+      .filter((entry) => Number.isInteger(entry.level) && entry.level <= parsedClass.level)
+      .sort((left, right) => left.level - right.level)
+
+    for (const entry of featureEntries) {
+      for (const candidate of entry.items) addBonfireV21Feature(features, seen, candidate.name, 'class', candidate.description, candidate.level, candidate.uses, candidate.activation)
+    }
+  }
+
+  const raceRule = defaultBonfireRuleStore.races.find((candidate) => ruleMatchesText(candidate.name, candidate.aliases ?? [], race))
+  for (const candidate of raceRule?.features ?? []) addBonfireV21Feature(features, seen, candidate.name, 'race', candidate.description, undefined, candidate.uses, candidate.activation)
+
+  const backgroundRule = defaultBonfireRuleStore.backgrounds.find((candidate) => ruleMatchesText(candidate.name, candidate.aliases ?? [], background))
+  for (const candidate of backgroundRule?.features ?? []) addBonfireV21Feature(features, seen, candidate.name, 'background', candidate.description, undefined, candidate.uses, candidate.activation)
+
+  return features
+}
+
+function addBonfireV21Feature(
+  target: NormalizedFeature[],
+  seen: Set<string>,
+  name: string,
+  sourceType: NormalizedFeature['sourceType'],
+  description?: string,
+  level?: number,
+  uses?: { max?: number | string; recovery?: string },
+  activation?: string,
+) {
+  const key = normalizeSheetCellValue(name)
+  if (!key || seen.has(key)) return
+  seen.add(key)
+  const normalizedRecovery = normalizeFeatureRecovery(uses?.recovery ?? 'none')
+  const maxUses = typeof uses?.max === 'number' ? uses.max : typeof uses?.max === 'string' ? parseSignedNumber(uses.max) : null
+  target.push({
+    name: { ...field(name, 'high', name), source: 'bonfire-v2.1' },
+    sourceType,
+    level,
+    description: { ...field(description ?? name, description ? 'medium' : 'low', name), source: 'bonfire-v2.1' },
+    uses:
+      maxUses !== null
+        ? {
+            value: { ...field(maxUses, 'medium', name), source: 'bonfire-v2.1' },
+            max: { ...field(maxUses, 'high', name), source: 'bonfire-v2.1' },
+            recovery: normalizedRecovery,
+          }
+        : undefined,
+    activation: activation ? { type: normalizeFeatureActivationForTemplate(activation) } : undefined,
+    raw: name,
+  })
+}
+
+function normalizeFeatureActivationForTemplate(value: string): 'action' | 'bonus' | 'reaction' | 'special' | 'none' | 'unknown' {
+  if (value === 'action' || value === 'bonus' || value === 'reaction' || value === 'special' || value === 'none') return value
+  return 'unknown'
+}
+
+function resolveTemplateTextField(
+  workbook: WorkbookData,
+  debug: SheetParseDebugInfo,
+  warnings: ConversionWarning[],
+  fieldSpec: {
+    fieldPath: string
+    sources: ReadonlyArray<{ sourceType: 'namedRange' | 'cell' | 'range'; source: string; expectedLabels?: string[]; requireExpectedLabels?: boolean }>
+    required?: boolean
+  },
+  required = true,
+): FieldValue<string> {
+  const result = resolveTemplateScalarSource(workbook, fieldSpec.sources, fieldSpec.fieldPath, debug, warnings, (value) => sanitizeTemplateText(value))
+  if (!result.accepted) {
+    if (required && fieldSpec.required !== false) addTemplateIssue(warnings, debug, { code: 'TEMPLATE_FIELD_MISSING', severity: 'error', message: `Campo obrigatorio ausente no template: ${fieldSpec.fieldPath}.`, fieldPath: fieldSpec.fieldPath, accepted: false, reason: 'no valid source' })
+    return { ...field('', 'low'), source: 'bonfire-v2.1' }
+  }
+  return { ...field(result.value ?? '', 'high', `${result.resolvedAddress ?? result.source}: ${result.rawValue ?? result.value ?? ''}`), source: 'bonfire-v2.1' }
+}
+
+function resolveTemplateDirectNumberField(
+  workbook: WorkbookData,
+  debug: SheetParseDebugInfo,
+  warnings: ConversionWarning[],
+  fieldSpec: {
+    fieldPath: string
+    sources: ReadonlyArray<{ sourceType: 'namedRange' | 'cell' | 'range'; source: string; expectedLabels?: string[]; requireExpectedLabels?: boolean }>
+    required?: boolean
+  },
+  required = true,
+): FieldValue<number | null> {
+  const result = resolveTemplateScalarSource(workbook, fieldSpec.sources, fieldSpec.fieldPath, debug, warnings, (value) => parseLooseTemplateNumber(value))
+  if (!result.accepted) {
+    if (required) addTemplateIssue(warnings, debug, { code: 'TEMPLATE_FIELD_MISSING', severity: 'error', message: `Campo obrigatorio ausente no template: ${fieldSpec.fieldPath}.`, fieldPath: fieldSpec.fieldPath, accepted: false, reason: 'no valid numeric source' })
+    return { ...field(null, 'low'), source: 'bonfire-v2.1' }
+  }
+  return { ...field(result.value as number, 'high', `${result.resolvedAddress ?? result.source}: ${result.rawValue ?? String(result.value)}`), source: 'bonfire-v2.1' }
+}
+
+function resolveTemplateMovementField(
+  workbook: WorkbookData,
+  debug: SheetParseDebugInfo,
+  warnings: ConversionWarning[],
+  fieldSpec: {
+    fieldPath: string
+    sources: ReadonlyArray<{ sourceType: 'namedRange' | 'cell' | 'range'; source: string; expectedLabels?: string[]; requireExpectedLabels?: boolean }>
+    required?: boolean
+  },
+): { value: FieldValue<number | null>; units: 'ft' | 'm' | null } {
+  const result = resolveTemplateScalarSource(workbook, fieldSpec.sources, fieldSpec.fieldPath, debug, warnings, (value) => parseTemplateMovement(value))
+  if (!result.accepted || !result.value) {
+    addTemplateIssue(warnings, debug, { code: 'TEMPLATE_FIELD_MISSING', severity: 'error', message: `Campo obrigatorio ausente no template: ${fieldSpec.fieldPath}.`, fieldPath: fieldSpec.fieldPath, accepted: false, reason: 'no valid movement source' })
+    return { value: { ...field(null, 'low'), source: 'bonfire-v2.1' }, units: null }
+  }
+  return {
+    value: { ...field(result.value.value, 'high', `${result.resolvedAddress ?? result.source}: ${result.rawValue ?? String(result.value.value)}`), source: 'bonfire-v2.1' },
+    units: result.value.units,
+  }
+}
+
+function resolveTemplateNumberField(
+  workbook: WorkbookData,
+  debug: SheetParseDebugInfo,
+  warnings: ConversionWarning[],
+  fieldSpec: {
+    fieldPath: string
+    sources: ReadonlyArray<{ sourceType: 'namedRange' | 'cell' | 'range'; source: string; expectedLabels?: string[]; requireExpectedLabels?: boolean }>
+    required?: boolean
+  },
+  required = true,
+): FieldValue<number | null> {
+  const result = resolveTemplateScalarSource(workbook, fieldSpec.sources, fieldSpec.fieldPath, debug, warnings, (value) => {
+    const parsed = parseSignedNumber(value)
+    return parsed === null ? null : parsed
+  })
+  if (!result.accepted) {
+    if (required) addTemplateIssue(warnings, debug, { code: 'TEMPLATE_FIELD_MISSING', severity: 'error', message: `Campo obrigatorio ausente no template: ${fieldSpec.fieldPath}.`, fieldPath: fieldSpec.fieldPath, accepted: false, reason: 'no valid numeric source' })
+    return { ...field(null, 'low'), source: 'bonfire-v2.1' }
+  }
+  return { ...field(result.value as number, 'high', `${result.resolvedAddress ?? result.source}: ${result.rawValue ?? String(result.value)}`), source: 'bonfire-v2.1' }
+}
+
+function resolveTemplateNumericSources(
+  workbook: WorkbookData,
+  sources: ReadonlyArray<{ sourceType: 'namedRange' | 'cell'; source: string; expectedLabels?: string[]; requireExpectedLabels?: boolean }>,
+  fieldPath: string,
+  debug: SheetParseDebugInfo,
+  warnings: ConversionWarning[],
+  required: boolean,
+): FieldValue<number | null> {
+  const result = resolveTemplateScalarSource(workbook, sources, fieldPath, debug, warnings, (value, source) => classifyTemplateAbilityNumber(source, value))
+  if (!result.accepted) {
+    if (required) addTemplateIssue(warnings, debug, { code: 'TEMPLATE_FIELD_MISSING', severity: 'error', message: `Campo obrigatorio ausente no template: ${fieldPath}.`, fieldPath, accepted: false, reason: 'numeric source missing' })
+    return { ...field(null, 'low'), source: 'bonfire-v2.1' }
+  }
+  return { ...field(result.value as number, 'high', `${result.resolvedAddress ?? result.source}: ${result.rawValue ?? String(result.value)}`), source: 'bonfire-v2.1' }
+}
+
+function resolveTemplateNumberList(
+  workbook: WorkbookData,
+  sources: readonly string[],
+  fieldPath: string,
+  debug: SheetParseDebugInfo,
+  warnings: ConversionWarning[],
+  required: boolean,
+): number[] {
+  for (const source of sources) {
+    const resolved = resolveTemplateRangeSource(workbook, source, fieldPath, debug, warnings)
+    const numericValues = resolved.values.map((value) => parseSignedNumber(value)).filter((value): value is number => value !== null)
+    if (numericValues.length) return numericValues
+  }
+  if (required) addTemplateIssue(warnings, debug, { code: 'TEMPLATE_FIELD_MISSING', severity: 'error', message: `Range obrigatoria vazia no template: ${fieldPath}.`, fieldPath, accepted: false, reason: 'range empty' })
+  return []
+}
+
+function resolveTemplateTextList(
+  workbook: WorkbookData,
+  sources: readonly string[],
+  fieldPath: string,
+  debug: SheetParseDebugInfo,
+  warnings: ConversionWarning[],
+  required: boolean,
+): string[] {
+  for (const source of sources) {
+    const resolved = resolveTemplateRangeSource(workbook, source, fieldPath, debug, warnings)
+    if (resolved.values.length) return resolved.values
+  }
+  if (required) addTemplateIssue(warnings, debug, { code: 'TEMPLATE_FIELD_MISSING', severity: 'error', message: `Range obrigatoria vazia no template: ${fieldPath}.`, fieldPath, accepted: false, reason: 'range empty' })
+  return []
+}
+
+function resolveTemplateScalarSource<T>(
+  workbook: WorkbookData,
+  sources: ReadonlyArray<{ sourceType: 'namedRange' | 'cell' | 'range'; source: string; expectedLabels?: string[]; requireExpectedLabels?: boolean }>,
+  fieldPath: string,
+  debug: SheetParseDebugInfo,
+  warnings: ConversionWarning[],
+  parser: (value: string, source: string) => T | null,
+): {
+  accepted: boolean
+  value: T | null
+  rawValue?: string
+  resolvedSheet?: string
+  resolvedAddress?: string
+  source: string
+} {
+  for (const sourceSpec of sources) {
+    const resolved = sourceSpec.sourceType === 'namedRange' ? resolveNamedRangeSource(workbook, sourceSpec.source, fieldPath, debug, warnings) : resolveWorkbookSource(workbook, sourceSpec.source, fieldPath, debug, warnings)
+    if (!resolved.values.length) continue
+    if (sourceSpec.expectedLabels?.length && sourceSpec.requireExpectedLabels && !resolvedMatchesExpectedLabels(workbook, resolved.cells, resolved.resolvedSheet, sourceSpec.expectedLabels)) {
+      pushTemplateAttempt(debug, {
+        fieldPath,
+        sourceType: sourceSpec.sourceType,
+        source: sourceSpec.source,
+        resolvedSheet: resolved.resolvedSheet,
+        resolvedAddress: resolved.resolvedAddress,
+        cellAddress: resolved.resolvedAddress,
+        rawValue: resolved.values.join(' | '),
+        normalizedValue: resolved.values.map((value) => normalizeSheetCellValue(value)).join(' | '),
+        accepted: false,
+        reason: `expected nearby label not found: ${sourceSpec.expectedLabels.join(', ')}`,
+        rejectedReason: `expected nearby label not found: ${sourceSpec.expectedLabels.join(', ')}`,
+      })
+      continue
+    }
+    for (const value of resolved.values) {
+      const parsed = parser(value, sourceSpec.source)
+      if (parsed === null) {
+        pushTemplateAttempt(debug, {
+          fieldPath,
+          sourceType: sourceSpec.sourceType,
+          source: sourceSpec.source,
+          resolvedSheet: resolved.resolvedSheet,
+          resolvedAddress: resolved.resolvedAddress,
+          cellAddress: resolved.resolvedAddress,
+          rawValue: value,
+          normalizedValue: normalizeSheetCellValue(value),
+          parsedValue: undefined,
+          accepted: false,
+          reason: 'value rejected by parser',
+          rejectedReason: 'value rejected by parser',
+        })
+        continue
+      }
+      pushTemplateFinalField(debug, {
+        fieldPath,
+        sourceType: sourceSpec.sourceType,
+        source: sourceSpec.source,
+        resolvedSheet: resolved.resolvedSheet,
+        resolvedAddress: resolved.resolvedAddress,
+        cellAddress: resolved.resolvedAddress,
+        rawValue: value,
+        normalizedValue: normalizeSheetCellValue(value),
+        parsedValue: typeof parsed === 'string' ? parsed : String(parsed),
+        accepted: true,
+        reason: 'resolved from template source',
+      })
+      return { accepted: true, value: parsed, rawValue: value, resolvedSheet: resolved.resolvedSheet, resolvedAddress: resolved.resolvedAddress, source: sourceSpec.source }
+    }
+  }
+  pushTemplateFinalField(debug, { fieldPath, accepted: false, reason: 'not found', rejectedReason: 'not found' })
+  return { accepted: false, value: null, source: sources[0]?.source ?? fieldPath }
+}
+
+function resolveNamedRangeSource(workbook: WorkbookData, source: string, fieldPath: string, debug: SheetParseDebugInfo, warnings: ConversionWarning[]) {
+  const name = normalizeNamedRangeRef(source)
+  const namedRangeValue = getNamedRangeValue(workbook, name)
+  if (!namedRangeValue) {
+    warnings.push(makeWarning('NAMED_RANGE_NOT_FOUND', `Named range nao encontrado: ${name}.`, fieldPath, name, 'warning'))
+    pushTemplateAttempt(debug, { fieldPath, sourceType: 'namedRange', source: name, accepted: false, reason: 'named range missing', rejectedReason: 'named range missing', issueCode: 'NAMED_RANGE_NOT_FOUND' })
+    return { values: [] as string[], resolvedSheet: undefined, resolvedAddress: undefined, cells: [] as SheetCell[] }
+  }
+  const values = namedRangeValue.cells.map((cell) => cleanTemplateCellValue(cell.value)).filter(Boolean) as string[]
+  if (!values.length) {
+    warnings.push(makeWarning('CELL_EMPTY', `Named range vazio: ${name}.`, fieldPath, namedRangeValue.resolvedAddress ?? name, 'warning'))
+    pushTemplateAttempt(debug, {
+      fieldPath,
+      sourceType: 'namedRange',
+      source: name,
+      resolvedSheet: namedRangeValue.resolvedSheetName ?? undefined,
+      resolvedAddress: namedRangeValue.resolvedAddress ?? undefined,
+      cellAddress: namedRangeValue.resolvedAddress ?? undefined,
+      accepted: false,
+      reason: 'named range empty',
+      rejectedReason: 'named range empty',
+      issueCode: 'CELL_EMPTY',
+    })
+  }
+  return { values, resolvedSheet: namedRangeValue.resolvedSheetName ?? undefined, resolvedAddress: namedRangeValue.resolvedAddress ?? undefined, cells: [...namedRangeValue.cells] }
+}
+
+function resolveWorkbookSource(workbook: WorkbookData, source: string, fieldPath: string, debug: SheetParseDebugInfo, _warnings: ConversionWarning[]) {
+  const resolved = getCellsFromWorkbookRef(workbook, source)
+  if (!resolved) {
+    pushTemplateAttempt(debug, { fieldPath, sourceType: source.includes(':') ? 'range' : 'cell', source, accepted: false, reason: 'invalid workbook ref', rejectedReason: 'invalid workbook ref' })
+    return { values: [] as string[], resolvedSheet: undefined, resolvedAddress: undefined, cells: [] as SheetCell[] }
+  }
+  const values = resolved.cells.map((cell) => cleanTemplateCellValue(cell.value)).filter(Boolean) as string[]
+  if (!values.length) {
+    pushTemplateAttempt(debug, {
+      fieldPath,
+      sourceType: resolved.parsed.kind,
+      source,
+      resolvedSheet: resolved.sheet?.name,
+      resolvedAddress: resolved.parsed.kind === 'cell' ? resolved.parsed.address : `${resolved.parsed.startAddress}:${resolved.parsed.endAddress}`,
+      cellAddress: resolved.parsed.kind === 'cell' ? resolved.parsed.address : `${resolved.parsed.startAddress}:${resolved.parsed.endAddress}`,
+      accepted: false,
+      reason: 'cell or range empty',
+      rejectedReason: 'cell or range empty',
+    })
+  }
+  return {
+    values,
+    resolvedSheet: resolved.sheet?.name,
+    resolvedAddress: resolved.parsed.kind === 'cell' ? resolved.parsed.address : `${resolved.parsed.startAddress}:${resolved.parsed.endAddress}`,
+    cells: resolved.cells,
+  }
+}
+
+function resolveTemplateRangeSource(workbook: WorkbookData, source: string, fieldPath: string, debug: SheetParseDebugInfo, warnings: ConversionWarning[]) {
+  const resolved = resolveWorkbookSource(workbook, source, fieldPath, debug, warnings)
+  if (resolved.values.length) {
+    pushTemplateFinalField(debug, {
+      fieldPath,
+      sourceType: 'range',
+      source,
+      resolvedSheet: resolved.resolvedSheet,
+      resolvedAddress: resolved.resolvedAddress,
+      cellAddress: resolved.resolvedAddress,
+      rawValue: resolved.values.join(' | '),
+      normalizedValue: resolved.values.map((value) => normalizeSheetCellValue(value)).join(' | '),
+      parsedValue: resolved.values.join(' | '),
+      accepted: true,
+      reason: 'resolved from template range',
+    })
+  }
+  return resolved
+}
+
+function classifyTemplateAbilityNumber(source: string, value: string): number | null {
+  const parsed = parseSignedNumber(value)
+  if (parsed === null) return null
+  const normalizedSource = source.toLowerCase()
+  if (normalizedSource.includes('mod') && parsed >= -5 && parsed <= 10) return parsed
+  if (parsed >= 1 && parsed <= 30) return parsed
+  if (parsed >= -5 && parsed <= 10) return parsed
+  return null
+}
+
+function parseLooseTemplateNumber(value: string): number | null {
+  const parsed = /([+-]?\d+)/.exec(value.replace(',', '.'))
+  if (!parsed) return null
+  const numeric = Number.parseInt(parsed[1], 10)
+  return Number.isFinite(numeric) ? numeric : null
+}
+
+function parseTemplateMovement(value: string): { value: number; units: 'ft' | 'm' | null } | null {
+  const numeric = parseLooseTemplateNumber(value)
+  if (numeric === null) return null
+  const normalized = normalizeSheetCellValue(value)
+  if (/\b(m|metros?)\b/.test(normalized)) return { value: numeric, units: 'm' }
+  return { value: numeric, units: 'ft' }
+}
+
+function resolvedMatchesExpectedLabels(workbook: WorkbookData, cells: SheetCell[], resolvedSheetName: string | undefined, expectedLabels: string[]): boolean {
+  if (!cells.length || !resolvedSheetName) return false
+  const sheet = getWorkbookSheet(workbook, resolvedSheetName)
+  if (!sheet) return false
+  const normalizedLabels = expectedLabels.map((label) => normalizeSheetCellValue(label))
+  return cells.some((cell) => {
+    const nearby = dedupeCells(
+      [
+        cell,
+        ...collectOffsetCells(sheet, cell, 2, 2),
+      ].filter(Boolean) as SheetCell[],
+    )
+    return nearby.some((candidate) => normalizedLabels.includes(candidate.normalized))
+  })
+}
+
+function collectOffsetCells(sheet: WorkbookSheet, origin: SheetCell, rowRadius: number, colRadius: number): SheetCell[] {
+  const cells: SheetCell[] = []
+  for (let rowOffset = -rowRadius; rowOffset <= rowRadius; rowOffset += 1) {
+    for (let colOffset = -colRadius; colOffset <= colRadius; colOffset += 1) {
+      if (rowOffset === 0 && colOffset === 0) continue
+      const candidate = getCellOrMerged(sheet, origin.row + rowOffset, origin.col + colOffset)
+      if (candidate) cells.push(candidate)
+    }
+  }
+  return cells
+}
+
+function cleanTemplateCellValue(value: string): string | null {
+  const trimmed = value.replace(/\r\n?/g, '\n').replace(/\n{2,}/g, '\n').trim()
+  if (!trimmed) return null
+  if (['-', '—', '#N/A', '#VALUE!'].includes(trimmed)) return null
+  return trimmed
+}
+
+function sanitizeTemplateText(value: string): string | null {
+  const cleaned = cleanTemplateCellValue(value)
+  if (!cleaned) return null
+  if (isUrlLike(cleaned)) return null
+  if (isProbablyTableHeaderOrNoise(cleaned)) return null
+  return cleaned
+}
+
+function remapSkillKeysFromLabels(labels: string[]): SkillKey[] {
+  const mapped = labels.map((label) => (Object.keys(skillDefinitions) as SkillKey[]).find((key) => skillDefinitions[key].aliases.some((alias) => normalizeSheetCellValue(alias) === normalizeSheetCellValue(label))) ?? bonfireV21SkillOrder[labels.indexOf(label)])
+  return mapped.every(Boolean) ? (mapped as SkillKey[]) : bonfireV21SkillOrder
+}
+
+function addTemplateIssue(
+  warnings: ConversionWarning[],
+  debug: SheetParseDebugInfo,
+  options: {
+    code: string
+    severity: ConversionWarning['severity']
+    message: string
+    fieldPath?: string
+    raw?: string
+    sourceType?: 'namedRange' | 'cell' | 'range' | 'derived' | 'static'
+    source?: string
+    accepted: boolean
+    reason?: string
+  },
+) {
+  warnings.push(makeWarning(options.code, options.message, options.fieldPath, options.raw, options.severity))
+  pushTemplateFinalField(debug, {
+    fieldPath: options.fieldPath ?? 'template',
+    sourceType: options.sourceType,
+    source: options.source,
+    rawValue: options.raw,
+    accepted: options.accepted,
+    reason: options.reason ?? options.message,
+    rejectedReason: options.accepted ? undefined : options.reason ?? options.message,
+    issueCode: options.code,
+  })
+}
+
+function markTemplateFieldIssue(debug: SheetParseDebugInfo, fieldPath: string, issueCode: string, reason: string) {
+  const index = debug.finalExtractedFields.findIndex((entry) => entry.fieldPath === fieldPath)
+  if (index >= 0) {
+    debug.finalExtractedFields[index] = { ...debug.finalExtractedFields[index], accepted: false, issueCode, rejectedReason: reason, reason }
+    return
+  }
+  pushTemplateFinalField(debug, { fieldPath, accepted: false, issueCode, reason, rejectedReason: reason })
+}
+
+function pushTemplateAttempt(debug: SheetParseDebugInfo, entry: ExtractedFieldDebugEntry) {
+  debug.extractedFields.push(entry)
+  debug.extractionAttempts.push(entry)
+}
+
+function pushTemplateFinalField(debug: SheetParseDebugInfo, entry: ExtractedFieldDebugEntry) {
+  pushTemplateAttempt(debug, entry)
+  const index = debug.finalExtractedFields.findIndex((candidate) => candidate.fieldPath === entry.fieldPath)
+  if (index >= 0) debug.finalExtractedFields[index] = { ...debug.finalExtractedFields[index], ...entry }
+  else debug.finalExtractedFields.push(entry)
+}
+
 export function parseEquipmentTable(sheet: WorkbookSheet): Array<{ value: string; raw: string }> {
   const section = findAnchorCell(sheet, sectionAnchorAliases.equipment)
   if (!section) return []
@@ -329,6 +1179,9 @@ function buildResult(workbook: WorkbookData, detection: ReturnType<typeof detect
     character,
     rawWorkbookMeta: {
       sheetNames: workbook.sheetNames,
+      selectedSheets: debug.selectedSheets,
+      ignoredSheets: debug.ignoredSheets,
+      readMode: debug.readMode,
       detectedTemplate: detection.templateId ?? (detection.confidence === 'low' ? 'unknown' : 'bonfire-character-sheet'),
       templateId: detection.templateId,
       confidence: detection.confidence,
@@ -1443,7 +2296,7 @@ function setExtractedField({
     rejectedReason: accepted ? undefined : 'not found',
   }
   const existingIndex = debug.finalExtractedFields.findIndex((candidate) => candidate.fieldPath === fieldPath)
-  if (existingIndex >= 0) debug.finalExtractedFields[existingIndex] = entry
+  if (existingIndex >= 0) debug.finalExtractedFields[existingIndex] = { ...debug.finalExtractedFields[existingIndex], ...entry }
   else debug.finalExtractedFields.push(entry)
 }
 

@@ -53,13 +53,19 @@ export function detectBonfireLogTemplate(sheet: WorkbookSheet): BonfireLogTempla
   const confidence = hits.length >= 7 && abilityCount >= 4 ? 'high' : 'medium'
   const region: SheetRegionCandidate = {
     sheetName: sheet.name,
+    regionName: 'template-bonfire-log-v2',
     templateId: 'bonfire-log-v2',
     bounds: { startRow: 0, endRow: Math.min(119, Math.max(sheet.rows.length - 1, 100)), startCol: 0, endCol: 39 },
+    minRow: 0,
+    maxRow: Math.min(119, Math.max(sheet.rows.length - 1, 100)),
+    minCol: 0,
+    maxCol: 39,
     score,
     confidence,
     positiveAnchors: hits,
     negativeAnchors: [],
     ignoredOutsideRegion: [],
+    ignoredNegativeAnchors: [],
     anchorCategories: categories,
     rejectionReasons: [],
   }

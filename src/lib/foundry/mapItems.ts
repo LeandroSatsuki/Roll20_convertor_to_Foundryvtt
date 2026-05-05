@@ -1,11 +1,10 @@
 import type { NormalizedCharacter, NormalizedEquipment } from '../normalize/normalizedCharacterTypes'
 import type { FoundryItem } from './foundryTypes'
-import { foundryId } from './ids'
 import { makeUniqueFoundryIdentifier } from './identifiers'
-import { itemStats } from './mapWeapons'
 import { resolveFeature } from '../rules/featureResolver'
 import { defaultBonfireRuleStore } from '../rules/bonfireRuleStore'
 import { buildArmorItem, buildConsumableItem, buildEquipmentItem, buildFeatItem, buildGenericItem, buildSpellItem, buildWeaponItem } from './items'
+import { buildRuleDescriptionMeta } from './items/ruleDescription'
 
 export function mapItems(character: NormalizedCharacter): FoundryItem[] {
   const usedItemIdentifiers = new Set<string>()
@@ -24,6 +23,15 @@ export function mapItems(character: NormalizedCharacter): FoundryItem[] {
   }
 
   if (character.identity.background.value) {
+    const resolution = toSimpleRuleResolution(character.identity.background.value, 'background')
+    const descriptionMeta = buildRuleDescriptionMeta({
+      itemName: character.identity.background.value,
+      itemKind: 'background',
+      ruleId: resolution.ruleId as string | undefined,
+      fallbackText: 'Antecedente extraido do PDF.',
+      sourceUrl: resolution.sourceUrl as string | undefined,
+      sourceName: 'Bonfire Tales',
+    })
     items.push(
       buildGenericItem({
         name: character.identity.background.value,
@@ -31,13 +39,23 @@ export function mapItems(character: NormalizedCharacter): FoundryItem[] {
         img: 'icons/svg/book.svg',
         identifier: nextIdentifier(character.identity.background.value, usedItemIdentifiers, 'background'),
         description: 'Antecedente extraido do PDF.',
-        sourceBook: 'Roll20 PDF',
+        descriptionHtml: descriptionMeta.html,
+        sourceBook: 'Bonfire Tales / Sheet',
         converterFlags: {
           source: 'roll20-pdf',
           confidence: character.identity.background.confidence,
           sourceType: 'background',
           raw: character.identity.background.raw ?? character.identity.background.value,
-          ruleResolution: toSimpleRuleResolution(character.identity.background.value, 'background'),
+          sourceUrl: descriptionMeta.sourceUrl,
+          descriptionMeta: {
+            status: descriptionMeta.status,
+            sourceUrl: descriptionMeta.sourceUrl ?? null,
+            sourceName: descriptionMeta.sourceName ?? null,
+            warningCodes: descriptionMeta.warningCodes,
+            warningMessages: descriptionMeta.warningMessages,
+            overrideApplied: false,
+          },
+          ruleResolution: resolution,
         },
         automation: { requestedLevel: 'none' },
       }),
@@ -45,6 +63,15 @@ export function mapItems(character: NormalizedCharacter): FoundryItem[] {
   }
 
   if (character.identity.race.value) {
+    const resolution = toSimpleRuleResolution(character.identity.race.value, 'race')
+    const descriptionMeta = buildRuleDescriptionMeta({
+      itemName: character.identity.race.value,
+      itemKind: 'race',
+      ruleId: resolution.ruleId as string | undefined,
+      fallbackText: 'Raca extraida do PDF; revisar tipo species/race.',
+      sourceUrl: resolution.sourceUrl as string | undefined,
+      sourceName: 'Bonfire Tales',
+    })
     items.push(
       buildGenericItem({
         name: character.identity.race.value,
@@ -52,13 +79,23 @@ export function mapItems(character: NormalizedCharacter): FoundryItem[] {
         img: 'icons/svg/item-bag.svg',
         identifier: nextIdentifier(character.identity.race.value, usedItemIdentifiers, 'race'),
         description: 'Raca extraida do PDF; revisar tipo species/race.',
-        sourceBook: 'Roll20 PDF',
+        descriptionHtml: descriptionMeta.html,
+        sourceBook: 'Bonfire Tales / Sheet',
         converterFlags: {
           source: 'roll20-pdf',
           confidence: character.identity.race.confidence,
           sourceType: 'race',
           raw: character.identity.race.raw ?? character.identity.race.value,
-          ruleResolution: toSimpleRuleResolution(character.identity.race.value, 'race'),
+          sourceUrl: descriptionMeta.sourceUrl,
+          descriptionMeta: {
+            status: descriptionMeta.status,
+            sourceUrl: descriptionMeta.sourceUrl ?? null,
+            sourceName: descriptionMeta.sourceName ?? null,
+            warningCodes: descriptionMeta.warningCodes,
+            warningMessages: descriptionMeta.warningMessages,
+            overrideApplied: false,
+          },
+          ruleResolution: resolution,
         },
         automation: { requestedLevel: 'none' },
       }),
@@ -124,41 +161,54 @@ function nextIdentifier(name: unknown, usedItemIdentifiers: Set<string>, fallbac
 
 function mapClassItem(name: string, level: number, identifier: string): FoundryItem {
   const resolution = resolveFeature(name, { section: 'class', className: name, level }, defaultBonfireRuleStore)
-  return {
-    _id: foundryId(),
+  const descriptionMeta = buildRuleDescriptionMeta({
+    itemName: name,
+    itemKind: 'class',
+    ruleId: resolution.ruleId,
+    fallbackText: 'Classe extraida da ficha Roll20 PDF.',
+    sourceUrl: resolution.sourceUrl,
+    sourceName: 'Bonfire Tales',
+  })
+  return buildGenericItem({
     name,
     type: 'class',
     img: 'icons/svg/book.svg',
-    system: {
-      identifier,
-      description: { value: '<p>Classe extraida da ficha Roll20 PDF.</p>', chat: '' },
-      levels: level,
-      hitDice: 'd10',
-      source: { rules: '2024', book: 'Roll20 PDF', page: '', license: '' },
-      advancement: [],
-    },
-    effects: [],
-    folder: null,
-    flags: {
-      'roll20-to-foundry': {
-        source: 'roll20-pdf',
+    identifier,
+    description: 'Classe extraida da ficha Roll20 PDF.',
+    descriptionHtml: descriptionMeta.html,
+    sourceBook: 'Bonfire Tales / Sheet',
+    converterFlags: {
+      source: 'roll20-pdf',
+      confidence: resolution.confidence,
+      raw: `${name} ${level}`,
+      sourceUrl: descriptionMeta.sourceUrl,
+      descriptionMeta: {
+        status: descriptionMeta.status,
+        sourceUrl: descriptionMeta.sourceUrl ?? null,
+        sourceName: descriptionMeta.sourceName ?? null,
+        warningCodes: descriptionMeta.warningCodes,
+        warningMessages: descriptionMeta.warningMessages,
+        overrideApplied: false,
+      },
+      ruleResolution: {
+        rawName: name,
+        resolvedName: resolution.resolvedName,
+        kind: 'class',
         confidence: resolution.confidence,
-        raw: `${name} ${level}`,
-        ruleResolution: {
-          rawName: name,
-          resolvedName: resolution.resolvedName,
-          kind: 'class',
-          confidence: resolution.confidence,
-          score: resolution.score ?? 0,
-          ruleId: resolution.ruleId,
-          sourceUrl: resolution.sourceUrl,
-          candidates: resolution.candidates ?? [],
-          manuallyResolved: false,
-        },
+        score: resolution.score ?? 0,
+        ruleId: resolution.ruleId,
+        sourceUrl: resolution.sourceUrl,
+        candidates: resolution.candidates ?? [],
+        manuallyResolved: false,
       },
     },
-    _stats: itemStats(),
-  }
+    system: {
+      levels: level,
+      hitDice: 'd10',
+      advancement: [],
+    },
+    automation: { requestedLevel: 'none' },
+  })
 }
 
 function dedupeItems(items: FoundryItem[]): FoundryItem[] {

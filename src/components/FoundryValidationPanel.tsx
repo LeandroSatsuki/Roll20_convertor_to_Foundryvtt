@@ -5,25 +5,29 @@ export function FoundryValidationPanel({ report }: { report: FoundryExportAuditR
   return (
     <section className="audit-panel">
       <header className={`audit-status ${report.importReadiness.canExport ? (report.summary.warningCount ? 'warning' : 'ready') : 'blocked'}`}>
-        <strong>{report.importReadiness.canExport ? (report.summary.warningCount ? 'Precisa de revisão' : 'Pronto para importar') : 'Bloqueado'}</strong>
+        <strong>{report.importReadiness.canExport ? (report.summary.warningCount ? 'Precisa de revisao' : 'Pronto para importar') : 'Bloqueado'}</strong>
         <span>{report.actorName}</span>
       </header>
       <div className="audit-summary">
         <span>Itens: {report.summary.itemCount}</span>
         <span>Warnings: {report.summary.warningCount}</span>
         <span>Erros: {report.summary.errorCount}</span>
-        <span>Identifiers inválidos: {report.summary.invalidIdentifierCount}</span>
-        <span>Features não resolvidas: {report.summary.unresolvedFeatureCount}</span>
+        <span>Identifiers invalidos: {report.summary.invalidIdentifierCount}</span>
+        <span>Features nao resolvidas: {report.summary.unresolvedFeatureCount}</span>
         <span>Rules high: {report.summary.resolvedHighCount}</span>
         <span>Rules medium: {report.summary.resolvedMediumCount}</span>
         <span>Rules low: {report.summary.resolvedLowCount}</span>
         <span>Unknown: {report.summary.unresolvedCount}</span>
-        <span>Genéricos: {report.summary.genericItemCount}</span>
+        <span>Genericos: {report.summary.genericItemCount}</span>
+        <span>Descricoes completas: {report.summary.describedItemCount}</span>
+        <span>Descricoes fallback: {report.summary.descriptionFallbackCount}</span>
+        <span>Descricoes ausentes: {report.summary.missingDescriptionCount}</span>
+        <span>Itens com URL: {report.summary.sourceUrlCount}</span>
         <span>Auto full: {report.summary.automatedFullCount}</span>
         <span>Auto parcial: {report.summary.automatedPartialCount}</span>
         <span>Auto none: {report.summary.automatedNoneCount}</span>
         <span>Activities: {report.summary.activitiesCount}</span>
-        <span>Activities inválidas: {report.summary.invalidActivitiesCount}</span>
+        <span>Activities invalidas: {report.summary.invalidActivitiesCount}</span>
         <span>Uses configurados: {report.summary.usesConfiguredCount}</span>
         <span>Recovery configurado: {report.summary.recoveryConfiguredCount}</span>
       </div>
@@ -35,6 +39,12 @@ export function FoundryValidationPanel({ report }: { report: FoundryExportAuditR
           ))}
         </div>
       ) : null}
+      <div className="audit-blockers">
+        <h3>Descricoes dos itens</h3>
+        <p>Completas: {report.auditDebug.itemDescriptions.complete.map((item) => item.name).join(', ') || 'nenhum'}</p>
+        <p>Fallback: {report.auditDebug.itemDescriptions.fallback.map((item) => item.name).join(', ') || 'nenhum'}</p>
+        <p>Ausentes: {report.auditDebug.itemDescriptions.missing.map((item) => item.name).join(', ') || 'nenhum'}</p>
+      </div>
       <div className="warnings">
         {report.validations.map((result, index) => (
           <article className={`warning ${result.severity}`} key={`${result.code}-${index}`}>

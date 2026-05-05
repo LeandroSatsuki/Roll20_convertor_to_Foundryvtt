@@ -96,6 +96,7 @@ export type NormalizedSpell = {
   name: FieldValue<string>
   level: number
   raw: string
+  prepared?: boolean
 }
 
 export type NormalizedEquipment = {

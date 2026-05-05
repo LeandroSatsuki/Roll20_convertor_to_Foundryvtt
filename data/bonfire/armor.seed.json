@@ -1,4 +1,21 @@
 [
-  { "id": "scale-mail", "identifier": "scale-mail", "name": "Scale Mail", "kind": "armor", "foundry": { "itemType": "equipment" } },
-  { "id": "shield", "identifier": "shield", "name": "Shield", "kind": "armor", "aliases": ["Escudo"], "foundry": { "itemType": "equipment" } }
+  {
+    "id": "scale-mail",
+    "identifier": "scale-mail",
+    "name": "Scale Mail",
+    "kind": "armor",
+    "shortDescription": "Armadura média com proteção consistente e alguma desvantagem furtiva.",
+    "description": "Armadura média de escamas sobre base reforçada, oferecendo boa proteção com alguma perda de discrição.",
+    "foundry": { "itemType": "equipment" }
+  },
+  {
+    "id": "shield",
+    "identifier": "shield",
+    "name": "Shield",
+    "kind": "armor",
+    "aliases": ["Escudo"],
+    "shortDescription": "Escudo que melhora a defesa corpo a corpo e a sobrevivência.",
+    "description": "Escudo de uso defensivo que amplia cobertura e estabilidade na linha de frente.",
+    "foundry": { "itemType": "equipment" }
+  }
 ]

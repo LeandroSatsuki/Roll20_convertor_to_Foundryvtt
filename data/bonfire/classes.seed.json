@@ -1,4 +1,22 @@
 [
-  { "id": "clerigo", "identifier": "clerigo", "name": "Clérigo", "kind": "class", "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/jogadores-category" },
-  { "id": "guerreiro", "identifier": "guerreiro", "name": "Guerreiro", "kind": "class", "aliases": ["Fighter"], "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/jogadores-category" }
+  {
+    "id": "clerigo",
+    "identifier": "clerigo",
+    "name": "Clérigo",
+    "kind": "class",
+    "aliases": ["Clerigo", "Cleric"],
+    "shortDescription": "Classe divina focada em Sabedoria, suporte, cura e milagres.",
+    "description": "Clérigos canalizam poder divino por meio da fé, dos ritos e da autoridade sagrada. São conjuradores completos, usam Sabedoria como atributo principal e sustentam o grupo com magia, proteção e milagres.",
+    "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/clerigo-article"
+  },
+  {
+    "id": "guerreiro",
+    "identifier": "guerreiro",
+    "name": "Guerreiro",
+    "kind": "class",
+    "aliases": ["Fighter"],
+    "shortDescription": "Classe marcial versátil focada em armas, armaduras e presença em combate.",
+    "description": "Guerreiros são especialistas marciais cuja força vem de treinamento, disciplina e versatilidade em combate. A classe sustenta a linha de frente com armaduras, armas variadas e recursos de explosão tática.",
+    "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/guerreiro-article"
+  }
 ]

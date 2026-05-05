@@ -1,5 +1,29 @@
 [
-  { "id": "shortbow", "identifier": "shortbow", "name": "Shortbow", "kind": "weapon", "foundry": { "itemType": "weapon", "damageFormula": "1d6", "damageType": "piercing" } },
-  { "id": "shortsword", "identifier": "shortsword", "name": "Shortsword", "kind": "weapon", "foundry": { "itemType": "weapon", "damageFormula": "1d6", "damageType": "slashing" } },
-  { "id": "handaxe", "identifier": "handaxe", "name": "Handaxe", "kind": "weapon", "aliases": ["Machado de Mão"] }
+  {
+    "id": "shortbow",
+    "identifier": "shortbow",
+    "name": "Shortbow",
+    "kind": "weapon",
+    "shortDescription": "Arma de disparo leve com bom alcance tático.",
+    "description": "Arco curto leve e versátil, adequado para ataques à distância rápidos e repetidos.",
+    "foundry": { "itemType": "weapon", "damageFormula": "1d6", "damageType": "piercing" }
+  },
+  {
+    "id": "shortsword",
+    "identifier": "shortsword",
+    "name": "Shortsword",
+    "kind": "weapon",
+    "shortDescription": "Arma leve e ágil para combate próximo.",
+    "description": "Lâmina curta de uso rápido, popular entre duelistas e combatentes móveis.",
+    "foundry": { "itemType": "weapon", "damageFormula": "1d6", "damageType": "slashing" }
+  },
+  {
+    "id": "handaxe",
+    "identifier": "handaxe",
+    "name": "Handaxe",
+    "kind": "weapon",
+    "aliases": ["Machado de Mão"],
+    "shortDescription": "Arma leve que pode ser usada ou arremessada.",
+    "description": "Machado de mão simples, útil em curta distância e arremesso oportuno."
+  }
 ]

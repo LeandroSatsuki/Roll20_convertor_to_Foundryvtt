@@ -3,8 +3,9 @@ import type { AbilityKey, NormalizedCharacter } from '../normalize/normalizedCha
 export function mapAbilities(character: NormalizedCharacter): Record<AbilityKey, unknown> {
   const result = {} as Record<AbilityKey, unknown>
   for (const key of ['str', 'dex', 'con', 'int', 'wis', 'cha'] as AbilityKey[]) {
+    const abilityValue = typeof character.abilities[key].score.value === 'number' ? character.abilities[key].score.value : null
     result[key] = {
-      value: typeof character.abilities[key].score.value === 'number' ? character.abilities[key].score.value : 10,
+      value: abilityValue,
       proficient: character.saves[key].proficient.value ? 1 : 0,
       max: null,
       bonuses: {

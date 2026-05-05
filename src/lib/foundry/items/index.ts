@@ -1,6 +1,7 @@
 import type { AbilityKey, NormalizedAttack, NormalizedEquipment, NormalizedFeature, NormalizedResource, NormalizedSpell } from '../../normalize/normalizedCharacterTypes'
 import { resolveFeature } from '../../rules/featureResolver'
 import { defaultBonfireRuleStore } from '../../rules/bonfireRuleStore'
+import { resolveSpellOverride } from '../../rules/spellResolver'
 import { resolveWeaponOrEquipment } from '../../rules/weaponResolver'
 import type { FeatureResolution } from '../../rules/bonfireTypes'
 import { createAttackActivity, createCastActivity, createHealActivity, createUtilityActivity, validateActivityShape, type FoundryActivityShape } from '../activities'
@@ -8,6 +9,7 @@ import type { FoundryItem } from '../foundryTypes'
 import { foundryId } from '../ids'
 import { toFoundryIdentifier } from '../identifiers'
 import { escapeHtml, itemStats } from '../mapWeapons'
+import { buildRuleDescriptionMeta, buildSpellDescriptionMeta, type ItemDescriptionMeta } from './ruleDescription'
 
 export type ItemAutomationLevel = 'full' | 'partial' | 'none'
 
@@ -28,6 +30,7 @@ type BaseItemBuildOptions = {
   img: string
   identifier: string
   description: string
+  descriptionHtml?: string
   sourceBook: string
   converterFlags: Record<string, unknown>
   system?: Record<string, unknown>
@@ -60,7 +63,7 @@ export function buildGenericItem(options: BaseItemBuildOptions): FoundryItem {
     img: options.img,
     system: {
       identifier: options.identifier,
-      description: { value: `<p>${escapeHtml(options.description)}</p>`, chat: '' },
+      description: { value: options.descriptionHtml ?? `<p>${escapeHtml(options.description)}</p>`, chat: '' },
       source: { ...defaultSource, book: options.sourceBook },
       uses: { spent: null, max: '', recovery: [] },
       activities: {},
@@ -77,6 +80,21 @@ export function buildGenericItem(options: BaseItemBuildOptions): FoundryItem {
   return applyAutomation(item, options.automation)
 }
 
+function mergeDescriptionMeta(flags: Record<string, unknown>, meta: ItemDescriptionMeta): Record<string, unknown> {
+  return {
+    ...flags,
+    sourceUrl: meta.sourceUrl ?? flags.sourceUrl,
+    descriptionMeta: {
+      status: meta.status,
+      sourceUrl: meta.sourceUrl ?? null,
+      sourceName: meta.sourceName ?? null,
+      warningCodes: meta.warningCodes,
+      warningMessages: meta.warningMessages,
+      overrideApplied: Boolean(meta.overrideApplied),
+    },
+  }
+}
+
 export function buildFeatItem(options: {
   feature?: NormalizedFeature
   resource?: NormalizedResource
@@ -87,7 +105,14 @@ export function buildFeatItem(options: {
   const name = options.feature?.name.value ?? options.resource?.label.value ?? 'Unknown Feature'
   const raw = options.feature?.raw ?? options.resource?.raw ?? name
   const resolution = resolveFeature(raw || name, { ...options.context, section: options.feature?.sourceType ?? 'action' }, defaultBonfireRuleStore)
-  const description = resolution.description || options.feature?.description.value || raw
+  const descriptionMeta = buildRuleDescriptionMeta({
+    itemName: resolution.confidence === 'low' ? name : resolution.resolvedName,
+    itemKind: resolution.kind,
+    ruleId: resolution.ruleId,
+    fallbackText: options.feature?.description.value || raw,
+    sourceUrl: resolution.sourceUrl,
+    sourceName: 'Bonfire Tales',
+  })
   const max = typeof resolution.uses?.max === 'number' ? resolution.uses.max : options.feature?.uses?.max.value ?? options.resource?.max.value ?? null
   const currentValue = options.feature?.uses?.value.value ?? options.resource?.value.value ?? null
   const spent = typeof max === 'number' && typeof currentValue === 'number' ? Math.max(max - currentValue, 0) : typeof max === 'number' ? 0 : null
@@ -96,7 +121,7 @@ export function buildFeatItem(options: {
   const usesConfigured = max !== null
   const recoveryConfigured = recovery.length > 0
   const activities: FoundryActivityShape[] = []
-  const warnings = resolution.warnings.map((warning) => warning.message)
+  const warnings = [...resolution.warnings.map((warning) => warning.message), ...descriptionMeta.warningMessages]
   let requestedLevel: ItemAutomationLevel = 'none'
   let structuredAutomationConfigured = usesConfigured || recoveryConfigured
   const system: Record<string, unknown> = {
@@ -141,9 +166,10 @@ export function buildFeatItem(options: {
     type: 'feat',
     img: resolution.kind === 'spellcasting' ? 'icons/svg/book.svg' : 'icons/svg/item-bag.svg',
     identifier: options.identifier,
-    description,
+    description: options.feature?.description.value || raw,
+    descriptionHtml: descriptionMeta.html,
     sourceBook: resolution.kind === 'spellcasting' ? 'Bonfire Tales' : 'Bonfire Tales / Sheet',
-    converterFlags: {
+    converterFlags: mergeDescriptionMeta({
       rawName: raw,
       resolvedKind: resolution.kind,
       confidence: resolution.confidence,
@@ -151,7 +177,7 @@ export function buildFeatItem(options: {
       sourceUrl: resolution.sourceUrl,
       warnings,
       ruleResolution: toRuleResolution(resolution, raw, raw),
-    },
+    }, descriptionMeta),
     system,
     automation: {
       requestedLevel,
@@ -166,13 +192,21 @@ export function buildFeatItem(options: {
 
 export function buildWeaponItem(attack: NormalizedAttack, identifier: string): FoundryItem {
   const rule = resolveWeaponOrEquipment(attack.name.value)
+  const descriptionMeta = buildRuleDescriptionMeta({
+    itemName: rule?.name ?? attack.name.value,
+    itemKind: 'weapon',
+    ruleId: rule?.id,
+    fallbackText: attack.raw || attack.name.value,
+    sourceUrl: rule?.sourceUrl,
+    sourceName: 'Bonfire Tales',
+  })
   const formula = attack.damageFormula.value ?? rule?.damage ?? ''
   const damage = parseDamageFormula(formula)
   const damageType = attack.damageType.value ?? rule?.damageType ?? ''
   const mode = rule?.properties.includes('ammunition') ? 'ranged' : 'melee'
   const ability = mode === 'ranged' ? 'dex' : 'str'
   const activities: FoundryActivityShape[] = []
-  const warnings: string[] = []
+  const warnings: string[] = [...descriptionMeta.warningMessages]
   let requestedLevel: ItemAutomationLevel = 'partial'
 
   if (damage.formula && damageType) {
@@ -201,8 +235,9 @@ export function buildWeaponItem(attack: NormalizedAttack, identifier: string): F
     img: 'icons/weapons/bows/shortbow-recurve-leather-brown.webp',
     identifier,
     description: attack.raw || attack.name.value,
-    sourceBook: 'Roll20 PDF',
-    converterFlags: {
+    descriptionHtml: descriptionMeta.html,
+    sourceBook: 'Bonfire Tales / Sheet',
+    converterFlags: mergeDescriptionMeta({
       source: 'roll20-pdf',
       confidence: attack.name.confidence,
       raw: attack.raw,
@@ -218,7 +253,7 @@ export function buildWeaponItem(attack: NormalizedAttack, identifier: string): F
         candidates: rule ? [{ ruleId: rule.id, name: rule.name, kind: 'weapon', score: 100, confidence: 'high' }] : [],
         manuallyResolved: false,
       },
-    },
+    }, descriptionMeta),
     system: {
       equipped: true,
       proficient: 1,
@@ -245,7 +280,15 @@ export function buildWeaponItem(attack: NormalizedAttack, identifier: string): F
 
 export function buildArmorItem(item: NormalizedEquipment, identifier: string): FoundryItem {
   const rule = resolveWeaponOrEquipment(item.name.value)
-  const warnings: string[] = []
+  const descriptionMeta = buildRuleDescriptionMeta({
+    itemName: rule?.name ?? item.name.value,
+    itemKind: 'armor',
+    ruleId: rule?.id,
+    fallbackText: item.raw,
+    sourceUrl: rule?.sourceUrl,
+    sourceName: 'Bonfire Tales',
+  })
+  const warnings: string[] = [...descriptionMeta.warningMessages]
   let structuredAutomationConfigured = false
   let requestedLevel: ItemAutomationLevel = 'partial'
   const system: Record<string, unknown> = {
@@ -276,8 +319,9 @@ export function buildArmorItem(item: NormalizedEquipment, identifier: string): F
     img: /shield/i.test(item.name.value) ? 'icons/equipment/shield/heater-crystal-blue.webp' : 'icons/equipment/chest/breastplate-layered-steel.webp',
     identifier,
     description: rule?.properties.join(', ') || item.raw,
+    descriptionHtml: descriptionMeta.html,
     sourceBook: 'Bonfire Tales / Sheet',
-    converterFlags: {
+    converterFlags: mergeDescriptionMeta({
       rawName: item.raw,
       resolvedKind: rule?.category === 'shield' ? 'armor' : 'armor',
       confidence: item.name.confidence,
@@ -295,7 +339,7 @@ export function buildArmorItem(item: NormalizedEquipment, identifier: string): F
         candidates: rule ? [{ ruleId: rule.id, name: rule.name, kind: 'armor', score: 100, confidence: 'high' }] : [],
         manuallyResolved: false,
       },
-    },
+    }, descriptionMeta),
     system,
     automation: {
       requestedLevel,
@@ -307,7 +351,15 @@ export function buildArmorItem(item: NormalizedEquipment, identifier: string): F
 
 export function buildConsumableItem(item: NormalizedEquipment, identifier: string): FoundryItem {
   const rule = resolveWeaponOrEquipment(item.name.value)
-  const warnings: string[] = []
+  const descriptionMeta = buildRuleDescriptionMeta({
+    itemName: rule?.name ?? item.name.value,
+    itemKind: 'consumable',
+    ruleId: rule?.id,
+    fallbackText: item.raw,
+    sourceUrl: rule?.sourceUrl,
+    sourceName: 'Bonfire Tales',
+  })
+  const warnings: string[] = [...descriptionMeta.warningMessages]
   const activities: FoundryActivityShape[] = []
   let usesConfigured = false
   let recoveryConfigured = false
@@ -351,8 +403,9 @@ export function buildConsumableItem(item: NormalizedEquipment, identifier: strin
     img: 'icons/consumables/potions/potion-bottle-red.webp',
     identifier,
     description: rule?.properties.join(', ') || item.raw,
+    descriptionHtml: descriptionMeta.html,
     sourceBook: 'Bonfire Tales / Sheet',
-    converterFlags: {
+    converterFlags: mergeDescriptionMeta({
       rawName: item.raw,
       resolvedKind: 'consumable',
       confidence: item.name.confidence,
@@ -370,7 +423,7 @@ export function buildConsumableItem(item: NormalizedEquipment, identifier: strin
         candidates: rule ? [{ ruleId: rule.id, name: rule.name, kind: 'consumable', score: 100, confidence: 'high' }] : [],
         manuallyResolved: false,
       },
-    },
+    }, descriptionMeta),
     system,
     automation: {
       requestedLevel,
@@ -385,7 +438,15 @@ export function buildConsumableItem(item: NormalizedEquipment, identifier: strin
 
 export function buildEquipmentItem(item: NormalizedEquipment, identifier: string): FoundryItem {
   const rule = resolveWeaponOrEquipment(item.name.value)
-  const warnings: string[] = []
+  const descriptionMeta = buildRuleDescriptionMeta({
+    itemName: rule?.name ?? item.name.value,
+    itemKind: item.category === 'tool' ? 'tool' : rule?.category ?? item.category,
+    ruleId: rule?.id,
+    fallbackText: item.raw,
+    sourceUrl: rule?.sourceUrl,
+    sourceName: 'Bonfire Tales',
+  })
+  const warnings: string[] = [...descriptionMeta.warningMessages]
   const isHolySymbol = /Holy Symbol|S[íi]mbolo Sagrado/i.test(item.name.value)
   const itemType = isHolySymbol ? 'equipment' : item.category === 'tool' ? 'tool' : 'equipment'
   const system: Record<string, unknown> = {
@@ -412,8 +473,9 @@ export function buildEquipmentItem(item: NormalizedEquipment, identifier: string
     img: isHolySymbol ? 'icons/sundries/symbols/cross-star-gold.webp' : 'icons/svg/item-bag.svg',
     identifier,
     description: rule?.properties.join(', ') || item.raw,
+    descriptionHtml: descriptionMeta.html,
     sourceBook: 'Bonfire Tales / Sheet',
-    converterFlags: {
+    converterFlags: mergeDescriptionMeta({
       rawName: item.raw,
       resolvedKind: rule?.category ?? item.category,
       confidence: item.name.confidence,
@@ -431,7 +493,7 @@ export function buildEquipmentItem(item: NormalizedEquipment, identifier: string
         candidates: rule ? [{ ruleId: rule.id, name: rule.name, kind: rule.category, score: 100, confidence: 'high' }] : [],
         manuallyResolved: false,
       },
-    },
+    }, descriptionMeta),
     system,
     automation: {
       requestedLevel,
@@ -442,14 +504,21 @@ export function buildEquipmentItem(item: NormalizedEquipment, identifier: string
 }
 
 export function buildSpellItem(spell: NormalizedSpell): FoundryItem {
+  const override = resolveSpellOverride(spell.name.value)
+  const descriptionMeta = buildSpellDescriptionMeta({
+    itemName: spell.name.value,
+    fallbackText: spell.raw,
+    overrideRule: override,
+  })
   return buildGenericItem({
     name: spell.name.value,
     type: 'spell',
     img: 'icons/svg/book.svg',
     identifier: toFoundryIdentifier(spell.name.value, 'spell'),
     description: spell.raw,
+    descriptionHtml: descriptionMeta.html,
     sourceBook: 'Bonfire Tales / Sheet',
-    converterFlags: {
+    converterFlags: mergeDescriptionMeta({
       source: 'sheet',
       confidence: spell.name.confidence,
       raw: spell.raw,
@@ -459,12 +528,15 @@ export function buildSpellItem(spell: NormalizedSpell): FoundryItem {
         kind: 'spell',
         confidence: spell.name.confidence,
         score: spell.name.confidence === 'high' ? 100 : 50,
-        candidates: [],
+        ruleId: override?.id,
+        sourceUrl: override?.sourceUrl,
+        candidates: override ? [{ ruleId: override.id, name: override.spellName, kind: 'spellOverride', score: 100, confidence: 'high' }] : [],
         manuallyResolved: false,
       },
-    },
+    }, descriptionMeta),
     system: {
       level: spell.level,
+      preparation: { mode: spell.prepared === false ? 'atwill' : 'prepared', prepared: spell.prepared !== false },
     },
     automation: {
       requestedLevel: 'none',

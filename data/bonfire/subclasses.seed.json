@@ -1,4 +1,22 @@
 [
-  { "id": "clerigo-do-caos", "identifier": "clerigo-do-caos", "name": "Clérigo do Caos", "kind": "subclass", "className": "Clérigo" },
-  { "id": "campeao", "identifier": "campeao", "name": "Campeão", "kind": "subclass", "className": "Guerreiro", "aliases": ["Champion"] }
+  {
+    "id": "clerigo-do-caos",
+    "identifier": "clerigo-do-caos",
+    "name": "Clérigo do Caos",
+    "kind": "subclass",
+    "aliases": ["Clerigo do Caos", "Caos"],
+    "shortDescription": "Domínio clerical de efeitos caóticos e milagres imprevisíveis.",
+    "description": "Subclasse clerical voltada ao caos, ao contrassenso e a milagres imprevisíveis que desestabilizam a realidade ao redor.",
+    "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/clerigo-article"
+  },
+  {
+    "id": "campeao",
+    "identifier": "campeao",
+    "name": "Campeão",
+    "kind": "subclass",
+    "aliases": ["Campeao", "Champion"],
+    "shortDescription": "Subclasse do Guerreiro focada em desempenho marcial puro.",
+    "description": "Subclasse marcial direta, centrada em excelência física, precisão e consistência no campo de batalha.",
+    "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/guerreiro-article"
+  }
 ]

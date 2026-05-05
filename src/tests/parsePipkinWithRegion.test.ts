@@ -6,7 +6,7 @@ import { readWorkbook } from '../lib/sheets/readWorkbook'
 describe('parse Pipkin with selected region', () => {
   it('extracts identity, attributes, and combat values from the selected region', async () => {
     const workbook = await readWorkbook(new Uint8Array(readFileSync('samples/Pipkin.xlsx')), 'Pipkin.xlsx')
-    const result = parseBonfireCharacterSheet(workbook)
+    const result = parseBonfireCharacterSheet(workbook, { selectedTemplateId: 'automatic' })
 
     expect(result.debug.selectedSheetName).not.toBeNull()
     expect(result.debug.selectedRegion).toBeDefined()

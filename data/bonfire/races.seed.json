@@ -1,4 +1,19 @@
 [
-  { "id": "folken-limalumes", "identifier": "folken-limalumes", "name": "Folken Limalumes", "kind": "race" },
-  { "id": "humano-goruun", "identifier": "humano-goruun", "name": "Humano Goruun", "kind": "race", "aliases": ["Goruun"] }
+  {
+    "id": "folken-limalumes",
+    "identifier": "folken-limalumes",
+    "name": "Folken Limalumes",
+    "kind": "race",
+    "shortDescription": "Povo pequeno, furtivo e marcado por brilho e sorte incomuns.",
+    "description": "Folken Limalumes são pequenos humanoides de brilho estranho e sorte anômala. Misturam agilidade, esperteza e truques sutis para sobreviver, fugir e surpreender."
+  },
+  {
+    "id": "humano-goruun",
+    "identifier": "humano-goruun",
+    "name": "Humano Goruun",
+    "kind": "race",
+    "aliases": ["Goruun"],
+    "shortDescription": "Humanoide resistente com herança agressiva e tribal.",
+    "description": "Humanos Goruun carregam uma herança agressiva e obstinada, equilibrando sobrevivência dura, intimidação e resistência herdada de seu povo."
+  }
 ]

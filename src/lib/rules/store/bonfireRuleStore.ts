@@ -22,6 +22,12 @@ export function createBonfireEntityRuleStore(store: LegacyStore = defaultBonfire
 
 export const defaultBonfireEntityRuleStore = createBonfireEntityRuleStore(defaultBonfireRuleStore)
 
+export function getBonfireRuleEntity(ruleId: string | undefined | null): BonfireRuleEntity | undefined {
+  if (!ruleId) return undefined
+  const normalizedId = toFoundryIdentifier(ruleId)
+  return defaultBonfireEntityRuleStore.entities.find((entity) => entity.id === ruleId || entity.identifier === normalizedId)
+}
+
 export function legacyStoreToEntities(store: LegacyStore): BonfireRuleEntity[] {
   return [
     ...store.classes.flatMap(classToEntities),
@@ -36,28 +42,49 @@ export function legacyStoreToEntities(store: LegacyStore): BonfireRuleEntity[] {
 
 function classToEntities(rule: BonfireClassRule): BonfireRuleEntity[] {
   return [
-    baseEntity(rule, 'class', { description: `Classe Bonfire. Dado de vida ${rule.hitDie}.`, foundry: { itemType: 'class' }, tags: ['class'] }),
+    baseEntity(rule, 'class', {
+      description: rule.description ?? `Classe Bonfire. Dado de vida ${rule.hitDie}.`,
+      shortDescription: rule.shortDescription,
+      foundry: { itemType: 'class' },
+      tags: ['class'],
+    }),
     ...featuresByLevelToEntities(rule.featuresByLevel, 'classFeature', rule.name, rule.sourceUrl),
   ]
 }
 
 function subclassToEntities(rule: BonfireSubclassRule): BonfireRuleEntity[] {
   return [
-    baseEntity(rule, 'subclass', { description: `Subclasse de ${rule.className}.`, className: rule.className, foundry: { itemType: 'subclass' }, tags: ['subclass'] }),
+    baseEntity(rule, 'subclass', {
+      description: rule.description ?? `Subclasse de ${rule.className}.`,
+      shortDescription: rule.shortDescription,
+      className: rule.className,
+      foundry: { itemType: 'subclass' },
+      tags: ['subclass'],
+    }),
     ...featuresByLevelToEntities(rule.featuresByLevel, 'subclassFeature', rule.className, rule.sourceUrl, rule.name),
   ]
 }
 
 function raceToEntities(rule: BonfireRaceRule): BonfireRuleEntity[] {
   return [
-    baseEntity(rule, 'race', { description: `Raça Bonfire. Deslocamento ${rule.speed}.`, foundry: { itemType: 'feat' }, tags: ['race'] }),
+    baseEntity(rule, 'race', {
+      description: rule.description ?? `Raca Bonfire. Deslocamento ${rule.speed}.`,
+      shortDescription: rule.shortDescription,
+      foundry: { itemType: 'feat' },
+      tags: ['race'],
+    }),
     ...rule.features.map((feature) => featureToEntity(feature, feature.kind ?? 'raceFeature', rule.sourceUrl, { raceName: rule.name, tags: ['raceFeature'] })),
   ]
 }
 
 function backgroundToEntities(rule: BonfireBackgroundRule): BonfireRuleEntity[] {
   return [
-    baseEntity(rule, 'background', { description: `Antecedente Bonfire.`, foundry: { itemType: 'background' }, tags: ['background'] }),
+    baseEntity(rule, 'background', {
+      description: rule.description ?? 'Antecedente Bonfire.',
+      shortDescription: rule.shortDescription,
+      foundry: { itemType: 'background' },
+      tags: ['background'],
+    }),
     ...rule.features.map((feature) => featureToEntity(feature, feature.kind ?? 'backgroundFeature', rule.sourceUrl, { backgroundName: rule.name, tags: ['backgroundFeature'] })),
   ]
 }
@@ -65,7 +92,8 @@ function backgroundToEntities(rule: BonfireBackgroundRule): BonfireRuleEntity[] 
 function featToEntity(rule: BonfireFeatRule): BonfireRuleEntity {
   const kind: BonfireRuleKind = rule.category === 'origin' ? 'originFeat' : rule.category === 'racial' ? 'racialFeat' : 'feat'
   return baseEntity(rule, kind, {
-    description: rule.effects.join('\n'),
+    description: rule.description ?? rule.effects.join('\n'),
+    shortDescription: rule.shortDescription,
     foundry: { itemType: 'feat', activationType: rule.activation, uses: rule.uses },
     tags: ['feat', rule.category],
   })
@@ -81,7 +109,8 @@ function weaponToEntity(rule: BonfireWeaponRule): BonfireRuleEntity {
           ? 'weapon'
           : 'equipment'
   return baseEntity(rule, kind, {
-    description: rule.properties.join(', '),
+    description: rule.description ?? rule.properties.join(', '),
+    shortDescription: rule.shortDescription,
     foundry: {
       itemType: kind === 'weapon' ? 'weapon' : kind === 'consumable' ? 'consumable' : 'equipment',
       damageFormula: rule.damage,
@@ -98,8 +127,8 @@ function spellOverrideToEntity(rule: BonfireSpellOverrideRule): BonfireRuleEntit
     name: rule.spellName,
     aliases: [rule.spellName],
     kind: 'spellOverride',
-    description: rule.description,
-    shortDescription: rule.foundryNotes,
+    description: rule.baseDescription ?? rule.description,
+    shortDescription: rule.shortDescription ?? rule.foundryNotes,
     sourceUrl: rule.sourceUrl,
     sourceName: 'Bonfire spell overrides',
     seedLocal: true,
@@ -142,7 +171,7 @@ function featureToEntity(feature: BonfireRuleFeature, kind: BonfireRuleKind, sou
 }
 
 function baseEntity(
-  rule: { id: string; name: string; aliases?: string[]; sourceUrl?: string },
+  rule: { id: string; name: string; aliases?: string[]; sourceUrl?: string; description?: string; shortDescription?: string },
   kind: BonfireRuleKind,
   extra: Partial<BonfireRuleEntity> = {},
 ): BonfireRuleEntity {
@@ -155,6 +184,8 @@ function baseEntity(
     sourceUrl: rule.sourceUrl,
     sourceName: 'Bonfire local seed',
     seedLocal: true,
+    description: rule.description,
+    shortDescription: rule.shortDescription,
     ...extra,
   }
 }

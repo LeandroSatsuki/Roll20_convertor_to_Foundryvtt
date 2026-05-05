@@ -14,3 +14,15 @@ Tipos de seed:
 
 As entidades sao indexadas por identifier, nome normalizado, aliases, kind, classe, subclasse, raca, nivel, tags e URL de fonte.
 
+Descricoes dos items Foundry:
+
+- Quando uma regra tem `description`, ela vira a descricao principal do item exportado.
+- Quando a regra tem apenas `shortDescription`, o conversor usa esse resumo como fallback seguro.
+- Quando a regra nao tem texto, mas tem `sourceUrl`, o item recebe um fallback orientando a consultar a fonte Bonfire Tales.
+- Quando a regra e uma magia com ajuste Bonfire, o item recebe um bloco adicional `Ajuste Bonfire` na descricao.
+
+Esses casos aparecem na auditoria como:
+
+- `RULE_DESCRIPTION_MISSING`
+- `RULE_DESCRIPTION_FALLBACK_USED`
+- `SPELL_OVERRIDE_DESCRIPTION_APPLIED`

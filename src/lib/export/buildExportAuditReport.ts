@@ -26,6 +26,8 @@ const blockingCodes = new Set([
   'CURRENCY_GP_INVALID',
   'SHEET_SPEED_LOOKS_LIKE_HP_DUPLICATE',
   'SHEET_HP_MAX_MISSING',
+  'TEMPLATE_FIELD_MISSING',
+  'ABILITY_SCORE_MISSING_MODIFIER_ONLY',
   'BONFIRE_LOG_V2_TEMPLATE_PARSER_NOT_CALLED',
   'SHEET_CHARACTER_REGION_NOT_FOUND',
   'SHEET_PARSE_BLOCKED_LOW_CONFIDENCE',
@@ -35,13 +37,14 @@ const blockingCodes = new Set([
 export function buildExportAuditReport(actor: FoundryActor | null, normalized?: NormalizedCharacter | null): FoundryExportAuditReport {
   const structuralValidations = actor ? validateFoundryActorDeep(actor) : [{ code: 'FOUNDRY_ACTOR_MISSING', severity: 'error' as const, message: 'Actor nao foi gerado.' }]
   const ruleValidations = actor ? collectRuleResolutionValidations(actor) : []
+  const descriptionValidations = actor ? collectDescriptionValidations(actor) : []
   const parserValidations = (normalized?.warnings ?? []).filter((warning) => warning.severity === 'error').map((warning) => ({
     code: warning.code,
     severity: 'error' as const,
     message: warning.message,
     path: warning.fieldPath,
   }))
-  const validations = [...structuralValidations, ...ruleValidations, ...parserValidations]
+  const validations = [...structuralValidations, ...ruleValidations, ...descriptionValidations, ...parserValidations]
   const errors = validations.filter((validation) => validation.severity === 'error')
   const warnings = validations.filter((validation) => validation.severity === 'warning')
   const blockingReasons = validations.filter((validation) => validation.severity === 'error' && blockingCodes.has(validation.code)).map(formatBlockingReason)
@@ -57,6 +60,7 @@ export function buildExportAuditReport(actor: FoundryActor | null, normalized?: 
 
   const items = actor?.items ?? []
   const ruleStats = summarizeRuleResolution(items)
+  const descriptionStats = summarizeDescriptions(items)
   const automationStats = summarizeItemAutomation(items)
   const pipeline = normalized?.pipeline
   return {
@@ -85,6 +89,10 @@ export function buildExportAuditReport(actor: FoundryActor | null, normalized?: 
       unresolvedCount: ruleStats.unknown,
       manuallyResolvedCount: ruleStats.manual,
       genericItemCount: ruleStats.generic,
+      describedItemCount: descriptionStats.complete,
+      missingDescriptionCount: descriptionStats.missing,
+      descriptionFallbackCount: descriptionStats.fallback,
+      sourceUrlCount: descriptionStats.withSourceUrl,
       automatedFullCount: automationStats.full,
       automatedPartialCount: automationStats.partial,
       automatedNoneCount: automationStats.none,
@@ -109,6 +117,7 @@ export function buildExportAuditReport(actor: FoundryActor | null, normalized?: 
       abilitiesBeforeActorBuild: collectNormalizedAbilities(normalized),
       abilitiesInsideActor: collectActorAbilities(actor),
       itemNames: items.map((item) => item.name),
+      itemDescriptions: descriptionStats.items,
       automationSummary: {
         automatedFullCount: automationStats.full,
         automatedPartialCount: automationStats.partial,
@@ -221,11 +230,97 @@ function summarizeRuleResolution(items: FoundryActor['items']): { high: number; 
   )
 }
 
+function collectDescriptionValidations(actor: FoundryActor): FoundryValidationResult[] {
+  return actor.items.flatMap((item, index) => {
+    const meta = getDescriptionMeta(item)
+    if (!meta) return []
+    const validations: FoundryValidationResult[] = []
+    if (meta.status === 'missing') {
+      validations.push({
+        code: 'RULE_DESCRIPTION_MISSING',
+        severity: 'warning',
+        message: `${item.name} foi exportado sem descricao de regra completa.`,
+        path: `items.${index}.system.description.value`,
+        itemName: item.name,
+        itemId: item._id,
+      })
+    } else if (meta.status === 'fallback') {
+      validations.push({
+        code: 'RULE_DESCRIPTION_FALLBACK_USED',
+        severity: 'warning',
+        message: `${item.name} usa descricao fallback da Rule Store.`,
+        path: `items.${index}.system.description.value`,
+        itemName: item.name,
+        itemId: item._id,
+      })
+    }
+    if (meta.overrideApplied) {
+      validations.push({
+        code: 'SPELL_OVERRIDE_DESCRIPTION_APPLIED',
+        severity: 'info',
+        message: `${item.name} recebeu bloco de ajuste Bonfire na descricao.`,
+        path: `items.${index}.system.description.value`,
+        itemName: item.name,
+        itemId: item._id,
+      })
+    }
+    return validations
+  })
+}
+
+function summarizeDescriptions(items: FoundryActor['items']): {
+  complete: number
+  fallback: number
+  missing: number
+  withSourceUrl: number
+  items: {
+    complete: Array<{ name: string; sourceUrl?: string | null }>
+    fallback: Array<{ name: string; sourceUrl?: string | null }>
+    missing: Array<{ name: string; sourceUrl?: string | null }>
+  }
+} {
+  return items.reduce(
+    (summary, item) => {
+      const meta = getDescriptionMeta(item)
+      const bucket = meta?.status === 'complete' ? 'complete' : meta?.status === 'fallback' ? 'fallback' : 'missing'
+      summary[bucket] += 1
+      const sourceUrl = meta?.sourceUrl ?? null
+      if (sourceUrl) summary.withSourceUrl += 1
+      summary.items[bucket].push({ name: item.name, sourceUrl })
+      return summary
+    },
+    {
+      complete: 0,
+      fallback: 0,
+      missing: 0,
+      withSourceUrl: 0,
+      items: {
+        complete: [] as Array<{ name: string; sourceUrl?: string | null }>,
+        fallback: [] as Array<{ name: string; sourceUrl?: string | null }>,
+        missing: [] as Array<{ name: string; sourceUrl?: string | null }>,
+      },
+    },
+  )
+}
+
 function getRuleResolution(item: FoundryActor['items'][number]): Record<string, unknown> | null {
   const flags = item.flags as Record<string, unknown> | undefined
   const converterFlags = flags?.['roll20-to-foundry'] as Record<string, unknown> | undefined
   const resolution = converterFlags?.ruleResolution
   return resolution && typeof resolution === 'object' ? (resolution as Record<string, unknown>) : null
+}
+
+function getDescriptionMeta(item: FoundryActor['items'][number]): { status: string; sourceUrl?: string | null; overrideApplied?: boolean } | null {
+  const flags = item.flags as Record<string, unknown> | undefined
+  const converterFlags = flags?.['roll20-to-foundry'] as Record<string, unknown> | undefined
+  const meta = converterFlags?.descriptionMeta
+  if (!meta || typeof meta !== 'object' || Array.isArray(meta)) return null
+  const record = meta as Record<string, unknown>
+  return {
+    status: typeof record.status === 'string' ? record.status : 'missing',
+    sourceUrl: typeof record.sourceUrl === 'string' ? record.sourceUrl : null,
+    overrideApplied: Boolean(record.overrideApplied),
+  }
 }
 
 function collectNormalizedAbilities(normalized?: NormalizedCharacter | null): Record<string, number | null> {

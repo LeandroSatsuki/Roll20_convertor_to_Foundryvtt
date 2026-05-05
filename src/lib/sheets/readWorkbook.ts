@@ -1,4 +1,4 @@
-import type { WorkbookData, WorkbookSheet } from './sheetTypes'
+import type { WorkbookData, WorkbookNamedRange, WorkbookSheet } from './sheetTypes'
 
 export async function readWorkbook(input: File | ArrayBuffer | Uint8Array | string, fileName = 'workbook.xlsx'): Promise<WorkbookData> {
   const XLSX = await import('xlsx')
@@ -8,6 +8,13 @@ export async function readWorkbook(input: File | ArrayBuffer | Uint8Array | stri
       : XLSX.read(input instanceof Uint8Array ? input : input instanceof ArrayBuffer ? new Uint8Array(input) : new Uint8Array(await input.arrayBuffer()), { type: 'array' })
 
   const sheetMeta = workbook.Workbook?.Sheets ?? []
+  const namedRanges: WorkbookNamedRange[] = ((workbook.Workbook?.Names as Array<{ Name?: string; Ref?: string; Sheet?: number }> | undefined) ?? [])
+    .filter((entry) => typeof entry.Name === 'string' && typeof entry.Ref === 'string')
+    .map((entry) => ({
+      name: String(entry.Name),
+      ref: String(entry.Ref),
+      scopeSheetName: typeof entry.Sheet === 'number' ? workbook.SheetNames[entry.Sheet] ?? null : null,
+    }))
   const sheets: WorkbookSheet[] = workbook.SheetNames.map((name, sheetIndex) => {
     const worksheet = workbook.Sheets[name]
     const hiddenValue = Number(sheetMeta[sheetIndex]?.Hidden ?? 0)
@@ -57,7 +64,7 @@ export async function readWorkbook(input: File | ArrayBuffer | Uint8Array | stri
     return { name, hidden: hiddenValue === 1 || hiddenValue === 2, veryHidden: hiddenValue === 2, rows: visualRows, cells, merges }
   })
 
-  return { fileName, sheetNames: workbook.SheetNames, sheets }
+  return { fileName, sheetNames: workbook.SheetNames, sheets, namedRanges }
 }
 
 export function normalizeSheetCellValue(value: unknown): string {

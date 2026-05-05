@@ -1,7 +1,40 @@
 [
-  { "id": "marca-anomala", "identifier": "marca-anomala", "name": "Marca Anômala", "kind": "feat" },
-  { "id": "raizes-profundas", "identifier": "raizes-profundas", "name": "Raízes Profundas", "kind": "feat" },
-  { "id": "robusto", "identifier": "robusto", "name": "Robusto", "kind": "feat" },
-  { "id": "mestre-ambidestria", "identifier": "mestre-ambidestria", "name": "Mestre da Ambidestria", "kind": "feat" },
-  { "id": "resiliente", "identifier": "resiliente", "name": "Resiliente", "kind": "feat", "aliases": ["Resiliente (Sabedoria)"] }
+  {
+    "id": "marca-anomala",
+    "identifier": "marca-anomala",
+    "name": "Marca Anômala",
+    "kind": "feat",
+    "shortDescription": "Talento ligado a uma marca extraordinária e seus efeitos.",
+    "description": "Marca Anômala representa uma alteração extraordinária que concede capacidades fora do padrão comum da personagem."
+  },
+  {
+    "id": "raizes-profundas",
+    "identifier": "raizes-profundas",
+    "name": "Raízes Profundas",
+    "kind": "feat",
+    "shortDescription": "Talento de estabilidade, firmeza e ligação com a origem.",
+    "description": "Raízes Profundas reforça estabilidade, ligação com origem e resistência a tentativas de deslocamento ou quebra de postura."
+  },
+  {
+    "id": "robusto",
+    "identifier": "robusto",
+    "name": "Robusto",
+    "kind": "feat",
+    "description": "Talento de resiliência física e maior fôlego para suportar atrito prolongado."
+  },
+  {
+    "id": "mestre-ambidestria",
+    "identifier": "mestre-ambidestria",
+    "name": "Mestre da Ambidestria",
+    "kind": "feat",
+    "description": "Talento que amplia domínio prático sobre combate com duas armas, alternância de mãos e pressão constante."
+  },
+  {
+    "id": "resiliente",
+    "identifier": "resiliente",
+    "name": "Resiliente",
+    "kind": "feat",
+    "aliases": ["Resiliente (Sabedoria)"],
+    "description": "Talento de resistência focado em fortalecer testes e salvaguardas do atributo escolhido."
+  }
 ]

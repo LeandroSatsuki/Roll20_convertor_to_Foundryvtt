@@ -4,9 +4,9 @@ import { parseBonfireCharacterSheet } from '../lib/sheets/parseBonfireCharacterS
 import { readWorkbook } from '../lib/sheets/readWorkbook'
 
 describe('parse Pipkin bonfire log template', () => {
-  it('extracts Pipkin from the LOG template', async () => {
+  it('extracts Pipkin from the explicit bonfire-log-v2 fallback template', async () => {
     const workbook = await readWorkbook(new Uint8Array(readFileSync('samples/Pipkin.xlsx')), 'Pipkin.xlsx')
-    const result = parseBonfireCharacterSheet(workbook)
+    const result = parseBonfireCharacterSheet(workbook, { selectedTemplateId: 'bonfire-log-v2' })
 
     expect(result.debug.selectedSheetName).toBe('LOG')
     expect(result.debug.templateId).toBe('bonfire-log-v2')

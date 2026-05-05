@@ -4,9 +4,9 @@ import { parseBonfireCharacterSheet } from '../lib/sheets/parseBonfireCharacterS
 import { readWorkbook } from '../lib/sheets/readWorkbook'
 
 describe('bonfire log identity fixed', () => {
-  it('keeps the correct identity fields for Pipkin', async () => {
+  it('keeps the correct identity fields for Pipkin in the explicit bonfire-log-v2 fallback', async () => {
     const workbook = await readWorkbook(new Uint8Array(readFileSync('samples/Pipkin.xlsx')), 'Pipkin.xlsx')
-    const result = parseBonfireCharacterSheet(workbook)
+    const result = parseBonfireCharacterSheet(workbook, { selectedTemplateId: 'bonfire-log-v2' })
 
     expect(result.debug.templateId).toBe('bonfire-log-v2')
     expect(result.debug.selectedSheetName).toBe('LOG')

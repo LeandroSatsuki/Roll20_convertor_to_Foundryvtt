@@ -1,6 +1,35 @@
 [
-  { "id": "potion-of-healing", "identifier": "potion-of-healing", "name": "Potion of Healing", "kind": "consumable" },
-  { "id": "explorers-pack", "identifier": "explorers-pack", "name": "Explorer's Pack", "kind": "equipment" },
-  { "id": "holy-symbol", "identifier": "holy-symbol", "name": "Holy Symbol", "kind": "equipment" },
-  { "id": "agua-benta", "identifier": "agua-benta", "name": "Água Benta", "kind": "consumable", "aliases": ["Agua Benta", "Holy Water"] }
+  {
+    "id": "potion-of-healing",
+    "identifier": "potion-of-healing",
+    "name": "Potion of Healing",
+    "kind": "consumable",
+    "shortDescription": "Consumível de cura imediata.",
+    "description": "Poção de cura padrão, consumida para restaurar vitalidade de forma imediata."
+  },
+  {
+    "id": "explorers-pack",
+    "identifier": "explorers-pack",
+    "name": "Explorer's Pack",
+    "kind": "equipment",
+    "shortDescription": "Pacote utilitário de viagem e exploração.",
+    "description": "Conjunto de suprimentos de jornada pensado para deslocamento, acampamento e exploração básica."
+  },
+  {
+    "id": "holy-symbol",
+    "identifier": "holy-symbol",
+    "name": "Holy Symbol",
+    "kind": "equipment",
+    "shortDescription": "Foco sagrado para magia divina.",
+    "description": "Foco devocional usado por conjuradores divinos para canalizar fé e formalizar ritos."
+  },
+  {
+    "id": "agua-benta",
+    "identifier": "agua-benta",
+    "name": "Água Benta",
+    "kind": "consumable",
+    "aliases": ["Agua Benta", "Holy Water"],
+    "shortDescription": "Consumível sagrado contra criaturas vulneráveis ao divino.",
+    "description": "Água consagrada para uso ritual ou ofensivo contra forças profanas e criaturas apropriadas."
+  }
 ]

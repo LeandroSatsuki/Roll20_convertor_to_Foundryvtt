@@ -4,6 +4,8 @@ export type BonfireClassRule = {
   id: string
   name: string
   aliases: string[]
+  description?: string
+  shortDescription?: string
   hitDie: string
   primaryAbility: AbilityKey[]
   savingThrows: AbilityKey[]
@@ -27,6 +29,8 @@ export type BonfireSubclassRule = {
   name: string
   className: string
   aliases: string[]
+  description?: string
+  shortDescription?: string
   featuresByLevel: Record<string, BonfireRuleFeature[]>
   sourceUrl?: string
 }
@@ -35,6 +39,8 @@ export type BonfireRaceRule = {
   id: string
   name: string
   aliases: string[]
+  description?: string
+  shortDescription?: string
   speed: number
   size: string
   features: BonfireRuleFeature[]
@@ -45,6 +51,8 @@ export type BonfireBackgroundRule = {
   id: string
   name: string
   aliases: string[]
+  description?: string
+  shortDescription?: string
   features: BonfireRuleFeature[]
   proficiencies: string[]
   startingGold?: number
@@ -55,6 +63,8 @@ export type BonfireFeatRule = {
   id: string
   name: string
   aliases: string[]
+  description?: string
+  shortDescription?: string
   category: 'origin' | 'general' | 'racial' | 'extra' | 'unknown'
   prerequisites: string[]
   effects: string[]
@@ -67,6 +77,8 @@ export type BonfireWeaponRule = {
   id: string
   name: string
   aliases: string[]
+  description?: string
+  shortDescription?: string
   category: 'simple' | 'martial' | 'armor' | 'shield' | 'consumable' | 'equipment' | 'focus' | 'unknown'
   damage?: string
   damageType?: string
@@ -81,7 +93,9 @@ export type BonfireSpellOverrideRule = {
   id: string
   spellName: string
   status: 'allowed' | 'banned' | 'limited' | 'adjusted' | 'buff' | 'nerf' | 'rework'
-  description: string
+  description?: string
+  shortDescription?: string
+  baseDescription?: string
   foundryNotes: string
   sourceUrl?: string
 }

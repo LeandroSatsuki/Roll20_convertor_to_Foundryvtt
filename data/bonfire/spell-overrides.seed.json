@@ -1,10 +1,68 @@
 [
-  { "id": "silvery-barbs", "identifier": "silvery-barbs", "name": "Silvery Barbs", "kind": "spellOverride", "status": "nerf" },
-  { "id": "wish", "identifier": "wish", "name": "Wish", "kind": "spellOverride", "status": "adjusted" },
-  { "id": "simulacrum", "identifier": "simulacrum", "name": "Simulacrum", "kind": "spellOverride", "status": "limited" },
-  { "id": "clone", "identifier": "clone", "name": "Clone", "kind": "spellOverride", "status": "limited" },
-  { "id": "planar-binding", "identifier": "planar-binding", "name": "Planar Binding", "kind": "spellOverride", "status": "limited" },
-  { "id": "planar-ally", "identifier": "planar-ally", "name": "Planar Ally", "kind": "spellOverride", "status": "rework" },
-  { "id": "create-spelljammer-realm", "identifier": "create-spelljammer-realm", "name": "Create Spelljammer Realm", "kind": "spellOverride", "status": "banned" },
-  { "id": "dream-of-the-blue-veil", "identifier": "dream-of-the-blue-veil", "name": "Dream of the Blue Veil", "kind": "spellOverride", "status": "banned" }
+  {
+    "id": "guidance",
+    "identifier": "guidance",
+    "name": "Guidance",
+    "kind": "spellOverride",
+    "status": "allowed",
+    "baseDescription": "Truque divino que oferece um reforço breve de orientação, aumentando a chance de sucesso em uma tarefa importante."
+  },
+  {
+    "id": "thaumaturgy",
+    "identifier": "thaumaturgy",
+    "name": "Thaumaturgy",
+    "kind": "spellOverride",
+    "status": "allowed",
+    "baseDescription": "Truque de manifestação divina com pequenos efeitos sensoriais, voz, tremor e sinais simbólicos."
+  },
+  {
+    "id": "sacred-flame",
+    "identifier": "sacred-flame",
+    "name": "Sacred Flame",
+    "kind": "spellOverride",
+    "status": "allowed",
+    "baseDescription": "Chama sagrada que desce sobre o alvo como punição divina, exigindo resistência em vez de ataque."
+  },
+  {
+    "id": "silvery-barbs",
+    "identifier": "silvery-barbs",
+    "name": "Silvery Barbs",
+    "kind": "spellOverride",
+    "status": "nerf",
+    "baseDescription": "Resposta mágica rápida que desestabiliza o sucesso de um inimigo e fortalece um aliado com vantagem subsequente.",
+    "description": "No Bonfire, Silvery Barbs sofre ajuste para reduzir abuso reativo e explosão de controle fora de curva.",
+    "shortDescription": "Silvery Barbs possui ajuste Bonfire."
+  },
+  {
+    "id": "dissonant-whispers",
+    "identifier": "dissonant-whispers",
+    "name": "Dissonant Whispers",
+    "kind": "spellOverride",
+    "status": "allowed",
+    "baseDescription": "Sussurros psíquicos dolorosos que ferem a mente e podem forçar fuga imediata do alvo."
+  },
+  {
+    "id": "hold-person",
+    "identifier": "hold-person",
+    "name": "Hold Person",
+    "kind": "spellOverride",
+    "status": "allowed",
+    "baseDescription": "Paralisa um humanoide ao prender corpo e vontade sob comando arcano ou divino."
+  },
+  {
+    "id": "dispel-magic",
+    "identifier": "dispel-magic",
+    "name": "Dispel Magic",
+    "kind": "spellOverride",
+    "status": "allowed",
+    "baseDescription": "Desfaz efeitos mágicos ativos ao quebrar ou enfraquecer a sustentação de um encantamento."
+  },
+  {
+    "id": "remove-curse",
+    "identifier": "remove-curse",
+    "name": "Remove Curse",
+    "kind": "spellOverride",
+    "status": "allowed",
+    "baseDescription": "Ritual ou magia de purificação capaz de encerrar maldições em criaturas, itens ou influências persistentes."
+  }
 ]

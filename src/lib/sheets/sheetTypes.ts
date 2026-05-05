@@ -30,6 +30,13 @@ export type WorkbookData = {
   fileName: string
   sheetNames: string[]
   sheets: WorkbookSheet[]
+  namedRanges: WorkbookNamedRange[]
+}
+
+export type WorkbookNamedRange = {
+  name: string
+  ref: string
+  scopeSheetName?: string | null
 }
 
 export type SheetTemplateDetection = {
@@ -51,7 +58,9 @@ export type SheetAnchor = {
 
 export type SheetAnchorCategory = 'identity' | 'abilities' | 'combat' | 'skills' | 'features' | 'equipment'
 
-export type SheetTemplateId = 'bonfire-log-v2'
+export type SheetTemplateId = 'bonfire-log-v2' | 'bonfire-v2.1'
+export type SheetReadMode = 'bonfire-v2.1' | 'automatic' | 'pdf-fallback'
+export type TemplateFieldSourceType = 'namedRange' | 'cell' | 'range' | 'derived' | 'static'
 
 export type SheetRegionBounds = {
   startRow: number
@@ -62,13 +71,19 @@ export type SheetRegionBounds = {
 
 export type SheetRegionCandidate = {
   sheetName: string
+  regionName: string
   bounds: SheetRegionBounds
+  minRow: number
+  maxRow: number
+  minCol: number
+  maxCol: number
   score: number
   confidence: 'high' | 'medium' | 'low'
   templateId?: SheetTemplateId
   positiveAnchors: AnchorHit[]
   negativeAnchors: AnchorHit[]
   ignoredOutsideRegion?: AnchorHit[]
+  ignoredNegativeAnchors?: AnchorHit[]
   anchorCategories: SheetAnchorCategory[]
   rejectionReasons: string[]
 }
@@ -83,7 +98,11 @@ export type SheetParseDebugInfo = {
   auditBuildId?: string | null
   generatedAt: string
   sourceCodeMarker: string
+  templateUsed?: SheetTemplateId | 'automatic'
+  readMode?: SheetReadMode
   sheetNames: string[]
+  selectedSheets: string[]
+  ignoredSheets: string[]
   templateId?: SheetTemplateId
   templateParserUsed?: string
   parseBonfireLogV2SheetCalled: boolean
@@ -128,14 +147,20 @@ export type AbilityBlockDebugEntry = {
 
 export type ExtractedFieldDebugEntry = {
   fieldPath: string
+  sourceType?: TemplateFieldSourceType
+  source?: string
+  resolvedSheet?: string
+  resolvedAddress?: string
   cellAddress?: string
   rawValue?: string
   normalizedValue?: string
+  parsedValue?: string
   inheritedFromMerge?: boolean
   mergeSourceAddress?: string
   accepted: boolean
   reason?: string
   rejectedReason?: string
+  issueCode?: string
 }
 
 export type AnchorHit = {
@@ -149,6 +174,7 @@ export type AnchorHit = {
   category?: SheetAnchorCategory
   mergeSourceAddress?: string
   ignoredOutsideRegion?: boolean
+  ignoredReason?: string
 }
 
 export type SheetCandidate = {
@@ -204,6 +230,9 @@ export type SheetCharacterParseResult = {
   character: NormalizedCharacter
   rawWorkbookMeta: {
     sheetNames: string[]
+    selectedSheets?: string[]
+    ignoredSheets?: string[]
+    readMode?: SheetReadMode
     detectedTemplate: string
     templateId?: SheetTemplateId
     confidence: 'high' | 'medium' | 'low'

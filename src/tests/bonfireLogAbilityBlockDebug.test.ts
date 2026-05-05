@@ -4,9 +4,9 @@ import { parseBonfireCharacterSheet } from '../lib/sheets/parseBonfireCharacterS
 import { readWorkbook } from '../lib/sheets/readWorkbook'
 
 describe('bonfire log ability block debug', () => {
-  it('lists candidate cells and a selected cell for every ability', async () => {
+  it('lists candidate cells and a selected cell for every ability in automatic fallback mode', async () => {
     const workbook = await readWorkbook(new Uint8Array(readFileSync('samples/Pipkin.xlsx')), 'Pipkin.xlsx')
-    const result = parseBonfireCharacterSheet(workbook)
+    const result = parseBonfireCharacterSheet(workbook, { selectedTemplateId: 'automatic' })
 
     for (const ability of ['str', 'dex', 'con', 'int', 'wis', 'cha']) {
       const entry = result.debug.abilityBlockCandidates.find((candidate) => candidate.ability === ability)

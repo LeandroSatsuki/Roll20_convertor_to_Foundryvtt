@@ -1,5 +1,28 @@
 [
-  { "id": "espiao", "identifier": "espiao", "name": "Espião", "kind": "background", "aliases": ["Spy"] },
-  { "id": "soldado", "identifier": "soldado", "name": "Soldado", "kind": "background" },
-  { "id": "ex-soldado", "identifier": "ex-soldado", "name": "Ex-Soldado", "kind": "background", "aliases": ["Ex Soldado"] }
+  {
+    "id": "espiao",
+    "identifier": "espiao",
+    "name": "Espião",
+    "kind": "background",
+    "aliases": ["Spy"],
+    "shortDescription": "Antecedente de infiltração, sigilo e coleta de informação.",
+    "description": "Espiões vivem de infiltração, disfarces, coleta de informação e golpes rápidos. O antecedente favorece sutileza, leitura social e acesso a redes clandestinas."
+  },
+  {
+    "id": "soldado",
+    "identifier": "soldado",
+    "name": "Soldado",
+    "kind": "background",
+    "shortDescription": "Antecedente militar de campanha e disciplina.",
+    "description": "Soldados foram moldados por campanha, obediência e vida marcial. Carregam disciplina, contatos militares e experiência de agir sob pressão."
+  },
+  {
+    "id": "ex-soldado",
+    "identifier": "ex-soldado",
+    "name": "Ex-Soldado",
+    "kind": "background",
+    "aliases": ["Ex Soldado"],
+    "shortDescription": "Antecedente militar de quem já deixou a tropa.",
+    "description": "Ex-soldados deixaram o serviço, mas mantêm reflexos, traumas, contatos e hábitos de uma vida de guerra."
+  }
 ]

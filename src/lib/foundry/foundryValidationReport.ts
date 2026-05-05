@@ -35,6 +35,10 @@ export type FoundryExportAuditReport = {
     unresolvedCount: number
     manuallyResolvedCount: number
     genericItemCount: number
+    describedItemCount: number
+    missingDescriptionCount: number
+    descriptionFallbackCount: number
+    sourceUrlCount: number
     automatedFullCount: number
     automatedPartialCount: number
     automatedNoneCount: number
@@ -59,6 +63,11 @@ export type FoundryExportAuditReport = {
     abilitiesBeforeActorBuild: Record<string, number | null>
     abilitiesInsideActor: Record<string, number | null>
     itemNames: string[]
+    itemDescriptions: {
+      complete: Array<{ name: string; sourceUrl?: string | null }>
+      fallback: Array<{ name: string; sourceUrl?: string | null }>
+      missing: Array<{ name: string; sourceUrl?: string | null }>
+    }
     automationSummary: {
       automatedFullCount: number
       automatedPartialCount: number
