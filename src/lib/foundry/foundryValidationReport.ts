@@ -28,6 +28,7 @@ export type FoundryExportAuditReport = {
     warningCount: number
     errorCount: number
     invalidIdentifierCount: number
+    duplicateIdentifierCount: number
     unresolvedFeatureCount: number
     resolvedHighCount: number
     resolvedMediumCount: number
@@ -46,6 +47,39 @@ export type FoundryExportAuditReport = {
     invalidActivitiesCount: number
     usesConfiguredCount: number
     recoveryConfiguredCount: number
+    libraryFilesLoadedCount: number
+    libraryItemsLoadedCount: number
+    librarySpellsLoadedCount: number
+    libraryFeatsLoadedCount: number
+    libraryEquipmentLoadedCount: number
+    libraryItemsWithActivitiesCount: number
+    libraryItemsWithEffectsCount: number
+    libraryItemsWithMidiCount: number
+    libraryItemsWithPlutoniumCount: number
+    hydratedItemsCount: number
+    hydrationFallbackCount: number
+    hydratedSpellsCount: number
+    hydratedClassFeaturesCount: number
+    hydratedEquipmentCount: number
+    hydratedItemsWithActivitiesCount: number
+    hydratedItemsWithEffectsCount: number
+    hydratedItemsWithMidiCount: number
+    hydratedItemsWithPlutoniumCount: number
+    hydrationHighCount: number
+    hydrationMediumCount: number
+    hydrationLowCount: number
+    hydrationCustomFallbackCount: number
+    bonfireFallbackFeatureCount: number
+    hydrationLibraryMissCount: number
+    hydrationUnsafeMatchRejectedCount: number
+    hydrationNoCandidateCount: number
+    sanitizedActorReferenceCount: number
+    sheetFeatureRangeCount: number
+    sheetFeaturesExtractedCount: number
+    sheetFeaturesDedupedCount: number
+    hydratedSheetFeaturesCount: number
+    unresolvedSheetFeatureCount: number
+    classProgressionSuggestedCount: number
   }
   validations: FoundryValidationResult[]
   auditDebug: {
@@ -76,6 +110,14 @@ export type FoundryExportAuditReport = {
       invalidActivitiesCount: number
       usesConfiguredCount: number
       recoveryConfiguredCount: number
+    }
+    libraryReport?: unknown
+    hydrationReport?: unknown
+    classProgressionSuggestions?: unknown
+    sheetFeatureDebug?: {
+      rangeCount: number
+      extractedCount: number
+      dedupedCount: number
     }
   }
   unresolvedFeatures: Array<{

@@ -299,6 +299,32 @@ export function SheetParseDebugPanel({ debug }: { debug: SheetParseDebugInfo | n
         <p className="empty">Nenhuma celula extraida.</p>
       )}
 
+      <h3>Características detectadas</h3>
+      {debug.detectedFeatures.length ? (
+        <div className="debug-table" role="table" aria-label="Características detectadas">
+          <div role="row">
+            <strong>Nome</strong>
+            <strong>Célula</strong>
+            <strong>Range</strong>
+            <strong>Tipo inferido</strong>
+            <strong>SourceType</strong>
+            <strong>Confiança</strong>
+          </div>
+          {debug.detectedFeatures.map((feature, index) => (
+            <div role="row" key={`${feature.name}-${feature.sourceCell ?? 'none'}-${index}`}>
+              <span>{feature.name}</span>
+              <code>{feature.sourceCell ?? '-'}</code>
+              <code>{feature.sourceRange ?? '-'}</code>
+              <span>{feature.inferredKind ?? '-'}</span>
+              <span>{feature.sourceType ?? '-'}</span>
+              <span>{feature.confidence ?? '-'}</span>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p className="empty">Nenhuma característica detectada nos ranges do template.</p>
+      )}
+
       <h3>Tentativas de extracao</h3>
       {debug.extractionAttempts.length ? (
         <div className="debug-table" role="table" aria-label="Tentativas de extracao">

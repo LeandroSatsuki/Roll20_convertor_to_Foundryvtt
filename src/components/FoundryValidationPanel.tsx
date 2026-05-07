@@ -13,6 +13,7 @@ export function FoundryValidationPanel({ report }: { report: FoundryExportAuditR
         <span>Warnings: {report.summary.warningCount}</span>
         <span>Erros: {report.summary.errorCount}</span>
         <span>Identifiers invalidos: {report.summary.invalidIdentifierCount}</span>
+        <span>Identifiers duplicados: {report.summary.duplicateIdentifierCount}</span>
         <span>Features nao resolvidas: {report.summary.unresolvedFeatureCount}</span>
         <span>Rules high: {report.summary.resolvedHighCount}</span>
         <span>Rules medium: {report.summary.resolvedMediumCount}</span>
@@ -30,6 +31,17 @@ export function FoundryValidationPanel({ report }: { report: FoundryExportAuditR
         <span>Activities invalidas: {report.summary.invalidActivitiesCount}</span>
         <span>Uses configurados: {report.summary.usesConfiguredCount}</span>
         <span>Recovery configurado: {report.summary.recoveryConfiguredCount}</span>
+        <span>Biblioteca arquivos: {report.summary.libraryFilesLoadedCount}</span>
+        <span>Biblioteca items: {report.summary.libraryItemsLoadedCount}</span>
+        <span>Biblioteca spells: {report.summary.librarySpellsLoadedCount}</span>
+        <span>Biblioteca feats: {report.summary.libraryFeatsLoadedCount}</span>
+        <span>Com activities: {report.summary.libraryItemsWithActivitiesCount}</span>
+        <span>Com effects: {report.summary.libraryItemsWithEffectsCount}</span>
+        <span>Com Midi: {report.summary.libraryItemsWithMidiCount}</span>
+        <span>Com Plutonium: {report.summary.libraryItemsWithPlutoniumCount}</span>
+        <span>Hidratados: {report.summary.hydratedItemsCount}</span>
+        <span>Fallback hidratação: {report.summary.hydrationFallbackCount}</span>
+        <span>Refs antigas limpas: {report.summary.sanitizedActorReferenceCount}</span>
       </div>
       {report.importReadiness.blockingReasons.length ? (
         <div className="audit-blockers">

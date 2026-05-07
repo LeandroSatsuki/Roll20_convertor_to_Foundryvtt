@@ -70,6 +70,10 @@ export type NormalizedFeature = {
     | 'weapon-mastery'
     | 'action'
     | 'other'
+  source?: 'bonfire-v2.1' | 'sheet-anchor' | 'roll20-pdf' | 'manual' | 'unknown'
+  sourceCell?: string
+  sourceRange?: string
+  inferredKind?: 'classFeature' | 'raceFeature' | 'backgroundFeature' | 'feat' | 'customBonfireFeature' | 'unknownFeature'
   level?: number
   description: FieldValue<string>
   uses?: {
@@ -113,6 +117,8 @@ export type ConversionWarning = {
   fieldPath?: string
   raw?: string
 }
+
+export type ConversionMessageAudience = 'debug' | 'audit' | 'playerBio' | 'gmReview'
 
 export type PipelineTrace = {
   parserBuildId: string

@@ -1,17 +1,22 @@
 import { useMemo, useState } from 'react'
 import { CharacterReviewPanel } from './components/CharacterReviewPanel'
 import { ConversionWarnings } from './components/ConversionWarnings'
+import { DetectedFeaturesPanel } from './components/DetectedFeaturesPanel'
 import { ExportAuditPanel } from './components/ExportAuditPanel'
 import { ExportPanel } from './components/ExportPanel'
 import { ExtractedTextViewer } from './components/ExtractedTextViewer'
 import { FeatureResolutionPanel } from './components/FeatureResolutionPanel'
 import { FoundryPreviewPanel } from './components/FoundryPreviewPanel'
+import { FoundryReferenceLibraryPanel } from './components/FoundryReferenceLibraryPanel'
+import { HydrationReviewPanel } from './components/HydrationReviewPanel'
 import { ItemAutomationPanel } from './components/ItemAutomationPanel'
 import { JsonPreview } from './components/JsonPreview'
 import { RuleResolutionReviewPanel } from './components/RuleResolutionReviewPanel'
 import { RuleStorePanel } from './components/RuleStorePanel'
 import { SheetParseDebugPanel } from './components/SheetParseDebugPanel'
 import { SourceImportPanel } from './components/SourceImportPanel'
+import { SpellcastingProgressionPanel } from './components/SpellcastingProgressionPanel'
+import type { FoundryReferenceLibrary } from './lib/foundry-library/foundryReferenceLibraryTypes'
 import { normalizedCharacterSchema } from './lib/normalize/normalizedCharacterSchema'
 import type { NormalizedCharacter } from './lib/normalize/normalizedCharacterTypes'
 import { buildConversionBundle, type ConversionBundle } from './lib/pipeline/buildConversionBundle'
@@ -22,17 +27,32 @@ import type { SheetCharacterParseResult, SheetParseDebugInfo } from './lib/sheet
 import { validateFoundryActor } from './lib/validation/validateFoundryActor'
 import './App.css'
 
-type Tab = 'raw' | 'normalized' | 'review' | 'rules' | 'resolution' | 'audit' | 'itemAutomation' | 'foundry' | 'warnings' | 'sheetDebug'
+type Tab =
+  | 'review'
+  | 'features'
+  | 'rules'
+  | 'resolution'
+  | 'audit'
+  | 'foundryLibrary'
+  | 'hydration'
+  | 'spellcasting'
+  | 'itemAutomation'
+  | 'foundry'
+  | 'warnings'
+  | 'sheetDebug'
+  | 'normalized'
+  | 'raw'
 
 function App() {
   const [file, setFile] = useState<File | null>(null)
   const [pages, setPages] = useState<ExtractedPdfPage[]>([])
-  const [activeTab, setActiveTab] = useState<Tab>('raw')
+  const [activeTab, setActiveTab] = useState<Tab>('review')
   const [conversion, setConversion] = useState<ConversionBundle | null>(null)
   const [isExtracting, setExtracting] = useState(false)
   const [status, setStatus] = useState('')
   const [workbookMeta, setWorkbookMeta] = useState<SheetCharacterParseResult['rawWorkbookMeta'] | null>(null)
   const [sheetDebug, setSheetDebug] = useState<SheetParseDebugInfo | null>(null)
+  const [referenceLibrary, setReferenceLibrary] = useState<FoundryReferenceLibrary | null>(null)
   const character = conversion?.normalized ?? null
   const actor = conversion?.actor ?? null
   const auditReport = conversion?.audit ?? null
@@ -59,7 +79,7 @@ function App() {
   }
 
   function acceptCharacter(parsed: NormalizedCharacter, successStatus: string, debugOverride: SheetParseDebugInfo | null = null) {
-    const bundle = buildConversionBundle(parsed, debugOverride)
+    const bundle = buildConversionBundle(parsed, debugOverride, { referenceLibrary })
     const mapped = bundle.actor
     const report = bundle.audit
     const actorValidation = validateFoundryActor(mapped)
@@ -99,7 +119,7 @@ function App() {
     setWorkbookMeta(result.rawWorkbookMeta)
     setSheetDebug(result.debug)
     setPages([])
-    const bundle = buildConversionBundle(result.character, result.debug)
+    const bundle = buildConversionBundle(result.character, result.debug, { referenceLibrary })
     const actorValidation = validateFoundryActor(bundle.actor)
     if (!bundle.audit.importReadiness.canExport) {
       bundle.normalized.warnings.push({
@@ -123,7 +143,7 @@ function App() {
     try {
       const parsed = JSON.parse(await jsonFile.text()) as NormalizedCharacter
       setWorkbookMeta(null)
-      const bundle = buildConversionBundle(parsed, null)
+      const bundle = buildConversionBundle(parsed, null, { referenceLibrary })
       setSheetDebug(null)
       setPages([])
       setConversion(bundle)
@@ -135,65 +155,80 @@ function App() {
   }
 
   function handleCharacterChange(updated: NormalizedCharacter) {
-    const bundle = buildConversionBundle(updated, sheetDebug)
+    const bundle = buildConversionBundle(updated, sheetDebug, { referenceLibrary })
     setConversion(bundle)
     setSheetDebug(bundle.debug)
   }
+
+  function handleReferenceLibraryLoaded(library: FoundryReferenceLibrary | null) {
+    setReferenceLibrary(library)
+    if (!conversion) return
+    const bundle = buildConversionBundle(conversion.normalized, sheetDebug, { referenceLibrary: library })
+    setConversion(bundle)
+    setSheetDebug(bundle.debug)
+    setActiveTab('hydration')
+  }
+
+  const tabs: Array<[Tab, string]> = [
+    ['review', 'Revisão da ficha'],
+    ['features', 'Características detectadas'],
+    ['rules', 'Regras Bonfire'],
+    ['resolution', 'Resolução'],
+    ['audit', 'Auditoria Foundry'],
+    ['foundryLibrary', 'Biblioteca Foundry'],
+    ['hydration', 'Hidratação'],
+    ['spellcasting', 'Magias/Slots'],
+    ['itemAutomation', 'Automação dos Itens'],
+    ['foundry', 'JSON Foundry'],
+    ['warnings', 'Avisos'],
+    ['sheetDebug', 'Debug planilha'],
+    ['normalized', 'JSON normalizado (debug)'],
+    ['raw', 'Texto PDF (debug)'],
+  ]
 
   return (
     <main className="app-shell">
       <header className="app-header">
         <div>
           <h1>Roll20 to Foundry Converter</h1>
-          <p>Excel/Google Sheets, PDF fallback e JSON normalizado para Actor Foundry dnd5e.</p>
+          <p>Excel Bonfire v2.1 para Actor Foundry dnd5e, com biblioteca local para hidratação de itens.</p>
         </div>
-        <button type="button" onClick={handleConvert} disabled={!pages.length}>
-          Converter PDF
-        </button>
       </header>
 
       <SourceImportPanel
         file={file}
         onPdfFileChange={setFile}
         onPdfExtract={handleExtract}
+        onPdfConvert={handleConvert}
+        canConvertPdf={pages.length > 0}
         isExtracting={isExtracting}
         onSheetImported={handleSheetImported}
         onStatus={setStatus}
         onNormalizedJsonImported={(jsonFile) => void handleNormalizedJsonImported(jsonFile)}
       />
 
+      <FoundryReferenceLibraryPanel library={referenceLibrary} onLibraryLoaded={handleReferenceLibraryLoaded} onStatus={setStatus} />
+
       {status ? <p className="status">{status}</p> : null}
       {workbookMeta ? (
         <p className="status">
-          Template: {workbookMeta.templateId ?? workbookMeta.detectedTemplate} ({workbookMeta.confidence}) | Aba escolhida: {workbookMeta.selectedSheetName ?? 'nenhuma'} | Score: {workbookMeta.selectedSheetScore} | Anchors:{' '}
-          {workbookMeta.anchorsFound.map((anchor) => `${anchor.label} ${anchor.address}`).join(', ') || 'nenhum'}
+          Template: {workbookMeta.templateId ?? workbookMeta.detectedTemplate} ({workbookMeta.confidence}) | Aba escolhida: {workbookMeta.selectedSheetName ?? 'nenhuma'} | Score:{' '}
+          {workbookMeta.selectedSheetScore} | Anchors: {workbookMeta.anchorsFound.map((anchor) => `${anchor.label} ${anchor.address}`).join(', ') || 'nenhum'}
         </p>
       ) : null}
       <ExportPanel normalized={character} actor={actor} auditReport={auditReport} debug={sheetDebug} blocked={!auditReport?.importReadiness.canExport} reason={actorExportBlockedReason} />
 
       <nav className="tabs" aria-label="Etapas">
-        {[
-          ['raw', 'Texto bruto'],
-          ['normalized', 'Dados normalizados'],
-          ['review', 'Revisão da ficha'],
-          ['rules', 'Regras Bonfire'],
-          ['resolution', 'Resolução'],
-          ['audit', 'Auditoria Foundry'],
-          ['itemAutomation', 'Automação dos Itens'],
-          ['foundry', 'JSON Foundry'],
-          ['warnings', 'Avisos'],
-          ['sheetDebug', 'Debug planilha'],
-        ].map(([id, label]) => (
-          <button className={activeTab === id ? 'active' : ''} type="button" key={id} onClick={() => setActiveTab(id as Tab)}>
+        {tabs.map(([id, label]) => (
+          <button className={activeTab === id ? 'active' : ''} type="button" key={id} onClick={() => setActiveTab(id)}>
             {label}
           </button>
         ))}
       </nav>
 
       <section className="panel">
-        {activeTab === 'raw' ? <ExtractedTextViewer pages={pages} /> : null}
-        {activeTab === 'normalized' ? <JsonPreview value={character} /> : null}
         {activeTab === 'review' ? <CharacterReviewPanel character={character} onChange={handleCharacterChange} /> : null}
+        {activeTab === 'features' ? <DetectedFeaturesPanel character={character} actor={actor} /> : null}
         {activeTab === 'rules' ? <RuleStorePanel /> : null}
         {activeTab === 'resolution' ? (
           <>
@@ -202,10 +237,15 @@ function App() {
           </>
         ) : null}
         {activeTab === 'audit' ? <ExportAuditPanel report={auditReport} /> : null}
+        {activeTab === 'foundryLibrary' ? <FoundryReferenceLibraryPanel library={referenceLibrary} onLibraryLoaded={handleReferenceLibraryLoaded} onStatus={setStatus} /> : null}
+        {activeTab === 'hydration' ? <HydrationReviewPanel actor={actor} /> : null}
+        {activeTab === 'spellcasting' ? <SpellcastingProgressionPanel character={character} /> : null}
         {activeTab === 'itemAutomation' ? <ItemAutomationPanel actor={actor} /> : null}
         {activeTab === 'foundry' ? <FoundryPreviewPanel actor={actor} /> : null}
         {activeTab === 'warnings' ? <ConversionWarnings warnings={character?.warnings ?? []} /> : null}
         {activeTab === 'sheetDebug' ? <SheetParseDebugPanel debug={sheetDebug} /> : null}
+        {activeTab === 'normalized' ? <JsonPreview value={character} /> : null}
+        {activeTab === 'raw' ? <ExtractedTextViewer pages={pages} /> : null}
       </section>
     </main>
   )

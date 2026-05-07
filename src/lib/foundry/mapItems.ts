@@ -3,13 +3,20 @@ import type { FoundryItem } from './foundryTypes'
 import { makeUniqueFoundryIdentifier } from './identifiers'
 import { resolveFeature } from '../rules/featureResolver'
 import { defaultBonfireRuleStore } from '../rules/bonfireRuleStore'
+import { normalizeRuleLookupKey } from '../rules/store/bonfireAliases'
 import { buildArmorItem, buildConsumableItem, buildEquipmentItem, buildFeatItem, buildGenericItem, buildSpellItem, buildWeaponItem } from './items'
 import { buildRuleDescriptionMeta } from './items/ruleDescription'
+import { getClassSpellcastingRule } from '../spellcasting/classSpellcastingRules'
 
 export function mapItems(character: NormalizedCharacter): FoundryItem[] {
   const usedItemIdentifiers = new Set<string>()
   const items: FoundryItem[] = []
   const mainClass = character.identity.classes[0]
+  const sourceLabel = character.source.type === 'bonfire-xlsx' ? 'bonfire-xlsx' : 'roll20-pdf'
+  const sourceBook = character.source.type === 'bonfire-xlsx' ? 'Bonfire Tales / Sheet' : 'Roll20 PDF'
+  const classFallbackText = character.source.type === 'bonfire-xlsx' ? 'Classe extraida da ficha Bonfire XLSX.' : 'Classe extraida da ficha Roll20 PDF.'
+  const backgroundFallbackText = character.source.type === 'bonfire-xlsx' ? 'Antecedente extraido da ficha Bonfire XLSX.' : 'Antecedente extraido do PDF.'
+  const raceFallbackText = character.source.type === 'bonfire-xlsx' ? 'Raca extraida da ficha Bonfire XLSX; revisar tipo species/race.' : 'Raca extraida do PDF; revisar tipo species/race.'
   const context = {
     className: mainClass?.name,
     level: mainClass?.level,
@@ -19,7 +26,7 @@ export function mapItems(character: NormalizedCharacter): FoundryItem[] {
   }
 
   if (mainClass) {
-    items.push(mapClassItem(mainClass.name, mainClass.level, nextIdentifier(mainClass.name, usedItemIdentifiers, 'class')))
+    items.push(mapClassItem(mainClass.name, mainClass.level, nextIdentifier(mainClass.name, usedItemIdentifiers, 'class'), sourceLabel, sourceBook, classFallbackText))
   }
 
   if (character.identity.background.value) {
@@ -28,7 +35,7 @@ export function mapItems(character: NormalizedCharacter): FoundryItem[] {
       itemName: character.identity.background.value,
       itemKind: 'background',
       ruleId: resolution.ruleId as string | undefined,
-      fallbackText: 'Antecedente extraido do PDF.',
+      fallbackText: backgroundFallbackText,
       sourceUrl: resolution.sourceUrl as string | undefined,
       sourceName: 'Bonfire Tales',
     })
@@ -38,11 +45,11 @@ export function mapItems(character: NormalizedCharacter): FoundryItem[] {
         type: 'background',
         img: 'icons/svg/book.svg',
         identifier: nextIdentifier(character.identity.background.value, usedItemIdentifiers, 'background'),
-        description: 'Antecedente extraido do PDF.',
+        description: backgroundFallbackText,
         descriptionHtml: descriptionMeta.html,
-        sourceBook: 'Bonfire Tales / Sheet',
+        sourceBook,
         converterFlags: {
-          source: 'roll20-pdf',
+          source: sourceLabel,
           confidence: character.identity.background.confidence,
           sourceType: 'background',
           raw: character.identity.background.raw ?? character.identity.background.value,
@@ -68,7 +75,7 @@ export function mapItems(character: NormalizedCharacter): FoundryItem[] {
       itemName: character.identity.race.value,
       itemKind: 'race',
       ruleId: resolution.ruleId as string | undefined,
-      fallbackText: 'Raca extraida do PDF; revisar tipo species/race.',
+      fallbackText: raceFallbackText,
       sourceUrl: resolution.sourceUrl as string | undefined,
       sourceName: 'Bonfire Tales',
     })
@@ -78,11 +85,11 @@ export function mapItems(character: NormalizedCharacter): FoundryItem[] {
         type: 'feat',
         img: 'icons/svg/item-bag.svg',
         identifier: nextIdentifier(character.identity.race.value, usedItemIdentifiers, 'race'),
-        description: 'Raca extraida do PDF; revisar tipo species/race.',
+        description: raceFallbackText,
         descriptionHtml: descriptionMeta.html,
-        sourceBook: 'Bonfire Tales / Sheet',
+        sourceBook,
         converterFlags: {
-          source: 'roll20-pdf',
+          source: sourceLabel,
           confidence: character.identity.race.confidence,
           sourceType: 'race',
           raw: character.identity.race.raw ?? character.identity.race.value,
@@ -137,10 +144,10 @@ export function mapItems(character: NormalizedCharacter): FoundryItem[] {
           type: 'feat',
           img: 'icons/svg/item-bag.svg',
           identifier: nextIdentifier(attack.name.value, usedItemIdentifiers, 'action'),
-          description: `Recurso/acao extraido da tabela de ataques. Formula: ${attack.damageFormula.value ?? 'nao encontrada'}.`,
-          sourceBook: 'Roll20 PDF',
+          description: `Recurso/acao extraido da ficha Bonfire XLSX. Formula: ${attack.damageFormula.value ?? 'nao encontrada'}.`,
+          sourceBook,
           converterFlags: {
-            source: 'roll20-pdf',
+            source: sourceLabel,
             confidence: attack.name.confidence,
             sourceType: 'action',
             raw: attack.raw,
@@ -159,13 +166,23 @@ function nextIdentifier(name: unknown, usedItemIdentifiers: Set<string>, fallbac
   return makeUniqueFoundryIdentifier(name, usedItemIdentifiers, fallback)
 }
 
-function mapClassItem(name: string, level: number, identifier: string): FoundryItem {
+function mapClassItem(name: string, level: number, identifier: string, sourceLabel: string, sourceBook: string, fallbackText: string): FoundryItem {
   const resolution = resolveFeature(name, { section: 'class', className: name, level }, defaultBonfireRuleStore)
+  const classKey = normalizeRuleLookupKey(name)
+  const classRule = defaultBonfireRuleStore.classes.find((rule) => [rule.id, rule.name, ...rule.aliases].map(normalizeRuleLookupKey).includes(classKey))
+  const fallbackRule = getClassSpellcastingRule(name)
+  const hitDice = classRule?.hitDie ?? fallbackRule.hitDie ?? 'd8'
+  const classUnknown = !classRule && fallbackRule.classKey === 'unknown'
+  const warnings = [
+    ...(classUnknown ? ['CLASS_RULE_UNKNOWN'] : []),
+    ...(resolution.confidence === 'low' ? ['CLASS_RULE_FALLBACK_USED'] : []),
+    ...(classUnknown ? ['CLASS_HIT_DIE_UNKNOWN'] : []),
+  ]
   const descriptionMeta = buildRuleDescriptionMeta({
     itemName: name,
     itemKind: 'class',
     ruleId: resolution.ruleId,
-    fallbackText: 'Classe extraida da ficha Roll20 PDF.',
+    fallbackText,
     sourceUrl: resolution.sourceUrl,
     sourceName: 'Bonfire Tales',
   })
@@ -174,11 +191,11 @@ function mapClassItem(name: string, level: number, identifier: string): FoundryI
     type: 'class',
     img: 'icons/svg/book.svg',
     identifier,
-    description: 'Classe extraida da ficha Roll20 PDF.',
+    description: fallbackText,
     descriptionHtml: descriptionMeta.html,
-    sourceBook: 'Bonfire Tales / Sheet',
+    sourceBook,
     converterFlags: {
-      source: 'roll20-pdf',
+      source: sourceLabel,
       confidence: resolution.confidence,
       raw: `${name} ${level}`,
       sourceUrl: descriptionMeta.sourceUrl,
@@ -190,6 +207,7 @@ function mapClassItem(name: string, level: number, identifier: string): FoundryI
         warningMessages: descriptionMeta.warningMessages,
         overrideApplied: false,
       },
+      warnings,
       ruleResolution: {
         rawName: name,
         resolvedName: resolution.resolvedName,
@@ -204,7 +222,7 @@ function mapClassItem(name: string, level: number, identifier: string): FoundryI
     },
     system: {
       levels: level,
-      hitDice: 'd10',
+      hitDice,
       advancement: [],
     },
     automation: { requestedLevel: 'none' },

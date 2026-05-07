@@ -174,6 +174,18 @@ export function buildFeatItem(options: {
       resolvedKind: resolution.kind,
       confidence: resolution.confidence,
       source: 'bonfire-rule-store',
+      featureSource:
+        options.feature?.source === 'bonfire-v2.1'
+          ? {
+              fromSheetRange: true,
+              sourceCell: options.feature.sourceCell ?? null,
+              sourceRange: options.feature.sourceRange ?? null,
+              inferredKind: options.feature.inferredKind ?? null,
+              hydratedFromLibrary: false,
+              fallbackBonfire: Boolean(resolution.ruleId),
+              unresolved: !resolution.ruleId,
+            }
+          : undefined,
       sourceUrl: resolution.sourceUrl,
       warnings,
       ruleResolution: toRuleResolution(resolution, raw, raw),

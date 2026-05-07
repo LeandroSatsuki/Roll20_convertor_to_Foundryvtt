@@ -1,10 +1,15 @@
 import { buildExportAuditReport } from '../export/buildExportAuditReport'
+import { ensureUniqueActorItemIdentifiers } from '../foundry/identifiers'
 import { foundryId } from '../foundry/ids'
 import { mapNormalizedToFoundryActor } from '../foundry/mapNormalizedToFoundryActor'
+import { prepareFinalBonfireActor } from '../foundry/prepareFinalBonfireActor'
 import type { FoundryActor } from '../foundry/foundryTypes'
 import type { FoundryExportAuditReport } from '../foundry/foundryValidationReport'
+import type { FoundryReferenceLibrary } from '../foundry-library/foundryReferenceLibraryTypes'
+import { hydrateActorItems } from '../hydration/hydrateActorItems'
 import type { AbilityKey, NormalizedCharacter, PipelineTrace } from '../normalize/normalizedCharacterTypes'
 import { makeWarning } from '../parser/parserUtils'
+import { buildClassProgressionSuggestions } from '../progression/classProgressionSuggestions'
 import type { SheetParseDebugInfo } from '../sheets/sheetTypes'
 
 export type ConversionBundle = {
@@ -15,14 +20,18 @@ export type ConversionBundle = {
   pipelineIds: PipelineTrace
 }
 
+export type ConversionBundleOptions = {
+  referenceLibrary?: FoundryReferenceLibrary | null
+}
+
 const abilityKeys: AbilityKey[] = ['str', 'dex', 'con', 'int', 'wis', 'cha']
 
-export function buildConversionBundle(character: NormalizedCharacter, debug?: SheetParseDebugInfo | null): ConversionBundle {
+export function buildConversionBundle(character: NormalizedCharacter, debug?: SheetParseDebugInfo | null, options: ConversionBundleOptions = {}): ConversionBundle {
   const pipeline = ensurePipelineTrace(character, debug)
   applyBuildIds(character, debug, pipeline)
   ensureAbilitySnapshotWarnings(character, pipeline)
 
-  const actor = mapNormalizedToFoundryActor(character)
+  const actor = hydrateActorItems(mapNormalizedToFoundryActor(character), character, options.referenceLibrary)
   const actorFlags = ensureConverterFlags(actor)
   actorFlags.parserBuildId = pipeline.parserBuildId
   actorFlags.parseRunId = pipeline.parseRunId
@@ -34,6 +43,9 @@ export function buildConversionBundle(character: NormalizedCharacter, debug?: Sh
     fileName: character.source.fileName,
     sourceType: character.source.type,
   }
+  ensureUniqueActorItemIdentifiers(actor)
+  prepareFinalBonfireActor(actor, character)
+  attachClassProgressionSuggestions(actor, character)
 
   const audit = buildExportAuditReport(actor, character)
   return { normalized: character, actor, audit, debug: debug ?? null, pipelineIds: pipeline }
@@ -93,4 +105,12 @@ function ensureConverterFlags(actor: FoundryActor): Record<string, unknown> {
 
 function collectNormalizedAbilities(character: NormalizedCharacter): Record<string, number | null> {
   return Object.fromEntries(abilityKeys.map((key) => [key, character.abilities[key].score.value ?? null]))
+}
+
+function attachClassProgressionSuggestions(actor: FoundryActor, character: NormalizedCharacter) {
+  const flags = actor.flags as Record<string, unknown>
+  const converterFlags = (flags['roll20-to-foundry'] as Record<string, unknown> | undefined) ?? {}
+  converterFlags.classProgressionSuggestions = buildClassProgressionSuggestions(character, actor)
+  flags['roll20-to-foundry'] = converterFlags
+  actor.flags = flags
 }

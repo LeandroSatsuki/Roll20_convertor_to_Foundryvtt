@@ -1,4 +1,5 @@
 import { isRecord, validation, type FoundryValidationResult } from './foundryValidationReport'
+import { normalizeRuleLookupKey } from '../rules/store/bonfireAliases'
 
 export function validateFoundrySpells(actor: unknown): FoundryValidationResult[] {
   const actorRecord = isRecord(actor) ? actor : {}
@@ -17,7 +18,7 @@ export function validateFoundrySpells(actor: unknown): FoundryValidationResult[]
     }
   }
   const attributes = isRecord(system.attributes) ? system.attributes : {}
-  if (attributes.spellcasting === 'wis') {
+  if (isClericLevelFive(actorRecord) && attributes.spellcasting === 'wis') {
     const expected = { spell1: 4, spell2: 3, spell3: 2, spell4: 0, spell5: 0, spell6: 0, spell7: 0, spell8: 0, spell9: 0 }
     for (const [key, value] of Object.entries(expected)) {
       const slot = spells[key]
@@ -27,4 +28,14 @@ export function validateFoundrySpells(actor: unknown): FoundryValidationResult[]
     }
   }
   return results
+}
+
+function isClericLevelFive(actor: Record<string, unknown>): boolean {
+  const items = Array.isArray(actor.items) ? actor.items : []
+  return items.some((item) => {
+    if (!isRecord(item) || item.type !== 'class') return false
+    const system = isRecord(item.system) ? item.system : {}
+    const name = normalizeRuleLookupKey(String(item.name ?? ''))
+    return ['clerigo', 'cleric'].includes(name) && system.levels === 5
+  })
 }

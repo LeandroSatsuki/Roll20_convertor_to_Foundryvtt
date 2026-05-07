@@ -7,6 +7,7 @@ import { mapItems } from './mapItems'
 import { mapResources } from './mapResources'
 import { mapSkills } from './mapSkills'
 import { mapSpells } from './mapSpells'
+import { hasSpellcastingAbilityUnknown, inferSpellcastingAbility } from '../spellcasting/inferSpellcastingAbility'
 
 export function mapNormalizedToFoundryActor(character: NormalizedCharacter): FoundryActor {
   const actor = createFoundryActorTemplate(character.identity.name.value || 'Unnamed Roll20 Character')
@@ -23,6 +24,8 @@ export function mapNormalizedToFoundryActor(character: NormalizedCharacter): Fou
   actor.system.skills = mapSkills(character)
   actor.system.spells = mapSpells(character)
   actor.system.resources = mapResources(character)
+  const spellcastingAbility = inferSpellcastingAbility(character)
+  const initiative = mapInitiative(character)
 
   const acValue = character.attributes.ac.value
   actor.system.attributes = {
@@ -51,8 +54,8 @@ export function mapNormalizedToFoundryActor(character: NormalizedCharacter): Fou
       units: 'ft',
       special: '',
     },
-    init: { ability: '', bonus: character.attributes.initiative.value ?? '' },
-    spellcasting: character.spells.ability.value ?? '',
+    init: initiative,
+    spellcasting: spellcastingAbility ?? '',
   }
 
   actor.system.details = {
@@ -60,7 +63,7 @@ export function mapNormalizedToFoundryActor(character: NormalizedCharacter): Fou
     alignment: character.identity.alignment.value,
     race: character.identity.race.value,
     background: character.identity.background.value,
-    biography: { value: buildBiography(character), public: '' },
+    biography: { value: '', public: '' },
   }
   actor.system.traits = { ...(actor.system.traits as Record<string, unknown>), size: 'med' }
   actor.system.tools = Object.fromEntries(character.proficiencies.tools.value.map((tool) => [toFoundryIdentifier(tool), { value: 1, ability: 'int', bonuses: { check: '' } }]))
@@ -79,18 +82,19 @@ export function mapNormalizedToFoundryActor(character: NormalizedCharacter): Fou
         abilities: abilitySnapshot,
       },
       warnings: character.warnings,
+      spellcastingAbilityWarning: hasSpellcastingAbilityUnknown(character) ? 'SPELLCASTING_ABILITY_UNKNOWN' : null,
+      initiativeWarning: character.warnings.some((warning) => warning.code === 'INITIATIVE_DEFAULTED_TO_DEX') ? 'INITIATIVE_DEFAULTED_TO_DEX' : null,
     },
   }
 
   return JSON.parse(JSON.stringify(actor))
 }
 
-function buildBiography(character: NormalizedCharacter): string {
-  const warnings = character.warnings.map((warning) => `<li>${escapeHtml(warning.message)}</li>`).join('')
-  const features = character.features.map((feature) => `<li>${escapeHtml(feature.name.value)}</li>`).join('')
-  return `<section><h2>Roll20 PDF Conversion Notes</h2><p>Dados incertos foram preservados para revisão.</p><h3>Características detectadas</h3><ul>${features}</ul><h3>Avisos</h3><ul>${warnings}</ul></section>`
-}
+function mapInitiative(character: NormalizedCharacter): { ability: 'dex'; bonus: string } {
+  const total = character.attributes.initiative.value
+  if (typeof total !== 'number') return { ability: 'dex', bonus: '' }
 
-function escapeHtml(value: string): string {
-  return value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+  const dexMod = character.abilities.dex.mod.value ?? (typeof character.abilities.dex.score.value === 'number' ? Math.floor((character.abilities.dex.score.value - 10) / 2) : 0)
+  const residualBonus = total - dexMod
+  return { ability: 'dex', bonus: residualBonus !== 0 ? String(residualBonus) : '' }
 }

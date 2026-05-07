@@ -41,7 +41,7 @@ export function createBonfireV21Workbook(options: BonfireWorkbookOptions = {}): 
     ['C28', '+0', 'C30', '10', 'I20', '+0', 'K20', '10'],
     ['C33', '+4', 'C35', '18', 'I21', '+4', 'K21', '18'],
     ['C38', '+2', 'C40', '14', 'I22', '+2', 'K22', '14'],
-  ]
+  ] as const
   for (const [modAddressPrimary, modValuePrimary, scoreAddressPrimary, scoreValuePrimary, modAddressLegacy, modValueLegacy, scoreAddressLegacy, scoreValueLegacy] of abilityRows) {
     setA1(logRows, modAddressPrimary, modValuePrimary)
     setA1(logRows, scoreAddressPrimary, scoreValuePrimary)
@@ -79,6 +79,21 @@ export function createBonfireV21Workbook(options: BonfireWorkbookOptions = {}): 
 
   const equipment = ['Scale Mail', 'Shield', 'Potion of Healing', 'Shortbow', "Explorer's Pack", 'Holy Symbol', 'Água Benta']
   equipment.forEach((item, index) => setA1(logRows, `P${86 + index}`, item))
+
+  const features = [
+    ['R31', 'Conjuracao'],
+    ['R32', 'Canalizar Divindade'],
+    ['Z31', 'Ordem Sagrada'],
+    ['Z32', 'Ritos Sacros'],
+    ['AH31', 'Autoridade Sagrada'],
+    ['R45', 'Sorte Incontrolavel'],
+    ['R46', 'Mente Genial'],
+    ['Z45', 'Agilidade dos Pequeninos'],
+    ['Z46', 'Fala Silenciosa'],
+    ['AH45', 'Dedos Leves'],
+    ['AH46', 'Escapista'],
+  ] as const
+  for (const [address, value] of features) setA1(logRows, address, value)
 
   const personagemRows = createGrid(20, 10)
   setA1(personagemRows, 'A1', 'Personagem')

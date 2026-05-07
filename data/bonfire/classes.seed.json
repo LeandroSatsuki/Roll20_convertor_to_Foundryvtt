@@ -10,6 +10,22 @@
     "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/clerigo-article"
   },
   {
+    "id": "druida",
+    "identifier": "druida",
+    "name": "Druida",
+    "kind": "class",
+    "aliases": ["Druid"],
+    "hitDie": "d8",
+    "spellcasting": {
+      "type": "full",
+      "ability": "wis"
+    },
+    "savingThrows": ["int", "wis"],
+    "shortDescription": "Classe de magia natural, conjuracao completa e Sabedoria.",
+    "description": "Druidas canalizam magia natural por meio de Sabedoria, preservando ciclos, ambientes e forcas primordiais. Sao conjuradores completos com foco em suporte, controle, cura e adaptacao ao terreno.",
+    "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/jogadores-category"
+  },
+  {
     "id": "guerreiro",
     "identifier": "guerreiro",
     "name": "Guerreiro",

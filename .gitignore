@@ -16,6 +16,9 @@ coverage/
 .env.*
 *.local
 user-overrides.local.json
+reference-library/*.json
+!reference-library/.gitkeep
+!reference-library/README.md
 
 # Editor directories and files
 .vscode/*

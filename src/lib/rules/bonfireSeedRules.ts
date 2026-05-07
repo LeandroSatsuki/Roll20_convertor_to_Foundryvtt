@@ -10,6 +10,7 @@ import type {
 
 const playersUrl = 'https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/jogadores-category'
 const clericUrl = 'https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/clerigo-article'
+const druidUrl = 'https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/jogadores-category'
 const fighterUrl = 'https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/guerreiro-article'
 const humanoidsUrl = 'https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/humanoides-category'
 const equipmentUrl = 'https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/jogadores-category'
@@ -94,6 +95,38 @@ export const bonfireClassSeeds: BonfireClassRule[] = [
       ],
     },
     sourceUrl: clericUrl,
+  },
+  {
+    id: 'druida',
+    name: 'Druida',
+    aliases: ['Druid'],
+    description:
+      'Druidas canalizam magia natural por meio de Sabedoria, preservando ciclos, ambientes e forcas primordiais. Sao conjuradores completos com foco em suporte, controle, cura e adaptacao ao terreno.',
+    shortDescription: 'Classe de magia natural, conjuracao completa e Sabedoria.',
+    hitDie: 'd8',
+    primaryAbility: ['wis'],
+    savingThrows: ['int', 'wis'],
+    proficiencies: {
+      armor: ['Armaduras Leves', 'Armaduras Medias', 'Escudos'],
+      weapons: ['Armas Simples'],
+      tools: ['Kit de Herbalismo'],
+      skills: ['Arcanismo', 'Adestrar Animais', 'Intuicao', 'Medicina', 'Natureza', 'Percepcao', 'Religiao', 'Sobrevivencia'],
+    },
+    spellcasting: { ability: 'wis', prepared: true, progression: 'full' },
+    featuresByLevel: {
+      '1': [
+        {
+          id: 'druida-conjuracao',
+          name: 'Conjuracao',
+          aliases: ['Conjuração', 'Spellcasting'],
+          level: 1,
+          kind: 'spellcasting',
+          description: 'Voce prepara e conjura magias druidicas usando Sabedoria. O conversor usa esta regra para configurar habilidade de conjuracao e progressao completa.',
+          sourceUrl: druidUrl,
+        },
+      ],
+    },
+    sourceUrl: druidUrl,
   },
   {
     id: 'guerreiro',
@@ -196,6 +229,27 @@ export const bonfireSubclassSeeds: BonfireSubclassRule[] = [
 
 export const bonfireRaceSeeds: BonfireRaceRule[] = [
   {
+    id: 'elfo-da-lua',
+    name: 'Elfo da Lua',
+    aliases: ['Moon Elf', 'Elfa da Lua'],
+    description:
+      'Elfos da Lua preservam graca, curiosidade e afinidade magica herdadas de uma linhagem ligada ao ceu noturno, a exploracao e a sensibilidade arcana.',
+    shortDescription: 'Linhagem elfica de afinidade magica, mobilidade e percepcao refinada.',
+    speed: 35,
+    size: 'med',
+    features: [
+      {
+        id: 'elfo-da-lua-afinidade-lunar',
+        name: 'Afinidade Lunar',
+        aliases: ['Afinidade Lunar'],
+        kind: 'raceFeature',
+        description: 'A linhagem da Lua favorece sensibilidade mistica, leitura de pressagios e uma relacao natural com magia e noite.',
+        sourceUrl: humanoidsUrl,
+      },
+    ],
+    sourceUrl: humanoidsUrl,
+  },
+  {
     id: 'folken-limalumes',
     name: 'Folken Limalumes',
     aliases: ['Folken Limalumes'],
@@ -239,6 +293,25 @@ export const bonfireRaceSeeds: BonfireRaceRule[] = [
 ]
 
 export const bonfireBackgroundSeeds: BonfireBackgroundRule[] = [
+  {
+    id: 'estudante-de-arqueomancia',
+    name: 'Estudante de Arqueomancia',
+    aliases: ['Archaeomancy Student', 'Estudante de Arqueomancia'],
+    description:
+      'Estudantes de Arqueomancia combinam pesquisa arcana, investigacao de ruinas e leitura de vestigios magicos para decifrar saberes perdidos.',
+    shortDescription: 'Antecedente academico focado em ruinas, magia antiga e investigacao.',
+    features: [
+      {
+        id: 'background-estudante-arqueomancia',
+        name: 'Estudante de Arqueomancia',
+        kind: 'backgroundFeature',
+        description: 'Treinamento em teoria magica, catalogacao de achados e interpretacao de sinais deixados por civilizacoes arcanas.',
+        sourceUrl: playersUrl,
+      },
+    ],
+    proficiencies: ['Arcanismo', 'Investigacao'],
+    sourceUrl: playersUrl,
+  },
   {
     id: 'espiao',
     name: 'Espião',

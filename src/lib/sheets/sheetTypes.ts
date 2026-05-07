@@ -124,6 +124,10 @@ export type SheetParseDebugInfo = {
   blockedNameMatches: Array<{ value: string; normalizedValue: string; reason: string }>
   nameCandidates: NameCandidate[]
   abilityBlockCandidates: AbilityBlockDebugEntry[]
+  detectedFeatures: DetectedFeatureDebugEntry[]
+  sheetFeatureRangeCount?: number
+  sheetFeaturesExtractedCount?: number
+  sheetFeaturesDedupedCount?: number
   extractedFields: ExtractedFieldDebugEntry[]
   extractionAttempts: ExtractedFieldDebugEntry[]
   finalExtractedFields: ExtractedFieldDebugEntry[]
@@ -161,6 +165,15 @@ export type ExtractedFieldDebugEntry = {
   reason?: string
   rejectedReason?: string
   issueCode?: string
+}
+
+export type DetectedFeatureDebugEntry = {
+  name: string
+  sourceCell?: string
+  sourceRange?: string
+  inferredKind?: string
+  sourceType?: string
+  confidence?: 'high' | 'medium' | 'low'
 }
 
 export type AnchorHit = {

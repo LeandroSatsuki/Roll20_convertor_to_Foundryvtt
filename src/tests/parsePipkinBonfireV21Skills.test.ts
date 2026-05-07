@@ -16,6 +16,7 @@ describe('parsePipkinBonfireV21Skills', () => {
     expect(Object.keys(character.skills).sort()).toEqual(skillKeys.sort())
     expect(Object.keys(actor.system.skills).sort()).toEqual(skillKeys.sort())
     expect(validations.some((entry) => entry.code === 'FOUNDRY_SKILL_MISSING')).toBe(false)
+    expect(validations.some((entry) => entry.code === 'FOUNDRY_SKILL_VALUE_INVALID')).toBe(false)
     expect(character.skills.prc.total.value).toBe(4)
     expect(character.skills.sur.total.value).toBe(7)
     expect(character.skills.ins.total.value).toBe(7)

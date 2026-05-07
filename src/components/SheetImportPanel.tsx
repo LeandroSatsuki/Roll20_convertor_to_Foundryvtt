@@ -105,26 +105,6 @@ export function SheetImportPanel({ onImported, onStatus }: SheetImportPanelProps
     onImported(result)
   }
 
-  function handleDiagnostic() {
-    if (!workbook) return
-    const result = parseWorkbookSelection(workbook, {
-      sheetName: selectedTemplateId === 'automatic' ? selectedSheetName || undefined : undefined,
-      regionIndex: selectedTemplateId === 'automatic' && selectedRegionValue ? Number(selectedRegionValue.split(':')[1]) : undefined,
-      includeHidden: selectedTemplateId === 'automatic' ? true : false,
-      templateId: selectedTemplateId,
-    })
-    setCandidates(result.debug.sheetCandidates)
-    setRegionCandidates(result.debug.regionCandidates)
-    setSelectedSheetName(result.debug.selectedSheetName ?? selectedSheetName)
-    setSelectedRegionValue(regionValue(result.debug.selectedRegion, result.debug.regionCandidates))
-    onImported(result)
-    const parserSource = result.debug.templateParserUsed ?? (result.debug.parseBonfireLogV2SheetCalled ? 'novo' : 'antigo')
-    const { character } = result
-    onStatus(
-      `Diagnostico Pipkin | parser=${parserSource} (${result.debug.templateParserUsed ?? 'n/a'}) | str=${fmt(character.abilities.str.score.value)} dex=${fmt(character.abilities.dex.score.value)} con=${fmt(character.abilities.con.score.value)} int=${fmt(character.abilities.int.score.value)} wis=${fmt(character.abilities.wis.score.value)} cha=${fmt(character.abilities.cha.score.value)} | ac=${fmt(character.attributes.ac.value)} hp.max=${fmt(character.attributes.hp.max.value)} speed=${fmt(character.attributes.speed.value)} passive=${fmt(character.attributes.passivePerception.value)}`,
-    )
-  }
-
   const visibleRegionCandidates = regionCandidates.filter((candidate) => candidate.sheetName === selectedSheetName)
 
   return (
@@ -173,9 +153,6 @@ export function SheetImportPanel({ onImported, onStatus }: SheetImportPanelProps
             <span>Incluir abas ocultas</span>
           </label>
           {usingFixedTemplate ? <p className="field-hint">O template fixo usa somente as abas LOG, Personagem e Magias. Abas auxiliares sao ignoradas.</p> : null}
-          <button type="button" onClick={handleDiagnostic}>
-            Rodar diagnostico Pipkin
-          </button>
         </div>
       ) : null}
     </div>
@@ -194,8 +171,4 @@ function regionValue(region: SheetRegionCandidate | undefined, candidates: Sheet
         candidate.bounds.endCol === region.bounds.endCol,
     )
   return index >= 0 ? `${region.sheetName}:${index}` : ''
-}
-
-function fmt(value: unknown) {
-  return value === null || value === undefined || value === '' ? 'null' : String(value)
 }

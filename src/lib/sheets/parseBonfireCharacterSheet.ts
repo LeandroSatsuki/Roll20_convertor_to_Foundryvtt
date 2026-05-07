@@ -10,7 +10,7 @@ import { normalizeSheetCellValue } from './readWorkbook'
 import { bonfireSheetAnchors, matchesAnyAnchor, sectionAnchorAliases } from './sheetAnchors'
 import type { ExtractedFieldDebugEntry, NameCandidate, SheetCell, SheetCharacterParseResult, SheetParseDebugInfo, SheetRegionCandidate, WorkbookData, WorkbookSheet } from './sheetTypes'
 import { foundryId } from '../foundry/ids'
-import { bonfireV21AbilitySpecs, bonfireV21EquipmentRangeSources, bonfireV21FieldSpecs, bonfireV21SaveRangeSources, bonfireV21SkillLabelRangeSources, bonfireV21SkillValueRangeSources, bonfireV21SpellRanges, bonfireV21Template } from './templates/bonfireV21Template'
+import { bonfireV21AbilitySpecs, bonfireV21EquipmentRangeSources, bonfireV21FeatureRangeSources, bonfireV21FieldSpecs, bonfireV21SaveRangeSources, bonfireV21SkillProficiencyRangeSources, bonfireV21SkillValueRangeSources, bonfireV21SpellRanges, bonfireV21Template } from './templates/bonfireV21Template'
 import { getCellsFromWorkbookRef, getSheet as getWorkbookSheet } from './templates/cellRange'
 import { getNamedRangeValue, normalizeNamedRangeRef } from './templates/namedRanges'
 
@@ -80,6 +80,7 @@ const criticalFieldPaths = [
   'abilities.wis.score',
   'abilities.cha.score',
   'attributes.ac',
+  'attributes.initiative',
   'attributes.hp.max',
   'attributes.speed',
   'proficiencyBonus',
@@ -162,6 +163,7 @@ export function parseBonfireCharacterSheet(workbook: WorkbookData, options: Pars
     blockedNameMatches: [],
     nameCandidates: [],
     abilityBlockCandidates: [],
+    detectedFeatures: [],
     extractedFields: [],
     extractionAttempts: [],
     finalExtractedFields: [],
@@ -330,7 +332,6 @@ export function parseBonfireCharacterSheet(workbook: WorkbookData, options: Pars
   return buildResult(workbook, detection, debug, character)
 }
 
-const bonfireV21SkillOrder: SkillKey[] = ['acr', 'ani', 'arc', 'ath', 'dec', 'his', 'ins', 'itm', 'inv', 'med', 'nat', 'prc', 'prf', 'per', 'rel', 'slt', 'ste', 'sur']
 const bonfireV21AbilityOrder: AbilityKey[] = ['str', 'dex', 'con', 'int', 'wis', 'cha']
 const bonfireV21SkillKeyOrder: SkillKey[] = ['acr', 'ani', 'arc', 'ath', 'dec', 'his', 'ins', 'itm', 'inv', 'med', 'nat', 'prc', 'prf', 'per', 'rel', 'slt', 'ste', 'sur']
 
@@ -383,6 +384,7 @@ function parseBonfireV21Workbook(workbook: WorkbookData, _options: ParseSheetOpt
     blockedNameMatches: [],
     nameCandidates: [],
     abilityBlockCandidates: [],
+    detectedFeatures: [],
     extractedFields: [],
     extractionAttempts: [],
     finalExtractedFields: [],
@@ -442,9 +444,12 @@ function parseBonfireV21Workbook(workbook: WorkbookData, _options: ParseSheetOpt
   const saves = parseBonfireV21Saves(workbook, abilities, proficiencyBonus.value ?? 0, debug, warnings)
   const skills = parseBonfireV21Skills(workbook, abilities, proficiencyBonus.value ?? 0, debug, warnings)
   const equipment = parseBonfireV21Equipment(workbook, debug, warnings)
-  const features = buildBonfireV21Features(parsedClass, race.value, background.value)
+  const sheetFeatures = parseBonfireV21FeatureRanges(workbook, parsedClass, race.value, background.value, debug, warnings)
+  const features = dedupeSheetFeaturesByName([...sheetFeatures, ...buildBonfireV21Features(parsedClass, race.value, background.value)])
   const spells = parseBonfireV21Spells(workbook, parsedClass, debug, warnings)
   const avatar = findAvatarUrl(logSheet, debug)
+  const initiative = { ...field(null, 'medium', 'default-dex', ['Iniciativa nao informada no template; Foundry usara Destreza.']), source: 'default-dex' } as FieldValue<number | null>
+  warnings.push(makeWarning('INITIATIVE_DEFAULTED_TO_DEX', 'Iniciativa nao informada no template Bonfire v2.1; o Actor usara Destreza como habilidade de iniciativa.', 'attributes.initiative', 'default-dex', 'info'))
 
   const character: NormalizedCharacter = {
     source: { type: 'bonfire-xlsx', fileName: workbook.fileName, extractedAt: new Date().toISOString() },
@@ -465,7 +470,7 @@ function parseBonfireV21Workbook(workbook: WorkbookData, _options: ParseSheetOpt
     skills,
     attributes: {
       ac,
-      initiative: field(null, 'low'),
+      initiative,
       speed: speed.value,
       speedUnits: speed.units,
       passivePerception,
@@ -508,6 +513,17 @@ function parseBonfireV21Workbook(workbook: WorkbookData, _options: ParseSheetOpt
   }
 
   finalizeExtractedFields(character, debug)
+  pushTemplateFinalField(debug, {
+    fieldPath: 'attributes.initiative',
+    sourceType: 'static',
+    source: 'default-dex',
+    rawValue: 'default-dex',
+    normalizedValue: 'default-dex',
+    parsedValue: 'ability=dex; bonus=""',
+    accepted: true,
+    reason: 'INITIATIVE_DEFAULTED_TO_DEX',
+    issueCode: 'INITIATIVE_DEFAULTED_TO_DEX',
+  })
   debug.normalizedDebugSnapshot = { abilities: abilitySnapshot(character) }
   validateExtractedCharacter(character)
   addCriticalParserWarnings(character)
@@ -602,16 +618,14 @@ function parseBonfireV21Skills(
   debug: SheetParseDebugInfo,
   warnings: ConversionWarning[],
 ): Record<SkillKey, SkillValue> {
-  const totals = resolveTemplateNumberList(workbook, bonfireV21SkillValueRangeSources, 'skills', debug, warnings, false)
-  const labels = resolveTemplateTextList(workbook, bonfireV21SkillLabelRangeSources, 'skills.labels', debug, warnings, false)
-  const orderedKeys = labels.length === bonfireV21SkillOrder.length ? remapSkillKeysFromLabels(labels) : bonfireV21SkillOrder
+  const totalValues = resolveTemplateTextList(workbook, bonfireV21SkillValueRangeSources, 'skills', debug, warnings, false)
+  const proficiencyMarkers = resolveTemplateTextList(workbook, bonfireV21SkillProficiencyRangeSources, 'skills.proficiencyMarkers', debug, warnings, false)
   const skills = {} as Record<SkillKey, SkillValue>
 
   bonfireV21SkillKeyOrder.forEach((skillKey, index) => {
     const definition = skillDefinitions[skillKey]
-    const resolvedSkillKey = orderedKeys[index] ?? skillKey
-    const resolvedDefinition = skillDefinitions[resolvedSkillKey]
-    const total = totals[index] ?? null
+    const totalRaw = totalValues[index] ?? null
+    const total = totalRaw === null ? null : parseSignedNumber(totalRaw)
     if (typeof total !== 'number') {
       warnings.push(makeWarning('TEMPLATE_FIELD_MISSING', `Pericia nao encontrada para ${definition.labelPtBr}.`, `skills.${skillKey}.total`, undefined, 'warning'))
       skills[skillKey] = {
@@ -623,17 +637,43 @@ function parseBonfireV21Skills(
       }
       return
     }
-    const inferred = inferSkill(total, abilities[resolvedDefinition.ability].mod.value ?? 0, proficiencyBonus)
+    const markerRaw = proficiencyMarkers[index] ?? null
+    const proficiencyLevel = parseBonfireV21SkillProficiencyMarker(markerRaw)
+    if (proficiencyLevel === null) {
+      warnings.push(
+        makeWarning(
+          'SKILL_PROFICIENCY_MARKER_INVALID',
+          `Marcador de proficiencia invalido para ${definition.labelPtBr}; usando 0 no template Bonfire v2.1.`,
+          `skills.${skillKey}.proficiencyLevel`,
+          markerRaw ?? undefined,
+          'warning',
+        ),
+      )
+    }
+    const resolvedLevel = proficiencyLevel ?? 0
+    const abilityMod = abilities[definition.ability].mod.value ?? 0
+    const expectedBase = abilityMod + proficiencyBonus * resolvedLevel
+    const residualBonus = total - expectedBase
     skills[skillKey] = {
       labelPtBr: definition.labelPtBr,
       ability: definition.ability,
-      total: { ...field(total, 'high', String(total)), source: 'bonfire-v2.1' },
-      proficiencyLevel: { ...field(inferred.proficiencyLevel, 'medium', String(total)), source: 'bonfire-v2.1' },
-      bonus: { ...field(inferred.bonus, inferred.bonus === 0 ? 'high' : 'medium', String(total)), source: 'bonfire-v2.1' },
+      total: { ...field(total, 'high', totalRaw ?? String(total)), source: 'bonfire-v2.1' },
+      proficiencyLevel: { ...field(resolvedLevel as 0 | 0.5 | 1 | 2, proficiencyLevel === null ? 'low' : 'high', markerRaw ?? totalRaw ?? String(total)), source: 'bonfire-v2.1' },
+      bonus: { ...field(residualBonus, residualBonus === 0 ? 'high' : 'medium', totalRaw ?? String(total)), source: 'bonfire-v2.1' },
     }
   })
 
   return skills
+}
+
+function parseBonfireV21SkillProficiencyMarker(value: string | null): 0 | 0.5 | 1 | 2 | null {
+  if (!value) return null
+  const normalized = value.replace(',', '.').trim()
+  if (normalized === '0') return 0
+  if (normalized === '0.5') return 0.5
+  if (normalized === '1') return 1
+  if (normalized === '2') return 2
+  return null
 }
 
 function parseBonfireV21Equipment(workbook: WorkbookData, debug: SheetParseDebugInfo, warnings: ConversionWarning[]): NormalizedEquipment[] {
@@ -681,6 +721,127 @@ function parseBonfireV21Spells(
   }
 
   return spells
+}
+
+function parseBonfireV21FeatureRanges(
+  workbook: WorkbookData,
+  parsedClass: { name: string; level: number; subclass?: string },
+  race: string,
+  background: string,
+  debug: SheetParseDebugInfo,
+  warnings: ConversionWarning[],
+): NormalizedFeature[] {
+  const extracted: NormalizedFeature[] = []
+  let rawCount = 0
+
+  for (const rangeRef of bonfireV21FeatureRangeSources) {
+    const resolved = getCellsFromWorkbookRef(workbook, rangeRef)
+    if (!resolved) continue
+
+    for (const cell of resolved.cells) {
+      const text = sanitizeTemplateText(cell.value)
+      if (!text || isIgnoredFeatureRangeValue(text)) continue
+      rawCount += 1
+      extracted.push(buildBonfireV21SheetFeature(text, cell.address, rangeRef, parsedClass, race, background, warnings))
+    }
+  }
+
+  const deduped = dedupeSheetFeaturesByName(extracted)
+  debug.detectedFeatures = deduped.map((feature) => ({
+    name: feature.name.value,
+    sourceCell: feature.sourceCell,
+    sourceRange: feature.sourceRange,
+    inferredKind: feature.inferredKind,
+    sourceType: feature.sourceType,
+    confidence: feature.name.confidence,
+  }))
+  debug.sheetFeatureRangeCount = bonfireV21FeatureRangeSources.length
+  debug.sheetFeaturesExtractedCount = rawCount
+  debug.sheetFeaturesDedupedCount = deduped.length
+  if (!deduped.length) {
+    warnings.push(makeWarning('SHEET_SECTION_EMPTY', 'Nenhuma caracteristica foi encontrada nos ranges de features do template Bonfire v2.1.', 'features', bonfireV21FeatureRangeSources.join(', '), 'warning'))
+  }
+  return deduped
+}
+
+function buildBonfireV21SheetFeature(
+  value: string,
+  sourceCell: string,
+  sourceRange: string,
+  parsedClass: { name: string; level: number; subclass?: string },
+  race: string,
+  background: string,
+  warnings: ConversionWarning[],
+): NormalizedFeature {
+  const classification = classifyFeatureFromSheet(value, parsedClass, race, background)
+  warnings.push(...classification.resolution.warnings)
+  const description = classification.resolution.description ?? value
+  const normalizedRecovery = normalizeFeatureRecovery(classification.resolution.uses?.recovery ?? 'none')
+  const maxUses = typeof classification.resolution.uses?.max === 'number' ? classification.resolution.uses.max : typeof classification.resolution.uses?.max === 'string' ? parseSignedNumber(classification.resolution.uses.max) : null
+
+  return {
+    name: {
+      ...field(classification.resolution.resolvedName || value, classification.resolution.confidence, `${sourceCell}: ${value}`, classification.resolution.warnings.map((warning) => warning.message)),
+      source: 'bonfire-v2.1',
+    },
+    source: 'bonfire-v2.1',
+    sourceCell,
+    sourceRange,
+    sourceType: classification.sourceType,
+    inferredKind: classification.inferredKind,
+    level: classification.level,
+    description: { ...field(description, classification.resolution.description ? 'high' : classification.resolution.confidence, `${sourceCell}: ${value}`), source: 'bonfire-v2.1' },
+    uses:
+      maxUses !== null
+        ? {
+            value: { ...field(maxUses, 'medium', `${sourceCell}: ${value}`), source: 'bonfire-v2.1' },
+            max: { ...field(maxUses, 'high', `${sourceCell}: ${value}`), source: 'bonfire-v2.1' },
+            recovery: normalizedRecovery,
+          }
+        : undefined,
+    activation: classification.resolution.activation ? { type: normalizeFeatureActivationForTemplate(classification.resolution.activation) } : undefined,
+    raw: value,
+  }
+}
+
+function classifyFeatureFromSheet(
+  featureName: string,
+  parsedClass: { name: string; level: number; subclass?: string },
+  race: string,
+  background: string,
+): {
+  inferredKind: NonNullable<NormalizedFeature['inferredKind']>
+  sourceType: NormalizedFeature['sourceType']
+  level?: number
+  resolution: ReturnType<typeof resolveFeature>
+} {
+  const resolution = resolveFeature(featureName, { className: parsedClass.name, level: parsedClass.level, race, background, subclass: parsedClass.subclass, section: 'featureRanges' }, defaultBonfireRuleStore)
+  if (resolution.kind === 'classFeature' || resolution.kind === 'spellcasting' || resolution.kind === 'resource') {
+    return { inferredKind: resolution.kind === 'classFeature' ? 'classFeature' : 'customBonfireFeature', sourceType: 'class', level: parsedClass.level, resolution }
+  }
+  if (resolution.kind === 'raceFeature') return { inferredKind: 'raceFeature', sourceType: 'race', resolution }
+  if (resolution.kind === 'backgroundFeature') return { inferredKind: 'backgroundFeature', sourceType: 'background', resolution }
+  if (resolution.kind === 'feat' || resolution.kind === 'originFeat' || resolution.kind === 'racialFeat') return { inferredKind: 'feat', sourceType: 'feat', resolution }
+  if (resolution.ruleId) return { inferredKind: 'customBonfireFeature', sourceType: 'other', resolution }
+  return { inferredKind: 'unknownFeature', sourceType: 'other', resolution }
+}
+
+function isIgnoredFeatureRangeValue(value: string): boolean {
+  if (!value.trim()) return true
+  if (['-', '—', '#N/A', '#VALUE!'].includes(value.trim())) return true
+  if (isProbablyTableHeaderOrNoise(value)) return true
+  if (/^[+-]?\d+(?:[.,]\d+)?$/.test(value.trim())) return true
+  return false
+}
+
+function dedupeSheetFeaturesByName(features: NormalizedFeature[]): NormalizedFeature[] {
+  const seen = new Set<string>()
+  return features.filter((feature) => {
+    const key = normalizeSheetCellValue(feature.name.value)
+    if (!key || seen.has(key)) return false
+    seen.add(key)
+    return true
+  })
 }
 
 function buildBonfireV21Features(parsedClass: { name: string; level: number; subclass?: string }, race: string, background: string): NormalizedFeature[] {
@@ -1090,11 +1251,6 @@ function sanitizeTemplateText(value: string): string | null {
   if (isUrlLike(cleaned)) return null
   if (isProbablyTableHeaderOrNoise(cleaned)) return null
   return cleaned
-}
-
-function remapSkillKeysFromLabels(labels: string[]): SkillKey[] {
-  const mapped = labels.map((label) => (Object.keys(skillDefinitions) as SkillKey[]).find((key) => skillDefinitions[key].aliases.some((alias) => normalizeSheetCellValue(alias) === normalizeSheetCellValue(label))) ?? bonfireV21SkillOrder[labels.indexOf(label)])
-  return mapped.every(Boolean) ? (mapped as SkillKey[]) : bonfireV21SkillOrder
 }
 
 function addTemplateIssue(
