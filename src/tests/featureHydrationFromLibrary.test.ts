@@ -14,9 +14,9 @@ describe('featureHydrationFromLibrary', () => {
     )
 
     const hydrationDetail = bundle.audit.auditDebug.hydrationReport && typeof bundle.audit.auditDebug.hydrationReport === 'object'
-      ? ((bundle.audit.auditDebug.hydrationReport as { hydrationDetails?: Array<Record<string, unknown>> }).hydrationDetails ?? []).find((entry) => entry.requestedName === 'Tough')
+      ? ((bundle.audit.auditDebug.hydrationReport as { hydrationDetails?: Array<Record<string, unknown>> }).hydrationDetails ?? []).find((entry) => entry.requestedName === 'Tough' || entry.requestedName === 'Robusto')
       : undefined
-    const tough = bundle.actor.items.find((item) => item.type === 'feat' && (item.name === 'Tough' || item.name === String(hydrationDetail?.finalItemName ?? '')))
+    const tough = bundle.actor.items.find((item) => item.type === 'feat' && (item.name === 'Tough' || item.name === 'Robusto' || item.name === String(hydrationDetail?.finalItemName ?? '')))
     const flags = tough?.flags['roll20-to-foundry'] as Record<string, any> | undefined
 
     expect(hydrationDetail).toBeTruthy()

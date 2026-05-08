@@ -143,7 +143,15 @@ export const bonfireV21SaveRangeSources = ['LOG!I17:I22']
 export const bonfireV21SkillProficiencyRangeSources = ['LOG!H25:H42', 'LOG!H44:H61']
 export const bonfireV21SkillValueRangeSources = ['LOG!I25:I42', 'LOG!I44:I61']
 export const bonfireV21EquipmentRangeSources = ['LOG!J60:J85', 'LOG!P86:P92']
-export const bonfireV21FeatureRangeSources = ['LOG!R31:R42', 'LOG!Z31:Z42', 'LOG!AH31:AH42', 'LOG!R45:R56', 'LOG!Z45:Z56', 'LOG!AH45:AH56']
+export const bonfireV21FeatureRangeDefinitions = [
+  { range: 'LOG!R31:R42', sourceGroup: 'core-features' },
+  { range: 'LOG!Z31:Z42', sourceGroup: 'feats-and-extra-features' },
+  { range: 'LOG!AH31:AH42', sourceGroup: 'extra-features' },
+  { range: 'LOG!R45:R56', sourceGroup: 'progression-or-subclass' },
+  { range: 'LOG!Z45:Z56', sourceGroup: 'progression-markers' },
+  { range: 'LOG!AH45:AH56', sourceGroup: 'progression-extra' },
+] as const
+export const bonfireV21FeatureRangeSources = bonfireV21FeatureRangeDefinitions.map((entry) => entry.range)
 
 export const bonfireV21SpellRanges = {
   cantrips: ['Magias!M10:M14', 'Magias!W10:W14', 'Magias!AG10:AG14'],

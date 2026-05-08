@@ -73,7 +73,11 @@ export type NormalizedFeature = {
   source?: 'bonfire-v2.1' | 'sheet-anchor' | 'roll20-pdf' | 'manual' | 'unknown'
   sourceCell?: string
   sourceRange?: string
+  sourceGroup?: 'core-features' | 'feats-and-extra-features' | 'extra-features' | 'progression-or-subclass' | 'progression-markers' | 'progression-extra'
+  rawName?: string
+  cleanedName?: string
   inferredKind?: 'classFeature' | 'raceFeature' | 'backgroundFeature' | 'feat' | 'customBonfireFeature' | 'unknownFeature'
+  classificationReason?: string
   level?: number
   description: FieldValue<string>
   uses?: {

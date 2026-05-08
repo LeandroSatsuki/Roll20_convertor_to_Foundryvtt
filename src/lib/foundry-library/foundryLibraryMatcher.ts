@@ -64,6 +64,7 @@ function scoreCandidate(entry: FoundryLibraryEntry, request: FoundryLibraryMatch
   if (entry.quality.hasMidiProperties) add(15, 'has midi properties')
   if (entry.quality.hasEffects) add(10, 'has effects')
   if (entry.quality.hasDescription) add(10, 'has description')
+  if (entry.source?.rules === '2024') add(8, 'rules 2024 preferred')
   if (!Object.keys(asRecord((entry.item as Record<string, unknown> | undefined)?.system)).length) add(-20, 'item without system')
   if (score > 0 && !queryKeys.includes(entry.normalizedName) && !queryKeys.includes(entry.normalizedNameWithoutParentheses) && !queryKeys.includes(identifierKey)) add(-25, 'name similar but not exact')
 

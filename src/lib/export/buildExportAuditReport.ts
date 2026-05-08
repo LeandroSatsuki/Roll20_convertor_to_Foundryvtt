@@ -88,6 +88,8 @@ export function buildExportAuditReport(actor: FoundryActor | null, normalized?: 
   const hydrationReport = getHydrationReport(actor)
   const progressionSuggestions = actor ? getClassProgressionSuggestions(actor) : []
   const sheetFeatureStats = actor ? summarizeSheetFeatureItems(items) : emptySheetFeatureStats()
+  const featureParsingMeta = getSheetFeatureParsingMeta(actor)
+  const featureResolutionDetails = actor ? collectFeatureResolutionDetails(actor) : []
   const pipeline = normalized?.pipeline
   return {
     actorName: actor?.name ?? normalized?.identity.name.value ?? '',
@@ -159,6 +161,11 @@ export function buildExportAuditReport(actor: FoundryActor | null, normalized?: 
       sheetFeaturesDedupedCount: sheetFeatureStats.dedupedCount,
       hydratedSheetFeaturesCount: sheetFeatureStats.hydratedCount,
       unresolvedSheetFeatureCount: sheetFeatureStats.unresolvedCount,
+      rejectedFeatureNoiseCount: featureParsingMeta?.rejectedFeatureNoiseCount ?? 0,
+      ignoredDuplicateIdentityFeatureCount: featureParsingMeta?.ignoredDuplicateIdentityFeatureCount ?? 0,
+      hydratedOfficialClassFeatureCount: sheetFeatureStats.hydratedOfficialClassFeatureCount,
+      bonfireCustomFeatureResolvedCount: sheetFeatureStats.bonfireCustomFeatureResolvedCount,
+      unresolvedRealFeatureCount: sheetFeatureStats.unresolvedRealFeatureCount,
       classProgressionSuggestedCount: progressionSuggestions.filter((entry) => entry.action === 'suggest').length,
     },
     validations,
@@ -194,7 +201,10 @@ export function buildExportAuditReport(actor: FoundryActor | null, normalized?: 
         rangeCount: sheetFeatureStats.rangeCount,
         extractedCount: sheetFeatureStats.extractedCount,
         dedupedCount: sheetFeatureStats.dedupedCount,
+        rejectedFeatureNoiseCount: featureParsingMeta?.rejectedFeatureNoiseCount ?? 0,
+        ignoredDuplicateIdentityFeatureCount: featureParsingMeta?.ignoredDuplicateIdentityFeatureCount ?? 0,
       },
+      featureResolutionDetails,
     },
     unresolvedFeatures,
     importReadiness: {
@@ -698,6 +708,14 @@ function getFeatureSourceMeta(item: FoundryActor['items'][number]): Record<strin
   return meta as Record<string, unknown>
 }
 
+function getFeatureResolutionMeta(item: FoundryActor['items'][number]): Record<string, unknown> | null {
+  const flags = item.flags as Record<string, unknown> | undefined
+  const converterFlags = flags?.['roll20-to-foundry'] as Record<string, unknown> | undefined
+  const meta = converterFlags?.featureResolution
+  if (!meta || typeof meta !== 'object' || Array.isArray(meta)) return null
+  return meta as Record<string, unknown>
+}
+
 function summarizeSheetFeatureItems(items: FoundryActor['items']) {
   const sheetFeatureItems = items.filter((item) => Boolean(getFeatureSourceMeta(item)?.fromSheetRange))
   const uniqueRanges = new Set(sheetFeatureItems.map((item) => String(getFeatureSourceMeta(item)?.sourceRange ?? '')).filter(Boolean))
@@ -707,6 +725,18 @@ function summarizeSheetFeatureItems(items: FoundryActor['items']) {
     dedupedCount: sheetFeatureItems.length,
     hydratedCount: sheetFeatureItems.filter((item) => getHydrationMeta(item)?.hydrated === true).length,
     unresolvedCount: sheetFeatureItems.filter((item) => getFeatureSourceMeta(item)?.unresolved === true).length,
+    hydratedOfficialClassFeatureCount: sheetFeatureItems.filter((item) => {
+      const source = getFeatureSourceMeta(item)
+      return getHydrationMeta(item)?.hydrated === true && (source?.inferredKind === 'classFeature' || source?.sourceType === 'class')
+    }).length,
+    bonfireCustomFeatureResolvedCount: sheetFeatureItems.filter((item) => {
+      const source = getFeatureSourceMeta(item)
+      return (source?.fallbackBonfire === true || getHydrationMeta(item)?.fallbackCategory === 'bonfireFallback') && Boolean(getRuleResolution(item)?.ruleId)
+    }).length,
+    unresolvedRealFeatureCount: sheetFeatureItems.filter((item) => {
+      const source = getFeatureSourceMeta(item)
+      return source?.unresolved === true
+    }).length,
   }
 }
 
@@ -717,7 +747,68 @@ function emptySheetFeatureStats() {
     dedupedCount: 0,
     hydratedCount: 0,
     unresolvedCount: 0,
+    hydratedOfficialClassFeatureCount: 0,
+    bonfireCustomFeatureResolvedCount: 0,
+    unresolvedRealFeatureCount: 0,
   }
+}
+
+function getSheetFeatureParsingMeta(actor: FoundryActor | null): { rejectedFeatureNoiseCount: number; ignoredDuplicateIdentityFeatureCount: number } | null {
+  const flags = actor?.flags as Record<string, unknown> | undefined
+  const converterFlags = flags?.['roll20-to-foundry'] as Record<string, unknown> | undefined
+  const parsing = converterFlags?.sheetFeatureParsing
+  if (!parsing || typeof parsing !== 'object' || Array.isArray(parsing)) return null
+  const record = parsing as Record<string, unknown>
+  return {
+    rejectedFeatureNoiseCount: typeof record.rejectedFeatureNoiseCount === 'number' ? record.rejectedFeatureNoiseCount : 0,
+    ignoredDuplicateIdentityFeatureCount: typeof record.ignoredDuplicateIdentityFeatureCount === 'number' ? record.ignoredDuplicateIdentityFeatureCount : 0,
+  }
+}
+
+function collectFeatureResolutionDetails(actor: FoundryActor): Array<{
+  name: string
+  sourceCell?: string | null
+  sourceRange?: string | null
+  sourceGroup?: string | null
+  classification?: string | null
+  aliasUsed?: string | null
+  libraryMatchName?: string | null
+  libraryMatchScore?: number | null
+  bonfireRuleId?: string | null
+  finalStatus: 'hydrated-library' | 'bonfire-fallback' | 'ignored-noise' | 'ignored-duplicate' | 'unresolved'
+}> {
+  const details = actor.items
+    .filter((item) => Boolean(getFeatureSourceMeta(item)?.fromSheetRange))
+    .map((item) => {
+      const source = getFeatureSourceMeta(item)
+      const hydration = getHydrationMeta(item)
+      const resolution = getRuleResolution(item)
+      const featureResolution = getFeatureResolutionMeta(item)
+      const requestedName = stringOrNull(hydration?.requestedName)
+      const lookupName = stringOrNull(hydration?.libraryLookupName)
+      const libraryMatchName = stringOrNull(hydration?.sourceItemName) ?? stringOrNull(hydration?.canonicalName)
+      const finalStatus: 'hydrated-library' | 'bonfire-fallback' | 'unresolved' =
+        hydration?.hydrated === true
+          ? 'hydrated-library'
+          : source?.fallbackBonfire === true || hydration?.fallbackCategory === 'bonfireFallback'
+            ? 'bonfire-fallback'
+            : 'unresolved'
+      return {
+        name: item.name,
+        sourceCell: stringOrNull(source?.sourceCell),
+        sourceRange: stringOrNull(source?.sourceRange),
+        sourceGroup: stringOrNull(source?.sourceGroup),
+        classification: stringOrNull(source?.classificationReason) ?? stringOrNull(source?.inferredKind),
+        aliasUsed:
+          stringOrNull(featureResolution?.librarySuggestionName)
+          ?? (requestedName && lookupName && normalizeName(requestedName) !== normalizeName(lookupName) ? lookupName : null),
+        libraryMatchName: libraryMatchName ?? stringOrNull(featureResolution?.librarySuggestionName),
+        libraryMatchScore: typeof hydration?.matchScore === 'number' ? hydration.matchScore : null,
+        bonfireRuleId: stringOrNull(resolution?.ruleId),
+        finalStatus,
+      }
+    })
+  return details
 }
 
 function getClassProgressionSuggestions(actor: FoundryActor): Array<{ expectedFeature: string; level: number; foundInSheet: boolean; foundInLibrary: boolean; action: string }> {
@@ -797,4 +888,12 @@ function getActorInputAbilitySnapshot(actor: FoundryActor | null): Record<string
       return [key, typeof value === 'number' ? value : null]
     }),
   )
+}
+
+function stringOrNull(value: unknown): string | null {
+  return typeof value === 'string' && value.trim() ? value : null
+}
+
+function normalizeName(value: string): string {
+  return value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, ' ').trim().toLowerCase()
 }

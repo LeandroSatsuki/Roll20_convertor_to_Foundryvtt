@@ -43,6 +43,15 @@ export function buildConversionBundle(character: NormalizedCharacter, debug?: Sh
     fileName: character.source.fileName,
     sourceType: character.source.type,
   }
+  if (debug) {
+    actorFlags.sheetFeatureParsing = {
+      rejectedFeatureNoiseCount: debug.rejectedFeatureNoise.length,
+      ignoredDuplicateIdentityFeatureCount: debug.ignoredDuplicateIdentityFeatures.length,
+      rejectedFeatureNoise: debug.rejectedFeatureNoise,
+      ignoredDuplicateIdentityFeatures: debug.ignoredDuplicateIdentityFeatures,
+      detectedFeatures: debug.detectedFeatures,
+    }
+  }
   ensureUniqueActorItemIdentifiers(actor)
   prepareFinalBonfireActor(actor, character)
   attachClassProgressionSuggestions(actor, character)

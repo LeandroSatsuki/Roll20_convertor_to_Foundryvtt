@@ -157,6 +157,7 @@ function featureToEntity(feature: BonfireRuleFeature, kind: BonfireRuleKind, sou
     aliases: feature.aliases ?? [],
     kind,
     description: feature.description,
+    shortDescription: feature.shortDescription,
     sourceUrl: feature.sourceUrl ?? sourceUrl,
     sourceName: 'Bonfire local seed',
     seedLocal: true,

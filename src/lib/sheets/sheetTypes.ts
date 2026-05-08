@@ -125,6 +125,8 @@ export type SheetParseDebugInfo = {
   nameCandidates: NameCandidate[]
   abilityBlockCandidates: AbilityBlockDebugEntry[]
   detectedFeatures: DetectedFeatureDebugEntry[]
+  rejectedFeatureNoise: Array<{ value: string; sourceCell?: string; sourceRange?: string; reason: string }>
+  ignoredDuplicateIdentityFeatures: Array<{ value: string; sourceCell?: string; sourceRange?: string; reason: string }>
   sheetFeatureRangeCount?: number
   sheetFeaturesExtractedCount?: number
   sheetFeaturesDedupedCount?: number
@@ -171,8 +173,12 @@ export type DetectedFeatureDebugEntry = {
   name: string
   sourceCell?: string
   sourceRange?: string
+  sourceGroup?: string
+  rawName?: string
+  cleanedName?: string
   inferredKind?: string
   sourceType?: string
+  classificationReason?: string
   confidence?: 'high' | 'medium' | 'low'
 }
 

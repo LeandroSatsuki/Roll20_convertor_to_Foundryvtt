@@ -35,6 +35,15 @@ const aliases: Record<string, string> = {
   talento: 'ability-score-improvement',
   'sentido-primitivo': 'primal-order',
   'ordem-primal': 'primal-order',
+  'lider-inspirador': 'inspiring-leader',
+  'teletransporte-feerico': 'fey-teleportation',
+  'iniciado-em-magia': 'magic-initiate',
+  sortudo: 'lucky',
+  robusto: 'tough',
+  alerta: 'alert',
+  'ancestralidade-feerica': 'fey-ancestry',
+  'transe-elfico': 'trance',
+  'sentidos-agucados': 'keen-senses',
   'studded-leather-armor': 'studded-leather',
   'yew-wand': 'wand',
   'herbalism-kit': 'herbalism-kit',
@@ -100,4 +109,21 @@ export function aliasesForFoundryLibraryName(value: string): string[] {
   return Object.entries(aliases)
     .filter(([, target]) => target === normalized)
     .map(([source]) => source)
+}
+
+const featureSuggestionAliases: Record<string, string[]> = {
+  'vinculo-natural': ['Wild Companion'],
+  'ordem-primal': ['Primal Order'],
+  'ordem-primal-xama': ['Primal Order'],
+  'ordem-primal-guardiao': ['Primal Order'],
+  'surto-selvagem': ['Wild Resurgence'],
+  'surto-selvagem-elo-primal': ['Wild Resurgence'],
+  'surto-selvagem-veu-do-crepusculo': ['Wild Resurgence'],
+  'ancestralidade-feerica': ['Fey Ancestry'],
+  'transe-elfico': ['Trance'],
+}
+
+export function featureLibrarySuggestionAliases(value: string): string[] {
+  const key = normalizeBaseName(value, false)
+  return featureSuggestionAliases[key] ?? []
 }

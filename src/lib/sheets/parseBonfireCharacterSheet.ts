@@ -10,7 +10,7 @@ import { normalizeSheetCellValue } from './readWorkbook'
 import { bonfireSheetAnchors, matchesAnyAnchor, sectionAnchorAliases } from './sheetAnchors'
 import type { ExtractedFieldDebugEntry, NameCandidate, SheetCell, SheetCharacterParseResult, SheetParseDebugInfo, SheetRegionCandidate, WorkbookData, WorkbookSheet } from './sheetTypes'
 import { foundryId } from '../foundry/ids'
-import { bonfireV21AbilitySpecs, bonfireV21EquipmentRangeSources, bonfireV21FeatureRangeSources, bonfireV21FieldSpecs, bonfireV21SaveRangeSources, bonfireV21SkillProficiencyRangeSources, bonfireV21SkillValueRangeSources, bonfireV21SpellRanges, bonfireV21Template } from './templates/bonfireV21Template'
+import { bonfireV21AbilitySpecs, bonfireV21EquipmentRangeSources, bonfireV21FeatureRangeDefinitions, bonfireV21FeatureRangeSources, bonfireV21FieldSpecs, bonfireV21SaveRangeSources, bonfireV21SkillProficiencyRangeSources, bonfireV21SkillValueRangeSources, bonfireV21SpellRanges, bonfireV21Template } from './templates/bonfireV21Template'
 import { getCellsFromWorkbookRef, getSheet as getWorkbookSheet } from './templates/cellRange'
 import { getNamedRangeValue, normalizeNamedRangeRef } from './templates/namedRanges'
 
@@ -87,9 +87,9 @@ const criticalFieldPaths = [
   'attributes.passivePerception',
 ]
 
-const PARSER_VERSION = '2.7.0'
-const PARSER_BUILD_ID = '2026-05-05-bonfire-v21-template'
-const PARSER_SOURCE_MARKER = 'bonfire-v21-template-fixed'
+const PARSER_VERSION = '2.11.1'
+const PARSER_BUILD_ID = '2026-05-07-feature-resolution-2-11b'
+const PARSER_SOURCE_MARKER = 'bonfire-v21-feature-resolution-context-fixed'
 
 export function isUrlLike(value: unknown): boolean {
   return typeof value === 'string' && /^https?:\/\//i.test(value.trim())
@@ -111,6 +111,34 @@ export function isProbablyTableHeaderOrNoise(value: string): boolean {
   if (/^\d+\.\s*(gp|po|sp|pp|cp|ep)\.?$/.test(normalized)) return true
   if (/^(gp|po|sp|pp|cp|ep|lb|lbs|kg)$/.test(normalized)) return true
   return false
+}
+
+export function isRejectedFeatureNoise(value: string): boolean {
+  const trimmed = String(value ?? '').trim()
+  if (!trimmed) return true
+  if (/^N[ií]vel\s+\d+$/i.test(trimmed)) return true
+  if (/^Level\s+\d+$/i.test(trimmed)) return true
+  if (/^(CARACTER[IÍ]STICAS DE CLASSE E RA[ÇC]A|TALENTOS GERAIS|TALENTOS DE RA[ÇC]A|TALENTOS EXTRAS|CARACTER[IÍ]STICAS\s*&\s*TRA[ÇC]OS|FEATURES|TRAITS)$/i.test(trimmed)) return true
+  if (/^(?:-|—|#N\/A|#VALUE!)$/i.test(trimmed)) return true
+  return false
+}
+
+function featureSectionNameForGroup(sourceGroup: NonNullable<NormalizedFeature['sourceGroup']>): string {
+  if (sourceGroup === 'core-features') return 'core-features'
+  if (sourceGroup === 'feats-and-extra-features') return 'feats-and-extra-features'
+  if (sourceGroup === 'extra-features') return 'extra-features'
+  if (sourceGroup === 'progression-or-subclass') return 'progression-or-subclass'
+  if (sourceGroup === 'progression-markers') return 'progression-markers'
+  return 'progression-extra'
+}
+
+function normalizeFeatureNameForSheet(value: string): string {
+  return (sanitizeTemplateText(value) ?? '').replace(/\s+/g, ' ').trim()
+}
+
+function isFeatureIdentityDuplicate(featureName: string, identityName: string): boolean {
+  if (!featureName || !identityName) return false
+  return normalizeSheetCellValue(featureName) === normalizeSheetCellValue(identityName)
 }
 
 type ParseSheetOptions = {
@@ -164,6 +192,8 @@ export function parseBonfireCharacterSheet(workbook: WorkbookData, options: Pars
     nameCandidates: [],
     abilityBlockCandidates: [],
     detectedFeatures: [],
+    rejectedFeatureNoise: [],
+    ignoredDuplicateIdentityFeatures: [],
     extractedFields: [],
     extractionAttempts: [],
     finalExtractedFields: [],
@@ -385,6 +415,8 @@ function parseBonfireV21Workbook(workbook: WorkbookData, _options: ParseSheetOpt
     nameCandidates: [],
     abilityBlockCandidates: [],
     detectedFeatures: [],
+    rejectedFeatureNoise: [],
+    ignoredDuplicateIdentityFeatures: [],
     extractedFields: [],
     extractionAttempts: [],
     finalExtractedFields: [],
@@ -734,15 +766,29 @@ function parseBonfireV21FeatureRanges(
   const extracted: NormalizedFeature[] = []
   let rawCount = 0
 
-  for (const rangeRef of bonfireV21FeatureRangeSources) {
+  for (const definition of bonfireV21FeatureRangeDefinitions) {
+    const rangeRef = definition.range
+    const sourceGroup = definition.sourceGroup
     const resolved = getCellsFromWorkbookRef(workbook, rangeRef)
     if (!resolved) continue
 
     for (const cell of resolved.cells) {
-      const text = sanitizeTemplateText(cell.value)
+      const text = normalizeFeatureNameForSheet(cell.value)
       if (!text || isIgnoredFeatureRangeValue(text)) continue
+      if (isRejectedFeatureNoise(text)) {
+        debug.rejectedFeatureNoise.push({ value: text, sourceCell: cell.address, sourceRange: rangeRef, reason: 'FEATURE_NOISE_LEVEL_MARKER' })
+        continue
+      }
+      if (isFeatureIdentityDuplicate(text, background)) {
+        debug.ignoredDuplicateIdentityFeatures.push({ value: text, sourceCell: cell.address, sourceRange: rangeRef, reason: 'duplicateOfIdentityBackground' })
+        continue
+      }
+      if (isFeatureIdentityDuplicate(text, race)) {
+        debug.ignoredDuplicateIdentityFeatures.push({ value: text, sourceCell: cell.address, sourceRange: rangeRef, reason: 'duplicateOfIdentityRace' })
+        continue
+      }
       rawCount += 1
-      extracted.push(buildBonfireV21SheetFeature(text, cell.address, rangeRef, parsedClass, race, background, warnings))
+      extracted.push(buildBonfireV21SheetFeature(text, cell.address, rangeRef, sourceGroup, parsedClass, race, background, warnings))
     }
   }
 
@@ -751,8 +797,12 @@ function parseBonfireV21FeatureRanges(
     name: feature.name.value,
     sourceCell: feature.sourceCell,
     sourceRange: feature.sourceRange,
+    sourceGroup: feature.sourceGroup,
+    rawName: feature.rawName,
+    cleanedName: feature.cleanedName,
     inferredKind: feature.inferredKind,
     sourceType: feature.sourceType,
+    classificationReason: feature.classificationReason,
     confidence: feature.name.confidence,
   }))
   debug.sheetFeatureRangeCount = bonfireV21FeatureRangeSources.length
@@ -768,12 +818,13 @@ function buildBonfireV21SheetFeature(
   value: string,
   sourceCell: string,
   sourceRange: string,
+  sourceGroup: NonNullable<NormalizedFeature['sourceGroup']>,
   parsedClass: { name: string; level: number; subclass?: string },
   race: string,
   background: string,
   warnings: ConversionWarning[],
 ): NormalizedFeature {
-  const classification = classifyFeatureFromSheet(value, parsedClass, race, background)
+  const classification = classifyFeatureFromSheet(value, sourceGroup, parsedClass, race, background)
   warnings.push(...classification.resolution.warnings)
   const description = classification.resolution.description ?? value
   const normalizedRecovery = normalizeFeatureRecovery(classification.resolution.uses?.recovery ?? 'none')
@@ -787,8 +838,12 @@ function buildBonfireV21SheetFeature(
     source: 'bonfire-v2.1',
     sourceCell,
     sourceRange,
+    sourceGroup,
+    rawName: value,
+    cleanedName: classification.cleanedName,
     sourceType: classification.sourceType,
     inferredKind: classification.inferredKind,
+    classificationReason: classification.classificationReason,
     level: classification.level,
     description: { ...field(description, classification.resolution.description ? 'high' : classification.resolution.confidence, `${sourceCell}: ${value}`), source: 'bonfire-v2.1' },
     uses:
@@ -806,6 +861,7 @@ function buildBonfireV21SheetFeature(
 
 function classifyFeatureFromSheet(
   featureName: string,
+  sourceGroup: NonNullable<NormalizedFeature['sourceGroup']>,
   parsedClass: { name: string; level: number; subclass?: string },
   race: string,
   background: string,
@@ -813,17 +869,37 @@ function classifyFeatureFromSheet(
   inferredKind: NonNullable<NormalizedFeature['inferredKind']>
   sourceType: NormalizedFeature['sourceType']
   level?: number
+  cleanedName: string
+  classificationReason: string
   resolution: ReturnType<typeof resolveFeature>
 } {
-  const resolution = resolveFeature(featureName, { className: parsedClass.name, level: parsedClass.level, race, background, subclass: parsedClass.subclass, section: 'featureRanges' }, defaultBonfireRuleStore)
+  const cleanedName = normalizeFeatureNameForSheet(featureName)
+  const resolution = resolveFeature(
+    cleanedName,
+    { className: parsedClass.name, level: parsedClass.level, race, background, subclass: parsedClass.subclass, section: featureSectionNameForGroup(sourceGroup) },
+    defaultBonfireRuleStore,
+  )
   if (resolution.kind === 'classFeature' || resolution.kind === 'spellcasting' || resolution.kind === 'resource') {
-    return { inferredKind: resolution.kind === 'classFeature' ? 'classFeature' : 'customBonfireFeature', sourceType: 'class', level: parsedClass.level, resolution }
+    return {
+      inferredKind: resolution.kind === 'classFeature' ? 'classFeature' : 'customBonfireFeature',
+      sourceType: 'class',
+      level: parsedClass.level,
+      cleanedName,
+      classificationReason: `resolved:${resolution.kind}:group=${sourceGroup}`,
+      resolution,
+    }
   }
-  if (resolution.kind === 'raceFeature') return { inferredKind: 'raceFeature', sourceType: 'race', resolution }
-  if (resolution.kind === 'backgroundFeature') return { inferredKind: 'backgroundFeature', sourceType: 'background', resolution }
-  if (resolution.kind === 'feat' || resolution.kind === 'originFeat' || resolution.kind === 'racialFeat') return { inferredKind: 'feat', sourceType: 'feat', resolution }
-  if (resolution.ruleId) return { inferredKind: 'customBonfireFeature', sourceType: 'other', resolution }
-  return { inferredKind: 'unknownFeature', sourceType: 'other', resolution }
+  if (resolution.kind === 'raceFeature') return { inferredKind: 'raceFeature', sourceType: 'race', cleanedName, classificationReason: `resolved:raceFeature:group=${sourceGroup}`, resolution }
+  if (resolution.kind === 'backgroundFeature') return { inferredKind: 'backgroundFeature', sourceType: 'background', cleanedName, classificationReason: `resolved:backgroundFeature:group=${sourceGroup}`, resolution }
+  if (resolution.kind === 'feat' || resolution.kind === 'originFeat' || resolution.kind === 'racialFeat') return { inferredKind: 'feat', sourceType: 'feat', cleanedName, classificationReason: `resolved:feat:group=${sourceGroup}`, resolution }
+  if (resolution.ruleId) return { inferredKind: 'customBonfireFeature', sourceType: sourceGroup === 'core-features' || sourceGroup === 'progression-or-subclass' ? 'class' : 'other', cleanedName, classificationReason: `resolved:bonfire-rule:${resolution.ruleId}:group=${sourceGroup}`, resolution }
+  if (sourceGroup === 'core-features' || sourceGroup === 'progression-or-subclass') {
+    return { inferredKind: 'customBonfireFeature', sourceType: 'class', level: parsedClass.level, cleanedName, classificationReason: `contextual-class-feature:group=${sourceGroup}`, resolution }
+  }
+  if (sourceGroup === 'feats-and-extra-features' || sourceGroup === 'extra-features' || sourceGroup === 'progression-markers' || sourceGroup === 'progression-extra') {
+    return { inferredKind: 'feat', sourceType: 'feat', cleanedName, classificationReason: `contextual-feat:group=${sourceGroup}`, resolution }
+  }
+  return { inferredKind: 'unknownFeature', sourceType: 'other', cleanedName, classificationReason: `unresolved:group=${sourceGroup}`, resolution }
 }
 
 function isIgnoredFeatureRangeValue(value: string): boolean {
@@ -861,10 +937,16 @@ function buildBonfireV21Features(parsedClass: { name: string; level: number; sub
   }
 
   const raceRule = defaultBonfireRuleStore.races.find((candidate) => ruleMatchesText(candidate.name, candidate.aliases ?? [], race))
-  for (const candidate of raceRule?.features ?? []) addBonfireV21Feature(features, seen, candidate.name, 'race', candidate.description, undefined, candidate.uses, candidate.activation)
+  for (const candidate of raceRule?.features ?? []) {
+    if (isFeatureIdentityDuplicate(candidate.name, race)) continue
+    addBonfireV21Feature(features, seen, candidate.name, 'race', candidate.description, undefined, candidate.uses, candidate.activation)
+  }
 
   const backgroundRule = defaultBonfireRuleStore.backgrounds.find((candidate) => ruleMatchesText(candidate.name, candidate.aliases ?? [], background))
-  for (const candidate of backgroundRule?.features ?? []) addBonfireV21Feature(features, seen, candidate.name, 'background', candidate.description, undefined, candidate.uses, candidate.activation)
+  for (const candidate of backgroundRule?.features ?? []) {
+    if (isFeatureIdentityDuplicate(candidate.name, background)) continue
+    addBonfireV21Feature(features, seen, candidate.name, 'background', candidate.description, undefined, candidate.uses, candidate.activation)
+  }
 
   return features
 }
@@ -2112,7 +2194,7 @@ function collectFeatureSectionValues(sheet: WorkbookSheet, labels: string[]): Ar
     for (let col = cell.col; col <= Math.min(maxRowCol(sheet, row), cell.col + 4); col += 1) {
       const candidate = getCellOrMerged(sheet, row, col)
       const value = candidate?.value.trim() ?? ''
-      if (!value || isFeatureBoundary(value) || isProbablyTableHeaderOrNoise(value)) continue
+      if (!value || isFeatureBoundary(value) || isProbablyTableHeaderOrNoise(value) || isRejectedFeatureNoise(value)) continue
       values.push({ value, raw: value })
     }
   }

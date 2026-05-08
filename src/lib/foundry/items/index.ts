@@ -10,6 +10,8 @@ import { foundryId } from '../ids'
 import { toFoundryIdentifier } from '../identifiers'
 import { escapeHtml, itemStats } from '../mapWeapons'
 import { buildRuleDescriptionMeta, buildSpellDescriptionMeta, type ItemDescriptionMeta } from './ruleDescription'
+import { featureLibrarySuggestionAliases } from '../../foundry-library/foundryLibraryAliases'
+import { normalizeRuleLookupKey } from '../../rules/store/bonfireAliases'
 
 export type ItemAutomationLevel = 'full' | 'partial' | 'none'
 
@@ -124,6 +126,8 @@ export function buildFeatItem(options: {
   const warnings = [...resolution.warnings.map((warning) => warning.message), ...descriptionMeta.warningMessages]
   let requestedLevel: ItemAutomationLevel = 'none'
   let structuredAutomationConfigured = usesConfigured || recoveryConfigured
+  const bonfireMatched = shouldPreferBonfireFeatureResolution(options.feature, resolution, raw, name)
+  const librarySuggestions = featureLibrarySuggestionAliases(options.feature?.rawName ?? raw)
   const system: Record<string, unknown> = {
     activation: { type: activationType, cost: null, condition: '' },
     uses: {
@@ -174,13 +178,27 @@ export function buildFeatItem(options: {
       resolvedKind: resolution.kind,
       confidence: resolution.confidence,
       source: 'bonfire-rule-store',
+      featureResolution: {
+        sourcePriority: 'bonfire-first',
+        bonfireMatched,
+        bonfireRuleId: resolution.ruleId ?? null,
+        libraryCandidateRejectedBecauseBonfireMatched: false,
+        librarySuggestionName: null,
+        sourceCell: options.feature?.sourceCell ?? null,
+        sourceRange: options.feature?.sourceRange ?? null,
+        librarySuggestionAliases: librarySuggestions,
+      },
       featureSource:
         options.feature?.source === 'bonfire-v2.1'
           ? {
               fromSheetRange: true,
               sourceCell: options.feature.sourceCell ?? null,
               sourceRange: options.feature.sourceRange ?? null,
+              sourceGroup: options.feature.sourceGroup ?? null,
+              rawName: options.feature.rawName ?? options.feature.raw ?? raw,
+              cleanedName: options.feature.cleanedName ?? options.feature.name.value,
               inferredKind: options.feature.inferredKind ?? null,
+              classificationReason: options.feature.classificationReason ?? null,
               hydratedFromLibrary: false,
               fallbackBonfire: Boolean(resolution.ruleId),
               unresolved: !resolution.ruleId,
@@ -200,6 +218,43 @@ export function buildFeatItem(options: {
       structuredAutomationConfigured,
     },
   })
+}
+
+const bonfirePreferredFeatureKeys = new Set(
+  [
+    'vinculo-natural',
+    'ordem-primal',
+    'ordem-primal-xama',
+    'ordem-primal-guardiao',
+    'surto-selvagem',
+    'surto-selvagem-elo-primal',
+    'surto-selvagem-veu-do-crepusculo',
+    'juramento-tres-luas',
+    'iniciado-no-juramento-das-tres-luas',
+    'refugio-onirico',
+    'intuicao-selvagem',
+    'sonho-da-lua',
+    'bruma-serenante',
+    'ancestralidade-feerica',
+    'transe-elfico',
+    'sentidos-entreplanos',
+    'lestos-como-o-vento',
+    'afinidade-lunar',
+  ],
+)
+
+function shouldPreferBonfireFeatureResolution(
+  feature: NormalizedFeature | undefined,
+  resolution: FeatureResolution,
+  raw: string,
+  name: string,
+): boolean {
+  if (!feature || !resolution.ruleId) return false
+  if (resolution.confidence !== 'high' && resolution.confidence !== 'medium') return false
+  const keys = [feature.rawName, feature.cleanedName, raw, name, resolution.resolvedName]
+    .map((value) => normalizeRuleLookupKey(value ?? ''))
+    .filter(Boolean)
+  return keys.some((key) => bonfirePreferredFeatureKeys.has(key))
 }
 
 export function buildWeaponItem(attack: NormalizedAttack, identifier: string): FoundryItem {

@@ -90,6 +90,7 @@ describe('hydrationQualityMetrics', () => {
       hydrationMediumCount: 0,
       hydrationLowCount: 0,
       hydrationCustomFallbackCount: 0,
+      bonfireFallbackFeatureCount: 0,
       hydrationLibraryMissCount: 0,
       hydrationUnsafeMatchRejectedCount: 0,
       hydrationNoCandidateCount: 0,

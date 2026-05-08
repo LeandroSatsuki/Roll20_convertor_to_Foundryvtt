@@ -107,6 +107,7 @@ export type BonfireRuleFeature = {
   aliases?: string[]
   level?: number
   description: string
+  shortDescription?: string
   kind?: FeatureResolution['kind']
   uses?: BonfireUses
   activation?: string

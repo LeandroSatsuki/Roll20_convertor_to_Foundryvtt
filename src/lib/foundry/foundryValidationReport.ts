@@ -79,6 +79,11 @@ export type FoundryExportAuditReport = {
     sheetFeaturesDedupedCount: number
     hydratedSheetFeaturesCount: number
     unresolvedSheetFeatureCount: number
+    rejectedFeatureNoiseCount: number
+    ignoredDuplicateIdentityFeatureCount: number
+    hydratedOfficialClassFeatureCount: number
+    bonfireCustomFeatureResolvedCount: number
+    unresolvedRealFeatureCount: number
     classProgressionSuggestedCount: number
   }
   validations: FoundryValidationResult[]
@@ -118,7 +123,21 @@ export type FoundryExportAuditReport = {
       rangeCount: number
       extractedCount: number
       dedupedCount: number
+      rejectedFeatureNoiseCount?: number
+      ignoredDuplicateIdentityFeatureCount?: number
     }
+    featureResolutionDetails?: Array<{
+      name: string
+      sourceCell?: string | null
+      sourceRange?: string | null
+      sourceGroup?: string | null
+      classification?: string | null
+      aliasUsed?: string | null
+      libraryMatchName?: string | null
+      libraryMatchScore?: number | null
+      bonfireRuleId?: string | null
+      finalStatus: 'hydrated-library' | 'bonfire-fallback' | 'ignored-noise' | 'ignored-duplicate' | 'unresolved'
+    }>
   }
   unresolvedFeatures: Array<{
     rawName: string
