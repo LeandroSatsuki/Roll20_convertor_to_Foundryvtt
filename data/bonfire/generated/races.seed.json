@@ -1,0 +1,102 @@
+[
+  {
+    "id": "anao",
+    "identifier": "anao",
+    "name": "Anão",
+    "aliases": [],
+    "kind": "race",
+    "source": "bonfire",
+    "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/anao-species",
+    "shortDescription": "Descricao completa ainda nao cadastrada no seed local.",
+    "descriptionStatus": "summary-only",
+    "descriptionSource": "card-summary",
+    "needsReviewReasons": [
+      "summary-card-used-no-full-description",
+      "missing-full-rule-page"
+    ],
+    "tags": [
+      "race"
+    ],
+    "foundry": {
+      "preferredType": "feat"
+    },
+    "sourceFileName": "data\\HTML BONFIRE\\racas\\Anões.html",
+    "speed": null,
+    "speedStatus": "needs-review"
+  },
+  {
+    "id": "elfo",
+    "identifier": "elfo",
+    "name": "Elfo",
+    "aliases": [],
+    "kind": "race",
+    "source": "bonfire",
+    "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/elfo-species",
+    "shortDescription": "Descricao completa ainda nao cadastrada no seed local.",
+    "descriptionStatus": "summary-only",
+    "descriptionSource": "card-summary",
+    "needsReviewReasons": [
+      "summary-card-used-no-full-description",
+      "missing-full-rule-page"
+    ],
+    "tags": [
+      "race"
+    ],
+    "foundry": {
+      "preferredType": "feat"
+    },
+    "sourceFileName": "data\\HTML BONFIRE\\racas\\Elfo - Bonfire Tales RPG.html",
+    "speed": 3,
+    "speedStatus": "complete"
+  },
+  {
+    "id": "humano",
+    "identifier": "humano",
+    "name": "Humano",
+    "aliases": [],
+    "kind": "race",
+    "source": "bonfire",
+    "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+    "shortDescription": "Descricao completa ainda nao cadastrada no seed local.",
+    "descriptionStatus": "summary-only",
+    "descriptionSource": "card-summary",
+    "needsReviewReasons": [
+      "summary-card-used-no-full-description",
+      "missing-full-rule-page"
+    ],
+    "tags": [
+      "race"
+    ],
+    "foundry": {
+      "preferredType": "feat"
+    },
+    "sourceFileName": "data\\HTML BONFIRE\\racas\\Humano Species in Bonfire Tales RPG _ World Anvil.html",
+    "speed": 3,
+    "speedStatus": "complete"
+  },
+  {
+    "id": "orcs",
+    "identifier": "orcs",
+    "name": "Orcs",
+    "aliases": [],
+    "kind": "race",
+    "source": "bonfire",
+    "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/orcs-species",
+    "shortDescription": "Descricao completa ainda nao cadastrada no seed local.",
+    "descriptionStatus": "summary-only",
+    "descriptionSource": "card-summary",
+    "needsReviewReasons": [
+      "summary-card-used-no-full-description",
+      "missing-full-rule-page"
+    ],
+    "tags": [
+      "race"
+    ],
+    "foundry": {
+      "preferredType": "feat"
+    },
+    "sourceFileName": "data\\HTML BONFIRE\\racas\\Orcs Species in Bonfire Tales RPG _ World Anvil.html",
+    "speed": 3,
+    "speedStatus": "complete"
+  }
+]

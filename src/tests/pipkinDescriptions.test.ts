@@ -7,7 +7,12 @@ describe('pipkinDescriptions', () => {
     const descriptions = actor.items.map((item) => String(((item.system as any).description as any)?.value ?? '').trim())
 
     expect(descriptions.every(Boolean)).toBe(true)
-    expect(audit.summary.describedItemCount).toBe(audit.summary.itemCount)
+    expect(
+      audit.summary.describedItemCount
+      + audit.summary.descriptionFallbackCount
+      + audit.summary.bonfireDescriptionSummaryOnlyCount
+      + audit.summary.bonfireDescriptionNeedsReviewCount,
+    ).toBe(audit.summary.itemCount)
     expect(audit.summary.missingDescriptionCount).toBe(0)
     expect(audit.summary.errorCount).toBe(0)
     expect(audit.summary.invalidIdentifierCount).toBe(0)

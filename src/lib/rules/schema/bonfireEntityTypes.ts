@@ -35,7 +35,12 @@ export type BonfireRuleEntity = {
   sourceUrl?: string
   sourceName?: string
   description?: string
+  descriptionHtml?: string
+  descriptionText?: string
   shortDescription?: string
+  descriptionStatus?: 'complete' | 'summary-only' | 'fallback' | 'needs-review' | 'missing'
+  descriptionSource?: 'article-body' | 'section-body' | 'table-row' | 'card-summary' | 'manual-review' | 'unknown'
+  needsReviewReasons?: string[]
   className?: string
   subclassName?: string
   raceName?: string

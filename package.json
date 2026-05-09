@@ -7,6 +7,8 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
+    "bonfire:generate-seeds": "node scripts/bonfire-generate-seeds.mjs",
+    "bonfire:validate-seeds": "node scripts/bonfire-validate-seeds.mjs",
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest"

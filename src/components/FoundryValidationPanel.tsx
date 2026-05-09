@@ -2,16 +2,30 @@ import type { FoundryExportAuditReport } from '../lib/foundry/foundryValidationR
 
 export function FoundryValidationPanel({ report }: { report: FoundryExportAuditReport | null }) {
   if (!report) return <p className="empty">Gere um Actor para validar compatibilidade Foundry.</p>
+  const statusLabel =
+    report.importReadiness.status === 'blocked'
+      ? 'Bloqueado'
+      : report.importReadiness.status === 'ready-with-review'
+        ? 'Pronto com pendências'
+        : 'Pronto'
+  const statusClass = report.importReadiness.status === 'blocked' ? 'blocked' : report.importReadiness.status === 'ready-with-review' ? 'warning' : 'ready'
   return (
     <section className="audit-panel">
-      <header className={`audit-status ${report.importReadiness.canExport ? (report.summary.warningCount ? 'warning' : 'ready') : 'blocked'}`}>
-        <strong>{report.importReadiness.canExport ? (report.summary.warningCount ? 'Precisa de revisao' : 'Pronto para importar') : 'Bloqueado'}</strong>
+      <header className={`audit-status ${statusClass}`}>
+        <strong>{statusLabel}</strong>
         <span>{report.actorName}</span>
       </header>
+      {report.importReadiness.status === 'ready-with-review' ? (
+        <p className="status">O Actor é importável, mas existem regras Bonfire pendentes marcadas na ficha.</p>
+      ) : null}
       <div className="audit-summary">
         <span>Itens: {report.summary.itemCount}</span>
         <span>Warnings: {report.summary.warningCount}</span>
         <span>Erros: {report.summary.errorCount}</span>
+        <span>Erros bloqueantes: {report.summary.blockingErrorCount}</span>
+        <span>Pendências de revisão: {report.summary.reviewIssueCount}</span>
+        <span>Placeholders Bonfire: {report.summary.bonfireMissingRulePlaceholderCount}</span>
+        <span>Itens para revisar: {report.summary.unresolvedReviewItemCount}</span>
         <span>Identifiers invalidos: {report.summary.invalidIdentifierCount}</span>
         <span>Identifiers duplicados: {report.summary.duplicateIdentifierCount}</span>
         <span>Features nao resolvidas: {report.summary.unresolvedFeatureCount}</span>

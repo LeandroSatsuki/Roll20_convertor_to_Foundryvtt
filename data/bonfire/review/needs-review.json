@@ -1,0 +1,4586 @@
+{
+  "generatedAt": "2026-05-09T15:29:05.507Z",
+  "items": [
+    {
+      "type": "classes",
+      "id": "cacador",
+      "name": "Caçador",
+      "kind": "class",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/cacador-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classes",
+      "id": "guerreiro",
+      "name": "Guerreiro",
+      "kind": "class",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/guerreiro-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classes",
+      "id": "ladino",
+      "name": "Ladino",
+      "kind": "class",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/ladino-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "artificer-10-0-l3",
+      "name": "10 +0",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/artificer-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "artificer-12-1-l3",
+      "name": "12 +1",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/artificer-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "artificer-14-2-l3",
+      "name": "14 +2",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/artificer-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "artificer-development-l20",
+      "name": "Development",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/artificer-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "artificer-events-l20",
+      "name": "EVENTS",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/artificer-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "artificer-find-your-way-l20",
+      "name": "Find your way!",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/artificer-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "artificer-get-the-news-l20",
+      "name": "Get the news",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/artificer-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "artificer-legal-l20",
+      "name": "LEGAL",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/artificer-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "artificer-linhas-do-tempo",
+      "name": "Linhas do Tempo",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/artificer-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "artificer-our-shop-l20",
+      "name": "Our Shop",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/artificer-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "artificer-reaching-out-l20",
+      "name": "REACHING OUT",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/artificer-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "artificer-resources-l20",
+      "name": "Resources",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/artificer-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "artificer-who-we-are-l20",
+      "name": "WHO WE ARE",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/artificer-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "barbaro-linhas-do-tempo",
+      "name": "Linhas do Tempo",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/barbaro-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "bardo-linhas-do-tempo",
+      "name": "Linhas do Tempo",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bardo-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "cacador-10-0-l3",
+      "name": "10 +0",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/cacador-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "cacador-14-2-l3",
+      "name": "14 +2",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/cacador-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "cacador-16-3-l3",
+      "name": "16 +3",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/cacador-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "cacador-development-l20",
+      "name": "Development",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/cacador-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "cacador-events-l20",
+      "name": "EVENTS",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/cacador-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "cacador-find-your-way-l20",
+      "name": "Find your way!",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/cacador-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "cacador-get-the-news-l20",
+      "name": "Get the news",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/cacador-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "cacador-legal-l20",
+      "name": "LEGAL",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/cacador-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "cacador-linhas-do-tempo",
+      "name": "Linhas do Tempo",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/cacador-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "cacador-our-shop-l20",
+      "name": "Our Shop",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/cacador-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "cacador-reaching-out-l20",
+      "name": "REACHING OUT",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/cacador-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "cacador-resources-l20",
+      "name": "Resources",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/cacador-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "cacador-who-we-are-l20",
+      "name": "WHO WE ARE",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/cacador-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "clerigo-linhas-do-tempo",
+      "name": "Linhas do Tempo",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/clerigo-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "druida-linhas-do-tempo",
+      "name": "Linhas do Tempo",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "feiticeiro-12-1-l3",
+      "name": "12 +1",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/feiticeiro-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "feiticeiro-15-2-l3",
+      "name": "15 +2",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/feiticeiro-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "feiticeiro-17-3-l3",
+      "name": "17 +3",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/feiticeiro-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "feiticeiro-3-4-l3",
+      "name": "3 -4",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/feiticeiro-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "feiticeiro-development-l20",
+      "name": "Development",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/feiticeiro-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "feiticeiro-events-l20",
+      "name": "EVENTS",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/feiticeiro-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "feiticeiro-find-your-way-l20",
+      "name": "Find your way!",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/feiticeiro-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "feiticeiro-get-the-news-l20",
+      "name": "Get the news",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/feiticeiro-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "feiticeiro-legal-l20",
+      "name": "LEGAL",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/feiticeiro-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "feiticeiro-linhas-do-tempo",
+      "name": "Linhas do Tempo",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/feiticeiro-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "feiticeiro-metamagia-sempre-preparada-feitico-sutil-l3",
+      "name": "Metamagia Sempre Preparada: Feitiço Sutil",
+      "kind": "classFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/feiticeiro-article",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "classFeatures",
+      "id": "feiticeiro-metamagia-suprema-l17",
+      "name": "Metamagia Suprema",
+      "kind": "classFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/feiticeiro-article",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "classFeatures",
+      "id": "feiticeiro-our-shop-l20",
+      "name": "Our Shop",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/feiticeiro-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "feiticeiro-reaching-out-l20",
+      "name": "REACHING OUT",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/feiticeiro-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "feiticeiro-resources-l20",
+      "name": "Resources",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/feiticeiro-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "feiticeiro-who-we-are-l20",
+      "name": "WHO WE ARE",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/feiticeiro-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "guerreiro-development-l20",
+      "name": "Development",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/guerreiro-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "guerreiro-events-l20",
+      "name": "EVENTS",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/guerreiro-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "guerreiro-find-your-way-l20",
+      "name": "Find your way!",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/guerreiro-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "guerreiro-get-the-news-l20",
+      "name": "Get the news",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/guerreiro-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "guerreiro-legal-l20",
+      "name": "LEGAL",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/guerreiro-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "guerreiro-linhas-do-tempo",
+      "name": "Linhas do Tempo",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/guerreiro-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "guerreiro-our-shop-l20",
+      "name": "Our Shop",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/guerreiro-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "guerreiro-reaching-out-l20",
+      "name": "REACHING OUT",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/guerreiro-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "guerreiro-resources-l20",
+      "name": "Resources",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/guerreiro-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "guerreiro-who-we-are-l20",
+      "name": "WHO WE ARE",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/guerreiro-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "ladino-development-l20",
+      "name": "Development",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/ladino-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "ladino-events-l20",
+      "name": "EVENTS",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/ladino-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "ladino-find-your-way-l20",
+      "name": "Find your way!",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/ladino-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "ladino-get-the-news-l20",
+      "name": "Get the news",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/ladino-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "ladino-legal-l20",
+      "name": "LEGAL",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/ladino-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "ladino-linhas-do-tempo",
+      "name": "Linhas do Tempo",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/ladino-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "ladino-our-shop-l20",
+      "name": "Our Shop",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/ladino-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "ladino-reaching-out-l20",
+      "name": "REACHING OUT",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/ladino-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "ladino-resources-l20",
+      "name": "Resources",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/ladino-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "ladino-who-we-are-l20",
+      "name": "WHO WE ARE",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/ladino-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "mago-development-l20",
+      "name": "Development",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mago-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "mago-events-l20",
+      "name": "EVENTS",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mago-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "mago-find-your-way-l20",
+      "name": "Find your way!",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mago-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "mago-get-the-news-l20",
+      "name": "Get the news",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mago-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "mago-legal-l20",
+      "name": "LEGAL",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mago-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "mago-linhas-do-tempo",
+      "name": "Linhas do Tempo",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mago-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "mago-our-shop-l20",
+      "name": "Our Shop",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mago-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "mago-reaching-out-l20",
+      "name": "REACHING OUT",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mago-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "mago-resources-l20",
+      "name": "Resources",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mago-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "mago-who-we-are-l20",
+      "name": "WHO WE ARE",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mago-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "mistico-1-5-l3",
+      "name": "1 -5",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mistico-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "mistico-10-0-l3",
+      "name": "10 +0",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mistico-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "mistico-11-0-l1",
+      "name": "11 +0",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mistico-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "mistico-12-1-l3",
+      "name": "12 +1",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mistico-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "mistico-13-1-l1",
+      "name": "13 +1",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mistico-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "mistico-14-2-l3",
+      "name": "14 +2",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mistico-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "mistico-16-3-l1",
+      "name": "16 +3",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mistico-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "mistico-16-3-l3",
+      "name": "16 +3",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mistico-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "mistico-8-1-l1",
+      "name": "8 -1",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mistico-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "mistico-development-l20",
+      "name": "Development",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mistico-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "mistico-events-l20",
+      "name": "EVENTS",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mistico-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "mistico-find-your-way-l20",
+      "name": "Find your way!",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mistico-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "mistico-get-the-news-l20",
+      "name": "Get the news",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mistico-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "mistico-legal-l20",
+      "name": "LEGAL",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mistico-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "mistico-linhas-do-tempo",
+      "name": "Linhas do Tempo",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mistico-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "mistico-o-imortal-l14",
+      "name": "O Imortal",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mistico-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "mistico-our-shop-l20",
+      "name": "Our Shop",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mistico-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "mistico-reaching-out-l20",
+      "name": "REACHING OUT",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mistico-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "mistico-resources-l20",
+      "name": "Resources",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mistico-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "mistico-who-we-are-l20",
+      "name": "WHO WE ARE",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mistico-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "monge-development-l20",
+      "name": "Development",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/monge-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "monge-events-l20",
+      "name": "EVENTS",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/monge-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "monge-find-your-way-l20",
+      "name": "Find your way!",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/monge-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "monge-get-the-news-l20",
+      "name": "Get the news",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/monge-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "monge-legal-l20",
+      "name": "LEGAL",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/monge-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "monge-linhas-do-tempo",
+      "name": "Linhas do Tempo",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/monge-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "monge-our-shop-l20",
+      "name": "Our Shop",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/monge-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "monge-reaching-out-l20",
+      "name": "REACHING OUT",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/monge-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "monge-resources-l20",
+      "name": "Resources",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/monge-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "monge-who-we-are-l20",
+      "name": "WHO WE ARE",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/monge-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "paladino-12-1-l3",
+      "name": "12 +1",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/paladino-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "paladino-16-3-l3",
+      "name": "16 +3",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/paladino-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "paladino-18-4-l3",
+      "name": "18 +4",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/paladino-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "paladino-7-2-l3",
+      "name": "7 -2",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/paladino-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "paladino-development-l20",
+      "name": "Development",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/paladino-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "paladino-events-l20",
+      "name": "EVENTS",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/paladino-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "paladino-find-your-way-l20",
+      "name": "Find your way!",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/paladino-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "paladino-get-the-news-l20",
+      "name": "Get the news",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/paladino-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "paladino-legal-l20",
+      "name": "LEGAL",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/paladino-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "paladino-linhas-do-tempo",
+      "name": "Linhas do Tempo",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/paladino-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "paladino-our-shop-l20",
+      "name": "Our Shop",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/paladino-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "paladino-reaching-out-l20",
+      "name": "REACHING OUT",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/paladino-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "paladino-resources-l20",
+      "name": "Resources",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/paladino-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "classFeatures",
+      "id": "paladino-who-we-are-l20",
+      "name": "WHO WE ARE",
+      "kind": "classFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/paladino-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "races",
+      "id": "anao",
+      "name": "Anão",
+      "kind": "race",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/anao-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "races",
+      "id": "elfo",
+      "name": "Elfo",
+      "kind": "race",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/elfo-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "races",
+      "id": "humano",
+      "name": "Humano",
+      "kind": "race",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "races",
+      "id": "orcs",
+      "name": "Orcs",
+      "kind": "race",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/orcs-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "anao-bestiario",
+      "name": "Bestiário",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/anao-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "anao-cineria",
+      "name": "Cinéria",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/anao-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "anao-development",
+      "name": "Development",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/anao-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "anao-events",
+      "name": "EVENTS",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/anao-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "anao-evolucao-racial",
+      "name": "Evolução Racial",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/anao-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "anao-find-your-way",
+      "name": "Find your way!",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/anao-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "anao-get-the-news",
+      "name": "Get the news",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/anao-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "anao-jogadores",
+      "name": "Jogadores",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/anao-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "anao-legal",
+      "name": "LEGAL",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/anao-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "anao-linha-do-tempo-de-cineria",
+      "name": "Linha do Tempo de Cineria",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/anao-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "anao-mercado",
+      "name": "Mercado",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/anao-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "anao-mestres",
+      "name": "Mestres",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/anao-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "anao-missoes-e-ranks",
+      "name": "Missões e Ranks",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/anao-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "anao-montanha",
+      "name": "Montanha",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/anao-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "anao-mundo",
+      "name": "Mundo",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/anao-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "anao-our-shop",
+      "name": "Our Shop",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/anao-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "anao-profundezas",
+      "name": "Profundezas",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/anao-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "anao-reaching-out",
+      "name": "REACHING OUT",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/anao-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "anao-regras",
+      "name": "Regras",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/anao-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "anao-resources",
+      "name": "Resources",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/anao-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "anao-sistema",
+      "name": "Sistema",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/anao-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "anao-terremoto-ancestral",
+      "name": "Terremoto Ancestral",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/anao-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "anao-who-we-are",
+      "name": "WHO WE ARE",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/anao-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "bestial-bestiario",
+      "name": "Bestiário",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bestial-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "bestial-cineria",
+      "name": "Cinéria",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bestial-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "bestial-development",
+      "name": "Development",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bestial-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "bestial-events",
+      "name": "EVENTS",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bestial-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "bestial-find-your-way",
+      "name": "Find your way!",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bestial-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "bestial-get-the-news",
+      "name": "Get the news",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bestial-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "bestial-jogadores",
+      "name": "Jogadores",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bestial-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "bestial-legal",
+      "name": "LEGAL",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bestial-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "bestial-linha-do-tempo-de-cineria",
+      "name": "Linha do Tempo de Cineria",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bestial-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "bestial-mercado",
+      "name": "Mercado",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bestial-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "bestial-mestres",
+      "name": "Mestres",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bestial-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "bestial-missoes-e-ranks",
+      "name": "Missões e Ranks",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bestial-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "bestial-mundo",
+      "name": "Mundo",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bestial-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "bestial-our-shop",
+      "name": "Our Shop",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bestial-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "bestial-reaching-out",
+      "name": "REACHING OUT",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bestial-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "bestial-regras",
+      "name": "Regras",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bestial-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "bestial-resources",
+      "name": "Resources",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bestial-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "bestial-sistema",
+      "name": "Sistema",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bestial-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "bestial-who-we-are",
+      "name": "WHO WE ARE",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bestial-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "celestial-bestiario",
+      "name": "Bestiário",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/celestial-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "celestial-campeao",
+      "name": "Campeão",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/celestial-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "celestial-cineria",
+      "name": "Cinéria",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/celestial-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "celestial-corrompido",
+      "name": "Corrompido",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/celestial-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "celestial-development",
+      "name": "Development",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/celestial-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "celestial-events",
+      "name": "EVENTS",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/celestial-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "celestial-evolucao-da-essencia",
+      "name": "Evolução da Essência",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/celestial-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "celestial-find-your-way",
+      "name": "Find your way!",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/celestial-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "celestial-flagelado",
+      "name": "Flagelado",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/celestial-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "celestial-get-the-news",
+      "name": "Get the news",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/celestial-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "celestial-gloria-e-valor",
+      "name": "Glória e Valor",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/celestial-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "celestial-jogadores",
+      "name": "Jogadores",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/celestial-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "celestial-legal",
+      "name": "LEGAL",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/celestial-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "celestial-linha-do-tempo-de-cineria",
+      "name": "Linha do Tempo de Cineria",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/celestial-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "celestial-mercado",
+      "name": "Mercado",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/celestial-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "celestial-mestres",
+      "name": "Mestres",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/celestial-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "celestial-missoes-e-ranks",
+      "name": "Missões e Ranks",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/celestial-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "celestial-mundo",
+      "name": "Mundo",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/celestial-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "celestial-our-shop",
+      "name": "Our Shop",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/celestial-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "celestial-poderes-da-essencia",
+      "name": "Poderes da Essência",
+      "kind": "raceFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/celestial-article",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "celestial-protetor",
+      "name": "Protetor",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/celestial-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "celestial-reaching-out",
+      "name": "REACHING OUT",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/celestial-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "celestial-regras",
+      "name": "Regras",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/celestial-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "celestial-resources",
+      "name": "Resources",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/celestial-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "celestial-sistema",
+      "name": "Sistema",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/celestial-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "celestial-who-we-are",
+      "name": "WHO WE ARE",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/celestial-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "draconica-bestiario",
+      "name": "Bestiário",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/draconica-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "draconica-cineria",
+      "name": "Cinéria",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/draconica-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "draconica-development",
+      "name": "Development",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/draconica-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "draconica-events",
+      "name": "EVENTS",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/draconica-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "draconica-find-your-way",
+      "name": "Find your way!",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/draconica-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "draconica-get-the-news",
+      "name": "Get the news",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/draconica-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "draconica-jogadores",
+      "name": "Jogadores",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/draconica-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "draconica-legal",
+      "name": "LEGAL",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/draconica-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "draconica-linha-do-tempo-de-cineria",
+      "name": "Linha do Tempo de Cineria",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/draconica-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "draconica-mercado",
+      "name": "Mercado",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/draconica-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "draconica-mestres",
+      "name": "Mestres",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/draconica-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "draconica-missoes-e-ranks",
+      "name": "Missões e Ranks",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/draconica-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "draconica-mundo",
+      "name": "Mundo",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/draconica-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "draconica-our-shop",
+      "name": "Our Shop",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/draconica-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "draconica-reaching-out",
+      "name": "REACHING OUT",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/draconica-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "draconica-regras",
+      "name": "Regras",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/draconica-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "draconica-resources",
+      "name": "Resources",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/draconica-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "draconica-sistema",
+      "name": "Sistema",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/draconica-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "draconica-who-we-are",
+      "name": "WHO WE ARE",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/draconica-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "elfo-aetherin",
+      "name": "Aetherin",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/elfo-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "elfo-bestiario",
+      "name": "Bestiário",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/elfo-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "elfo-cineria",
+      "name": "Cinéria",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/elfo-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "elfo-development",
+      "name": "Development",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/elfo-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "elfo-events",
+      "name": "EVENTS",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/elfo-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "elfo-evolucao-racial",
+      "name": "Evolução Racial",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/elfo-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "elfo-find-your-way",
+      "name": "Find your way!",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/elfo-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "elfo-get-the-news",
+      "name": "Get the news",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/elfo-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "elfo-jogadores",
+      "name": "Jogadores",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/elfo-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "elfo-legal",
+      "name": "LEGAL",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/elfo-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "elfo-linha-do-tempo-de-cineria",
+      "name": "Linha do Tempo de Cineria",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/elfo-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "elfo-lunareth",
+      "name": "Lunareth",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/elfo-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "elfo-mercado",
+      "name": "Mercado",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/elfo-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "elfo-mestres",
+      "name": "Mestres",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/elfo-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "elfo-missoes-e-ranks",
+      "name": "Missões e Ranks",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/elfo-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "elfo-mundo",
+      "name": "Mundo",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/elfo-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "elfo-noctelar",
+      "name": "Noctelar",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/elfo-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "elfo-our-shop",
+      "name": "Our Shop",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/elfo-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "elfo-reaching-out",
+      "name": "REACHING OUT",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/elfo-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "elfo-regras",
+      "name": "Regras",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/elfo-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "elfo-resources",
+      "name": "Resources",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/elfo-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "elfo-sangue-de-mana",
+      "name": "Sangue de Mana",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/elfo-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "elfo-sistema",
+      "name": "Sistema",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/elfo-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "elfo-solariin",
+      "name": "Solariin",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/elfo-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "elfo-who-we-are",
+      "name": "WHO WE ARE",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/elfo-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "essencia-elemental-bestiario",
+      "name": "Bestiário",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/essencia-elemental-category",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "essencia-elemental-cineria",
+      "name": "Cinéria",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/essencia-elemental-category",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "essencia-elemental-development",
+      "name": "Development",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/essencia-elemental-category",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "essencia-elemental-events",
+      "name": "EVENTS",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/essencia-elemental-category",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "essencia-elemental-find-your-way",
+      "name": "Find your way!",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/essencia-elemental-category",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "essencia-elemental-get-the-news",
+      "name": "Get the news",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/essencia-elemental-category",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "essencia-elemental-jogadores",
+      "name": "Jogadores",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/essencia-elemental-category",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "essencia-elemental-legal",
+      "name": "LEGAL",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/essencia-elemental-category",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "essencia-elemental-linha-do-tempo-de-cineria",
+      "name": "Linha do Tempo de Cineria",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/essencia-elemental-category",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "essencia-elemental-mercado",
+      "name": "Mercado",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/essencia-elemental-category",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "essencia-elemental-mestres",
+      "name": "Mestres",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/essencia-elemental-category",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "essencia-elemental-missoes-e-ranks",
+      "name": "Missões e Ranks",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/essencia-elemental-category",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "essencia-elemental-mundo",
+      "name": "Mundo",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/essencia-elemental-category",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "essencia-elemental-our-shop",
+      "name": "Our Shop",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/essencia-elemental-category",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "essencia-elemental-reaching-out",
+      "name": "REACHING OUT",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/essencia-elemental-category",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "essencia-elemental-regras",
+      "name": "Regras",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/essencia-elemental-category",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "essencia-elemental-resources",
+      "name": "Resources",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/essencia-elemental-category",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "essencia-elemental-sistema",
+      "name": "Sistema",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/essencia-elemental-category",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "essencia-elemental-who-we-are",
+      "name": "WHO WE ARE",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/essencia-elemental-category",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "humano-1-erthari",
+      "name": "1. Erthari",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "humano-2-erthari",
+      "name": "2. Erthari",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "humano-3-salarin",
+      "name": "3. Sálarin",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "humano-4-salarin",
+      "name": "4. Sálarin",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "humano-5-durkarn",
+      "name": "5. Durkarn",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "humano-6-durkarn",
+      "name": "6. Durkarn",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "humano-7-goruun",
+      "name": "7. Goruun",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "humano-auge-do-potencial",
+      "name": "Auge do Potencial",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "humano-bestiario",
+      "name": "Bestiário",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "humano-cineria",
+      "name": "Cinéria",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "humano-determinacao-comum",
+      "name": "Determinação Comum",
+      "kind": "raceFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "humano-development",
+      "name": "Development",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "humano-events",
+      "name": "EVENTS",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "humano-evolucao-racial",
+      "name": "Evolução Racial",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "humano-find-your-way",
+      "name": "Find your way!",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "humano-get-the-news",
+      "name": "Get the news",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "humano-jogadores",
+      "name": "Jogadores",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "humano-legal",
+      "name": "LEGAL",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "humano-linha-do-tempo-de-cineria",
+      "name": "Linha do Tempo de Cineria",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "humano-mercado",
+      "name": "Mercado",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "humano-mestres",
+      "name": "Mestres",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "humano-missoes-e-ranks",
+      "name": "Missões e Ranks",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "humano-mundo",
+      "name": "Mundo",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "humano-our-shop",
+      "name": "Our Shop",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "humano-poliglota",
+      "name": "Poliglota",
+      "kind": "raceFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "humano-reaching-out",
+      "name": "REACHING OUT",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "humano-regras",
+      "name": "Regras",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "humano-resources",
+      "name": "Resources",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "humano-sangue-anao",
+      "name": "Sangue Anão",
+      "kind": "raceFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "humano-sangue-elfico",
+      "name": "Sangue Élfico",
+      "kind": "raceFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "humano-sangue-orquico",
+      "name": "Sangue Órquico",
+      "kind": "raceFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "humano-sistema",
+      "name": "Sistema",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "humano-vigor-do-cla",
+      "name": "Vigor do Clã",
+      "kind": "raceFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "humano-who-we-are",
+      "name": "WHO WE ARE",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "infernal-1-infero-humano",
+      "name": "1. Infero Humano",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/infernal-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "infernal-2-infero-anao",
+      "name": "2. Infero Anão",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/infernal-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "infernal-3-infero-elfo",
+      "name": "3. Infero Elfo",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/infernal-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "infernal-bestiario",
+      "name": "Bestiário",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/infernal-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "infernal-cineria",
+      "name": "Cinéria",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/infernal-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "infernal-decreto-exilio-abrasador",
+      "name": "Decreto: Exílio Abrasador",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/infernal-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "infernal-development",
+      "name": "Development",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/infernal-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "infernal-events",
+      "name": "EVENTS",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/infernal-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "infernal-evolucao-da-essencia",
+      "name": "Evolução da Essência",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/infernal-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "infernal-find-your-way",
+      "name": "Find your way!",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/infernal-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "infernal-get-the-news",
+      "name": "Get the news",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/infernal-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "infernal-jogadores",
+      "name": "Jogadores",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/infernal-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "infernal-legal",
+      "name": "LEGAL",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/infernal-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "infernal-linha-do-tempo-de-cineria",
+      "name": "Linha do Tempo de Cineria",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/infernal-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "infernal-mercado",
+      "name": "Mercado",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/infernal-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "infernal-mestres",
+      "name": "Mestres",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/infernal-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "infernal-missoes-e-ranks",
+      "name": "Missões e Ranks",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/infernal-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "infernal-mundo",
+      "name": "Mundo",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/infernal-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "infernal-our-shop",
+      "name": "Our Shop",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/infernal-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "infernal-poderes-da-essencia",
+      "name": "Poderes da Essência",
+      "kind": "raceFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/infernal-article",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "infernal-reaching-out",
+      "name": "REACHING OUT",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/infernal-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "infernal-regras",
+      "name": "Regras",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/infernal-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "infernal-resources",
+      "name": "Resources",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/infernal-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "infernal-sistema",
+      "name": "Sistema",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/infernal-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "infernal-who-we-are",
+      "name": "WHO WE ARE",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/infernal-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "orcs-avatar-da-destruicao",
+      "name": "Avatar da Destruição",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/orcs-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "orcs-bestiario",
+      "name": "Bestiário",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/orcs-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "orcs-cineria",
+      "name": "Cinéria",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/orcs-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "orcs-development",
+      "name": "Development",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/orcs-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "orcs-escalada-agil",
+      "name": "Escalada Ágil",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/orcs-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "orcs-estrutura-poderosa",
+      "name": "Estrutura Poderosa",
+      "kind": "raceFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/orcs-species",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "orcs-events",
+      "name": "EVENTS",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/orcs-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "orcs-evolucao-racial",
+      "name": "Evolução Racial",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/orcs-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "orcs-find-your-way",
+      "name": "Find your way!",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/orcs-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "orcs-get-the-news",
+      "name": "Get the news",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/orcs-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "orcs-jogadores",
+      "name": "Jogadores",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/orcs-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "orcs-legal",
+      "name": "LEGAL",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/orcs-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "orcs-linha-do-tempo-de-cineria",
+      "name": "Linha do Tempo de Cineria",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/orcs-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "orcs-mercado",
+      "name": "Mercado",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/orcs-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "orcs-mestres",
+      "name": "Mestres",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/orcs-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "orcs-missoes-e-ranks",
+      "name": "Missões e Ranks",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/orcs-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "orcs-mundo",
+      "name": "Mundo",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/orcs-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "orcs-orc-branco",
+      "name": "Orc Branco",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/orcs-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "orcs-orc-cinza",
+      "name": "Orc Cinza",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/orcs-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "orcs-orc-negro",
+      "name": "Orc Negro",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/orcs-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "orcs-orc-verde",
+      "name": "Orc Verde",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/orcs-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "orcs-our-shop",
+      "name": "Our Shop",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/orcs-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "orcs-passo-na-mata",
+      "name": "Passo na Mata",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/orcs-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "orcs-reaching-out",
+      "name": "REACHING OUT",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/orcs-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "orcs-regras",
+      "name": "Regras",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/orcs-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "orcs-resources",
+      "name": "Resources",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/orcs-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "orcs-sistema",
+      "name": "Sistema",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/orcs-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "orcs-vigor-da-montanha",
+      "name": "Vigor da Montanha",
+      "kind": "raceFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/orcs-species",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "orcs-who-we-are",
+      "name": "WHO WE ARE",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/orcs-species",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "vampiro-bestiario",
+      "name": "Bestiário",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/vampiro-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "vampiro-cineria",
+      "name": "Cinéria",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/vampiro-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "vampiro-development",
+      "name": "Development",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/vampiro-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "vampiro-events",
+      "name": "EVENTS",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/vampiro-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "vampiro-find-your-way",
+      "name": "Find your way!",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/vampiro-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "vampiro-get-the-news",
+      "name": "Get the news",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/vampiro-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "vampiro-jogadores",
+      "name": "Jogadores",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/vampiro-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "vampiro-legal",
+      "name": "LEGAL",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/vampiro-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "vampiro-linha-do-tempo-de-cineria",
+      "name": "Linha do Tempo de Cineria",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/vampiro-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "vampiro-mercado",
+      "name": "Mercado",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/vampiro-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "vampiro-mestres",
+      "name": "Mestres",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/vampiro-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "vampiro-missoes-e-ranks",
+      "name": "Missões e Ranks",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/vampiro-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "vampiro-mundo",
+      "name": "Mundo",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/vampiro-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "vampiro-our-shop",
+      "name": "Our Shop",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/vampiro-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "vampiro-reaching-out",
+      "name": "REACHING OUT",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/vampiro-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "vampiro-regras",
+      "name": "Regras",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/vampiro-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "vampiro-resources",
+      "name": "Resources",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/vampiro-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "vampiro-sistema",
+      "name": "Sistema",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/vampiro-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "vampiro-who-we-are",
+      "name": "WHO WE ARE",
+      "kind": "raceFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/vampiro-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "feats",
+      "id": "bestiario",
+      "name": "Bestiário",
+      "kind": "feat",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/talentos-category",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "feats",
+      "id": "cineria",
+      "name": "Cinéria",
+      "kind": "feat",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/talentos-category",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "feats",
+      "id": "development",
+      "name": "Development",
+      "kind": "feat",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/talentos-category",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "feats",
+      "id": "events",
+      "name": "EVENTS",
+      "kind": "feat",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/talentos-category",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "feats",
+      "id": "find-your-way",
+      "name": "Find your way!",
+      "kind": "feat",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/talentos-category",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "feats",
+      "id": "get-the-news",
+      "name": "Get the news",
+      "kind": "feat",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/talentos-category",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "feats",
+      "id": "jogadores",
+      "name": "Jogadores",
+      "kind": "feat",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/talentos-category",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "feats",
+      "id": "legal",
+      "name": "LEGAL",
+      "kind": "feat",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/talentos-category",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "feats",
+      "id": "linha-do-tempo-de-cineria",
+      "name": "Linha do Tempo de Cineria",
+      "kind": "feat",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/talentos-category",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "feats",
+      "id": "mercado",
+      "name": "Mercado",
+      "kind": "feat",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/talentos-category",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "feats",
+      "id": "mestres",
+      "name": "Mestres",
+      "kind": "feat",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/talentos-category",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "feats",
+      "id": "missoes-e-ranks",
+      "name": "Missões e Ranks",
+      "kind": "feat",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/talentos-category",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "feats",
+      "id": "mundo",
+      "name": "Mundo",
+      "kind": "feat",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/talentos-category",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "feats",
+      "id": "our-shop",
+      "name": "Our Shop",
+      "kind": "feat",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/talentos-category",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "feats",
+      "id": "reaching-out",
+      "name": "REACHING OUT",
+      "kind": "feat",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/talentos-category",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "feats",
+      "id": "regras",
+      "name": "Regras",
+      "kind": "feat",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/talentos-category",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "feats",
+      "id": "resources",
+      "name": "Resources",
+      "kind": "feat",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/talentos-category",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "feats",
+      "id": "sistema",
+      "name": "Sistema",
+      "kind": "feat",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/talentos-category",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "feats",
+      "id": "who-we-are",
+      "name": "WHO WE ARE",
+      "kind": "feat",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/talentos-category",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "barbaro-development-l20-caminho-da-feiticaria-selvagem",
+      "name": "Development",
+      "kind": "subclassFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/barbaro-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "barbaro-events-l20-caminho-da-feiticaria-selvagem",
+      "name": "EVENTS",
+      "kind": "subclassFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/barbaro-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "barbaro-find-your-way-l20-caminho-da-feiticaria-selvagem",
+      "name": "Find your way!",
+      "kind": "subclassFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/barbaro-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "barbaro-get-the-news-l20-caminho-da-feiticaria-selvagem",
+      "name": "Get the news",
+      "kind": "subclassFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/barbaro-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "barbaro-legal-l20-caminho-da-feiticaria-selvagem",
+      "name": "LEGAL",
+      "kind": "subclassFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/barbaro-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "barbaro-our-shop-l20-caminho-da-feiticaria-selvagem",
+      "name": "Our Shop",
+      "kind": "subclassFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/barbaro-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "barbaro-reaching-out-l20-caminho-da-feiticaria-selvagem",
+      "name": "REACHING OUT",
+      "kind": "subclassFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/barbaro-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "barbaro-resources-l20-caminho-da-feiticaria-selvagem",
+      "name": "Resources",
+      "kind": "subclassFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/barbaro-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "barbaro-who-we-are-l20-caminho-da-feiticaria-selvagem",
+      "name": "WHO WE ARE",
+      "kind": "subclassFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/barbaro-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "bardo-10-0-l6-colegio-skald",
+      "name": "10 +0",
+      "kind": "subclassFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bardo-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "bardo-14-2-l6-colegio-skald",
+      "name": "14 +2",
+      "kind": "subclassFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bardo-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "bardo-16-3-l6-colegio-skald",
+      "name": "16 +3",
+      "kind": "subclassFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bardo-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "bardo-18-4-l6-colegio-skald",
+      "name": "18 +4",
+      "kind": "subclassFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bardo-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "bardo-4-3-l6-colegio-skald",
+      "name": "4 -3",
+      "kind": "subclassFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bardo-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "bardo-caracteristica-de-colegio-l14-colegio-skald",
+      "name": "Característica de Colégio",
+      "kind": "subclassFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bardo-article",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "bardo-caracteristica-de-colegio-l18-colegio-skald",
+      "name": "Característica de Colégio",
+      "kind": "subclassFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bardo-article",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "bardo-caracteristica-de-colegio-l6-colegio-skald",
+      "name": "Característica de Colégio",
+      "kind": "subclassFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bardo-article",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "bardo-development-l20-colegio-skald",
+      "name": "Development",
+      "kind": "subclassFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bardo-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "bardo-events-l20-colegio-skald",
+      "name": "EVENTS",
+      "kind": "subclassFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bardo-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "bardo-find-your-way-l20-colegio-skald",
+      "name": "Find your way!",
+      "kind": "subclassFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bardo-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "bardo-get-the-news-l20-colegio-skald",
+      "name": "Get the news",
+      "kind": "subclassFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bardo-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "bardo-legal-l20-colegio-skald",
+      "name": "LEGAL",
+      "kind": "subclassFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bardo-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "bardo-our-shop-l20-colegio-skald",
+      "name": "Our Shop",
+      "kind": "subclassFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bardo-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "bardo-reaching-out-l20-colegio-skald",
+      "name": "REACHING OUT",
+      "kind": "subclassFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bardo-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "bardo-resources-l20-colegio-skald",
+      "name": "Resources",
+      "kind": "subclassFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bardo-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "bardo-who-we-are-l20-colegio-skald",
+      "name": "WHO WE ARE",
+      "kind": "subclassFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bardo-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "clerigo-14-2-l3-dominio-da-natureza",
+      "name": "14 +2",
+      "kind": "subclassFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/clerigo-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "clerigo-16-3-l3-dominio-da-natureza",
+      "name": "16 +3",
+      "kind": "subclassFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/clerigo-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "clerigo-8-1-l3-dominio-da-natureza",
+      "name": "8 -1",
+      "kind": "subclassFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/clerigo-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "clerigo-caracteristica-de-dominio-divino-l6-dominio-da-vida",
+      "name": "Característica de Domínio Divino",
+      "kind": "subclassFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/clerigo-article",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "clerigo-development-l20-dominio-da-vida",
+      "name": "Development",
+      "kind": "subclassFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/clerigo-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "clerigo-events-l20-dominio-da-vida",
+      "name": "EVENTS",
+      "kind": "subclassFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/clerigo-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "clerigo-find-your-way-l20-dominio-da-vida",
+      "name": "Find your way!",
+      "kind": "subclassFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/clerigo-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "clerigo-get-the-news-l20-dominio-da-vida",
+      "name": "Get the news",
+      "kind": "subclassFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/clerigo-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "clerigo-legal-l20-dominio-da-vida",
+      "name": "LEGAL",
+      "kind": "subclassFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/clerigo-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "clerigo-our-shop-l20-dominio-da-vida",
+      "name": "Our Shop",
+      "kind": "subclassFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/clerigo-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "clerigo-reaching-out-l20-dominio-da-vida",
+      "name": "REACHING OUT",
+      "kind": "subclassFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/clerigo-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "clerigo-resources-l20-dominio-da-vida",
+      "name": "Resources",
+      "kind": "subclassFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/clerigo-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "clerigo-who-we-are-l20-dominio-da-vida",
+      "name": "WHO WE ARE",
+      "kind": "subclassFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/clerigo-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "druida-12-1-l3-circulo-do-pastor-elemental",
+      "name": "12 +1",
+      "kind": "subclassFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "druida-13-1-l3-circulo-do-pastor-elemental",
+      "name": "13 +1",
+      "kind": "subclassFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "druida-14-2-l3-circulo-do-pastor-elemental",
+      "name": "14 +2",
+      "kind": "subclassFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "druida-17-3-l3-circulo-do-pastor-elemental",
+      "name": "17 +3",
+      "kind": "subclassFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "druida-development-l20-circulo-da-terra",
+      "name": "Development",
+      "kind": "subclassFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "druida-events-l20-circulo-da-terra",
+      "name": "EVENTS",
+      "kind": "subclassFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "druida-ficha-familiar-primal-l3-circulo-do-pastor-elemental",
+      "name": "Ficha - Familiar Primal",
+      "kind": "subclassFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "druida-find-your-way-l20-circulo-da-terra",
+      "name": "Find your way!",
+      "kind": "subclassFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "druida-forma-selvagem-perene-l20-circulo-da-terra",
+      "name": "Forma Selvagem Perene",
+      "kind": "subclassFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "druida-get-the-news-l20-circulo-da-terra",
+      "name": "Get the news",
+      "kind": "subclassFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "druida-legal-l20-circulo-da-terra",
+      "name": "LEGAL",
+      "kind": "subclassFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "druida-our-shop-l20-circulo-da-terra",
+      "name": "Our Shop",
+      "kind": "subclassFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "druida-reaching-out-l20-circulo-da-terra",
+      "name": "REACHING OUT",
+      "kind": "subclassFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "druida-resources-l20-circulo-da-terra",
+      "name": "Resources",
+      "kind": "subclassFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "druida-who-we-are-l20-circulo-da-terra",
+      "name": "WHO WE ARE",
+      "kind": "subclassFeature",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "spellOverrides",
+      "id": "spell-override-bestiario",
+      "name": "Bestiário",
+      "kind": "spellOverride",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/magias-category",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "spellOverrides",
+      "id": "spell-override-cineria",
+      "name": "Cinéria",
+      "kind": "spellOverride",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/magias-category",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "spellOverrides",
+      "id": "spell-override-development",
+      "name": "Development",
+      "kind": "spellOverride",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/magias-category",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "spellOverrides",
+      "id": "spell-override-events",
+      "name": "EVENTS",
+      "kind": "spellOverride",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/magias-category",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "spellOverrides",
+      "id": "spell-override-find-your-way",
+      "name": "Find your way!",
+      "kind": "spellOverride",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/magias-category",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "spellOverrides",
+      "id": "spell-override-get-the-news",
+      "name": "Get the news",
+      "kind": "spellOverride",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/magias-category",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "spellOverrides",
+      "id": "spell-override-jogadores",
+      "name": "Jogadores",
+      "kind": "spellOverride",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/magias-category",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "spellOverrides",
+      "id": "spell-override-legal",
+      "name": "LEGAL",
+      "kind": "spellOverride",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/magias-category",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "spellOverrides",
+      "id": "spell-override-linha-do-tempo-de-cineria",
+      "name": "Linha do Tempo de Cineria",
+      "kind": "spellOverride",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/magias-category",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "spellOverrides",
+      "id": "spell-override-livros-com-magias-liberadas",
+      "name": "Livros com Magias Liberadas",
+      "kind": "spellOverride",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/magias-category",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "spellOverrides",
+      "id": "spell-override-mercado",
+      "name": "Mercado",
+      "kind": "spellOverride",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/magias-category",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "spellOverrides",
+      "id": "spell-override-mestres",
+      "name": "Mestres",
+      "kind": "spellOverride",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/magias-category",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "spellOverrides",
+      "id": "spell-override-missoes-e-ranks",
+      "name": "Missões e Ranks",
+      "kind": "spellOverride",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/magias-category",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "spellOverrides",
+      "id": "spell-override-mundo",
+      "name": "Mundo",
+      "kind": "spellOverride",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/magias-category",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "spellOverrides",
+      "id": "spell-override-our-shop",
+      "name": "Our Shop",
+      "kind": "spellOverride",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/magias-category",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "spellOverrides",
+      "id": "spell-override-reaching-out",
+      "name": "REACHING OUT",
+      "kind": "spellOverride",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/magias-category",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "spellOverrides",
+      "id": "spell-override-regras",
+      "name": "Regras",
+      "kind": "spellOverride",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/magias-category",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "spellOverrides",
+      "id": "spell-override-resources",
+      "name": "Resources",
+      "kind": "spellOverride",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/magias-category",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "spellOverrides",
+      "id": "spell-override-sistema",
+      "name": "Sistema",
+      "kind": "spellOverride",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/magias-category",
+      "descriptionSource": "card-summary"
+    },
+    {
+      "type": "spellOverrides",
+      "id": "spell-override-who-we-are",
+      "name": "WHO WE ARE",
+      "kind": "spellOverride",
+      "descriptionStatus": "summary-only",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/magias-category",
+      "descriptionSource": "card-summary"
+    }
+  ],
+  "parseErrors": []
+}

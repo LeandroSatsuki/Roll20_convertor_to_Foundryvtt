@@ -43,8 +43,6 @@ export function legacyStoreToEntities(store: LegacyStore): BonfireRuleEntity[] {
 function classToEntities(rule: BonfireClassRule): BonfireRuleEntity[] {
   return [
     baseEntity(rule, 'class', {
-      description: rule.description ?? `Classe Bonfire. Dado de vida ${rule.hitDie}.`,
-      shortDescription: rule.shortDescription,
       foundry: { itemType: 'class' },
       tags: ['class'],
     }),
@@ -55,8 +53,6 @@ function classToEntities(rule: BonfireClassRule): BonfireRuleEntity[] {
 function subclassToEntities(rule: BonfireSubclassRule): BonfireRuleEntity[] {
   return [
     baseEntity(rule, 'subclass', {
-      description: rule.description ?? `Subclasse de ${rule.className}.`,
-      shortDescription: rule.shortDescription,
       className: rule.className,
       foundry: { itemType: 'subclass' },
       tags: ['subclass'],
@@ -68,8 +64,6 @@ function subclassToEntities(rule: BonfireSubclassRule): BonfireRuleEntity[] {
 function raceToEntities(rule: BonfireRaceRule): BonfireRuleEntity[] {
   return [
     baseEntity(rule, 'race', {
-      description: rule.description ?? `Raca Bonfire. Deslocamento ${rule.speed}.`,
-      shortDescription: rule.shortDescription,
       foundry: { itemType: 'feat' },
       tags: ['race'],
     }),
@@ -80,8 +74,6 @@ function raceToEntities(rule: BonfireRaceRule): BonfireRuleEntity[] {
 function backgroundToEntities(rule: BonfireBackgroundRule): BonfireRuleEntity[] {
   return [
     baseEntity(rule, 'background', {
-      description: rule.description ?? 'Antecedente Bonfire.',
-      shortDescription: rule.shortDescription,
       foundry: { itemType: 'background' },
       tags: ['background'],
     }),
@@ -92,8 +84,6 @@ function backgroundToEntities(rule: BonfireBackgroundRule): BonfireRuleEntity[] 
 function featToEntity(rule: BonfireFeatRule): BonfireRuleEntity {
   const kind: BonfireRuleKind = rule.category === 'origin' ? 'originFeat' : rule.category === 'racial' ? 'racialFeat' : 'feat'
   return baseEntity(rule, kind, {
-    description: rule.description ?? rule.effects.join('\n'),
-    shortDescription: rule.shortDescription,
     foundry: { itemType: 'feat', activationType: rule.activation, uses: rule.uses },
     tags: ['feat', rule.category],
   })
@@ -109,8 +99,6 @@ function weaponToEntity(rule: BonfireWeaponRule): BonfireRuleEntity {
           ? 'weapon'
           : 'equipment'
   return baseEntity(rule, kind, {
-    description: rule.description ?? rule.properties.join(', '),
-    shortDescription: rule.shortDescription,
     foundry: {
       itemType: kind === 'weapon' ? 'weapon' : kind === 'consumable' ? 'consumable' : 'equipment',
       damageFormula: rule.damage,
@@ -127,8 +115,13 @@ function spellOverrideToEntity(rule: BonfireSpellOverrideRule): BonfireRuleEntit
     name: rule.spellName,
     aliases: [rule.spellName, ...(rule.aliases ?? [])],
     kind: 'spellOverride',
-    description: rule.baseDescription ?? rule.description,
+    description: rule.baseDescription ?? rule.description ?? rule.descriptionText ?? rule.shortDescription ?? rule.foundryNotes,
+    descriptionHtml: rule.descriptionHtml,
+    descriptionText: rule.descriptionText ?? rule.baseDescription ?? rule.description,
     shortDescription: rule.shortDescription ?? rule.foundryNotes,
+    descriptionStatus: rule.descriptionStatus ?? inferLegacyDescriptionStatus(rule),
+    descriptionSource: rule.descriptionSource ?? 'manual-review',
+    needsReviewReasons: rule.needsReviewReasons ?? defaultNeedsReviewReasons(rule),
     sourceUrl: rule.sourceUrl,
     sourceName: 'Bonfire spell overrides',
     seedLocal: true,
@@ -150,14 +143,21 @@ function featuresByLevelToEntities(featuresByLevel: Record<string, BonfireRuleFe
 }
 
 function featureToEntity(feature: BonfireRuleFeature, kind: BonfireRuleKind, sourceUrl?: string, extra: Partial<BonfireRuleEntity> = {}): BonfireRuleEntity {
+  const inferredStatus = feature.descriptionStatus ?? inferLegacyDescriptionStatus(feature)
+  const fullDescriptionText = inferredStatus === 'complete' ? (feature.descriptionText ?? feature.description) : undefined
   return {
     id: feature.id,
     identifier: toFoundryIdentifier(feature.id || feature.name),
     name: feature.name,
     aliases: feature.aliases ?? [],
     kind,
-    description: feature.description,
-    shortDescription: feature.shortDescription,
+    description: fullDescriptionText ?? feature.shortDescription ?? feature.description,
+    descriptionHtml: inferredStatus === 'complete' ? feature.descriptionHtml : undefined,
+    descriptionText: fullDescriptionText,
+    shortDescription: feature.shortDescription ?? (inferredStatus === 'complete' ? undefined : feature.description),
+    descriptionStatus: inferredStatus,
+    descriptionSource: feature.descriptionSource ?? 'manual-review',
+    needsReviewReasons: feature.needsReviewReasons ?? defaultNeedsReviewReasons(feature),
     sourceUrl: feature.sourceUrl ?? sourceUrl,
     sourceName: 'Bonfire local seed',
     seedLocal: true,
@@ -172,10 +172,24 @@ function featureToEntity(feature: BonfireRuleFeature, kind: BonfireRuleKind, sou
 }
 
 function baseEntity(
-  rule: { id: string; name: string; aliases?: string[]; sourceUrl?: string; description?: string; shortDescription?: string },
+  rule: {
+    id: string
+    name: string
+    aliases?: string[]
+    sourceUrl?: string
+    description?: string
+    descriptionHtml?: string
+    descriptionText?: string
+    shortDescription?: string
+    descriptionStatus?: BonfireRuleEntity['descriptionStatus']
+    descriptionSource?: BonfireRuleEntity['descriptionSource']
+    needsReviewReasons?: string[]
+  },
   kind: BonfireRuleKind,
   extra: Partial<BonfireRuleEntity> = {},
 ): BonfireRuleEntity {
+  const inferredStatus = rule.descriptionStatus ?? inferLegacyDescriptionStatus(rule)
+  const fullDescriptionText = inferredStatus === 'complete' ? (rule.descriptionText ?? rule.description) : undefined
   return {
     id: rule.id,
     identifier: toFoundryIdentifier(rule.id || rule.name),
@@ -185,8 +199,42 @@ function baseEntity(
     sourceUrl: rule.sourceUrl,
     sourceName: 'Bonfire local seed',
     seedLocal: true,
-    description: rule.description,
-    shortDescription: rule.shortDescription,
+    description: fullDescriptionText ?? rule.shortDescription ?? rule.description,
+    descriptionHtml: inferredStatus === 'complete' ? rule.descriptionHtml : undefined,
+    descriptionText: fullDescriptionText,
+    shortDescription: rule.shortDescription ?? (inferredStatus === 'complete' ? undefined : rule.description),
+    descriptionStatus: inferredStatus,
+    descriptionSource: rule.descriptionSource ?? 'manual-review',
+    needsReviewReasons: rule.needsReviewReasons ?? defaultNeedsReviewReasons(rule),
     ...extra,
   }
+}
+
+function inferLegacyDescriptionStatus(rule: {
+  description?: string
+  descriptionText?: string
+  shortDescription?: string
+  descriptionSource?: BonfireRuleEntity['descriptionSource']
+}): NonNullable<BonfireRuleEntity['descriptionStatus']> {
+  if (rule.descriptionSource === 'card-summary') return 'summary-only'
+  if (rule.descriptionText?.trim()) return 'complete'
+  if (rule.description?.trim() && rule.descriptionSource && rule.descriptionSource !== 'manual-review') return 'complete'
+  if (rule.shortDescription?.trim()) return 'needs-review'
+  if (rule.description?.trim()) return 'needs-review'
+  return 'missing'
+}
+
+function defaultNeedsReviewReasons(rule: {
+  description?: string
+  shortDescription?: string
+  descriptionStatus?: BonfireRuleEntity['descriptionStatus']
+  descriptionSource?: BonfireRuleEntity['descriptionSource']
+}): string[] | undefined {
+  const status = rule.descriptionStatus ?? inferLegacyDescriptionStatus(rule)
+  if (status === 'complete') return undefined
+  if (status === 'summary-only') return ['summary-card-used-no-full-description', 'missing-full-rule-page']
+  if (status === 'needs-review' && rule.descriptionSource === 'manual-review') return ['manual-description-not-source-verified']
+  if (status === 'fallback') return ['fallback-description']
+  if (status === 'missing') return ['missing-full-rule-page']
+  return ['description-needs-review']
 }

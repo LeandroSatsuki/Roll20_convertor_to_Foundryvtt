@@ -6,33 +6,73 @@ import { getItemAutomationMeta } from '../foundry/items'
 import type { FoundryHydrationReport, FoundryLibraryReport } from '../foundry-library/foundryReferenceLibraryTypes'
 
 const blockingCodes = new Set([
-  'CHARACTER_NAME_IS_URL',
-  'FOUNDRY_ACTOR_SYSTEM_MISSING',
+  'ABILITY_SCORE_MISSING',
+  'AC_MISSING',
+  'HP_MISSING',
+  'TEMPLATE_CRITICAL_FIELD_MISSING',
+  'SHEET_PARSE_BLOCKED',
+  'FOUNDRY_ACTOR_ROOT_INVALID',
+  'FOUNDRY_ACTOR_INVALID',
+  'FOUNDRY_ACTOR_MISSING',
+  'FOUNDRY_ACTOR_NAME_MISSING',
+  'FOUNDRY_ACTOR_TYPE_MISSING',
+  'FOUNDRY_ACTOR_TYPE_INVALID',
   'FOUNDRY_ACTOR_UNDEFINED',
   'FOUNDRY_ITEM_IDENTIFIER_INVALID',
   'FOUNDRY_ITEM_IDENTIFIER_DUPLICATE',
-  'FOUNDRY_ITEM_NAME_MISSING',
   'FOUNDRY_ITEM_TYPE_MISSING',
   'FOUNDRY_ITEM_TYPE_INVALID',
+  'FOUNDRY_ACTIVITY_INVALID',
+
+  // Legacy converter codes that represent the same structural blockers.
+  'FOUNDRY_ACTOR_SYSTEM_MISSING',
+  'FOUNDRY_ITEM_NAME_MISSING',
   'FOUNDRY_ITEM_UNDEFINED',
-  'FOUNDRY_SPELL_SLOT_VALUE_INVALID',
-  'FOUNDRY_CLERIC5_SLOTS_INVALID',
+  'FOUNDRY_ACTIVITIES_INVALID',
+  'FOUNDRY_ACTIVITY_TYPE_INVALID',
+  'FOUNDRY_ACTIVITY_ID_MISSING',
+  'CHARACTER_NAME_IS_URL',
   'SHEET_CHARACTER_NAME_MISSING',
-  'SHEET_ABILITY_NOT_FOUND',
-  'SHEET_ABILITY_SCORE_INVALID',
   'SHEET_ABILITY_SCORE_MISSING',
+  'SHEET_ABILITY_SCORE_INVALID',
   'SHEET_AC_MISSING',
-  'BACKGROUND_INVALID_TEMPLATE_VALUE',
+  'SHEET_HP_MAX_MISSING',
   'PASSIVE_PERCEPTION_INVALID',
   'CURRENCY_GP_INVALID',
   'SHEET_SPEED_LOOKS_LIKE_HP_DUPLICATE',
-  'SHEET_HP_MAX_MISSING',
   'TEMPLATE_FIELD_MISSING',
-  'ABILITY_SCORE_MISSING_MODIFIER_ONLY',
   'BONFIRE_LOG_V2_TEMPLATE_PARSER_NOT_CALLED',
   'SHEET_CHARACTER_REGION_NOT_FOUND',
   'SHEET_PARSE_BLOCKED_LOW_CONFIDENCE',
-  'SHEET_TEMPLATE_LOW_CONFIDENCE',
+  'ABILITY_SCORE_MISSING_MODIFIER_ONLY',
+  'BACKGROUND_INVALID_TEMPLATE_VALUE',
+])
+
+const nonBlockingReviewCodes = new Set([
+  'RULE_NOT_FOUND',
+  'RULE_DESCRIPTION_MISSING',
+  'FEATURE_UNRESOLVED_REVIEW_REQUIRED',
+  'BONFIRE_FEATURE_NEEDS_REVIEW',
+  'BONFIRE_FEATURE_DESCRIPTION_FALLBACK',
+  'BONFIRE_DESCRIPTION_SUMMARY_ONLY',
+  'BONFIRE_DESCRIPTION_SOURCE_CARD_SUMMARY',
+  'BONFIRE_DESCRIPTION_FULL_TEXT_MISSING',
+  'BONFIRE_DESCRIPTION_NEEDS_SOURCE_PAGE',
+  'FEATURE_NOISE_REJECTED',
+  'CLASS_COVERAGE_NEEDS_REVIEW',
+  'BONFIRE_RULE_COVERAGE_MISSING',
+  'FOUNDRY_LIBRARY_ITEM_NOT_FOUND',
+  'FOUNDRY_LIBRARY_LOW_CONFIDENCE',
+  'FOUNDRY_FEATURE_HYDRATION_BLOCKED_BY_POLICY',
+  'SHEET_FEATURE_UNRESOLVED',
+  'SHEET_FEATURE_BONFIRE_FALLBACK',
+  'RULE_DESCRIPTION_FALLBACK_USED',
+  'RULE_RESOLUTION_LOW_CONFIDENCE',
+  'RULE_RESOLUTION_AMBIGUOUS',
+  'CLASS_RULE_UNKNOWN',
+  'CLASS_HIT_DIE_UNKNOWN',
+  'CLASS_RULE_FALLBACK_USED',
+  'SPELLCASTING_RULE_MISSING',
 ])
 
 export function buildExportAuditReport(actor: FoundryActor | null, normalized?: NormalizedCharacter | null): FoundryExportAuditReport {
@@ -42,6 +82,7 @@ export function buildExportAuditReport(actor: FoundryActor | null, normalized?: 
   const skillValidations = actor && normalized ? collectSkillTotalValidations(actor, normalized) : []
   const hydrationValidations = actor ? collectHydrationValidations(actor) : []
   const sheetFeatureValidations = actor ? collectSheetFeatureValidations(actor) : []
+  const bonfireResolutionValidations = actor ? collectBonfireResolutionValidations(actor) : []
   const progressionValidations = actor ? collectClassProgressionValidations(actor) : []
   const spellcastingValidations = actor ? collectSpellcastingValidations(actor) : []
   const initiativeValidations = actor ? collectInitiativeValidations(actor) : []
@@ -49,7 +90,7 @@ export function buildExportAuditReport(actor: FoundryActor | null, normalized?: 
   const classRuleValidations = actor ? collectClassRuleValidations(actor) : []
   const parserValidations = (normalized?.warnings ?? []).filter((warning) => warning.severity === 'error').map((warning) => ({
     code: warning.code,
-    severity: 'error' as const,
+    severity: nonBlockingReviewCodes.has(warning.code) ? ('warning' as const) : ('error' as const),
     message: warning.message,
     path: warning.fieldPath,
   }))
@@ -60,16 +101,19 @@ export function buildExportAuditReport(actor: FoundryActor | null, normalized?: 
     ...skillValidations,
     ...hydrationValidations,
     ...sheetFeatureValidations,
+    ...bonfireResolutionValidations,
     ...progressionValidations,
     ...spellcastingValidations,
     ...initiativeValidations,
     ...classRuleValidations,
     ...identifierDedupValidations,
     ...parserValidations,
-  ]
-  const errors = validations.filter((validation) => validation.severity === 'error')
+  ].map(normalizeValidationSeverity)
+  const blockingValidations = validations.filter(isBlockingValidation)
+  const errors = blockingValidations
   const warnings = validations.filter((validation) => validation.severity === 'warning')
-  const blockingReasons = validations.filter((validation) => validation.severity === 'error' && blockingCodes.has(validation.code)).map(formatBlockingReason)
+  const reviewValidations = validations.filter((validation) => !isBlockingValidation(validation) && (validation.severity === 'warning' || nonBlockingReviewCodes.has(validation.code)))
+  const blockingReasons = blockingValidations.map(formatBlockingReason)
   const unresolvedFeatures = (normalized?.features ?? [])
     .filter((feature) => feature.name.confidence !== 'high' || feature.sourceType === 'other')
     .map((feature) => ({
@@ -90,6 +134,12 @@ export function buildExportAuditReport(actor: FoundryActor | null, normalized?: 
   const sheetFeatureStats = actor ? summarizeSheetFeatureItems(items) : emptySheetFeatureStats()
   const featureParsingMeta = getSheetFeatureParsingMeta(actor)
   const featureResolutionDetails = actor ? collectFeatureResolutionDetails(actor) : []
+  const bonfireMissingRules = actor ? collectBonfireMissingRules(actor, normalized) : []
+  const bonfireMissingRulePlaceholderCount = items.filter((item) => getBonfireResolutionMeta(item)?.status === 'not-found').length
+  const unresolvedReviewItemCount = items.filter((item) => getBonfireResolutionMeta(item)?.shouldReview === true || getFeatureSourceMeta(item)?.unresolved === true).length
+  const reviewIssueCount = reviewValidations.length + unresolvedFeatures.length
+  const readyWithReview = blockingValidations.length === 0 && reviewIssueCount > 0
+  const readinessStatus: FoundryExportAuditReport['importReadiness']['status'] = blockingValidations.length > 0 ? 'blocked' : readyWithReview ? 'ready-with-review' : 'ready'
   const pipeline = normalized?.pipeline
   return {
     actorName: actor?.name ?? normalized?.identity.name.value ?? '',
@@ -121,6 +171,11 @@ export function buildExportAuditReport(actor: FoundryActor | null, normalized?: 
       describedItemCount: descriptionStats.complete,
       missingDescriptionCount: descriptionStats.missing,
       descriptionFallbackCount: descriptionStats.fallback,
+      bonfireDescriptionCompleteCount: descriptionStats.complete,
+      bonfireDescriptionSummaryOnlyCount: descriptionStats.summaryOnly,
+      bonfireDescriptionNeedsReviewCount: descriptionStats.needsReview,
+      bonfireDescriptionCardSummaryRejectedCount: descriptionStats.cardSummaryRejectedCount,
+      foundryFeatureHydrationBlockedCount: descriptionStats.foundryFeatureHydrationBlockedCount,
       sourceUrlCount: descriptionStats.withSourceUrl,
       automatedFullCount: automationStats.full,
       automatedPartialCount: automationStats.partial,
@@ -167,6 +222,11 @@ export function buildExportAuditReport(actor: FoundryActor | null, normalized?: 
       bonfireCustomFeatureResolvedCount: sheetFeatureStats.bonfireCustomFeatureResolvedCount,
       unresolvedRealFeatureCount: sheetFeatureStats.unresolvedRealFeatureCount,
       classProgressionSuggestedCount: progressionSuggestions.filter((entry) => entry.action === 'suggest').length,
+      blockingErrorCount: blockingValidations.length,
+      reviewIssueCount,
+      bonfireMissingRulePlaceholderCount,
+      unresolvedReviewItemCount,
+      readyWithReview,
     },
     validations,
     auditDebug: {
@@ -205,11 +265,15 @@ export function buildExportAuditReport(actor: FoundryActor | null, normalized?: 
         ignoredDuplicateIdentityFeatureCount: featureParsingMeta?.ignoredDuplicateIdentityFeatureCount ?? 0,
       },
       featureResolutionDetails,
+      bonfireMissingRules,
     },
     unresolvedFeatures,
     importReadiness: {
       canExport: blockingReasons.length === 0,
       canImportIntoFoundry: blockingReasons.length === 0,
+      status: readinessStatus,
+      blockingErrorCount: blockingValidations.length,
+      reviewIssueCount,
       blockingReasons,
     },
   }
@@ -246,6 +310,24 @@ function summarizeItemAutomation(items: FoundryActor['items']): {
 
 function formatBlockingReason(result: FoundryValidationResult): string {
   return `${result.code}${result.path ? ` at ${result.path}` : ''}: ${result.message}`
+}
+
+function normalizeValidationSeverity(result: FoundryValidationResult): FoundryValidationResult {
+  if (!nonBlockingReviewCodes.has(result.code)) return result
+  return { ...result, severity: result.severity === 'info' ? 'info' : 'warning' }
+}
+
+function isBlockingValidation(result: FoundryValidationResult): boolean {
+  if (nonBlockingReviewCodes.has(result.code)) return false
+  if (blockingCodes.has(result.code)) return true
+  return result.severity === 'error' && (
+    result.code.startsWith('FOUNDRY_ACTOR_')
+    || result.code.startsWith('FOUNDRY_ITEM_')
+    || result.code.startsWith('FOUNDRY_ACTIVITY_')
+    || result.code.startsWith('FOUNDRY_ABILITY_')
+    || result.code.startsWith('FOUNDRY_HP_')
+    || result.code.startsWith('FOUNDRY_AC_')
+  )
 }
 
 function collectRuleResolutionValidations(actor: FoundryActor): FoundryValidationResult[] {
@@ -328,6 +410,54 @@ function collectDescriptionValidations(actor: FoundryActor): FoundryValidationRe
         code: 'RULE_DESCRIPTION_FALLBACK_USED',
         severity: 'warning',
         message: `${item.name} usa descricao fallback da Rule Store.`,
+        path: `items.${index}.system.description.value`,
+        itemName: item.name,
+        itemId: item._id,
+      })
+    } else if (meta.status === 'summary-only') {
+      validations.push({
+        code: 'BONFIRE_DESCRIPTION_SUMMARY_ONLY',
+        severity: 'warning',
+        message: `${item.name} possui apenas resumo local; a descricao completa da regra Bonfire ainda nao foi confirmada.`,
+        path: `items.${index}.system.description.value`,
+        itemName: item.name,
+        itemId: item._id,
+      })
+    } else if (meta.status === 'needs-review') {
+      validations.push({
+        code: 'BONFIRE_FEATURE_NEEDS_REVIEW',
+        severity: 'warning',
+        message: `${item.name} possui regra Bonfire com descricao ainda nao verificada nesta base local.`,
+        path: `items.${index}.system.description.value`,
+        itemName: item.name,
+        itemId: item._id,
+      })
+    }
+    if (meta.sourceType === 'card-summary') {
+      validations.push({
+        code: 'BONFIRE_DESCRIPTION_SOURCE_CARD_SUMMARY',
+        severity: 'warning',
+        message: `${item.name} foi exportado a partir de um resumo/card, nao de uma pagina completa da regra.`,
+        path: `items.${index}.system.description.value`,
+        itemName: item.name,
+        itemId: item._id,
+      })
+    }
+    if (meta.status === 'summary-only' || meta.status === 'needs-review' || meta.status === 'missing') {
+      validations.push({
+        code: 'BONFIRE_DESCRIPTION_FULL_TEXT_MISSING',
+        severity: 'warning',
+        message: `${item.name} ainda nao possui texto Bonfire completo confirmado no Rule Store local.`,
+        path: `items.${index}.system.description.value`,
+        itemName: item.name,
+        itemId: item._id,
+      })
+    }
+    if (meta.needsReviewReasons?.includes('missing-full-rule-page')) {
+      validations.push({
+        code: 'BONFIRE_DESCRIPTION_NEEDS_SOURCE_PAGE',
+        severity: 'warning',
+        message: `${item.name} precisa do snapshot da pagina detalhada para ganhar descricao completa fiel.`,
         path: `items.${index}.system.description.value`,
         itemName: item.name,
         itemId: item._id,
@@ -627,32 +757,57 @@ function collectClassRuleValidations(actor: FoundryActor): FoundryValidationResu
 function summarizeDescriptions(items: FoundryActor['items']): {
   complete: number
   fallback: number
+  summaryOnly: number
+  needsReview: number
   missing: number
+  cardSummaryRejectedCount: number
+  foundryFeatureHydrationBlockedCount: number
   withSourceUrl: number
   items: {
     complete: Array<{ name: string; sourceUrl?: string | null }>
     fallback: Array<{ name: string; sourceUrl?: string | null }>
+    summaryOnly: Array<{ name: string; sourceUrl?: string | null }>
+    needsReview: Array<{ name: string; sourceUrl?: string | null }>
     missing: Array<{ name: string; sourceUrl?: string | null }>
   }
 } {
   return items.reduce(
     (summary, item) => {
       const meta = getDescriptionMeta(item)
-      const bucket = meta?.status === 'complete' ? 'complete' : meta?.status === 'fallback' ? 'fallback' : 'missing'
+      const bucket =
+        meta?.status === 'complete'
+          ? 'complete'
+          : meta?.status === 'fallback'
+            ? 'fallback'
+            : meta?.status === 'summary-only'
+              ? 'summaryOnly'
+              : meta?.status === 'needs-review'
+                ? 'needsReview'
+                : 'missing'
       summary[bucket] += 1
       const sourceUrl = meta?.sourceUrl ?? null
       if (sourceUrl) summary.withSourceUrl += 1
       summary.items[bucket].push({ name: item.name, sourceUrl })
+      if (meta?.sourceType === 'card-summary') summary.cardSummaryRejectedCount += 1
+      if (getHydrationMeta(item)?.warnings && Array.isArray(getHydrationMeta(item)?.warnings) && (getHydrationMeta(item)?.warnings as unknown[]).map(String).includes('FOUNDRY_FEATURE_HYDRATION_BLOCKED_BY_POLICY')) {
+        summary.foundryFeatureHydrationBlockedCount += 1
+      }
       return summary
     },
     {
       complete: 0,
       fallback: 0,
+      summaryOnly: 0,
+      needsReview: 0,
       missing: 0,
+      cardSummaryRejectedCount: 0,
+      foundryFeatureHydrationBlockedCount: 0,
       withSourceUrl: 0,
       items: {
         complete: [] as Array<{ name: string; sourceUrl?: string | null }>,
         fallback: [] as Array<{ name: string; sourceUrl?: string | null }>,
+        summaryOnly: [] as Array<{ name: string; sourceUrl?: string | null }>,
+        needsReview: [] as Array<{ name: string; sourceUrl?: string | null }>,
         missing: [] as Array<{ name: string; sourceUrl?: string | null }>,
       },
     },
@@ -666,7 +821,7 @@ function getRuleResolution(item: FoundryActor['items'][number]): Record<string, 
   return resolution && typeof resolution === 'object' ? (resolution as Record<string, unknown>) : null
 }
 
-function getDescriptionMeta(item: FoundryActor['items'][number]): { status: string; sourceUrl?: string | null; overrideApplied?: boolean } | null {
+function getDescriptionMeta(item: FoundryActor['items'][number]): { status: string; sourceUrl?: string | null; sourceType?: string | null; needsReviewReasons?: string[]; overrideApplied?: boolean } | null {
   const flags = item.flags as Record<string, unknown> | undefined
   const converterFlags = flags?.['roll20-to-foundry'] as Record<string, unknown> | undefined
   const meta = converterFlags?.descriptionMeta
@@ -674,12 +829,14 @@ function getDescriptionMeta(item: FoundryActor['items'][number]): { status: stri
     const description = (item.system as Record<string, unknown> | undefined)?.description
     const value = description && typeof description === 'object' && !Array.isArray(description) ? (description as Record<string, unknown>).value : ''
     const sourceUrl = getHydrationSourceUrl(item)
-    return { status: typeof value === 'string' && value.trim() ? 'complete' : 'missing', sourceUrl, overrideApplied: false }
+    return { status: typeof value === 'string' && value.trim() ? 'complete' : 'missing', sourceUrl, sourceType: null, needsReviewReasons: [], overrideApplied: false }
   }
   const record = meta as Record<string, unknown>
   return {
     status: typeof record.status === 'string' ? record.status : 'missing',
     sourceUrl: typeof record.sourceUrl === 'string' ? record.sourceUrl : null,
+    sourceType: typeof record.sourceType === 'string' ? record.sourceType : null,
+    needsReviewReasons: Array.isArray(record.needsReviewReasons) ? record.needsReviewReasons.map(String) : [],
     overrideApplied: Boolean(record.overrideApplied),
   }
 }
@@ -708,10 +865,70 @@ function getFeatureSourceMeta(item: FoundryActor['items'][number]): Record<strin
   return meta as Record<string, unknown>
 }
 
+function collectBonfireResolutionValidations(actor: FoundryActor): FoundryValidationResult[] {
+  return actor.items.flatMap((item, index) => {
+    const bonfire = getBonfireResolutionMeta(item)
+    if (!bonfire) return []
+    if (bonfire.status === 'not-found') {
+      return [
+        {
+          code: 'FEATURE_UNRESOLVED_REVIEW_REQUIRED',
+          severity: 'warning' as const,
+          message: `${item.name} foi preservado como pendencia Bonfire visivel no Actor.`,
+          path: `items.${index}.flags.roll20-to-foundry.bonfireResolution`,
+          itemName: item.name,
+          itemId: item._id,
+        },
+        {
+          code: 'BONFIRE_RULE_COVERAGE_MISSING',
+          severity: 'warning' as const,
+          message: `${String(bonfire.originalName ?? item.name)} nao foi encontrado no Bonfire Rule Store.`,
+          path: `items.${index}`,
+          itemName: item.name,
+          itemId: item._id,
+        },
+      ]
+    }
+    if (bonfire.status === 'needs-review') {
+      return [
+        {
+          code: 'BONFIRE_FEATURE_NEEDS_REVIEW',
+          severity: 'warning' as const,
+          message: `${item.name} tem regra Bonfire, mas ainda precisa de revisao de cobertura.`,
+          path: `items.${index}.flags.roll20-to-foundry.bonfireResolution`,
+          itemName: item.name,
+          itemId: item._id,
+        },
+      ]
+    }
+    if (bonfire.status === 'fallback') {
+      return [
+        {
+          code: 'BONFIRE_FEATURE_DESCRIPTION_FALLBACK',
+          severity: 'warning' as const,
+          message: `${item.name} usa descricao fallback do Bonfire Rule Store.`,
+          path: `items.${index}.flags.roll20-to-foundry.bonfireResolution`,
+          itemName: item.name,
+          itemId: item._id,
+        },
+      ]
+    }
+    return []
+  })
+}
+
 function getFeatureResolutionMeta(item: FoundryActor['items'][number]): Record<string, unknown> | null {
   const flags = item.flags as Record<string, unknown> | undefined
   const converterFlags = flags?.['roll20-to-foundry'] as Record<string, unknown> | undefined
   const meta = converterFlags?.featureResolution
+  if (!meta || typeof meta !== 'object' || Array.isArray(meta)) return null
+  return meta as Record<string, unknown>
+}
+
+function getBonfireResolutionMeta(item: FoundryActor['items'][number]): Record<string, unknown> | null {
+  const flags = item.flags as Record<string, unknown> | undefined
+  const converterFlags = flags?.['roll20-to-foundry'] as Record<string, unknown> | undefined
+  const meta = converterFlags?.bonfireResolution
   if (!meta || typeof meta !== 'object' || Array.isArray(meta)) return null
   return meta as Record<string, unknown>
 }
@@ -809,6 +1026,44 @@ function collectFeatureResolutionDetails(actor: FoundryActor): Array<{
       }
     })
   return details
+}
+
+function collectBonfireMissingRules(actor: FoundryActor, normalized?: NormalizedCharacter | null): Array<{
+  sourceFileName?: string
+  name: string
+  category: string
+  kind?: string | null
+  sourceCell?: string | null
+  sourceRange?: string | null
+  className?: string
+  race?: string
+  background?: string
+  reason: string
+}> {
+  return actor.items
+    .map((item) => ({ item, bonfire: getBonfireResolutionMeta(item), source: getFeatureSourceMeta(item) }))
+    .filter(({ bonfire }) => bonfire?.status === 'not-found')
+    .map(({ item, bonfire, source }) => ({
+      sourceFileName: stringOrNull(bonfire?.sourceFileName) ?? normalized?.source.fileName,
+      name: stringOrNull(bonfire?.originalName) ?? item.name.replace(/\s+\(N(?:a|ã)o Encontrado, CORRIGIR!\)$/i, ''),
+      category: stringOrNull(bonfire?.category) ?? categoryFromKind(stringOrNull(source?.inferredKind) ?? stringOrNull(source?.sourceType)),
+      kind: stringOrNull(source?.inferredKind) ?? stringOrNull(source?.sourceType),
+      sourceCell: stringOrNull(bonfire?.sourceCell) ?? stringOrNull(source?.sourceCell),
+      sourceRange: stringOrNull(bonfire?.sourceRange) ?? stringOrNull(source?.sourceRange),
+      className: normalized?.identity.classes[0]?.name,
+      race: normalized?.identity.race.value,
+      background: normalized?.identity.background.value,
+      reason: 'not-found-in-bonfire-rule-store',
+    }))
+}
+
+function categoryFromKind(kind: string | null): string {
+  if (!kind) return 'outros'
+  if (/race/i.test(kind)) return 'race'
+  if (/class|subclass/i.test(kind)) return 'class'
+  if (/background/i.test(kind)) return 'background'
+  if (/feat|talento/i.test(kind)) return 'feat'
+  return 'other'
 }
 
 function getClassProgressionSuggestions(actor: FoundryActor): Array<{ expectedFeature: string; level: number; foundInSheet: boolean; foundInLibrary: boolean; action: string }> {

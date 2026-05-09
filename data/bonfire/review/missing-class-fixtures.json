@@ -1,0 +1,58 @@
+{
+  "generatedAt": "2026-05-09T15:29:05.508Z",
+  "expectedDirectory": "tests/fixtures/characters/classes",
+  "missingFixtures": [
+    {
+      "fileName": "artificer-level3.bonfire.xlsx",
+      "reason": "fixture-not-yet-added"
+    },
+    {
+      "fileName": "barbaro-level3.bonfire.xlsx",
+      "reason": "fixture-not-yet-added"
+    },
+    {
+      "fileName": "bardo-level3.bonfire.xlsx",
+      "reason": "fixture-not-yet-added"
+    },
+    {
+      "fileName": "cacador-level3.bonfire.xlsx",
+      "reason": "fixture-not-yet-added"
+    },
+    {
+      "fileName": "clerigo-level3.bonfire.xlsx",
+      "reason": "fixture-not-yet-added"
+    },
+    {
+      "fileName": "druida-level3.bonfire.xlsx",
+      "reason": "fixture-not-yet-added"
+    },
+    {
+      "fileName": "feiticeiro-level3.bonfire.xlsx",
+      "reason": "fixture-not-yet-added"
+    },
+    {
+      "fileName": "guerreiro-level3.bonfire.xlsx",
+      "reason": "fixture-not-yet-added"
+    },
+    {
+      "fileName": "ladino-level3.bonfire.xlsx",
+      "reason": "fixture-not-yet-added"
+    },
+    {
+      "fileName": "mago-level3.bonfire.xlsx",
+      "reason": "fixture-not-yet-added"
+    },
+    {
+      "fileName": "mistico-level3.bonfire.xlsx",
+      "reason": "fixture-not-yet-added"
+    },
+    {
+      "fileName": "monge-level3.bonfire.xlsx",
+      "reason": "fixture-not-yet-added"
+    },
+    {
+      "fileName": "paladino-level3.bonfire.xlsx",
+      "reason": "fixture-not-yet-added"
+    }
+  ]
+}

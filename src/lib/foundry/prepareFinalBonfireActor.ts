@@ -147,10 +147,11 @@ function buildPlayerBiography(items: FoundryItem[]): string {
       item,
       html: `<li>${escapeHtml(String(flags.playerVisibleNote ?? flags.hydration?.playerVisibleNote ?? `${item.name} - revisar manualmente.`))}</li>`,
       isFeature: Boolean(flags.featureSource?.fromSheetRange),
+      category: categoryForBonfirePending(flags),
     }))
 
   const unresolvedItems = unresolvedEntries.filter((entry) => !entry.isFeature).map((entry) => entry.html)
-  const unresolvedFeatures = unresolvedEntries.filter((entry) => entry.isFeature).map((entry) => entry.html)
+  const unresolvedFeatures = unresolvedEntries.filter((entry) => entry.isFeature)
 
   const customReviewItems = items
     .map((item) => ({ item, flags: getItemFlags(item), descriptionMeta: getDescriptionMeta(item) }))
@@ -167,8 +168,20 @@ function buildPlayerBiography(items: FoundryItem[]): string {
     sections.push(`<ul>${unresolvedItems.join('')}</ul>`)
   }
   if (unresolvedFeatures.length) {
-    sections.push('<h3>Características para revisar/adicionar manualmente</h3>')
-    sections.push(`<ul>${unresolvedFeatures.join('')}</ul>`)
+    sections.push('<h3>Características para corrigir</h3>')
+    const groups = [
+      ['race', 'Raça'],
+      ['class', 'Classe'],
+      ['feat', 'Talentos'],
+      ['background', 'Antecedente'],
+      ['other', 'Outros'],
+    ] as const
+    for (const [category, label] of groups) {
+      const entries = unresolvedFeatures.filter((entry) => entry.category === category).map((entry) => entry.html)
+      if (!entries.length) continue
+      sections.push(`<h4>${label}</h4>`)
+      sections.push(`<ul>${entries.join('')}</ul>`)
+    }
   }
   if (customReviewItems.length) {
     sections.push('<h3>Regras custom Bonfire</h3>')
@@ -179,6 +192,13 @@ function buildPlayerBiography(items: FoundryItem[]): string {
 }
 
 function buildUnresolvedNote(item: FoundryItem, hydration: Record<string, unknown> | null): string {
+  const flags = getItemFlags(item)
+  const bonfire = flags.bonfireResolution && typeof flags.bonfireResolution === 'object' && !Array.isArray(flags.bonfireResolution) ? (flags.bonfireResolution as Record<string, unknown>) : null
+  if (bonfire?.status === 'not-found') {
+    const originalName = stringOrNull(bonfire.originalName) ?? item.name.replace(/\s+\(N(?:a|ã)o Encontrado, CORRIGIR!\)$/i, '')
+    const status = stringOrNull(bonfire.playerVisibleStatus) ?? 'Não Encontrado, CORRIGIR!'
+    return `${originalName} (${status})`
+  }
   const displayName = displayNameForItem(item, hydration ?? {})
   const category = stringOrNull(hydration?.fallbackCategory)
   if (category === 'unsafeMatchRejected') {
@@ -188,6 +208,20 @@ function buildUnresolvedNote(item: FoundryItem, hydration: Record<string, unknow
     return `${displayName} - nao encontrado na biblioteca Foundry nem no Rule Store Bonfire.`
   }
   return `${displayName} - nao encontrado automaticamente; revisar/adicionar manualmente se precisar de mecanica completa.`
+}
+
+function categoryForBonfirePending(flags: Record<string, any>): 'race' | 'class' | 'feat' | 'background' | 'other' {
+  const bonfire = flags.bonfireResolution && typeof flags.bonfireResolution === 'object' && !Array.isArray(flags.bonfireResolution) ? (flags.bonfireResolution as Record<string, unknown>) : null
+  const category = stringOrNull(bonfire?.category)
+  if (category === 'race' || category === 'class' || category === 'feat' || category === 'background') return category
+  const source = flags.featureSource && typeof flags.featureSource === 'object' && !Array.isArray(flags.featureSource) ? (flags.featureSource as Record<string, unknown>) : null
+  const kind = stringOrNull(source?.inferredKind) ?? stringOrNull(source?.sourceType)
+  if (!kind) return 'other'
+  if (/race/i.test(kind)) return 'race'
+  if (/class|subclass/i.test(kind)) return 'class'
+  if (/background/i.test(kind)) return 'background'
+  if (/feat|talento/i.test(kind)) return 'feat'
+  return 'other'
 }
 
 function hasBonfireCoverageForFallback(item: FoundryItem | undefined, descriptionMeta: DescriptionMeta | null): boolean {

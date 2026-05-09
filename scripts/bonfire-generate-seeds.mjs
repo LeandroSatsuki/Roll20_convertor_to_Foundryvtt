@@ -1,0 +1,1068 @@
+import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+
+const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
+const dataDir = path.join(repoRoot, 'data')
+const classIndexPath = path.join(dataDir, 'bonfire', 'class-index.json')
+const generatedDir = path.join(dataDir, 'bonfire', 'generated')
+const reviewDir = path.join(dataDir, 'bonfire', 'review')
+
+const fallbackDescription = 'Descricao completa ainda nao cadastrada no seed local. Regra preservada da ficha para revisao.'
+
+const classDefaults = {
+  artificer: { hitDie: 'd8', savingThrows: ['con', 'int'], spellcasting: { type: 'half', ability: 'int' } },
+  barbaro: { hitDie: 'd12', savingThrows: ['str', 'con'], spellcasting: { type: 'none' } },
+  bardo: { hitDie: 'd8', savingThrows: ['dex', 'cha'], spellcasting: { type: 'full', ability: 'cha' } },
+  cacador: { hitDie: 'd10', savingThrows: ['str', 'dex'], spellcasting: { type: 'half', ability: 'wis' } },
+  clerigo: { hitDie: 'd8', savingThrows: ['wis', 'cha'], spellcasting: { type: 'full', ability: 'wis' } },
+  druida: { hitDie: 'd8', savingThrows: ['int', 'wis'], spellcasting: { type: 'full', ability: 'wis' } },
+  feiticeiro: { hitDie: 'd6', savingThrows: ['con', 'cha'], spellcasting: { type: 'full', ability: 'cha' } },
+  guerreiro: { hitDie: 'd10', savingThrows: ['str', 'con'], spellcasting: { type: 'none' } },
+  ladino: { hitDie: 'd8', savingThrows: ['dex', 'int'], spellcasting: { type: 'none' } },
+  mago: { hitDie: 'd6', savingThrows: ['int', 'wis'], spellcasting: { type: 'full', ability: 'int' } },
+  mistico: { hitDie: 'd8', savingThrows: ['wis', 'cha'], spellcasting: { type: 'custom', ability: 'cha' } },
+  monge: { hitDie: 'd8', savingThrows: ['str', 'dex'], spellcasting: { type: 'none' } },
+  paladino: { hitDie: 'd10', savingThrows: ['wis', 'cha'], spellcasting: { type: 'half', ability: 'cha' } },
+}
+
+const categorySources = [
+  { type: 'classes', generatedKind: 'class', paths: ['bonfire/raw/classes', 'HTML BONFIRE/classes'] },
+  { type: 'races', generatedKind: 'race', paths: ['bonfire/raw/races', 'HTML BONFIRE/racas'] },
+  { type: 'backgrounds', generatedKind: 'background', paths: ['bonfire/raw/backgrounds', 'HTML BONFIRE/antecedentes'] },
+  { type: 'feats', generatedKind: 'feat', paths: ['bonfire/raw/feats', 'HTML BONFIRE/talentos'] },
+  { type: 'subclasses', generatedKind: 'subclass', paths: ['bonfire/raw/subclasses'] },
+  { type: 'spell-overrides', generatedKind: 'spellOverride', paths: ['bonfire/raw/spell-overrides', 'HTML BONFIRE/ajustes'] },
+  { type: 'essences', generatedKind: 'essence', paths: ['HTML BONFIRE/essencia'] },
+]
+
+const headingNoise = new Set([
+  'mapas',
+  'linhas do tempo',
+  'caracteristicas de classe',
+  'características de classe',
+  'caracteristicas principais',
+  'características principais',
+  'proficiencias',
+  'proficiências',
+  'equipamento inicial',
+  'equipamentos',
+  'multiclasse',
+  'proficiencias de multiclasse',
+  'proficiências de multiclasse',
+  'habilidades de classe',
+  'interpretando um elfo',
+  'sociedade e cultura',
+  'caracteristicas fisicas',
+  'características físicas',
+  'tracos da raca base',
+  'traços da raça base',
+  'divergencia ancestral',
+  'divergência ancestral',
+  'evolucao racial',
+  'evolução racial',
+  'talentos',
+  'talentos de origem',
+  'marcas misticas em cineria',
+  'marcas místicas em cineria',
+  'como as marcas funcionam no servidor',
+])
+
+const classIndex = readJson(classIndexPath)
+const canonicalByKey = new Map()
+for (const entry of classIndex) {
+  for (const value of [entry.id, entry.name, ...(entry.aliases ?? [])]) canonicalByKey.set(slug(value), entry)
+}
+
+ensureDir(generatedDir)
+ensureDir(reviewDir)
+ensureDir(path.join(dataDir, 'bonfire', 'raw'))
+
+const htmlFiles = collectHtmlFiles(dataDir)
+const sourceIndex = buildSourceIndex(htmlFiles)
+const categoryFiles = discoverCategoryFiles()
+const parseErrors = []
+
+const classes = []
+const classFeatures = []
+const races = []
+const raceFeatures = []
+const backgrounds = []
+const backgroundFeatures = []
+const feats = []
+const subclasses = []
+const subclassFeatures = []
+const spellOverrides = []
+const essenceFeatures = []
+
+for (const file of categoryFiles.classes) {
+  try {
+    const parsed = parseClassFile(file)
+    classes.push(parsed.classSeed)
+    classFeatures.push(...parsed.features.filter((feature) => !feature.subclassName))
+    subclassFeatures.push(...parsed.features.filter((feature) => feature.subclassName))
+    subclasses.push(...parsed.subclasses)
+  } catch (error) {
+    parseErrors.push(errorEntry(file, error))
+  }
+}
+
+for (const file of categoryFiles.races) {
+  try {
+    const parsed = parseRaceFile(file)
+    races.push(parsed.raceSeed)
+    raceFeatures.push(...parsed.features)
+  } catch (error) {
+    parseErrors.push(errorEntry(file, error))
+  }
+}
+
+for (const file of categoryFiles.backgrounds) {
+  try {
+    const parsed = parseBackgroundFile(file)
+    backgrounds.push(...parsed.backgrounds)
+    backgroundFeatures.push(...parsed.features)
+  } catch (error) {
+    parseErrors.push(errorEntry(file, error))
+  }
+}
+
+for (const file of categoryFiles.feats) {
+  try {
+    feats.push(...parseFeatFile(file))
+  } catch (error) {
+    parseErrors.push(errorEntry(file, error))
+  }
+}
+
+for (const file of categoryFiles['spell-overrides']) {
+  try {
+    spellOverrides.push(...parseSpellOverrideFile(file))
+  } catch (error) {
+    parseErrors.push(errorEntry(file, error))
+  }
+}
+
+for (const file of categoryFiles.essences) {
+  try {
+    essenceFeatures.push(...parseEssenceFile(file))
+  } catch (error) {
+    parseErrors.push(errorEntry(file, error))
+  }
+}
+
+const deduped = {
+  classes: dedupeById(classes),
+  classFeatures: dedupeById(classFeatures),
+  races: dedupeById(races),
+  raceFeatures: dedupeById([...raceFeatures, ...essenceFeatures]),
+  backgrounds: dedupeById(backgrounds),
+  backgroundFeatures: dedupeById(backgroundFeatures),
+  feats: dedupeById(feats),
+  subclasses: dedupeById(subclasses),
+  subclassFeatures: dedupeById(subclassFeatures),
+  spellOverrides: dedupeById(spellOverrides),
+}
+
+const coverage = buildCoverageReport(deduped)
+const needsReview = collectNeedsReview(deduped, coverage, parseErrors)
+const missingRules = collectMissingRules(coverage)
+const missingClassFixtures = collectMissingClassFixtures()
+
+writeJson(path.join(generatedDir, 'classes.seed.json'), deduped.classes)
+writeJson(path.join(generatedDir, 'class-features.seed.json'), deduped.classFeatures)
+writeJson(path.join(generatedDir, 'races.seed.json'), deduped.races)
+writeJson(path.join(generatedDir, 'race-features.seed.json'), deduped.raceFeatures)
+writeJson(path.join(generatedDir, 'backgrounds.seed.json'), deduped.backgrounds)
+writeJson(path.join(generatedDir, 'background-features.seed.json'), deduped.backgroundFeatures)
+writeJson(path.join(generatedDir, 'feats.seed.json'), deduped.feats)
+writeJson(path.join(generatedDir, 'subclasses.seed.json'), deduped.subclasses)
+writeJson(path.join(generatedDir, 'subclass-features.seed.json'), deduped.subclassFeatures)
+writeJson(path.join(generatedDir, 'spell-overrides.seed.json'), deduped.spellOverrides)
+
+writeJson(path.join(reviewDir, 'coverage-report.json'), coverage)
+writeJson(path.join(reviewDir, 'needs-review.json'), needsReview)
+writeJson(path.join(reviewDir, 'missing-rules.json'), missingRules)
+writeJson(path.join(reviewDir, 'source-index.json'), { generatedAt: new Date().toISOString(), entries: sourceIndex })
+writeJson(path.join(reviewDir, 'missing-from-current-sheet.json'), {
+  generatedAt: new Date().toISOString(),
+  note: 'Runtime sheet-specific missing rules are appended by the UI/export flow. Seed generation does not patch by character.',
+  missingRules: [],
+})
+writeJson(path.join(reviewDir, 'missing-class-fixtures.json'), missingClassFixtures)
+writeJson(path.join(reviewDir, 'generation-summary.json'), {
+  generatedAt: new Date().toISOString(),
+  sourceRoots: categorySources.flatMap((source) => source.paths.map((relative) => path.join('data', relative))).filter((relative) => existsSync(path.join(repoRoot, relative))),
+  htmlFilesFound: htmlFiles.length,
+  htmlFilesProcessed: Object.values(categoryFiles).reduce((total, files) => total + files.length, 0),
+  parseErrorCount: parseErrors.length,
+  parseErrors,
+  seedCounts: seedCounts(deduped),
+  classCoverage: {
+    total: classIndex.length,
+    covered: coverage.classes.filter((entry) => entry.status === 'covered').length,
+    needsReview: coverage.classes.filter((entry) => entry.status === 'needs-review').length,
+    missing: coverage.classes.filter((entry) => entry.status === 'missing').length,
+  },
+  reviewCounts: {
+    needsReview: needsReview.items.length,
+    missingRules: missingRules.missingRules.length,
+    missingClassFixtures: missingClassFixtures.missingFixtures.length,
+  },
+})
+
+console.log(JSON.stringify({
+  htmlFilesFound: htmlFiles.length,
+  htmlFilesProcessed: Object.values(categoryFiles).reduce((total, files) => total + files.length, 0),
+  seedCounts: seedCounts(deduped),
+  classCoverage: {
+    total: classIndex.length,
+    covered: coverage.classes.filter((entry) => entry.status === 'covered').length,
+  },
+  needsReview: needsReview.items.length,
+  missingRules: missingRules.missingRules.length,
+  parseErrors: parseErrors.length,
+}, null, 2))
+
+function parseClassFile(file) {
+  const html = readFileSync(file, 'utf8')
+  const article = cleanHtml(html)
+  const title = cleanTitle(extractTitle(html) || titleFromFile(file))
+  const canonical = canonicalClass(title) ?? canonicalClass(titleFromFile(file))
+  const className = canonical?.name ?? title
+  const classId = canonical?.id ?? slug(className)
+  const text = htmlToText(article)
+  const defaults = classDefaults[classId] ?? {}
+  const hitDie = extractHitDie(text) ?? defaults.hitDie ?? null
+  const savingThrows = extractSavingThrows(article) ?? defaults.savingThrows ?? []
+  const spellcasting = extractSpellcasting(article, classId) ?? defaults.spellcasting ?? { type: 'needs-review' }
+  const headings = extractHeadings(article)
+  const firstMeaningful = meaningfulParagraph(article)
+  const classSeed = entity({
+    id: classId,
+    name: className,
+    aliases: canonical?.aliases ?? [],
+    kind: 'class',
+    sourceUrl: extractSourceUrl(html),
+    descriptionHtml: extractDescriptionHtml(article, 2400),
+    description: firstMeaningful || fallbackDescription,
+    descriptionSource: 'article-body',
+    sourceFile: file,
+    tags: ['class', classId],
+    foundry: { preferredType: 'class' },
+    extra: {
+      hitDie: hitDie ?? undefined,
+      hitDieStatus: hitDie ? 'complete' : 'needs-review',
+      savingThrows,
+      savingThrowsStatus: savingThrows.length ? 'complete' : 'needs-review',
+      spellcasting,
+      progression: buildClassProgression(headings),
+    },
+  })
+
+  const parsedFeatures = []
+  const parsedSubclasses = []
+  let currentLevel = null
+  let currentSubclass = null
+  for (const heading of headings) {
+    const headingText = cleanFeatureName(heading.text)
+    if (isNoiseHeading(headingText)) continue
+    const levelMatch = headingText.match(/^(?:n[ií]vel|level)\s+(\d+)\s*[:\-–—]\s*(.+)$/i)
+    const level = levelMatch ? Number(levelMatch[1]) : currentLevel
+    const name = levelMatch ? cleanFeatureName(levelMatch[2]) : headingText
+    if (levelMatch) currentLevel = level
+    if (!name || isNoiseHeading(name) || /^n[ií]vel\s+\d+$/i.test(name)) continue
+
+    if (heading.level <= 2 && looksLikeSubclassName(name)) {
+      currentSubclass = name
+      parsedSubclasses.push(
+        entity({
+          id: `${classId}-${slug(name)}`,
+          name,
+          aliases: [],
+          kind: 'subclass',
+          sourceUrl: extractSourceUrl(html),
+          descriptionHtml: sectionHtml(article, heading, headings),
+          description: htmlToRuleText(sectionHtml(article, heading, headings)) || fallbackDescription,
+          descriptionSource: 'section-body',
+          sourceFile: file,
+          tags: ['subclass', classId],
+          extra: { className },
+          foundry: { preferredType: 'subclass' },
+        }),
+      )
+      continue
+    }
+
+    if (!level && heading.level > 4) continue
+    if (heading.level > 4 && !/surto|manifestacao|manifestação|segredo|op[cç][aã]o|ordem|forma|dom[ií]nio|circulo|círculo/i.test(name)) continue
+
+    const descriptionHtml = sectionHtml(article, heading, headings)
+    const featureName = currentSubclass && heading.level >= 3 && level ? name : name
+    parsedFeatures.push(
+      entity({
+        id: `${classId}-${slug(featureName)}${level ? `-l${level}` : ''}${currentSubclass ? `-${slug(currentSubclass)}` : ''}`,
+        name: featureName,
+        aliases: level ? [`Nível ${level}: ${featureName}`, `Nivel ${level}: ${featureName}`] : [],
+        kind: currentSubclass && heading.level >= 3 ? 'subclassFeature' : featureKindFromName(featureName),
+        sourceUrl: extractSourceUrl(html),
+        descriptionHtml,
+        description: htmlToRuleText(descriptionHtml) || fallbackDescription,
+        descriptionSource: 'section-body',
+        sourceFile: file,
+        tags: ['feature', classId, currentSubclass ? 'subclassFeature' : 'classFeature'],
+        foundry: { preferredType: 'feat' },
+        extra: {
+          className,
+          subclassName: currentSubclass ?? undefined,
+          level: level ?? undefined,
+        },
+      }),
+    )
+  }
+
+  return { classSeed, features: parsedFeatures, subclasses: parsedSubclasses }
+}
+
+function parseRaceFile(file) {
+  const html = readFileSync(file, 'utf8')
+  const article = cleanHtml(html)
+  const title = cleanTitle(extractTitle(html) || titleFromFile(file))
+  const raceName = normalizeRaceTitle(title)
+  const sourceUrl = extractSourceUrl(html)
+  const headings = extractHeadings(article)
+  const raceSeed = entity({
+    id: slug(raceName),
+    name: raceName,
+    aliases: raceName === title ? [] : [title],
+    kind: 'race',
+    sourceUrl,
+    descriptionHtml: extractDescriptionHtml(article, 1800),
+    description: meaningfulParagraph(article) || fallbackDescription,
+    descriptionSource: 'article-body',
+    sourceFile: file,
+    tags: ['race'],
+    foundry: { preferredType: 'feat' },
+    extra: {
+      speed: extractSpeed(htmlToText(article)) ?? null,
+      speedStatus: extractSpeed(htmlToText(article)) ? 'complete' : 'needs-review',
+    },
+  })
+  const features = headings
+    .filter((heading) => [3, 4, 5].includes(heading.level))
+    .map((heading) => cleanFeatureName(heading.text))
+    .filter((name) => name && !isNoiseHeading(name) && !looksLikeOnlyLevel(name))
+    .map((name) =>
+      entity({
+        id: `${slug(raceName)}-${slug(name)}`,
+        name,
+        aliases: [],
+        kind: 'raceFeature',
+        sourceUrl,
+        descriptionHtml: sectionHtml(article, headings.find((heading) => cleanFeatureName(heading.text) === name), headings),
+        description: htmlToRuleText(sectionHtml(article, headings.find((heading) => cleanFeatureName(heading.text) === name), headings)) || fallbackDescription,
+        descriptionSource: 'section-body',
+        sourceFile: file,
+        tags: ['raceFeature', slug(raceName)],
+        foundry: { preferredType: 'feat' },
+        extra: { raceName },
+      }),
+    )
+  return { raceSeed, features }
+}
+
+function parseBackgroundFile(file) {
+  const html = readFileSync(file, 'utf8')
+  const sourceUrl = extractSourceUrl(html)
+  const rows = [...html.matchAll(/<tr\b[^>]*>([\s\S]*?)<\/tr>/gi)]
+  const backgrounds = []
+  const features = []
+  for (const row of rows) {
+    const cells = [...row[1].matchAll(/<td\b[^>]*>([\s\S]*?)<\/td>/gi)].map((match) => match[1])
+    if (cells.length < 2) continue
+    const name = cleanFeatureName(htmlToText(cells[0]))
+    if (!name || isNoiseHeading(name) || name.toLowerCase() === 'nome') continue
+    const featureName = cleanFeatureName(htmlToText(cells[1])) || `Habilidade de ${name}`
+    const descriptionHtml = cells[2] ?? cells[1]
+    backgrounds.push(
+      entity({
+        id: slug(name),
+        name,
+        aliases: [],
+        kind: 'background',
+        sourceUrl,
+        descriptionHtml,
+        description: htmlToRuleText(descriptionHtml) || fallbackDescription,
+        descriptionSource: 'table-row',
+        sourceFile: file,
+        tags: ['background'],
+        foundry: { preferredType: 'background' },
+      }),
+    )
+    features.push(
+      entity({
+        id: `${slug(name)}-${slug(featureName)}`,
+        name: featureName,
+        aliases: [],
+        kind: 'backgroundFeature',
+        sourceUrl,
+        descriptionHtml,
+        description: htmlToRuleText(descriptionHtml) || fallbackDescription,
+        descriptionSource: 'table-row',
+        sourceFile: file,
+        tags: ['backgroundFeature', slug(name)],
+        foundry: { preferredType: 'feat' },
+        extra: { backgroundName: name },
+      }),
+    )
+  }
+  return { backgrounds, features }
+}
+
+function parseFeatFile(file) {
+  const html = readFileSync(file, 'utf8')
+  const article = cleanHtml(html)
+  const sourceUrl = extractSourceUrl(html)
+  return extractHeadings(article)
+    .filter((heading) => [3, 4, 5].includes(heading.level))
+    .map((heading) => ({ heading, name: cleanFeatureName(heading.text) }))
+    .filter(({ name }) => name && !isNoiseHeading(name) && !looksLikeOnlyLevel(name) && !/^(combate|conjura[cç][aã]o|explora[cç][aã]o|marcas|sobreviv[eê]ncia)$/i.test(name))
+    .map(({ heading, name }) => {
+      const descriptionHtml = sectionHtml(article, heading, extractHeadings(article))
+      return entity({
+        id: slug(name),
+        name,
+        aliases: [],
+        kind: 'feat',
+        sourceUrl,
+        descriptionHtml,
+        description: htmlToRuleText(descriptionHtml) || fallbackDescription,
+        descriptionSource: 'section-body',
+        sourceFile: file,
+        tags: ['feat'],
+        foundry: { preferredType: 'feat' },
+        extra: {
+          prerequisite: extractPrerequisite(descriptionHtml),
+          prerequisiteStatus: extractPrerequisite(descriptionHtml) ? 'complete' : 'needs-review',
+        },
+      })
+    })
+}
+
+function parseSpellOverrideFile(file) {
+  const html = readFileSync(file, 'utf8')
+  const article = cleanHtml(html)
+  const sourceUrl = extractSourceUrl(html)
+  return extractHeadings(article)
+    .filter((heading) => [3, 4, 5].includes(heading.level))
+    .map((heading) => ({ heading, name: cleanFeatureName(heading.text) }))
+    .filter(({ name }) => name && !isNoiseHeading(name) && !looksLikeOnlyLevel(name))
+    .slice(0, 250)
+    .map(({ heading, name }) => {
+      const descriptionHtml = sectionHtml(article, heading, extractHeadings(article))
+      return entity({
+        id: `spell-override-${slug(name)}`,
+        name,
+        aliases: [],
+        kind: 'spellOverride',
+        sourceUrl,
+        descriptionHtml,
+        description: htmlToRuleText(descriptionHtml) || fallbackDescription,
+        descriptionSource: 'section-body',
+        sourceFile: file,
+        tags: ['spellOverride'],
+        foundry: { preferredType: 'spell' },
+        extra: { status: 'needs-review' },
+      })
+    })
+}
+
+function parseEssenceFile(file) {
+  const html = readFileSync(file, 'utf8')
+  const article = cleanHtml(html)
+  const title = cleanTitle(extractTitle(html) || titleFromFile(file))
+  const sourceUrl = extractSourceUrl(html)
+  return extractHeadings(article)
+    .filter((heading) => [3, 4, 5].includes(heading.level))
+    .map((heading) => ({ heading, name: cleanFeatureName(heading.text) }))
+    .filter(({ name }) => name && !isNoiseHeading(name) && !looksLikeOnlyLevel(name))
+    .map(({ heading, name }) =>
+      entity({
+        id: `${slug(title)}-${slug(name)}`,
+        name,
+        aliases: [],
+        kind: 'raceFeature',
+        sourceUrl,
+        descriptionHtml: sectionHtml(article, heading, extractHeadings(article)),
+        description: htmlToRuleText(sectionHtml(article, heading, extractHeadings(article))) || fallbackDescription,
+        descriptionSource: 'section-body',
+        sourceFile: file,
+        tags: ['essence', slug(title)],
+        foundry: { preferredType: 'feat' },
+        extra: { raceName: title },
+      }),
+    )
+}
+
+function entity({ id, name, aliases, kind, sourceUrl, descriptionHtml, description, shortDescription: previewText, descriptionSource = 'unknown', sourceFile, tags, foundry, extra = {} }) {
+  const descriptionMeta = buildSeedDescription({
+    name,
+    descriptionHtml,
+    descriptionText: description || htmlToRuleText(descriptionHtml),
+    shortDescription: previewText,
+    descriptionSource,
+    sourceUrl,
+    sourceFile,
+  })
+  return {
+    id: slug(id || name),
+    identifier: slug(id || name),
+    name,
+    aliases: Array.from(new Set((aliases ?? []).filter(Boolean))),
+    kind,
+    source: 'bonfire',
+    sourceUrl: sourceUrl ?? null,
+    descriptionHtml: descriptionMeta.descriptionHtml ?? undefined,
+    descriptionText: descriptionMeta.descriptionText ?? undefined,
+    description: descriptionMeta.descriptionText ?? (descriptionMeta.descriptionStatus === 'fallback' ? fallbackDescription : undefined),
+    shortDescription: descriptionMeta.shortDescription ?? undefined,
+    descriptionStatus: descriptionMeta.descriptionStatus,
+    descriptionSource: descriptionMeta.descriptionSource,
+    needsReviewReasons: descriptionMeta.needsReviewReasons,
+    tags: Array.from(new Set((tags ?? []).filter(Boolean))),
+    foundry,
+    sourceFileName: sourceFile ? path.relative(repoRoot, sourceFile) : undefined,
+    ...extra,
+  }
+}
+
+function discoverCategoryFiles() {
+  const result = {}
+  for (const source of categorySources) {
+    result[source.type] = []
+    for (const relative of source.paths) {
+      const absolute = path.join(dataDir, relative.replace(/^bonfire[\\/]/, 'bonfire/'))
+      if (!existsSync(absolute)) continue
+      result[source.type].push(...walkHtml(absolute))
+    }
+  }
+  return result
+}
+
+function collectHtmlFiles(root) {
+  return walkHtml(root)
+}
+
+function walkHtml(root) {
+  if (!existsSync(root)) return []
+  const files = []
+  for (const entry of readdirSync(root, { withFileTypes: true })) {
+    const absolute = path.join(root, entry.name)
+    if (entry.isDirectory()) {
+      if (entry.name.endsWith('_files')) continue
+      files.push(...walkHtml(absolute))
+    } else if (/\.(html?|HTML?)$/.test(entry.name)) {
+      files.push(absolute)
+    }
+  }
+  return files
+}
+
+function extractHeadings(html) {
+  const headings = []
+  const regex = /<h([1-6])\b[^>]*>([\s\S]*?)<\/h\1>/gi
+  let match
+  while ((match = regex.exec(html))) {
+    headings.push({
+      level: Number(match[1]),
+      text: htmlToText(match[2]),
+      start: match.index,
+      end: regex.lastIndex,
+    })
+  }
+  return headings
+}
+
+function sectionHtml(html, heading, headings) {
+  if (!heading) return ''
+  const next = headings.find((candidate) => candidate.start > heading.start && candidate.level <= heading.level)
+  return html.slice(heading.end, next?.start ?? Math.min(html.length, heading.end + 6000))
+}
+
+function buildClassProgression(headings) {
+  const levels = {}
+  for (let level = 1; level <= 20; level++) levels[String(level)] = []
+  for (const heading of headings) {
+    const match = cleanFeatureName(heading.text).match(/^(?:n[ií]vel|level)\s+(\d+)\s*[:\-–—]\s*(.+)$/i)
+    if (!match) continue
+    const level = match[1]
+    levels[level] ??= []
+    levels[level].push(cleanFeatureName(match[2]))
+  }
+  return {
+    status: Object.values(levels).some((entries) => entries.length) ? 'extracted-partial' : 'needs-review',
+    levels,
+  }
+}
+
+function buildCoverageReport(seeds) {
+  const classSeedsByKey = new Map()
+  for (const classSeed of seeds.classes) {
+    for (const value of [classSeed.id, classSeed.name, ...(classSeed.aliases ?? [])]) classSeedsByKey.set(slug(value), classSeed)
+  }
+  const classes = classIndex.map((entry) => {
+    const classSeed = [entry.id, entry.name, ...(entry.aliases ?? [])].map(slug).map((key) => classSeedsByKey.get(key)).find(Boolean)
+    const features = seeds.classFeatures.filter((feature) => slug(feature.className) === entry.id)
+    const missing = []
+    if (!classSeed) missing.push('class rule')
+    if (classSeed && !classSeed.hitDie) missing.push('hitDie')
+    if (classSeed && !classSeed.spellcasting?.type) missing.push('spellcasting.type')
+    if (classSeed && classSeed.spellcasting?.type && !['none', 'needs-review'].includes(classSeed.spellcasting.type) && !classSeed.spellcasting.ability) missing.push('spellcasting.ability')
+    if (classSeed && !classSeed.savingThrows?.length) missing.push('savingThrows')
+    if (classSeed && classSeed.progression?.status === 'needs-review') missing.push('progression')
+    if (!features.length) missing.push('class features')
+    if (classSeed && !classSeed.sourceUrl) missing.push('sourceUrl')
+    if (classSeed && !classSeed.descriptionStatus) missing.push('descriptionStatus')
+    return {
+      classId: entry.id,
+      className: entry.name,
+      expectedCoverage: entry.expectedCoverage,
+      status: !classSeed ? 'missing' : missing.length ? 'needs-review' : 'covered',
+      missing,
+      featureCount: features.length,
+      sourceFileName: classSeed?.sourceFileName,
+      sourceUrl: classSeed?.sourceUrl ?? null,
+      descriptionStatus: classSeed?.descriptionStatus ?? 'missing',
+    }
+  })
+  return {
+    generatedAt: new Date().toISOString(),
+    policy: 'coverage-by-class-not-character',
+    classes,
+    summary: {
+      totalClasses: classes.length,
+      coveredClasses: classes.filter((entry) => entry.status === 'covered').length,
+      needsReviewClasses: classes.filter((entry) => entry.status === 'needs-review').length,
+      missingClasses: classes.filter((entry) => entry.status === 'missing').length,
+    },
+  }
+}
+
+function collectNeedsReview(seeds, coverage, parseErrors) {
+  const allSeeds = Object.entries(seeds).flatMap(([type, entries]) => entries.map((entry) => ({ type, entry })))
+  const items = allSeeds
+    .filter(({ entry }) => entry.descriptionStatus !== 'complete')
+    .map(({ type, entry }) => ({
+      type,
+      id: entry.id,
+      name: entry.name,
+      kind: entry.kind,
+      descriptionStatus: entry.descriptionStatus,
+      reason: Array.isArray(entry.needsReviewReasons) && entry.needsReviewReasons.length ? entry.needsReviewReasons.join(', ') : entry.descriptionStatus === 'fallback' ? 'fallback-description' : 'description-needs-review',
+      sourceUrl: entry.sourceUrl,
+      descriptionSource: entry.descriptionSource ?? 'unknown',
+    }))
+  for (const classCoverage of coverage.classes.filter((entry) => entry.status !== 'covered')) {
+    items.push({
+      type: 'classCoverage',
+      id: classCoverage.classId,
+      name: classCoverage.className,
+      kind: 'class',
+      descriptionStatus: classCoverage.descriptionStatus,
+      reason: `missing: ${classCoverage.missing.join(', ')}`,
+      sourceUrl: classCoverage.sourceUrl,
+    })
+  }
+  return { generatedAt: new Date().toISOString(), items, parseErrors }
+}
+
+function collectMissingRules(coverage) {
+  return {
+    generatedAt: new Date().toISOString(),
+    missingRules: coverage.classes
+      .filter((entry) => entry.status !== 'covered')
+      .map((entry) => ({
+        className: entry.className,
+        missing: entry.missing,
+        reason: entry.status === 'missing' ? 'not-found-in-bonfire-html' : 'incomplete-generated-rule',
+      })),
+  }
+}
+
+function collectMissingClassFixtures() {
+  const fixtureDir = path.join(repoRoot, 'tests', 'fixtures', 'characters', 'classes')
+  const files = existsSync(fixtureDir) ? readdirSync(fixtureDir) : []
+  return {
+    generatedAt: new Date().toISOString(),
+    expectedDirectory: 'tests/fixtures/characters/classes',
+    missingFixtures: classIndex
+      .map((entry) => `${entry.id}-level3.bonfire.xlsx`)
+      .filter((fileName) => !files.includes(fileName))
+      .map((fileName) => ({ fileName, reason: 'fixture-not-yet-added' })),
+  }
+}
+
+function seedCounts(seeds) {
+  return Object.fromEntries(Object.entries(seeds).map(([key, value]) => [key, value.length]))
+}
+
+function dedupeById(entries) {
+  const seen = new Map()
+  for (const entry of entries) {
+    const existing = seen.get(entry.id)
+    if (!existing || descriptionRank(entry.descriptionStatus) > descriptionRank(existing.descriptionStatus)) seen.set(entry.id, entry)
+  }
+  return Array.from(seen.values()).sort((a, b) => a.id.localeCompare(b.id))
+}
+
+function descriptionRank(status) {
+  return status === 'complete' ? 5 : status === 'fallback' ? 4 : status === 'needs-review' ? 3 : status === 'summary-only' ? 2 : 1
+}
+
+function cleanHtml(html) {
+  const bodyStart = html.search(/<body\b/i)
+  const body = bodyStart >= 0 ? html.slice(bodyStart) : html
+  return body
+    .replace(/<script\b[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<style\b[\s\S]*?<\/style>/gi, ' ')
+    .replace(/<svg\b[\s\S]*?<\/svg>/gi, ' ')
+    .replace(/<nav\b[\s\S]*?<\/nav>/gi, ' ')
+}
+
+function sanitizeDescriptionHtml(html) {
+  return html
+    .replace(/<script\b[\s\S]*?<\/script>/gi, '')
+    .replace(/<style\b[\s\S]*?<\/style>/gi, '')
+    .replace(/\s(?:class|style|id|data-[a-z-]+|href)="[^"]*"/gi, '')
+    .trim()
+}
+
+function extractDescriptionHtml(html, maxLength) {
+  const h1 = extractHeadings(html).find((heading) => heading.level === 1)
+  const start = h1?.end ?? 0
+  return sanitizeDescriptionHtml(html.slice(start, start + maxLength))
+}
+
+function htmlToText(html) {
+  return decodeEntities(String(html ?? '')
+    .replace(/<br\s*\/?>/gi, '\n')
+    .replace(/<\/(p|li|tr|h[1-6])>/gi, '\n')
+    .replace(/<[^>]+>/g, ' '))
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
+function htmlToRuleText(html) {
+  return decodeEntities(String(html ?? '')
+    .replace(/<br\s*\/?>/gi, '\n')
+    .replace(/<\/(p|li|tr|h[1-6]|ul|ol|table)>/gi, '\n')
+    .replace(/<[^>]+>/g, ' '))
+    .replace(/[ \t]+\n/g, '\n')
+    .replace(/\n[ \t]+/g, '\n')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim()
+}
+
+function cleanText(value) {
+  return decodeEntities(String(value ?? '')).replace(/\s+/g, ' ').trim()
+}
+
+function cleanFeatureName(value) {
+  return cleanText(value)
+    .replace(/^\s*(?:•|-)\s*/, '')
+    .replace(/\s+/g, ' ')
+    .replace(/[.:]\s*$/, '')
+    .trim()
+}
+
+function cleanTitle(value) {
+  return cleanText(value)
+    .replace(/\s+in\s+Bonfire Tales RPG.*$/i, '')
+    .replace(/\s+Species$/i, '')
+    .trim()
+}
+
+function normalizeRaceTitle(title) {
+  return cleanTitle(title)
+    .replace(/\s*-\s*Bonfire Tales RPG$/i, '')
+    .replace(/\s+Species$/i, '')
+    .trim()
+}
+
+function titleFromFile(file) {
+  return path.basename(file).replace(/\.(html?|HTML?)$/, '').replace(/\s+_\s+World Anvil$/i, '')
+}
+
+function extractTitle(html) {
+  return attr(html, /<meta\s+(?:property|name)="(?:og:title|twitter:title)"\s+content="([^"]+)"/i)
+    ?? attr(html, /<title[^>]*>([\s\S]*?)<\/title>/i)
+    ?? htmlToText(attr(html, /<h1\b[^>]*>([\s\S]*?)<\/h1>/i) ?? '')
+}
+
+function extractSourceUrl(html) {
+  return attr(html, /saved from url=\(\d+\)([^ ]+)\s*-->/i)
+    ?? attr(html, /<meta\s+(?:property|name)="(?:og:url|twitter:url)"\s+content="([^"]+)"/i)
+}
+
+function attr(html, regex) {
+  const match = html.match(regex)
+  return match ? decodeEntities(match[1]).trim() : null
+}
+
+function meaningfulParagraph(html) {
+  const paragraphs = [...html.matchAll(/<p\b[^>]*>([\s\S]*?)<\/p>/gi)].map((match) => htmlToText(match[1])).filter((text) => text.length > 80)
+  return paragraphs[0] ?? ''
+}
+
+function extractHitDie(text) {
+  const match = text.match(/\b1d(6|8|10|12)\b/i)
+  return match ? `d${match[1]}` : null
+}
+
+function extractSavingThrows(html) {
+  const match = html.match(/Testes de Resist[eê]ncia:<\/b>\s*([^<]+)/i)
+  if (!match) return null
+  const saves = match[1].split(/,| e /i).map((entry) => abilityKey(entry)).filter(Boolean)
+  return saves.length ? Array.from(new Set(saves)) : null
+}
+
+function extractSpellcasting(html, classId) {
+  const text = htmlToText(html)
+  const defaults = classDefaults[classId]?.spellcasting
+  if (defaults?.type === 'none') return defaults
+  const ability = /habilidade de conjura[cç][aã]o (?:e|é)\s+Carisma/i.test(text)
+    ? 'cha'
+    : /habilidade de conjura[cç][aã]o (?:e|é)\s+Intelig[eê]ncia/i.test(text)
+      ? 'int'
+      : /habilidade de conjura[cç][aã]o (?:e|é)\s+Sabedoria/i.test(text)
+        ? 'wis'
+        : defaults?.ability
+  if (!ability && !/conjura|magia|feiti[cç]aria|misticismo/i.test(text)) return { type: 'none' }
+  return { type: defaults?.type ?? 'needs-review', ability: ability ?? undefined }
+}
+
+function extractSpeed(text) {
+  const match = text.match(/deslocamento(?: de caminhada)?(?: aumenta| igual)?[^0-9]{0,40}(\d+)\s*(?:metros|m|p[eé]s|feet)/i)
+  if (!match) return null
+  return Number(match[1])
+}
+
+function extractPrerequisite(html) {
+  const match = htmlToText(html).match(/Pr[eé]-requisito:\s*([^\.]+)/i)
+  return match ? cleanText(match[1]) : null
+}
+
+function abilityKey(value) {
+  const key = slug(value)
+  if (key.includes('forca') || key === 'str') return 'str'
+  if (key.includes('destreza') || key === 'dex') return 'dex'
+  if (key.includes('constituicao') || key === 'con') return 'con'
+  if (key.includes('inteligencia') || key === 'int') return 'int'
+  if (key.includes('sabedoria') || key === 'wis') return 'wis'
+  if (key.includes('carisma') || key === 'cha') return 'cha'
+  return null
+}
+
+function canonicalClass(value) {
+  return canonicalByKey.get(slug(value))
+}
+
+function featureKindFromName(name) {
+  if (/conjura[cç][aã]o|feiti[cç]aria/i.test(name)) return 'spellcasting'
+  if (/canalizar|surto|pontos de misticismo|recupera[cç][aã]o/i.test(name)) return 'resource'
+  return 'classFeature'
+}
+
+function looksLikeSubclassName(name) {
+  return /^(c[ií]rculo|dom[ií]nio|arqu[eé]tipo|juramento|tradi[cç][aã]o|caminho|col[eé]gio|especializa[cç][aã]o|manifest[aã]o)/i.test(name)
+}
+
+function looksLikeOnlyLevel(name) {
+  return /^(?:n[ií]vel|level)\s+\d+$/i.test(name)
+}
+
+function isNoiseHeading(name) {
+  const key = slug(name)
+  return headingNoise.has(key) || key.length < 3 || /^str|dex|con|int|wis|cha$/.test(key)
+}
+
+function descriptionStatus(description) {
+  const text = cleanText(description)
+  if (!text) return 'missing'
+  if (text === fallbackDescription) return 'fallback'
+  if (text.length < 80) return 'needs-review'
+  return 'complete'
+}
+
+function shortDescription(description) {
+  const text = cleanText(description)
+  const sentence = text.match(/^.{40,240}?[.!?](?:\s|$)/)?.[0] ?? text.slice(0, 240)
+  return sentence.trim() || fallbackDescription
+}
+
+function buildSeedDescription({ name, descriptionHtml, descriptionText, shortDescription: previewText, descriptionSource, sourceUrl, sourceFile }) {
+  const fullTextCandidate = cleanText(descriptionText || '')
+  const previewCandidate = cleanText(previewText || shortDescription(fullTextCandidate || htmlToText(descriptionHtml) || ''))
+  const sanitizedHtml = descriptionHtml ? sanitizeDescriptionHtml(descriptionHtml) : null
+  const fullSource = tryResolveDetailedSource(name, sourceUrl, sourceFile, descriptionSource)
+  const resolvedHtml = fullSource?.descriptionHtml ?? sanitizedHtml
+  const resolvedText = cleanText(fullSource?.descriptionText ?? fullTextCandidate)
+  const resolvedSource = fullSource?.descriptionSource ?? descriptionSource
+
+  if (!resolvedText) {
+    return {
+      descriptionHtml: null,
+      descriptionText: null,
+      shortDescription: previewCandidate || null,
+      descriptionStatus: previewCandidate ? 'fallback' : 'missing',
+      descriptionSource: resolvedSource,
+      needsReviewReasons: ['missing-full-rule-page'],
+    }
+  }
+
+  if (resolvedSource === 'card-summary' || looksLikeCardSummary(resolvedText, resolvedHtml)) {
+    return {
+      descriptionHtml: null,
+      descriptionText: null,
+      shortDescription: previewCandidate || resolvedText,
+      descriptionStatus: 'summary-only',
+      descriptionSource: 'card-summary',
+      needsReviewReasons: fullSource ? ['summary-card-used-no-full-description'] : ['summary-card-used-no-full-description', 'missing-full-rule-page'],
+    }
+  }
+
+  if (containsUiJunk(resolvedText)) {
+    return {
+      descriptionHtml: null,
+      descriptionText: null,
+      shortDescription: previewCandidate || null,
+      descriptionStatus: 'needs-review',
+      descriptionSource: resolvedSource,
+      needsReviewReasons: ['summary-card-used-no-full-description'],
+    }
+  }
+
+  if (isLikelyCompleteRuleText(resolvedText, resolvedHtml, resolvedSource)) {
+    return {
+      descriptionHtml: resolvedHtml,
+      descriptionText: resolvedText,
+      shortDescription: previewCandidate && previewCandidate !== resolvedText ? previewCandidate : shortDescription(resolvedText),
+      descriptionStatus: 'complete',
+      descriptionSource: resolvedSource,
+      needsReviewReasons: [],
+    }
+  }
+
+  return {
+    descriptionHtml: null,
+    descriptionText: null,
+    shortDescription: previewCandidate || resolvedText,
+    descriptionStatus: 'needs-review',
+    descriptionSource: resolvedSource,
+    needsReviewReasons: fullSource ? ['summary-card-used-no-full-description'] : ['missing-full-rule-page'],
+  }
+}
+
+function isLikelyCompleteRuleText(text, html, source) {
+  if (!text) return false
+  if (source === 'table-row') return text.length >= 60 || hasMechanicalSignals(text)
+  if (hasMechanicalSignals(text)) return true
+  if (text.length >= 180) return true
+  if (html && /<ul|<ol|<table|<b>\s*efeito|<strong>\s*efeito/i.test(html)) return true
+  return false
+}
+
+function hasMechanicalSignals(text) {
+  return /\b(vantagem|desvantagem|teste(?:s)? de resist[eê]ncia|a[cç][aã]o|a[cç][aã]o b[oô]nus|rea[cç][aã]o|descanso longo|descanso curto|pv tempor[aá]rios|profici[eê]ncia|cd\b|efeito:|pr[eé]-requisito:|conjurar|dano|alcance|metro|p[eé]s)\b/i.test(text)
+}
+
+function looksLikeCardSummary(text, html) {
+  if (!text) return true
+  if (containsUiJunk(text)) return true
+  if (text.length < 110 && !hasMechanicalSignals(text)) return true
+  if (html && /role="listbox"|toggle menu|create your account|gift a membership|worldanvil podcast/i.test(html)) return true
+  return false
+}
+
+function containsUiJunk(text) {
+  return /\b(create your account|login|pricing|privacy|terms of service|worldanvil podcast|discord|youtube|twitch|facebook|reddit|do you need help|gift a membership|community|i am a gamemaster)\b/i.test(text)
+}
+
+function tryResolveDetailedSource(name, sourceUrl, sourceFile, descriptionSource) {
+  if (descriptionSource !== 'card-summary' && descriptionSource !== 'unknown') return null
+  const normalizedName = slug(name)
+  const match = sourceIndex.find((entry) => entry.normalizedTitle === normalizedName || entry.normalizedH1 === normalizedName || entry.normalizedSourceUrl.includes(normalizedName))
+  if (!match || match.file === sourceFile) return null
+  const html = readFileSync(match.file, 'utf8')
+  const article = cleanHtml(html)
+  const descriptionHtml = extractDescriptionHtml(article, 2600)
+  const descriptionText = htmlToRuleText(descriptionHtml)
+  if (!descriptionText) return null
+  return {
+    descriptionHtml,
+    descriptionText,
+    descriptionSource: 'article-body',
+  }
+}
+
+function buildSourceIndex(files) {
+  return files.map((file) => {
+    const html = readFileSync(file, 'utf8')
+    const article = cleanHtml(html)
+    const h1 = htmlToText(attr(article, /<h1\b[^>]*>([\s\S]*?)<\/h1>/i) ?? '')
+    const title = cleanTitle(extractTitle(html) || titleFromFile(file))
+    const sourceUrl = extractSourceUrl(html) ?? ''
+    return {
+      file,
+      relativePath: path.relative(repoRoot, file),
+      title,
+      h1,
+      sourceUrl,
+      normalizedTitle: slug(title),
+      normalizedH1: slug(h1),
+      normalizedSourceUrl: slug(sourceUrl),
+    }
+  })
+}
+
+function slug(value) {
+  return String(value ?? '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-zA-Z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .replace(/-+/g, '-')
+    .toLowerCase()
+}
+
+function decodeEntities(value) {
+  return String(value ?? '')
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&amp;/g, '&')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&#(\d+);/g, (_, code) => String.fromCharCode(Number(code)))
+    .replace(/&#x([0-9a-f]+);/gi, (_, code) => String.fromCharCode(Number.parseInt(code, 16)))
+}
+
+function readJson(file) {
+  return JSON.parse(readFileSync(file, 'utf8'))
+}
+
+function writeJson(file, value) {
+  ensureDir(path.dirname(file))
+  writeFileSync(file, `${JSON.stringify(value, null, 2)}\n`, 'utf8')
+}
+
+function ensureDir(dir) {
+  mkdirSync(dir, { recursive: true })
+}
+
+function errorEntry(file, error) {
+  return {
+    file: path.relative(repoRoot, file),
+    message: error instanceof Error ? error.message : String(error),
+  }
+}

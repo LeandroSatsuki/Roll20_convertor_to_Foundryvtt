@@ -1,0 +1,692 @@
+[
+  {
+    "id": "acolito",
+    "identifier": "acolito",
+    "name": "Acólito",
+    "aliases": [],
+    "kind": "background",
+    "source": "bonfire",
+    "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/antecedentes-category",
+    "descriptionHtml": "<a>Mostrar</a>\n          <div>\n            <div><b>\"Servir aos deuses é uma forma de honrá-los por tudo que somos graças a eles.\"</b><br>\nSua vida foi embasada a servir aos templos de divindades ou até mesmo de entidades que condizem com suas convicções e crenças. Um servo dos deuses é uma espécie de profeta, anunciando as boas novas para os mortais, dando-lhes um vislumbre das vontades dos deuses, serem transpassadas através de você.\"\n            </div>\n          </div>",
+    "descriptionText": "Mostrar \"Servir aos deuses é uma forma de honrá-los por tudo que somos graças a eles.\" Sua vida foi embasada a servir aos templos de divindades ou até mesmo de entidades que condizem com suas convicções e crenças. Um servo dos deuses é uma espécie de profeta, anunciando as boas novas para os mortais, dando-lhes um vislumbre das vontades dos deuses, serem transpassadas através de você.\"",
+    "description": "Mostrar \"Servir aos deuses é uma forma de honrá-los por tudo que somos graças a eles.\" Sua vida foi embasada a servir aos templos de divindades ou até mesmo de entidades que condizem com suas convicções e crenças. Um servo dos deuses é uma espécie de profeta, anunciando as boas novas para os mortais, dando-lhes um vislumbre das vontades dos deuses, serem transpassadas através de você.\"",
+    "shortDescription": "Mostrar \"Servir aos deuses é uma forma de honrá-los por tudo que somos graças a eles.\" Sua vida foi embasada a servir aos templos de divindades ou até mesmo de entidades que condizem com suas convicções e crenças.",
+    "descriptionStatus": "complete",
+    "descriptionSource": "table-row",
+    "needsReviewReasons": [],
+    "tags": [
+      "background"
+    ],
+    "foundry": {
+      "preferredType": "background"
+    },
+    "sourceFileName": "data\\HTML BONFIRE\\antecedentes\\Antecedentes in Bonfire Tales RPG.html"
+  },
+  {
+    "id": "antropologista",
+    "identifier": "antropologista",
+    "name": "Antropologista",
+    "aliases": [],
+    "kind": "background",
+    "source": "bonfire",
+    "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/antecedentes-category",
+    "descriptionHtml": "<a>Mostrar</a>\n          <div>\n            <div><b>\"A coisa mais indispensável a um homem é reconhecer o uso que deve fazer do seu próprio conhecimento.\"</b><br>\nEstudar outras civilizações perdidas, descobrir aquilo que talvez o passado tenha enterrado, se tornou a sua paixão. Independente se é algo que foi esquecido a mais de milênios, ou se foi recentemente inventado por algum gênio contemporâneo ou cientista. Você estudou cada linha de canções em que bardos citam lugares perdidos, livros que relatam a existência de impérios míticos ou até mesmo todas as formas de agremiação já existentes.\n            </div>\n          </div>",
+    "descriptionText": "Mostrar \"A coisa mais indispensável a um homem é reconhecer o uso que deve fazer do seu próprio conhecimento.\" Estudar outras civilizações perdidas, descobrir aquilo que talvez o passado tenha enterrado, se tornou a sua paixão. Independente se é algo que foi esquecido a mais de milênios, ou se foi recentemente inventado por algum gênio contemporâneo ou cientista. Você estudou cada linha de canções em que bardos citam lugares perdidos, livros que relatam a existência de impérios míticos ou até mesmo todas as formas de agremiação já existentes.",
+    "description": "Mostrar \"A coisa mais indispensável a um homem é reconhecer o uso que deve fazer do seu próprio conhecimento.\" Estudar outras civilizações perdidas, descobrir aquilo que talvez o passado tenha enterrado, se tornou a sua paixão. Independente se é algo que foi esquecido a mais de milênios, ou se foi recentemente inventado por algum gênio contemporâneo ou cientista. Você estudou cada linha de canções em que bardos citam lugares perdidos, livros que relatam a existência de impérios míticos ou até mesmo todas as formas de agremiação já existentes.",
+    "shortDescription": "Mostrar \"A coisa mais indispensável a um homem é reconhecer o uso que deve fazer do seu próprio conhecimento.\" Estudar outras civilizações perdidas, descobrir aquilo que talvez o passado tenha enterrado, se tornou a sua paixão.",
+    "descriptionStatus": "complete",
+    "descriptionSource": "table-row",
+    "needsReviewReasons": [],
+    "tags": [
+      "background"
+    ],
+    "foundry": {
+      "preferredType": "background"
+    },
+    "sourceFileName": "data\\HTML BONFIRE\\antecedentes\\Antecedentes in Bonfire Tales RPG.html"
+  },
+  {
+    "id": "arqueologista",
+    "identifier": "arqueologista",
+    "name": "Arqueologista",
+    "aliases": [],
+    "kind": "background",
+    "source": "bonfire",
+    "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/antecedentes-category",
+    "descriptionHtml": "<a>Mostrar</a>\n          <div>\n            <div><b>\"Estudiosos comparavam que o inconsciente é como uma grande escavação da arqueologia e a partir desse pensamento metafórico, compreendo o inconsciente como algo infinitamente complexo e instigante, em que cada descoberta, um novo enigma a desvendar.\"</b><br>\nUm arqueólogo basicamente esquadrinha culturas perdidas, fósseis, ruínas, obras de arte e até mesmo antigos templos. Todo arqueólogo caminha para todos os cantos mais distantes do mundo para procurar cidades ou masmorras perdidas, buscando artefatos, ou até mesmo ruinas de civilizações ou estudos antigos que possam explicar o porquê das coisas serem como são hoje.\n            </div>\n          </div>",
+    "descriptionText": "Mostrar \"Estudiosos comparavam que o inconsciente é como uma grande escavação da arqueologia e a partir desse pensamento metafórico, compreendo o inconsciente como algo infinitamente complexo e instigante, em que cada descoberta, um novo enigma a desvendar.\" Um arqueólogo basicamente esquadrinha culturas perdidas, fósseis, ruínas, obras de arte e até mesmo antigos templos. Todo arqueólogo caminha para todos os cantos mais distantes do mundo para procurar cidades ou masmorras perdidas, buscando artefatos, ou até mesmo ruinas de civilizações ou estudos antigos que possam explicar o porquê das coisas serem como são hoje.",
+    "description": "Mostrar \"Estudiosos comparavam que o inconsciente é como uma grande escavação da arqueologia e a partir desse pensamento metafórico, compreendo o inconsciente como algo infinitamente complexo e instigante, em que cada descoberta, um novo enigma a desvendar.\" Um arqueólogo basicamente esquadrinha culturas perdidas, fósseis, ruínas, obras de arte e até mesmo antigos templos. Todo arqueólogo caminha para todos os cantos mais distantes do mundo para procurar cidades ou masmorras perdidas, buscando artefatos, ou até mesmo ruinas de civilizações ou estudos antigos que possam explicar o porquê das coisas serem como são hoje.",
+    "shortDescription": "Mostrar \"Estudiosos comparavam que o inconsciente é como uma grande escavação da arqueologia e a partir desse pensamento metafórico, compreendo o inconsciente como algo infinitamente complexo e instigante, em que cada descoberta, um novo en",
+    "descriptionStatus": "complete",
+    "descriptionSource": "table-row",
+    "needsReviewReasons": [],
+    "tags": [
+      "background"
+    ],
+    "foundry": {
+      "preferredType": "background"
+    },
+    "sourceFileName": "data\\HTML BONFIRE\\antecedentes\\Antecedentes in Bonfire Tales RPG.html"
+  },
+  {
+    "id": "artista",
+    "identifier": "artista",
+    "name": "Artista",
+    "aliases": [],
+    "kind": "background",
+    "source": "bonfire",
+    "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/antecedentes-category",
+    "descriptionHtml": "<a>Mostrar</a>\n          <div>\n            <div><b>\"O artista tem que ser gênio para alguns e imbecil para outros. Se puder ser imbecil para todos, melhor ainda.\"</b><br>\nVocê nasceu para o público. Você faz com que a atenção fique fixada em ti entretendo, inspirando, elogiando ou até mesmo performando. Seus repentes são ouvidos com muito louvor, suas canções são sempre cantadas por bardos menores e seus movimentos de danças são sempre bem vistos pelo público que te assiste e te ovaciona com muita admiração. \"\n            </div>\n          </div>",
+    "descriptionText": "Mostrar \"O artista tem que ser gênio para alguns e imbecil para outros. Se puder ser imbecil para todos, melhor ainda.\" Você nasceu para o público. Você faz com que a atenção fique fixada em ti entretendo, inspirando, elogiando ou até mesmo performando. Seus repentes são ouvidos com muito louvor, suas canções são sempre cantadas por bardos menores e seus movimentos de danças são sempre bem vistos pelo público que te assiste e te ovaciona com muita admiração. \"",
+    "description": "Mostrar \"O artista tem que ser gênio para alguns e imbecil para outros. Se puder ser imbecil para todos, melhor ainda.\" Você nasceu para o público. Você faz com que a atenção fique fixada em ti entretendo, inspirando, elogiando ou até mesmo performando. Seus repentes são ouvidos com muito louvor, suas canções são sempre cantadas por bardos menores e seus movimentos de danças são sempre bem vistos pelo público que te assiste e te ovaciona com muita admiração. \"",
+    "shortDescription": "Mostrar \"O artista tem que ser gênio para alguns e imbecil para outros.",
+    "descriptionStatus": "complete",
+    "descriptionSource": "table-row",
+    "needsReviewReasons": [],
+    "tags": [
+      "background"
+    ],
+    "foundry": {
+      "preferredType": "background"
+    },
+    "sourceFileName": "data\\HTML BONFIRE\\antecedentes\\Antecedentes in Bonfire Tales RPG.html"
+  },
+  {
+    "id": "assombrado",
+    "identifier": "assombrado",
+    "name": "Assombrado",
+    "aliases": [],
+    "kind": "background",
+    "source": "bonfire",
+    "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/antecedentes-category",
+    "descriptionHtml": "<a>Mostrar</a>\n          <div>\n            <div><b>\"A pior maldição que um homem pode carregar, é estar perdido e ser assombrado pelos seus próprios pensamentos.\"</b><br>\nAlgo no seu passado deixou sequelas que nem mesmo o tempo pode apagar de sua memória. Você é constantemente perturbado por isso, seja lá um trauma, uma perda marcante, ou até mesmo por ter presenciado um ato que possa ter impactado na sua vida, independente do que tenha acontecido ou se foi a muito tempo. As vezes você tem pesadelos com tal acontecido e a sua mente sempre lhe prega umas peças, fazendo você reviver tal memória.\n            </div>\n          </div>",
+    "descriptionText": "Mostrar \"A pior maldição que um homem pode carregar, é estar perdido e ser assombrado pelos seus próprios pensamentos.\" Algo no seu passado deixou sequelas que nem mesmo o tempo pode apagar de sua memória. Você é constantemente perturbado por isso, seja lá um trauma, uma perda marcante, ou até mesmo por ter presenciado um ato que possa ter impactado na sua vida, independente do que tenha acontecido ou se foi a muito tempo. As vezes você tem pesadelos com tal acontecido e a sua mente sempre lhe prega umas peças, fazendo você reviver tal memória.",
+    "description": "Mostrar \"A pior maldição que um homem pode carregar, é estar perdido e ser assombrado pelos seus próprios pensamentos.\" Algo no seu passado deixou sequelas que nem mesmo o tempo pode apagar de sua memória. Você é constantemente perturbado por isso, seja lá um trauma, uma perda marcante, ou até mesmo por ter presenciado um ato que possa ter impactado na sua vida, independente do que tenha acontecido ou se foi a muito tempo. As vezes você tem pesadelos com tal acontecido e a sua mente sempre lhe prega umas peças, fazendo você reviver tal memória.",
+    "shortDescription": "Mostrar \"A pior maldição que um homem pode carregar, é estar perdido e ser assombrado pelos seus próprios pensamentos.\" Algo no seu passado deixou sequelas que nem mesmo o tempo pode apagar de sua memória.",
+    "descriptionStatus": "complete",
+    "descriptionSource": "table-row",
+    "needsReviewReasons": [],
+    "tags": [
+      "background"
+    ],
+    "foundry": {
+      "preferredType": "background"
+    },
+    "sourceFileName": "data\\HTML BONFIRE\\antecedentes\\Antecedentes in Bonfire Tales RPG.html"
+  },
+  {
+    "id": "astronomo",
+    "identifier": "astronomo",
+    "name": "Astrônomo",
+    "aliases": [],
+    "kind": "background",
+    "source": "bonfire",
+    "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/antecedentes-category",
+    "descriptionHtml": "<a>Mostrar</a>\n          <div>\n            <div><b>\"Quando tudo não faz mais sentido, vamos atrás da astrologia para explicar o inexplicável.\"</b><br>\nVocê se tornou um grande estudante da astrologia, a qual você se aperfeiçoou ao longo de sua vida. Você tem total maestria quando o assunto é astrologia e tem total facilidade em pesquisar ou adquirir conhecimento sobre o assunto.\"\n            </div>\n          </div>",
+    "descriptionText": "Mostrar \"Quando tudo não faz mais sentido, vamos atrás da astrologia para explicar o inexplicável.\" Você se tornou um grande estudante da astrologia, a qual você se aperfeiçoou ao longo de sua vida. Você tem total maestria quando o assunto é astrologia e tem total facilidade em pesquisar ou adquirir conhecimento sobre o assunto.\"",
+    "description": "Mostrar \"Quando tudo não faz mais sentido, vamos atrás da astrologia para explicar o inexplicável.\" Você se tornou um grande estudante da astrologia, a qual você se aperfeiçoou ao longo de sua vida. Você tem total maestria quando o assunto é astrologia e tem total facilidade em pesquisar ou adquirir conhecimento sobre o assunto.\"",
+    "shortDescription": "Mostrar \"Quando tudo não faz mais sentido, vamos atrás da astrologia para explicar o inexplicável.\" Você se tornou um grande estudante da astrologia, a qual você se aperfeiçoou ao longo de sua vida.",
+    "descriptionStatus": "complete",
+    "descriptionSource": "table-row",
+    "needsReviewReasons": [],
+    "tags": [
+      "background"
+    ],
+    "foundry": {
+      "preferredType": "background"
+    },
+    "sourceFileName": "data\\HTML BONFIRE\\antecedentes\\Antecedentes in Bonfire Tales RPG.html"
+  },
+  {
+    "id": "campeao",
+    "identifier": "campeao",
+    "name": "Campeão",
+    "aliases": [],
+    "kind": "background",
+    "source": "bonfire",
+    "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/antecedentes-category",
+    "descriptionHtml": "<a>Mostrar</a>\n          <div>\n            <div><b>\"Um atleta nunca tenta descobrir qual o seu limite,mas sim deseja superá-lo a cada instante.\"</b><br>\nVocê se esforça para se aperfeiçoar fisicamente e na execução de tudo o que faz. A emoção da competição acende fogo em seu sangue, e o rugido da multidão o impulsiona para frente. Contos de suas façanhas o precedem e podem abrir portas ou soltar línguas.<br>\nSeja em uma das poleis, entre elas, ou entre os povos não humanos, as disputas físicas e aqueles que as perseguem impõem um respeito que beira a reverência. Campões surgem de todas as esferas da vida e de todas as culturas e muitas vezes cruzam-se uns com os outros.\n            </div>\n          </div>",
+    "descriptionText": "Mostrar \"Um atleta nunca tenta descobrir qual o seu limite,mas sim deseja superá-lo a cada instante.\" Você se esforça para se aperfeiçoar fisicamente e na execução de tudo o que faz. A emoção da competição acende fogo em seu sangue, e o rugido da multidão o impulsiona para frente. Contos de suas façanhas o precedem e podem abrir portas ou soltar línguas. Seja em uma das poleis, entre elas, ou entre os povos não humanos, as disputas físicas e aqueles que as perseguem impõem um respeito que beira a reverência. Campões surgem de todas as esferas da vida e de todas as culturas e muitas vezes cruzam-se uns com os outros.",
+    "description": "Mostrar \"Um atleta nunca tenta descobrir qual o seu limite,mas sim deseja superá-lo a cada instante.\" Você se esforça para se aperfeiçoar fisicamente e na execução de tudo o que faz. A emoção da competição acende fogo em seu sangue, e o rugido da multidão o impulsiona para frente. Contos de suas façanhas o precedem e podem abrir portas ou soltar línguas. Seja em uma das poleis, entre elas, ou entre os povos não humanos, as disputas físicas e aqueles que as perseguem impõem um respeito que beira a reverência. Campões surgem de todas as esferas da vida e de todas as culturas e muitas vezes cruzam-se uns com os outros.",
+    "shortDescription": "Mostrar \"Um atleta nunca tenta descobrir qual o seu limite,mas sim deseja superá-lo a cada instante.\" Você se esforça para se aperfeiçoar fisicamente e na execução de tudo o que faz.",
+    "descriptionStatus": "complete",
+    "descriptionSource": "table-row",
+    "needsReviewReasons": [],
+    "tags": [
+      "background"
+    ],
+    "foundry": {
+      "preferredType": "background"
+    },
+    "sourceFileName": "data\\HTML BONFIRE\\antecedentes\\Antecedentes in Bonfire Tales RPG.html"
+  },
+  {
+    "id": "cavaleiro",
+    "identifier": "cavaleiro",
+    "name": "Cavaleiro",
+    "aliases": [],
+    "kind": "background",
+    "source": "bonfire",
+    "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/antecedentes-category",
+    "descriptionHtml": "<a>Mostrar</a>\n          <div>\n            <div><b>\"Um cavaleiro possui sabedoria e a proporção desta, é a força que se empunha a espada.\"</b><br>\nA alta-roda, está entre os títulos de nobreza mais baixos na maioria das sociedades, mas ele pode ser o caminho para posições maiores. Se você deseja ser um cavaleiro. Por mais que a fidalguea não seja um título de nobreza igual ao de um aristocrata, tem lá o seu valor pela sociedade. Cavaleiros são bem vistos diante do povo e são respeitados em suas cidades residentes.\n            </div>\n          </div>",
+    "descriptionText": "Mostrar \"Um cavaleiro possui sabedoria e a proporção desta, é a força que se empunha a espada.\" A alta-roda, está entre os títulos de nobreza mais baixos na maioria das sociedades, mas ele pode ser o caminho para posições maiores. Se você deseja ser um cavaleiro. Por mais que a fidalguea não seja um título de nobreza igual ao de um aristocrata, tem lá o seu valor pela sociedade. Cavaleiros são bem vistos diante do povo e são respeitados em suas cidades residentes.",
+    "description": "Mostrar \"Um cavaleiro possui sabedoria e a proporção desta, é a força que se empunha a espada.\" A alta-roda, está entre os títulos de nobreza mais baixos na maioria das sociedades, mas ele pode ser o caminho para posições maiores. Se você deseja ser um cavaleiro. Por mais que a fidalguea não seja um título de nobreza igual ao de um aristocrata, tem lá o seu valor pela sociedade. Cavaleiros são bem vistos diante do povo e são respeitados em suas cidades residentes.",
+    "shortDescription": "Mostrar \"Um cavaleiro possui sabedoria e a proporção desta, é a força que se empunha a espada.\" A alta-roda, está entre os títulos de nobreza mais baixos na maioria das sociedades, mas ele pode ser o caminho para posições maiores.",
+    "descriptionStatus": "complete",
+    "descriptionSource": "table-row",
+    "needsReviewReasons": [],
+    "tags": [
+      "background"
+    ],
+    "foundry": {
+      "preferredType": "background"
+    },
+    "sourceFileName": "data\\HTML BONFIRE\\antecedentes\\Antecedentes in Bonfire Tales RPG.html"
+  },
+  {
+    "id": "charlatao",
+    "identifier": "charlatao",
+    "name": "Charlatão",
+    "aliases": [],
+    "kind": "background",
+    "source": "bonfire",
+    "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/antecedentes-category",
+    "descriptionHtml": "<a>Mostrar</a>\n          <div>\n            <div><b>\"Eu Achava a palavra charlatão uma ofensa. Agora a vejo como um elogio para os mágicos das profissões.\"</b><br>\nVocê sabe o que falar na hora certa. A arte de manipular situações, coisas e pessoas, com toda certeza você possui maestria. A sua capacidade de fazer aflorar o mais genuino dos sentimentos é surreal e como um bom orador, você sabe usar isso ao seu favor nas horas mais oportunas e também nas mais difíceis.\n            </div>\n          </div>",
+    "descriptionText": "Mostrar \"Eu Achava a palavra charlatão uma ofensa. Agora a vejo como um elogio para os mágicos das profissões.\" Você sabe o que falar na hora certa. A arte de manipular situações, coisas e pessoas, com toda certeza você possui maestria. A sua capacidade de fazer aflorar o mais genuino dos sentimentos é surreal e como um bom orador, você sabe usar isso ao seu favor nas horas mais oportunas e também nas mais difíceis.",
+    "description": "Mostrar \"Eu Achava a palavra charlatão uma ofensa. Agora a vejo como um elogio para os mágicos das profissões.\" Você sabe o que falar na hora certa. A arte de manipular situações, coisas e pessoas, com toda certeza você possui maestria. A sua capacidade de fazer aflorar o mais genuino dos sentimentos é surreal e como um bom orador, você sabe usar isso ao seu favor nas horas mais oportunas e também nas mais difíceis.",
+    "shortDescription": "Mostrar \"Eu Achava a palavra charlatão uma ofensa.",
+    "descriptionStatus": "complete",
+    "descriptionSource": "table-row",
+    "needsReviewReasons": [],
+    "tags": [
+      "background"
+    ],
+    "foundry": {
+      "preferredType": "background"
+    },
+    "sourceFileName": "data\\HTML BONFIRE\\antecedentes\\Antecedentes in Bonfire Tales RPG.html"
+  },
+  {
+    "id": "criminoso",
+    "identifier": "criminoso",
+    "name": "Criminoso",
+    "aliases": [],
+    "kind": "background",
+    "source": "bonfire",
+    "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/antecedentes-category",
+    "descriptionHtml": "<a>Mostrar</a>\n          <div>\n            <div><b>\"Um criminoso é uma pessoa com instintos predatórios sem capital suficiente para formar uma empresa.\"</b><br>\nVocê com toda certeza já possui uma série de maus feitos em seu antecedente e passou tanto tempo com esse tipo de gente, que ainda possui contatos nas subferias espalhadas pelo continente. A lei para você, nada mais é do que um conjunto de regras que foi feito para você quebrá-las.\"\n            </div>\n          </div>",
+    "descriptionText": "Mostrar \"Um criminoso é uma pessoa com instintos predatórios sem capital suficiente para formar uma empresa.\" Você com toda certeza já possui uma série de maus feitos em seu antecedente e passou tanto tempo com esse tipo de gente, que ainda possui contatos nas subferias espalhadas pelo continente. A lei para você, nada mais é do que um conjunto de regras que foi feito para você quebrá-las.\"",
+    "description": "Mostrar \"Um criminoso é uma pessoa com instintos predatórios sem capital suficiente para formar uma empresa.\" Você com toda certeza já possui uma série de maus feitos em seu antecedente e passou tanto tempo com esse tipo de gente, que ainda possui contatos nas subferias espalhadas pelo continente. A lei para você, nada mais é do que um conjunto de regras que foi feito para você quebrá-las.\"",
+    "shortDescription": "Mostrar \"Um criminoso é uma pessoa com instintos predatórios sem capital suficiente para formar uma empresa.\" Você com toda certeza já possui uma série de maus feitos em seu antecedente e passou tanto tempo com esse tipo de gente, que ainda",
+    "descriptionStatus": "complete",
+    "descriptionSource": "table-row",
+    "needsReviewReasons": [],
+    "tags": [
+      "background"
+    ],
+    "foundry": {
+      "preferredType": "background"
+    },
+    "sourceFileName": "data\\HTML BONFIRE\\antecedentes\\Antecedentes in Bonfire Tales RPG.html"
+  },
+  {
+    "id": "detetive",
+    "identifier": "detetive",
+    "name": "Detetive",
+    "aliases": [],
+    "kind": "background",
+    "source": "bonfire",
+    "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/antecedentes-category",
+    "descriptionHtml": "<a>Mostrar</a>\n          <div>\n            <div><b>\"O descontentamento é a chave para a descoberta.\"</b><br>\nNada passa por sua audição, visão, olfato e tato. você tem o talento nato para perceber o que passa despercebido por leigos, e destrinchar aquilo que foi descoberto, para assim, mostrar ao mundo a verdade que estava encoberta talvez pelo tempo, ou por alguma omissão. Seu trabalho encarece de antenção e de um raciocício rápido para trabalhar com precisão.\"\n            </div>\n          </div>",
+    "descriptionText": "Mostrar \"O descontentamento é a chave para a descoberta.\" Nada passa por sua audição, visão, olfato e tato. você tem o talento nato para perceber o que passa despercebido por leigos, e destrinchar aquilo que foi descoberto, para assim, mostrar ao mundo a verdade que estava encoberta talvez pelo tempo, ou por alguma omissão. Seu trabalho encarece de antenção e de um raciocício rápido para trabalhar com precisão.\"",
+    "description": "Mostrar \"O descontentamento é a chave para a descoberta.\" Nada passa por sua audição, visão, olfato e tato. você tem o talento nato para perceber o que passa despercebido por leigos, e destrinchar aquilo que foi descoberto, para assim, mostrar ao mundo a verdade que estava encoberta talvez pelo tempo, ou por alguma omissão. Seu trabalho encarece de antenção e de um raciocício rápido para trabalhar com precisão.\"",
+    "shortDescription": "Mostrar \"O descontentamento é a chave para a descoberta.\" Nada passa por sua audição, visão, olfato e tato.",
+    "descriptionStatus": "complete",
+    "descriptionSource": "table-row",
+    "needsReviewReasons": [],
+    "tags": [
+      "background"
+    ],
+    "foundry": {
+      "preferredType": "background"
+    },
+    "sourceFileName": "data\\HTML BONFIRE\\antecedentes\\Antecedentes in Bonfire Tales RPG.html"
+  },
+  {
+    "id": "espiao",
+    "identifier": "espiao",
+    "name": "Espião",
+    "aliases": [],
+    "kind": "background",
+    "source": "bonfire",
+    "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/antecedentes-category",
+    "descriptionHtml": "<a>Mostrar</a>\n          <div>\n            <div><b>\"Neste mundo, não existe espionagem maior do que as lentes da história.\"</b><br>\nA tarefa do espião não é se esconder onde ninguém possa vê-lo, uma vez que ele mesmo não será capaz de enxergar coisa alguma. A tarefa de um espião é se esconder onde todo mundo possa vê-lo e onde ele possa ver tudo. Você sabe como se misturar, se infiltrar e até mesmo se passar por outra pessoa com certa facilidade. A arte da espionagem, com toda certeza você domina.\n            </div>\n          </div>",
+    "descriptionText": "Mostrar \"Neste mundo, não existe espionagem maior do que as lentes da história.\" A tarefa do espião não é se esconder onde ninguém possa vê-lo, uma vez que ele mesmo não será capaz de enxergar coisa alguma. A tarefa de um espião é se esconder onde todo mundo possa vê-lo e onde ele possa ver tudo. Você sabe como se misturar, se infiltrar e até mesmo se passar por outra pessoa com certa facilidade. A arte da espionagem, com toda certeza você domina.",
+    "description": "Mostrar \"Neste mundo, não existe espionagem maior do que as lentes da história.\" A tarefa do espião não é se esconder onde ninguém possa vê-lo, uma vez que ele mesmo não será capaz de enxergar coisa alguma. A tarefa de um espião é se esconder onde todo mundo possa vê-lo e onde ele possa ver tudo. Você sabe como se misturar, se infiltrar e até mesmo se passar por outra pessoa com certa facilidade. A arte da espionagem, com toda certeza você domina.",
+    "shortDescription": "Mostrar \"Neste mundo, não existe espionagem maior do que as lentes da história.\" A tarefa do espião não é se esconder onde ninguém possa vê-lo, uma vez que ele mesmo não será capaz de enxergar coisa alguma.",
+    "descriptionStatus": "complete",
+    "descriptionSource": "table-row",
+    "needsReviewReasons": [],
+    "tags": [
+      "background"
+    ],
+    "foundry": {
+      "preferredType": "background"
+    },
+    "sourceFileName": "data\\HTML BONFIRE\\antecedentes\\Antecedentes in Bonfire Tales RPG.html"
+  },
+  {
+    "id": "espiritualista",
+    "identifier": "espiritualista",
+    "name": "Espiritualista",
+    "aliases": [],
+    "kind": "background",
+    "source": "bonfire",
+    "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/antecedentes-category",
+    "descriptionHtml": "<a>Mostrar</a>\n          <div>\n            <div><b>\"Quanto mais você agradece, mais motivo você terá para agradecer. Isso é a lei da espiritualidade.\"</b><br>\nVocê tem uma ligação natural com o mundo espiritual com a qual nenhuma pessoa já mais foi capaz de ter. Por algum motivo incerto, você é amigável para os espíritos e eles acabam o vendo da mesma maneira. \n            </div>\n          </div>",
+    "descriptionText": "Mostrar \"Quanto mais você agradece, mais motivo você terá para agradecer. Isso é a lei da espiritualidade.\" Você tem uma ligação natural com o mundo espiritual com a qual nenhuma pessoa já mais foi capaz de ter. Por algum motivo incerto, você é amigável para os espíritos e eles acabam o vendo da mesma maneira.",
+    "description": "Mostrar \"Quanto mais você agradece, mais motivo você terá para agradecer. Isso é a lei da espiritualidade.\" Você tem uma ligação natural com o mundo espiritual com a qual nenhuma pessoa já mais foi capaz de ter. Por algum motivo incerto, você é amigável para os espíritos e eles acabam o vendo da mesma maneira.",
+    "shortDescription": "Mostrar \"Quanto mais você agradece, mais motivo você terá para agradecer.",
+    "descriptionStatus": "complete",
+    "descriptionSource": "table-row",
+    "needsReviewReasons": [],
+    "tags": [
+      "background"
+    ],
+    "foundry": {
+      "preferredType": "background"
+    },
+    "sourceFileName": "data\\HTML BONFIRE\\antecedentes\\Antecedentes in Bonfire Tales RPG.html"
+  },
+  {
+    "id": "estudante-de-arcanofisica",
+    "identifier": "estudante-de-arcanofisica",
+    "name": "Estudante de Arcanofísica",
+    "aliases": [],
+    "kind": "background",
+    "source": "bonfire",
+    "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/antecedentes-category",
+    "descriptionHtml": "<a>Mostrar</a>\n          <div>\n            <div>A Arcanofísica é uma área de estudo de Magia Moderna que foca na compreensão física da magia arcana. Essa energia potencial se desdobra de maneiras que podem ser explicar com fórmulas, das mais simples até as mais complexas. Por isso, os números são os seus melhores amigos no entendimento da magia, mas também são os que tiram as suas noites de sono por serem muitas vezes difíceis de se compreender. Por conta disso, muitos brincam com os arcanofísicos chamando-os de \"matemágicos\".\n            </div>\n          </div>",
+    "descriptionText": "Mostrar A Arcanofísica é uma área de estudo de Magia Moderna que foca na compreensão física da magia arcana. Essa energia potencial se desdobra de maneiras que podem ser explicar com fórmulas, das mais simples até as mais complexas. Por isso, os números são os seus melhores amigos no entendimento da magia, mas também são os que tiram as suas noites de sono por serem muitas vezes difíceis de se compreender. Por conta disso, muitos brincam com os arcanofísicos chamando-os de \"matemágicos\".",
+    "description": "Mostrar A Arcanofísica é uma área de estudo de Magia Moderna que foca na compreensão física da magia arcana. Essa energia potencial se desdobra de maneiras que podem ser explicar com fórmulas, das mais simples até as mais complexas. Por isso, os números são os seus melhores amigos no entendimento da magia, mas também são os que tiram as suas noites de sono por serem muitas vezes difíceis de se compreender. Por conta disso, muitos brincam com os arcanofísicos chamando-os de \"matemágicos\".",
+    "shortDescription": "Mostrar A Arcanofísica é uma área de estudo de Magia Moderna que foca na compreensão física da magia arcana.",
+    "descriptionStatus": "complete",
+    "descriptionSource": "table-row",
+    "needsReviewReasons": [],
+    "tags": [
+      "background"
+    ],
+    "foundry": {
+      "preferredType": "background"
+    },
+    "sourceFileName": "data\\HTML BONFIRE\\antecedentes\\Antecedentes in Bonfire Tales RPG.html"
+  },
+  {
+    "id": "estudante-de-arqueomancia",
+    "identifier": "estudante-de-arqueomancia",
+    "name": "Estudante de Arqueomancia",
+    "aliases": [],
+    "kind": "background",
+    "source": "bonfire",
+    "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/antecedentes-category",
+    "descriptionHtml": "<a>Mostrar</a>\n          <div>\n            <div>A Arqueomancia é uma área de estudo de Magia Moderna que abarca a história da magia e o estudo do passado por meio de magia. Ela busca cada momento do estudo mágico que tornou a magia no que conhecemos hoje para entender quais novos passos devem ser dados para evoluir mais. Além disso, a arqueomancia também pesquisa novas formas de aplicar a magia para compreender o passado, seja em meios de realizar a datação de ruínas e objetos, a leitura de traços arcanos há muito apagados em algo, entre outras uniões entre arqueologia e magia.\n            </div>\n          </div>",
+    "descriptionText": "Mostrar A Arqueomancia é uma área de estudo de Magia Moderna que abarca a história da magia e o estudo do passado por meio de magia. Ela busca cada momento do estudo mágico que tornou a magia no que conhecemos hoje para entender quais novos passos devem ser dados para evoluir mais. Além disso, a arqueomancia também pesquisa novas formas de aplicar a magia para compreender o passado, seja em meios de realizar a datação de ruínas e objetos, a leitura de traços arcanos há muito apagados em algo, entre outras uniões entre arqueologia e magia.",
+    "description": "Mostrar A Arqueomancia é uma área de estudo de Magia Moderna que abarca a história da magia e o estudo do passado por meio de magia. Ela busca cada momento do estudo mágico que tornou a magia no que conhecemos hoje para entender quais novos passos devem ser dados para evoluir mais. Além disso, a arqueomancia também pesquisa novas formas de aplicar a magia para compreender o passado, seja em meios de realizar a datação de ruínas e objetos, a leitura de traços arcanos há muito apagados em algo, entre outras uniões entre arqueologia e magia.",
+    "shortDescription": "Mostrar A Arqueomancia é uma área de estudo de Magia Moderna que abarca a história da magia e o estudo do passado por meio de magia.",
+    "descriptionStatus": "complete",
+    "descriptionSource": "table-row",
+    "needsReviewReasons": [],
+    "tags": [
+      "background"
+    ],
+    "foundry": {
+      "preferredType": "background"
+    },
+    "sourceFileName": "data\\HTML BONFIRE\\antecedentes\\Antecedentes in Bonfire Tales RPG.html"
+  },
+  {
+    "id": "estudante-de-biomancia",
+    "identifier": "estudante-de-biomancia",
+    "name": "Estudante de Biomancia",
+    "aliases": [],
+    "kind": "background",
+    "source": "bonfire",
+    "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/antecedentes-category",
+    "descriptionHtml": "<a>Mostrar</a>\n          <div>\n            <div>A Biomancia é uma área de estudo de Magia Moderna que foca no fortalecimento e manipulação das energias da vida por meio de magia. A base dela é uma mistura entre encantamento, necromancia e transmutação, que busca criar uma escola de magia nova. Os biomantes por vezes forçam evoluções temporárias em organismos, modificam doenças e até mesmo animam amontoados puros de biomassa como um ser que acaba por assumir uma forma, geralmente bizarra.\n            </div>\n          </div>",
+    "descriptionText": "Mostrar A Biomancia é uma área de estudo de Magia Moderna que foca no fortalecimento e manipulação das energias da vida por meio de magia. A base dela é uma mistura entre encantamento, necromancia e transmutação, que busca criar uma escola de magia nova. Os biomantes por vezes forçam evoluções temporárias em organismos, modificam doenças e até mesmo animam amontoados puros de biomassa como um ser que acaba por assumir uma forma, geralmente bizarra.",
+    "description": "Mostrar A Biomancia é uma área de estudo de Magia Moderna que foca no fortalecimento e manipulação das energias da vida por meio de magia. A base dela é uma mistura entre encantamento, necromancia e transmutação, que busca criar uma escola de magia nova. Os biomantes por vezes forçam evoluções temporárias em organismos, modificam doenças e até mesmo animam amontoados puros de biomassa como um ser que acaba por assumir uma forma, geralmente bizarra.",
+    "shortDescription": "Mostrar A Biomancia é uma área de estudo de Magia Moderna que foca no fortalecimento e manipulação das energias da vida por meio de magia.",
+    "descriptionStatus": "complete",
+    "descriptionSource": "table-row",
+    "needsReviewReasons": [],
+    "tags": [
+      "background"
+    ],
+    "foundry": {
+      "preferredType": "background"
+    },
+    "sourceFileName": "data\\HTML BONFIRE\\antecedentes\\Antecedentes in Bonfire Tales RPG.html"
+  },
+  {
+    "id": "estudante-de-estequiomancia",
+    "identifier": "estudante-de-estequiomancia",
+    "name": "Estudante de Estequiomancia",
+    "aliases": [],
+    "kind": "background",
+    "source": "bonfire",
+    "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/antecedentes-category",
+    "descriptionHtml": "<a>Mostrar</a>\n          <div>\n            <div>A Estequiomancia é uma área de estudo de Magia Moderna que foca nos elementos como um todo. Os elementos químicos a tudo constituem, e você estuda como manipulá-los de todas as maneiras possíveis. Para um estudante de sua área, os elementos primais (ar, água, fogo e terra) e os configurativos (ordem e caos) são só uma maneira simplificada de se ver a imensidade elemental real do mundo, que é muito mais complexa que isso e se une e interage de formas muito mais difíceis de se compreender.\n            </div>\n          </div>",
+    "descriptionText": "Mostrar A Estequiomancia é uma área de estudo de Magia Moderna que foca nos elementos como um todo. Os elementos químicos a tudo constituem, e você estuda como manipulá-los de todas as maneiras possíveis. Para um estudante de sua área, os elementos primais (ar, água, fogo e terra) e os configurativos (ordem e caos) são só uma maneira simplificada de se ver a imensidade elemental real do mundo, que é muito mais complexa que isso e se une e interage de formas muito mais difíceis de se compreender.",
+    "description": "Mostrar A Estequiomancia é uma área de estudo de Magia Moderna que foca nos elementos como um todo. Os elementos químicos a tudo constituem, e você estuda como manipulá-los de todas as maneiras possíveis. Para um estudante de sua área, os elementos primais (ar, água, fogo e terra) e os configurativos (ordem e caos) são só uma maneira simplificada de se ver a imensidade elemental real do mundo, que é muito mais complexa que isso e se une e interage de formas muito mais difíceis de se compreender.",
+    "shortDescription": "Mostrar A Estequiomancia é uma área de estudo de Magia Moderna que foca nos elementos como um todo.",
+    "descriptionStatus": "complete",
+    "descriptionSource": "table-row",
+    "needsReviewReasons": [],
+    "tags": [
+      "background"
+    ],
+    "foundry": {
+      "preferredType": "background"
+    },
+    "sourceFileName": "data\\HTML BONFIRE\\antecedentes\\Antecedentes in Bonfire Tales RPG.html"
+  },
+  {
+    "id": "estudante-de-nanquinomancia",
+    "identifier": "estudante-de-nanquinomancia",
+    "name": "Estudante de Nanquinomancia",
+    "aliases": [],
+    "kind": "background",
+    "source": "bonfire",
+    "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/antecedentes-category",
+    "descriptionHtml": "<a>Mostrar</a>\n          <div>\n            <div>A Nanquinomancia é uma área de estudo de Magia Moderna que foca no uso de tintas com condutor mágico, sobretudo o nanquim. Tintas mágicas são preparadas para aumentar a intensidade de feitiços ou exercer as vontades de seu conjurador. Um bom exemplo da nanquinomancia é nas inscrições mágicas feitas em talismãs espirituais de proteção ou desejo, conhecidos como Ofudas.\n            </div>\n          </div>",
+    "descriptionText": "Mostrar A Nanquinomancia é uma área de estudo de Magia Moderna que foca no uso de tintas com condutor mágico, sobretudo o nanquim. Tintas mágicas são preparadas para aumentar a intensidade de feitiços ou exercer as vontades de seu conjurador. Um bom exemplo da nanquinomancia é nas inscrições mágicas feitas em talismãs espirituais de proteção ou desejo, conhecidos como Ofudas.",
+    "description": "Mostrar A Nanquinomancia é uma área de estudo de Magia Moderna que foca no uso de tintas com condutor mágico, sobretudo o nanquim. Tintas mágicas são preparadas para aumentar a intensidade de feitiços ou exercer as vontades de seu conjurador. Um bom exemplo da nanquinomancia é nas inscrições mágicas feitas em talismãs espirituais de proteção ou desejo, conhecidos como Ofudas.",
+    "shortDescription": "Mostrar A Nanquinomancia é uma área de estudo de Magia Moderna que foca no uso de tintas com condutor mágico, sobretudo o nanquim.",
+    "descriptionStatus": "complete",
+    "descriptionSource": "table-row",
+    "needsReviewReasons": [],
+    "tags": [
+      "background"
+    ],
+    "foundry": {
+      "preferredType": "background"
+    },
+    "sourceFileName": "data\\HTML BONFIRE\\antecedentes\\Antecedentes in Bonfire Tales RPG.html"
+  },
+  {
+    "id": "guardiao-da-natureza",
+    "identifier": "guardiao-da-natureza",
+    "name": "Guardião da Natureza",
+    "aliases": [],
+    "kind": "background",
+    "source": "bonfire",
+    "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/antecedentes-category",
+    "descriptionHtml": "<a>Mostrar</a>\n          <div>\n            <div>Você é um dos defensores da natureza, que busca viver em plena harmonia com a natureza, sem tirar mais do que o necessário para viver. Por conta disso, muitos guardiões possuem uma opinião radical a cerca das cidades, acusando-as de serem sempre um abuso da natureza e de seus recursos. Contudo, uma vertente mais moderada vem crescendo ao longo do último século, em que vários guardiões passaram a entender que há sim pessoas nas grandes cidades que abusam da natureza, mas há outros que apenas vivem à moda urbana e são produtos do meio, de forma que só fazem o que é necessário para sobreviver no urbano. \n            </div>\n          </div>",
+    "descriptionText": "Mostrar Você é um dos defensores da natureza, que busca viver em plena harmonia com a natureza, sem tirar mais do que o necessário para viver. Por conta disso, muitos guardiões possuem uma opinião radical a cerca das cidades, acusando-as de serem sempre um abuso da natureza e de seus recursos. Contudo, uma vertente mais moderada vem crescendo ao longo do último século, em que vários guardiões passaram a entender que há sim pessoas nas grandes cidades que abusam da natureza, mas há outros que apenas vivem à moda urbana e são produtos do meio, de forma que só fazem o que é necessário para sobreviver no urbano.",
+    "description": "Mostrar Você é um dos defensores da natureza, que busca viver em plena harmonia com a natureza, sem tirar mais do que o necessário para viver. Por conta disso, muitos guardiões possuem uma opinião radical a cerca das cidades, acusando-as de serem sempre um abuso da natureza e de seus recursos. Contudo, uma vertente mais moderada vem crescendo ao longo do último século, em que vários guardiões passaram a entender que há sim pessoas nas grandes cidades que abusam da natureza, mas há outros que apenas vivem à moda urbana e são produtos do meio, de forma que só fazem o que é necessário para sobreviver no urbano.",
+    "shortDescription": "Mostrar Você é um dos defensores da natureza, que busca viver em plena harmonia com a natureza, sem tirar mais do que o necessário para viver.",
+    "descriptionStatus": "complete",
+    "descriptionSource": "table-row",
+    "needsReviewReasons": [],
+    "tags": [
+      "background"
+    ],
+    "foundry": {
+      "preferredType": "background"
+    },
+    "sourceFileName": "data\\HTML BONFIRE\\antecedentes\\Antecedentes in Bonfire Tales RPG.html"
+  },
+  {
+    "id": "heroi",
+    "identifier": "heroi",
+    "name": "Herói",
+    "aliases": [],
+    "kind": "background",
+    "source": "bonfire",
+    "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/antecedentes-category",
+    "descriptionHtml": "<a>Mostrar</a>\n          <div>\n            <div><b>\"Todo mundo falha em ser quem deveria ser. O valor de alguém, de um herói, está em conseguir ser quem realmente é.\"</b><br>\nParece que o destinho escolheu você para algo superior. Os seus feitos em terra, foram notados por todos os outros e você é admirado por eles. Um herói geralmente é ovacionado por grandes feitos que cidadãos comuns, não costumam serem capazes de se fazer. Em pequenos vilarejos vizinhos perto de onde você nasceu ou ao qual você foi reconhecido, você é querido e todos o querem por perto. \n            </div>\n          </div>",
+    "descriptionText": "Mostrar \"Todo mundo falha em ser quem deveria ser. O valor de alguém, de um herói, está em conseguir ser quem realmente é.\" Parece que o destinho escolheu você para algo superior. Os seus feitos em terra, foram notados por todos os outros e você é admirado por eles. Um herói geralmente é ovacionado por grandes feitos que cidadãos comuns, não costumam serem capazes de se fazer. Em pequenos vilarejos vizinhos perto de onde você nasceu ou ao qual você foi reconhecido, você é querido e todos o querem por perto.",
+    "description": "Mostrar \"Todo mundo falha em ser quem deveria ser. O valor de alguém, de um herói, está em conseguir ser quem realmente é.\" Parece que o destinho escolheu você para algo superior. Os seus feitos em terra, foram notados por todos os outros e você é admirado por eles. Um herói geralmente é ovacionado por grandes feitos que cidadãos comuns, não costumam serem capazes de se fazer. Em pequenos vilarejos vizinhos perto de onde você nasceu ou ao qual você foi reconhecido, você é querido e todos o querem por perto.",
+    "shortDescription": "Mostrar \"Todo mundo falha em ser quem deveria ser.",
+    "descriptionStatus": "complete",
+    "descriptionSource": "table-row",
+    "needsReviewReasons": [],
+    "tags": [
+      "background"
+    ],
+    "foundry": {
+      "preferredType": "background"
+    },
+    "sourceFileName": "data\\HTML BONFIRE\\antecedentes\\Antecedentes in Bonfire Tales RPG.html"
+  },
+  {
+    "id": "legionario",
+    "identifier": "legionario",
+    "name": "Legionário",
+    "aliases": [],
+    "kind": "background",
+    "source": "bonfire",
+    "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/antecedentes-category",
+    "descriptionHtml": "<a>Mostrar</a>\n          <div>\n            <div><b>\"Um legionário demonstra habilidade e força inegáveis, mas de nada adiantaria se a sua sabedoria não lhe desse propósito.\"</b><br>\nVocê pertence a uma ordem de legionários que que possuem um objetivo em comum. Esse objetivo depende da ordem que você serve, mas que a seus olhos é sem dúvída uma necessidade vítal e honrosa. O continente possui uma vasta variedade de ordens de legionários, todos os quais possuem um perfil parecido no que se diz às suas ações e suas responsabilidades.\"\n            </div>\n          </div>",
+    "descriptionText": "Mostrar \"Um legionário demonstra habilidade e força inegáveis, mas de nada adiantaria se a sua sabedoria não lhe desse propósito.\" Você pertence a uma ordem de legionários que que possuem um objetivo em comum. Esse objetivo depende da ordem que você serve, mas que a seus olhos é sem dúvída uma necessidade vítal e honrosa. O continente possui uma vasta variedade de ordens de legionários, todos os quais possuem um perfil parecido no que se diz às suas ações e suas responsabilidades.\"",
+    "description": "Mostrar \"Um legionário demonstra habilidade e força inegáveis, mas de nada adiantaria se a sua sabedoria não lhe desse propósito.\" Você pertence a uma ordem de legionários que que possuem um objetivo em comum. Esse objetivo depende da ordem que você serve, mas que a seus olhos é sem dúvída uma necessidade vítal e honrosa. O continente possui uma vasta variedade de ordens de legionários, todos os quais possuem um perfil parecido no que se diz às suas ações e suas responsabilidades.\"",
+    "shortDescription": "Mostrar \"Um legionário demonstra habilidade e força inegáveis, mas de nada adiantaria se a sua sabedoria não lhe desse propósito.\" Você pertence a uma ordem de legionários que que possuem um objetivo em comum.",
+    "descriptionStatus": "complete",
+    "descriptionSource": "table-row",
+    "needsReviewReasons": [],
+    "tags": [
+      "background"
+    ],
+    "foundry": {
+      "preferredType": "background"
+    },
+    "sourceFileName": "data\\HTML BONFIRE\\antecedentes\\Antecedentes in Bonfire Tales RPG.html"
+  },
+  {
+    "id": "marcado-pelas-fadas",
+    "identifier": "marcado-pelas-fadas",
+    "name": "Marcado Pelas Fadas",
+    "aliases": [],
+    "kind": "background",
+    "source": "bonfire",
+    "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/antecedentes-category",
+    "descriptionHtml": "<a>Mostrar</a>\n          <div>\n            <div><b>\"Mergulhemos completamente nesse universo feérico, a fim de ampliar nossa visão do mundo e apurar a percepção de\nnosso próprio destino.\"</b><br>\nVocê teve contato com seres feéricos jamais vistos. Você foi tocado por eles e possui uma ligação institiva com esse tipo de criatura, que naturalmente conseguem ter uma conexão, fazendo assim desses seres talvez, seus aliados ou até mesmo entes \"imaginários\". Se por acaso um feérico aparecer, provavelmente ele pode te tirar de alguma adversidade ao invés de te colocar nela.\n            </div>\n          </div>",
+    "descriptionText": "Mostrar \"Mergulhemos completamente nesse universo feérico, a fim de ampliar nossa visão do mundo e apurar a percepção de nosso próprio destino.\" Você teve contato com seres feéricos jamais vistos. Você foi tocado por eles e possui uma ligação institiva com esse tipo de criatura, que naturalmente conseguem ter uma conexão, fazendo assim desses seres talvez, seus aliados ou até mesmo entes \"imaginários\". Se por acaso um feérico aparecer, provavelmente ele pode te tirar de alguma adversidade ao invés de te colocar nela.",
+    "description": "Mostrar \"Mergulhemos completamente nesse universo feérico, a fim de ampliar nossa visão do mundo e apurar a percepção de nosso próprio destino.\" Você teve contato com seres feéricos jamais vistos. Você foi tocado por eles e possui uma ligação institiva com esse tipo de criatura, que naturalmente conseguem ter uma conexão, fazendo assim desses seres talvez, seus aliados ou até mesmo entes \"imaginários\". Se por acaso um feérico aparecer, provavelmente ele pode te tirar de alguma adversidade ao invés de te colocar nela.",
+    "shortDescription": "Mostrar \"Mergulhemos completamente nesse universo feérico, a fim de ampliar nossa visão do mundo e apurar a percepção de nosso próprio destino.\" Você teve contato com seres feéricos jamais vistos.",
+    "descriptionStatus": "complete",
+    "descriptionSource": "table-row",
+    "needsReviewReasons": [],
+    "tags": [
+      "background"
+    ],
+    "foundry": {
+      "preferredType": "background"
+    },
+    "sourceFileName": "data\\HTML BONFIRE\\antecedentes\\Antecedentes in Bonfire Tales RPG.html"
+  },
+  {
+    "id": "mercenario",
+    "identifier": "mercenario",
+    "name": "Mercenário",
+    "aliases": [],
+    "kind": "background",
+    "source": "bonfire",
+    "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/antecedentes-category",
+    "descriptionHtml": "<a>Mostrar</a>\n          <div>\n            <div><b>\"Eu vim do nada e eu não tenho medo de voltar. O que importa é o dinheiro que eu vou ganhar\"</b><br>\nVocê é um mercenário que lutou batalhas por riquesas. Agora, você tem uma visão mais à frente, lutando contra inimigos e adquirindo espólios ainda maiores como um aventureiro. Sua grande experiência lhe deixou a par da vida difícil de um mercenário, mas ainda assim, decidiu trilhar esse caminho tortuoso.\"\n            </div>\n          </div>",
+    "descriptionText": "Mostrar \"Eu vim do nada e eu não tenho medo de voltar. O que importa é o dinheiro que eu vou ganhar\" Você é um mercenário que lutou batalhas por riquesas. Agora, você tem uma visão mais à frente, lutando contra inimigos e adquirindo espólios ainda maiores como um aventureiro. Sua grande experiência lhe deixou a par da vida difícil de um mercenário, mas ainda assim, decidiu trilhar esse caminho tortuoso.\"",
+    "description": "Mostrar \"Eu vim do nada e eu não tenho medo de voltar. O que importa é o dinheiro que eu vou ganhar\" Você é um mercenário que lutou batalhas por riquesas. Agora, você tem uma visão mais à frente, lutando contra inimigos e adquirindo espólios ainda maiores como um aventureiro. Sua grande experiência lhe deixou a par da vida difícil de um mercenário, mas ainda assim, decidiu trilhar esse caminho tortuoso.\"",
+    "shortDescription": "Mostrar \"Eu vim do nada e eu não tenho medo de voltar.",
+    "descriptionStatus": "complete",
+    "descriptionSource": "table-row",
+    "needsReviewReasons": [],
+    "tags": [
+      "background"
+    ],
+    "foundry": {
+      "preferredType": "background"
+    },
+    "sourceFileName": "data\\HTML BONFIRE\\antecedentes\\Antecedentes in Bonfire Tales RPG.html"
+  },
+  {
+    "id": "mestre-artesao",
+    "identifier": "mestre-artesao",
+    "name": "Mestre Artesão",
+    "aliases": [],
+    "kind": "background",
+    "source": "bonfire",
+    "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/antecedentes-category",
+    "descriptionHtml": "<a>Mostrar</a>\n          <div>\n            <div><b>\"Eu procuro por mim, tal qual o artesão procura sua arte escondida nos excessos da matéria bruta de seu mármore.\"</b><br>\nQuando o trabalho é manual, é a você que eles chamam. Você é totalmente proficiênte em trabalhos braçais. Você aprendeu suas habilidades como aprendiz de um mestre artesão e depois de estudar e praticar por tanto tempo, acabou por se tornar um artesão nato pelos seus próprios feitos.\n            </div>\n          </div>",
+    "descriptionText": "Mostrar \"Eu procuro por mim, tal qual o artesão procura sua arte escondida nos excessos da matéria bruta de seu mármore.\" Quando o trabalho é manual, é a você que eles chamam. Você é totalmente proficiênte em trabalhos braçais. Você aprendeu suas habilidades como aprendiz de um mestre artesão e depois de estudar e praticar por tanto tempo, acabou por se tornar um artesão nato pelos seus próprios feitos.",
+    "description": "Mostrar \"Eu procuro por mim, tal qual o artesão procura sua arte escondida nos excessos da matéria bruta de seu mármore.\" Quando o trabalho é manual, é a você que eles chamam. Você é totalmente proficiênte em trabalhos braçais. Você aprendeu suas habilidades como aprendiz de um mestre artesão e depois de estudar e praticar por tanto tempo, acabou por se tornar um artesão nato pelos seus próprios feitos.",
+    "shortDescription": "Mostrar \"Eu procuro por mim, tal qual o artesão procura sua arte escondida nos excessos da matéria bruta de seu mármore.\" Quando o trabalho é manual, é a você que eles chamam.",
+    "descriptionStatus": "complete",
+    "descriptionSource": "table-row",
+    "needsReviewReasons": [],
+    "tags": [
+      "background"
+    ],
+    "foundry": {
+      "preferredType": "background"
+    },
+    "sourceFileName": "data\\HTML BONFIRE\\antecedentes\\Antecedentes in Bonfire Tales RPG.html"
+  },
+  {
+    "id": "nobre",
+    "identifier": "nobre",
+    "name": "Nobre",
+    "aliases": [],
+    "kind": "background",
+    "source": "bonfire",
+    "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/antecedentes-category",
+    "descriptionHtml": "<a>Mostrar</a>\n          <div>\n            <div><b>\"O dinheiro não traz felicidade — para quem não sabe o que fazer com ele.\"</b><br>\nVocê possui um nome ou descendência nobre, sua família possui terras, arrecada impostos e exerce uma influência política significativa. Você pode ser um nobre mimado pouco familiarizado com o trabalho ou pode ser um dono de terra honesto e trabalhador que se preocupa com as pessoas que vivem e trabalham em sua terra, sutilmente ciente da sua responsabilidade para com eles.\n            </div>\n          </div>",
+    "descriptionText": "Mostrar \"O dinheiro não traz felicidade — para quem não sabe o que fazer com ele.\" Você possui um nome ou descendência nobre, sua família possui terras, arrecada impostos e exerce uma influência política significativa. Você pode ser um nobre mimado pouco familiarizado com o trabalho ou pode ser um dono de terra honesto e trabalhador que se preocupa com as pessoas que vivem e trabalham em sua terra, sutilmente ciente da sua responsabilidade para com eles.",
+    "description": "Mostrar \"O dinheiro não traz felicidade — para quem não sabe o que fazer com ele.\" Você possui um nome ou descendência nobre, sua família possui terras, arrecada impostos e exerce uma influência política significativa. Você pode ser um nobre mimado pouco familiarizado com o trabalho ou pode ser um dono de terra honesto e trabalhador que se preocupa com as pessoas que vivem e trabalham em sua terra, sutilmente ciente da sua responsabilidade para com eles.",
+    "shortDescription": "Mostrar \"O dinheiro não traz felicidade — para quem não sabe o que fazer com ele.\" Você possui um nome ou descendência nobre, sua família possui terras, arrecada impostos e exerce uma influência política significativa.",
+    "descriptionStatus": "complete",
+    "descriptionSource": "table-row",
+    "needsReviewReasons": [],
+    "tags": [
+      "background"
+    ],
+    "foundry": {
+      "preferredType": "background"
+    },
+    "sourceFileName": "data\\HTML BONFIRE\\antecedentes\\Antecedentes in Bonfire Tales RPG.html"
+  },
+  {
+    "id": "pescador",
+    "identifier": "pescador",
+    "name": "Pescador",
+    "aliases": [],
+    "kind": "background",
+    "source": "bonfire",
+    "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/antecedentes-category",
+    "descriptionHtml": "<a>Mostrar</a>\n          <div>\n            <div><b>\"A vida é igual a pescaria, se o material esta preparado para peixes pequenos não pegará peixes grandes.\"</b><br>\nVocê treinou a arte da pescaria com muito afinco, além de desenvolver a arte de contar histórias. Um bardo sabe declamar poemas, mas jamais contará uma boa história como você conta sobre os seus feitos em mar. Além disso, você aprendeu a caçar criaturas marítimas como ninguém, desenvolvendo suas habilidades de caça para se sustentar em meio aos mares.\n            </div>\n          </div>",
+    "descriptionText": "Mostrar \"A vida é igual a pescaria, se o material esta preparado para peixes pequenos não pegará peixes grandes.\" Você treinou a arte da pescaria com muito afinco, além de desenvolver a arte de contar histórias. Um bardo sabe declamar poemas, mas jamais contará uma boa história como você conta sobre os seus feitos em mar. Além disso, você aprendeu a caçar criaturas marítimas como ninguém, desenvolvendo suas habilidades de caça para se sustentar em meio aos mares.",
+    "description": "Mostrar \"A vida é igual a pescaria, se o material esta preparado para peixes pequenos não pegará peixes grandes.\" Você treinou a arte da pescaria com muito afinco, além de desenvolver a arte de contar histórias. Um bardo sabe declamar poemas, mas jamais contará uma boa história como você conta sobre os seus feitos em mar. Além disso, você aprendeu a caçar criaturas marítimas como ninguém, desenvolvendo suas habilidades de caça para se sustentar em meio aos mares.",
+    "shortDescription": "Mostrar \"A vida é igual a pescaria, se o material esta preparado para peixes pequenos não pegará peixes grandes.\" Você treinou a arte da pescaria com muito afinco, além de desenvolver a arte de contar histórias.",
+    "descriptionStatus": "complete",
+    "descriptionSource": "table-row",
+    "needsReviewReasons": [],
+    "tags": [
+      "background"
+    ],
+    "foundry": {
+      "preferredType": "background"
+    },
+    "sourceFileName": "data\\HTML BONFIRE\\antecedentes\\Antecedentes in Bonfire Tales RPG.html"
+  },
+  {
+    "id": "pesquisador",
+    "identifier": "pesquisador",
+    "name": "Pesquisador",
+    "aliases": [],
+    "kind": "background",
+    "source": "bonfire",
+    "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/antecedentes-category",
+    "descriptionHtml": "<a>Mostrar</a>\n          <div>\n            <div><b>\"O pesquisador que não souber o que está procurando não compreenderá o que encontrar.\"</b><br>\nSeu vínculo com suas pesquisas está quase certamente associado ao lugar onde você cresceu ou com o conhecimento que você almeja adquirir através da aventura. Seu desejo é, sem dúvida, relacionado à forma como você vê a busca por conhecimento e verdade, talvez como um objetivo digno em si mesmo, ou talvez como um meio para um fim aceitável.\n            </div>\n          </div>",
+    "descriptionText": "Mostrar \"O pesquisador que não souber o que está procurando não compreenderá o que encontrar.\" Seu vínculo com suas pesquisas está quase certamente associado ao lugar onde você cresceu ou com o conhecimento que você almeja adquirir através da aventura. Seu desejo é, sem dúvida, relacionado à forma como você vê a busca por conhecimento e verdade, talvez como um objetivo digno em si mesmo, ou talvez como um meio para um fim aceitável.",
+    "description": "Mostrar \"O pesquisador que não souber o que está procurando não compreenderá o que encontrar.\" Seu vínculo com suas pesquisas está quase certamente associado ao lugar onde você cresceu ou com o conhecimento que você almeja adquirir através da aventura. Seu desejo é, sem dúvida, relacionado à forma como você vê a busca por conhecimento e verdade, talvez como um objetivo digno em si mesmo, ou talvez como um meio para um fim aceitável.",
+    "shortDescription": "Mostrar \"O pesquisador que não souber o que está procurando não compreenderá o que encontrar.\" Seu vínculo com suas pesquisas está quase certamente associado ao lugar onde você cresceu ou com o conhecimento que você almeja adquirir através",
+    "descriptionStatus": "complete",
+    "descriptionSource": "table-row",
+    "needsReviewReasons": [],
+    "tags": [
+      "background"
+    ],
+    "foundry": {
+      "preferredType": "background"
+    },
+    "sourceFileName": "data\\HTML BONFIRE\\antecedentes\\Antecedentes in Bonfire Tales RPG.html"
+  },
+  {
+    "id": "soldado",
+    "identifier": "soldado",
+    "name": "Soldado",
+    "aliases": [],
+    "kind": "background",
+    "source": "bonfire",
+    "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/antecedentes-category",
+    "descriptionHtml": "<a>Mostrar</a>\n          <div>\n            <div><b>\"Os soldados mais fortes não são descobertos em tempos de paz e sim resistindo em meio suas guerras.\"</b><br>\nA batalha está presente em sua vida desde sempre. Você foi treinado desde jovem, estudou o uso dos equipamentos de guerra, aprendeu técnicas básicas de sobrevivência, incluindo como permanecer vivo no campo de batalha. Você pode ter feito parte de uma esquadra militar, ou uma ordem de mercenários, talvez até mesmo uma milícia local, que cresceu graças a alguma guerra recente.\n            </div>\n          </div>",
+    "descriptionText": "Mostrar \"Os soldados mais fortes não são descobertos em tempos de paz e sim resistindo em meio suas guerras.\" A batalha está presente em sua vida desde sempre. Você foi treinado desde jovem, estudou o uso dos equipamentos de guerra, aprendeu técnicas básicas de sobrevivência, incluindo como permanecer vivo no campo de batalha. Você pode ter feito parte de uma esquadra militar, ou uma ordem de mercenários, talvez até mesmo uma milícia local, que cresceu graças a alguma guerra recente.",
+    "description": "Mostrar \"Os soldados mais fortes não são descobertos em tempos de paz e sim resistindo em meio suas guerras.\" A batalha está presente em sua vida desde sempre. Você foi treinado desde jovem, estudou o uso dos equipamentos de guerra, aprendeu técnicas básicas de sobrevivência, incluindo como permanecer vivo no campo de batalha. Você pode ter feito parte de uma esquadra militar, ou uma ordem de mercenários, talvez até mesmo uma milícia local, que cresceu graças a alguma guerra recente.",
+    "shortDescription": "Mostrar \"Os soldados mais fortes não são descobertos em tempos de paz e sim resistindo em meio suas guerras.\" A batalha está presente em sua vida desde sempre.",
+    "descriptionStatus": "complete",
+    "descriptionSource": "table-row",
+    "needsReviewReasons": [],
+    "tags": [
+      "background"
+    ],
+    "foundry": {
+      "preferredType": "background"
+    },
+    "sourceFileName": "data\\HTML BONFIRE\\antecedentes\\Antecedentes in Bonfire Tales RPG.html"
+  },
+  {
+    "id": "viajante",
+    "identifier": "viajante",
+    "name": "Viajante",
+    "aliases": [],
+    "kind": "background",
+    "source": "bonfire",
+    "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/antecedentes-category",
+    "descriptionHtml": "<a>Mostrar</a>\n          <div>\n            <div><b>\"A vida é um viajante que deixa a sua capa arrastar atrás de si, para que lhe apague o sinal dos passos.\"</b><br>\nVocê é de um lugar distante, um tão remoto que poucas entre as pessoas simples no mundo sabem sequer que ele existe, e há grandes chances que mesmo algumas pessoas que você tenha encontrado em seu caminho tenham ouvido falar de sua terra natal, sabem nada mais que o nome e uma ou outra história mais escandalosa sobre ela. \n            </div>\n          </div>",
+    "descriptionText": "Mostrar \"A vida é um viajante que deixa a sua capa arrastar atrás de si, para que lhe apague o sinal dos passos.\" Você é de um lugar distante, um tão remoto que poucas entre as pessoas simples no mundo sabem sequer que ele existe, e há grandes chances que mesmo algumas pessoas que você tenha encontrado em seu caminho tenham ouvido falar de sua terra natal, sabem nada mais que o nome e uma ou outra história mais escandalosa sobre ela.",
+    "description": "Mostrar \"A vida é um viajante que deixa a sua capa arrastar atrás de si, para que lhe apague o sinal dos passos.\" Você é de um lugar distante, um tão remoto que poucas entre as pessoas simples no mundo sabem sequer que ele existe, e há grandes chances que mesmo algumas pessoas que você tenha encontrado em seu caminho tenham ouvido falar de sua terra natal, sabem nada mais que o nome e uma ou outra história mais escandalosa sobre ela.",
+    "shortDescription": "Mostrar \"A vida é um viajante que deixa a sua capa arrastar atrás de si, para que lhe apague o sinal dos passos.\" Você é de um lugar distante, um tão remoto que poucas entre as pessoas simples no mundo sabem sequer que ele existe, e há gran",
+    "descriptionStatus": "complete",
+    "descriptionSource": "table-row",
+    "needsReviewReasons": [],
+    "tags": [
+      "background"
+    ],
+    "foundry": {
+      "preferredType": "background"
+    },
+    "sourceFileName": "data\\HTML BONFIRE\\antecedentes\\Antecedentes in Bonfire Tales RPG.html"
+  },
+  {
+    "id": "viajante-do-mar",
+    "identifier": "viajante-do-mar",
+    "name": "Viajante do Mar",
+    "aliases": [],
+    "kind": "background",
+    "source": "bonfire",
+    "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/antecedentes-category",
+    "descriptionHtml": "<a>Mostrar</a>\n          <div>\n            <div><b>\"Às vezes os deuses acalmam as tempestades, às vezes eles acalmam o marinheiro. Outras eles nos ensina a nadar.\"</b><br>\nVocê passou seu tempo mais no mar do que na terra. Você navegou durante anos e nesse período, você passou por diversos perigos, enfrentou criaturas monstruosas e ainda teve que lidar com piratas vez ou outra. Se tratando da vida marítima, com toda certeza você é a pessoa mais adequada para comandar uma espedição marítima por exemplo.\n            </div>\n          </div>",
+    "descriptionText": "Mostrar \"Às vezes os deuses acalmam as tempestades, às vezes eles acalmam o marinheiro. Outras eles nos ensina a nadar.\" Você passou seu tempo mais no mar do que na terra. Você navegou durante anos e nesse período, você passou por diversos perigos, enfrentou criaturas monstruosas e ainda teve que lidar com piratas vez ou outra. Se tratando da vida marítima, com toda certeza você é a pessoa mais adequada para comandar uma espedição marítima por exemplo.",
+    "description": "Mostrar \"Às vezes os deuses acalmam as tempestades, às vezes eles acalmam o marinheiro. Outras eles nos ensina a nadar.\" Você passou seu tempo mais no mar do que na terra. Você navegou durante anos e nesse período, você passou por diversos perigos, enfrentou criaturas monstruosas e ainda teve que lidar com piratas vez ou outra. Se tratando da vida marítima, com toda certeza você é a pessoa mais adequada para comandar uma espedição marítima por exemplo.",
+    "shortDescription": "Mostrar \"Às vezes os deuses acalmam as tempestades, às vezes eles acalmam o marinheiro.",
+    "descriptionStatus": "complete",
+    "descriptionSource": "table-row",
+    "needsReviewReasons": [],
+    "tags": [
+      "background"
+    ],
+    "foundry": {
+      "preferredType": "background"
+    },
+    "sourceFileName": "data\\HTML BONFIRE\\antecedentes\\Antecedentes in Bonfire Tales RPG.html"
+  }
+]

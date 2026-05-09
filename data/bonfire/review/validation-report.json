@@ -1,0 +1,10 @@
+{
+  "generatedAt": "2026-05-09T15:29:09.924Z",
+  "ok": true,
+  "errors": [],
+  "warnings": [],
+  "totalClasses": 13,
+  "coveredClasses": 13,
+  "needsReviewCount": 458,
+  "missingRulesCount": 0
+}

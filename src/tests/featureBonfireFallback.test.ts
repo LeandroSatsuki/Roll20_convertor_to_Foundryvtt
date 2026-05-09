@@ -13,7 +13,7 @@ describe('featureBonfireFallback', () => {
 
     expect(featureItem).toBeTruthy()
     expect(flags?.featureSource?.fallbackBonfire).toBe(true)
-    expect(flags?.descriptionMeta?.status === 'complete' || flags?.descriptionMeta?.status === 'fallback').toBe(true)
+    expect(['complete', 'fallback', 'needs-review', 'summary-only']).toContain(flags?.descriptionMeta?.status)
     expect(biography).not.toContain('Afinidade Lunar -')
     expect(biography).not.toContain('Características para revisar/adicionar manualmente')
   })

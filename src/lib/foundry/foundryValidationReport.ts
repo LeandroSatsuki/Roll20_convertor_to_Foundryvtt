@@ -39,6 +39,11 @@ export type FoundryExportAuditReport = {
     describedItemCount: number
     missingDescriptionCount: number
     descriptionFallbackCount: number
+    bonfireDescriptionCompleteCount: number
+    bonfireDescriptionSummaryOnlyCount: number
+    bonfireDescriptionNeedsReviewCount: number
+    bonfireDescriptionCardSummaryRejectedCount: number
+    foundryFeatureHydrationBlockedCount: number
     sourceUrlCount: number
     automatedFullCount: number
     automatedPartialCount: number
@@ -85,6 +90,11 @@ export type FoundryExportAuditReport = {
     bonfireCustomFeatureResolvedCount: number
     unresolvedRealFeatureCount: number
     classProgressionSuggestedCount: number
+    blockingErrorCount: number
+    reviewIssueCount: number
+    bonfireMissingRulePlaceholderCount: number
+    unresolvedReviewItemCount: number
+    readyWithReview: boolean
   }
   validations: FoundryValidationResult[]
   auditDebug: {
@@ -105,6 +115,8 @@ export type FoundryExportAuditReport = {
     itemDescriptions: {
       complete: Array<{ name: string; sourceUrl?: string | null }>
       fallback: Array<{ name: string; sourceUrl?: string | null }>
+      summaryOnly: Array<{ name: string; sourceUrl?: string | null }>
+      needsReview: Array<{ name: string; sourceUrl?: string | null }>
       missing: Array<{ name: string; sourceUrl?: string | null }>
     }
     automationSummary: {
@@ -138,6 +150,18 @@ export type FoundryExportAuditReport = {
       bonfireRuleId?: string | null
       finalStatus: 'hydrated-library' | 'bonfire-fallback' | 'ignored-noise' | 'ignored-duplicate' | 'unresolved'
     }>
+    bonfireMissingRules?: Array<{
+      sourceFileName?: string
+      name: string
+      category: string
+      kind?: string | null
+      sourceCell?: string | null
+      sourceRange?: string | null
+      className?: string
+      race?: string
+      background?: string
+      reason: string
+    }>
   }
   unresolvedFeatures: Array<{
     rawName: string
@@ -149,6 +173,9 @@ export type FoundryExportAuditReport = {
   importReadiness: {
     canExport: boolean
     canImportIntoFoundry: boolean
+    status: 'ready' | 'ready-with-review' | 'blocked'
+    blockingErrorCount: number
+    reviewIssueCount: number
     blockingReasons: string[]
   }
 }

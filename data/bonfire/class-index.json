@@ -1,0 +1,80 @@
+[
+  {
+    "id": "artificer",
+    "name": "Artificer",
+    "aliases": ["Artífice", "Artificer"],
+    "expectedCoverage": true
+  },
+  {
+    "id": "barbaro",
+    "name": "Bárbaro",
+    "aliases": ["Barbaro", "Bárbaro", "Barbarian"],
+    "expectedCoverage": true
+  },
+  {
+    "id": "bardo",
+    "name": "Bardo",
+    "aliases": ["Bardo", "Bard"],
+    "expectedCoverage": true
+  },
+  {
+    "id": "cacador",
+    "name": "Caçador",
+    "aliases": ["Caçador", "Cacador", "Ranger", "Patrulheiro"],
+    "expectedCoverage": true
+  },
+  {
+    "id": "clerigo",
+    "name": "Clérigo",
+    "aliases": ["Clerigo", "Clérigo", "Cleric"],
+    "expectedCoverage": true
+  },
+  {
+    "id": "druida",
+    "name": "Druida",
+    "aliases": ["Druida", "Druid"],
+    "expectedCoverage": true
+  },
+  {
+    "id": "feiticeiro",
+    "name": "Feiticeiro",
+    "aliases": ["Feiticeiro", "Sorcerer"],
+    "expectedCoverage": true
+  },
+  {
+    "id": "guerreiro",
+    "name": "Guerreiro",
+    "aliases": ["Guerreiro", "Fighter"],
+    "expectedCoverage": true
+  },
+  {
+    "id": "ladino",
+    "name": "Ladino",
+    "aliases": ["Ladino", "Rogue"],
+    "expectedCoverage": true
+  },
+  {
+    "id": "mago",
+    "name": "Mago",
+    "aliases": ["Mago", "Wizard"],
+    "expectedCoverage": true
+  },
+  {
+    "id": "mistico",
+    "name": "Místico",
+    "aliases": ["Mistico", "Místico", "Mystic"],
+    "expectedCoverage": true
+  },
+  {
+    "id": "monge",
+    "name": "Monge",
+    "aliases": ["Monge", "Monk"],
+    "expectedCoverage": true
+  },
+  {
+    "id": "paladino",
+    "name": "Paladino",
+    "aliases": ["Paladino", "Paladin"],
+    "expectedCoverage": true
+  }
+]

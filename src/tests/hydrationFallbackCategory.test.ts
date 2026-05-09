@@ -41,8 +41,8 @@ describe('hydrationFallbackCategory', () => {
       { characterClass: 'Clérigo', spellcastingAbility: 'wis' },
     )
 
-    expect(hydrationMeta(moonElf)?.fallbackCategory).toBe('customFallback')
-    expect(hydrationMeta(student)?.fallbackCategory).toBe('customFallback')
+    expect(hydrationMeta(moonElf)?.fallbackCategory).toBe('bonfireFallback')
+    expect(hydrationMeta(student)?.fallbackCategory).toBe('bonfireFallback')
     expect(hydrationMeta(scimiliar)?.fallbackCategory).toBe('libraryMiss')
     expect(hydrationMeta(unsafeSpell)?.fallbackCategory).toBe('unsafeMatchRejected')
   })

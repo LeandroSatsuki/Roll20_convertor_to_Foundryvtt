@@ -91,6 +91,8 @@ function App() {
         fieldPath: 'foundryAudit',
       })
       setStatus('Exportação bloqueada: veja a aba Auditoria Foundry.')
+    } else if (report.importReadiness.status === 'ready-with-review') {
+      setStatus('Actor importável com pendências Bonfire marcadas na ficha.')
     } else if (!actorValidation.success) {
       setStatus('O Actor Foundry gerou erros de validação básica.')
     } else {
@@ -129,6 +131,8 @@ function App() {
         fieldPath: 'foundryAudit',
       })
       setStatus('Exportação bloqueada: veja a aba Auditoria Foundry.')
+    } else if (bundle.audit.importReadiness.status === 'ready-with-review') {
+      setStatus('Actor importável com pendências Bonfire marcadas na ficha.')
     } else if (!actorValidation.success) {
       setStatus('O Actor Foundry gerou erros de validação básica.')
     } else {
@@ -169,17 +173,20 @@ function App() {
     setActiveTab('hydration')
   }
 
-  const tabs: Array<[Tab, string]> = [
+  const mainTabs: Array<[Tab, string]> = [
     ['review', 'Revisão da ficha'],
     ['features', 'Características detectadas'],
-    ['rules', 'Regras Bonfire'],
-    ['resolution', 'Resolução'],
     ['audit', 'Auditoria Foundry'],
-    ['foundryLibrary', 'Biblioteca Foundry'],
     ['hydration', 'Hidratação'],
+    ['foundry', 'JSON Foundry'],
+    ['resolution', 'Resolução'],
+  ]
+
+  const advancedTabs: Array<[Tab, string]> = [
+    ['rules', 'Regras Bonfire'],
+    ['foundryLibrary', 'Biblioteca Foundry'],
     ['spellcasting', 'Magias/Slots'],
     ['itemAutomation', 'Automação dos Itens'],
-    ['foundry', 'JSON Foundry'],
     ['warnings', 'Avisos'],
     ['sheetDebug', 'Debug planilha'],
     ['normalized', 'JSON normalizado (debug)'],
@@ -219,12 +226,22 @@ function App() {
       <ExportPanel normalized={character} actor={actor} auditReport={auditReport} debug={sheetDebug} blocked={!auditReport?.importReadiness.canExport} reason={actorExportBlockedReason} />
 
       <nav className="tabs" aria-label="Etapas">
-        {tabs.map(([id, label]) => (
+        {mainTabs.map(([id, label]) => (
           <button className={activeTab === id ? 'active' : ''} type="button" key={id} onClick={() => setActiveTab(id)}>
             {label}
           </button>
         ))}
       </nav>
+      <details className="tabs tabs-advanced">
+        <summary>Avançado / Dev</summary>
+        <div className="tabs" aria-label="Ferramentas avançadas">
+          {advancedTabs.map(([id, label]) => (
+            <button className={activeTab === id ? 'active' : ''} type="button" key={id} onClick={() => setActiveTab(id)}>
+              {label}
+            </button>
+          ))}
+        </div>
+      </details>
 
       <section className="panel">
         {activeTab === 'review' ? <CharacterReviewPanel character={character} onChange={handleCharacterChange} /> : null}

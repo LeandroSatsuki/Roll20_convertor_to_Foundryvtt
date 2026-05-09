@@ -1,0 +1,1901 @@
+[
+  {
+    "id": "artificer",
+    "identifier": "artificer",
+    "name": "Artificer",
+    "aliases": [
+      "Artífice",
+      "Artificer"
+    ],
+    "kind": "class",
+    "source": "bonfire",
+    "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/artificer-article",
+    "descriptionHtml": "<div>\n                            \n                        </div>\n                                                                                                </div>\n\n                <div>\n                    \n                    \n\n                    \n                    <div>\n\n                        <div role=\"tabpanel\">\n\n                                        <div>\n            <div>\n                <div><table><tbody><tr><th>Nível</th><th>Bônus de Proficiência</th><th>Características</th><th>Infusões Conhecidas</th><th>Itens Infundidos</th><th>Truques</th><th>Magias Preparadas</th><th>1º</th><th>2º</th><th>3º</th><th>4º</th><th>5º</th></tr><tr><td>1º</td><td>+2</td><td>Conjuração de Magias, Engenhoca Mágica</td><td>—</td><td>—</td><td>2</td><td>2</td><td>2</td><td>—</td><td>—</td><td>—</td><td>—</td></tr><tr><td>2º</td><td>+2</td><td>Infusões, Replicar Item Mágico</td><td>4</td><td>2</td><td>2</td><td>3</td><td>2</td><td>—</td><td>—</td><td>—</td><td>—</td></tr><tr><td>3º</td><td>+2</td><td>Percepção do Artífice, Recarga Arcana, Especialização</td><td>4</td><td>2</td><td>2</td><td>4</td><td>3</td><td>—</td><td>—</td><td>—</td><td>—</td></tr><tr><td>4º</td><td>+2</td><td>Aumento de Atributo</td><td>4</td><td>2</td><td>3</td><td>5</td><td>3</td><td>—</td><td>—</td><td>—</td><td>—</td></tr><tr><td>5º</td><td>+3</td><td>Característica de Especialização</td><td>4</td><td>2</td><td>3</td><td>6</td><td>4</td><td>2</td><td>—</td><td>—</td><td>—</td></tr><tr><td>6º</td><td>+3</td><td>Lampejo de Gênio</td><td>5</td><td>3</td><td>3</td><td>6</td><td>4</td><td>2</td><td>—</td><td>—</td><td>—</td></tr><tr><td>7º</td><td>+3</td><td>Artesão Exímio</td><td>5</td><td>3</td><td>3</td><td>7</td><td>4</td><td>3</td><td>—</td><td>—</td><td>—</td></tr><tr><td>8º</td><td>+3</td><td>Aumento de Atributo</td><td>5</td><td>3</td><td>3</td><td>7</td><td>4</td><td>3</td><td>—</td><td>—</td><td>—</td></tr><tr><td>9º</td><td>+4</td><td>Característica de Especialização</td><td>5</td><td>3</td><td>3</td><td>9</td><td>4</td><td>3</td><td>2</td><td>—</td><td>—</td></tr><tr><td>1",
+    "descriptionText": "Seu entendimento sobre objetos mágicos e mecânicos pode parecer magia pura aos olhos de quem não possui treinamento. A partir do 1º nível , você pode usar ferramentas de artesão para conjurar o truque Consertar (Mending) , bem como as magias Detectar Magia (Detect Magic) e Identificar (Identify) como rituais . Suas ferramentas funcionam como foco de conjuração e substituem os componentes materiais dessas magias.",
+    "description": "Seu entendimento sobre objetos mágicos e mecânicos pode parecer magia pura aos olhos de quem não possui treinamento. A partir do 1º nível , você pode usar ferramentas de artesão para conjurar o truque Consertar (Mending) , bem como as magias Detectar Magia (Detect Magic) e Identificar (Identify) como rituais . Suas ferramentas funcionam como foco de conjuração e substituem os componentes materiais dessas magias.",
+    "shortDescription": "Seu entendimento sobre objetos mágicos e mecânicos pode parecer magia pura aos olhos de quem não possui treinamento.",
+    "descriptionStatus": "complete",
+    "descriptionSource": "article-body",
+    "needsReviewReasons": [],
+    "tags": [
+      "class",
+      "artificer"
+    ],
+    "foundry": {
+      "preferredType": "class"
+    },
+    "sourceFileName": "data\\HTML BONFIRE\\classes\\Artificer in Bonfire Tales RPG _ World Anvil.html",
+    "hitDie": "d8",
+    "hitDieStatus": "complete",
+    "savingThrows": [
+      "con",
+      "int"
+    ],
+    "savingThrowsStatus": "complete",
+    "spellcasting": {
+      "type": "half",
+      "ability": "int"
+    },
+    "progression": {
+      "status": "extracted-partial",
+      "levels": {
+        "1": [
+          "Conjuração de Magias",
+          "Engenhoca Mágica"
+        ],
+        "2": [
+          "Infusões",
+          "Replicar Item Mágico"
+        ],
+        "3": [
+          "Percepção do Artífice",
+          "Recarga Arcana",
+          "Especialização",
+          "Ferramentas do Ofício",
+          "Magias de Alquimista",
+          "Elixires Alquímicos",
+          "Ferramentas do Ofício",
+          "Magias do Armadurista",
+          "Armadura Arcana",
+          "Configuração de Combate",
+          "Manoplas de Energia",
+          "Magias do Aprimorado",
+          "Ferramentas do Ofício",
+          "Físico Modular",
+          "Armas Integradas",
+          "Magias do Engenheiro de Construto",
+          "Defensor de Aço",
+          "Reparos Rápidos",
+          "Proficiências do Ferreiro",
+          "Magias do Ferreiro de Batalha",
+          "Duplicar Infusão",
+          "Choque Arcano",
+          "Ferramentas do Ofício",
+          "Magias de Magiduelista",
+          "Arma Arcana",
+          "Raio Arcano"
+        ],
+        "4": [
+          "Aumento de Atributo"
+        ],
+        "5": [
+          "Especialização",
+          "Poções Potentes",
+          "Ataque Extra Mágico",
+          "Ataque Extra Mágico",
+          "Ataque Reativo",
+          "Defensor Aprimorado",
+          "Ataque Extra Mágico",
+          "Duelista Arcano"
+        ],
+        "6": [
+          "Lampejo de Gênio"
+        ],
+        "7": [
+          "Artesão Exímio"
+        ],
+        "8": [],
+        "9": [
+          "Maestria em Itens Mágicos"
+        ],
+        "10": [
+          "Especialização",
+          "Reagentes Restauradores",
+          "Reconfiguração Tática",
+          "Sistema Modular Avançado",
+          "Integração Otimizada",
+          "Vínculo Arcano",
+          "Ajustes do Ferreiro",
+          "Saque Rápido"
+        ],
+        "11": [],
+        "12": [],
+        "13": [],
+        "14": [],
+        "15": [
+          "Especialização",
+          "Mestre Alquimista",
+          "Núcleo Arcano Sintonizado",
+          "Mestre Aprimorado",
+          "Especialização de Núcleo",
+          "Pax Armada",
+          "Mestre Magiduelista"
+        ],
+        "16": [],
+        "17": [],
+        "18": [],
+        "19": [],
+        "20": [
+          "Magnum Opus"
+        ]
+      }
+    }
+  },
+  {
+    "id": "barbaro",
+    "identifier": "barbaro",
+    "name": "Bárbaro",
+    "aliases": [
+      "Barbaro",
+      "Bárbaro",
+      "Barbarian"
+    ],
+    "kind": "class",
+    "source": "bonfire",
+    "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/barbaro-article",
+    "descriptionHtml": "<body>\n\n                \n\n        <div></div>\n        \n            <div>\n        <div>\n                            <div>\n                    \n                </div>\n                        \t\t\t<ul>\n\t\t\t\t\t\t\t<li>\n\t\t\t\t\t<div>\n\t\t\t\t\t\t<h5>\n\t\t\t\t\t\t\t<i></i>\n\t\t\t\t\t\t\t<a>Mestres</a>\n\t\t\t\t\t\t</h5>\n\t\t\t\t\t</div>\n\t\t\t\t</li>\n\t\t\t\t\t\t\t<li>\n\t\t\t\t\t<div>\n\t\t\t\t\t\t<h5>\n\t\t\t\t\t\t\t<i></i>\n\t\t\t\t\t\t\t<a>Jogadores</a>\n\t\t\t\t\t\t</h5>\n\t\t\t\t\t</div>\n\t\t\t\t</li>\n\t\t\t\t\t\t\t<li>\n\t\t\t\t\t<div>\n\t\t\t\t\t\t<h5>\n\t\t\t\t\t\t\t<i></i>\n\t\t\t\t\t\t\t<a>Sistema</a>\n\t\t\t\t\t\t</h5>\n\t\t\t\t\t</div>\n\t\t\t\t</li>\n\t\t\t\t\t\t\t<li>\n\t\t\t\t\t<div>\n\t\t\t\t\t\t<h5>\n\t\t\t\t\t\t\t<i></i>\n\t\t\t\t\t\t\t<a>Mundo</a>\n\t\t\t\t\t\t</h5>\n\t\t\t\t\t</div>\n\t\t\t\t</li>\n\t\t\t\t\t\t\t<li>\n\t\t\t\t\t<div>\n\t\t\t\t\t\t<h5>\n\t\t\t\t\t\t\t<i></i>\n\t\t\t\t\t\t\t<a>Bestiário</a>\n\t\t\t\t\t\t</h5>\n\t\t\t\t\t</div>\n\t\t\t\t</li>\n\t\t\t\t\t\t\t<li>\n\t\t\t\t\t<div>\n\t\t\t\t\t\t<h5>\n\t\t\t\t\t\t\t<i></i>\n\t\t\t\t\t\t\t<a>Missões e Ranks</a>\n\t\t\t\t\t\t</h5>\n\t\t\t\t\t</div>\n\t\t\t\t</li>\n\t\t\t\t\t\t\t<li>\n\t\t\t\t\t<div>\n\t\t\t\t\t\t<h5>\n\t\t\t\t\t\t\t<i></i>\n\t\t\t\t\t\t\t<a>Mercado</a>\n\t\t\t\t\t\t</h5>\n\t\t\t\t\t</div>\n\t\t\t\t</li>\n\t\t\t\t\t\t\t<li>\n\t\t\t\t\t<div>\n\t\t\t\t\t\t<h5>\n\t\t\t\t\t\t\t<i></i>\n\t\t\t\t\t\t\t<a>Regras</a>\n\t\t\t\t\t\t</h5>\n\t\t\t\t\t</div>\n\t\t\t\t</li>\n\t\t\t\t\t</ul>\n\t\n            <div></div>\n            <div>",
+    "descriptionText": "A fúria vira marcha. Você caça de perto, corta espaço com braço e ombro, e a batalha aprende que não há intervalo entre o seu passo e a queda do inimigo.",
+    "description": "A fúria vira marcha. Você caça de perto, corta espaço com braço e ombro, e a batalha aprende que não há intervalo entre o seu passo e a queda do inimigo.",
+    "shortDescription": "A fúria vira marcha. Você caça de perto, corta espaço com braço e ombro, e a batalha aprende que não há intervalo entre o seu passo e a queda do inimigo.",
+    "descriptionStatus": "complete",
+    "descriptionSource": "article-body",
+    "needsReviewReasons": [],
+    "tags": [
+      "class",
+      "barbaro"
+    ],
+    "foundry": {
+      "preferredType": "class"
+    },
+    "sourceFileName": "data\\HTML BONFIRE\\classes\\Bárbaro in Bonfire Tales RPG _ World Anvil.html",
+    "hitDie": "d12",
+    "hitDieStatus": "complete",
+    "savingThrows": [
+      "str",
+      "con"
+    ],
+    "savingThrowsStatus": "complete",
+    "spellcasting": {
+      "type": "none"
+    },
+    "progression": {
+      "status": "extracted-partial",
+      "levels": {
+        "1": [
+          "Fúria",
+          "Guerreiro Desprotegido",
+          "Maestria em Armas"
+        ],
+        "2": [
+          "Sentido de Perigo",
+          "Ataque Imprudente"
+        ],
+        "3": [
+          "Caminho do Bárbaro",
+          "Runas Elementais",
+          "Despertar Bestial",
+          "Empatia Selvagem",
+          "Guardiões Ancestrais",
+          "Frenesi",
+          "Selo do Fanatismo",
+          "Armadura Reforjada",
+          "Investida Colossal",
+          "Faro Arcano",
+          "Magia Selvagem"
+        ],
+        "4": [
+          "Aprimoramento de Atributo ou Talento"
+        ],
+        "5": [
+          "Ataque Extra",
+          "Conhecimento Primitivo"
+        ],
+        "6": [
+          "Característica de Caminho",
+          "Essência Rúnica Entrelaçada",
+          "Armamento Rúnico Aprimorado",
+          "Habilidade Bestial",
+          "Escudo dos Antepassados",
+          "Fúria Inconsciente",
+          "Obsessão Inquebrável",
+          "Colosso Armadurado",
+          "Ruptura Arcana"
+        ],
+        "7": [
+          "Ímpeto Selvagem"
+        ],
+        "8": [],
+        "9": [
+          "Fôlego Furioso"
+        ],
+        "10": [
+          "Característica de Caminho",
+          "Égide Primordial",
+          "Instinto Predatório",
+          "Instinto Ancestral",
+          "Consultar os Espíritos",
+          "Eco Curativo",
+          "Presença Intimidante",
+          "Grito de Cruzada",
+          "Investida Colossal Aprimorada",
+          "Magia Instável"
+        ],
+        "11": [
+          "Fúria Devastadora"
+        ],
+        "12": [],
+        "13": [
+          "Instinto Brutal"
+        ],
+        "14": [
+          "Característica de Caminho",
+          "Despertar Rúnico",
+          "Chamado da Caçada",
+          "Espíritos Vingadores",
+          "Sede de Sangue",
+          "Forma do Guerreiro Sagrado",
+          "Retribuição Anã",
+          "Caos Encarnado"
+        ],
+        "15": [
+          "Ira Incontrolável"
+        ],
+        "16": [],
+        "17": [
+          "Força Indomável"
+        ],
+        "18": [
+          "Característica de Caminho",
+          "Campeão das Runas",
+          "Domínio da Fera Primordial",
+          "Legião dos Ancestrais",
+          "Retaliação",
+          "Além da Queda",
+          "Avanço de Titã",
+          "Golpe Dissipador"
+        ],
+        "19": [
+          "Incremento de Atributo ou Talento"
+        ],
+        "20": [
+          "Avatar da Fúria"
+        ]
+      }
+    }
+  },
+  {
+    "id": "bardo",
+    "identifier": "bardo",
+    "name": "Bardo",
+    "aliases": [
+      "Bardo",
+      "Bard"
+    ],
+    "kind": "class",
+    "source": "bonfire",
+    "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bardo-article",
+    "descriptionHtml": "<div>\n                            \n                        </div>\n                                                                                                </div>\n\n                <div>\n                    \n                    \n\n                    \n                    <div>\n\n                        <div role=\"tabpanel\">\n\n                                        <div>\n            <div>\n                <div><table>\n<tbody><tr><th>Nível</th><th>Proficiência</th><th>Dado de Inspiração</th><th>Habilidades de Classe</th><th>Magias Preparadas</th><th>Truques</th><th>1º</th><th>2º</th><th>3º</th><th>4º</th><th>5º</th><th>6º</th><th>7º</th><th>8º</th><th>9º</th></tr>\n<tr><td>1</td><td>+2</td><td>d6</td><td>Conjuração, Inspiração Bárdica</td><td>4</td><td>2</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>\n<tr><td>2</td><td>+2</td><td>d6</td><td>Especialização, Pau Pra Toda Obra</td><td>5</td><td>2</td><td>3</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>\n<tr><td>3</td><td>+2</td><td>d6</td><td>Colégio de Bardo</td><td>6</td><td>2</td><td>4</td><td>2</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>\n<tr><td>4</td><td>+2</td><td>d6</td><td>Talento</td><td>7</td><td>3</td><td>4</td><td>3</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>\n<tr><td>5</td><td>+3</td><td>d8</td><td>Fonte de Inspiração</td><td>9</td><td>3</td><td>4</td><td>3</td><td>2</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>\n<tr><td>6</td><td>+3</td><td>d8</td><td>Característica de Colégio</td><td>10</td><td>3</td><td>4</td><td>3</td><td>3</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>\n<tr><td>7</td><td>+3</td><td>d8</td><td>Contra-Canto</td><td>11</td><td>3</td><td>4</td><td>3</td><td>3</td><td>1</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>\n<tr><td>8</td><td>+3</td><td>d8</td><td>Talento</td><td>12</td><td>3</td><td>4</td><td>3</td><td>3</td><td>2</td><td>-</td><td>-</td><td>-</td><td>-</td><",
+    "descriptionText": "No Colégio do Conselho , Bardo não canta nem dança — discursa . A ferramenta é a língua: precedentes, máximas, metáforas, pausas. A sala é o palco, e o efeito especial é a sensação de que a conclusão sempre esteve ali. Conselheiros vestem cargos de assessores, mediadores e advogados de praça; são quem escolhe as palavras que cabem onde nada mais entra. Sua “canção” é lógica afinada à exaustão: quando o argumento fecha, a realidade acompanha.",
+    "description": "No Colégio do Conselho , Bardo não canta nem dança — discursa . A ferramenta é a língua: precedentes, máximas, metáforas, pausas. A sala é o palco, e o efeito especial é a sensação de que a conclusão sempre esteve ali. Conselheiros vestem cargos de assessores, mediadores e advogados de praça; são quem escolhe as palavras que cabem onde nada mais entra. Sua “canção” é lógica afinada à exaustão: quando o argumento fecha, a realidade acompanha.",
+    "shortDescription": "No Colégio do Conselho , Bardo não canta nem dança — discursa .",
+    "descriptionStatus": "complete",
+    "descriptionSource": "article-body",
+    "needsReviewReasons": [],
+    "tags": [
+      "class",
+      "bardo"
+    ],
+    "foundry": {
+      "preferredType": "class"
+    },
+    "sourceFileName": "data\\HTML BONFIRE\\classes\\Bardo in Bonfire Tales RPG _ World Anvil.html",
+    "hitDie": "d8",
+    "hitDieStatus": "complete",
+    "savingThrows": [
+      "dex",
+      "cha"
+    ],
+    "savingThrowsStatus": "complete",
+    "spellcasting": {
+      "type": "full",
+      "ability": "cha"
+    },
+    "progression": {
+      "status": "extracted-partial",
+      "levels": {
+        "1": [
+          "Inspiração Bárdica",
+          "Conjuração de Magias"
+        ],
+        "2": [
+          "Especialização",
+          "Pau Pra Toda Obra"
+        ],
+        "3": [
+          "Colégio de Bardo",
+          "Conselho Bárdico",
+          "Lógica Cortante",
+          "Conselho Potente",
+          "Influência Astuta",
+          "Assalto Psíquico",
+          "Sementes do Terror",
+          "Fragmento da Canção",
+          "Obra da Criação",
+          "Cena é Corpo",
+          "Defesa Desarmada & Golpe de Palco",
+          "Estilos de Dança",
+          "Dança em Cena",
+          "Sussurros de Orientação",
+          "Foco Espiritual",
+          "Arcanos do Véu",
+          "Dom de Palco",
+          "Manto Deslumbrante",
+          "Presença Hipnótica",
+          "Duelista Elegante",
+          "Estilo de Luta",
+          "Floreios de Lâmina",
+          "Forja do Skald",
+          "Estrofe de Batalha",
+          "Verso Afiado"
+        ],
+        "4": [
+          "Incremento de Atributo ou Talento"
+        ],
+        "5": [
+          "Fonte de Inspiração"
+        ],
+        "6": [
+          "Característica de Colégio",
+          "Descobertas Mágicas",
+          "Língua Ancestral",
+          "Golpe Sorrateiro",
+          "Visagem Roubada",
+          "Dança da Criação",
+          "Inspiração em Movimento",
+          "Abertura de Palco",
+          "Estilo de Fuga",
+          "Sessão de Tarô",
+          "Foco Espiritual Aprimorado",
+          "Visagem de Outro Mundo",
+          "Encanto Reflexo",
+          "Segundo Ataque Mágico",
+          "Segundo Ataque (Mágico)",
+          "Brado de Investida"
+        ],
+        "7": [
+          "Contra-Canto"
+        ],
+        "8": [
+          "Incremento de Atributo ou Talento"
+        ],
+        "9": [
+          "Especialização (Aprimorada)"
+        ],
+        "10": [
+          "Segredos Mágicos"
+        ],
+        "11": [],
+        "12": [
+          "Incremento de Atributo ou Talento"
+        ],
+        "13": [],
+        "14": [
+          "Característica de Colégio",
+          "Perícia Inigualável",
+          "Manipulação Sinistra",
+          "Crescendo Criativo",
+          "Evasão Coreografada",
+          "Magia em Passo",
+          "Conexão Mística",
+          "Manto de Proteção",
+          "Ritmo Infindável",
+          "Runas no Aço",
+          "Hidromel do Valor"
+        ],
+        "15": [
+          "Dado de Inspiração (d12)"
+        ],
+        "16": [
+          "Incremento de Atributo ou Talento"
+        ],
+        "17": [
+          "Inspiração Superior"
+        ],
+        "18": [
+          "Característica de Colégio",
+          "Palavras Contagiantes",
+          "Angústia Mental",
+          "Canção Verdadeira",
+          "Cortesia da Plateia",
+          "Arcano Maior",
+          "Presença Majestosa",
+          "Represália Letal",
+          "Coro das Sagas"
+        ],
+        "19": [
+          "Incremento de Atributo ou Talento"
+        ],
+        "20": [
+          "Palavras da Criação"
+        ]
+      }
+    }
+  },
+  {
+    "id": "cacador",
+    "identifier": "cacador",
+    "name": "Caçador",
+    "aliases": [
+      "Caçador",
+      "Cacador",
+      "Ranger",
+      "Patrulheiro"
+    ],
+    "kind": "class",
+    "source": "bonfire",
+    "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/cacador-article",
+    "shortDescription": "Você começa com os seguintes equipamentos, em adição aos recebidos por seu antecedente.",
+    "descriptionStatus": "summary-only",
+    "descriptionSource": "card-summary",
+    "needsReviewReasons": [
+      "summary-card-used-no-full-description",
+      "missing-full-rule-page"
+    ],
+    "tags": [
+      "class",
+      "cacador"
+    ],
+    "foundry": {
+      "preferredType": "class"
+    },
+    "sourceFileName": "data\\HTML BONFIRE\\classes\\Caçador in Bonfire Tales RPG _ World Anvil.html",
+    "hitDie": "d6",
+    "hitDieStatus": "complete",
+    "savingThrows": [
+      "int",
+      "wis"
+    ],
+    "savingThrowsStatus": "complete",
+    "spellcasting": {
+      "type": "half",
+      "ability": "wis"
+    },
+    "progression": {
+      "status": "extracted-partial",
+      "levels": {
+        "1": [
+          "Conjuração",
+          "Marca do Caçador",
+          "Preparos de Caçada"
+        ],
+        "2": [
+          "Segredos de Caçador",
+          "Inimigo Favorito",
+          "Instinto de Caçador"
+        ],
+        "3": [
+          "Ordem de Caçador",
+          "Companheiro Primordial",
+          "Evolução Totêmica",
+          "Estudo do Inimigo",
+          "Marca Antecipada",
+          "Runas de Travessia",
+          "Sentinela Planar",
+          "Enxame Simbiótico",
+          "Simbiose do Enxame",
+          "Visão Umbral",
+          "Emboscada Sombria",
+          "Fisiologia Mutante",
+          "Fórmulas Mutagênicas"
+        ],
+        "4": [
+          "Incremento de Atributo ou Talento"
+        ],
+        "5": [
+          "Segundo Ataque",
+          "Território de Caça"
+        ],
+        "6": [
+          "Característica de Ordem",
+          "Elo de Caça Rúnica",
+          "Ruptura Rúnica",
+          "Ruptura de Selo",
+          "Instinto Coletivo",
+          "Manto das Sombras",
+          "Supressão Alquímica"
+        ],
+        "7": [
+          "Caçador Implacável"
+        ],
+        "8": [
+          "Incremento de Atributo ou Talento"
+        ],
+        "9": [
+          "Instinto Afiado"
+        ],
+        "10": [
+          "Característica de Ordem",
+          "Cerco de Presas Rituais",
+          "Eco Purgante",
+          "Salto de Travessia",
+          "Enxame Expansivo",
+          "Golpe Cirúrgico",
+          "Percepção Predatória"
+        ],
+        "11": [
+          "Predador Astuto"
+        ],
+        "12": [
+          "Incremento de Atributo ou Talento"
+        ],
+        "13": [
+          "Passos Invisíveis"
+        ],
+        "14": [
+          "Característica de Ordem",
+          "Reflexo Instintivo",
+          "Última Palavra",
+          "Véu Desfeito",
+          "Colmeia Instintiva",
+          "Voo Simbiótico",
+          "Contra-Ataque Sombrio",
+          "Transfusão Mutagênica"
+        ],
+        "15": [
+          "Vontade Inabalável"
+        ],
+        "16": [
+          "Incremento de Atributo ou Talento"
+        ],
+        "17": [
+          "Instinto Predatório"
+        ],
+        "18": [
+          "Característica de Ordem",
+          "Segredo: Chamado da Presa Imortal",
+          "Segredo: Cilada Final",
+          "Segredo: Caminho Final",
+          "Segredo: Ninho Devorador",
+          "Segredo: Névoa Sepulcral",
+          "Segredo: Sangue Venenoso"
+        ],
+        "19": [
+          "Incremento de Atributo ou Talento"
+        ],
+        "20": [
+          "Domínio da Caçada"
+        ]
+      }
+    }
+  },
+  {
+    "id": "clerigo",
+    "identifier": "clerigo",
+    "name": "Clérigo",
+    "aliases": [
+      "Clerigo",
+      "Clérigo",
+      "Cleric"
+    ],
+    "kind": "class",
+    "source": "bonfire",
+    "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/clerigo-article",
+    "descriptionHtml": "<div>\n                            \n                        </div>\n                                                                                                </div>\n\n                <div>\n                    \n                    \n\n                    \n                    <div>\n\n                        <div role=\"tabpanel\">\n\n                                        <div>\n            <div>\n                <div><table><tbody><tr><th>Nível</th><th>Bônus de Proficiência</th><th>Características</th><th>Magias Preparadas</th><th>Truques</th><th>1°</th><th>2°</th><th>3°</th><th>4°</th><th>5°</th><th>6°</th><th>7°</th><th>8°</th><th>9°</th></tr><tr>\n<td>1</td><td>+2</td><td>Conjuração, Ordem Sagrada, Ritos Sacros</td><td>4</td><td>3</td><td>2</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr>\n<td>2</td><td>+2</td><td>Canalizar Divindade</td><td>5</td><td>3</td><td>3</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr>\n<td>3</td><td>+2</td><td>Domínio Divino</td><td>6</td><td>3</td><td>4</td><td>2</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr>\n<td>4</td><td>+2</td><td>Aprimoramento de Atributo</td><td>7</td><td>3</td><td>4</td><td>3</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr>\n<td>5</td><td>+3</td><td>Autoridade Sagrada</td><td>9</td><td>3</td><td>4</td><td>4</td><td>2</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr>\n<td>6</td><td>+3</td><td>Característica de Domínio Divino</td><td>10</td><td>4</td><td>4</td><td>3</td><td>3</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr>\n<td>7</td><td>+3</td><td>Golpes Abençoados</td><td>11</td><td>4</td><td>4</td><td>3</td><td>3</td><td>1</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr>\n<td>8</td><td>+3</td><td>Incremento no Valor de Habilidade</td><td>12</td><td>4</td><td>4</td><td>3</td><td>3</td><td>2</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr>\n<td>9</td><td>+4</td><td>-",
+    "descriptionText": "Golpe da Natureza. Ataque de Arma Corpo-a-Corpo com Arma: modificador de ataque de magia de clérigo para acertar, alcance 1,5 metros [5 feet], um alvo. Dano (1d8 + Modificador de Sabedoria do Clérigo + Bônus de Proficiência) de dano Cortante, Perfurante ou Concussivo (Você escolhe quando invocar o espírito).",
+    "description": "Golpe da Natureza. Ataque de Arma Corpo-a-Corpo com Arma: modificador de ataque de magia de clérigo para acertar, alcance 1,5 metros [5 feet], um alvo. Dano (1d8 + Modificador de Sabedoria do Clérigo + Bônus de Proficiência) de dano Cortante, Perfurante ou Concussivo (Você escolhe quando invocar o espírito).",
+    "shortDescription": "Golpe da Natureza. Ataque de Arma Corpo-a-Corpo com Arma: modificador de ataque de magia de clérigo para acertar, alcance 1,5 metros [5 feet], um alvo.",
+    "descriptionStatus": "complete",
+    "descriptionSource": "article-body",
+    "needsReviewReasons": [],
+    "tags": [
+      "class",
+      "clerigo"
+    ],
+    "foundry": {
+      "preferredType": "class"
+    },
+    "sourceFileName": "data\\HTML BONFIRE\\classes\\Clérigo in Bonfire Tales RPG _ World Anvil.html",
+    "hitDie": "d8",
+    "hitDieStatus": "complete",
+    "savingThrows": [
+      "wis",
+      "cha"
+    ],
+    "savingThrowsStatus": "complete",
+    "spellcasting": {
+      "type": "full",
+      "ability": "wis"
+    },
+    "progression": {
+      "status": "extracted-partial",
+      "levels": {
+        "1": [
+          "Ritos Sacros",
+          "Ordem Sagrada",
+          "Conjuração"
+        ],
+        "2": [
+          "Canalizar Divindade"
+        ],
+        "3": [
+          "Domínio Divino",
+          "Erudito do Sacro e do Arcano",
+          "Canalizar Divindade — Expulsão Arcana",
+          "Mão e Língua do Contrassenso",
+          "Mente Estilhaçada",
+          "Canalizar Divindade — Toque da Loucura",
+          "Sombra de Guarda",
+          "Olhos da Noite",
+          "Canalizar Divindade: Santuário do Anoitecer",
+          "Sacerdote de Guerra",
+          "Oferenda de Guerra",
+          "Canalizar Divindade — Armamento da Guerra",
+          "Clarão de Guarda",
+          "Primeiro Feixe",
+          "Canalizar Divindade: Santuário do Amanhecer",
+          "Entre Pulso e Silêncio",
+          "Ritos Fúnebres",
+          "Canalizar Divindade — Caminho para a Cova",
+          "Acólito da Natureza",
+          "Falar com Plantas e Animais",
+          "Canalizar Divindade — Auxílio da Natureza",
+          "Olho do Magistrado",
+          "Mandato Concedido",
+          "Canalizar Divindade — Exigência da Ordem",
+          "Implemento da Paz",
+          "Vínculo Encorajador",
+          "Canalizar Divindade — Bálsamo da Paz",
+          "Filho das Marés",
+          "Fúria da Tempestade",
+          "Canalizar Divindade — Ira Destrutiva",
+          "Mão e Língua do Curinga",
+          "Bênção do Trapaceiro",
+          "Canalizar Divindade: Invocar Duplicidade",
+          "Disciplina da Vida",
+          "Voto Hospitalar",
+          "Canalizar Divindade — Preservar Vida"
+        ],
+        "4": [
+          "Aumento no Valor de Habilidade"
+        ],
+        "5": [
+          "Autoridade Sagrada"
+        ],
+        "6": [
+          "Característica de Domínio Divino",
+          "Purificação Mística",
+          "Canalizar Divindade — Discórdia",
+          "Sombra de Guarda Aprimorada",
+          "Escudo de Linha de Frente",
+          "Clarão de Guarda Aprimorado",
+          "Sentinela do Portão da Morte",
+          "Amortecer Elementos",
+          "Amortecer Elementos",
+          "Ato Contínuo",
+          "Vínculo Protetivo",
+          "Coração de Tempestade",
+          "Transposição do Trapaceiro",
+          "Curandeiro Abençoado"
+        ],
+        "7": [
+          "Golpes Abençoados"
+        ],
+        "8": [],
+        "9": [],
+        "10": [
+          "Intervenção Divina"
+        ],
+        "11": [],
+        "12": [],
+        "13": [],
+        "14": [
+          "Golpes Abençoados Aprimorados"
+        ],
+        "15": [],
+        "16": [],
+        "17": [
+          "Característica de Subclasse",
+          "Mandato Arcano Superior",
+          "Manto da Insanidade",
+          "Coroa de Sombras",
+          "Mensageiro de Ástyr",
+          "Coroa de Luz",
+          "Sacerdote da Passagem",
+          "Mandato da Natureza",
+          "Lex Arterna",
+          "Vínculo Expansivo",
+          "Duplicidade Aperfeiçoada",
+          "Manto do Ciclone",
+          "Cura Suprema"
+        ],
+        "18": [
+          "Intervenção Divina Maior"
+        ],
+        "19": [],
+        "20": [
+          "Intervenção Suprema do Domínio",
+          "Manancial da Trama",
+          "O Manto do Vazio",
+          "O Veredito de Ástyr",
+          "O Santuário do Amanhecer",
+          "O Selo de Céssira",
+          "O Axioma de Thamior",
+          "O Elo da Alma de Allór",
+          "O Clarão de Tempestus",
+          "O Baile das Máscaras de Zarquil",
+          "O Sopro de Nascira"
+        ]
+      }
+    }
+  },
+  {
+    "id": "druida",
+    "identifier": "druida",
+    "name": "Druida",
+    "aliases": [
+      "Druida",
+      "Druid"
+    ],
+    "kind": "class",
+    "source": "bonfire",
+    "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+    "descriptionHtml": "<div>\n                            \n                        </div>\n                                                                                                </div>\n\n                <div>\n                    \n                    \n\n                    \n                    <div>\n\n                        <div role=\"tabpanel\">\n\n                                        <div>\n            <div>\n                <div><table><tbody><tr><th>Nível</th><th>Bônus de Proficiência</th><th>Características</th><th>Surto Selvagem</th><th>Truques</th><th>1°</th><th>2°</th><th>3°</th><th>4°</th><th>5°</th><th>6°</th><th>7°</th><th>8°</th><th>9°</th></tr><tr><td>1</td><td>+2</td><td>Conjuração Druídica, Vínculo Natural</td><td>-</td><td>2</td><td>2</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>2</td><td>+2</td><td>Surto Selvagem, Ordem Primal</td><td>2</td><td>2</td><td>3</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>3</td><td>+2</td><td>Círculo Druídico</td><td>2</td><td>2</td><td>4</td><td>2</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>4</td><td>+2</td><td>Aprimoramento de Atributo ou Talento</td><td>2</td><td>3</td><td>4</td><td>3</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>5</td><td>+3</td><td>Intuição Selvagem</td><td>3</td><td>3</td><td>4</td><td>3</td><td>2</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>6</td><td>+3</td><td>Característica de Círculo</td><td>3</td><td>3</td><td>4</td><td>3</td><td>3</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>7</td><td>+3</td><td>Fúria Elemental</td><td>3</td><td>3</td><td>4</td><td>3</td><td>3</td><td>1</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>8</td><td>+3</td><td>Aprimoramento de Atributo ou Talento</td><td>3</td><td>3</td><td>4</td><td>3</td><td>3</td><td>2</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>9</td><td>+4</td><td>Guardião da Te",
+    "descriptionText": "Druidas do Círculo dos Esporos veneram a decomposição como a face invisível e indispensável da vida. Para eles, o bolor que consome a madeira morta é tão sagrado quanto a raiz que sustenta o carvalho. Suas magias não apenas chamam vinhas, raízes e ventos, elas espalham uma ecologia de fungos, miasmas e colônias simbióticas que se alimentam de excesso, remendam carne ferida e enfraquecem invasores. Onde um espadachim vê um cadáver, o druida dos esporos enxerga um ponto de partida para um novo ciclo.",
+    "description": "Druidas do Círculo dos Esporos veneram a decomposição como a face invisível e indispensável da vida. Para eles, o bolor que consome a madeira morta é tão sagrado quanto a raiz que sustenta o carvalho. Suas magias não apenas chamam vinhas, raízes e ventos, elas espalham uma ecologia de fungos, miasmas e colônias simbióticas que se alimentam de excesso, remendam carne ferida e enfraquecem invasores. Onde um espadachim vê um cadáver, o druida dos esporos enxerga um ponto de partida para um novo ciclo.",
+    "shortDescription": "Druidas do Círculo dos Esporos veneram a decomposição como a face invisível e indispensável da vida.",
+    "descriptionStatus": "complete",
+    "descriptionSource": "article-body",
+    "needsReviewReasons": [],
+    "tags": [
+      "class",
+      "druida"
+    ],
+    "foundry": {
+      "preferredType": "class"
+    },
+    "sourceFileName": "data\\HTML BONFIRE\\classes\\Druida in Bonfire Tales RPG _ World Anvil.html",
+    "hitDie": "d8",
+    "hitDieStatus": "complete",
+    "savingThrows": [
+      "int",
+      "wis"
+    ],
+    "savingThrowsStatus": "complete",
+    "spellcasting": {
+      "type": "full",
+      "ability": "wis"
+    },
+    "progression": {
+      "status": "extracted-partial",
+      "levels": {
+        "1": [
+          "Conjuração Druídica",
+          "Vínculo Natural"
+        ],
+        "2": [
+          "Ordem Primal",
+          "Surto Selvagem"
+        ],
+        "3": [
+          "Círculo Druídico",
+          "Magias do Círculo",
+          "Hospedeiro Fúngico",
+          "Guardião Fúngico",
+          "Magias do Círculo",
+          "Mapa Estelar",
+          "Forma Estelar",
+          "Magias do Círculo",
+          "Formas Lunares",
+          "Magias das Marés",
+          "Discípulo das Águas",
+          "Surto Selvagem: Aura de Maré",
+          "Vínculo Elemental do Pastor",
+          "Familiar Primal",
+          "Magia dos Sonhos",
+          "Sussurro Onírico",
+          "Telepatia Onírica",
+          "Mensageiro dos Sonhos",
+          "Acólito da Natureza",
+          "Regeneração Natural",
+          "Magias do Terreno",
+          "Surto Selvagem, Crescimento Exuberante"
+        ],
+        "4": [
+          "Aprimoramento de Atributo ou Talento"
+        ],
+        "5": [
+          "Intuição Selvagem"
+        ],
+        "6": [
+          "Característica de Círculo",
+          "Soldado Fúngico",
+          "Presságio Cósmico",
+          "Maré de Caça",
+          "Ressaca",
+          "Exaltação Elemental",
+          "Refúgio Onírico",
+          "Surto Selvagem, Véu do Crepúsculo",
+          "Crescimento Primevo"
+        ],
+        "7": [
+          "Fúria Elemental"
+        ],
+        "8": [
+          "Aprimoramento de Atributo ou Talento"
+        ],
+        "9": [
+          "Guardião da Terra"
+        ],
+        "10": [
+          "Característica de Círculo",
+          "Esporos Virulentos",
+          "Assimilação Elemental",
+          "Constelações Cintilantes",
+          "Forma Selvagem Anciã",
+          "Águas da Vida",
+          "Exaltação Maior do Familiar",
+          "Caminhos Escondidos",
+          "Amparo Natural"
+        ],
+        "11": [],
+        "12": [
+          "Incremento de Atributo ou Talento"
+        ],
+        "13": [],
+        "14": [
+          "Alma da Natureza"
+        ],
+        "15": [],
+        "16": [
+          "Incremento de Atributo ou Talento"
+        ],
+        "17": [],
+        "18": [
+          "Característica de Círculo",
+          "Colônia Anciã",
+          "Corona Borealis",
+          "Avatar da Lua",
+          "Mestre das Ondas",
+          "Reduto Elemental, Vigília dos Quatro",
+          "Sonho Lúcido",
+          "Refúgio Onírico Aprimorado",
+          "Mago Ancestral"
+        ],
+        "19": [
+          "Incremento de Atributo ou Talento"
+        ],
+        "20": [
+          "Arquidruida"
+        ]
+      }
+    }
+  },
+  {
+    "id": "feiticeiro",
+    "identifier": "feiticeiro",
+    "name": "Feiticeiro",
+    "aliases": [
+      "Feiticeiro",
+      "Sorcerer"
+    ],
+    "kind": "class",
+    "source": "bonfire",
+    "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/feiticeiro-article",
+    "descriptionHtml": "<div>\n                            \n                        </div>\n                                                                                                </div>\n\n                <div>\n                    \n                    \n\n                    \n                    <div>\n\n                        <div role=\"tabpanel\">\n\n                                        <div>\n            <div>\n                <div><table>\n<tbody><tr><th>Nível</th><th>Proficiência</th><th>Pontos de Feitiçaria</th><th>Habilidades de Classe</th><th>Truques</th><th>1º</th><th>2º</th><th>3º</th><th>4º</th><th>5º</th><th>6º</th><th>7º</th><th>8º</th><th>9º</th></tr>\n<tr><td>1</td><td>+2</td><td>-</td><td>Conjuração, Feitiçaria Inata</td><td>4</td><td>2</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>\n<tr><td>2</td><td>+2</td><td>2</td><td>Fonte de Magia, Metamagia</td><td>4</td><td>3</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>\n<tr><td>3</td><td>+2</td><td>3</td><td>Origem de Linhagem</td><td>4</td><td>4</td><td>2</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>\n<tr><td>4</td><td>+2</td><td>4</td><td>Talento</td><td>5</td><td>4</td><td>3</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>\n<tr><td>5</td><td>+3</td><td>5</td><td>Restauração Feiticeira</td><td>5</td><td>4</td><td>3</td><td>2</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>\n<tr><td>6</td><td>+3</td><td>6</td><td>Característica de Linhagem</td><td>5</td><td>4</td><td>3</td><td>3</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>\n<tr><td>7</td><td>+3</td><td>7</td><td>Feitiçaria Encarnada</td><td>5</td><td>4</td><td>3</td><td>3</td><td>1</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>\n<tr><td>8</td><td>+3</td><td>8</td><td>Talento</td><td>5</td><td>4</td><td>3</td><td>3</td><td>2</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>\n<tr><td>9</td><td>+4</td><td>9</td><td>-</td><td>5</td><td>4</td><td>3</td><td>3</td><",
+    "descriptionText": "Apodrecer. Ataque de Arma Corpo-a-Corpo com Arma: modificador de ataque de magia de feiticeiro para acertar, alcance 1,5 metros [5 feet], um alvo. Dano (1d8 + Modificador de Carisma do Feiticeiro + Bônus de Proficiência), de dano necrótico.",
+    "description": "Apodrecer. Ataque de Arma Corpo-a-Corpo com Arma: modificador de ataque de magia de feiticeiro para acertar, alcance 1,5 metros [5 feet], um alvo. Dano (1d8 + Modificador de Carisma do Feiticeiro + Bônus de Proficiência), de dano necrótico.",
+    "shortDescription": "Apodrecer. Ataque de Arma Corpo-a-Corpo com Arma: modificador de ataque de magia de feiticeiro para acertar, alcance 1,5 metros [5 feet], um alvo.",
+    "descriptionStatus": "complete",
+    "descriptionSource": "article-body",
+    "needsReviewReasons": [],
+    "tags": [
+      "class",
+      "feiticeiro"
+    ],
+    "foundry": {
+      "preferredType": "class"
+    },
+    "sourceFileName": "data\\HTML BONFIRE\\classes\\Feiticeiro in Bonfire Tales RPG _ World Anvil.html",
+    "hitDie": "d6",
+    "hitDieStatus": "complete",
+    "savingThrows": [
+      "con",
+      "cha"
+    ],
+    "savingThrowsStatus": "complete",
+    "spellcasting": {
+      "type": "full",
+      "ability": "cha"
+    },
+    "progression": {
+      "status": "extracted-partial",
+      "levels": {
+        "1": [
+          "Conjuração",
+          "Feitiçaria Inata"
+        ],
+        "2": [
+          "Fonte de Magia",
+          "Metamagia"
+        ],
+        "3": [
+          "Origem de Linhagem",
+          "Telepatia Aberrante",
+          "Metamagia da Mente Velada",
+          "Mente Dilatada",
+          "Marca do Caos",
+          "Potencializada",
+          "Banco de Entropia",
+          "Fala Celestial",
+          "Metamagia Potencializada",
+          "Centelha dos Deuses",
+          "Sangue e Escamas",
+          "Ascendência Dracônica",
+          "Sopro Desperto",
+          "Léxico Modrônico",
+          "Metamagia — Magia Precisa (sempre preparada)",
+          "Ritmo Determinista (Rider da Feitiçaria Inata)",
+          "Habilidade Única: Pacto Umbral",
+          "Metamagia Sempre Preparada: Feitiço Sutil",
+          "Sombra do Mau-Presságio (apenas com Feitiçaria Inata ativa)",
+          "Fala dos Ventos",
+          "Metamagia — Feitiço Acelerado",
+          "Habilidade 03: Olho da Tempestade (Feitiçaria Inata)"
+        ],
+        "4": [
+          "Incremento de Atributo ou Talento"
+        ],
+        "5": [
+          "Restauração Feiticeira"
+        ],
+        "6": [
+          "Característica de Linhagem",
+          "Escudo da Anomalia",
+          "Habilidade 04: Distorcer a Sorte",
+          "Asas Transcendentais",
+          "Sangue Resiliente",
+          "Bastião Harmônico",
+          "Passo Umbral",
+          "Coração do Trovão"
+        ],
+        "7": [
+          "Feitiçaria Encarnada"
+        ],
+        "8": [
+          "Incremento de Atributo ou Talento"
+        ],
+        "9": [],
+        "10": [
+          "Metamagia Adicional e Dom da Criação"
+        ],
+        "11": [],
+        "12": [
+          "Incremento de Atributo ou Talento"
+        ],
+        "13": [],
+        "14": [
+          "Característica de Linhagem",
+          "Revelação na Carne (Mente Dilatada)",
+          "Fenda Dupla",
+          "Voz dos Bem-Aventurados",
+          "Herdeiro Alado",
+          "Marcha da Ordem",
+          "Manto Umbral",
+          "Vestes do Vendaval (Feitiçaria Inata ativa)"
+        ],
+        "15": [],
+        "16": [
+          "Incremento de Atributo ou Talento"
+        ],
+        "17": [
+          "Metamagia Suprema"
+        ],
+        "18": [
+          "Característica de Linhagem",
+          "Anomalia Andante",
+          "Eclipse Caótico",
+          "Apoteose Divina",
+          "Forma Dracônica Ancestral",
+          "Axioma da Ordem",
+          "Soberania das Sombras",
+          "Habilidade 06: Avatar da Tempestade"
+        ],
+        "19": [
+          "Incremento de Atributo ou Talento"
+        ],
+        "20": [
+          "Apoteose Arcana"
+        ]
+      }
+    }
+  },
+  {
+    "id": "guerreiro",
+    "identifier": "guerreiro",
+    "name": "Guerreiro",
+    "aliases": [
+      "Guerreiro",
+      "Fighter"
+    ],
+    "kind": "class",
+    "source": "bonfire",
+    "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/guerreiro-article",
+    "shortDescription": "Descricao completa ainda nao cadastrada no seed local.",
+    "descriptionStatus": "summary-only",
+    "descriptionSource": "card-summary",
+    "needsReviewReasons": [
+      "summary-card-used-no-full-description",
+      "missing-full-rule-page"
+    ],
+    "tags": [
+      "class",
+      "guerreiro"
+    ],
+    "foundry": {
+      "preferredType": "class"
+    },
+    "sourceFileName": "data\\HTML BONFIRE\\classes\\Guerreiro in Bonfire Tales RPG _ World Anvil.html",
+    "hitDie": "d10",
+    "hitDieStatus": "complete",
+    "savingThrows": [
+      "str",
+      "con"
+    ],
+    "savingThrowsStatus": "complete",
+    "spellcasting": {
+      "type": "none"
+    },
+    "progression": {
+      "status": "extracted-partial",
+      "levels": {
+        "1": [
+          "Disciplina Marcial",
+          "Retomar Fôlego"
+        ],
+        "2": [
+          "Fundamentos de Batalha",
+          "Surto de Ação",
+          "Mente Tática"
+        ],
+        "3": [
+          "Arquétipo do Guerreiro",
+          "Foco Mortal",
+          "Tiro Perfurante",
+          "Guerreiro do Corpo e do Instinto",
+          "Fiel Montaria e Postura de Guarda",
+          "Conjuração",
+          "Vínculo de Guerra",
+          "Táticas Arcanas",
+          "Instância da Lâmina Arcana",
+          "Invocar Sombra",
+          "Dança das Sombras",
+          "Comandos de Batalha",
+          "Potência Psíquica",
+          "Espírito de Luta",
+          "Cortesão Desonrado",
+          "Inscrição Rúnica",
+          "Força Rúnica"
+        ],
+        "4": [
+          "Incremento de Atributo ou Talento"
+        ],
+        "5": [
+          "Ataque Extra",
+          "Ataque Tático"
+        ],
+        "6": [],
+        "7": [
+          "Arquétipo do Guerreiro",
+          "Disparo Rápido",
+          "Disparo Distante",
+          "Força Indomável",
+          "Manobra Protetora",
+          "Tecelagem de Guerra",
+          "Transferência de Consciência",
+          "Reagrupar e Inspirar",
+          "Adepto Telecinético",
+          "Frieza Imperturbável",
+          "Escudo Rúnico"
+        ],
+        "8": [],
+        "9": [
+          "Indomável"
+        ],
+        "10": [
+          "Arquétipo do Guerreiro",
+          "Reposicionamento Tático",
+          "Tiro Poderoso",
+          "Golpe Devastador",
+          "Sentinela Implacável",
+          "Conhecimentos Arcanos",
+          "Instância Arcana Superior",
+          "Sacrifício Sombrio",
+          "Comandos Aprimorados",
+          "Mente Blindada",
+          "Golpe de Determinação",
+          "Crescimento Ancestral"
+        ],
+        "11": [
+          "Terceiro Ataque"
+        ],
+        "12": [],
+        "13": [
+          "Superioridade Marcial",
+          "Ataque Estudado"
+        ],
+        "14": [],
+        "15": [
+          "Arquétipo do Guerreiro",
+          "Disparo Confiável",
+          "Domínio Corporal",
+          "Investida de Aço",
+          "Dínamo de Combate",
+          "Sombra Revigorante",
+          "Golpe ao Trocar",
+          "Inspiração do Comandante",
+          "Barreira Mental",
+          "Golpe Rápido",
+          "Mestre das Runas"
+        ],
+        "16": [],
+        "17": [
+          "Surto de Ação Aprimorado"
+        ],
+        "18": [
+          "Arquétipo do Guerreiro",
+          "Atirador Lendário",
+          "Campeão Lendário",
+          "Vigilância Total",
+          "Tecelagem de Guerra Aprimorada",
+          "Maestria das Sombras",
+          "Surto Estratégico",
+          "Mestre da Telecinese",
+          "Último Suspiro",
+          "Colosso Rúnico"
+        ],
+        "19": [],
+        "20": [
+          "Senhor da Guerra"
+        ]
+      }
+    }
+  },
+  {
+    "id": "ladino",
+    "identifier": "ladino",
+    "name": "Ladino",
+    "aliases": [
+      "Ladino",
+      "Rogue"
+    ],
+    "kind": "class",
+    "source": "bonfire",
+    "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/ladino-article",
+    "shortDescription": "Descricao completa ainda nao cadastrada no seed local.",
+    "descriptionStatus": "summary-only",
+    "descriptionSource": "card-summary",
+    "needsReviewReasons": [
+      "summary-card-used-no-full-description",
+      "missing-full-rule-page"
+    ],
+    "tags": [
+      "class",
+      "ladino"
+    ],
+    "foundry": {
+      "preferredType": "class"
+    },
+    "sourceFileName": "data\\HTML BONFIRE\\classes\\Ladino in Bonfire Tales RPG _ World Anvil.html",
+    "hitDie": "d6",
+    "hitDieStatus": "complete",
+    "savingThrows": [
+      "dex",
+      "int"
+    ],
+    "savingThrowsStatus": "complete",
+    "spellcasting": {
+      "type": "none"
+    },
+    "progression": {
+      "status": "extracted-partial",
+      "levels": {
+        "1": [
+          "Perícia Especializada",
+          "Ataque Furtivo",
+          "Maestria em Armas do Ladino",
+          "Técnica de Furtividade"
+        ],
+        "2": [
+          "Ação Ardilosa",
+          "Mira Cravada"
+        ],
+        "3": [
+          "Trilha do Ladino",
+          "Núcleo Sombrio",
+          "Retomar o Fio",
+          "Voz da Sombra",
+          "Lâmina de Sombra",
+          "Abertura Implacável",
+          "Ferramentas de Trabalho",
+          "Reconhecimento Tático",
+          "Recuo Ágil",
+          "Olhar Treinado",
+          "Leitura de Padrões",
+          "Passo Esquivo",
+          "Audácia Impecável",
+          "Vozes Não Silenciam",
+          "Movimento Sorrateiro",
+          "Mãos Rápidas",
+          "Magia do Trapaceiro",
+          "Mão Mágica Ardilosa"
+        ],
+        "4": [
+          "Aprimoramento de Habilidade"
+        ],
+        "5": [
+          "Esquiva Instintiva",
+          "Primeiro Golpe"
+        ],
+        "6": [
+          "Características de Trilha",
+          "Técnica de Furtividade — Dilacerar a Mente",
+          "Técnica de Furtividade — Ataque Letal",
+          "Técnica de Furtividade — Golpes Encadeados",
+          "Técnica de Furtividade — Perfil Criminal",
+          "Técnica de Furtividade — Bravata",
+          "Técnica de Furtividade — Golpe Fantasmagórico",
+          "Técnica de Furtividade — Dedos Leves",
+          "Técnica de Furtividade — Troca Ilusória"
+        ],
+        "7": [
+          "Evasão",
+          "Talento Confiável"
+        ],
+        "8": [],
+        "9": [
+          "Trilha do Ladino",
+          "Lâminas da Sombra Interior",
+          "Mimetismo Perfeito",
+          "Mobilidade Imperturbável",
+          "Mobilidade Adaptativa",
+          "Manipulador Perspicaz",
+          "Guerreiro Gracioso",
+          "Vozes dos Que Partiram",
+          "Furtividade do Ladrão",
+          "Reflexos Rápidos",
+          "Emboscada Arcana"
+        ],
+        "10": [],
+        "11": [
+          "Golpe de Abertura"
+        ],
+        "12": [],
+        "13": [
+          "Trilha do Ladino",
+          "Véu da Penumbra",
+          "Análise Mortal",
+          "Reflexo Predatório",
+          "Golpe Direcionado",
+          "Vista Implacável",
+          "Intervenção Calculada",
+          "Virtuosismo Letal",
+          "Passo Entre os Véus",
+          "Manipular Artefato",
+          "Afinidade com Artefatos",
+          "Trapaceiro Versátil"
+        ],
+        "14": [
+          "Técnica de Furtividade Aprimorada"
+        ],
+        "15": [
+          "Mente Escorregadia"
+        ],
+        "16": [],
+        "17": [
+          "Trilha do Ladino",
+          "Flagelo Mental",
+          "Execução Silenciosa",
+          "Sombra do Caçador",
+          "Explorar Fraqueza",
+          "Mente Insondável",
+          "Toque Final",
+          "Coro dos Mortos",
+          "Mestre da Emboscada",
+          "Ladrão de Feitiços"
+        ],
+        "18": [
+          "Inatingível"
+        ],
+        "19": [],
+        "20": [
+          "Momento Perfeito"
+        ]
+      }
+    }
+  },
+  {
+    "id": "mago",
+    "identifier": "mago",
+    "name": "Mago",
+    "aliases": [
+      "Mago",
+      "Wizard"
+    ],
+    "kind": "class",
+    "source": "bonfire",
+    "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mago-article",
+    "descriptionHtml": "<div>\n                            \n                        </div>\n                                                                                                </div>\n\n                <div>\n                    \n                    \n\n                    \n                    <div>\n\n                        <div role=\"tabpanel\">\n\n                                        <div>\n            <div>\n                <div><table> <tbody><tr> <th>Nível</th> <th>Bônus de Proficiência</th> <th>Características</th> <th>Truques</th> <th>1º</th> <th>2º</th> <th>3º</th> <th>4º</th> <th>5º</th> <th>6º</th> <th>7º</th> <th>8º</th> <th>9º</th> </tr> <tr> <td>1º</td> <td>+2</td> <td>Conjuração de Magias, Estudo Arcano, Escolas de Foco</td> <td>3</td> <td>2</td> <td>—</td> <td>—</td> <td>—</td> <td>—</td> <td>—</td> <td>—</td> <td>—</td> <td>—</td> </tr> <tr> <td>2º</td> <td>+2</td> <td>Recuperação Arcana</td> <td>3</td> <td>3</td> <td>—</td> <td>—</td> <td>—</td> <td>—</td> <td>—</td> <td>—</td> <td>—</td> <td>—</td> </tr> <tr> <td>3º</td> <td>+2</td> <td>Tradição Arcana</td> <td>3</td> <td>4</td> <td>2</td> <td>—</td> <td>—</td> <td>—</td> <td>—</td> <td>—</td> <td>—</td> <td>—</td> </tr> <tr> <td>4º</td> <td>+2</td> <td>Aumento de Atributo</td> <td>4</td> <td>4</td> <td>3</td> <td>—</td> <td>—</td> <td>—</td> <td>—</td> <td>—</td> <td>—</td> <td>—</td> </tr> <tr> <td>5º</td> <td>+3</td> <td>Memorizar Magia</td> <td>4</td> <td>4</td> <td>3</td> <td>2</td> <td>—</td> <td>—</td> <td>—</td> <td>—</td> <td>—</td> <td>—</td> </tr> <tr> <td>6º</td> <td>+3</td> <td>Característica de Tradição Arcana</td> <td>4</td> <td>4</td> <td>3</td> <td>3</td> <td>—</td> <td>—</td> <td>—</td> <td>—</td> <td>—</td> <td>—</td> </tr> <tr> <td>7º</td> <td>+3</td> <td>Magia Assinatura (1ª)</td> <td>4</td> <td>4</td> <td>3</td> <td>3</td> <td>1</td> <td>—</td> <td>—</td> <td>—</td> <td>—</td> <td>—</td> </tr> <tr> <td>8º</td> <td>+3</td> <td>Aumento de Atributo</td> <td>4</td> <td>4</td> <td>3</td> <td>3</td> <td>2</td> <td>—</td> <td>—</td> <td>—</td> <td>—</td> <td>—</td> </tr> <tr> <td>9º</td> <t",
+    "descriptionText": "Abjuradores são mestres da magia de proteção, banimento e anulação. Especialistas em conter ameaças arcanas, desfazer encantamentos poderosos e repelir criaturas extraplanares, eles são frequentemente procurados para encerrar incursões de outros planos e expulsar entidades malignas do mundo material.",
+    "description": "Abjuradores são mestres da magia de proteção, banimento e anulação. Especialistas em conter ameaças arcanas, desfazer encantamentos poderosos e repelir criaturas extraplanares, eles são frequentemente procurados para encerrar incursões de outros planos e expulsar entidades malignas do mundo material.",
+    "shortDescription": "Abjuradores são mestres da magia de proteção, banimento e anulação.",
+    "descriptionStatus": "complete",
+    "descriptionSource": "article-body",
+    "needsReviewReasons": [],
+    "tags": [
+      "class",
+      "mago"
+    ],
+    "foundry": {
+      "preferredType": "class"
+    },
+    "sourceFileName": "data\\HTML BONFIRE\\classes\\Mago in Bonfire Tales RPG _ World Anvil.html",
+    "hitDie": "d6",
+    "hitDieStatus": "complete",
+    "savingThrows": [
+      "int",
+      "wis"
+    ],
+    "savingThrowsStatus": "complete",
+    "spellcasting": {
+      "type": "full",
+      "ability": "int"
+    },
+    "progression": {
+      "status": "extracted-partial",
+      "levels": {
+        "1": [
+          "Conjuração de Magias",
+          "Estudo Arcano"
+        ],
+        "2": [
+          "Recuperação Arcana"
+        ],
+        "3": [
+          "Tradição Arcana",
+          "Estudioso da Abjuração",
+          "Proteção Arcana",
+          "Estudioso da Adivinhação",
+          "Presságio",
+          "Estudioso da Conjuração",
+          "Conjuração Menor",
+          "Iniciação na Cronoturgia",
+          "Fios do Destino",
+          "Ritmo Temporal",
+          "Treinamento Marcial e Coreográfico",
+          "Dança da Lâmina",
+          "Estudioso do Encantamento",
+          "Mente Maleável",
+          "Dissociação Sensorial",
+          "Erudição Multidisciplinar",
+          "Arcano Alterado",
+          "Escriba Arcano",
+          "Estudioso da Evocação",
+          "Truque Potente",
+          "Iniciação na Graviturgia",
+          "Ajuste de Densidade",
+          "Erudito da Guerra",
+          "Defesa Reativa",
+          "Ímpetos Arcanos",
+          "Estudioso da Ilusão",
+          "Adepto da Ilusão",
+          "Estudioso da Necromancia",
+          "Colheita Sombria",
+          "Estudioso da Transmutação",
+          "Troca Equivalente"
+        ],
+        "4": [
+          "Aumento de Atributo"
+        ],
+        "5": [
+          "Memorizar Magia"
+        ],
+        "6": [
+          "Proficiência da Tradição",
+          "Proteção Projetada",
+          "Consciência Elevada",
+          "Transposição Própria",
+          "Acelerar e Desacelerar",
+          "Ataque Extra Mágico",
+          "Redirecionamento Empático",
+          "Extensão do Grimório",
+          "Moldar Magia",
+          "Exclusão Geodésica",
+          "Reserva Antimagia",
+          "Magias Fantasmagóricas",
+          "Lacaios Mortos-Vivos",
+          "Transmutar a Si Mesmo"
+        ],
+        "7": [
+          "Magia Assinatura"
+        ],
+        "8": [],
+        "9": [
+          "Mente Afiada"
+        ],
+        "10": [
+          "Maestria da Tradição",
+          "Abjuração Aprimorada",
+          "O Terceiro Olho",
+          "Conjuração Aprimorada",
+          "Suspensão Arcana",
+          "Dança Defensiva",
+          "Encantamento Dividido",
+          "Ajuste de Magia",
+          "Evocação Potencializada",
+          "Zona de Pressão Gravitacional",
+          "Fortitude Arcana",
+          "Táticas de Antimagia",
+          "Eu Ilusório",
+          "Habituado à Morte-Vida",
+          "Transmutação Aprimorada"
+        ],
+        "11": [
+          "Magia Assinatura (2ª)"
+        ],
+        "12": [],
+        "13": [],
+        "14": [
+          "Ápice da Tradição",
+          "Mestre da Abjuração",
+          "Mestre da Adivinhação",
+          "Mestre da Conjuração",
+          "Paradoxo da Repetição",
+          "Dança da Vitória",
+          "Supremacia Mental",
+          "Teorias Avançadas",
+          "Mestre da Evocação",
+          "Horizonte de Eventos",
+          "Mestre da Guerra Arcana",
+          "Realidade Ilusória",
+          "Comandar Mortos-Vivos",
+          "Mestre da Transmutação"
+        ],
+        "15": [
+          "Magia Assinatura (3ª)"
+        ],
+        "16": [],
+        "17": [],
+        "18": [
+          "Arquimago"
+        ],
+        "19": [],
+        "20": [
+          "Maestria Arcana"
+        ]
+      }
+    }
+  },
+  {
+    "id": "mistico",
+    "identifier": "mistico",
+    "name": "Místico",
+    "aliases": [
+      "Mistico",
+      "Místico",
+      "Mystic"
+    ],
+    "kind": "class",
+    "source": "bonfire",
+    "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mistico-article",
+    "descriptionHtml": "<div>\n                            \n                        </div>\n                                                                                                </div>\n\n                <div>\n                    \n                    \n\n                    \n                    <div>\n\n                        <div role=\"tabpanel\">\n\n                                        <div>\n            <div>\n                <div><table>\n<tbody><tr><th>Nível</th><th>Bônus de Proficiência</th><th>Características</th><th>Truques Conhecidos</th><th>Magias Conhecidas</th><th>Pontos de Misticismo</th><th>Ciclo de Feitiços</th><th>Segredos Conhecidos</th></tr>\n<tr><td>1</td><td>+2</td><td>Feitiçaria Mística, Manifestação Mística</td><td>2</td><td>2</td><td>5</td><td>1</td><td>-</td></tr>\n<tr><td>2</td><td>+2</td><td>Segredos Místicos</td><td>2</td><td>3</td><td>6</td><td>1</td><td>2</td></tr>\n<tr><td>3</td><td>+2</td><td>Manifestação Mística Aprimorada, Patrono Transcendental</td><td>2</td><td>4</td><td>7</td><td>2</td><td>2</td></tr>\n<tr><td>4</td><td>+2</td><td>Incremento no Valor de Habilidade, Versatilidade Mística</td><td>3</td><td>5</td><td>8</td><td>2</td><td>3</td></tr>\n<tr><td>5</td><td>+3</td><td>-</td><td>3</td><td>6</td><td>9</td><td>3</td><td>3</td></tr>\n<tr><td>6</td><td>+3</td><td>Característica de Patrono Transcendental</td><td>3</td><td>6</td><td>10</td><td>3</td><td>3</td></tr>\n<tr><td>7</td><td>+3</td><td>-</td><td>3</td><td>8</td><td>11</td><td>4</td><td>4</td></tr>\n<tr><td>8</td><td>+3</td><td>Incremento no Valor de Habilidade</td><td>3</td><td>9</td><td>12</td><td>4</td><td>4</td></tr>\n<tr><td>9</td><td>+4</td><td>Contatar o Patrono</td><td>3</td><td>10</td><td>13</td><td>5</td><td>5</td></tr>\n<tr><td>10</td><td>+4</td><td>Característica de Patrono Transcendental</td><td>4</td><td>10</td><td>14</td><td>5</td><td>5</td></tr>\n<tr><td>11</td><td>+4</td><td>Arcana Mística (6° nível)</td><td>4</td><td>11</td><td>15</td><td>5</td><td>5</td></tr>\n<tr><td>12</td><td>+4</td><td>Incremento no Valor de Habilidade</td><td>4</td><td>11</td><td>16</td><td>5</td><td>6</",
+    "descriptionText": "Golpe das Profundezas: Ataque de arma corpo-a-corpo: modificador de ataque de magia de Místico para acertar, alcance 3 metros [10 feet], um alvo. Dano: (1d8 + Modificador de Carisma) de dano de Energia. A criatura atingida perde 3 metros [10 feet] de deslocamento até o final do próximo turno dela.",
+    "description": "Golpe das Profundezas: Ataque de arma corpo-a-corpo: modificador de ataque de magia de Místico para acertar, alcance 3 metros [10 feet], um alvo. Dano: (1d8 + Modificador de Carisma) de dano de Energia. A criatura atingida perde 3 metros [10 feet] de deslocamento até o final do próximo turno dela.",
+    "shortDescription": "Golpe das Profundezas: Ataque de arma corpo-a-corpo: modificador de ataque de magia de Místico para acertar, alcance 3 metros [10 feet], um alvo.",
+    "descriptionStatus": "complete",
+    "descriptionSource": "article-body",
+    "needsReviewReasons": [],
+    "tags": [
+      "class",
+      "mistico"
+    ],
+    "foundry": {
+      "preferredType": "class"
+    },
+    "sourceFileName": "data\\HTML BONFIRE\\classes\\Místico in Bonfire Tales RPG _ World Anvil.html",
+    "hitDie": "d8",
+    "hitDieStatus": "complete",
+    "savingThrows": [
+      "wis",
+      "cha"
+    ],
+    "savingThrowsStatus": "complete",
+    "spellcasting": {
+      "type": "custom",
+      "ability": "cha"
+    },
+    "progression": {
+      "status": "extracted-partial",
+      "levels": {
+        "1": [
+          "Feitiçaria Mística",
+          "Manifestação Mística",
+          "Manifestação — Arma Mística",
+          "Manifestação — Contrato Místico",
+          "Manifestação — Livro Místico",
+          "Manifestação — Marca Mística",
+          "Sussurro dos Antigos"
+        ],
+        "2": [
+          "Segredos Místicos"
+        ],
+        "3": [
+          "Manifestação Mística Aprimorada",
+          "Arma Mística — Armas Múltiplas",
+          "Arma Mística — Destruição Mística",
+          "Contrato Místico — Ligação Amplificada",
+          "Livro Místico — Preparação de Magia",
+          "Marca Mística — Marca Protetora",
+          "Patrono Transcendental",
+          "Tentáculo das Profundezas",
+          "Presente do Oceano",
+          "Presença Feérica",
+          "Marca da Finitude",
+          "Truques Adicionais",
+          "Chama Angelical",
+          "Receptáculo do Gênio",
+          "Despertar a Mente",
+          "Poder do Imortal",
+          "Moedas do Contrato"
+        ],
+        "4": [
+          "Incremento no Valor de Habilidade"
+        ],
+        "5": [],
+        "6": [
+          "Patrono Transcendental",
+          "Alma Oceânica",
+          "Guardião Afogado",
+          "Escapada Elusiva",
+          "Movimento Fantasma",
+          "Alma Radiante",
+          "Presente Elemental",
+          "Proteção Entrópica",
+          "Tocado Pelo Túmulo",
+          "Cláusula Complementar"
+        ],
+        "7": [],
+        "8": [],
+        "9": [
+          "Contatar o Patrono"
+        ],
+        "10": [
+          "Patrono Transcendental",
+          "Um com as Profundezas",
+          "Presença Contagiante",
+          "Mortalha do Ceifador",
+          "Fortalecimento Angelical",
+          "Santuário Pessoal",
+          "Escudo do Pensamento",
+          "Proteção da Morte",
+          "Fortalecimento Ínfero"
+        ],
+        "11": [
+          "Arcana Mística"
+        ],
+        "12": [],
+        "13": [
+          "Arcana Mística — Addendum de 7º ciclo"
+        ],
+        "14": [
+          "Patrono Transcendental",
+          "Mergulho do Afogado",
+          "Delírio Enegrecido",
+          "Ímpeto do Ceifador",
+          "Vingança Abrasadora",
+          "Desejo Limitado",
+          "Criar Lacaio",
+          "Levante-se",
+          "Passeio Infernal"
+        ],
+        "15": [
+          "Arcana Mística — Addendum de 8º ciclo"
+        ],
+        "16": [],
+        "17": [
+          "Arcana Mística — Addendum de 9º ciclo"
+        ],
+        "18": [
+          "Manifestação Mística Avançada",
+          "Arma Mística — Destruição Mística Aprimorada",
+          "Contrato Místico — Cláusula de Poder",
+          "Livro Místico — Favor Místico Aprimorado",
+          "Marca Mística — Segunda Marca"
+        ],
+        "19": [],
+        "20": [
+          "Mestre Místico"
+        ]
+      }
+    }
+  },
+  {
+    "id": "monge",
+    "identifier": "monge",
+    "name": "Monge",
+    "aliases": [
+      "Monge",
+      "Monk"
+    ],
+    "kind": "class",
+    "source": "bonfire",
+    "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/monge-article",
+    "descriptionHtml": "<div>\n                            \n                        </div>\n                                                                                                </div>\n\n                <div>\n                    \n                    \n\n                    \n                    <div>\n\n                        <div role=\"tabpanel\">\n\n                                        <div>\n            <div>\n                <div><table>\n<tbody><tr><th>Nível</th><th>Bônus de Proficiência</th><th>Características</th><th>Artes Marciais</th><th>Pontos de Ki</th><th>Passo Veloz</th></tr><tr>\n<td>1</td><td>+2</td><td>Artes Marciais, Guerreiro sem Armadura</td><td>1d6</td><td>-</td><td>-</td></tr><tr>\n<td>2</td><td>+2</td><td>Ki, Passo Veloz, Desviar Ataques</td><td>1d6</td><td>2</td><td>+3m<br>(+10 ft.)</td></tr><tr>\n<td>3</td><td>+2</td><td>Tradição Monástica</td><td>1d6</td><td>3</td><td>+3m<br>(+10 ft.)</td></tr><tr>\n<td>4</td><td>+2</td><td>Incremento no Valor de Habilidade, Queda Lenta, Cura Acelerada</td><td>1d6</td><td>4</td><td>+3m<br>(+10 ft.)</td></tr><tr>\n<td>5</td><td>+3</td><td>Segundo Ataque, Golpe Atordoante</td><td>1d8</td><td>5</td><td>+3m<br>(+10 ft.)</td></tr><tr>\n<td>6</td><td>+3</td><td>Golpes de Ki, Momento de Ajuste, Característica de Tradição Monástica</td><td>1d8</td><td>6</td><td>+4,5m<br>(+15 ft.)</td></tr><tr>\n<td>7</td><td>+3</td><td>Evasão</td><td>1d8</td><td>7</td><td>+4,5m<br>(+15 ft.)</td></tr><tr>\n<td>8</td><td>+3</td><td>Incremento no Valor de Habilidade</td><td>1d8</td><td>8</td><td>+4,5m<br>(+15 ft.)</td></tr><tr>\n<td>9</td><td>+4</td><td>Movimento Acrobático</td><td>1d8</td><td>9</td><td>+4,5m<br>(+15 ft.)</td></tr><tr>\n<td>10</td><td>+4</td><td>Restauração Interior</td><td>1d8</td><td>10</td><td>+6m<br>(+20 ft.)</td></tr><tr>\n<td>11</td><td>+4</td><td>Característica de Tradição Monástica</td><td>1d10</td><td>11</td><td>+6m<br>(+20 ft.)</td></tr><tr>\n<td>12</td><td>+4</td><td>Incremento no Valor de Habilidade</td><td>1d10</td><td>12</td><td>+6m<br>(+20 ft.)</td></tr><tr>\n<td>13</td><td>+5</td><td>Desviar Energia</td><td>1d10</td><td>13</t",
+    "descriptionText": "\"Não busco outra forma — eu acendo a minha. O Ki sobe como calor sob a pele, a respiração marca o compasso, e cada músculo aprende a obedecer à chama. Não é ira: é direção. Onde a alma arde, o corpo responde; onde o corpo responde, o mundo cede meio passo.\"",
+    "description": "\"Não busco outra forma — eu acendo a minha. O Ki sobe como calor sob a pele, a respiração marca o compasso, e cada músculo aprende a obedecer à chama. Não é ira: é direção. Onde a alma arde, o corpo responde; onde o corpo responde, o mundo cede meio passo.\"",
+    "shortDescription": "\"Não busco outra forma — eu acendo a minha.",
+    "descriptionStatus": "complete",
+    "descriptionSource": "article-body",
+    "needsReviewReasons": [],
+    "tags": [
+      "class",
+      "monge"
+    ],
+    "foundry": {
+      "preferredType": "class"
+    },
+    "sourceFileName": "data\\HTML BONFIRE\\classes\\Monge in Bonfire Tales RPG _ World Anvil.html",
+    "hitDie": "d6",
+    "hitDieStatus": "complete",
+    "savingThrows": [
+      "str",
+      "dex"
+    ],
+    "savingThrowsStatus": "complete",
+    "spellcasting": {
+      "type": "none"
+    },
+    "progression": {
+      "status": "extracted-partial",
+      "levels": {
+        "1": [
+          "Artes Marciais",
+          "Guerreiro sem Armadura"
+        ],
+        "2": [
+          "Ki",
+          "Passo Veloz",
+          "Desviar Ataques"
+        ],
+        "3": [
+          "Tradição Monástica",
+          "Primeiro Ardor - Brasa da Alma",
+          "Segundo Ardor - Chama da Alma",
+          "Braços da Alma Astral",
+          "Início da Jornada",
+          "Conjuração Elemental",
+          "Técnica Elemental",
+          "Toque da Morte",
+          "Velar o Corpo",
+          "Bushidō",
+          "Estilos Kensei",
+          "Máscara da Piedade",
+          "Estilos Adicionais da Misericórdia",
+          "Palma da Cura",
+          "Palma do Sangue",
+          "Técnica da Palma Aberta",
+          "Visão de Ki",
+          "Proficiência Adicional",
+          "Estado Bêbado Monástico",
+          "Técnica do Bêbado",
+          "Discípulo Dracônico",
+          "Avatar dos Dragões",
+          "Baforada do Dragão",
+          "Treinamento das Sombras",
+          "Magia das Sombras"
+        ],
+        "4": [
+          "Aprimoramento no Valor de Habilidade",
+          "Queda Lenta",
+          "Cura Acelerada"
+        ],
+        "5": [
+          "Ataque Extra",
+          "Golpe Atordoante"
+        ],
+        "6": [
+          "Golpes de Ki",
+          "Momento de Ajuste",
+          "Tradição Monástica",
+          "Explosão de Alma",
+          "Aspecto da Alma Astral",
+          "Manipulação Elemental",
+          "Hora da Colheita",
+          "Um com a Lâmina",
+          "Toque do Médico",
+          "Ataque Desestabilizador",
+          "Gingado Cambaleante",
+          "Aura Dracônica",
+          "Passo das Sombras"
+        ],
+        "7": [
+          "Evasão"
+        ],
+        "8": [
+          "Aprimoramento no Valor de Habilidade"
+        ],
+        "9": [
+          "Movimento Acrobático"
+        ],
+        "10": [
+          "Restauração Interior"
+        ],
+        "11": [
+          "Tradição Monástica",
+          "Terceiro Ardor - Ascensão da Alma",
+          "Corpo da Alma Astral",
+          "Reabsorção Elemental",
+          "Maestria da Morte",
+          "Memórias Póstumas",
+          "Aprimoramento de Precisão",
+          "Rajada de Cura e Sangue",
+          "Sentido de Ki",
+          "Cura Acelerada Aprimorada",
+          "Fúria Intoxicada",
+          "Baforada Aprimorada",
+          "Oportunista"
+        ],
+        "12": [
+          "Aprimoramento no Valor de Habilidade"
+        ],
+        "13": [
+          "Desviar Energia"
+        ],
+        "14": [
+          "Sobrevivente Disciplinado"
+        ],
+        "15": [
+          "Corpo Atemporal"
+        ],
+        "16": [
+          "Aprimoramento no Valor de Habilidade"
+        ],
+        "17": [
+          "Tradição Monástica",
+          "Quarto Ardor - Apoteose da Alma",
+          "Despertar da Alma Astral",
+          "Ascensão Primordial",
+          "Toque da Morte Eterna",
+          "Precisão Infalível",
+          "Palma da Misericórdia Absoluta",
+          "Palma Vibrante",
+          "Mestre do Punho Bêbado",
+          "Aspecto Ascendente",
+          "Duplicata das Sombras"
+        ],
+        "18": [
+          "Defesa Superior"
+        ],
+        "19": [
+          "Aprimoramento no Valor de Habilidade"
+        ],
+        "20": [
+          "Corpo & Mente"
+        ]
+      }
+    }
+  },
+  {
+    "id": "paladino",
+    "identifier": "paladino",
+    "name": "Paladino",
+    "aliases": [
+      "Paladino",
+      "Paladin"
+    ],
+    "kind": "class",
+    "source": "bonfire",
+    "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/paladino-article",
+    "descriptionHtml": "<div>\n                            \n                        </div>\n                                                                                                </div>\n\n                <div>\n                    \n                    \n\n                    \n                    <div>\n\n                        <div role=\"tabpanel\">\n\n                                        <div>\n            <div>\n                <div><table>\n<tbody><tr><th>Nível</th><th>Proficiência</th><th>Habilidades de Classe</th><th>1º</th><th>2º</th><th>3º</th><th>4º</th><th>5º</th></tr>\n<tr><td>1</td><td>+2</td><td>Sentido Divino, Cura Pelas Mãos, Conjuração, Maestria em Armas</td><td>2</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>\n<tr><td>2</td><td>+2</td><td>Doutrina Marcial, Destruição Divina, Juramento Sagrado</td><td>2</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>\n<tr><td>3</td><td>+2</td><td>Canalizar Divindade, Saúde Divina, Característica de Juramento</td><td>3</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>\n<tr><td>4</td><td>+2</td><td>Talento</td><td>3</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>\n<tr><td>5</td><td>+3</td><td>Ataque Extra</td><td>4</td><td>2</td><td>-</td><td>-</td><td>-</td></tr>\n<tr><td>6</td><td>+3</td><td>Aura de Proteção</td><td>4</td><td>2</td><td>-</td><td>-</td><td>-</td></tr>\n<tr><td>7</td><td>+3</td><td>Característica de Juramento</td><td>4</td><td>3</td><td>-</td><td>-</td><td>-</td></tr>\n<tr><td>8</td><td>+3</td><td>Talento</td><td>4</td><td>3</td><td>-</td><td>-</td><td>-</td></tr>\n<tr><td>9</td><td>+4</td><td>-</td><td>4</td><td>3</td><td>2</td><td>-</td><td>-</td></tr>\n<tr><td>10</td><td>+4</td><td>Aura da Coragem</td><td>4</td><td>3</td><td>2</td><td>-</td><td>-</td></tr>\n<tr><td>11</td><td>+4</td><td>Destruição Divina Aprimorada</td><td>4</td><td>3</td><td>3</td><td>-</td><td>-</td></tr>\n<tr><td>12</td><td>+4</td><td>Talento</td><td>4</td><td>3</td><td>3</td><td>-</td><td>-</td></tr>\n<tr><td>13</td><td>+5</td><td>-</td><td>4</td><td>3</td><td>3</td><td>1</td><td>-</td></tr>\n<tr><td>14</td><td>+5</td><td>Toque Purificador</td><td",
+    "descriptionText": "“Eu entro e o ar aprende silêncio. Minha presença organiza o caos, minha palavra redefine o possível. Se te ofereço rendição, é misericórdia; se a negas, meu estandarte te ensina obediência. Enquanto meu juramento estiver erguido, a resistência tem fim.”",
+    "description": "“Eu entro e o ar aprende silêncio. Minha presença organiza o caos, minha palavra redefine o possível. Se te ofereço rendição, é misericórdia; se a negas, meu estandarte te ensina obediência. Enquanto meu juramento estiver erguido, a resistência tem fim.”",
+    "shortDescription": "“Eu entro e o ar aprende silêncio. Minha presença organiza o caos, minha palavra redefine o possível.",
+    "descriptionStatus": "complete",
+    "descriptionSource": "article-body",
+    "needsReviewReasons": [],
+    "tags": [
+      "class",
+      "paladino"
+    ],
+    "foundry": {
+      "preferredType": "class"
+    },
+    "sourceFileName": "data\\HTML BONFIRE\\classes\\Paladino in Bonfire Tales RPG _ World Anvil.html",
+    "hitDie": "d10",
+    "hitDieStatus": "complete",
+    "savingThrows": [
+      "wis",
+      "cha"
+    ],
+    "savingThrowsStatus": "complete",
+    "spellcasting": {
+      "type": "half",
+      "ability": "cha"
+    },
+    "progression": {
+      "status": "extracted-partial",
+      "levels": {
+        "1": [
+          "Sentido Divino",
+          "Cura Pelas Mãos",
+          "Conjuração",
+          "Maestria em Armas"
+        ],
+        "2": [
+          "Doutrina Marcial",
+          "Destruição Divina"
+        ],
+        "3": [
+          "Juramento Sagrado",
+          "Canalizar Divindade",
+          "Saúde Divina"
+        ],
+        "4": [
+          "Aprimoramento de Atributo ou Talento"
+        ],
+        "5": [
+          "Ataque Extra",
+          "Montaria Heróica"
+        ],
+        "6": [
+          "Aura de Proteção"
+        ],
+        "7": [
+          "Característica de Juramento"
+        ],
+        "8": [
+          "Incremento de Atributo ou Talento"
+        ],
+        "9": [],
+        "10": [
+          "Aura da Coragem"
+        ],
+        "11": [
+          "Destruição Divina Aprimorada"
+        ],
+        "12": [
+          "Incremento de Atributo ou Talento"
+        ],
+        "13": [],
+        "14": [
+          "Toque Purificador"
+        ],
+        "15": [
+          "Característica de Juramento"
+        ],
+        "16": [
+          "Incremento de Atributo ou Talento"
+        ],
+        "17": [],
+        "18": [
+          "Melhoria de Aura"
+        ],
+        "19": [
+          "Incremento de Atributo ou Talento"
+        ],
+        "20": [
+          "Característica de Juramento"
+        ]
+      }
+    }
+  }
+]

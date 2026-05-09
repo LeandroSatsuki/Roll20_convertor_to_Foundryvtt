@@ -19,6 +19,7 @@ user-overrides.local.json
 reference-library/*.json
 !reference-library/.gitkeep
 !reference-library/README.md
+data/HTML BONFIRE/
 
 # Editor directories and files
 .vscode/*

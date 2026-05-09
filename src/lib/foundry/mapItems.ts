@@ -23,6 +23,7 @@ export function mapItems(character: NormalizedCharacter): FoundryItem[] {
     subclass: mainClass?.subclass,
     race: character.identity.race.value,
     background: character.identity.background.value,
+    sourceFileName: character.source.fileName,
   }
 
   if (mainClass) {

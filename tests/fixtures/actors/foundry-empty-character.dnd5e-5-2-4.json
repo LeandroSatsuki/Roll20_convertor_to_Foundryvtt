@@ -1,0 +1,11 @@
+{
+  "name": "Empty Bonfire Character Fixture",
+  "type": "character",
+  "system": {
+    "abilities": {},
+    "attributes": {}
+  },
+  "items": [],
+  "effects": [],
+  "flags": {}
+}

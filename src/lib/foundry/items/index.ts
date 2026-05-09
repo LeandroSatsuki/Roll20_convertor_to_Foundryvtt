@@ -52,6 +52,7 @@ type FeatureContext = {
   subclass?: string
   race?: string
   background?: string
+  sourceFileName?: string
 }
 
 const automationSourceCodeMarker = 'foundry-item-automation-v1'
@@ -90,8 +91,10 @@ function mergeDescriptionMeta(flags: Record<string, unknown>, meta: ItemDescript
       status: meta.status,
       sourceUrl: meta.sourceUrl ?? null,
       sourceName: meta.sourceName ?? null,
+      sourceType: meta.sourceType ?? null,
       warningCodes: meta.warningCodes,
       warningMessages: meta.warningMessages,
+      needsReviewReasons: meta.needsReviewReasons ?? [],
       overrideApplied: Boolean(meta.overrideApplied),
     },
   }
@@ -107,6 +110,16 @@ export function buildFeatItem(options: {
   const name = options.feature?.name.value ?? options.resource?.label.value ?? 'Unknown Feature'
   const raw = options.feature?.raw ?? options.resource?.raw ?? name
   const resolution = resolveFeature(raw || name, { ...options.context, section: options.feature?.sourceType ?? 'action' }, defaultBonfireRuleStore)
+  if (options.feature && isBonfireRuleNotFound(resolution)) {
+    return buildUnresolvedBonfireRuleItem({
+      feature: options.feature,
+      resolution,
+      identifier: options.identifier,
+      context: options.context,
+      originalName: name,
+      raw,
+    })
+  }
   const descriptionMeta = buildRuleDescriptionMeta({
     itemName: resolution.confidence === 'low' ? name : resolution.resolvedName,
     itemKind: resolution.kind,
@@ -218,6 +231,143 @@ export function buildFeatItem(options: {
       structuredAutomationConfigured,
     },
   })
+}
+
+function isBonfireRuleNotFound(resolution: FeatureResolution): boolean {
+  return !resolution.ruleId && (resolution.confidence === 'low' || resolution.kind === 'unknown')
+}
+
+function buildUnresolvedBonfireRuleItem(options: {
+  feature: NormalizedFeature
+  resolution: FeatureResolution
+  identifier: string
+  context: FeatureContext
+  originalName: string
+  raw: string
+}): FoundryItem {
+  const category = inferUnresolvedBonfireCategory(options.feature)
+  const originalName = cleanOriginalRuleName(options.feature.rawName ?? options.feature.cleanedName ?? options.originalName)
+  const placeholderName = `${originalName} (Não Encontrado, CORRIGIR!)`
+  const descriptionHtml = renderUnresolvedBonfireDescription({
+    originalName,
+    category,
+    sourceCell: options.feature.sourceCell,
+    sourceRange: options.feature.sourceRange,
+    sourceFileName: options.context.sourceFileName,
+  })
+
+  return buildGenericItem({
+    name: placeholderName,
+    type: 'feat',
+    img: 'icons/svg/hazard.svg',
+    identifier: options.identifier,
+    description: `${originalName}: regra Bonfire nao encontrada; revisar manualmente.`,
+    descriptionHtml,
+    sourceBook: 'Bonfire Tales / Sheet',
+    converterFlags: {
+      rawName: options.raw,
+      resolvedKind: options.feature.inferredKind ?? options.feature.sourceType ?? 'unknownFeature',
+      confidence: 'low',
+      source: 'bonfire-rule-store',
+      warnings: ['BONFIRE_RULE_COVERAGE_MISSING', 'FEATURE_UNRESOLVED_REVIEW_REQUIRED'],
+      descriptionMeta: {
+        status: 'complete',
+        sourceUrl: null,
+        sourceName: 'Conversor local',
+        warningCodes: [],
+        warningMessages: [],
+        overrideApplied: false,
+      },
+      bonfireResolution: {
+        status: 'not-found',
+        playerVisibleStatus: 'Não Encontrado, CORRIGIR!',
+        source: 'bonfire-rule-store',
+        originalName,
+        category,
+        sourceCell: options.feature.sourceCell ?? null,
+        sourceRange: options.feature.sourceRange ?? null,
+        sourceFileName: options.context.sourceFileName ?? null,
+        shouldReview: true,
+      },
+      featureResolution: {
+        sourcePriority: 'bonfire-first',
+        bonfireMatched: false,
+        bonfireRuleId: null,
+        libraryCandidateRejectedBecauseBonfireMatched: false,
+        librarySuggestionName: null,
+        sourceCell: options.feature.sourceCell ?? null,
+        sourceRange: options.feature.sourceRange ?? null,
+        librarySuggestionAliases: featureLibrarySuggestionAliases(options.feature.rawName ?? options.raw),
+      },
+      featureSource:
+        options.feature.source === 'bonfire-v2.1'
+          ? {
+              fromSheetRange: true,
+              sourceCell: options.feature.sourceCell ?? null,
+              sourceRange: options.feature.sourceRange ?? null,
+              sourceGroup: options.feature.sourceGroup ?? null,
+              rawName: options.feature.rawName ?? options.feature.raw ?? options.raw,
+              cleanedName: options.feature.cleanedName ?? options.feature.name.value,
+              inferredKind: options.feature.inferredKind ?? null,
+              classificationReason: options.feature.classificationReason ?? null,
+              hydratedFromLibrary: false,
+              fallbackBonfire: false,
+              unresolved: true,
+            }
+          : undefined,
+      ruleResolution: {
+        rawName: options.raw,
+        resolvedName: originalName,
+        kind: options.resolution.kind,
+        confidence: 'unknown',
+        score: options.resolution.score ?? 0,
+        ruleId: null,
+        sourceUrl: null,
+        candidates: options.resolution.candidates ?? [],
+        manuallyResolved: false,
+      },
+    },
+    system: {
+      type: { value: category, subtype: '' },
+    },
+    automation: {
+      requestedLevel: 'none',
+      warnings: ['Regra Bonfire nao encontrada; nenhum activity foi criado.'],
+      structuredAutomationConfigured: false,
+    },
+  })
+}
+
+function inferUnresolvedBonfireCategory(feature: NormalizedFeature): 'race' | 'class' | 'feat' | 'background' | 'other' {
+  const kind = feature.inferredKind ?? feature.sourceType
+  if (/race/i.test(kind)) return 'race'
+  if (/class|subclass/i.test(kind)) return 'class'
+  if (/background/i.test(kind)) return 'background'
+  if (/feat|talento/i.test(kind)) return 'feat'
+  return 'other'
+}
+
+function cleanOriginalRuleName(name: string): string {
+  return name.replace(/\s+\(N(?:a|ã)o Encontrado, CORRIGIR!\)$/i, '').trim() || 'Regra Bonfire'
+}
+
+function renderUnresolvedBonfireDescription(options: {
+  originalName: string
+  category: string
+  sourceCell?: string
+  sourceRange?: string
+  sourceFileName?: string
+}): string {
+  return [
+    '<section class="bonfire-unresolved-rule">',
+    `<h2>${escapeHtml(options.originalName)}</h2>`,
+    '<p><strong>Status:</strong> Não Encontrado, CORRIGIR!</p>',
+    '<p>Esta regra foi detectada na ficha, mas não foi encontrada no Bonfire Rule Store.</p>',
+    `<p><strong>Categoria inferida:</strong> ${escapeHtml(options.category)}</p>`,
+    `<p><strong>Origem:</strong> ${escapeHtml(options.sourceCell ?? 'desconhecida')} / ${escapeHtml(options.sourceRange ?? 'desconhecida')}</p>`,
+    `<p><strong>Arquivo:</strong> ${escapeHtml(options.sourceFileName ?? 'desconhecido')}</p>`,
+    '</section>',
+  ].join('')
 }
 
 const bonfirePreferredFeatureKeys = new Set(

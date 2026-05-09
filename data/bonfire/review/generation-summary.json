@@ -1,0 +1,38 @@
+{
+  "generatedAt": "2026-05-09T15:29:05.623Z",
+  "sourceRoots": [
+    "data\\HTML BONFIRE\\classes",
+    "data\\HTML BONFIRE\\racas",
+    "data\\HTML BONFIRE\\antecedentes",
+    "data\\HTML BONFIRE\\talentos",
+    "data\\HTML BONFIRE\\ajustes",
+    "data\\HTML BONFIRE\\essencia"
+  ],
+  "htmlFilesFound": 27,
+  "htmlFilesProcessed": 26,
+  "parseErrorCount": 0,
+  "parseErrors": [],
+  "seedCounts": {
+    "classes": 13,
+    "classFeatures": 983,
+    "races": 4,
+    "raceFeatures": 591,
+    "backgrounds": 30,
+    "backgroundFeatures": 30,
+    "feats": 164,
+    "subclasses": 32,
+    "subclassFeatures": 324,
+    "spellOverrides": 23
+  },
+  "classCoverage": {
+    "total": 13,
+    "covered": 13,
+    "needsReview": 0,
+    "missing": 0
+  },
+  "reviewCounts": {
+    "needsReview": 458,
+    "missingRules": 0,
+    "missingClassFixtures": 13
+  }
+}

@@ -3,7 +3,7 @@ import { buildBonfireBundle } from './bonfireBundleFixture'
 import { loadMegaLibraryFixture } from './foundryMegaLibraryFixture'
 
 describe('nannaFeatureAliasHydration', () => {
-  it('hydrates only the safe official aliases from the Foundry library while leaving protected Bonfire features local', async () => {
+  it('keeps feature names on the Bonfire side even when the library has official aliases', async () => {
     const { bundle } = await buildBonfireBundle(
       {
         overrides: [
@@ -21,10 +21,12 @@ describe('nannaFeatureAliasHydration', () => {
     )
 
     const names = bundle.actor.items.map((item) => item.name)
-    expect(names).toContain('Spellcasting')
-    expect(names).toContain('Inspiring Leader')
+    expect(names).toContain('Conjuracao')
+    expect(names).toContain('Líder Inspirador')
     expect(names).toContain('Ordem Primal: Xamã')
     expect(names).toContain('Surto Selvagem: Elo Primal')
+    expect(names).not.toContain('Spellcasting')
+    expect(names).not.toContain('Inspiring Leader')
     expect(names).not.toContain('Primal Order')
     expect(names).not.toContain('Wild Resurgence')
   })
