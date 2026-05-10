@@ -8,9 +8,12 @@ export type BonfireClassRule = {
   descriptionHtml?: string
   descriptionText?: string
   shortDescription?: string
-  descriptionStatus?: 'complete' | 'summary-only' | 'fallback' | 'needs-review' | 'missing'
-  descriptionSource?: 'article-body' | 'section-body' | 'table-row' | 'card-summary' | 'manual-review' | 'unknown'
+  descriptionStatus?: 'complete' | 'summary-only' | 'needs-review' | 'missing'
+  descriptionSource?: 'article-body' | 'section-body' | 'table-rule-body' | 'table-row' | 'inline-bold-subrule' | 'card-summary' | 'category-preview' | 'manual-review' | 'unknown' | 'fallback' | 'generated' | 'local-preview'
   needsReviewReasons?: string[]
+  parentRuleId?: string
+  parentName?: string
+  parentDisplayName?: string
   hitDie: string
   primaryAbility: AbilityKey[]
   savingThrows: AbilityKey[]
@@ -38,9 +41,12 @@ export type BonfireSubclassRule = {
   descriptionHtml?: string
   descriptionText?: string
   shortDescription?: string
-  descriptionStatus?: 'complete' | 'summary-only' | 'fallback' | 'needs-review' | 'missing'
-  descriptionSource?: 'article-body' | 'section-body' | 'table-row' | 'card-summary' | 'manual-review' | 'unknown'
+  descriptionStatus?: 'complete' | 'summary-only' | 'needs-review' | 'missing'
+  descriptionSource?: 'article-body' | 'section-body' | 'table-rule-body' | 'table-row' | 'inline-bold-subrule' | 'card-summary' | 'category-preview' | 'manual-review' | 'unknown' | 'fallback' | 'generated' | 'local-preview'
   needsReviewReasons?: string[]
+  parentRuleId?: string
+  parentName?: string
+  parentDisplayName?: string
   featuresByLevel: Record<string, BonfireRuleFeature[]>
   sourceUrl?: string
 }
@@ -53,9 +59,12 @@ export type BonfireRaceRule = {
   descriptionHtml?: string
   descriptionText?: string
   shortDescription?: string
-  descriptionStatus?: 'complete' | 'summary-only' | 'fallback' | 'needs-review' | 'missing'
-  descriptionSource?: 'article-body' | 'section-body' | 'table-row' | 'card-summary' | 'manual-review' | 'unknown'
+  descriptionStatus?: 'complete' | 'summary-only' | 'needs-review' | 'missing'
+  descriptionSource?: 'article-body' | 'section-body' | 'table-rule-body' | 'table-row' | 'inline-bold-subrule' | 'card-summary' | 'category-preview' | 'manual-review' | 'unknown' | 'fallback' | 'generated' | 'local-preview'
   needsReviewReasons?: string[]
+  parentRuleId?: string
+  parentName?: string
+  parentDisplayName?: string
   speed: number
   size: string
   features: BonfireRuleFeature[]
@@ -70,9 +79,12 @@ export type BonfireBackgroundRule = {
   descriptionHtml?: string
   descriptionText?: string
   shortDescription?: string
-  descriptionStatus?: 'complete' | 'summary-only' | 'fallback' | 'needs-review' | 'missing'
-  descriptionSource?: 'article-body' | 'section-body' | 'table-row' | 'card-summary' | 'manual-review' | 'unknown'
+  descriptionStatus?: 'complete' | 'summary-only' | 'needs-review' | 'missing'
+  descriptionSource?: 'article-body' | 'section-body' | 'table-rule-body' | 'table-row' | 'inline-bold-subrule' | 'card-summary' | 'category-preview' | 'manual-review' | 'unknown' | 'fallback' | 'generated' | 'local-preview'
   needsReviewReasons?: string[]
+  parentRuleId?: string
+  parentName?: string
+  parentDisplayName?: string
   features: BonfireRuleFeature[]
   proficiencies: string[]
   startingGold?: number
@@ -87,9 +99,12 @@ export type BonfireFeatRule = {
   descriptionHtml?: string
   descriptionText?: string
   shortDescription?: string
-  descriptionStatus?: 'complete' | 'summary-only' | 'fallback' | 'needs-review' | 'missing'
-  descriptionSource?: 'article-body' | 'section-body' | 'table-row' | 'card-summary' | 'manual-review' | 'unknown'
+  descriptionStatus?: 'complete' | 'summary-only' | 'needs-review' | 'missing'
+  descriptionSource?: 'article-body' | 'section-body' | 'table-rule-body' | 'table-row' | 'inline-bold-subrule' | 'card-summary' | 'category-preview' | 'manual-review' | 'unknown' | 'fallback' | 'generated' | 'local-preview'
   needsReviewReasons?: string[]
+  parentRuleId?: string
+  parentName?: string
+  parentDisplayName?: string
   category: 'origin' | 'general' | 'racial' | 'extra' | 'unknown'
   prerequisites: string[]
   effects: string[]
@@ -106,9 +121,12 @@ export type BonfireWeaponRule = {
   descriptionHtml?: string
   descriptionText?: string
   shortDescription?: string
-  descriptionStatus?: 'complete' | 'summary-only' | 'fallback' | 'needs-review' | 'missing'
-  descriptionSource?: 'article-body' | 'section-body' | 'table-row' | 'card-summary' | 'manual-review' | 'unknown'
+  descriptionStatus?: 'complete' | 'summary-only' | 'needs-review' | 'missing'
+  descriptionSource?: 'article-body' | 'section-body' | 'table-rule-body' | 'table-row' | 'inline-bold-subrule' | 'card-summary' | 'category-preview' | 'manual-review' | 'unknown' | 'fallback' | 'generated' | 'local-preview'
   needsReviewReasons?: string[]
+  parentRuleId?: string
+  parentName?: string
+  parentDisplayName?: string
   category: 'simple' | 'martial' | 'armor' | 'shield' | 'consumable' | 'equipment' | 'focus' | 'unknown'
   damage?: string
   damageType?: string
@@ -129,9 +147,12 @@ export type BonfireSpellOverrideRule = {
   descriptionText?: string
   shortDescription?: string
   baseDescription?: string
-  descriptionStatus?: 'complete' | 'summary-only' | 'fallback' | 'needs-review' | 'missing'
-  descriptionSource?: 'article-body' | 'section-body' | 'table-row' | 'card-summary' | 'manual-review' | 'unknown'
+  descriptionStatus?: 'complete' | 'summary-only' | 'needs-review' | 'missing'
+  descriptionSource?: 'article-body' | 'section-body' | 'table-rule-body' | 'table-row' | 'inline-bold-subrule' | 'card-summary' | 'category-preview' | 'manual-review' | 'unknown' | 'fallback' | 'generated' | 'local-preview'
   needsReviewReasons?: string[]
+  parentRuleId?: string
+  parentName?: string
+  parentDisplayName?: string
   foundryNotes: string
   sourceUrl?: string
 }
@@ -145,9 +166,12 @@ export type BonfireRuleFeature = {
   descriptionHtml?: string
   descriptionText?: string
   shortDescription?: string
-  descriptionStatus?: 'complete' | 'summary-only' | 'fallback' | 'needs-review' | 'missing'
-  descriptionSource?: 'article-body' | 'section-body' | 'table-row' | 'card-summary' | 'manual-review' | 'unknown'
+  descriptionStatus?: 'complete' | 'summary-only' | 'needs-review' | 'missing'
+  descriptionSource?: 'article-body' | 'section-body' | 'table-rule-body' | 'table-row' | 'inline-bold-subrule' | 'card-summary' | 'category-preview' | 'manual-review' | 'unknown' | 'fallback' | 'generated' | 'local-preview'
   needsReviewReasons?: string[]
+  parentRuleId?: string
+  parentName?: string
+  parentDisplayName?: string
   kind?: FeatureResolution['kind']
   uses?: BonfireUses
   activation?: string

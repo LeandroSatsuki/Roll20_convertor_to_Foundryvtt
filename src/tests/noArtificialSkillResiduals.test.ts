@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest'
-import { loadPipkinFoundry } from './pipkinFoundryFixture'
+import { loadClerigoLevel5Foundry } from './clerigoLevel5FoundryFixture'
 
 describe('noArtificialSkillResiduals', () => {
-  it('does not invent negative residuals or expertise for Pipkin skills', async () => {
-    const { actor } = await loadPipkinFoundry()
+  it('does not invent negative residuals or expertise for clerigo-level5 skills', async () => {
+    const { actor } = await loadClerigoLevel5Foundry()
     const skills = (actor.system as any).skills
 
     expect(skills.ath.bonuses.check).not.toBe('-3')

@@ -1,10 +1,10 @@
 import { describe, expect, it } from 'vitest'
 import { getItemAutomationMeta } from '../lib/foundry/items'
-import { loadPipkinFoundry } from './pipkinFoundryFixture'
+import { loadClerigoLevel5Foundry } from './clerigoLevel5FoundryFixture'
 
 describe('Potion of Healing automation', () => {
   it('creates a healing consumable with 2d4+2 and one use', async () => {
-    const { actor } = await loadPipkinFoundry()
+    const { actor } = await loadClerigoLevel5Foundry()
     const item = actor.items.find((entry) => entry.name === 'Potion of Healing')
     const activity = Object.values((item?.system.activities as Record<string, any>) ?? {})[0]
 

@@ -4,7 +4,7 @@ import { parseBonfireCharacterSheet } from '../lib/sheets/parseBonfireCharacterS
 import { readWorkbook } from '../lib/sheets/readWorkbook'
 
 describe('bonfire log ability scores fixed', () => {
-  it('extracts the expected Pipkin scores and keeps signed values out of .score', async () => {
+  it('extracts the expected clerigo-level5 scores and keeps signed values out of .score', async () => {
     const workbook = await readWorkbook(new Uint8Array(readFileSync('samples/Pipkin.xlsx')), 'Pipkin.xlsx')
     const result = parseBonfireCharacterSheet(workbook)
     const { abilities } = result.character

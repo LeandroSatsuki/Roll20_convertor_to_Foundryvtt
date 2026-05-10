@@ -1,11 +1,11 @@
 import { describe, expect, it } from 'vitest'
 import { parseBonfireCharacterSheet } from '../lib/sheets/parseBonfireCharacterSheet'
 import { readWorkbook } from '../lib/sheets/readWorkbook'
-import { createPipkinWorkbookData } from './createPipkinWorkbook'
+import { createClerigoLevel5WorkbookData } from './createClerigoLevel5Workbook'
 
 describe('parseBonfireCharacterSheet', () => {
-  it('extracts Pipkin from the xlsx sheet', async () => {
-    const workbook = await readWorkbook(createPipkinWorkbookData(), 'Pipkin.xlsx')
+  it('extracts clerigo-level5 from the xlsx sheet', async () => {
+    const workbook = await readWorkbook(createClerigoLevel5WorkbookData(), 'Pipkin.xlsx')
     const { character } = parseBonfireCharacterSheet(workbook)
     expect(character.identity.name.value).toBe('Pipkin "Sorte Grande"')
     expect(character.identity.classes[0]).toEqual({ name: 'Clérigo', level: 5 })

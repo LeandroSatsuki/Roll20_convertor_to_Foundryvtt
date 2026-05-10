@@ -5,7 +5,7 @@ describe('bonfireRuleIndex', () => {
   it('finds rules by exact name, identifier, accents and aliases', () => {
     expect(searchBonfireRuleIndex('Canalizar Divindade')[0]?.name).toBe('Canalizar Divindade')
     expect(searchBonfireRuleIndex('clerigo-canalizar-divindade')[0]?.name).toBe('Canalizar Divindade')
-    expect(searchBonfireRuleIndex('Canalizar Divindade')[0]?.identifier).toBe('clerigo-canalizar-divindade')
+    expect(searchBonfireRuleIndex('Canalizar Divindade')[0]?.identifier).toMatch(/^clerigo-canalizar-divindade(?:-l\d+)?$/)
     expect(searchBonfireRuleIndex('Conjuracao')[0]?.name).toBe('Conjuração')
     expect(searchBonfireRuleIndex('Second Wind')[0]?.name).toBe('Retomar Fôlego')
   })

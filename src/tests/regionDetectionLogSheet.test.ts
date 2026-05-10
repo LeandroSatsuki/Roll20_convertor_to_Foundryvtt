@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest'
 import { detectBestCharacterSheet } from '../lib/sheets/detectSheetTemplate'
 import { readWorkbook } from '../lib/sheets/readWorkbook'
 
-describe('region detection for Pipkin sheet', () => {
+describe('region detection for clerigo-level5 sheet', () => {
   it('selects a medium or high confidence character region and avoids far auxiliary columns', async () => {
     const workbook = await readWorkbook(new Uint8Array(readFileSync('samples/Pipkin.xlsx')), 'Pipkin.xlsx')
     const detection = detectBestCharacterSheet(workbook)

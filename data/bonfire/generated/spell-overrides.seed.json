@@ -31,11 +31,10 @@
     "kind": "spellOverride",
     "source": "bonfire",
     "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/magias-category",
-    "shortDescription": "Descricao completa ainda nao cadastrada no seed local.",
-    "descriptionStatus": "summary-only",
-    "descriptionSource": "card-summary",
+    "descriptionStatus": "missing",
+    "descriptionSource": "section-body",
     "needsReviewReasons": [
-      "summary-card-used-no-full-description",
+      "missing-full-rule-description",
       "missing-full-rule-page"
     ],
     "tags": [
@@ -55,11 +54,10 @@
     "kind": "spellOverride",
     "source": "bonfire",
     "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/magias-category",
-    "shortDescription": "Descricao completa ainda nao cadastrada no seed local.",
-    "descriptionStatus": "summary-only",
-    "descriptionSource": "card-summary",
+    "descriptionStatus": "missing",
+    "descriptionSource": "section-body",
     "needsReviewReasons": [
-      "summary-card-used-no-full-description",
+      "missing-full-rule-description",
       "missing-full-rule-page"
     ],
     "tags": [
@@ -104,11 +102,11 @@
     "source": "bonfire",
     "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/magias-category",
     "shortDescription": "WORLD ANVIL API",
-    "descriptionStatus": "summary-only",
-    "descriptionSource": "card-summary",
+    "descriptionStatus": "needs-review",
+    "descriptionSource": "section-body",
     "needsReviewReasons": [
-      "summary-card-used-no-full-description",
-      "missing-full-rule-page"
+      "missing-full-rule-page",
+      "missing-full-rule-description"
     ],
     "tags": [
       "spellOverride"
@@ -128,11 +126,11 @@
     "source": "bonfire",
     "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/magias-category",
     "shortDescription": "STREAMING MAJOR CHALLENGES WORLDEMBER SUMMERCAMP",
-    "descriptionStatus": "summary-only",
-    "descriptionSource": "card-summary",
+    "descriptionStatus": "needs-review",
+    "descriptionSource": "section-body",
     "needsReviewReasons": [
-      "summary-card-used-no-full-description",
-      "missing-full-rule-page"
+      "missing-full-rule-page",
+      "missing-full-rule-description"
     ],
     "tags": [
       "spellOverride"
@@ -152,11 +150,11 @@
     "source": "bonfire",
     "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/magias-category",
     "shortDescription": "DO YOU NEED HELP? PRICING GIFT A MEMBERSHIP!",
-    "descriptionStatus": "summary-only",
-    "descriptionSource": "card-summary",
+    "descriptionStatus": "needs-review",
+    "descriptionSource": "section-body",
     "needsReviewReasons": [
-      "summary-card-used-no-full-description",
-      "missing-full-rule-page"
+      "missing-full-rule-page",
+      "missing-full-rule-description"
     ],
     "tags": [
       "spellOverride"
@@ -176,11 +174,11 @@
     "source": "bonfire",
     "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/magias-category",
     "shortDescription": "WORLDANVIL PODCAST DISCORD BLOG BLUESKY TWITTER YOUTUBE TWITCH FACEBOOK REDDIT",
-    "descriptionStatus": "summary-only",
-    "descriptionSource": "card-summary",
+    "descriptionStatus": "needs-review",
+    "descriptionSource": "section-body",
     "needsReviewReasons": [
-      "summary-card-used-no-full-description",
-      "missing-full-rule-page"
+      "missing-full-rule-page",
+      "missing-full-rule-description"
     ],
     "tags": [
       "spellOverride"
@@ -199,11 +197,10 @@
     "kind": "spellOverride",
     "source": "bonfire",
     "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/magias-category",
-    "shortDescription": "Descricao completa ainda nao cadastrada no seed local.",
-    "descriptionStatus": "summary-only",
-    "descriptionSource": "card-summary",
+    "descriptionStatus": "missing",
+    "descriptionSource": "section-body",
     "needsReviewReasons": [
-      "summary-card-used-no-full-description",
+      "missing-full-rule-description",
       "missing-full-rule-page"
     ],
     "tags": [
@@ -224,11 +221,11 @@
     "source": "bonfire",
     "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/magias-category",
     "shortDescription": "PRIVACY TERMS OF SERVICE COPYRIGHT ETIQUETTE ACCESSIBILITY",
-    "descriptionStatus": "summary-only",
-    "descriptionSource": "card-summary",
+    "descriptionStatus": "needs-review",
+    "descriptionSource": "section-body",
     "needsReviewReasons": [
-      "summary-card-used-no-full-description",
-      "missing-full-rule-page"
+      "missing-full-rule-page",
+      "missing-full-rule-description"
     ],
     "tags": [
       "spellOverride"
@@ -248,11 +245,11 @@
     "source": "bonfire",
     "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/magias-category",
     "shortDescription": "Toggle Menu CREATE YOUR ACCOUNT LOGIN I AM A GAMEMASTER I AM AN AUTHOR I AM AN ARTIST COMMUNITY CREATE YOUR ACCOUNT CREATE YOUR ACCOUNT LOGIN LOGIN Ir para a Página Inicial de Bonfire Tales RPG",
-    "descriptionStatus": "summary-only",
-    "descriptionSource": "card-summary",
+    "descriptionStatus": "needs-review",
+    "descriptionSource": "section-body",
     "needsReviewReasons": [
-      "summary-card-used-no-full-description",
-      "missing-full-rule-page"
+      "missing-full-rule-page",
+      "missing-full-rule-description"
     ],
     "tags": [
       "spellOverride"
@@ -272,11 +269,11 @@
     "source": "bonfire",
     "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/magias-category",
     "shortDescription": "Todos os livros abaixo estão liberados para uso de magias, conforme os marcados em azul na imagem.",
-    "descriptionStatus": "summary-only",
-    "descriptionSource": "card-summary",
+    "descriptionStatus": "needs-review",
+    "descriptionSource": "section-body",
     "needsReviewReasons": [
-      "summary-card-used-no-full-description",
-      "missing-full-rule-page"
+      "missing-full-rule-page",
+      "missing-full-rule-description"
     ],
     "tags": [
       "spellOverride"
@@ -295,11 +292,10 @@
     "kind": "spellOverride",
     "source": "bonfire",
     "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/magias-category",
-    "shortDescription": "Descricao completa ainda nao cadastrada no seed local.",
-    "descriptionStatus": "summary-only",
-    "descriptionSource": "card-summary",
+    "descriptionStatus": "missing",
+    "descriptionSource": "section-body",
     "needsReviewReasons": [
-      "summary-card-used-no-full-description",
+      "missing-full-rule-description",
       "missing-full-rule-page"
     ],
     "tags": [
@@ -319,11 +315,10 @@
     "kind": "spellOverride",
     "source": "bonfire",
     "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/magias-category",
-    "shortDescription": "Descricao completa ainda nao cadastrada no seed local.",
-    "descriptionStatus": "summary-only",
-    "descriptionSource": "card-summary",
+    "descriptionStatus": "missing",
+    "descriptionSource": "section-body",
     "needsReviewReasons": [
-      "summary-card-used-no-full-description",
+      "missing-full-rule-description",
       "missing-full-rule-page"
     ],
     "tags": [
@@ -343,11 +338,10 @@
     "kind": "spellOverride",
     "source": "bonfire",
     "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/magias-category",
-    "shortDescription": "Descricao completa ainda nao cadastrada no seed local.",
-    "descriptionStatus": "summary-only",
-    "descriptionSource": "card-summary",
+    "descriptionStatus": "missing",
+    "descriptionSource": "section-body",
     "needsReviewReasons": [
-      "summary-card-used-no-full-description",
+      "missing-full-rule-description",
       "missing-full-rule-page"
     ],
     "tags": [
@@ -367,11 +361,10 @@
     "kind": "spellOverride",
     "source": "bonfire",
     "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/magias-category",
-    "shortDescription": "Descricao completa ainda nao cadastrada no seed local.",
-    "descriptionStatus": "summary-only",
-    "descriptionSource": "card-summary",
+    "descriptionStatus": "missing",
+    "descriptionSource": "section-body",
     "needsReviewReasons": [
-      "summary-card-used-no-full-description",
+      "missing-full-rule-description",
       "missing-full-rule-page"
     ],
     "tags": [
@@ -392,11 +385,11 @@
     "source": "bonfire",
     "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/magias-category",
     "shortDescription": "GIFTS & WORLD ANVIL GEAR",
-    "descriptionStatus": "summary-only",
-    "descriptionSource": "card-summary",
+    "descriptionStatus": "needs-review",
+    "descriptionSource": "section-body",
     "needsReviewReasons": [
-      "summary-card-used-no-full-description",
-      "missing-full-rule-page"
+      "missing-full-rule-page",
+      "missing-full-rule-description"
     ],
     "tags": [
       "spellOverride"
@@ -440,11 +433,11 @@
     "source": "bonfire",
     "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/magias-category",
     "shortDescription": "JOIN THE AFFILIATE PROGRAM GET SPONSORED",
-    "descriptionStatus": "summary-only",
-    "descriptionSource": "card-summary",
+    "descriptionStatus": "needs-review",
+    "descriptionSource": "section-body",
     "needsReviewReasons": [
-      "summary-card-used-no-full-description",
-      "missing-full-rule-page"
+      "missing-full-rule-page",
+      "missing-full-rule-description"
     ],
     "tags": [
       "spellOverride"
@@ -463,11 +456,10 @@
     "kind": "spellOverride",
     "source": "bonfire",
     "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/magias-category",
-    "shortDescription": "Descricao completa ainda nao cadastrada no seed local.",
-    "descriptionStatus": "summary-only",
-    "descriptionSource": "card-summary",
+    "descriptionStatus": "missing",
+    "descriptionSource": "section-body",
     "needsReviewReasons": [
-      "summary-card-used-no-full-description",
+      "missing-full-rule-description",
       "missing-full-rule-page"
     ],
     "tags": [
@@ -488,11 +480,11 @@
     "source": "bonfire",
     "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/magias-category",
     "shortDescription": "RANDOM GENERATORS WORLDBUILDING PROMPTS WHAT IS WORLDBUILDING?",
-    "descriptionStatus": "summary-only",
-    "descriptionSource": "card-summary",
+    "descriptionStatus": "needs-review",
+    "descriptionSource": "section-body",
     "needsReviewReasons": [
-      "summary-card-used-no-full-description",
-      "missing-full-rule-page"
+      "missing-full-rule-page",
+      "missing-full-rule-description"
     ],
     "tags": [
       "spellOverride"
@@ -511,11 +503,10 @@
     "kind": "spellOverride",
     "source": "bonfire",
     "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/magias-category",
-    "shortDescription": "Descricao completa ainda nao cadastrada no seed local.",
-    "descriptionStatus": "summary-only",
-    "descriptionSource": "card-summary",
+    "descriptionStatus": "missing",
+    "descriptionSource": "section-body",
     "needsReviewReasons": [
-      "summary-card-used-no-full-description",
+      "missing-full-rule-description",
       "missing-full-rule-page"
     ],
     "tags": [
@@ -536,11 +527,11 @@
     "source": "bonfire",
     "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/magias-category",
     "shortDescription": "OUR TEAM WE ARE HIRING OUR NEWS",
-    "descriptionStatus": "summary-only",
-    "descriptionSource": "card-summary",
+    "descriptionStatus": "needs-review",
+    "descriptionSource": "section-body",
     "needsReviewReasons": [
-      "summary-card-used-no-full-description",
-      "missing-full-rule-page"
+      "missing-full-rule-page",
+      "missing-full-rule-description"
     ],
     "tags": [
       "spellOverride"

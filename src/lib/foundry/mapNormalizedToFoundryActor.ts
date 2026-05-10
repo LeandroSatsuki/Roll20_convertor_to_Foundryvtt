@@ -8,6 +8,7 @@ import { mapResources } from './mapResources'
 import { mapSkills } from './mapSkills'
 import { mapSpells } from './mapSpells'
 import { hasSpellcastingAbilityUnknown, inferSpellcastingAbility } from '../spellcasting/inferSpellcastingAbility'
+import { isTemplateNoiseOrPlaceholder, isTemplatePlaceholderBackgroundValue } from '../sheets/templateNoise'
 
 export function mapNormalizedToFoundryActor(character: NormalizedCharacter): FoundryActor {
   const actor = createFoundryActorTemplate(character.identity.name.value || 'Unnamed Roll20 Character')
@@ -61,8 +62,8 @@ export function mapNormalizedToFoundryActor(character: NormalizedCharacter): Fou
   actor.system.details = {
     ...(actor.system.details as Record<string, unknown>),
     alignment: character.identity.alignment.value,
-    race: character.identity.race.value,
-    background: character.identity.background.value,
+    race: isTemplateNoiseOrPlaceholder(character.identity.race.value) ? '' : character.identity.race.value,
+    background: isTemplatePlaceholderBackgroundValue(character.identity.background.value) || isTemplateNoiseOrPlaceholder(character.identity.background.value) ? '' : character.identity.background.value,
     biography: { value: '', public: '' },
   }
   actor.system.traits = { ...(actor.system.traits as Record<string, unknown>), size: 'med' }

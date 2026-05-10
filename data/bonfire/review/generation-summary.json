@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-09T15:29:05.623Z",
+  "generatedAt": "2026-05-10T00:07:43.280Z",
   "sourceRoots": [
     "data\\HTML BONFIRE\\classes",
     "data\\HTML BONFIRE\\racas",
@@ -14,14 +14,14 @@
   "parseErrors": [],
   "seedCounts": {
     "classes": 13,
-    "classFeatures": 983,
+    "classFeatures": 4021,
     "races": 4,
-    "raceFeatures": 591,
+    "raceFeatures": 1820,
     "backgrounds": 30,
     "backgroundFeatures": 30,
-    "feats": 164,
+    "feats": 936,
     "subclasses": 32,
-    "subclassFeatures": 324,
+    "subclassFeatures": 1197,
     "spellOverrides": 23
   },
   "classCoverage": {
@@ -31,8 +31,16 @@
     "missing": 0
   },
   "reviewCounts": {
-    "needsReview": 458,
+    "needsReview": 759,
     "missingRules": 0,
-    "missingClassFixtures": 13
+    "missingSourcePages": 0,
+    "missingClassFixtures": 13,
+    "subRules": 5912
+  },
+  "subRuleCounts": {
+    "bonfireSubRulesExtractedCount": 5912,
+    "bonfireInlineBoldSubRulesCount": 5912,
+    "bonfireSubRulesWithParentCount": 5912,
+    "bonfireSubRulesMissingDescriptionCount": 66
   }
 }

@@ -4,7 +4,7 @@ import { readWorkbook } from '../lib/sheets/readWorkbook'
 import { detectBestCharacterSheet } from '../lib/sheets/detectSheetTemplate'
 
 describe('detectRegionInLogSheet', () => {
-  it('finds a strong character region inside the LOG sheet of Pipkin.xlsx', async () => {
+  it('finds a strong character region inside the LOG sheet of clerigo-level5.xlsx', async () => {
     const workbook = await readWorkbook(new Uint8Array(readFileSync('samples/Pipkin.xlsx')), 'Pipkin.xlsx')
 
     const detection = detectBestCharacterSheet(workbook)

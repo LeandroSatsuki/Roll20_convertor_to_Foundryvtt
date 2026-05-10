@@ -17,14 +17,19 @@ export function DownloadButtons({ normalized, actor, auditReport, debug, actorEx
   const diagnosticPackage = normalized && actor && auditReport ? buildDiagnosticPackage({ pipelineIds, debug: debug ?? null, normalized: normalized as any, actor: actor as any, audit: auditReport }) : null
   return (
     <section className="download-row">
-      <DownloadButton label="Baixar Normalized Character JSON — DEBUG, NÃO IMPORTAR" fileName="normalized-character.json" data={normalized} />
       <DownloadButton label="Baixar Foundry Actor JSON — IMPORTAR NO FOUNDRY" fileName="foundry-actor.json" data={actor} blocked={actorExportBlocked} blockedReason={actorExportBlockedReason} />
       <DownloadButton label="Baixar Audit Report — RELATÓRIO" fileName="foundry-audit-report.json" data={auditReport} />
-      <DownloadButton
-        label="Baixar Diagnostic Package — DEBUG AVANÇADO"
-        fileName="pipeline-diagnostic-package.json"
-        data={diagnosticPackage}
-      />
+      <details className="download-debug-tools">
+        <summary>Avançado / Debug</summary>
+        <div className="download-row">
+          <DownloadButton label="Baixar Normalized Character JSON — DEBUG, NÃO IMPORTAR" fileName="normalized-character.json" data={normalized} />
+          <DownloadButton
+            label="Baixar Diagnostic Package — DEBUG AVANÇADO"
+            fileName="pipeline-diagnostic-package.json"
+            data={diagnosticPackage}
+          />
+        </div>
+      </details>
     </section>
   )
 }

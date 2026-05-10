@@ -25,7 +25,7 @@ describe('bonfire log final field resolution', () => {
     expect(result.character.identity.name.value).toBe('Pipkin "Sorte Grande"')
   })
 
-  it('records Pipkin as the final accepted name for the real sample', async () => {
+  it('records clerigo-level5 as the final accepted name for the real sample', async () => {
     const workbook = await readWorkbook(new Uint8Array(readFileSync('samples/Pipkin.xlsx')), 'Pipkin.xlsx')
     const result = parseBonfireCharacterSheet(workbook)
     const finalEntry = result.debug.finalExtractedFields.find((entry) => entry.fieldPath === 'identity.name')

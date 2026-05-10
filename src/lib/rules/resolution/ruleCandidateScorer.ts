@@ -93,6 +93,17 @@ export function scoreRuleCandidate(rawName: string, entity: BonfireRuleEntity, c
     reasons.push('local seed')
   }
 
+  if (entity.descriptionStatus === 'complete') {
+    score += 15
+    reasons.push('complete description')
+  } else if (entity.descriptionStatus === 'needs-review') {
+    score += 5
+    reasons.push('reviewable description')
+  } else if (entity.descriptionStatus === 'summary-only') {
+    score -= 5
+    conflicts.push('summary-only description')
+  }
+
   return {
     entity,
     score,

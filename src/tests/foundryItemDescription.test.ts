@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest'
-import { loadPipkinFoundry } from './pipkinFoundryFixture'
+import { loadClerigoLevel5Foundry } from './clerigoLevel5FoundryFixture'
 
 describe('foundryItemDescription', () => {
-  it('uses Rule Store descriptions instead of the old generic placeholders', async () => {
-    const { actor } = await loadPipkinFoundry()
+  it('uses exact Bonfire text when available and never leaks the old generic preview text', async () => {
+    const { actor } = await loadClerigoLevel5Foundry()
 
     const clerigo = actor.items.find((item) => item.name === 'Clérigo')
     const canalizar = actor.items.find((item) => item.name === 'Canalizar Divindade')
@@ -15,6 +15,8 @@ describe('foundryItemDescription', () => {
     expect(descriptionOf(canalizar)).toContain('Canalizar Divindade')
     expect(descriptionOf(folken)).toContain('Folken Limalumes')
     expect(descriptionOf(espiao)).toContain('Espião')
-    expect(descriptionOf(canalizar)).toContain('URL:')
+    expect(descriptionOf(canalizar)).not.toContain('Descricao Bonfire completa ainda nao foi verificada')
+    expect(descriptionOf(canalizar)).not.toContain('Descricao Bonfire nao encontrada')
+    expect(descriptionOf(canalizar)).toContain('Que a maré do Alto encontre passagem em mim sem me romper')
   })
 })

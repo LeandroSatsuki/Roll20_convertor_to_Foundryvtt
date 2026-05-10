@@ -7,12 +7,12 @@
     "kind": "race",
     "source": "bonfire",
     "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/anao-species",
-    "shortDescription": "Descricao completa ainda nao cadastrada no seed local.",
-    "descriptionStatus": "summary-only",
-    "descriptionSource": "card-summary",
+    "shortDescription": "Mestres Jogadores Sistema Mundo Bestiário Mi",
+    "descriptionStatus": "needs-review",
+    "descriptionSource": "article-body",
     "needsReviewReasons": [
-      "summary-card-used-no-full-description",
-      "missing-full-rule-page"
+      "missing-full-rule-page",
+      "missing-full-rule-description"
     ],
     "tags": [
       "race"
@@ -32,12 +32,12 @@
     "kind": "race",
     "source": "bonfire",
     "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/elfo-species",
-    "shortDescription": "Descricao completa ainda nao cadastrada no seed local.",
-    "descriptionStatus": "summary-only",
-    "descriptionSource": "card-summary",
+    "shortDescription": "Mestres Jogadores Sistema Mundo Bestiário Mi",
+    "descriptionStatus": "needs-review",
+    "descriptionSource": "article-body",
     "needsReviewReasons": [
-      "summary-card-used-no-full-description",
-      "missing-full-rule-page"
+      "missing-full-rule-page",
+      "missing-full-rule-description"
     ],
     "tags": [
       "race"
@@ -57,12 +57,12 @@
     "kind": "race",
     "source": "bonfire",
     "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
-    "shortDescription": "Descricao completa ainda nao cadastrada no seed local.",
-    "descriptionStatus": "summary-only",
-    "descriptionSource": "card-summary",
+    "shortDescription": "Mestres Jogadores Sistema Mundo Bestiário Mi",
+    "descriptionStatus": "needs-review",
+    "descriptionSource": "article-body",
     "needsReviewReasons": [
-      "summary-card-used-no-full-description",
-      "missing-full-rule-page"
+      "missing-full-rule-page",
+      "missing-full-rule-description"
     ],
     "tags": [
       "race"
@@ -82,12 +82,12 @@
     "kind": "race",
     "source": "bonfire",
     "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/orcs-species",
-    "shortDescription": "Descricao completa ainda nao cadastrada no seed local.",
-    "descriptionStatus": "summary-only",
-    "descriptionSource": "card-summary",
+    "shortDescription": "Mestres Jogadores Sistema Mundo Bestiário Mi",
+    "descriptionStatus": "needs-review",
+    "descriptionSource": "article-body",
     "needsReviewReasons": [
-      "summary-card-used-no-full-description",
-      "missing-full-rule-page"
+      "missing-full-rule-page",
+      "missing-full-rule-description"
     ],
     "tags": [
       "race"

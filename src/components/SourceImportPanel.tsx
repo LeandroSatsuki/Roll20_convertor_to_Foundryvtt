@@ -24,10 +24,10 @@ export function SourceImportPanel({ file, onPdfFileChange, onPdfExtract, onPdfCo
       <details>
         <summary>Avançado / Debug</summary>
         <div>
-          <h2>PDF fallback (avançado)</h2>
+          <h2>Importação PDF legada (avançado)</h2>
           <PdfUploader file={file} onFileChange={onPdfFileChange} onExtract={onPdfExtract} isExtracting={isExtracting} />
           <button type="button" onClick={onPdfConvert} disabled={!canConvertPdf}>
-            Converter PDF (avançado)
+            Converter PDF legado (avançado)
           </button>
         </div>
         <div>

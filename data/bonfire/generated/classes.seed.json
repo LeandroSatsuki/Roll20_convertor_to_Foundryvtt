@@ -10,13 +10,13 @@
     "kind": "class",
     "source": "bonfire",
     "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/artificer-article",
-    "descriptionHtml": "<div>\n                            \n                        </div>\n                                                                                                </div>\n\n                <div>\n                    \n                    \n\n                    \n                    <div>\n\n                        <div role=\"tabpanel\">\n\n                                        <div>\n            <div>\n                <div><table><tbody><tr><th>Nível</th><th>Bônus de Proficiência</th><th>Características</th><th>Infusões Conhecidas</th><th>Itens Infundidos</th><th>Truques</th><th>Magias Preparadas</th><th>1º</th><th>2º</th><th>3º</th><th>4º</th><th>5º</th></tr><tr><td>1º</td><td>+2</td><td>Conjuração de Magias, Engenhoca Mágica</td><td>—</td><td>—</td><td>2</td><td>2</td><td>2</td><td>—</td><td>—</td><td>—</td><td>—</td></tr><tr><td>2º</td><td>+2</td><td>Infusões, Replicar Item Mágico</td><td>4</td><td>2</td><td>2</td><td>3</td><td>2</td><td>—</td><td>—</td><td>—</td><td>—</td></tr><tr><td>3º</td><td>+2</td><td>Percepção do Artífice, Recarga Arcana, Especialização</td><td>4</td><td>2</td><td>2</td><td>4</td><td>3</td><td>—</td><td>—</td><td>—</td><td>—</td></tr><tr><td>4º</td><td>+2</td><td>Aumento de Atributo</td><td>4</td><td>2</td><td>3</td><td>5</td><td>3</td><td>—</td><td>—</td><td>—</td><td>—</td></tr><tr><td>5º</td><td>+3</td><td>Característica de Especialização</td><td>4</td><td>2</td><td>3</td><td>6</td><td>4</td><td>2</td><td>—</td><td>—</td><td>—</td></tr><tr><td>6º</td><td>+3</td><td>Lampejo de Gênio</td><td>5</td><td>3</td><td>3</td><td>6</td><td>4</td><td>2</td><td>—</td><td>—</td><td>—</td></tr><tr><td>7º</td><td>+3</td><td>Artesão Exímio</td><td>5</td><td>3</td><td>3</td><td>7</td><td>4</td><td>3</td><td>—</td><td>—</td><td>—</td></tr><tr><td>8º</td><td>+3</td><td>Aumento de Atributo</td><td>5</td><td>3</td><td>3</td><td>7</td><td>4</td><td>3</td><td>—</td><td>—</td><td>—</td></tr><tr><td>9º</td><td>+4</td><td>Característica de Especialização</td><td>5</td><td>3</td><td>3</td><td>9</td><td>4</td><td>3</td><td>2</td><td>—</td><td>—</td></tr><tr><td>1",
-    "descriptionText": "Seu entendimento sobre objetos mágicos e mecânicos pode parecer magia pura aos olhos de quem não possui treinamento. A partir do 1º nível , você pode usar ferramentas de artesão para conjurar o truque Consertar (Mending) , bem como as magias Detectar Magia (Detect Magic) e Identificar (Identify) como rituais . Suas ferramentas funcionam como foco de conjuração e substituem os componentes materiais dessas magias.",
-    "description": "Seu entendimento sobre objetos mágicos e mecânicos pode parecer magia pura aos olhos de quem não possui treinamento. A partir do 1º nível , você pode usar ferramentas de artesão para conjurar o truque Consertar (Mending) , bem como as magias Detectar Magia (Detect Magic) e Identificar (Identify) como rituais . Suas ferramentas funcionam como foco de conjuração e substituem os componentes materiais dessas magias.",
     "shortDescription": "Seu entendimento sobre objetos mágicos e mecânicos pode parecer magia pura aos olhos de quem não possui treinamento.",
-    "descriptionStatus": "complete",
+    "descriptionStatus": "needs-review",
     "descriptionSource": "article-body",
-    "needsReviewReasons": [],
+    "needsReviewReasons": [
+      "missing-full-rule-description",
+      "missing-full-rule-page"
+    ],
     "tags": [
       "class",
       "artificer"
@@ -445,11 +445,11 @@
     "source": "bonfire",
     "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/cacador-article",
     "shortDescription": "Você começa com os seguintes equipamentos, em adição aos recebidos por seu antecedente.",
-    "descriptionStatus": "summary-only",
-    "descriptionSource": "card-summary",
+    "descriptionStatus": "needs-review",
+    "descriptionSource": "article-body",
     "needsReviewReasons": [
-      "summary-card-used-no-full-description",
-      "missing-full-rule-page"
+      "missing-full-rule-page",
+      "missing-full-rule-description"
     ],
     "tags": [
       "class",
@@ -590,13 +590,13 @@
     "kind": "class",
     "source": "bonfire",
     "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/clerigo-article",
-    "descriptionHtml": "<div>\n                            \n                        </div>\n                                                                                                </div>\n\n                <div>\n                    \n                    \n\n                    \n                    <div>\n\n                        <div role=\"tabpanel\">\n\n                                        <div>\n            <div>\n                <div><table><tbody><tr><th>Nível</th><th>Bônus de Proficiência</th><th>Características</th><th>Magias Preparadas</th><th>Truques</th><th>1°</th><th>2°</th><th>3°</th><th>4°</th><th>5°</th><th>6°</th><th>7°</th><th>8°</th><th>9°</th></tr><tr>\n<td>1</td><td>+2</td><td>Conjuração, Ordem Sagrada, Ritos Sacros</td><td>4</td><td>3</td><td>2</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr>\n<td>2</td><td>+2</td><td>Canalizar Divindade</td><td>5</td><td>3</td><td>3</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr>\n<td>3</td><td>+2</td><td>Domínio Divino</td><td>6</td><td>3</td><td>4</td><td>2</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr>\n<td>4</td><td>+2</td><td>Aprimoramento de Atributo</td><td>7</td><td>3</td><td>4</td><td>3</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr>\n<td>5</td><td>+3</td><td>Autoridade Sagrada</td><td>9</td><td>3</td><td>4</td><td>4</td><td>2</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr>\n<td>6</td><td>+3</td><td>Característica de Domínio Divino</td><td>10</td><td>4</td><td>4</td><td>3</td><td>3</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr>\n<td>7</td><td>+3</td><td>Golpes Abençoados</td><td>11</td><td>4</td><td>4</td><td>3</td><td>3</td><td>1</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr>\n<td>8</td><td>+3</td><td>Incremento no Valor de Habilidade</td><td>12</td><td>4</td><td>4</td><td>3</td><td>3</td><td>2</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr>\n<td>9</td><td>+4</td><td>-",
-    "descriptionText": "Golpe da Natureza. Ataque de Arma Corpo-a-Corpo com Arma: modificador de ataque de magia de clérigo para acertar, alcance 1,5 metros [5 feet], um alvo. Dano (1d8 + Modificador de Sabedoria do Clérigo + Bônus de Proficiência) de dano Cortante, Perfurante ou Concussivo (Você escolhe quando invocar o espírito).",
-    "description": "Golpe da Natureza. Ataque de Arma Corpo-a-Corpo com Arma: modificador de ataque de magia de clérigo para acertar, alcance 1,5 metros [5 feet], um alvo. Dano (1d8 + Modificador de Sabedoria do Clérigo + Bônus de Proficiência) de dano Cortante, Perfurante ou Concussivo (Você escolhe quando invocar o espírito).",
     "shortDescription": "Golpe da Natureza. Ataque de Arma Corpo-a-Corpo com Arma: modificador de ataque de magia de clérigo para acertar, alcance 1,5 metros [5 feet], um alvo.",
-    "descriptionStatus": "complete",
+    "descriptionStatus": "needs-review",
     "descriptionSource": "article-body",
-    "needsReviewReasons": [],
+    "needsReviewReasons": [
+      "missing-full-rule-description",
+      "missing-full-rule-page"
+    ],
     "tags": [
       "class",
       "clerigo"
@@ -749,13 +749,13 @@
     "kind": "class",
     "source": "bonfire",
     "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
-    "descriptionHtml": "<div>\n                            \n                        </div>\n                                                                                                </div>\n\n                <div>\n                    \n                    \n\n                    \n                    <div>\n\n                        <div role=\"tabpanel\">\n\n                                        <div>\n            <div>\n                <div><table><tbody><tr><th>Nível</th><th>Bônus de Proficiência</th><th>Características</th><th>Surto Selvagem</th><th>Truques</th><th>1°</th><th>2°</th><th>3°</th><th>4°</th><th>5°</th><th>6°</th><th>7°</th><th>8°</th><th>9°</th></tr><tr><td>1</td><td>+2</td><td>Conjuração Druídica, Vínculo Natural</td><td>-</td><td>2</td><td>2</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>2</td><td>+2</td><td>Surto Selvagem, Ordem Primal</td><td>2</td><td>2</td><td>3</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>3</td><td>+2</td><td>Círculo Druídico</td><td>2</td><td>2</td><td>4</td><td>2</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>4</td><td>+2</td><td>Aprimoramento de Atributo ou Talento</td><td>2</td><td>3</td><td>4</td><td>3</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>5</td><td>+3</td><td>Intuição Selvagem</td><td>3</td><td>3</td><td>4</td><td>3</td><td>2</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>6</td><td>+3</td><td>Característica de Círculo</td><td>3</td><td>3</td><td>4</td><td>3</td><td>3</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>7</td><td>+3</td><td>Fúria Elemental</td><td>3</td><td>3</td><td>4</td><td>3</td><td>3</td><td>1</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>8</td><td>+3</td><td>Aprimoramento de Atributo ou Talento</td><td>3</td><td>3</td><td>4</td><td>3</td><td>3</td><td>2</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>9</td><td>+4</td><td>Guardião da Te",
-    "descriptionText": "Druidas do Círculo dos Esporos veneram a decomposição como a face invisível e indispensável da vida. Para eles, o bolor que consome a madeira morta é tão sagrado quanto a raiz que sustenta o carvalho. Suas magias não apenas chamam vinhas, raízes e ventos, elas espalham uma ecologia de fungos, miasmas e colônias simbióticas que se alimentam de excesso, remendam carne ferida e enfraquecem invasores. Onde um espadachim vê um cadáver, o druida dos esporos enxerga um ponto de partida para um novo ciclo.",
-    "description": "Druidas do Círculo dos Esporos veneram a decomposição como a face invisível e indispensável da vida. Para eles, o bolor que consome a madeira morta é tão sagrado quanto a raiz que sustenta o carvalho. Suas magias não apenas chamam vinhas, raízes e ventos, elas espalham uma ecologia de fungos, miasmas e colônias simbióticas que se alimentam de excesso, remendam carne ferida e enfraquecem invasores. Onde um espadachim vê um cadáver, o druida dos esporos enxerga um ponto de partida para um novo ciclo.",
     "shortDescription": "Druidas do Círculo dos Esporos veneram a decomposição como a face invisível e indispensável da vida.",
-    "descriptionStatus": "complete",
+    "descriptionStatus": "needs-review",
     "descriptionSource": "article-body",
-    "needsReviewReasons": [],
+    "needsReviewReasons": [
+      "missing-full-rule-description",
+      "missing-full-rule-page"
+    ],
     "tags": [
       "class",
       "druida"
@@ -1030,12 +1030,12 @@
     "kind": "class",
     "source": "bonfire",
     "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/guerreiro-article",
-    "shortDescription": "Descricao completa ainda nao cadastrada no seed local.",
-    "descriptionStatus": "summary-only",
-    "descriptionSource": "card-summary",
+    "shortDescription": "Mestres Jogadores Sistema Mundo Bestiário Missões e Ranks Mercado Regras",
+    "descriptionStatus": "needs-review",
+    "descriptionSource": "article-body",
     "needsReviewReasons": [
-      "summary-card-used-no-full-description",
-      "missing-full-rule-page"
+      "missing-full-rule-page",
+      "missing-full-rule-description"
     ],
     "tags": [
       "class",
@@ -1181,12 +1181,12 @@
     "kind": "class",
     "source": "bonfire",
     "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/ladino-article",
-    "shortDescription": "Descricao completa ainda nao cadastrada no seed local.",
-    "descriptionStatus": "summary-only",
-    "descriptionSource": "card-summary",
+    "shortDescription": "Mestres Jogadores Sistema Mundo Bestiário Missões e Ranks Mercado Regras",
+    "descriptionStatus": "needs-review",
+    "descriptionSource": "article-body",
     "needsReviewReasons": [
-      "summary-card-used-no-full-description",
-      "missing-full-rule-page"
+      "missing-full-rule-page",
+      "missing-full-rule-description"
     ],
     "tags": [
       "class",
@@ -1334,13 +1334,13 @@
     "kind": "class",
     "source": "bonfire",
     "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mago-article",
-    "descriptionHtml": "<div>\n                            \n                        </div>\n                                                                                                </div>\n\n                <div>\n                    \n                    \n\n                    \n                    <div>\n\n                        <div role=\"tabpanel\">\n\n                                        <div>\n            <div>\n                <div><table> <tbody><tr> <th>Nível</th> <th>Bônus de Proficiência</th> <th>Características</th> <th>Truques</th> <th>1º</th> <th>2º</th> <th>3º</th> <th>4º</th> <th>5º</th> <th>6º</th> <th>7º</th> <th>8º</th> <th>9º</th> </tr> <tr> <td>1º</td> <td>+2</td> <td>Conjuração de Magias, Estudo Arcano, Escolas de Foco</td> <td>3</td> <td>2</td> <td>—</td> <td>—</td> <td>—</td> <td>—</td> <td>—</td> <td>—</td> <td>—</td> <td>—</td> </tr> <tr> <td>2º</td> <td>+2</td> <td>Recuperação Arcana</td> <td>3</td> <td>3</td> <td>—</td> <td>—</td> <td>—</td> <td>—</td> <td>—</td> <td>—</td> <td>—</td> <td>—</td> </tr> <tr> <td>3º</td> <td>+2</td> <td>Tradição Arcana</td> <td>3</td> <td>4</td> <td>2</td> <td>—</td> <td>—</td> <td>—</td> <td>—</td> <td>—</td> <td>—</td> <td>—</td> </tr> <tr> <td>4º</td> <td>+2</td> <td>Aumento de Atributo</td> <td>4</td> <td>4</td> <td>3</td> <td>—</td> <td>—</td> <td>—</td> <td>—</td> <td>—</td> <td>—</td> <td>—</td> </tr> <tr> <td>5º</td> <td>+3</td> <td>Memorizar Magia</td> <td>4</td> <td>4</td> <td>3</td> <td>2</td> <td>—</td> <td>—</td> <td>—</td> <td>—</td> <td>—</td> <td>—</td> </tr> <tr> <td>6º</td> <td>+3</td> <td>Característica de Tradição Arcana</td> <td>4</td> <td>4</td> <td>3</td> <td>3</td> <td>—</td> <td>—</td> <td>—</td> <td>—</td> <td>—</td> <td>—</td> </tr> <tr> <td>7º</td> <td>+3</td> <td>Magia Assinatura (1ª)</td> <td>4</td> <td>4</td> <td>3</td> <td>3</td> <td>1</td> <td>—</td> <td>—</td> <td>—</td> <td>—</td> <td>—</td> </tr> <tr> <td>8º</td> <td>+3</td> <td>Aumento de Atributo</td> <td>4</td> <td>4</td> <td>3</td> <td>3</td> <td>2</td> <td>—</td> <td>—</td> <td>—</td> <td>—</td> <td>—</td> </tr> <tr> <td>9º</td> <t",
-    "descriptionText": "Abjuradores são mestres da magia de proteção, banimento e anulação. Especialistas em conter ameaças arcanas, desfazer encantamentos poderosos e repelir criaturas extraplanares, eles são frequentemente procurados para encerrar incursões de outros planos e expulsar entidades malignas do mundo material.",
-    "description": "Abjuradores são mestres da magia de proteção, banimento e anulação. Especialistas em conter ameaças arcanas, desfazer encantamentos poderosos e repelir criaturas extraplanares, eles são frequentemente procurados para encerrar incursões de outros planos e expulsar entidades malignas do mundo material.",
     "shortDescription": "Abjuradores são mestres da magia de proteção, banimento e anulação.",
-    "descriptionStatus": "complete",
+    "descriptionStatus": "needs-review",
     "descriptionSource": "article-body",
-    "needsReviewReasons": [],
+    "needsReviewReasons": [
+      "missing-full-rule-description",
+      "missing-full-rule-page"
+    ],
     "tags": [
       "class",
       "mago"
@@ -1497,13 +1497,13 @@
     "kind": "class",
     "source": "bonfire",
     "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mistico-article",
-    "descriptionHtml": "<div>\n                            \n                        </div>\n                                                                                                </div>\n\n                <div>\n                    \n                    \n\n                    \n                    <div>\n\n                        <div role=\"tabpanel\">\n\n                                        <div>\n            <div>\n                <div><table>\n<tbody><tr><th>Nível</th><th>Bônus de Proficiência</th><th>Características</th><th>Truques Conhecidos</th><th>Magias Conhecidas</th><th>Pontos de Misticismo</th><th>Ciclo de Feitiços</th><th>Segredos Conhecidos</th></tr>\n<tr><td>1</td><td>+2</td><td>Feitiçaria Mística, Manifestação Mística</td><td>2</td><td>2</td><td>5</td><td>1</td><td>-</td></tr>\n<tr><td>2</td><td>+2</td><td>Segredos Místicos</td><td>2</td><td>3</td><td>6</td><td>1</td><td>2</td></tr>\n<tr><td>3</td><td>+2</td><td>Manifestação Mística Aprimorada, Patrono Transcendental</td><td>2</td><td>4</td><td>7</td><td>2</td><td>2</td></tr>\n<tr><td>4</td><td>+2</td><td>Incremento no Valor de Habilidade, Versatilidade Mística</td><td>3</td><td>5</td><td>8</td><td>2</td><td>3</td></tr>\n<tr><td>5</td><td>+3</td><td>-</td><td>3</td><td>6</td><td>9</td><td>3</td><td>3</td></tr>\n<tr><td>6</td><td>+3</td><td>Característica de Patrono Transcendental</td><td>3</td><td>6</td><td>10</td><td>3</td><td>3</td></tr>\n<tr><td>7</td><td>+3</td><td>-</td><td>3</td><td>8</td><td>11</td><td>4</td><td>4</td></tr>\n<tr><td>8</td><td>+3</td><td>Incremento no Valor de Habilidade</td><td>3</td><td>9</td><td>12</td><td>4</td><td>4</td></tr>\n<tr><td>9</td><td>+4</td><td>Contatar o Patrono</td><td>3</td><td>10</td><td>13</td><td>5</td><td>5</td></tr>\n<tr><td>10</td><td>+4</td><td>Característica de Patrono Transcendental</td><td>4</td><td>10</td><td>14</td><td>5</td><td>5</td></tr>\n<tr><td>11</td><td>+4</td><td>Arcana Mística (6° nível)</td><td>4</td><td>11</td><td>15</td><td>5</td><td>5</td></tr>\n<tr><td>12</td><td>+4</td><td>Incremento no Valor de Habilidade</td><td>4</td><td>11</td><td>16</td><td>5</td><td>6</",
-    "descriptionText": "Golpe das Profundezas: Ataque de arma corpo-a-corpo: modificador de ataque de magia de Místico para acertar, alcance 3 metros [10 feet], um alvo. Dano: (1d8 + Modificador de Carisma) de dano de Energia. A criatura atingida perde 3 metros [10 feet] de deslocamento até o final do próximo turno dela.",
-    "description": "Golpe das Profundezas: Ataque de arma corpo-a-corpo: modificador de ataque de magia de Místico para acertar, alcance 3 metros [10 feet], um alvo. Dano: (1d8 + Modificador de Carisma) de dano de Energia. A criatura atingida perde 3 metros [10 feet] de deslocamento até o final do próximo turno dela.",
     "shortDescription": "Golpe das Profundezas: Ataque de arma corpo-a-corpo: modificador de ataque de magia de Místico para acertar, alcance 3 metros [10 feet], um alvo.",
-    "descriptionStatus": "complete",
+    "descriptionStatus": "needs-review",
     "descriptionSource": "article-body",
-    "needsReviewReasons": [],
+    "needsReviewReasons": [
+      "missing-full-rule-description",
+      "missing-full-rule-page"
+    ],
     "tags": [
       "class",
       "mistico"
@@ -1639,13 +1639,13 @@
     "kind": "class",
     "source": "bonfire",
     "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/monge-article",
-    "descriptionHtml": "<div>\n                            \n                        </div>\n                                                                                                </div>\n\n                <div>\n                    \n                    \n\n                    \n                    <div>\n\n                        <div role=\"tabpanel\">\n\n                                        <div>\n            <div>\n                <div><table>\n<tbody><tr><th>Nível</th><th>Bônus de Proficiência</th><th>Características</th><th>Artes Marciais</th><th>Pontos de Ki</th><th>Passo Veloz</th></tr><tr>\n<td>1</td><td>+2</td><td>Artes Marciais, Guerreiro sem Armadura</td><td>1d6</td><td>-</td><td>-</td></tr><tr>\n<td>2</td><td>+2</td><td>Ki, Passo Veloz, Desviar Ataques</td><td>1d6</td><td>2</td><td>+3m<br>(+10 ft.)</td></tr><tr>\n<td>3</td><td>+2</td><td>Tradição Monástica</td><td>1d6</td><td>3</td><td>+3m<br>(+10 ft.)</td></tr><tr>\n<td>4</td><td>+2</td><td>Incremento no Valor de Habilidade, Queda Lenta, Cura Acelerada</td><td>1d6</td><td>4</td><td>+3m<br>(+10 ft.)</td></tr><tr>\n<td>5</td><td>+3</td><td>Segundo Ataque, Golpe Atordoante</td><td>1d8</td><td>5</td><td>+3m<br>(+10 ft.)</td></tr><tr>\n<td>6</td><td>+3</td><td>Golpes de Ki, Momento de Ajuste, Característica de Tradição Monástica</td><td>1d8</td><td>6</td><td>+4,5m<br>(+15 ft.)</td></tr><tr>\n<td>7</td><td>+3</td><td>Evasão</td><td>1d8</td><td>7</td><td>+4,5m<br>(+15 ft.)</td></tr><tr>\n<td>8</td><td>+3</td><td>Incremento no Valor de Habilidade</td><td>1d8</td><td>8</td><td>+4,5m<br>(+15 ft.)</td></tr><tr>\n<td>9</td><td>+4</td><td>Movimento Acrobático</td><td>1d8</td><td>9</td><td>+4,5m<br>(+15 ft.)</td></tr><tr>\n<td>10</td><td>+4</td><td>Restauração Interior</td><td>1d8</td><td>10</td><td>+6m<br>(+20 ft.)</td></tr><tr>\n<td>11</td><td>+4</td><td>Característica de Tradição Monástica</td><td>1d10</td><td>11</td><td>+6m<br>(+20 ft.)</td></tr><tr>\n<td>12</td><td>+4</td><td>Incremento no Valor de Habilidade</td><td>1d10</td><td>12</td><td>+6m<br>(+20 ft.)</td></tr><tr>\n<td>13</td><td>+5</td><td>Desviar Energia</td><td>1d10</td><td>13</t",
-    "descriptionText": "\"Não busco outra forma — eu acendo a minha. O Ki sobe como calor sob a pele, a respiração marca o compasso, e cada músculo aprende a obedecer à chama. Não é ira: é direção. Onde a alma arde, o corpo responde; onde o corpo responde, o mundo cede meio passo.\"",
-    "description": "\"Não busco outra forma — eu acendo a minha. O Ki sobe como calor sob a pele, a respiração marca o compasso, e cada músculo aprende a obedecer à chama. Não é ira: é direção. Onde a alma arde, o corpo responde; onde o corpo responde, o mundo cede meio passo.\"",
     "shortDescription": "\"Não busco outra forma — eu acendo a minha.",
-    "descriptionStatus": "complete",
+    "descriptionStatus": "needs-review",
     "descriptionSource": "article-body",
-    "needsReviewReasons": [],
+    "needsReviewReasons": [
+      "missing-full-rule-description",
+      "missing-full-rule-page"
+    ],
     "tags": [
       "class",
       "monge"

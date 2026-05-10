@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-09T15:29:05.504Z",
+  "generatedAt": "2026-05-10T00:07:43.006Z",
   "policy": "coverage-by-class-not-character",
   "classes": [
     {
@@ -8,10 +8,10 @@
       "expectedCoverage": true,
       "status": "covered",
       "missing": [],
-      "featureCount": 133,
+      "featureCount": 534,
       "sourceFileName": "data\\HTML BONFIRE\\classes\\Artificer in Bonfire Tales RPG _ World Anvil.html",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/artificer-article",
-      "descriptionStatus": "complete"
+      "descriptionStatus": "needs-review"
     },
     {
       "classId": "barbaro",
@@ -19,7 +19,7 @@
       "expectedCoverage": true,
       "status": "covered",
       "missing": [],
-      "featureCount": 10,
+      "featureCount": 46,
       "sourceFileName": "data\\HTML BONFIRE\\classes\\Bárbaro in Bonfire Tales RPG _ World Anvil.html",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/barbaro-article",
       "descriptionStatus": "complete"
@@ -30,7 +30,7 @@
       "expectedCoverage": true,
       "status": "covered",
       "missing": [],
-      "featureCount": 11,
+      "featureCount": 115,
       "sourceFileName": "data\\HTML BONFIRE\\classes\\Bardo in Bonfire Tales RPG _ World Anvil.html",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bardo-article",
       "descriptionStatus": "complete"
@@ -41,10 +41,10 @@
       "expectedCoverage": true,
       "status": "covered",
       "missing": [],
-      "featureCount": 84,
+      "featureCount": 544,
       "sourceFileName": "data\\HTML BONFIRE\\classes\\Caçador in Bonfire Tales RPG _ World Anvil.html",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/cacador-article",
-      "descriptionStatus": "summary-only"
+      "descriptionStatus": "needs-review"
     },
     {
       "classId": "clerigo",
@@ -52,10 +52,10 @@
       "expectedCoverage": true,
       "status": "covered",
       "missing": [],
-      "featureCount": 7,
+      "featureCount": 90,
       "sourceFileName": "data\\HTML BONFIRE\\classes\\Clérigo in Bonfire Tales RPG _ World Anvil.html",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/clerigo-article",
-      "descriptionStatus": "complete"
+      "descriptionStatus": "needs-review"
     },
     {
       "classId": "druida",
@@ -63,10 +63,10 @@
       "expectedCoverage": true,
       "status": "covered",
       "missing": [],
-      "featureCount": 16,
+      "featureCount": 233,
       "sourceFileName": "data\\HTML BONFIRE\\classes\\Druida in Bonfire Tales RPG _ World Anvil.html",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
-      "descriptionStatus": "complete"
+      "descriptionStatus": "needs-review"
     },
     {
       "classId": "feiticeiro",
@@ -74,7 +74,7 @@
       "expectedCoverage": true,
       "status": "covered",
       "missing": [],
-      "featureCount": 85,
+      "featureCount": 383,
       "sourceFileName": "data\\HTML BONFIRE\\classes\\Feiticeiro in Bonfire Tales RPG _ World Anvil.html",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/feiticeiro-article",
       "descriptionStatus": "complete"
@@ -85,10 +85,10 @@
       "expectedCoverage": true,
       "status": "covered",
       "missing": [],
-      "featureCount": 100,
+      "featureCount": 350,
       "sourceFileName": "data\\HTML BONFIRE\\classes\\Guerreiro in Bonfire Tales RPG _ World Anvil.html",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/guerreiro-article",
-      "descriptionStatus": "summary-only"
+      "descriptionStatus": "needs-review"
     },
     {
       "classId": "ladino",
@@ -96,10 +96,10 @@
       "expectedCoverage": true,
       "status": "covered",
       "missing": [],
-      "featureCount": 97,
+      "featureCount": 329,
       "sourceFileName": "data\\HTML BONFIRE\\classes\\Ladino in Bonfire Tales RPG _ World Anvil.html",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/ladino-article",
-      "descriptionStatus": "summary-only"
+      "descriptionStatus": "needs-review"
     },
     {
       "classId": "mago",
@@ -107,10 +107,10 @@
       "expectedCoverage": true,
       "status": "covered",
       "missing": [],
-      "featureCount": 143,
+      "featureCount": 429,
       "sourceFileName": "data\\HTML BONFIRE\\classes\\Mago in Bonfire Tales RPG _ World Anvil.html",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mago-article",
-      "descriptionStatus": "complete"
+      "descriptionStatus": "needs-review"
     },
     {
       "classId": "mistico",
@@ -118,10 +118,10 @@
       "expectedCoverage": true,
       "status": "covered",
       "missing": [],
-      "featureCount": 108,
+      "featureCount": 248,
       "sourceFileName": "data\\HTML BONFIRE\\classes\\Místico in Bonfire Tales RPG _ World Anvil.html",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mistico-article",
-      "descriptionStatus": "complete"
+      "descriptionStatus": "needs-review"
     },
     {
       "classId": "monge",
@@ -129,10 +129,10 @@
       "expectedCoverage": true,
       "status": "covered",
       "missing": [],
-      "featureCount": 103,
+      "featureCount": 300,
       "sourceFileName": "data\\HTML BONFIRE\\classes\\Monge in Bonfire Tales RPG _ World Anvil.html",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/monge-article",
-      "descriptionStatus": "complete"
+      "descriptionStatus": "needs-review"
     },
     {
       "classId": "paladino",
@@ -140,7 +140,7 @@
       "expectedCoverage": true,
       "status": "covered",
       "missing": [],
-      "featureCount": 86,
+      "featureCount": 420,
       "sourceFileName": "data\\HTML BONFIRE\\classes\\Paladino in Bonfire Tales RPG _ World Anvil.html",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/paladino-article",
       "descriptionStatus": "complete"

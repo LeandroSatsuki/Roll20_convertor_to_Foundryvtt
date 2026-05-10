@@ -44,7 +44,7 @@ export function resolveRuleName(rawName: string, context: FeatureResolutionConte
     }
   }
 
-  const closeCandidates = candidates.filter((candidate) => candidate !== best && best.score - candidate.score <= 10)
+  const closeCandidates = candidates.filter((candidate) => candidate !== best && best.score - candidate.score <= 5)
   const ambiguous = closeCandidates.length > 0
   const warnings: ConversionWarning[] = []
   if (ambiguous) warnings.push(makeWarning('RULE_RESOLUTION_AMBIGUOUS', `Mais de uma regra candidata encontrada para ${rawName}.`, 'rules'))

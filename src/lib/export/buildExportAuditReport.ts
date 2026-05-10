@@ -23,6 +23,7 @@ const blockingCodes = new Set([
   'FOUNDRY_ITEM_TYPE_MISSING',
   'FOUNDRY_ITEM_TYPE_INVALID',
   'FOUNDRY_ACTIVITY_INVALID',
+  'ACTOR_JSON_NOT_DOWNLOADABLE',
 
   // Legacy converter codes that represent the same structural blockers.
   'FOUNDRY_ACTOR_SYSTEM_MISSING',
@@ -43,6 +44,7 @@ const blockingCodes = new Set([
   'TEMPLATE_FIELD_MISSING',
   'BONFIRE_LOG_V2_TEMPLATE_PARSER_NOT_CALLED',
   'SHEET_CHARACTER_REGION_NOT_FOUND',
+  'SHEET_TEMPLATE_LOW_CONFIDENCE',
   'SHEET_PARSE_BLOCKED_LOW_CONFIDENCE',
   'ABILITY_SCORE_MISSING_MODIFIER_ONLY',
   'BACKGROUND_INVALID_TEMPLATE_VALUE',
@@ -56,8 +58,12 @@ const nonBlockingReviewCodes = new Set([
   'BONFIRE_FEATURE_DESCRIPTION_FALLBACK',
   'BONFIRE_DESCRIPTION_SUMMARY_ONLY',
   'BONFIRE_DESCRIPTION_SOURCE_CARD_SUMMARY',
+  'BONFIRE_DESCRIPTION_PREVIEW_REJECTED',
   'BONFIRE_DESCRIPTION_FULL_TEXT_MISSING',
   'BONFIRE_DESCRIPTION_NEEDS_SOURCE_PAGE',
+  'BONFIRE_DESCRIPTION_MANUAL_REVIEW_NOT_COMPLETE',
+  'BONFIRE_DESCRIPTION_SOURCE_NOT_ALLOWED_FOR_COMPLETE',
+  'BONFIRE_DESCRIPTION_NOT_EXACT',
   'FEATURE_NOISE_REJECTED',
   'CLASS_COVERAGE_NEEDS_REVIEW',
   'BONFIRE_RULE_COVERAGE_MISSING',
@@ -73,6 +79,9 @@ const nonBlockingReviewCodes = new Set([
   'CLASS_HIT_DIE_UNKNOWN',
   'CLASS_RULE_FALLBACK_USED',
   'SPELLCASTING_RULE_MISSING',
+  'BACKGROUND_PLACEHOLDER_VALUE',
+  'SPELL_RANGE_EMPTY',
+  'INITIATIVE_DEFAULTED_TO_DEX',
 ])
 
 export function buildExportAuditReport(actor: FoundryActor | null, normalized?: NormalizedCharacter | null): FoundryExportAuditReport {
@@ -443,6 +452,16 @@ function collectDescriptionValidations(actor: FoundryActor): FoundryValidationRe
         itemId: item._id,
       })
     }
+    if (meta.sourceType === 'manual-review' && meta.status !== 'complete') {
+      validations.push({
+        code: 'BONFIRE_DESCRIPTION_MANUAL_REVIEW_NOT_COMPLETE',
+        severity: 'warning',
+        message: `${item.name} ainda depende de verificacao manual da descricao Bonfire completa.`,
+        path: `items.${index}.system.description.value`,
+        itemName: item.name,
+        itemId: item._id,
+      })
+    }
     if (meta.status === 'summary-only' || meta.status === 'needs-review' || meta.status === 'missing') {
       validations.push({
         code: 'BONFIRE_DESCRIPTION_FULL_TEXT_MISSING',
@@ -453,7 +472,7 @@ function collectDescriptionValidations(actor: FoundryActor): FoundryValidationRe
         itemId: item._id,
       })
     }
-    if (meta.needsReviewReasons?.includes('missing-full-rule-page')) {
+    if (meta.needsReviewReasons?.includes('missing-full-rule-page') || meta.needsReviewReasons?.includes('missing-full-rule-description')) {
       validations.push({
         code: 'BONFIRE_DESCRIPTION_NEEDS_SOURCE_PAGE',
         severity: 'warning',
@@ -788,7 +807,7 @@ function summarizeDescriptions(items: FoundryActor['items']): {
       const sourceUrl = meta?.sourceUrl ?? null
       if (sourceUrl) summary.withSourceUrl += 1
       summary.items[bucket].push({ name: item.name, sourceUrl })
-      if (meta?.sourceType === 'card-summary') summary.cardSummaryRejectedCount += 1
+      if (meta?.sourceType === 'card-summary' || meta?.sourceType === 'category-preview') summary.cardSummaryRejectedCount += 1
       if (getHydrationMeta(item)?.warnings && Array.isArray(getHydrationMeta(item)?.warnings) && (getHydrationMeta(item)?.warnings as unknown[]).map(String).includes('FOUNDRY_FEATURE_HYDRATION_BLOCKED_BY_POLICY')) {
         summary.foundryFeatureHydrationBlockedCount += 1
       }
@@ -1040,7 +1059,7 @@ function collectBonfireMissingRules(actor: FoundryActor, normalized?: Normalized
   background?: string
   reason: string
 }> {
-  return actor.items
+  const itemRules = actor.items
     .map((item) => ({ item, bonfire: getBonfireResolutionMeta(item), source: getFeatureSourceMeta(item) }))
     .filter(({ bonfire }) => bonfire?.status === 'not-found')
     .map(({ item, bonfire, source }) => ({
@@ -1055,6 +1074,23 @@ function collectBonfireMissingRules(actor: FoundryActor, normalized?: Normalized
       background: normalized?.identity.background.value,
       reason: 'not-found-in-bonfire-rule-store',
     }))
+
+  const placeholderWarnings = (normalized?.warnings ?? [])
+    .filter((warning) => warning.code === 'BACKGROUND_PLACEHOLDER_VALUE')
+    .map(() => ({
+      sourceFileName: normalized?.source.fileName,
+      name: 'Antecedente',
+      category: 'background',
+      kind: 'background',
+      sourceCell: null,
+      sourceRange: null,
+      className: normalized?.identity.classes[0]?.name,
+      race: normalized?.identity.race.value,
+      background: normalized?.identity.background.value,
+      reason: 'template-placeholder-not-filled',
+    }))
+
+  return [...itemRules, ...placeholderWarnings]
 }
 
 function categoryFromKind(kind: string | null): string {

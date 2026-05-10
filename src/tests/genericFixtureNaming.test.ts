@@ -17,5 +17,6 @@ describe('genericFixtureNaming', () => {
     expect(actors).toContain('foundry-library-features.json')
     expect(reports).toContain('expected-audit-shape.json')
     expect(existsSync(classesDir)).toBe(true)
+    expect(existsSync(path.join(classesDir, 'clerigo-level5.bonfire.xlsx'))).toBe(true)
   })
 })

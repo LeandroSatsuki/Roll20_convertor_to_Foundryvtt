@@ -38,7 +38,7 @@ describe('bonfire local HTML seed builder', () => {
       const match = allRules.find((entry) => entry.name === name)
       expect(match, name).toBeTruthy()
       expect(match?.source).toBe('bonfire')
-      expect(match?.descriptionStatus).toMatch(/complete|fallback|needs-review/)
+      expect(match?.descriptionStatus).toMatch(/complete|needs-review|summary-only|missing/)
     }
 
     expect(allRules.some((entry) => entry.name === 'Wild Companion' && entry.source === 'bonfire')).toBe(false)

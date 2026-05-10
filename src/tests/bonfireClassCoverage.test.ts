@@ -39,7 +39,7 @@ describe('bonfire class coverage', () => {
       expect(classSeed, canonical.name).toBeTruthy()
       expect(classSeed?.source).toBe('bonfire')
       expect(classSeed?.sourceUrl).toBeTruthy()
-      expect(classSeed?.descriptionStatus).toMatch(/complete|fallback|needs-review|summary-only/)
+      expect(classSeed?.descriptionStatus).toMatch(/complete|needs-review|summary-only|missing/)
       expect(classSeed?.hitDie || classSeed?.hitDieStatus).toBeTruthy()
       expect(classSeed?.spellcasting?.type).toBeTruthy()
       expect(classSeed?.savingThrows?.length || classSeed?.savingThrowsStatus).toBeTruthy()

@@ -38,15 +38,19 @@ export type BonfireRuleEntity = {
   descriptionHtml?: string
   descriptionText?: string
   shortDescription?: string
-  descriptionStatus?: 'complete' | 'summary-only' | 'fallback' | 'needs-review' | 'missing'
-  descriptionSource?: 'article-body' | 'section-body' | 'table-row' | 'card-summary' | 'manual-review' | 'unknown'
+  descriptionStatus?: 'complete' | 'summary-only' | 'needs-review' | 'missing'
+  descriptionSource?: 'article-body' | 'section-body' | 'table-rule-body' | 'table-row' | 'inline-bold-subrule' | 'card-summary' | 'category-preview' | 'manual-review' | 'unknown' | 'fallback' | 'generated' | 'local-preview'
   needsReviewReasons?: string[]
   className?: string
   subclassName?: string
   raceName?: string
   backgroundName?: string
+  parentRuleId?: string
+  parentName?: string
+  parentDisplayName?: string
   level?: number
   seedLocal?: boolean
+  sourceFileName?: string
   foundry?: {
     itemType?: string
     activityType?: string

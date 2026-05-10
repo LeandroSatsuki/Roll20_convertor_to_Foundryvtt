@@ -4,7 +4,7 @@ import { parseBonfireCharacterSheet } from '../lib/sheets/parseBonfireCharacterS
 import { readWorkbook } from '../lib/sheets/readWorkbook'
 
 describe('bonfire log combat fixed', () => {
-  it('keeps ac, hp, speed and passive perception sane for Pipkin', async () => {
+  it('keeps ac, hp, speed and passive perception sane for clerigo-level5', async () => {
     const workbook = await readWorkbook(new Uint8Array(readFileSync('samples/Pipkin.xlsx')), 'Pipkin.xlsx')
     const result = parseBonfireCharacterSheet(workbook)
 

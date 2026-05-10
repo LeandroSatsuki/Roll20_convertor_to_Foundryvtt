@@ -3,9 +3,10 @@ import { aliasesForFoundryLibraryName, normalizeFoundryLibraryName } from '../fo
 import type { FoundryActor, FoundryItem } from './foundryTypes'
 
 type DescriptionMeta = {
-  status: 'complete' | 'fallback' | 'missing'
+  status: 'complete' | 'summary-only' | 'needs-review' | 'missing'
   sourceName?: string | null
   sourceUrl?: string | null
+  sourceType?: string | null
 }
 
 export function prepareFinalBonfireActor(actor: FoundryActor, character: NormalizedCharacter): FoundryActor {
@@ -31,7 +32,7 @@ export function prepareFinalBonfireActor(actor: FoundryActor, character: Normali
     annotatePlayerVisibleResolution(item)
   }
 
-  const biography = buildPlayerBiography(actor.items)
+  const biography = buildPlayerBiography(actor.items, character)
   const details = (actor.system.details as Record<string, unknown> | undefined) ?? {}
   const biographyBlock = details.biography && typeof details.biography === 'object' && !Array.isArray(details.biography) ? { ...(details.biography as Record<string, unknown>) } : {}
   details.biography = { ...biographyBlock, value: biography, public: biographyBlock.public ?? '' }
@@ -139,7 +140,7 @@ function annotatePlayerVisibleResolution(item: FoundryItem) {
   }
 }
 
-function buildPlayerBiography(items: FoundryItem[]): string {
+function buildPlayerBiography(items: FoundryItem[], character: NormalizedCharacter): string {
   const unresolvedEntries = items
     .map((item) => ({ item, flags: getItemFlags(item) }))
     .filter(({ flags }) => truthy(flags.unresolvedPlayerVisible))
@@ -158,11 +159,19 @@ function buildPlayerBiography(items: FoundryItem[]): string {
     .filter(({ flags, descriptionMeta }) => flags.hydration?.fallbackCategory === 'customFallback' && !hasBonfireCoverageForFallback(undefined, descriptionMeta))
     .map(({ item, flags }) => `<li>${escapeHtml(String(flags.hydration?.gmReviewNote ?? `${item.name} - regra custom, revisar descricao se necessario.`))}</li>`)
 
-  if (!unresolvedItems.length && !unresolvedFeatures.length && !customReviewItems.length) {
+  const sheetDataReviewItems = character.warnings
+    .filter((warning) => warning.code === 'BACKGROUND_PLACEHOLDER_VALUE')
+    .map(() => '<li>Antecedente não informado na ficha (CORRIGIR!)</li>')
+
+  if (!unresolvedItems.length && !unresolvedFeatures.length && !customReviewItems.length && !sheetDataReviewItems.length) {
     return '<section class="bonfire-import-notes"><p>Importacao concluida sem pendencias jogaveis.</p></section>'
   }
 
   const sections: string[] = ['<section class="bonfire-import-notes">', '<h2>Notas de Importacao Bonfire</h2>']
+  if (sheetDataReviewItems.length) {
+    sections.push('<h3>Dados da ficha para corrigir</h3>')
+    sections.push(`<ul>${sheetDataReviewItems.join('')}</ul>`)
+  }
   if (unresolvedItems.length) {
     sections.push('<h3>Itens para revisar/adicionar manualmente</h3>')
     sections.push(`<ul>${unresolvedItems.join('')}</ul>`)
@@ -225,9 +234,10 @@ function categoryForBonfirePending(flags: Record<string, any>): 'race' | 'class'
 }
 
 function hasBonfireCoverageForFallback(item: FoundryItem | undefined, descriptionMeta: DescriptionMeta | null): boolean {
-  if (descriptionMeta && (descriptionMeta.status === 'complete' || descriptionMeta.status === 'fallback')) {
+  if (descriptionMeta && descriptionMeta.status !== 'missing') {
     if (descriptionMeta.sourceName && descriptionMeta.sourceName !== 'Conversor local') return true
     if (descriptionMeta.sourceUrl) return true
+    if (descriptionMeta.sourceType && descriptionMeta.sourceType !== 'unknown') return true
   }
   if (!item) return false
   const flags = getItemFlags(item)
@@ -242,9 +252,15 @@ function getDescriptionMeta(item: FoundryItem): DescriptionMeta | null {
   if (!meta || typeof meta !== 'object' || Array.isArray(meta)) return null
   const record = meta as Record<string, unknown>
   return {
-    status: record.status === 'complete' || record.status === 'fallback' ? record.status : 'missing',
+    status:
+      record.status === 'complete'
+      || record.status === 'summary-only'
+      || record.status === 'needs-review'
+        ? record.status
+        : 'missing',
     sourceName: stringOrNull(record.sourceName),
     sourceUrl: stringOrNull(record.sourceUrl),
+    sourceType: stringOrNull(record.sourceType),
   }
 }
 

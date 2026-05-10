@@ -33,11 +33,22 @@ export function normalizeRuleLookupKey(input: unknown): string {
   return canonicalRuleAliases[normalized] ?? normalized
 }
 
-export function ruleLookupKeys(rule: { id: string; name: string; aliases?: string[] }): string[] {
-  return Array.from(new Set([rule.id, rule.name, ...(rule.aliases ?? [])].flatMap((value) => {
+export function ruleLookupKeys(rule: { id: string; name: string; aliases?: string[]; parentName?: string; parentDisplayName?: string }): string[] {
+  const contextualAliases = [
+    rule.parentName ? `${rule.parentName}: ${rule.name}` : null,
+    rule.parentName ? `${rule.parentName} - ${rule.name}` : null,
+    rule.parentDisplayName ? `${rule.parentDisplayName}: ${rule.name}` : null,
+    rule.parentDisplayName ? `${rule.parentDisplayName} - ${rule.name}` : null,
+  ].filter(Boolean) as string[]
+
+  return Array.from(new Set([rule.id, rule.name, ...(rule.aliases ?? []), ...contextualAliases].flatMap((value) => {
     const raw = String(value ?? '')
     const stripped = stripFeatureLevelPrefix(raw)
-    return [normalizeRuleLookupKey(raw), normalizeRuleLookupKey(stripped)]
+    const normalized = normalizeRuleLookupKey(raw)
+    const normalizedStripped = normalizeRuleLookupKey(stripped)
+    const withoutLevelSuffix = stripTrailingLevelSuffix(normalized)
+    const strippedWithoutLevelSuffix = stripTrailingLevelSuffix(normalizedStripped)
+    return [normalized, normalizedStripped, withoutLevelSuffix, strippedWithoutLevelSuffix]
   }).filter(Boolean)))
 }
 
@@ -45,4 +56,8 @@ export function stripFeatureLevelPrefix(name: string): string {
   const trimmed = String(name ?? '').trim()
   const stripped = trimmed.replace(/^(?:n[ií]vel|level)\s+\d+\s*[:\-–—]\s*/i, '').trim()
   return stripped || trimmed
+}
+
+function stripTrailingLevelSuffix(value: string): string {
+  return value.replace(/-l\d+$/i, '')
 }

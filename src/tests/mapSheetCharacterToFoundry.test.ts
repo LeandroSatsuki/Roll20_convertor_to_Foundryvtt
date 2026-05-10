@@ -3,11 +3,11 @@ import { mapNormalizedToFoundryActor } from '../lib/foundry/mapNormalizedToFound
 import { parseBonfireCharacterSheet } from '../lib/sheets/parseBonfireCharacterSheet'
 import { readWorkbook } from '../lib/sheets/readWorkbook'
 import { getInvalidFoundryItemIdentifiers } from '../lib/validation/validateFoundryActor'
-import { createPipkinWorkbookData } from './createPipkinWorkbook'
+import { createClerigoLevel5WorkbookData } from './createClerigoLevel5Workbook'
 
 describe('mapSheetCharacterToFoundry', () => {
-  it('builds a Foundry actor from Pipkin xlsx data', async () => {
-    const workbook = await readWorkbook(createPipkinWorkbookData(), 'Pipkin.xlsx')
+  it('builds a Foundry actor from clerigo-level5 xlsx data', async () => {
+    const workbook = await readWorkbook(createClerigoLevel5WorkbookData(), 'Pipkin.xlsx')
     const { character } = parseBonfireCharacterSheet(workbook)
     const actor = mapNormalizedToFoundryActor(character)
 

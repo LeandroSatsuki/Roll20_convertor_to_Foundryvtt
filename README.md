@@ -2,11 +2,10 @@
 
 External browser app to convert character sheets into a Foundry VTT Actor JSON for the `dnd5e` system.
 
-The primary Fase 1 source is an Excel/Google Sheets `.xlsx` export. PDF import remains available as fallback.
+The primary product flow is an Excel/Google Sheets `.xlsx` export from Bonfire v2.1 sheets. Legacy PDF import remains isolated in advanced/debug tooling.
 
 - Upload an exported Google Sheets/Excel `.xlsx`.
 - Resolve Bonfire Tales class/race/feature rules from a local seed store.
-- Upload a Roll20 PDF fallback.
 - Extract text page by page with `pdfjs-dist`.
 - Convert the source into `NormalizedCharacter`.
 - Review/edit extracted fields.
@@ -46,10 +45,11 @@ The Adriel Actor export is used only as a structural reference for Foundry core 
 
 1. Start the dev server with `npm run dev`.
 2. Open the local Vite URL.
-3. Upload an exported `.xlsx`, or use PDF fallback.
+3. Upload an exported `.xlsx`.
 4. Review highlighted medium/low confidence fields.
 5. Review the feature resolution table.
-6. Download `JSON normalizado` or `Actor Foundry`.
+6. Download `Actor Foundry`.
+7. Use `JSON normalizado` e `Diagnostic Package` apenas em `Avançado / Debug`.
 7. In Foundry VTT, import the Actor JSON from the Actors directory.
 
 ## Scope
@@ -58,7 +58,7 @@ The current priority is `.xlsx` input:
 
 Excel/Google Sheets `.xlsx` -> NormalizedCharacter -> Bonfire rules -> Foundry Actor JSON.
 
-PDF fallback remains available:
+Legacy PDF import remains available only in advanced/debug tooling:
 
 PDF -> text -> NormalizedCharacter -> review -> Foundry Actor JSON.
 

@@ -1,14 +1,13 @@
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { extractInlineSubRules } from './bonfire/extractInlineSubRules.mjs'
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const dataDir = path.join(repoRoot, 'data')
 const classIndexPath = path.join(dataDir, 'bonfire', 'class-index.json')
 const generatedDir = path.join(dataDir, 'bonfire', 'generated')
 const reviewDir = path.join(dataDir, 'bonfire', 'review')
-
-const fallbackDescription = 'Descricao completa ainda nao cadastrada no seed local. Regra preservada da ficha para revisao.'
 
 const classDefaults = {
   artificer: { hitDie: 'd8', savingThrows: ['con', 'int'], spellcasting: { type: 'half', ability: 'int' } },
@@ -82,6 +81,8 @@ const htmlFiles = collectHtmlFiles(dataDir)
 const sourceIndex = buildSourceIndex(htmlFiles)
 const categoryFiles = discoverCategoryFiles()
 const parseErrors = []
+const missingSourcePages = []
+const subrulesReview = []
 
 const classes = []
 const classFeatures = []
@@ -183,6 +184,14 @@ writeJson(path.join(generatedDir, 'spell-overrides.seed.json'), deduped.spellOve
 writeJson(path.join(reviewDir, 'coverage-report.json'), coverage)
 writeJson(path.join(reviewDir, 'needs-review.json'), needsReview)
 writeJson(path.join(reviewDir, 'missing-rules.json'), missingRules)
+writeJson(path.join(reviewDir, 'missing-source-pages.json'), {
+  generatedAt: new Date().toISOString(),
+  items: dedupeMissingSourcePages(missingSourcePages),
+})
+writeJson(path.join(reviewDir, 'subrules-review.json'), {
+  generatedAt: new Date().toISOString(),
+  items: dedupeSubrulesReview(subrulesReview),
+})
 writeJson(path.join(reviewDir, 'source-index.json'), { generatedAt: new Date().toISOString(), entries: sourceIndex })
 writeJson(path.join(reviewDir, 'missing-from-current-sheet.json'), {
   generatedAt: new Date().toISOString(),
@@ -207,8 +216,11 @@ writeJson(path.join(reviewDir, 'generation-summary.json'), {
   reviewCounts: {
     needsReview: needsReview.items.length,
     missingRules: missingRules.missingRules.length,
+    missingSourcePages: dedupeMissingSourcePages(missingSourcePages).length,
     missingClassFixtures: missingClassFixtures.missingFixtures.length,
+    subRules: summarizeSubrulesReview(subrulesReview).bonfireSubRulesExtractedCount,
   },
+  subRuleCounts: summarizeSubrulesReview(subrulesReview),
 })
 
 console.log(JSON.stringify({
@@ -221,6 +233,8 @@ console.log(JSON.stringify({
   },
   needsReview: needsReview.items.length,
   missingRules: missingRules.missingRules.length,
+  missingSourcePages: dedupeMissingSourcePages(missingSourcePages).length,
+  subRules: summarizeSubrulesReview(subrulesReview).bonfireSubRulesExtractedCount,
   parseErrors: parseErrors.length,
 }, null, 2))
 
@@ -245,7 +259,7 @@ function parseClassFile(file) {
     kind: 'class',
     sourceUrl: extractSourceUrl(html),
     descriptionHtml: extractDescriptionHtml(article, 2400),
-    description: firstMeaningful || fallbackDescription,
+    description: firstMeaningful,
     descriptionSource: 'article-body',
     sourceFile: file,
     tags: ['class', classId],
@@ -275,20 +289,36 @@ function parseClassFile(file) {
 
     if (heading.level <= 2 && looksLikeSubclassName(name)) {
       currentSubclass = name
-      parsedSubclasses.push(
-        entity({
-          id: `${classId}-${slug(name)}`,
-          name,
-          aliases: [],
-          kind: 'subclass',
+      const subclassDescriptionHtml = sectionHtml(article, heading, headings)
+      const subclassSeed = entity({
+        id: `${classId}-${slug(name)}`,
+        name,
+        aliases: [],
+        kind: 'subclass',
+        sourceUrl: extractSourceUrl(html),
+        descriptionHtml: subclassDescriptionHtml,
+        description: htmlToRuleText(subclassDescriptionHtml),
+        descriptionSource: 'section-body',
+        sourceFile: file,
+        tags: ['subclass', classId],
+        extra: { className },
+        foundry: { preferredType: 'subclass' },
+      })
+      parsedSubclasses.push(subclassSeed)
+      parsedFeatures.push(
+        ...captureInlineSubRules({
+          htmlNode: subclassDescriptionHtml,
+          parentRule: {
+            id: subclassSeed.id,
+            name,
+            className,
+            subclassName: name,
+            parentDisplayName: name,
+          },
+          parentKind: 'subclass',
           sourceUrl: extractSourceUrl(html),
-          descriptionHtml: sectionHtml(article, heading, headings),
-          description: htmlToRuleText(sectionHtml(article, heading, headings)) || fallbackDescription,
-          descriptionSource: 'section-body',
           sourceFile: file,
-          tags: ['subclass', classId],
-          extra: { className },
-          foundry: { preferredType: 'subclass' },
+          extraTags: ['subrule'],
         }),
       )
       continue
@@ -299,24 +329,40 @@ function parseClassFile(file) {
 
     const descriptionHtml = sectionHtml(article, heading, headings)
     const featureName = currentSubclass && heading.level >= 3 && level ? name : name
+    const featureKind = currentSubclass && heading.level >= 3 ? 'subclassFeature' : featureKindFromName(featureName)
+    const featureSeed = entity({
+      id: `${classId}-${slug(featureName)}${level ? `-l${level}` : ''}${currentSubclass ? `-${slug(currentSubclass)}` : ''}`,
+      name: featureName,
+      aliases: level ? [`Nível ${level}: ${featureName}`, `Nivel ${level}: ${featureName}`] : [],
+      kind: featureKind,
+      sourceUrl: extractSourceUrl(html),
+      descriptionHtml,
+      description: htmlToRuleText(descriptionHtml),
+      descriptionSource: 'section-body',
+      sourceFile: file,
+      tags: ['feature', classId, currentSubclass ? 'subclassFeature' : 'classFeature'],
+      foundry: { preferredType: 'feat' },
+      extra: {
+        className,
+        subclassName: currentSubclass ?? undefined,
+        level: level ?? undefined,
+      },
+    })
+    parsedFeatures.push(featureSeed)
     parsedFeatures.push(
-      entity({
-        id: `${classId}-${slug(featureName)}${level ? `-l${level}` : ''}${currentSubclass ? `-${slug(currentSubclass)}` : ''}`,
-        name: featureName,
-        aliases: level ? [`Nível ${level}: ${featureName}`, `Nivel ${level}: ${featureName}`] : [],
-        kind: currentSubclass && heading.level >= 3 ? 'subclassFeature' : featureKindFromName(featureName),
-        sourceUrl: extractSourceUrl(html),
-        descriptionHtml,
-        description: htmlToRuleText(descriptionHtml) || fallbackDescription,
-        descriptionSource: 'section-body',
-        sourceFile: file,
-        tags: ['feature', classId, currentSubclass ? 'subclassFeature' : 'classFeature'],
-        foundry: { preferredType: 'feat' },
-        extra: {
+      ...captureInlineSubRules({
+        htmlNode: descriptionHtml,
+        parentRule: {
+          id: featureSeed.id,
+          name: featureName,
           className,
           subclassName: currentSubclass ?? undefined,
-          level: level ?? undefined,
+          parentDisplayName: featureName,
         },
+        parentKind: featureKind,
+        sourceUrl: extractSourceUrl(html),
+        sourceFile: file,
+        extraTags: ['subrule'],
       }),
     )
   }
@@ -338,7 +384,7 @@ function parseRaceFile(file) {
     kind: 'race',
     sourceUrl,
     descriptionHtml: extractDescriptionHtml(article, 1800),
-    description: meaningfulParagraph(article) || fallbackDescription,
+    description: meaningfulParagraph(article),
     descriptionSource: 'article-body',
     sourceFile: file,
     tags: ['race'],
@@ -348,26 +394,57 @@ function parseRaceFile(file) {
       speedStatus: extractSpeed(htmlToText(article)) ? 'complete' : 'needs-review',
     },
   })
-  const features = headings
-    .filter((heading) => [3, 4, 5].includes(heading.level))
-    .map((heading) => cleanFeatureName(heading.text))
-    .filter((name) => name && !isNoiseHeading(name) && !looksLikeOnlyLevel(name))
-    .map((name) =>
-      entity({
-        id: `${slug(raceName)}-${slug(name)}`,
-        name,
-        aliases: [],
-        kind: 'raceFeature',
+  const features = []
+  for (const heading of headings.filter((entry) => [3, 4, 5].includes(entry.level))) {
+    const name = cleanFeatureName(heading.text)
+    if (!name || isNoiseHeading(name) || looksLikeOnlyLevel(name)) continue
+    const descriptionHtml = sectionHtml(article, heading, headings)
+    const featureSeed = entity({
+      id: `${slug(raceName)}-${slug(name)}`,
+      name,
+      aliases: [],
+      kind: 'raceFeature',
+      sourceUrl,
+      descriptionHtml,
+      description: htmlToRuleText(descriptionHtml),
+      descriptionSource: 'section-body',
+      sourceFile: file,
+      tags: ['raceFeature', slug(raceName)],
+      foundry: { preferredType: 'feat' },
+      extra: { raceName },
+    })
+    features.push(featureSeed)
+    features.push(
+      ...captureInlineSubRules({
+        htmlNode: descriptionHtml,
+        parentRule: {
+          id: featureSeed.id,
+          name,
+          raceName,
+          parentDisplayName: name,
+        },
+        parentKind: 'raceFeature',
         sourceUrl,
-        descriptionHtml: sectionHtml(article, headings.find((heading) => cleanFeatureName(heading.text) === name), headings),
-        description: htmlToRuleText(sectionHtml(article, headings.find((heading) => cleanFeatureName(heading.text) === name), headings)) || fallbackDescription,
-        descriptionSource: 'section-body',
         sourceFile: file,
-        tags: ['raceFeature', slug(raceName)],
-        foundry: { preferredType: 'feat' },
-        extra: { raceName },
+        extraTags: ['subrule'],
       }),
     )
+  }
+  features.push(
+    ...captureInlineSubRules({
+      htmlNode: article,
+      parentRule: {
+        id: raceSeed.id,
+        name: raceName,
+        raceName,
+        parentDisplayName: raceName,
+      },
+      parentKind: 'race',
+      sourceUrl,
+      sourceFile: file,
+      extraTags: ['subrule'],
+    }),
+  )
   return { raceSeed, features }
 }
 
@@ -392,8 +469,8 @@ function parseBackgroundFile(file) {
         kind: 'background',
         sourceUrl,
         descriptionHtml,
-        description: htmlToRuleText(descriptionHtml) || fallbackDescription,
-        descriptionSource: 'table-row',
+        description: htmlToRuleText(descriptionHtml),
+        descriptionSource: 'table-rule-body',
         sourceFile: file,
         tags: ['background'],
         foundry: { preferredType: 'background' },
@@ -407,12 +484,27 @@ function parseBackgroundFile(file) {
         kind: 'backgroundFeature',
         sourceUrl,
         descriptionHtml,
-        description: htmlToRuleText(descriptionHtml) || fallbackDescription,
-        descriptionSource: 'table-row',
+        description: htmlToRuleText(descriptionHtml),
+        descriptionSource: 'table-rule-body',
         sourceFile: file,
         tags: ['backgroundFeature', slug(name)],
         foundry: { preferredType: 'feat' },
         extra: { backgroundName: name },
+      }),
+    )
+    features.push(
+      ...captureInlineSubRules({
+        htmlNode: descriptionHtml,
+        parentRule: {
+          id: slug(name),
+          name: featureName,
+          backgroundName: name,
+          parentDisplayName: `${name}: ${featureName}`,
+        },
+        parentKind: 'backgroundFeature',
+        sourceUrl,
+        sourceFile: file,
+        extraTags: ['subrule'],
       }),
     )
   }
@@ -427,16 +519,16 @@ function parseFeatFile(file) {
     .filter((heading) => [3, 4, 5].includes(heading.level))
     .map((heading) => ({ heading, name: cleanFeatureName(heading.text) }))
     .filter(({ name }) => name && !isNoiseHeading(name) && !looksLikeOnlyLevel(name) && !/^(combate|conjura[cç][aã]o|explora[cç][aã]o|marcas|sobreviv[eê]ncia)$/i.test(name))
-    .map(({ heading, name }) => {
+    .flatMap(({ heading, name }) => {
       const descriptionHtml = sectionHtml(article, heading, extractHeadings(article))
-      return entity({
+      const featSeed = entity({
         id: slug(name),
         name,
         aliases: [],
         kind: 'feat',
         sourceUrl,
         descriptionHtml,
-        description: htmlToRuleText(descriptionHtml) || fallbackDescription,
+        description: htmlToRuleText(descriptionHtml),
         descriptionSource: 'section-body',
         sourceFile: file,
         tags: ['feat'],
@@ -446,6 +538,21 @@ function parseFeatFile(file) {
           prerequisiteStatus: extractPrerequisite(descriptionHtml) ? 'complete' : 'needs-review',
         },
       })
+      return [
+        featSeed,
+        ...captureInlineSubRules({
+          htmlNode: descriptionHtml,
+          parentRule: {
+            id: featSeed.id,
+            name,
+            parentDisplayName: name,
+          },
+          parentKind: 'feat',
+          sourceUrl,
+          sourceFile: file,
+          extraTags: ['subrule'],
+        }),
+      ]
     })
 }
 
@@ -467,7 +574,7 @@ function parseSpellOverrideFile(file) {
         kind: 'spellOverride',
         sourceUrl,
         descriptionHtml,
-        description: htmlToRuleText(descriptionHtml) || fallbackDescription,
+        description: htmlToRuleText(descriptionHtml),
         descriptionSource: 'section-body',
         sourceFile: file,
         tags: ['spellOverride'],
@@ -482,31 +589,65 @@ function parseEssenceFile(file) {
   const article = cleanHtml(html)
   const title = cleanTitle(extractTitle(html) || titleFromFile(file))
   const sourceUrl = extractSourceUrl(html)
-  return extractHeadings(article)
+  const features = extractHeadings(article)
     .filter((heading) => [3, 4, 5].includes(heading.level))
     .map((heading) => ({ heading, name: cleanFeatureName(heading.text) }))
     .filter(({ name }) => name && !isNoiseHeading(name) && !looksLikeOnlyLevel(name))
-    .map(({ heading, name }) =>
-      entity({
+    .flatMap(({ heading, name }) => {
+      const descriptionHtml = sectionHtml(article, heading, extractHeadings(article))
+      const featureSeed = entity({
         id: `${slug(title)}-${slug(name)}`,
         name,
         aliases: [],
         kind: 'raceFeature',
         sourceUrl,
-        descriptionHtml: sectionHtml(article, heading, extractHeadings(article)),
-        description: htmlToRuleText(sectionHtml(article, heading, extractHeadings(article))) || fallbackDescription,
+        descriptionHtml,
+        description: htmlToRuleText(descriptionHtml),
         descriptionSource: 'section-body',
         sourceFile: file,
         tags: ['essence', slug(title)],
         foundry: { preferredType: 'feat' },
         extra: { raceName: title },
-      }),
-    )
+      })
+      return [
+        featureSeed,
+        ...captureInlineSubRules({
+          htmlNode: descriptionHtml,
+          parentRule: {
+            id: featureSeed.id,
+            name,
+            raceName: title,
+            parentDisplayName: name,
+          },
+          parentKind: 'raceFeature',
+          sourceUrl,
+          sourceFile: file,
+          extraTags: ['essence', 'subrule'],
+        }),
+      ]
+    })
+  features.push(
+    ...captureInlineSubRules({
+      htmlNode: article,
+      parentRule: {
+        id: slug(title),
+        name: title,
+        raceName: title,
+        parentDisplayName: title,
+      },
+      parentKind: 'race',
+      sourceUrl,
+      sourceFile: file,
+      extraTags: ['essence', 'subrule'],
+    }),
+  )
+  return features
 }
 
 function entity({ id, name, aliases, kind, sourceUrl, descriptionHtml, description, shortDescription: previewText, descriptionSource = 'unknown', sourceFile, tags, foundry, extra = {} }) {
   const descriptionMeta = buildSeedDescription({
     name,
+    kind,
     descriptionHtml,
     descriptionText: description || htmlToRuleText(descriptionHtml),
     shortDescription: previewText,
@@ -524,7 +665,7 @@ function entity({ id, name, aliases, kind, sourceUrl, descriptionHtml, descripti
     sourceUrl: sourceUrl ?? null,
     descriptionHtml: descriptionMeta.descriptionHtml ?? undefined,
     descriptionText: descriptionMeta.descriptionText ?? undefined,
-    description: descriptionMeta.descriptionText ?? (descriptionMeta.descriptionStatus === 'fallback' ? fallbackDescription : undefined),
+    description: descriptionMeta.descriptionText ?? undefined,
     shortDescription: descriptionMeta.shortDescription ?? undefined,
     descriptionStatus: descriptionMeta.descriptionStatus,
     descriptionSource: descriptionMeta.descriptionSource,
@@ -534,6 +675,47 @@ function entity({ id, name, aliases, kind, sourceUrl, descriptionHtml, descripti
     sourceFileName: sourceFile ? path.relative(repoRoot, sourceFile) : undefined,
     ...extra,
   }
+}
+
+function captureInlineSubRules({ htmlNode, parentRule, parentKind, sourceUrl, sourceFile, extraTags = [] }) {
+  const { subRules, review } = extractInlineSubRules({
+    htmlNode,
+    parentRule,
+    parentKind,
+    sourceUrl,
+  })
+
+  subrulesReview.push(
+    ...review.map((entry) => ({
+      ...entry,
+      sourceFileName: sourceFile ? path.relative(repoRoot, sourceFile) : undefined,
+    })),
+  )
+
+  return subRules.map((subRule) =>
+    entity({
+      id: subRule.id,
+      name: subRule.name,
+      aliases: subRule.aliases,
+      kind: subRule.kind,
+      sourceUrl: subRule.sourceUrl,
+      descriptionHtml: subRule.descriptionHtml,
+      description: subRule.descriptionText,
+      descriptionSource: subRule.descriptionSource,
+      sourceFile,
+      tags: [...(subRule.tags ?? []), ...extraTags],
+      foundry: { preferredType: 'feat' },
+      extra: {
+        parentRuleId: subRule.parentRuleId,
+        parentName: subRule.parentName,
+        parentDisplayName: subRule.parentDisplayName,
+        raceName: subRule.raceName,
+        className: subRule.className,
+        subclassName: subRule.subclassName,
+        backgroundName: subRule.backgroundName,
+      },
+    }),
+  )
 }
 
 function discoverCategoryFiles() {
@@ -658,7 +840,7 @@ function collectNeedsReview(seeds, coverage, parseErrors) {
       name: entry.name,
       kind: entry.kind,
       descriptionStatus: entry.descriptionStatus,
-      reason: Array.isArray(entry.needsReviewReasons) && entry.needsReviewReasons.length ? entry.needsReviewReasons.join(', ') : entry.descriptionStatus === 'fallback' ? 'fallback-description' : 'description-needs-review',
+      reason: Array.isArray(entry.needsReviewReasons) && entry.needsReviewReasons.length ? entry.needsReviewReasons.join(', ') : 'description-needs-review',
       sourceUrl: entry.sourceUrl,
       descriptionSource: entry.descriptionSource ?? 'unknown',
     }))
@@ -715,8 +897,36 @@ function dedupeById(entries) {
   return Array.from(seen.values()).sort((a, b) => a.id.localeCompare(b.id))
 }
 
+function dedupeMissingSourcePages(entries) {
+  const seen = new Map()
+  for (const entry of entries) {
+    const key = `${slug(entry.name)}::${entry.kind || 'unknown'}::${entry.expectedSourceUrl || ''}::${entry.reason}`
+    if (!seen.has(key)) seen.set(key, entry)
+  }
+  return Array.from(seen.values()).sort((a, b) => String(a.name).localeCompare(String(b.name)))
+}
+
+function dedupeSubrulesReview(entries) {
+  const seen = new Map()
+  for (const entry of entries) {
+    const key = `${slug(entry.name)}::${slug(entry.parentName ?? '')}::${entry.kind}::${entry.reason ?? ''}`
+    if (!seen.has(key)) seen.set(key, entry)
+  }
+  return Array.from(seen.values()).sort((a, b) => String(a.name).localeCompare(String(b.name)))
+}
+
+function summarizeSubrulesReview(entries) {
+  const deduped = dedupeSubrulesReview(entries)
+  return {
+    bonfireSubRulesExtractedCount: deduped.filter((entry) => entry.reason === null).length,
+    bonfireInlineBoldSubRulesCount: deduped.filter((entry) => entry.reason === null).length,
+    bonfireSubRulesWithParentCount: deduped.filter((entry) => entry.reason === null && entry.parentName).length,
+    bonfireSubRulesMissingDescriptionCount: deduped.filter((entry) => entry.reason === 'inline-bold-title-without-description').length,
+  }
+}
+
 function descriptionRank(status) {
-  return status === 'complete' ? 5 : status === 'fallback' ? 4 : status === 'needs-review' ? 3 : status === 'summary-only' ? 2 : 1
+  return status === 'complete' ? 5 : status === 'needs-review' ? 3 : status === 'summary-only' ? 2 : 1
 }
 
 function cleanHtml(html) {
@@ -886,48 +1096,51 @@ function isNoiseHeading(name) {
   return headingNoise.has(key) || key.length < 3 || /^str|dex|con|int|wis|cha$/.test(key)
 }
 
-function descriptionStatus(description) {
-  const text = cleanText(description)
-  if (!text) return 'missing'
-  if (text === fallbackDescription) return 'fallback'
-  if (text.length < 80) return 'needs-review'
-  return 'complete'
-}
-
 function shortDescription(description) {
   const text = cleanText(description)
   const sentence = text.match(/^.{40,240}?[.!?](?:\s|$)/)?.[0] ?? text.slice(0, 240)
-  return sentence.trim() || fallbackDescription
+  return sentence.trim() || ''
 }
 
-function buildSeedDescription({ name, descriptionHtml, descriptionText, shortDescription: previewText, descriptionSource, sourceUrl, sourceFile }) {
+function buildSeedDescription({ name, kind, descriptionHtml, descriptionText, shortDescription: previewText, descriptionSource, sourceUrl, sourceFile }) {
   const fullTextCandidate = cleanText(descriptionText || '')
-  const previewCandidate = cleanText(previewText || shortDescription(fullTextCandidate || htmlToText(descriptionHtml) || ''))
+  const previewCandidate = cleanText(previewText || '')
   const sanitizedHtml = descriptionHtml ? sanitizeDescriptionHtml(descriptionHtml) : null
-  const fullSource = tryResolveDetailedSource(name, sourceUrl, sourceFile, descriptionSource)
+  const inferredPreviewSource = inferPreviewSource(descriptionSource, sanitizedHtml, sourceFile)
+  const fullSource = tryResolveDetailedSource(name, kind, sourceUrl, sourceFile, inferredPreviewSource)
   const resolvedHtml = fullSource?.descriptionHtml ?? sanitizedHtml
   const resolvedText = cleanText(fullSource?.descriptionText ?? fullTextCandidate)
-  const resolvedSource = fullSource?.descriptionSource ?? descriptionSource
+  const resolvedSource = fullSource?.descriptionSource ?? inferredPreviewSource
 
   if (!resolvedText) {
     return {
       descriptionHtml: null,
       descriptionText: null,
       shortDescription: previewCandidate || null,
-      descriptionStatus: previewCandidate ? 'fallback' : 'missing',
+      descriptionStatus: previewCandidate ? (resolvedSource === 'card-summary' || resolvedSource === 'category-preview' || resolvedSource === 'local-preview' ? 'summary-only' : 'needs-review') : 'missing',
       descriptionSource: resolvedSource,
-      needsReviewReasons: ['missing-full-rule-page'],
+      needsReviewReasons: previewCandidate ? ['missing-full-rule-description', 'missing-full-rule-page'] : ['missing-full-rule-description', 'missing-full-rule-page'],
     }
   }
 
-  if (resolvedSource === 'card-summary' || looksLikeCardSummary(resolvedText, resolvedHtml)) {
+  if (!isAllowedCompleteDescriptionSource(resolvedSource) || (resolvedSource !== 'inline-bold-subrule' && looksLikeCardSummary(resolvedText, resolvedHtml))) {
     return {
       descriptionHtml: null,
       descriptionText: null,
-      shortDescription: previewCandidate || resolvedText,
-      descriptionStatus: 'summary-only',
-      descriptionSource: 'card-summary',
-      needsReviewReasons: fullSource ? ['summary-card-used-no-full-description'] : ['summary-card-used-no-full-description', 'missing-full-rule-page'],
+      shortDescription: previewCandidate || summarizeFromExactText(resolvedText),
+      descriptionStatus:
+        resolvedSource === 'card-summary' || resolvedSource === 'category-preview' || resolvedSource === 'local-preview'
+          ? 'summary-only'
+          : 'needs-review',
+      descriptionSource: resolvedSource === 'unknown' ? 'category-preview' : resolvedSource,
+      needsReviewReasons: Array.from(
+        new Set([
+          ...(fullSource ? [] : ['missing-full-rule-page']),
+          'missing-full-rule-description',
+          ...(resolvedSource === 'card-summary' || resolvedSource === 'category-preview' ? ['summary-card-used-no-full-description'] : []),
+          ...(resolvedSource === 'manual-review' ? ['manual-description-not-source-verified'] : []),
+        ]),
+      ),
     }
   }
 
@@ -938,7 +1151,7 @@ function buildSeedDescription({ name, descriptionHtml, descriptionText, shortDes
       shortDescription: previewCandidate || null,
       descriptionStatus: 'needs-review',
       descriptionSource: resolvedSource,
-      needsReviewReasons: ['summary-card-used-no-full-description'],
+      needsReviewReasons: ['summary-card-used-no-full-description', 'missing-full-rule-description'],
     }
   }
 
@@ -946,7 +1159,7 @@ function buildSeedDescription({ name, descriptionHtml, descriptionText, shortDes
     return {
       descriptionHtml: resolvedHtml,
       descriptionText: resolvedText,
-      shortDescription: previewCandidate && previewCandidate !== resolvedText ? previewCandidate : shortDescription(resolvedText),
+      shortDescription: previewCandidate && previewCandidate !== resolvedText ? previewCandidate : summarizeFromExactText(resolvedText),
       descriptionStatus: 'complete',
       descriptionSource: resolvedSource,
       needsReviewReasons: [],
@@ -956,20 +1169,46 @@ function buildSeedDescription({ name, descriptionHtml, descriptionText, shortDes
   return {
     descriptionHtml: null,
     descriptionText: null,
-    shortDescription: previewCandidate || resolvedText,
+    shortDescription: previewCandidate || summarizeFromExactText(resolvedText),
     descriptionStatus: 'needs-review',
     descriptionSource: resolvedSource,
-    needsReviewReasons: fullSource ? ['summary-card-used-no-full-description'] : ['missing-full-rule-page'],
+    needsReviewReasons: fullSource ? ['summary-card-used-no-full-description', 'missing-full-rule-description'] : ['missing-full-rule-description', 'missing-full-rule-page'],
   }
+}
+
+function summarizeFromExactText(text) {
+  return shortDescription(text) || null
 }
 
 function isLikelyCompleteRuleText(text, html, source) {
   if (!text) return false
-  if (source === 'table-row') return text.length >= 60 || hasMechanicalSignals(text)
+  if (looksLikeProgressionMatrix(text, html)) return false
+  if (source === 'inline-bold-subrule') return text.length >= 24
+  if (source === 'table-rule-body' || source === 'table-row') return text.length >= 60 || hasMechanicalSignals(text)
   if (hasMechanicalSignals(text)) return true
   if (text.length >= 180) return true
   if (html && /<ul|<ol|<table|<b>\s*efeito|<strong>\s*efeito/i.test(html)) return true
   return false
+}
+
+function looksLikeProgressionMatrix(text, html) {
+  const compact = cleanText(text)
+  if (!compact) return false
+  if (
+    /\bN[ií]vel\b/i.test(compact)
+    && /\bB[oô]nus de Profici[eê]ncia\b/i.test(compact)
+    && /\bCaracter[ií]sticas\b/i.test(compact)
+  ) {
+    return true
+  }
+  if (html && /<table/i.test(html) && /<th>\s*N[íi]vel\s*<\/th>/i.test(html) && /<th>\s*B[oô]nus de Profici/i.test(html)) {
+    return true
+  }
+  return /\b1°\b.*\b2°\b.*\b3°\b/i.test(compact) && /\btruques\b/i.test(compact)
+}
+
+function isAllowedCompleteDescriptionSource(source) {
+  return source === 'article-body' || source === 'section-body' || source === 'inline-bold-subrule' || source === 'table-rule-body'
 }
 
 function hasMechanicalSignals(text) {
@@ -988,20 +1227,92 @@ function containsUiJunk(text) {
   return /\b(create your account|login|pricing|privacy|terms of service|worldanvil podcast|discord|youtube|twitch|facebook|reddit|do you need help|gift a membership|community|i am a gamemaster)\b/i.test(text)
 }
 
-function tryResolveDetailedSource(name, sourceUrl, sourceFile, descriptionSource) {
-  if (descriptionSource !== 'card-summary' && descriptionSource !== 'unknown') return null
+function inferPreviewSource(descriptionSource, html, sourceFile) {
+  if (descriptionSource && descriptionSource !== 'unknown') return descriptionSource
+  const relative = String(sourceFile ? path.relative(repoRoot, sourceFile) : '').toLowerCase()
+  if (html && /<article[^>]+card|class="[^"]*(card|preview|teaser|summary)/i.test(html)) return 'card-summary'
+  if (relative.includes('classes') || relative.includes('racas') || relative.includes('races') || relative.includes('antecedentes') || relative.includes('backgrounds') || relative.includes('talentos') || relative.includes('feats') || relative.includes('subclasses')) {
+    return 'category-preview'
+  }
+  return descriptionSource ?? 'unknown'
+}
+
+function tryResolveDetailedSource(name, kind, sourceUrl, sourceFile, descriptionSource) {
+  if (descriptionSource !== 'card-summary' && descriptionSource !== 'category-preview' && descriptionSource !== 'manual-review' && descriptionSource !== 'unknown') return null
   const normalizedName = slug(name)
-  const match = sourceIndex.find((entry) => entry.normalizedTitle === normalizedName || entry.normalizedH1 === normalizedName || entry.normalizedSourceUrl.includes(normalizedName))
-  if (!match || match.file === sourceFile) return null
-  const html = readFileSync(match.file, 'utf8')
+  const currentFile = sourceFile ? path.resolve(sourceFile) : null
+  if (currentFile && existsSync(currentFile)) {
+    const currentMatch = extractDetailedRuleFromFile(currentFile, name)
+    if (currentMatch) return currentMatch
+  }
+  const match = sourceIndex.find((entry) => {
+    return entry.normalizedHeadings.includes(normalizedName) || entry.normalizedTitle === normalizedName || entry.normalizedH1 === normalizedName || entry.normalizedSourceUrl.includes(normalizedName)
+  })
+  if (!match) {
+    missingSourcePages.push({
+      name,
+      kind,
+      categorySourceUrl: sourceUrl ?? null,
+      expectedSourceUrl: null,
+      reason: 'category-preview-without-full-page-html',
+    })
+    return null
+  }
+  const detailed = extractDetailedRuleFromFile(match.file, name)
+  if (!detailed) {
+    missingSourcePages.push({
+      name,
+      kind,
+      categorySourceUrl: sourceUrl ?? null,
+      expectedSourceUrl: match.sourceUrl || null,
+      reason: 'missing-full-rule-description',
+    })
+    return null
+  }
+  return detailed
+}
+
+function extractDetailedRuleFromFile(file, name) {
+  const html = readFileSync(file, 'utf8')
   const article = cleanHtml(html)
+  const inlineMatch = extractInlineSubRules({
+    htmlNode: article,
+    parentRule: {},
+    parentKind: 'customBonfireFeature',
+    sourceUrl: extractSourceUrl(html),
+  }).subRules.find((entry) => slug(entry.name) === slug(name))
+  if (inlineMatch?.descriptionText) {
+    return {
+      descriptionHtml: inlineMatch.descriptionHtml,
+      descriptionText: cleanText(inlineMatch.descriptionText),
+      descriptionSource: 'inline-bold-subrule',
+    }
+  }
+  const sectionMatch = extractNamedRuleSectionFromArticle(article, name)
+  if (sectionMatch) return sectionMatch
+
   const descriptionHtml = extractDescriptionHtml(article, 2600)
-  const descriptionText = htmlToRuleText(descriptionHtml)
-  if (!descriptionText) return null
+  const descriptionText = cleanText(htmlToRuleText(descriptionHtml))
+  if (!descriptionText || looksLikeCardSummary(descriptionText, descriptionHtml) || !isLikelyCompleteRuleText(descriptionText, descriptionHtml, 'article-body')) return null
   return {
     descriptionHtml,
     descriptionText,
     descriptionSource: 'article-body',
+  }
+}
+
+function extractNamedRuleSectionFromArticle(article, name) {
+  const headings = extractHeadings(article)
+  const target = slug(name)
+  const heading = headings.find((entry) => slug(cleanFeatureName(entry.text)) === target)
+  if (!heading) return null
+  const descriptionHtml = sanitizeDescriptionHtml(sectionHtml(article, heading, headings))
+  const descriptionText = cleanText(htmlToRuleText(descriptionHtml))
+  if (!descriptionText || looksLikeCardSummary(descriptionText, descriptionHtml) || !isLikelyCompleteRuleText(descriptionText, descriptionHtml, 'section-body')) return null
+  return {
+    descriptionHtml,
+    descriptionText,
+    descriptionSource: 'section-body',
   }
 }
 
@@ -1012,6 +1323,7 @@ function buildSourceIndex(files) {
     const h1 = htmlToText(attr(article, /<h1\b[^>]*>([\s\S]*?)<\/h1>/i) ?? '')
     const title = cleanTitle(extractTitle(html) || titleFromFile(file))
     const sourceUrl = extractSourceUrl(html) ?? ''
+    const headings = extractHeadings(article).map((heading) => cleanFeatureName(heading.text)).filter(Boolean)
     return {
       file,
       relativePath: path.relative(repoRoot, file),
@@ -1021,6 +1333,7 @@ function buildSourceIndex(files) {
       normalizedTitle: slug(title),
       normalizedH1: slug(h1),
       normalizedSourceUrl: slug(sourceUrl),
+      normalizedHeadings: headings.map((heading) => slug(heading)),
     }
   })
 }

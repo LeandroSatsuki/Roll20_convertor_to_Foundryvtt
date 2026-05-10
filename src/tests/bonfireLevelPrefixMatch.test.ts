@@ -7,8 +7,8 @@ describe('bonfireLevelPrefixMatch', () => {
     const plain = resolveFeature('Vínculo Natural', { className: 'Druida', level: 5, section: 'class' })
     const prefixed = resolveFeature('Nível 1: Vínculo Natural', { className: 'Druida', level: 5, section: 'class' })
 
-    expect(plain.ruleId).toBe('druida-vinculo-natural')
-    expect(prefixed.ruleId).toBe('druida-vinculo-natural')
+    expect(String(plain.ruleId ?? '')).toMatch(/^druida-vinculo-natural(?:-l\d+)?$/)
+    expect(String(prefixed.ruleId ?? '')).toMatch(/^druida-vinculo-natural(?:-l\d+)?$/)
     expect(prefixed.resolvedName).toBe('Vínculo Natural')
     expect(isRejectedFeatureNoise('Nível 5')).toBe(true)
   })

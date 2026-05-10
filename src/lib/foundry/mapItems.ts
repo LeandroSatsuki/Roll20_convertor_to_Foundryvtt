@@ -7,6 +7,7 @@ import { normalizeRuleLookupKey } from '../rules/store/bonfireAliases'
 import { buildArmorItem, buildConsumableItem, buildEquipmentItem, buildFeatItem, buildGenericItem, buildSpellItem, buildWeaponItem } from './items'
 import { buildRuleDescriptionMeta } from './items/ruleDescription'
 import { getClassSpellcastingRule } from '../spellcasting/classSpellcastingRules'
+import { isTemplateNoiseOrPlaceholder, isTemplatePlaceholderBackgroundValue } from '../sheets/templateNoise'
 
 export function mapItems(character: NormalizedCharacter): FoundryItem[] {
   const usedItemIdentifiers = new Set<string>()
@@ -30,7 +31,7 @@ export function mapItems(character: NormalizedCharacter): FoundryItem[] {
     items.push(mapClassItem(mainClass.name, mainClass.level, nextIdentifier(mainClass.name, usedItemIdentifiers, 'class'), sourceLabel, sourceBook, classFallbackText))
   }
 
-  if (character.identity.background.value) {
+  if (character.identity.background.value && !isTemplatePlaceholderBackgroundValue(character.identity.background.value) && !isTemplateNoiseOrPlaceholder(character.identity.background.value)) {
     const resolution = toSimpleRuleResolution(character.identity.background.value, 'background')
     const descriptionMeta = buildRuleDescriptionMeta({
       itemName: character.identity.background.value,
@@ -70,7 +71,7 @@ export function mapItems(character: NormalizedCharacter): FoundryItem[] {
     )
   }
 
-  if (character.identity.race.value) {
+  if (character.identity.race.value && !isTemplateNoiseOrPlaceholder(character.identity.race.value)) {
     const resolution = toSimpleRuleResolution(character.identity.race.value, 'race')
     const descriptionMeta = buildRuleDescriptionMeta({
       itemName: character.identity.race.value,
@@ -110,7 +111,9 @@ export function mapItems(character: NormalizedCharacter): FoundryItem[] {
     )
   }
 
-  character.features.forEach((feature) =>
+  character.features
+    .filter((feature) => !isTemplateNoiseOrPlaceholder(feature.rawName ?? feature.cleanedName ?? feature.name.value))
+    .forEach((feature) =>
     items.push(
       buildFeatItem({
         feature,

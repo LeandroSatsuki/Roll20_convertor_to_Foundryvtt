@@ -13,6 +13,7 @@ import { foundryId } from '../foundry/ids'
 import { bonfireV21AbilitySpecs, bonfireV21EquipmentRangeSources, bonfireV21FeatureRangeDefinitions, bonfireV21FeatureRangeSources, bonfireV21FieldSpecs, bonfireV21SaveRangeSources, bonfireV21SkillProficiencyRangeSources, bonfireV21SkillValueRangeSources, bonfireV21SpellRanges, bonfireV21Template } from './templates/bonfireV21Template'
 import { getCellsFromWorkbookRef, getSheet as getWorkbookSheet } from './templates/cellRange'
 import { getNamedRangeValue, normalizeNamedRangeRef } from './templates/namedRanges'
+import { isTemplateNoiseOrPlaceholder, isTemplatePlaceholderBackgroundValue, normalizeTemplateFeatureValue } from './templateNoise'
 
 const abilityLabels: Record<AbilityKey, string[]> = {
   str: ['FORCA', 'STR', 'STRENGTH'],
@@ -116,6 +117,7 @@ export function isProbablyTableHeaderOrNoise(value: string): boolean {
 export function isRejectedFeatureNoise(value: string): boolean {
   const trimmed = String(value ?? '').trim()
   if (!trimmed) return true
+  if (isTemplateNoiseOrPlaceholder(trimmed)) return true
   if (/^N[ií]vel\s+\d+$/i.test(trimmed)) return true
   if (/^Level\s+\d+$/i.test(trimmed)) return true
   if (/^(CARACTER[IÍ]STICAS DE CLASSE E RA[ÇC]A|TALENTOS GERAIS|TALENTOS DE RA[ÇC]A|TALENTOS EXTRAS|CARACTER[IÍ]STICAS\s*&\s*TRA[ÇC]OS|FEATURES|TRAITS)$/i.test(trimmed)) return true
@@ -463,7 +465,11 @@ function parseBonfireV21Workbook(workbook: WorkbookData, _options: ParseSheetOpt
   const classText = resolveTemplateTextField(workbook, debug, warnings, bonfireV21FieldSpecs.find((fieldSpec) => fieldSpec.fieldPath === 'identity.classText')!)
   const player = resolveTemplateTextField(workbook, debug, warnings, bonfireV21FieldSpecs.find((fieldSpec) => fieldSpec.fieldPath === 'identity.player')!, false)
   const race = resolveTemplateTextField(workbook, debug, warnings, bonfireV21FieldSpecs.find((fieldSpec) => fieldSpec.fieldPath === 'identity.race')!)
-  const background = resolveTemplateTextField(workbook, debug, warnings, bonfireV21FieldSpecs.find((fieldSpec) => fieldSpec.fieldPath === 'identity.background')!)
+  const backgroundSpec = bonfireV21FieldSpecs.find((fieldSpec) => fieldSpec.fieldPath === 'identity.background')!
+  const resolvedBackground = resolveTemplateTextField(workbook, debug, warnings, backgroundSpec, false)
+  const placeholderBackground = resolveTemplatePlaceholderValue(workbook, debug, warnings, backgroundSpec.sources, 'identity.background')
+  const background = resolvedBackground.value ? resolvedBackground : placeholderBackground ?? field('', 'low')
+  if (!resolvedBackground.value && !placeholderBackground) warnings.push(makeWarning('BACKGROUND_NOT_FOUND_FOR_TEMPLATE', 'Antecedente nao encontrado no template Bonfire v2.1.', 'identity.background', undefined, 'warning'))
   const proficiencyBonus = resolveTemplateNumberField(workbook, debug, warnings, bonfireV21FieldSpecs.find((fieldSpec) => fieldSpec.fieldPath === 'proficiencyBonus')!) as NormalizedCharacter['proficiencyBonus']
   const ac = resolveTemplateNumberField(workbook, debug, warnings, bonfireV21FieldSpecs.find((fieldSpec) => fieldSpec.fieldPath === 'attributes.ac')!)
   const hpMax = resolveTemplateNumberField(workbook, debug, warnings, bonfireV21FieldSpecs.find((fieldSpec) => fieldSpec.fieldPath === 'attributes.hp.max')!)
@@ -773,10 +779,16 @@ function parseBonfireV21FeatureRanges(
     if (!resolved) continue
 
     for (const cell of resolved.cells) {
-      const text = normalizeFeatureNameForSheet(cell.value)
-      if (!text || isIgnoredFeatureRangeValue(text)) continue
-      if (isRejectedFeatureNoise(text)) {
-        debug.rejectedFeatureNoise.push({ value: text, sourceCell: cell.address, sourceRange: rangeRef, reason: 'FEATURE_NOISE_LEVEL_MARKER' })
+      const rawText = normalizeFeatureNameForSheet(cell.value)
+      if (!rawText || isIgnoredFeatureRangeValue(rawText)) continue
+      const text = normalizeTemplateFeatureValue(rawText)
+      if (!text || isRejectedFeatureNoise(rawText)) {
+        debug.rejectedFeatureNoise.push({
+          value: rawText,
+          sourceCell: cell.address,
+          sourceRange: rangeRef,
+          reason: isTemplateNoiseOrPlaceholder(rawText) ? 'FEATURE_NOISE_TEMPLATE_PLACEHOLDER' : 'FEATURE_NOISE_LEVEL_MARKER',
+        })
         continue
       }
       if (isFeatureIdentityDuplicate(text, background)) {
@@ -905,6 +917,7 @@ function classifyFeatureFromSheet(
 function isIgnoredFeatureRangeValue(value: string): boolean {
   if (!value.trim()) return true
   if (['-', '—', '#N/A', '#VALUE!'].includes(value.trim())) return true
+  if (isTemplateNoiseOrPlaceholder(value)) return true
   if (isProbablyTableHeaderOrNoise(value)) return true
   if (/^[+-]?\d+(?:[.,]\d+)?$/.test(value.trim())) return true
   return false
@@ -1331,8 +1344,29 @@ function sanitizeTemplateText(value: string): string | null {
   const cleaned = cleanTemplateCellValue(value)
   if (!cleaned) return null
   if (isUrlLike(cleaned)) return null
+  if (isTemplateNoiseOrPlaceholder(cleaned)) return null
   if (isProbablyTableHeaderOrNoise(cleaned)) return null
   return cleaned
+}
+
+function resolveTemplatePlaceholderValue(
+  workbook: WorkbookData,
+  debug: SheetParseDebugInfo,
+  warnings: ConversionWarning[],
+  sources: ReadonlyArray<{ sourceType: 'namedRange' | 'cell' | 'range'; source: string }>,
+  fieldPath: string,
+): FieldValue<string> | null {
+  for (const sourceSpec of sources) {
+    const resolved =
+      sourceSpec.sourceType === 'namedRange'
+        ? resolveNamedRangeSource(workbook, sourceSpec.source, fieldPath, debug, warnings)
+        : resolveWorkbookSource(workbook, sourceSpec.source, fieldPath, debug, warnings)
+    for (const value of resolved.values) {
+      if (!isTemplateNoiseOrPlaceholder(value)) continue
+      return { ...field(value, 'low', `${resolved.resolvedAddress ?? sourceSpec.source}: ${value}`), source: 'sheet-template-placeholder' }
+    }
+  }
+  return null
 }
 
 function addTemplateIssue(
@@ -1607,10 +1641,12 @@ function parseBonfireLogBackground(sheet: WorkbookSheet, warnings: ConversionWar
     ...getCellsInAddressRange(sheet, 'C10', 'R12'),
     ...['T10', 'U10', 'C11', 'D11', 'C12', 'D12'].map((address) => getCellByAddress(sheet, address)).filter(Boolean),
   ] as SheetCell[])
+  let placeholderCandidate: SheetCell | null = null
 
   for (const candidate of explicitCandidates) {
     const rejectedReason = rejectBackgroundCandidate(candidate.value)
     if (rejectedReason) {
+      if (!placeholderCandidate && isTemplatePlaceholderBackgroundValue(candidate.value)) placeholderCandidate = candidate
       debugField(debug, 'identity.background', candidate, false, rejectedReason)
       continue
     }
@@ -1623,7 +1659,16 @@ function parseBonfireLogBackground(sheet: WorkbookSheet, warnings: ConversionWar
 
   const anchored = valueForLabelsTemplateAware(sheet, identityLabels.background, warnings, debug, 'identity.background', false)
   if (anchored.value && !rejectBackgroundCandidate(anchored.value)) return anchored
-  if (anchored.value && rejectBackgroundCandidate(anchored.value)) debugField(debug, 'identity.background', undefined, false, 'rejected anchored background value')
+  if (anchored.value && rejectBackgroundCandidate(anchored.value)) {
+    if (!placeholderCandidate && isTemplatePlaceholderBackgroundValue(anchored.value)) {
+      placeholderCandidate = getCellByAddress(sheet, extractCellAddressFromRaw(anchored.raw) ?? '') ?? null
+    }
+    debugField(debug, 'identity.background', undefined, false, 'rejected anchored background value')
+  }
+  if (placeholderCandidate) {
+    debugField(debug, 'identity.background', placeholderCandidate, false, 'template placeholder background value')
+    return { ...field(placeholderCandidate.value.trim(), 'low', `${placeholderCandidate.address}: ${placeholderCandidate.value}`), source: 'sheet-template-placeholder' }
+  }
   warnings.push(makeWarning('BACKGROUND_NOT_FOUND_FOR_TEMPLATE', 'Antecedente nao encontrado no template bonfire-log-v2.', 'identity.background', undefined, 'warning'))
   return field('', 'low')
 }
@@ -1844,6 +1889,7 @@ function coercePassivePerceptionFromSkills(skills: Record<SkillKey, SkillValue>)
 function rejectBackgroundCandidate(value: string): string | null {
   const normalized = normalizeSheetCellValue(value).replace(/\s+/g, ' ')
   if (!normalized) return 'empty'
+  if (isTemplatePlaceholderBackgroundValue(value) || isTemplateNoiseOrPlaceholder(value)) return 'background is template placeholder'
   if (isUrlLike(value)) return 'background is URL'
   if (isAnchorLabel(value)) return 'background is another label'
   if (isProbablyTableHeaderOrNoise(value)) return 'background is table noise'
@@ -2193,9 +2239,10 @@ function collectFeatureSectionValues(sheet: WorkbookSheet, labels: string[]): Ar
     if (rowHasFeatureStop(sheet, row)) break
     for (let col = cell.col; col <= Math.min(maxRowCol(sheet, row), cell.col + 4); col += 1) {
       const candidate = getCellOrMerged(sheet, row, col)
-      const value = candidate?.value.trim() ?? ''
-      if (!value || isFeatureBoundary(value) || isProbablyTableHeaderOrNoise(value) || isRejectedFeatureNoise(value)) continue
-      values.push({ value, raw: value })
+      const rawValue = candidate?.value.trim() ?? ''
+      const value = normalizeTemplateFeatureValue(rawValue)
+      if (!value || isFeatureBoundary(rawValue) || isProbablyTableHeaderOrNoise(rawValue) || isRejectedFeatureNoise(rawValue)) continue
+      values.push({ value, raw: rawValue })
     }
   }
   return values
@@ -2588,7 +2635,17 @@ function validateExtractedCharacter(character: NormalizedCharacter) {
     }
   }
 
-  if (rejectBackgroundCandidate(character.identity.background.value)) {
+  if (isTemplatePlaceholderBackgroundValue(character.identity.background.value)) {
+    character.warnings.push(
+      makeWarning(
+        'BACKGROUND_PLACEHOLDER_VALUE',
+        'Antecedente nao informado na ficha; placeholder de template preservado para revisao.',
+        'identity.background',
+        character.identity.background.raw ?? character.identity.background.value,
+        'warning',
+      ),
+    )
+  } else if (rejectBackgroundCandidate(character.identity.background.value)) {
     character.warnings.push(
       makeWarning(
         'BACKGROUND_INVALID_TEMPLATE_VALUE',

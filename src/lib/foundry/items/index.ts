@@ -12,6 +12,7 @@ import { escapeHtml, itemStats } from '../mapWeapons'
 import { buildRuleDescriptionMeta, buildSpellDescriptionMeta, type ItemDescriptionMeta } from './ruleDescription'
 import { featureLibrarySuggestionAliases } from '../../foundry-library/foundryLibraryAliases'
 import { normalizeRuleLookupKey } from '../../rules/store/bonfireAliases'
+import { stripFeatureLevelPrefix } from '../../sheets/templateNoise'
 
 export type ItemAutomationLevel = 'full' | 'partial' | 'none'
 
@@ -234,7 +235,7 @@ export function buildFeatItem(options: {
 }
 
 function isBonfireRuleNotFound(resolution: FeatureResolution): boolean {
-  return !resolution.ruleId && (resolution.confidence === 'low' || resolution.kind === 'unknown')
+  return !resolution.ruleId || resolution.confidence === 'low' || resolution.kind === 'unknown'
 }
 
 function buildUnresolvedBonfireRuleItem(options: {
@@ -348,7 +349,7 @@ function inferUnresolvedBonfireCategory(feature: NormalizedFeature): 'race' | 'c
 }
 
 function cleanOriginalRuleName(name: string): string {
-  return name.replace(/\s+\(N(?:a|ã)o Encontrado, CORRIGIR!\)$/i, '').trim() || 'Regra Bonfire'
+  return stripFeatureLevelPrefix(name.replace(/\s+\(N(?:a|ã)o Encontrado, CORRIGIR!\)$/i, '').trim()) || 'Regra Bonfire'
 }
 
 function renderUnresolvedBonfireDescription(options: {

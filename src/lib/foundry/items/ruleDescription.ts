@@ -1,4 +1,5 @@
 import type { BonfireSpellOverrideRule } from '../../rules/bonfireTypes'
+import { isAllowedCompleteDescriptionSource } from '../../rules/descriptionSourcePolicy'
 import { getBonfireRuleEntity } from '../../rules/store/bonfireRuleStore'
 import { escapeHtml } from '../mapWeapons'
 
@@ -10,7 +11,19 @@ export type ItemDescriptionMeta = {
   status: BonfireItemDescriptionStatus
   sourceUrl?: string
   sourceName?: string
-  sourceType?: 'article-body' | 'section-body' | 'table-row' | 'card-summary' | 'manual-review' | 'unknown'
+  sourceType?:
+    | 'article-body'
+    | 'section-body'
+    | 'table-rule-body'
+    | 'table-row'
+    | 'inline-bold-subrule'
+    | 'card-summary'
+    | 'category-preview'
+    | 'manual-review'
+    | 'unknown'
+    | 'fallback'
+    | 'generated'
+    | 'local-preview'
   warningCodes: string[]
   warningMessages: string[]
   needsReviewReasons?: string[]
@@ -42,34 +55,34 @@ export function buildRuleDescriptionMeta(options: RuleDescriptionOptions): ItemD
   const descriptionSource = entity?.descriptionSource ?? 'unknown'
   const needsReviewReasons = entity?.needsReviewReasons ?? []
   const descriptionHtml = sanitizeRuleHtml(entity?.descriptionHtml)
+  const exactDescriptionAllowed = descriptionStatus === 'complete'
+    && isAllowedCompleteDescriptionSource(descriptionSource)
+    && !looksLikeNonExactRuleBody(primaryDescription, descriptionHtml)
 
   if (!entity && sourceUrl) {
     return {
-      html: renderRuleReviewHtml({
+      html: renderMissingBonfireDescriptionHtml({
         title: options.itemName,
-        statusLabel: 'Descricao Bonfire ainda nao cadastrada nesta base local.',
-        preview: undefined,
-        kind: options.itemKind,
-        sourceName,
         sourceUrl,
         sourceType: 'unknown',
       }),
-      status: 'fallback',
+      status: 'missing',
       sourceUrl,
       sourceName,
       sourceType: 'unknown',
-      warningCodes: ['RULE_DESCRIPTION_FALLBACK_USED', 'BONFIRE_DESCRIPTION_NEEDS_SOURCE_PAGE'],
-      warningMessages: ['Descricao detalhada ausente no seed local; item exportado com link para consulta.'],
-      needsReviewReasons: ['missing-full-rule-page'],
+      warningCodes: ['BONFIRE_DESCRIPTION_MISSING_FULL_TEXT', 'BONFIRE_DESCRIPTION_NEEDS_SOURCE_PAGE'],
+      warningMessages: ['Texto completo da regra Bonfire nao foi encontrado na base local.'],
+      needsReviewReasons: ['missing-full-rule-description', 'missing-full-rule-page'],
     }
   }
 
-  if (descriptionStatus === 'complete' && (descriptionHtml || primaryDescription)) {
+  if (exactDescriptionAllowed && (descriptionHtml || primaryDescription)) {
+    const shouldRenderExactTextBody = isBonfireExactDescriptionKind(options.itemKind)
     return {
       html: renderRuleDescriptionHtml({
         title: entity?.name ?? options.itemName,
         body: primaryDescription ?? '',
-        bodyHtml: descriptionHtml,
+        bodyHtml: shouldRenderExactTextBody ? undefined : descriptionHtml,
         kind: entity?.kind ?? options.itemKind,
         sourceName,
         sourceUrl,
@@ -84,54 +97,34 @@ export function buildRuleDescriptionMeta(options: RuleDescriptionOptions): ItemD
     }
   }
 
-  if (descriptionStatus === 'summary-only' && shortDescription) {
+  if (isBonfireExactDescriptionKind(options.itemKind) && entity) {
+    const warningCodes = Array.from(
+      new Set([
+        ...(descriptionStatus === 'summary-only' ? ['BONFIRE_DESCRIPTION_SUMMARY_ONLY'] : []),
+        ...(descriptionSource === 'card-summary' || descriptionSource === 'category-preview' ? ['BONFIRE_DESCRIPTION_PREVIEW_REJECTED'] : []),
+        ...(descriptionSource === 'manual-review' ? ['BONFIRE_DESCRIPTION_MANUAL_REVIEW_NOT_COMPLETE'] : []),
+        ...(!isAllowedCompleteDescriptionSource(descriptionSource) ? ['BONFIRE_DESCRIPTION_SOURCE_NOT_ALLOWED_FOR_COMPLETE'] : []),
+        ...(descriptionStatus === 'complete' && looksLikeNonExactRuleBody(primaryDescription, descriptionHtml) ? ['BONFIRE_DESCRIPTION_NOT_EXACT'] : []),
+        'BONFIRE_DESCRIPTION_MISSING_FULL_TEXT',
+      ]),
+    )
     return {
-      html: renderRuleReviewHtml({
+      html: renderMissingBonfireDescriptionHtml({
         title: entity?.name ?? options.itemName,
-        statusLabel: 'Resumo encontrado; descricao completa precisa de revisao.',
-        preview: shortDescription,
-        kind: entity?.kind ?? options.itemKind,
-        sourceName,
         sourceUrl,
         sourceType: descriptionSource,
       }),
-      status: 'summary-only',
+      status: descriptionStatus === 'summary-only' ? 'summary-only' : 'needs-review',
       sourceUrl,
       sourceName,
       sourceType: descriptionSource,
-      warningCodes: ['BONFIRE_DESCRIPTION_SUMMARY_ONLY', 'BONFIRE_DESCRIPTION_SOURCE_CARD_SUMMARY', 'BONFIRE_DESCRIPTION_FULL_TEXT_MISSING', 'BONFIRE_DESCRIPTION_NEEDS_SOURCE_PAGE'],
-      warningMessages: ['Resumo Bonfire encontrado sem o texto completo da regra; item exportado com pendência de revisão.'],
-      needsReviewReasons: Array.from(new Set([...needsReviewReasons, 'summary-card-used-no-full-description', 'missing-full-rule-page'])),
-    }
-  }
-
-  if ((descriptionStatus === 'needs-review' || descriptionStatus === 'fallback') && (shortDescription || sourceUrl)) {
-    return {
-      html: renderRuleReviewHtml({
-        title: entity?.name ?? options.itemName,
-        statusLabel: 'Descricao Bonfire completa ainda nao foi verificada nesta base local.',
-        preview: shortDescription,
-        kind: entity?.kind ?? options.itemKind,
-        sourceName,
-        sourceUrl,
-        sourceType: descriptionSource,
-      }),
-      status: descriptionStatus,
-      sourceUrl,
-      sourceName,
-      sourceType: descriptionSource,
-      warningCodes: [
-        descriptionStatus === 'fallback' ? 'BONFIRE_FEATURE_DESCRIPTION_FALLBACK' : 'BONFIRE_FEATURE_NEEDS_REVIEW',
-        'BONFIRE_DESCRIPTION_FULL_TEXT_MISSING',
-        ...(descriptionSource === 'card-summary' ? ['BONFIRE_DESCRIPTION_SOURCE_CARD_SUMMARY'] : []),
-        ...(needsReviewReasons.includes('missing-full-rule-page') ? ['BONFIRE_DESCRIPTION_NEEDS_SOURCE_PAGE'] : []),
-      ],
-      warningMessages: ['Descricao Bonfire completa ausente ou nao verificada; item exportado com pendência de revisão.'],
+      warningCodes,
+      warningMessages: ['Descricao Bonfire nao encontrada em forma completa; item exportado com pendencia explicita de revisao.'],
       needsReviewReasons,
     }
   }
 
-  const fallbackText = sanitizeRuleText(options.fallbackText) ?? 'Descricao generica preservada para revisao manual.'
+  const fallbackText = sanitizeRuleText(options.fallbackText) ?? 'Descricao Bonfire nao encontrada, CORRIGIR!'
   return {
     html: renderRuleDescriptionHtml({
       title: options.itemName,
@@ -145,9 +138,45 @@ export function buildRuleDescriptionMeta(options: RuleDescriptionOptions): ItemD
     sourceName: options.sourceName ?? 'Conversor local',
     sourceType: 'unknown',
     warningCodes: ['RULE_DESCRIPTION_MISSING'],
-    warningMessages: ['Descricao ausente no Rule Store; mantendo fallback seguro.'],
-    needsReviewReasons: ['missing-full-rule-page'],
+      warningMessages: ['Descricao ausente no Rule Store; exportando placeholder explicito de revisao.'],
+      needsReviewReasons: ['missing-full-rule-description', 'missing-full-rule-page'],
+    }
+}
+
+function looksLikeNonExactRuleBody(text: string | undefined, html: string | undefined): boolean {
+  const compact = sanitizeRuleText(text)
+  if (!compact) return false
+  if (
+    /\bN[ií]vel\b/i.test(compact)
+    && /\bB[oô]nus de Profici[eê]ncia\b/i.test(compact)
+    && /\bCaracter[ií]sticas\b/i.test(compact)
+  ) {
+    return true
   }
+  if (html && /<table/i.test(html) && /<th>\s*N[íi]vel\s*<\/th>/i.test(html) && /<th>\s*B[oô]nus de Profici/i.test(html)) {
+    return true
+  }
+  return /\b1°\b.*\b2°\b.*\b3°\b/i.test(compact) && /\btruques\b/i.test(compact)
+}
+
+function isBonfireExactDescriptionKind(kind: string): boolean {
+  return [
+    'class',
+    'subclass',
+    'race',
+    'background',
+    'feat',
+    'originFeat',
+    'racialFeat',
+    'classFeature',
+    'subclassFeature',
+    'raceFeature',
+    'backgroundFeature',
+    'resource',
+    'spellcasting',
+    'customBonfireFeature',
+    'otherFeature',
+  ].includes(kind)
 }
 
 export function buildSpellDescriptionMeta(options: SpellDescriptionOptions): ItemDescriptionMeta {
@@ -265,34 +294,22 @@ function renderRuleDescriptionHtml({
   ].join('')
 }
 
-function renderRuleReviewHtml({
+function renderMissingBonfireDescriptionHtml({
   title,
-  statusLabel,
-  preview,
-  kind,
-  sourceName,
   sourceUrl,
   sourceType,
 }: {
   title: string
-  statusLabel: string
-  preview?: string
-  kind: string
-  sourceName: string
   sourceUrl?: string
   sourceType?: string
 }): string {
   return [
-    '<section class="bonfire-rule bonfire-rule-review">',
+    '<section class="bonfire-missing-description">',
     `<h2>${escapeHtml(title)}</h2>`,
-    `<p><strong>Status:</strong> ${escapeHtml(statusLabel)}</p>`,
-    preview ? `<p><strong>Preview local:</strong> ${escapeHtml(preview)}</p>` : '',
-    '<p><strong>Observacao:</strong> O texto completo da regra Bonfire nao foi confirmado nesta base local.</p>',
-    '<hr>',
-    `<p><strong>Tipo:</strong> ${escapeHtml(kind)}</p>`,
-    `<p><strong>Fonte:</strong> ${escapeHtml(sourceName)}</p>`,
-    sourceType ? `<p><strong>Origem da descricao:</strong> ${escapeHtml(sourceType)}</p>` : '',
-    sourceUrl ? `<p><strong>URL:</strong> <a href="${escapeAttribute(sourceUrl)}" target="_blank" rel="noreferrer noopener">${escapeHtml(sourceUrl)}</a></p>` : '',
+    '<p><strong>Status:</strong> Descricao Bonfire nao encontrada, CORRIGIR!</p>',
+    '<p>Esta regra foi detectada na ficha, mas o texto completo da Bonfire nao foi encontrado na base local.</p>',
+    sourceUrl ? `<p><strong>Fonte esperada:</strong> <a href="${escapeAttribute(sourceUrl)}" target="_blank" rel="noreferrer noopener">${escapeHtml(sourceUrl)}</a></p>` : '',
+    sourceType ? `<p><strong>Origem da descricao atual:</strong> ${escapeHtml(sourceType)}</p>` : '',
     '</section>',
   ].join('')
 }

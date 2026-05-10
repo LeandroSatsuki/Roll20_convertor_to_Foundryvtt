@@ -5,7 +5,7 @@ import { readWorkbook } from '../lib/sheets/readWorkbook'
 import { createWorkbookData } from './sheetTestWorkbook'
 
 describe('bonfire log currency parsing', () => {
-  it('extracts the total gp from the coin area in samples/Pipkin.xlsx', async () => {
+  it('extracts the total gp from the coin area in samples/clerigo-level5.xlsx', async () => {
     const workbook = await readWorkbook(new Uint8Array(readFileSync('samples/Pipkin.xlsx')), 'Pipkin.xlsx')
     const result = parseBonfireCharacterSheet(workbook)
 

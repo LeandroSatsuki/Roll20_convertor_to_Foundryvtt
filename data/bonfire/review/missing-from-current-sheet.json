@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-09T15:29:05.620Z",
+  "generatedAt": "2026-05-10T00:07:43.278Z",
   "note": "Runtime sheet-specific missing rules are appended by the UI/export flow. Seed generation does not patch by character.",
   "missingRules": []
 }

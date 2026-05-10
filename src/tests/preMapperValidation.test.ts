@@ -4,7 +4,7 @@ import { mapNormalizedToFoundryActor } from '../lib/foundry/mapNormalizedToFound
 import type { NormalizedCharacter } from '../lib/normalize/normalizedCharacterTypes'
 import { parseBonfireCharacterSheet } from '../lib/sheets/parseBonfireCharacterSheet'
 import { readWorkbook } from '../lib/sheets/readWorkbook'
-import { createPipkinWorkbookData } from './createPipkinWorkbook'
+import { createClerigoLevel5WorkbookData } from './createClerigoLevel5Workbook'
 
 describe('pre mapper validation', () => {
   it('blocks export when background is FOR', async () => {
@@ -50,6 +50,6 @@ describe('pre mapper validation', () => {
 })
 
 async function parseSample(): Promise<NormalizedCharacter> {
-  const workbook = await readWorkbook(createPipkinWorkbookData(), 'Pipkin.xlsx')
+  const workbook = await readWorkbook(createClerigoLevel5WorkbookData(), 'Pipkin.xlsx')
   return parseBonfireCharacterSheet(workbook).character
 }

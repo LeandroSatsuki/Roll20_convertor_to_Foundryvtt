@@ -54,5 +54,5 @@ function hasBonfireRuleFallback(item: FoundryItem): boolean {
   const status = descriptionMeta && typeof descriptionMeta === 'object' && !Array.isArray(descriptionMeta) ? String((descriptionMeta as Record<string, unknown>).status ?? '') : ''
   const resolution = getRuleResolution(item)
   const ruleId = resolution ? String(resolution.ruleId ?? '') : ''
-  return Boolean(ruleId) && (status === 'complete' || status === 'fallback')
+  return Boolean(ruleId) && status === 'complete'
 }

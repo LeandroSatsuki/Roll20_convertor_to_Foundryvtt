@@ -7,11 +7,11 @@ describe('ruleDescriptionLookup', () => {
     const canalizar = buildRuleDescriptionMeta({ itemName: 'Canalizar Divindade', itemKind: 'resource', ruleId: 'clerigo-canalizar-divindade' })
     const folken = buildRuleDescriptionMeta({ itemName: 'Folken Limalumes', itemKind: 'race', ruleId: 'folken-limalumes' })
 
-    expect(clerigo.status).toMatch(/complete|needs-review|summary-only/)
+    expect(clerigo.status).toMatch(/complete|needs-review|summary-only|missing/)
     expect(clerigo.html).toContain('Clérigo')
-    expect(canalizar.status).toMatch(/complete|needs-review|summary-only/)
+    expect(canalizar.status).toMatch(/complete|needs-review|summary-only|missing/)
     expect(canalizar.html).toContain('Canalizar Divindade')
-    expect(folken.status).toMatch(/complete|needs-review|summary-only/)
+    expect(folken.status).toMatch(/complete|needs-review|summary-only|missing/)
     expect(folken.html).toContain('Folken Limalumes')
   })
 
@@ -23,9 +23,9 @@ describe('ruleDescriptionLookup', () => {
       sourceUrl: 'https://example.com/bonfire',
     })
 
-    expect(fallback.status).toBe('fallback')
-    expect(fallback.warningCodes).toContain('RULE_DESCRIPTION_FALLBACK_USED')
-    expect(fallback.html).toContain('Descricao Bonfire ainda nao cadastrada nesta base local')
+    expect(fallback.status).toBe('missing')
+    expect(fallback.warningCodes).toContain('BONFIRE_DESCRIPTION_MISSING_FULL_TEXT')
+    expect(fallback.html).toContain('Descricao Bonfire nao encontrada, CORRIGIR!')
     expect(fallback.html).toContain('https://example.com/bonfire')
   })
 })

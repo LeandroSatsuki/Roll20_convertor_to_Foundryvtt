@@ -4,7 +4,7 @@ import { parseBonfireCharacterSheet } from '../lib/sheets/parseBonfireCharacterS
 import { readWorkbook } from '../lib/sheets/readWorkbook'
 
 describe('bonfire log abilities parsing', () => {
-  it('extracts unsigned ability scores and correct modifiers from samples/Pipkin.xlsx', async () => {
+  it('extracts unsigned ability scores and correct modifiers from samples/clerigo-level5.xlsx', async () => {
     const workbook = await readWorkbook(new Uint8Array(readFileSync('samples/Pipkin.xlsx')), 'Pipkin.xlsx')
     const result = parseBonfireCharacterSheet(workbook)
     const { abilities } = result.character

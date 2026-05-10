@@ -4,7 +4,7 @@ import { parseBonfireCharacterSheet } from '../lib/sheets/parseBonfireCharacterS
 import { readWorkbook } from '../lib/sheets/readWorkbook'
 
 describe('normalized character actually receives abilities', () => {
-  it('stores the parsed Pipkin ability scores on the real returned character object', async () => {
+  it('stores the parsed clerigo-level5 ability scores on the real returned character object', async () => {
     const workbook = await readWorkbook(new Uint8Array(readFileSync('samples/Pipkin.xlsx')), 'Pipkin.xlsx')
     const result = parseBonfireCharacterSheet(workbook)
 

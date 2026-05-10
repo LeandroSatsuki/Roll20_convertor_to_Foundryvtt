@@ -1,10 +1,10 @@
 import { describe, expect, it } from 'vitest'
 import { buildDiagnosticPackage } from '../lib/pipeline/buildDiagnosticPackage'
-import { loadPipkinFoundry } from './pipkinFoundryFixture'
+import { loadClerigoLevel5Foundry } from './clerigoLevel5FoundryFixture'
 
 describe('pipeline diagnostic package final', () => {
-  it('contains aligned normalized, actor, and audit ability snapshots for Pipkin', async () => {
-    const { pipelineIds, debug, normalized, actor, audit } = await loadPipkinFoundry()
+  it('contains aligned normalized, actor, and audit ability snapshots for clerigo-level5', async () => {
+    const { pipelineIds, debug, normalized, actor, audit } = await loadClerigoLevel5Foundry()
     const diagnostic = buildDiagnosticPackage({ pipelineIds, debug, normalized, actor, audit })
 
     expect(diagnostic.normalized.abilities.str.score.value).toBe(8)

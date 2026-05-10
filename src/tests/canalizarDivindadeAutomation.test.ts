@@ -1,10 +1,10 @@
 import { describe, expect, it } from 'vitest'
 import { getItemAutomationMeta } from '../lib/foundry/items'
-import { loadPipkinFoundry } from './pipkinFoundryFixture'
+import { loadClerigoLevel5Foundry } from './clerigoLevel5FoundryFixture'
 
 describe('Canalizar Divindade automation', () => {
   it('configures uses max 2 and utility activity', async () => {
-    const { actor } = await loadPipkinFoundry()
+    const { actor } = await loadClerigoLevel5Foundry()
     const item = actor.items.find((entry) => entry.name === 'Canalizar Divindade')
 
     expect(item).toBeTruthy()
