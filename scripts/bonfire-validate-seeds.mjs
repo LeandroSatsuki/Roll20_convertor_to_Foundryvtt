@@ -42,6 +42,8 @@ const needsReview = existsSync(path.join(reviewDir, 'needs-review.json')) ? read
 const missingRules = existsSync(path.join(reviewDir, 'missing-rules.json')) ? readJson(path.join(reviewDir, 'missing-rules.json')) : null
 const missingSourcePages = existsSync(path.join(reviewDir, 'missing-source-pages.json')) ? readJson(path.join(reviewDir, 'missing-source-pages.json')) : null
 const subrulesReview = existsSync(path.join(reviewDir, 'subrules-review.json')) ? readJson(path.join(reviewDir, 'subrules-review.json')) : null
+const descriptionCoverage = existsSync(path.join(reviewDir, 'description-coverage-report.json')) ? readJson(path.join(reviewDir, 'description-coverage-report.json')) : null
+const remainingDescriptionWarnings = existsSync(path.join(reviewDir, 'remaining-description-warnings.json')) ? readJson(path.join(reviewDir, 'remaining-description-warnings.json')) : null
 
 const errors = []
 const warnings = []
@@ -78,7 +80,7 @@ for (const canonical of classIndex) {
   if (classSeed.descriptionStatus === 'complete' && classSeed.descriptionText && classSeed.shortDescription && classSeed.descriptionText === classSeed.shortDescription) {
     warnings.push(`BONFIRE_DESCRIPTION_PREVIEW_REJECTED: ${canonical.name}: complete description matches preview text`)
   }
-  if (classSeed.descriptionStatus === 'complete' && classSeed.descriptionText && !looksLikeCompleteRuleText(classSeed.descriptionText, classSeed.descriptionSource)) {
+  if (shouldWarnExactTextRequired(classSeed)) {
     warnings.push(`BONFIRE_DESCRIPTION_EXACT_TEXT_REQUIRED: ${canonical.name}: complete description looks too short or non-mechanical for a final rule text`)
   }
   if (!classSeed.hitDie && classSeed.hitDieStatus !== 'needs-review') warnings.push(`${canonical.name}: hitDie missing without needs-review`)
@@ -98,40 +100,48 @@ if (!needsReview?.items) errors.push('needs-review.json missing items array')
 if (!missingRules?.missingRules) errors.push('missing-rules.json missing missingRules array')
 if (!missingSourcePages?.items) errors.push('missing-source-pages.json missing items array')
 if (!subrulesReview?.items) errors.push('subrules-review.json missing items array')
+if (!descriptionCoverage?.items) errors.push('description-coverage-report.json missing items array')
+if (!remainingDescriptionWarnings?.entries) errors.push('remaining-description-warnings.json missing entries array')
+
+const uniqueErrors = Array.from(new Set(errors))
+const uniqueWarnings = Array.from(new Set(warnings))
 
 const report = {
   generatedAt: new Date().toISOString(),
-  ok: errors.length === 0,
-  errors,
-  warnings,
+  ok: uniqueErrors.length === 0,
+  errors: uniqueErrors,
+  warnings: uniqueWarnings,
   totalClasses: classIndex.length,
   coveredClasses: coverage?.summary?.coveredClasses ?? 0,
   needsReviewCount: needsReview?.items?.length ?? 0,
   missingRulesCount: missingRules?.missingRules?.length ?? 0,
   missingSourcePagesCount: missingSourcePages?.items?.length ?? 0,
   subRulesCount: subrulesReview?.items?.filter((entry) => entry.reason === null)?.length ?? 0,
+  descriptionCoveragePendingCount: descriptionCoverage?.items?.length ?? 0,
+  remainingDescriptionWarningsCount: remainingDescriptionWarnings?.entries?.length ?? 0,
 }
 
 writeFileSync(path.join(reviewDir, 'validation-report.json'), `${JSON.stringify(report, null, 2)}\n`, 'utf8')
 console.log(JSON.stringify(report, null, 2))
 
-if (errors.length) process.exit(1)
+if (uniqueErrors.length) process.exit(1)
 
 function validateEntitySeed(seed, errors, warnings) {
   if (!seed || typeof seed !== 'object') return
+  if (isStructuralSiteNoise(seed.name) || looksLikeProgressionArtifactName(seed.name)) return
   if (seed.descriptionStatus === 'complete' && !isAllowedCompleteDescriptionSource(seed.descriptionSource)) {
     errors.push(`BONFIRE_DESCRIPTION_SOURCE_NOT_ALLOWED_FOR_COMPLETE: ${seed.name}: complete description cannot come from ${seed.descriptionSource}`)
   }
   if (seed.descriptionStatus === 'complete' && !seed.descriptionText) {
     warnings.push(`BONFIRE_DESCRIPTION_FULL_TEXT_MISSING: ${seed.name}: complete description missing descriptionText`)
   }
-  if (seed.descriptionStatus === 'complete' && seed.descriptionText && seed.shortDescription && seed.descriptionText === seed.shortDescription) {
+  if (shouldWarnPreviewRejected(seed)) {
     warnings.push(`BONFIRE_DESCRIPTION_PREVIEW_REJECTED: ${seed.name}: complete description matches preview text`)
   }
   if ((seed.descriptionStatus === 'summary-only' || seed.descriptionStatus === 'needs-review') && !seed.descriptionText && !seed.shortDescription) {
     warnings.push(`BONFIRE_DESCRIPTION_SUMMARY_ONLY: ${seed.name}: unresolved seed has no preview or full text`)
   }
-  if (seed.descriptionStatus === 'complete' && seed.descriptionText && !looksLikeCompleteRuleText(seed.descriptionText, seed.descriptionSource)) {
+  if (shouldWarnExactTextRequired(seed)) {
     warnings.push(`BONFIRE_DESCRIPTION_EXACT_TEXT_REQUIRED: ${seed.name}: complete description looks too short or non-mechanical for a final rule text`)
   }
 }
@@ -145,6 +155,38 @@ function looksLikeCompleteRuleText(text, source) {
   if (source === 'inline-bold-subrule') return text.length >= 24
   if (text.length >= 180) return true
   return /\b(vantagem|desvantagem|teste(?:s)? de resist[eê]ncia|a[cç][aã]o|a[cç][aã]o b[oô]nus|rea[cç][aã]o|descanso longo|descanso curto|profici[eê]ncia|dano|alcance|metro|p[eé]s)\b/i.test(text)
+}
+
+function shouldWarnPreviewRejected(seed) {
+  if (!seed || seed.descriptionStatus !== 'complete') return false
+  if (!seed.descriptionText || !seed.shortDescription) return false
+  if (seed.descriptionText !== seed.shortDescription) return false
+  return !isAllowedCompleteDescriptionSource(seed.descriptionSource) || ['card-summary', 'category-preview', 'manual-review', 'local-preview', 'unknown'].includes(seed.descriptionSource ?? 'unknown')
+}
+
+function shouldWarnExactTextRequired(seed) {
+  return Boolean(seed?.descriptionStatus === 'complete'
+    && seed.descriptionText
+    && !isStructuralSiteNoise(seed.name)
+    && !looksLikeProgressionArtifactName(seed.name)
+    && !looksLikeCompleteRuleText(seed.descriptionText, seed.descriptionSource))
+}
+
+function isStructuralSiteNoise(name) {
+  const key = slug(name)
+  if (!key) return true
+  return /^(sumario|navegacao|indice|conteudo|artigos-relacionados|related-articles|proximo|anterior|categoria|categorias|tags|compartilhar|world-anvil|bonfire-tales|jogadores|pagina-inicial|comentarios|table-of-contents|back-to-top|navigation|search|find-your-way|get-the-news|legal|partnered|entry-for-worldember-2025|linha-do-tempo-de-cineria)$/.test(key)
+}
+
+function looksLikeProgressionArtifactName(name) {
+  const text = String(name ?? '').trim()
+  if (!text) return true
+  return /^\d+\s*[º°o]?\s*(?:n[ií]vel|ciclo)$/i.test(text)
+    || /^(?:n[ií]vel|level)\s+\d+\s*$/i.test(text)
+    || /^\d+\s*[-+]\s*\d+$/.test(text)
+    || /^\d+\s*[-+]\s*\d+\s*[-+]\s*\d+$/.test(text)
+    || /^\d+(?:\s+[+0-9-]+)+$/.test(text)
+    || /^\d+\s*$/.test(text)
 }
 
 function readJson(file) {

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-10T00:07:43.280Z",
+  "generatedAt": "2026-05-10T04:02:20.703Z",
   "sourceRoots": [
     "data\\HTML BONFIRE\\classes",
     "data\\HTML BONFIRE\\racas",
@@ -14,15 +14,15 @@
   "parseErrors": [],
   "seedCounts": {
     "classes": 13,
-    "classFeatures": 4021,
+    "classFeatures": 3508,
     "races": 4,
-    "raceFeatures": 1820,
+    "raceFeatures": 1542,
     "backgrounds": 30,
     "backgroundFeatures": 30,
-    "feats": 936,
+    "feats": 925,
     "subclasses": 32,
-    "subclassFeatures": 1197,
-    "spellOverrides": 23
+    "subclassFeatures": 1155,
+    "spellOverrides": 17
   },
   "classCoverage": {
     "total": 13,
@@ -31,16 +31,43 @@
     "missing": 0
   },
   "reviewCounts": {
-    "needsReview": 759,
+    "needsReview": 482,
     "missingRules": 0,
     "missingSourcePages": 0,
     "missingClassFixtures": 13,
-    "subRules": 5912
+    "subRules": 5393,
+    "previewRejectedOpportunities": 0
   },
   "subRuleCounts": {
-    "bonfireSubRulesExtractedCount": 5912,
-    "bonfireInlineBoldSubRulesCount": 5912,
-    "bonfireSubRulesWithParentCount": 5912,
+    "bonfireSubRulesExtractedCount": 5393,
+    "bonfireInlineBoldSubRulesCount": 5393,
+    "bonfireSubRulesWithParentCount": 5393,
     "bonfireSubRulesMissingDescriptionCount": 66
+  },
+  "descriptionCoverage": {
+    "before": {
+      "totalBonfireRules": 7283,
+      "completeCount": 6793,
+      "summaryOnlyCount": 0,
+      "needsReviewCount": 376,
+      "missingCount": 114,
+      "previewRejectedWarningCount": 0
+    },
+    "after": {
+      "totalBonfireRules": 7256,
+      "completeCount": 6774,
+      "summaryOnlyCount": 0,
+      "needsReviewCount": 368,
+      "missingCount": 114,
+      "previewRejectedWarningCount": 0
+    }
+  },
+  "remainingDescriptionWarnings": {
+    "totalWarnings": 482,
+    "structuralSiteNoiseCount": 0,
+    "missingFullRuleSourceCount": 1,
+    "ambiguousSectionCount": 481,
+    "exactTextRequiredCount": 0,
+    "validPlaceholderCount": 0
   }
 }

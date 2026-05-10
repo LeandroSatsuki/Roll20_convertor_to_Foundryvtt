@@ -18,6 +18,25 @@ const rejectedTitles = new Set([
   'opcao',
   'opção',
   'regra',
+  'sumario',
+  'sumário',
+  'navegacao',
+  'navegação',
+  'indice',
+  'índice',
+  'conteudo',
+  'conteúdo',
+  'artigos relacionados',
+  'related articles',
+  'navigation',
+  'search',
+  'find your way',
+  'find your way!',
+  'get the news',
+  'legal',
+  'partnered',
+  'entry for worldember 2025',
+  'linha do tempo de cineria',
 ])
 
 export function extractInlineSubRules({ htmlNode, parentRule = {}, parentKind, sourceUrl }) {
@@ -318,6 +337,8 @@ function isRejectedTitle(title) {
   if (!normalized) return true
   if (rejectedTitles.has(normalized)) return true
   if (/^(nivel|level)-?\d+$/.test(normalized)) return true
+  if (/^\d+-?\+?-?\d+$/.test(normalized)) return true
+  if (/^\d+(?:[-+]\d+)+$/.test(normalized)) return true
   if (normalized.length < 3 || normalized.length > 90) return true
   return false
 }

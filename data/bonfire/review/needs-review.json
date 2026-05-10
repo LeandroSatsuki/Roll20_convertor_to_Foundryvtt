@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-10T00:07:43.010Z",
+  "generatedAt": "2026-05-10T04:02:17.620Z",
   "items": [
     {
       "type": "classes",
@@ -93,36 +93,6 @@
     },
     {
       "type": "classFeatures",
-      "id": "artificer-10-0-l3",
-      "name": "10 +0",
-      "kind": "classFeature",
-      "descriptionStatus": "missing",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/artificer-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "artificer-12-1-l3",
-      "name": "12 +1",
-      "kind": "classFeature",
-      "descriptionStatus": "missing",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/artificer-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "artificer-14-2-l3",
-      "name": "14 +2",
-      "kind": "classFeature",
-      "descriptionStatus": "missing",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/artificer-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
       "id": "artificer-artificer",
       "name": "Artificer",
       "kind": "classFeature",
@@ -145,56 +115,6 @@
       "type": "classFeatures",
       "id": "artificer-events-l20",
       "name": "EVENTS",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/artificer-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "artificer-find-your-way-l20",
-      "name": "Find your way!",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/artificer-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "artificer-get-the-news-l20",
-      "name": "Get the news",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/artificer-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "artificer-habilidades-de-classe",
-      "name": "Habilidades de Classe",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/artificer-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "artificer-legal-l20",
-      "name": "LEGAL",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/artificer-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "artificer-linhas-do-tempo",
-      "name": "Linhas do Tempo",
       "kind": "classFeature",
       "descriptionStatus": "needs-review",
       "reason": "missing-full-rule-page, missing-full-rule-description",
@@ -253,82 +173,12 @@
     },
     {
       "type": "classFeatures",
-      "id": "barbaro-habilidades-de-classe",
-      "name": "Habilidades de Classe",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/barbaro-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "barbaro-linhas-do-tempo",
-      "name": "Linhas do Tempo",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/barbaro-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
       "id": "bardo-bardo",
       "name": "Bardo",
       "kind": "classFeature",
       "descriptionStatus": "needs-review",
       "reason": "missing-full-rule-description, missing-full-rule-page",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bardo-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "bardo-habilidades-de-classe",
-      "name": "Habilidades de Classe",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bardo-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "bardo-linhas-do-tempo",
-      "name": "Linhas do Tempo",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bardo-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "cacador-10-0-l3",
-      "name": "10 +0",
-      "kind": "classFeature",
-      "descriptionStatus": "missing",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/cacador-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "cacador-14-2-l3",
-      "name": "14 +2",
-      "kind": "classFeature",
-      "descriptionStatus": "missing",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/cacador-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "cacador-16-3-l3",
-      "name": "16 +3",
-      "kind": "classFeature",
-      "descriptionStatus": "missing",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/cacador-article",
       "descriptionSource": "section-body"
     },
     {
@@ -355,56 +205,6 @@
       "type": "classFeatures",
       "id": "cacador-events-l20",
       "name": "EVENTS",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/cacador-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "cacador-find-your-way-l20",
-      "name": "Find your way!",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/cacador-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "cacador-get-the-news-l20",
-      "name": "Get the news",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/cacador-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "cacador-habilidades-de-classe",
-      "name": "Habilidades de Classe",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/cacador-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "cacador-legal-l20",
-      "name": "LEGAL",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/cacador-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "cacador-linhas-do-tempo",
-      "name": "Linhas do Tempo",
       "kind": "classFeature",
       "descriptionStatus": "needs-review",
       "reason": "missing-full-rule-page, missing-full-rule-description",
@@ -519,36 +319,6 @@
       "descriptionStatus": "needs-review",
       "reason": "missing-full-rule-description, missing-full-rule-page",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bardo-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-ajudante-da-natureza-14-2",
-      "name": "14 +2",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/clerigo-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-ajudante-da-natureza-16-3",
-      "name": "16 +3",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/clerigo-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-ajudante-da-natureza-8-1",
-      "name": "8 -1",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/clerigo-article",
       "descriptionSource": "inline-bold-subrule"
     },
     {
@@ -783,16 +553,6 @@
     },
     {
       "type": "classFeatures",
-      "id": "class-feature-caracteristicas-de-classe-atributo-primario",
-      "name": "Atributo Primário",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/artificer-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
       "id": "class-feature-clerigo-cessa-a-condicao-amedrontado",
       "name": "Cessa a condição Amedrontado",
       "kind": "classFeature",
@@ -819,36 +579,6 @@
       "descriptionStatus": "needs-review",
       "reason": "missing-full-rule-description, missing-full-rule-page",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/clerigo-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-defensor-de-aco-10-0",
-      "name": "10 +0",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/artificer-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-defensor-de-aco-12-1",
-      "name": "12 +1",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/artificer-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-defensor-de-aco-14-2",
-      "name": "14 +2",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/artificer-article",
       "descriptionSource": "inline-bold-subrule"
     },
     {
@@ -953,142 +683,12 @@
     },
     {
       "type": "classFeatures",
-      "id": "class-feature-espirito-das-profundezas-1-5",
-      "name": "1 -5",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mistico-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-espirito-das-profundezas-10-0",
-      "name": "10 +0",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mistico-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-espirito-das-profundezas-12-1",
-      "name": "12 +1",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mistico-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-espirito-das-profundezas-14-2",
-      "name": "14 +2",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mistico-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-espirito-das-profundezas-16-3",
-      "name": "16 +3",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mistico-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-espirito-familiar-mistico-11-0",
-      "name": "11 +0",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mistico-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-espirito-familiar-mistico-13-1",
-      "name": "13 +1",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mistico-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-espirito-familiar-mistico-14-2",
-      "name": "14 +2",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mistico-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-espirito-familiar-mistico-16-3",
-      "name": "16 +3",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mistico-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-espirito-familiar-mistico-8-1",
-      "name": "8 -1",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mistico-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
       "id": "class-feature-espirito-familiar-mistico-aberracao",
       "name": "Aberração",
       "kind": "classFeature",
       "descriptionStatus": "needs-review",
       "reason": "missing-full-rule-description, missing-full-rule-page",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mistico-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-espirito-primordial-10-0",
-      "name": "10 +0",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/cacador-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-espirito-primordial-14-2",
-      "name": "14 +2",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/cacador-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-espirito-primordial-16-3",
-      "name": "16 +3",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/cacador-article",
       "descriptionSource": "inline-bold-subrule"
     },
     {
@@ -1119,206 +719,6 @@
       "descriptionStatus": "needs-review",
       "reason": "missing-full-rule-description, missing-full-rule-page",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/feiticeiro-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-fera-da-casca-ancestral-10-0",
-      "name": "10 +0",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-fera-da-casca-ancestral-12-1",
-      "name": "12 +1",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-fera-da-casca-ancestral-13-1",
-      "name": "13 +1",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-fera-da-casca-ancestral-14-2",
-      "name": "14 +2",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-fera-da-casca-ancestral-17-3",
-      "name": "17 +3",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-fera-da-mare-guardia-10-0",
-      "name": "10 +0",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-fera-da-mare-guardia-12-1",
-      "name": "12 +1",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-fera-da-mare-guardia-13-1",
-      "name": "13 +1",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-fera-da-mare-guardia-14-2",
-      "name": "14 +2",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-fera-da-mare-guardia-17-3",
-      "name": "17 +3",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-fera-do-fogo-selvagem-10-0",
-      "name": "10 +0",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-fera-do-fogo-selvagem-12-1",
-      "name": "12 +1",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-fera-do-fogo-selvagem-13-1",
-      "name": "13 +1",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-fera-do-fogo-selvagem-14-2",
-      "name": "14 +2",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-fera-do-fogo-selvagem-17-3",
-      "name": "17 +3",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-fera-do-sussurro-do-vento-10-0",
-      "name": "10 +0",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-fera-do-sussurro-do-vento-12-1",
-      "name": "12 +1",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-fera-do-sussurro-do-vento-13-1",
-      "name": "13 +1",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-fera-do-sussurro-do-vento-14-2",
-      "name": "14 +2",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-fera-do-sussurro-do-vento-17-3",
-      "name": "17 +3",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
       "descriptionSource": "inline-bold-subrule"
     },
     {
@@ -1373,76 +773,6 @@
     },
     {
       "type": "classFeatures",
-      "id": "class-feature-habilidades-de-classe-agua",
-      "name": "Água",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-habilidades-de-classe-bola-de-fogo",
-      "name": "Bola de Fogo",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/artificer-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-habilidades-de-classe-disguise-self",
-      "name": "Disguise Self",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/artificer-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-habilidades-de-classe-greater-invisibility",
-      "name": "Greater Invisibility",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/artificer-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-habilidades-de-classe-igneo",
-      "name": "Ígneo",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-habilidades-de-classe-invisibility",
-      "name": "Invisibility",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/artificer-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-habilidades-de-classe-terra",
-      "name": "Terra",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
       "id": "class-feature-infusoes-de-11-nivel-disguise-self",
       "name": "Disguise Self",
       "kind": "classFeature",
@@ -1483,82 +813,12 @@
     },
     {
       "type": "classFeatures",
-      "id": "class-feature-item-dancante-10-0",
-      "name": "10 +0",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bardo-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-item-dancante-14-2",
-      "name": "14 +2",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bardo-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-item-dancante-16-3",
-      "name": "16 +3",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bardo-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-item-dancante-18-4",
-      "name": "18 +4",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bardo-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-item-dancante-4-3",
-      "name": "4 -3",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bardo-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
       "id": "class-feature-ladrao-de-feiticos-sucesso-dela",
       "name": "Sucesso (dela)",
       "kind": "classFeature",
       "descriptionStatus": "needs-review",
       "reason": "missing-full-rule-description, missing-full-rule-page",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/ladino-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-linhas-do-tempo-linha-do-tempo-de-cineria",
-      "name": "Linha do Tempo de Cineria",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/artificer-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-lista-de-magias-expandidas-6-ciclo",
-      "name": "6° Ciclo",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mistico-article",
       "descriptionSource": "inline-bold-subrule"
     },
     {
@@ -1649,16 +909,6 @@
       "descriptionStatus": "needs-review",
       "reason": "missing-full-rule-description, missing-full-rule-page",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/artificer-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-mistico-6-ciclo",
-      "name": "6° Ciclo",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mistico-article",
       "descriptionSource": "inline-bold-subrule"
     },
     {
@@ -1833,86 +1083,6 @@
     },
     {
       "type": "classFeatures",
-      "id": "class-feature-servo-morto-vivo-12-1",
-      "name": "12 +1",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/paladino-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-servo-morto-vivo-16-3",
-      "name": "16 +3",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/paladino-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-servo-morto-vivo-18-4",
-      "name": "18 +4",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/paladino-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-servo-morto-vivo-7-2",
-      "name": "7 -2",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/paladino-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-sombra-do-mau-pressagio-12-1",
-      "name": "12 +1",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/feiticeiro-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-sombra-do-mau-pressagio-15-2",
-      "name": "15 +2",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/feiticeiro-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-sombra-do-mau-pressagio-17-3",
-      "name": "17 +3",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/feiticeiro-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-sombra-do-mau-pressagio-3-4",
-      "name": "3 -4",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/feiticeiro-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
       "id": "class-feature-surto-selvagem-agua",
       "name": "Água",
       "kind": "classFeature",
@@ -1993,82 +1163,12 @@
     },
     {
       "type": "classFeatures",
-      "id": "clerigo-linhas-do-tempo",
-      "name": "Linhas do Tempo",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/clerigo-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
       "id": "druida-druida",
       "name": "Druida",
       "kind": "classFeature",
       "descriptionStatus": "needs-review",
       "reason": "missing-full-rule-description, missing-full-rule-page",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "druida-habilidades-de-classe",
-      "name": "Habilidades de Classe",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "druida-linhas-do-tempo",
-      "name": "Linhas do Tempo",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "feiticeiro-12-1-l3",
-      "name": "12 +1",
-      "kind": "classFeature",
-      "descriptionStatus": "missing",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/feiticeiro-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "feiticeiro-15-2-l3",
-      "name": "15 +2",
-      "kind": "classFeature",
-      "descriptionStatus": "missing",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/feiticeiro-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "feiticeiro-17-3-l3",
-      "name": "17 +3",
-      "kind": "classFeature",
-      "descriptionStatus": "missing",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/feiticeiro-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "feiticeiro-3-4-l3",
-      "name": "3 -4",
-      "kind": "classFeature",
-      "descriptionStatus": "missing",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/feiticeiro-article",
       "descriptionSource": "section-body"
     },
     {
@@ -2098,56 +1198,6 @@
       "kind": "classFeature",
       "descriptionStatus": "needs-review",
       "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/feiticeiro-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "feiticeiro-find-your-way-l20",
-      "name": "Find your way!",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/feiticeiro-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "feiticeiro-get-the-news-l20",
-      "name": "Get the news",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/feiticeiro-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "feiticeiro-habilidades-de-classe",
-      "name": "Habilidades de Classe",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/feiticeiro-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "feiticeiro-legal-l20",
-      "name": "LEGAL",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/feiticeiro-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "feiticeiro-linhas-do-tempo",
-      "name": "Linhas do Tempo",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/feiticeiro-article",
       "descriptionSource": "section-body"
     },
@@ -2233,16 +1283,6 @@
     },
     {
       "type": "classFeatures",
-      "id": "guerreiro-find-your-way-l20",
-      "name": "Find your way!",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/guerreiro-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
       "id": "guerreiro-fundamentos-de-batalha-l2",
       "name": "Fundamentos de Batalha",
       "kind": "classFeature",
@@ -2253,51 +1293,11 @@
     },
     {
       "type": "classFeatures",
-      "id": "guerreiro-get-the-news-l20",
-      "name": "Get the news",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/guerreiro-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
       "id": "guerreiro-guerreiro",
       "name": "Guerreiro",
       "kind": "classFeature",
       "descriptionStatus": "needs-review",
       "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/guerreiro-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "guerreiro-habilidades-de-classe",
-      "name": "Habilidades de Classe",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/guerreiro-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "guerreiro-legal-l20",
-      "name": "LEGAL",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/guerreiro-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "guerreiro-linhas-do-tempo",
-      "name": "Linhas do Tempo",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/guerreiro-article",
       "descriptionSource": "section-body"
     },
@@ -2363,61 +1363,11 @@
     },
     {
       "type": "classFeatures",
-      "id": "ladino-find-your-way-l20",
-      "name": "Find your way!",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/ladino-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "ladino-get-the-news-l20",
-      "name": "Get the news",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/ladino-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "ladino-habilidades-de-classe",
-      "name": "Habilidades de Classe",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/ladino-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
       "id": "ladino-ladino",
       "name": "Ladino",
       "kind": "classFeature",
       "descriptionStatus": "needs-review",
       "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/ladino-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "ladino-legal-l20",
-      "name": "LEGAL",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/ladino-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "ladino-linhas-do-tempo",
-      "name": "Linhas do Tempo",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/ladino-article",
       "descriptionSource": "section-body"
     },
@@ -2483,56 +1433,6 @@
     },
     {
       "type": "classFeatures",
-      "id": "mago-find-your-way-l20",
-      "name": "Find your way!",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mago-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "mago-get-the-news-l20",
-      "name": "Get the news",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mago-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "mago-habilidades-de-classe",
-      "name": "Habilidades de Classe",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mago-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "mago-legal-l20",
-      "name": "LEGAL",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mago-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "mago-linhas-do-tempo",
-      "name": "Linhas do Tempo",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mago-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
       "id": "mago-mago",
       "name": "Mago",
       "kind": "classFeature",
@@ -2583,108 +1483,8 @@
     },
     {
       "type": "classFeatures",
-      "id": "mistico-1-5-l3",
-      "name": "1 -5",
-      "kind": "classFeature",
-      "descriptionStatus": "missing",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mistico-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "mistico-10-0-l3",
-      "name": "10 +0",
-      "kind": "classFeature",
-      "descriptionStatus": "missing",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mistico-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "mistico-11-0-l1",
-      "name": "11 +0",
-      "kind": "classFeature",
-      "descriptionStatus": "missing",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mistico-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "mistico-12-1-l3",
-      "name": "12 +1",
-      "kind": "classFeature",
-      "descriptionStatus": "missing",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mistico-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "mistico-13-1-l1",
-      "name": "13 +1",
-      "kind": "classFeature",
-      "descriptionStatus": "missing",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mistico-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "mistico-14-2-l3",
-      "name": "14 +2",
-      "kind": "classFeature",
-      "descriptionStatus": "missing",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mistico-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "mistico-16-3-l1",
-      "name": "16 +3",
-      "kind": "classFeature",
-      "descriptionStatus": "missing",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mistico-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "mistico-16-3-l3",
-      "name": "16 +3",
-      "kind": "classFeature",
-      "descriptionStatus": "missing",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mistico-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "mistico-8-1-l1",
-      "name": "8 -1",
-      "kind": "classFeature",
-      "descriptionStatus": "missing",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mistico-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
       "id": "mistico-acoes-l1",
       "name": "Ações",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mistico-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "mistico-caracteristicas-de-classe",
-      "name": "Características de Classe",
       "kind": "classFeature",
       "descriptionStatus": "needs-review",
       "reason": "missing-full-rule-description, missing-full-rule-page",
@@ -2715,46 +1515,6 @@
       "type": "classFeatures",
       "id": "mistico-events-l20",
       "name": "EVENTS",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mistico-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "mistico-find-your-way-l20",
-      "name": "Find your way!",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mistico-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "mistico-get-the-news-l20",
-      "name": "Get the news",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mistico-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "mistico-legal-l20",
-      "name": "LEGAL",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mistico-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "mistico-linhas-do-tempo",
-      "name": "Linhas do Tempo",
       "kind": "classFeature",
       "descriptionStatus": "needs-review",
       "reason": "missing-full-rule-page, missing-full-rule-description",
@@ -2853,51 +1613,11 @@
     },
     {
       "type": "classFeatures",
-      "id": "monge-find-your-way-l20",
-      "name": "Find your way!",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/monge-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "monge-get-the-news-l20",
-      "name": "Get the news",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/monge-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
       "id": "monge-habilidades-de-monge",
       "name": "Habilidades de Monge",
       "kind": "classFeature",
       "descriptionStatus": "needs-review",
       "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/monge-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "monge-legal-l20",
-      "name": "LEGAL",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/monge-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "monge-linhas-do-tempo",
-      "name": "Linhas do Tempo",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/monge-article",
       "descriptionSource": "section-body"
     },
@@ -2953,46 +1673,6 @@
     },
     {
       "type": "classFeatures",
-      "id": "paladino-12-1-l3",
-      "name": "12 +1",
-      "kind": "classFeature",
-      "descriptionStatus": "missing",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/paladino-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "paladino-16-3-l3",
-      "name": "16 +3",
-      "kind": "classFeature",
-      "descriptionStatus": "missing",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/paladino-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "paladino-18-4-l3",
-      "name": "18 +4",
-      "kind": "classFeature",
-      "descriptionStatus": "missing",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/paladino-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "paladino-7-2-l3",
-      "name": "7 -2",
-      "kind": "classFeature",
-      "descriptionStatus": "missing",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/paladino-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
       "id": "paladino-development-l20",
       "name": "Development",
       "kind": "classFeature",
@@ -3005,56 +1685,6 @@
       "type": "classFeatures",
       "id": "paladino-events-l20",
       "name": "EVENTS",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/paladino-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "paladino-find-your-way-l20",
-      "name": "Find your way!",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/paladino-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "paladino-get-the-news-l20",
-      "name": "Get the news",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/paladino-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "paladino-habilidades-de-classe",
-      "name": "Habilidades de Classe",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/paladino-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "paladino-legal-l20",
-      "name": "LEGAL",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/paladino-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "paladino-linhas-do-tempo",
-      "name": "Linhas do Tempo",
       "kind": "classFeature",
       "descriptionStatus": "needs-review",
       "reason": "missing-full-rule-page, missing-full-rule-description",
@@ -3193,66 +1823,6 @@
     },
     {
       "type": "raceFeatures",
-      "id": "anao-evolucao-racial",
-      "name": "Evolução Racial",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/anao-species",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "anao-find-your-way",
-      "name": "Find your way!",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/anao-species",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "anao-get-the-news",
-      "name": "Get the news",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/anao-species",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "anao-jogadores",
-      "name": "Jogadores",
-      "kind": "raceFeature",
-      "descriptionStatus": "missing",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/anao-species",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "anao-legal",
-      "name": "LEGAL",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/anao-species",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "anao-linha-do-tempo-de-cineria",
-      "name": "Linha do Tempo de Cineria",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/anao-species",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
       "id": "anao-mercado",
       "name": "Mercado",
       "kind": "raceFeature",
@@ -3363,16 +1933,6 @@
     },
     {
       "type": "raceFeatures",
-      "id": "anao-tracos-da-raca-base",
-      "name": "Traços da Raça Base",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/anao-species",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
       "id": "anao-who-we-are",
       "name": "WHO WE ARE",
       "kind": "raceFeature",
@@ -3415,56 +1975,6 @@
       "type": "raceFeatures",
       "id": "bestial-events",
       "name": "EVENTS",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bestial-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "bestial-find-your-way",
-      "name": "Find your way!",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bestial-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "bestial-get-the-news",
-      "name": "Get the news",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bestial-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "bestial-jogadores",
-      "name": "Jogadores",
-      "kind": "raceFeature",
-      "descriptionStatus": "missing",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bestial-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "bestial-legal",
-      "name": "LEGAL",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bestial-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "bestial-linha-do-tempo-de-cineria",
-      "name": "Linha do Tempo de Cineria",
       "kind": "raceFeature",
       "descriptionStatus": "needs-review",
       "reason": "missing-full-rule-page, missing-full-rule-description",
@@ -3643,16 +2153,6 @@
     },
     {
       "type": "raceFeatures",
-      "id": "celestial-find-your-way",
-      "name": "Find your way!",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/celestial-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
       "id": "celestial-flagelado",
       "name": "Flagelado",
       "kind": "raceFeature",
@@ -3663,48 +2163,8 @@
     },
     {
       "type": "raceFeatures",
-      "id": "celestial-get-the-news",
-      "name": "Get the news",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/celestial-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
       "id": "celestial-gloria-e-valor",
       "name": "Glória e Valor",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/celestial-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "celestial-jogadores",
-      "name": "Jogadores",
-      "kind": "raceFeature",
-      "descriptionStatus": "missing",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/celestial-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "celestial-legal",
-      "name": "LEGAL",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/celestial-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "celestial-linha-do-tempo-de-cineria",
-      "name": "Linha do Tempo de Cineria",
       "kind": "raceFeature",
       "descriptionStatus": "needs-review",
       "reason": "missing-full-rule-page, missing-full-rule-description",
@@ -3873,56 +2333,6 @@
     },
     {
       "type": "raceFeatures",
-      "id": "draconica-find-your-way",
-      "name": "Find your way!",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/draconica-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "draconica-get-the-news",
-      "name": "Get the news",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/draconica-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "draconica-jogadores",
-      "name": "Jogadores",
-      "kind": "raceFeature",
-      "descriptionStatus": "missing",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/draconica-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "draconica-legal",
-      "name": "LEGAL",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/draconica-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "draconica-linha-do-tempo-de-cineria",
-      "name": "Linha do Tempo de Cineria",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/draconica-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
       "id": "draconica-mercado",
       "name": "Mercado",
       "kind": "raceFeature",
@@ -4065,66 +2475,6 @@
       "type": "raceFeatures",
       "id": "elfo-events",
       "name": "EVENTS",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/elfo-species",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "elfo-evolucao-racial",
-      "name": "Evolução Racial",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/elfo-species",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "elfo-find-your-way",
-      "name": "Find your way!",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/elfo-species",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "elfo-get-the-news",
-      "name": "Get the news",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/elfo-species",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "elfo-jogadores",
-      "name": "Jogadores",
-      "kind": "raceFeature",
-      "descriptionStatus": "missing",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/elfo-species",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "elfo-legal",
-      "name": "LEGAL",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/elfo-species",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "elfo-linha-do-tempo-de-cineria",
-      "name": "Linha do Tempo de Cineria",
       "kind": "raceFeature",
       "descriptionStatus": "needs-review",
       "reason": "missing-full-rule-page, missing-full-rule-description",
@@ -4313,56 +2663,6 @@
     },
     {
       "type": "raceFeatures",
-      "id": "essencia-elemental-find-your-way",
-      "name": "Find your way!",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/essencia-elemental-category",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "essencia-elemental-get-the-news",
-      "name": "Get the news",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/essencia-elemental-category",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "essencia-elemental-jogadores",
-      "name": "Jogadores",
-      "kind": "raceFeature",
-      "descriptionStatus": "missing",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/essencia-elemental-category",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "essencia-elemental-legal",
-      "name": "LEGAL",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/essencia-elemental-category",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "essencia-elemental-linha-do-tempo-de-cineria",
-      "name": "Linha do Tempo de Cineria",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/essencia-elemental-category",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
       "id": "essencia-elemental-mercado",
       "name": "Mercado",
       "kind": "raceFeature",
@@ -4463,76 +2763,6 @@
     },
     {
       "type": "raceFeatures",
-      "id": "humano-1-erthari",
-      "name": "1. Erthari",
-      "kind": "raceFeature",
-      "descriptionStatus": "missing",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "humano-2-erthari",
-      "name": "2. Erthari",
-      "kind": "raceFeature",
-      "descriptionStatus": "missing",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "humano-3-salarin",
-      "name": "3. Sálarin",
-      "kind": "raceFeature",
-      "descriptionStatus": "missing",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "humano-4-salarin",
-      "name": "4. Sálarin",
-      "kind": "raceFeature",
-      "descriptionStatus": "missing",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "humano-5-durkarn",
-      "name": "5. Durkarn",
-      "kind": "raceFeature",
-      "descriptionStatus": "missing",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "humano-6-durkarn",
-      "name": "6. Durkarn",
-      "kind": "raceFeature",
-      "descriptionStatus": "missing",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "humano-7-goruun",
-      "name": "7. Goruun",
-      "kind": "raceFeature",
-      "descriptionStatus": "missing",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
       "id": "humano-auge-do-potencial",
       "name": "Auge do Potencial",
       "kind": "raceFeature",
@@ -4583,48 +2813,8 @@
     },
     {
       "type": "raceFeatures",
-      "id": "humano-events",
-      "name": "EVENTS",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "humano-evolucao-racial",
-      "name": "Evolução Racial",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "humano-find-your-way",
-      "name": "Find your way!",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "humano-get-the-news",
-      "name": "Get the news",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "humano-jogadores",
-      "name": "Jogadores",
+      "id": "humano-durkarn",
+      "name": "Durkarn",
       "kind": "raceFeature",
       "descriptionStatus": "missing",
       "reason": "missing-full-rule-description, missing-full-rule-page",
@@ -4633,18 +2823,18 @@
     },
     {
       "type": "raceFeatures",
-      "id": "humano-legal",
-      "name": "LEGAL",
+      "id": "humano-erthari",
+      "name": "Erthari",
       "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
+      "descriptionStatus": "missing",
+      "reason": "missing-full-rule-description, missing-full-rule-page",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
       "descriptionSource": "section-body"
     },
     {
       "type": "raceFeatures",
-      "id": "humano-linha-do-tempo-de-cineria",
-      "name": "Linha do Tempo de Cineria",
+      "id": "humano-events",
+      "name": "EVENTS",
       "kind": "raceFeature",
       "descriptionStatus": "needs-review",
       "reason": "missing-full-rule-page, missing-full-rule-description",
@@ -4743,6 +2933,16 @@
     },
     {
       "type": "raceFeatures",
+      "id": "humano-salarin",
+      "name": "Sálarin",
+      "kind": "raceFeature",
+      "descriptionStatus": "missing",
+      "reason": "missing-full-rule-description, missing-full-rule-page",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "raceFeatures",
       "id": "humano-sangue-anao",
       "name": "Sangue Anão",
       "kind": "raceFeature",
@@ -4799,36 +2999,6 @@
       "descriptionStatus": "needs-review",
       "reason": "missing-full-rule-page, missing-full-rule-description",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "infernal-1-infero-humano",
-      "name": "1. Infero Humano",
-      "kind": "raceFeature",
-      "descriptionStatus": "missing",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/infernal-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "infernal-2-infero-anao",
-      "name": "2. Infero Anão",
-      "kind": "raceFeature",
-      "descriptionStatus": "missing",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/infernal-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "infernal-3-infero-elfo",
-      "name": "3. Infero Elfo",
-      "kind": "raceFeature",
-      "descriptionStatus": "missing",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/infernal-article",
       "descriptionSource": "section-body"
     },
     {
@@ -4893,28 +3063,8 @@
     },
     {
       "type": "raceFeatures",
-      "id": "infernal-find-your-way",
-      "name": "Find your way!",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/infernal-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "infernal-get-the-news",
-      "name": "Get the news",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/infernal-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "infernal-jogadores",
-      "name": "Jogadores",
+      "id": "infernal-infero-anao",
+      "name": "Infero Anão",
       "kind": "raceFeature",
       "descriptionStatus": "missing",
       "reason": "missing-full-rule-description, missing-full-rule-page",
@@ -4923,21 +3073,21 @@
     },
     {
       "type": "raceFeatures",
-      "id": "infernal-legal",
-      "name": "LEGAL",
+      "id": "infernal-infero-elfo",
+      "name": "Infero Elfo",
       "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
+      "descriptionStatus": "missing",
+      "reason": "missing-full-rule-description, missing-full-rule-page",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/infernal-article",
       "descriptionSource": "section-body"
     },
     {
       "type": "raceFeatures",
-      "id": "infernal-linha-do-tempo-de-cineria",
-      "name": "Linha do Tempo de Cineria",
+      "id": "infernal-infero-humano",
+      "name": "Infero Humano",
       "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
+      "descriptionStatus": "missing",
+      "reason": "missing-full-rule-description, missing-full-rule-page",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/infernal-article",
       "descriptionSource": "section-body"
     },
@@ -5115,66 +3265,6 @@
       "type": "raceFeatures",
       "id": "orcs-events",
       "name": "EVENTS",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/orcs-species",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "orcs-evolucao-racial",
-      "name": "Evolução Racial",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/orcs-species",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "orcs-find-your-way",
-      "name": "Find your way!",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/orcs-species",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "orcs-get-the-news",
-      "name": "Get the news",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/orcs-species",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "orcs-jogadores",
-      "name": "Jogadores",
-      "kind": "raceFeature",
-      "descriptionStatus": "missing",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/orcs-species",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "orcs-legal",
-      "name": "LEGAL",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/orcs-species",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "orcs-linha-do-tempo-de-cineria",
-      "name": "Linha do Tempo de Cineria",
       "kind": "raceFeature",
       "descriptionStatus": "needs-review",
       "reason": "missing-full-rule-page, missing-full-rule-description",
@@ -5363,46 +3453,6 @@
     },
     {
       "type": "raceFeatures",
-      "id": "race-feature-anao-find-your-way",
-      "name": "Find your way!",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/anao-species",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "race-feature-anao-get-the-news",
-      "name": "Get the news",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/anao-species",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "race-feature-anao-legal",
-      "name": "LEGAL",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/anao-species",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "race-feature-anao-linha-do-tempo-de-cineria",
-      "name": "Linha do Tempo de Cineria",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/anao-species",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "raceFeatures",
       "id": "race-feature-anao-regras",
       "name": "Regras",
       "kind": "raceFeature",
@@ -5433,46 +3483,6 @@
     },
     {
       "type": "raceFeatures",
-      "id": "race-feature-bestial-find-your-way",
-      "name": "Find your way!",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bestial-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "race-feature-bestial-get-the-news",
-      "name": "Get the news",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bestial-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "race-feature-bestial-legal",
-      "name": "LEGAL",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bestial-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "race-feature-bestial-linha-do-tempo-de-cineria",
-      "name": "Linha do Tempo de Cineria",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bestial-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "raceFeatures",
       "id": "race-feature-bestial-regras",
       "name": "Regras",
       "kind": "raceFeature",
@@ -5498,46 +3508,6 @@
       "kind": "raceFeature",
       "descriptionStatus": "needs-review",
       "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/celestial-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "race-feature-celestial-find-your-way",
-      "name": "Find your way!",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/celestial-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "race-feature-celestial-get-the-news",
-      "name": "Get the news",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/celestial-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "race-feature-celestial-legal",
-      "name": "LEGAL",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/celestial-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "race-feature-celestial-linha-do-tempo-de-cineria",
-      "name": "Linha do Tempo de Cineria",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/celestial-article",
       "descriptionSource": "inline-bold-subrule"
     },
@@ -5583,46 +3553,6 @@
     },
     {
       "type": "raceFeatures",
-      "id": "race-feature-draconica-find-your-way",
-      "name": "Find your way!",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/draconica-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "race-feature-draconica-get-the-news",
-      "name": "Get the news",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/draconica-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "race-feature-draconica-legal",
-      "name": "LEGAL",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/draconica-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "race-feature-draconica-linha-do-tempo-de-cineria",
-      "name": "Linha do Tempo de Cineria",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/draconica-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "raceFeatures",
       "id": "race-feature-draconica-regras",
       "name": "Regras",
       "kind": "raceFeature",
@@ -5648,46 +3578,6 @@
       "kind": "raceFeature",
       "descriptionStatus": "needs-review",
       "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/elfo-species",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "race-feature-elfo-find-your-way",
-      "name": "Find your way!",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/elfo-species",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "race-feature-elfo-get-the-news",
-      "name": "Get the news",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/elfo-species",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "race-feature-elfo-legal",
-      "name": "LEGAL",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/elfo-species",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "race-feature-elfo-linha-do-tempo-de-cineria",
-      "name": "Linha do Tempo de Cineria",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/elfo-species",
       "descriptionSource": "inline-bold-subrule"
     },
@@ -5723,46 +3613,6 @@
     },
     {
       "type": "raceFeatures",
-      "id": "race-feature-essencia-elemental-find-your-way",
-      "name": "Find your way!",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/essencia-elemental-category",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "race-feature-essencia-elemental-get-the-news",
-      "name": "Get the news",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/essencia-elemental-category",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "race-feature-essencia-elemental-legal",
-      "name": "LEGAL",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/essencia-elemental-category",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "race-feature-essencia-elemental-linha-do-tempo-de-cineria",
-      "name": "Linha do Tempo de Cineria",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/essencia-elemental-category",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "raceFeatures",
       "id": "race-feature-essencia-elemental-regras",
       "name": "Regras",
       "kind": "raceFeature",
@@ -5788,46 +3638,6 @@
       "kind": "raceFeature",
       "descriptionStatus": "needs-review",
       "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "race-feature-humano-find-your-way",
-      "name": "Find your way!",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "race-feature-humano-get-the-news",
-      "name": "Get the news",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "race-feature-humano-legal",
-      "name": "LEGAL",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "race-feature-humano-linha-do-tempo-de-cineria",
-      "name": "Linha do Tempo de Cineria",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
       "descriptionSource": "inline-bold-subrule"
     },
@@ -5863,46 +3673,6 @@
     },
     {
       "type": "raceFeatures",
-      "id": "race-feature-infernal-find-your-way",
-      "name": "Find your way!",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/infernal-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "race-feature-infernal-get-the-news",
-      "name": "Get the news",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/infernal-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "race-feature-infernal-legal",
-      "name": "LEGAL",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/infernal-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "race-feature-infernal-linha-do-tempo-de-cineria",
-      "name": "Linha do Tempo de Cineria",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/infernal-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "raceFeatures",
       "id": "race-feature-infernal-regras",
       "name": "Regras",
       "kind": "raceFeature",
@@ -5933,62 +3703,12 @@
     },
     {
       "type": "raceFeatures",
-      "id": "race-feature-orcs-find-your-way",
-      "name": "Find your way!",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/orcs-species",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "race-feature-orcs-get-the-news",
-      "name": "Get the news",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/orcs-species",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "race-feature-orcs-legal",
-      "name": "LEGAL",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/orcs-species",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "race-feature-orcs-linha-do-tempo-de-cineria",
-      "name": "Linha do Tempo de Cineria",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/orcs-species",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "raceFeatures",
       "id": "race-feature-orcs-regras",
       "name": "Regras",
       "kind": "raceFeature",
       "descriptionStatus": "needs-review",
       "reason": "missing-full-rule-description, missing-full-rule-page",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/orcs-species",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "race-feature-protetor-entry-for-worldember-2025",
-      "name": "Entry for WorldEmber 2025",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/celestial-article",
       "descriptionSource": "inline-bold-subrule"
     },
     {
@@ -6008,46 +3728,6 @@
       "kind": "raceFeature",
       "descriptionStatus": "needs-review",
       "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/vampiro-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "race-feature-vampiro-find-your-way",
-      "name": "Find your way!",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/vampiro-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "race-feature-vampiro-get-the-news",
-      "name": "Get the news",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/vampiro-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "race-feature-vampiro-legal",
-      "name": "LEGAL",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/vampiro-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "race-feature-vampiro-linha-do-tempo-de-cineria",
-      "name": "Linha do Tempo de Cineria",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/vampiro-article",
       "descriptionSource": "inline-bold-subrule"
     },
@@ -6095,56 +3775,6 @@
       "type": "raceFeatures",
       "id": "vampiro-events",
       "name": "EVENTS",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/vampiro-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "vampiro-find-your-way",
-      "name": "Find your way!",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/vampiro-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "vampiro-get-the-news",
-      "name": "Get the news",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/vampiro-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "vampiro-jogadores",
-      "name": "Jogadores",
-      "kind": "raceFeature",
-      "descriptionStatus": "missing",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/vampiro-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "vampiro-legal",
-      "name": "LEGAL",
-      "kind": "raceFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/vampiro-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "raceFeatures",
-      "id": "vampiro-linha-do-tempo-de-cineria",
-      "name": "Linha do Tempo de Cineria",
       "kind": "raceFeature",
       "descriptionStatus": "needs-review",
       "reason": "missing-full-rule-page, missing-full-rule-description",
@@ -6533,56 +4163,6 @@
     },
     {
       "type": "feats",
-      "id": "find-your-way",
-      "name": "Find your way!",
-      "kind": "feat",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/talentos-category",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "feats",
-      "id": "get-the-news",
-      "name": "Get the news",
-      "kind": "feat",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/talentos-category",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "feats",
-      "id": "jogadores",
-      "name": "Jogadores",
-      "kind": "feat",
-      "descriptionStatus": "missing",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/talentos-category",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "feats",
-      "id": "legal",
-      "name": "LEGAL",
-      "kind": "feat",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/talentos-category",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "feats",
-      "id": "linha-do-tempo-de-cineria",
-      "name": "Linha do Tempo de Cineria",
-      "kind": "feat",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/talentos-category",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "feats",
       "id": "mercado",
       "name": "Mercado",
       "kind": "feat",
@@ -6703,36 +4283,6 @@
     },
     {
       "type": "subclassFeatures",
-      "id": "barbaro-find-your-way-l20-caminho-da-feiticaria-selvagem",
-      "name": "Find your way!",
-      "kind": "subclassFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/barbaro-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "subclassFeatures",
-      "id": "barbaro-get-the-news-l20-caminho-da-feiticaria-selvagem",
-      "name": "Get the news",
-      "kind": "subclassFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/barbaro-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "subclassFeatures",
-      "id": "barbaro-legal-l20-caminho-da-feiticaria-selvagem",
-      "name": "LEGAL",
-      "kind": "subclassFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/barbaro-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "subclassFeatures",
       "id": "barbaro-our-shop-l20-caminho-da-feiticaria-selvagem",
       "name": "Our Shop",
       "kind": "subclassFeature",
@@ -6769,56 +4319,6 @@
       "descriptionStatus": "needs-review",
       "reason": "missing-full-rule-page, missing-full-rule-description",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/barbaro-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "subclassFeatures",
-      "id": "bardo-10-0-l6-colegio-skald",
-      "name": "10 +0",
-      "kind": "subclassFeature",
-      "descriptionStatus": "missing",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bardo-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "subclassFeatures",
-      "id": "bardo-14-2-l6-colegio-skald",
-      "name": "14 +2",
-      "kind": "subclassFeature",
-      "descriptionStatus": "missing",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bardo-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "subclassFeatures",
-      "id": "bardo-16-3-l6-colegio-skald",
-      "name": "16 +3",
-      "kind": "subclassFeature",
-      "descriptionStatus": "missing",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bardo-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "subclassFeatures",
-      "id": "bardo-18-4-l6-colegio-skald",
-      "name": "18 +4",
-      "kind": "subclassFeature",
-      "descriptionStatus": "missing",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bardo-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "subclassFeatures",
-      "id": "bardo-4-3-l6-colegio-skald",
-      "name": "4 -3",
-      "kind": "subclassFeature",
-      "descriptionStatus": "missing",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bardo-article",
       "descriptionSource": "section-body"
     },
     {
@@ -6873,36 +4373,6 @@
     },
     {
       "type": "subclassFeatures",
-      "id": "bardo-find-your-way-l20-colegio-skald",
-      "name": "Find your way!",
-      "kind": "subclassFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bardo-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "subclassFeatures",
-      "id": "bardo-get-the-news-l20-colegio-skald",
-      "name": "Get the news",
-      "kind": "subclassFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bardo-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "subclassFeatures",
-      "id": "bardo-legal-l20-colegio-skald",
-      "name": "LEGAL",
-      "kind": "subclassFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bardo-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "subclassFeatures",
       "id": "bardo-our-shop-l20-colegio-skald",
       "name": "Our Shop",
       "kind": "subclassFeature",
@@ -6943,36 +4413,6 @@
     },
     {
       "type": "subclassFeatures",
-      "id": "clerigo-14-2-l3-dominio-da-natureza",
-      "name": "14 +2",
-      "kind": "subclassFeature",
-      "descriptionStatus": "missing",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/clerigo-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "subclassFeatures",
-      "id": "clerigo-16-3-l3-dominio-da-natureza",
-      "name": "16 +3",
-      "kind": "subclassFeature",
-      "descriptionStatus": "missing",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/clerigo-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "subclassFeatures",
-      "id": "clerigo-8-1-l3-dominio-da-natureza",
-      "name": "8 -1",
-      "kind": "subclassFeature",
-      "descriptionStatus": "missing",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/clerigo-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "subclassFeatures",
       "id": "clerigo-caracteristica-de-dominio-divino-l6-dominio-da-vida",
       "name": "Característica de Domínio Divino",
       "kind": "subclassFeature",
@@ -6995,36 +4435,6 @@
       "type": "subclassFeatures",
       "id": "clerigo-events-l20-dominio-da-vida",
       "name": "EVENTS",
-      "kind": "subclassFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/clerigo-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "subclassFeatures",
-      "id": "clerigo-find-your-way-l20-dominio-da-vida",
-      "name": "Find your way!",
-      "kind": "subclassFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/clerigo-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "subclassFeatures",
-      "id": "clerigo-get-the-news-l20-dominio-da-vida",
-      "name": "Get the news",
-      "kind": "subclassFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/clerigo-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "subclassFeatures",
-      "id": "clerigo-legal-l20-dominio-da-vida",
-      "name": "LEGAL",
       "kind": "subclassFeature",
       "descriptionStatus": "needs-review",
       "reason": "missing-full-rule-page, missing-full-rule-description",
@@ -7073,46 +4483,6 @@
     },
     {
       "type": "subclassFeatures",
-      "id": "druida-12-1-l3-circulo-do-pastor-elemental",
-      "name": "12 +1",
-      "kind": "subclassFeature",
-      "descriptionStatus": "missing",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "subclassFeatures",
-      "id": "druida-13-1-l3-circulo-do-pastor-elemental",
-      "name": "13 +1",
-      "kind": "subclassFeature",
-      "descriptionStatus": "missing",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "subclassFeatures",
-      "id": "druida-14-2-l3-circulo-do-pastor-elemental",
-      "name": "14 +2",
-      "kind": "subclassFeature",
-      "descriptionStatus": "missing",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "subclassFeatures",
-      "id": "druida-17-3-l3-circulo-do-pastor-elemental",
-      "name": "17 +3",
-      "kind": "subclassFeature",
-      "descriptionStatus": "missing",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "subclassFeatures",
       "id": "druida-development-l20-circulo-da-terra",
       "name": "Development",
       "kind": "subclassFeature",
@@ -7143,41 +4513,11 @@
     },
     {
       "type": "subclassFeatures",
-      "id": "druida-find-your-way-l20-circulo-da-terra",
-      "name": "Find your way!",
-      "kind": "subclassFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "subclassFeatures",
       "id": "druida-forma-selvagem-perene-l20-circulo-da-terra",
       "name": "Forma Selvagem Perene",
       "kind": "subclassFeature",
       "descriptionStatus": "needs-review",
       "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "subclassFeatures",
-      "id": "druida-get-the-news-l20-circulo-da-terra",
-      "name": "Get the news",
-      "kind": "subclassFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "subclassFeatures",
-      "id": "druida-legal-l20-circulo-da-terra",
-      "name": "LEGAL",
-      "kind": "subclassFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
       "descriptionSource": "section-body"
     },
@@ -7235,36 +4575,6 @@
       "type": "subclassFeatures",
       "id": "subclass-feature-circulo-do-pastor-elemental-ficha-familiar-primal",
       "name": "Ficha - Familiar Primal",
-      "kind": "subclassFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "subclassFeatures",
-      "id": "subclass-feature-circulo-dos-sonhos-10-nivel",
-      "name": "10º nível",
-      "kind": "subclassFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "subclassFeatures",
-      "id": "subclass-feature-circulo-dos-sonhos-18-nivel",
-      "name": "18º nível",
-      "kind": "subclassFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "subclassFeatures",
-      "id": "subclass-feature-circulo-dos-sonhos-6-nivel",
-      "name": "6º nível",
       "kind": "subclassFeature",
       "descriptionStatus": "needs-review",
       "reason": "missing-full-rule-description, missing-full-rule-page",
@@ -7362,36 +4672,6 @@
       "descriptionSource": "inline-bold-subrule"
     },
     {
-      "type": "subclassFeatures",
-      "id": "subclass-feature-surto-selvagem-veu-do-crepusculo-10-nivel",
-      "name": "10º nível",
-      "kind": "subclassFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "subclassFeatures",
-      "id": "subclass-feature-surto-selvagem-veu-do-crepusculo-18-nivel",
-      "name": "18º nível",
-      "kind": "subclassFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "subclassFeatures",
-      "id": "subclass-feature-surto-selvagem-veu-do-crepusculo-6-nivel",
-      "name": "6º nível",
-      "kind": "subclassFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
       "type": "spellOverrides",
       "id": "spell-override-bestiario",
       "name": "Bestiário",
@@ -7425,56 +4705,6 @@
       "type": "spellOverrides",
       "id": "spell-override-events",
       "name": "EVENTS",
-      "kind": "spellOverride",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/magias-category",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "spellOverrides",
-      "id": "spell-override-find-your-way",
-      "name": "Find your way!",
-      "kind": "spellOverride",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/magias-category",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "spellOverrides",
-      "id": "spell-override-get-the-news",
-      "name": "Get the news",
-      "kind": "spellOverride",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/magias-category",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "spellOverrides",
-      "id": "spell-override-jogadores",
-      "name": "Jogadores",
-      "kind": "spellOverride",
-      "descriptionStatus": "missing",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/magias-category",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "spellOverrides",
-      "id": "spell-override-legal",
-      "name": "LEGAL",
-      "kind": "spellOverride",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/magias-category",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "spellOverrides",
-      "id": "spell-override-linha-do-tempo-de-cineria",
-      "name": "Linha do Tempo de Cineria",
       "kind": "spellOverride",
       "descriptionStatus": "needs-review",
       "reason": "missing-full-rule-page, missing-full-rule-description",
