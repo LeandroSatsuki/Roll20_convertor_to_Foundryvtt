@@ -1,17 +1,29 @@
 {
-  "generatedAt": "2026-05-10T04:02:26.318Z",
+  "generatedAt": "2026-05-10T13:14:27.254Z",
   "ok": true,
   "errors": [],
   "warnings": [
-    "BONFIRE_DESCRIPTION_EXACT_TEXT_REQUIRED: Bárbaro: complete description looks too short or non-mechanical for a final rule text",
-    "BONFIRE_DESCRIPTION_EXACT_TEXT_REQUIRED: Segredos Místicos de 9º Nível: complete description looks too short or non-mechanical for a final rule text"
+    "BONFIRE_DESCRIPTION_EXACT_TEXT_REQUIRED: Modo Infiltrador — Controle de Propulsão: complete description looks too short or non-mechanical for a final rule text",
+    "BONFIRE_DESCRIPTION_EXACT_TEXT_REQUIRED: Ritual de Conjuração: complete description looks too short or non-mechanical for a final rule text",
+    "BONFIRE_DESCRIPTION_EXACT_TEXT_REQUIRED: ND Máximo do Familiar: complete description looks too short or non-mechanical for a final rule text",
+    "BONFIRE_DESCRIPTION_EXACT_TEXT_REQUIRED: Segredos Místicos de 9º Nível: complete description looks too short or non-mechanical for a final rule text",
+    "BONFIRE_DESCRIPTION_EXACT_TEXT_REQUIRED: Máscara da Piedade - Defina a aparência da máscara (ou role 1d6): complete description looks too short or non-mechanical for a final rule text",
+    "BONFIRE_DESCRIPTION_EXACT_TEXT_REQUIRED: O Protetor: complete description looks too short or non-mechanical for a final rule text",
+    "BONFIRE_DESCRIPTION_EXACT_TEXT_REQUIRED: O Purificador: complete description looks too short or non-mechanical for a final rule text",
+    "BONFIRE_DESCRIPTION_EXACT_TEXT_REQUIRED: Aetherin (Arcano): complete description looks too short or non-mechanical for a final rule text",
+    "BONFIRE_DESCRIPTION_EXACT_TEXT_REQUIRED: Sylvanar (Floresta): complete description looks too short or non-mechanical for a final rule text",
+    "BONFIRE_DESCRIPTION_EXACT_TEXT_REQUIRED: Clã Rubedo (Os Hemomantes): complete description looks too short or non-mechanical for a final rule text",
+    "BONFIRE_DESCRIPTION_EXACT_TEXT_REQUIRED: Clã Sybaris (Os Artistas da Sedução): complete description looks too short or non-mechanical for a final rule text",
+    "BONFIRE_DESCRIPTION_EXACT_TEXT_REQUIRED: Clã Tenebrus (Os Ocultos): complete description looks too short or non-mechanical for a final rule text",
+    "BONFIRE_DESCRIPTION_EXACT_TEXT_REQUIRED: Clã Vesánio (Os Profetas Quebrados): complete description looks too short or non-mechanical for a final rule text",
+    "BONFIRE_DESCRIPTION_EXACT_TEXT_REQUIRED: Maré à Vontade: complete description looks too short or non-mechanical for a final rule text"
   ],
   "totalClasses": 13,
   "coveredClasses": 13,
-  "needsReviewCount": 482,
+  "needsReviewCount": 518,
   "missingRulesCount": 0,
   "missingSourcePagesCount": 0,
   "subRulesCount": 5393,
-  "descriptionCoveragePendingCount": 482,
-  "remainingDescriptionWarningsCount": 482
+  "descriptionCoveragePendingCount": 518,
+  "remainingDescriptionWarningsCount": 518
 }

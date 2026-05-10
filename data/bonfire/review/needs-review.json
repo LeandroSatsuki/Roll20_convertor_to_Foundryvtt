@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-10T04:02:17.620Z",
+  "generatedAt": "2026-05-10T13:15:34.032Z",
   "items": [
     {
       "type": "classes",
@@ -10,6 +10,16 @@
       "reason": "missing-full-rule-description, missing-full-rule-page",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/artificer-article",
       "descriptionSource": "article-body"
+    },
+    {
+      "type": "classes",
+      "id": "barbaro",
+      "name": "Bárbaro",
+      "kind": "class",
+      "descriptionStatus": "needs-review",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/barbaro-article",
+      "descriptionSource": "section-body"
     },
     {
       "type": "classes",
@@ -47,9 +57,9 @@
       "name": "Guerreiro",
       "kind": "class",
       "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/guerreiro-article",
-      "descriptionSource": "article-body"
+      "descriptionSource": "section-body"
     },
     {
       "type": "classes",
@@ -57,9 +67,9 @@
       "name": "Ladino",
       "kind": "class",
       "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/ladino-article",
-      "descriptionSource": "article-body"
+      "descriptionSource": "section-body"
     },
     {
       "type": "classes",
@@ -167,7 +177,7 @@
       "name": "Bárbaro",
       "kind": "classFeature",
       "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/barbaro-article",
       "descriptionSource": "section-body"
     },
@@ -307,7 +317,7 @@
       "name": "Aberração",
       "kind": "classFeature",
       "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mistico-article",
       "descriptionSource": "inline-bold-subrule"
     },
@@ -317,7 +327,7 @@
       "name": "Frequência",
       "kind": "classFeature",
       "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bardo-article",
       "descriptionSource": "inline-bold-subrule"
     },
@@ -543,16 +553,6 @@
     },
     {
       "type": "classFeatures",
-      "id": "class-feature-cacador-custo",
-      "name": "Custo",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/cacador-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
       "id": "class-feature-clerigo-cessa-a-condicao-amedrontado",
       "name": "Cessa a condição Amedrontado",
       "kind": "classFeature",
@@ -573,6 +573,16 @@
     },
     {
       "type": "classFeatures",
+      "id": "class-feature-clerigo-magias-sempre-preparadas",
+      "name": "Magias Sempre Preparadas",
+      "kind": "classFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/clerigo-article",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "classFeatures",
       "id": "class-feature-clerigo-testes-de-resistencia",
       "name": "Testes de Resistência",
       "kind": "classFeature",
@@ -587,9 +597,19 @@
       "name": "Água",
       "kind": "classFeature",
       "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
       "descriptionSource": "inline-bold-subrule"
+    },
+    {
+      "type": "classFeatures",
+      "id": "class-feature-druida-armadura-da-lua",
+      "name": "Armadura da Lua",
+      "kind": "classFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "descriptionSource": "section-body"
     },
     {
       "type": "classFeatures",
@@ -633,6 +653,26 @@
     },
     {
       "type": "classFeatures",
+      "id": "class-feature-druida-esporos-mortais",
+      "name": "Esporos Mortais",
+      "kind": "classFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "classFeatures",
+      "id": "class-feature-druida-fala-das-bestas",
+      "name": "Fala das Bestas",
+      "kind": "classFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "classFeatures",
       "id": "class-feature-druida-ferramentas",
       "name": "Ferramentas",
       "kind": "classFeature",
@@ -653,13 +693,73 @@
     },
     {
       "type": "classFeatures",
+      "id": "class-feature-druida-foco-de-conjuracao",
+      "name": "Foco de Conjuração",
+      "kind": "classFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "classFeatures",
       "id": "class-feature-druida-igneo",
       "name": "Ígneo",
       "kind": "classFeature",
       "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
       "descriptionSource": "inline-bold-subrule"
+    },
+    {
+      "type": "classFeatures",
+      "id": "class-feature-druida-magia-aprendida",
+      "name": "Magia Aprendida",
+      "kind": "classFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "classFeatures",
+      "id": "class-feature-druida-mare-de-retorno",
+      "name": "Maré de Retorno",
+      "kind": "classFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "classFeatures",
+      "id": "class-feature-druida-nivel-de-desafio-maximo",
+      "name": "Nível de Desafio Máximo",
+      "kind": "classFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "classFeatures",
+      "id": "class-feature-druida-pulmoes-de-mare",
+      "name": "Pulmões de Maré",
+      "kind": "classFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "classFeatures",
+      "id": "class-feature-druida-reservatorio-primal",
+      "name": "Reservatório Primal",
+      "kind": "classFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "descriptionSource": "section-body"
     },
     {
       "type": "classFeatures",
@@ -667,7 +767,7 @@
       "name": "Terra",
       "kind": "classFeature",
       "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
       "descriptionSource": "inline-bold-subrule"
     },
@@ -680,6 +780,36 @@
       "reason": "missing-full-rule-description, missing-full-rule-page",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
       "descriptionSource": "inline-bold-subrule"
+    },
+    {
+      "type": "classFeatures",
+      "id": "class-feature-druida-truque-da-corrente",
+      "name": "Truque da Corrente",
+      "kind": "classFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "classFeatures",
+      "id": "class-feature-druida-truques",
+      "name": "Truques",
+      "kind": "classFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "classFeatures",
+      "id": "class-feature-druida-vigor-lunar",
+      "name": "Vigor Lunar",
+      "kind": "classFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "descriptionSource": "section-body"
     },
     {
       "type": "classFeatures",
@@ -697,7 +827,7 @@
       "name": "Ativação",
       "kind": "classFeature",
       "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/monge-article",
       "descriptionSource": "inline-bold-subrule"
     },
@@ -767,7 +897,7 @@
       "name": "Limite",
       "kind": "classFeature",
       "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/guerreiro-article",
       "descriptionSource": "inline-bold-subrule"
     },
@@ -887,7 +1017,7 @@
       "name": "Foco/Resistência",
       "kind": "classFeature",
       "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/monge-article",
       "descriptionSource": "inline-bold-subrule"
     },
@@ -1063,33 +1193,23 @@
     },
     {
       "type": "classFeatures",
-      "id": "class-feature-segredos-de-cacador-alquimia-e-pocoes-custo",
-      "name": "Custo",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/cacador-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
-      "id": "class-feature-segredos-de-cacador-armadilhas-e-emboscadas-custo",
-      "name": "Custo",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/cacador-article",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "classFeatures",
       "id": "class-feature-surto-selvagem-agua",
       "name": "Água",
       "kind": "classFeature",
       "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
       "descriptionSource": "inline-bold-subrule"
+    },
+    {
+      "type": "classFeatures",
+      "id": "class-feature-surto-selvagem-elo-primal-magia-aprendida",
+      "name": "Magia Aprendida",
+      "kind": "classFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "descriptionSource": "section-body"
     },
     {
       "type": "classFeatures",
@@ -1097,7 +1217,7 @@
       "name": "Água",
       "kind": "classFeature",
       "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
       "descriptionSource": "inline-bold-subrule"
     },
@@ -1107,7 +1227,7 @@
       "name": "Ígneo",
       "kind": "classFeature",
       "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
       "descriptionSource": "inline-bold-subrule"
     },
@@ -1117,7 +1237,7 @@
       "name": "Terra",
       "kind": "classFeature",
       "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
       "descriptionSource": "inline-bold-subrule"
     },
@@ -1127,9 +1247,29 @@
       "name": "Ígneo",
       "kind": "classFeature",
       "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
       "descriptionSource": "inline-bold-subrule"
+    },
+    {
+      "type": "classFeatures",
+      "id": "class-feature-surto-selvagem-magia-aprendida",
+      "name": "Magia Aprendida",
+      "kind": "classFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "classFeatures",
+      "id": "class-feature-surto-selvagem-reservatorio-primal",
+      "name": "Reservatório Primal",
+      "kind": "classFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "descriptionSource": "section-body"
     },
     {
       "type": "classFeatures",
@@ -1137,7 +1277,7 @@
       "name": "Terra",
       "kind": "classFeature",
       "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
       "descriptionSource": "inline-bold-subrule"
     },
@@ -1147,9 +1287,19 @@
       "name": "Limite",
       "kind": "classFeature",
       "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/guerreiro-article",
       "descriptionSource": "inline-bold-subrule"
+    },
+    {
+      "type": "classFeatures",
+      "id": "class-feature-vinculo-natural-fala-das-bestas",
+      "name": "Fala das Bestas",
+      "kind": "classFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "descriptionSource": "section-body"
     },
     {
       "type": "classFeatures",
@@ -1297,7 +1447,7 @@
       "name": "Guerreiro",
       "kind": "classFeature",
       "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/guerreiro-article",
       "descriptionSource": "section-body"
     },
@@ -1367,7 +1517,7 @@
       "name": "Ladino",
       "kind": "classFeature",
       "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/ladino-article",
       "descriptionSource": "section-body"
     },
@@ -1507,7 +1657,7 @@
       "name": "Espirito Familiar Místico",
       "kind": "classFeature",
       "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mistico-article",
       "descriptionSource": "section-body"
     },
@@ -1528,16 +1678,6 @@
       "kind": "classFeature",
       "descriptionStatus": "needs-review",
       "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mistico-article",
-      "descriptionSource": "section-body"
-    },
-    {
-      "type": "classFeatures",
-      "id": "mistico-o-imortal-l14",
-      "name": "O Imortal",
-      "kind": "classFeature",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mistico-article",
       "descriptionSource": "section-body"
     },
@@ -1617,7 +1757,7 @@
       "name": "Habilidades de Monge",
       "kind": "classFeature",
       "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/monge-article",
       "descriptionSource": "section-body"
     },
@@ -1747,9 +1887,9 @@
       "name": "Anão",
       "kind": "race",
       "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/anao-species",
-      "descriptionSource": "article-body"
+      "descriptionSource": "section-body"
     },
     {
       "type": "races",
@@ -1759,16 +1899,6 @@
       "descriptionStatus": "needs-review",
       "reason": "missing-full-rule-page, missing-full-rule-description",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/elfo-species",
-      "descriptionSource": "article-body"
-    },
-    {
-      "type": "races",
-      "id": "humano",
-      "name": "Humano",
-      "kind": "race",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
       "descriptionSource": "article-body"
     },
     {
@@ -2227,7 +2357,7 @@
       "name": "Poderes da Essência",
       "kind": "raceFeature",
       "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/celestial-article",
       "descriptionSource": "section-body"
     },
@@ -2797,7 +2927,7 @@
       "name": "Determinação Comum",
       "kind": "raceFeature",
       "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
       "descriptionSource": "section-body"
     },
@@ -2897,7 +3027,7 @@
       "name": "Poliglota",
       "kind": "raceFeature",
       "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
       "descriptionSource": "section-body"
     },
@@ -2947,7 +3077,7 @@
       "name": "Sangue Anão",
       "kind": "raceFeature",
       "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
       "descriptionSource": "section-body"
     },
@@ -2957,7 +3087,7 @@
       "name": "Sangue Élfico",
       "kind": "raceFeature",
       "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
       "descriptionSource": "section-body"
     },
@@ -2967,7 +3097,7 @@
       "name": "Sangue Órquico",
       "kind": "raceFeature",
       "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
       "descriptionSource": "section-body"
     },
@@ -2987,7 +3117,7 @@
       "name": "Vigor do Clã",
       "kind": "raceFeature",
       "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
       "descriptionSource": "section-body"
     },
@@ -3147,7 +3277,7 @@
       "name": "Poderes da Essência",
       "kind": "raceFeature",
       "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/infernal-article",
       "descriptionSource": "section-body"
     },
@@ -3247,7 +3377,7 @@
       "name": "Escalada Ágil",
       "kind": "raceFeature",
       "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-page, missing-full-rule-description",
+      "reason": "missing-full-rule-description",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/orcs-species",
       "descriptionSource": "section-body"
     },
@@ -3257,7 +3387,7 @@
       "name": "Estrutura Poderosa",
       "kind": "raceFeature",
       "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/orcs-species",
       "descriptionSource": "section-body"
     },
@@ -3417,7 +3547,7 @@
       "name": "Vigor da Montanha",
       "kind": "raceFeature",
       "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/orcs-species",
       "descriptionSource": "section-body"
     },
@@ -3513,6 +3643,16 @@
     },
     {
       "type": "raceFeatures",
+      "id": "race-feature-celestial-poderes-da-essencia",
+      "name": "Poderes da Essência",
+      "kind": "raceFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/celestial-article",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "raceFeatures",
       "id": "race-feature-celestial-regras",
       "name": "Regras",
       "kind": "raceFeature",
@@ -3527,7 +3667,7 @@
       "name": "Sucesso",
       "kind": "raceFeature",
       "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/infernal-article",
       "descriptionSource": "inline-bold-subrule"
     },
@@ -3563,6 +3703,26 @@
     },
     {
       "type": "raceFeatures",
+      "id": "race-feature-durkarn-sangue-anao-sangue-anao",
+      "name": "Sangue Anão",
+      "kind": "raceFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "race-feature-durkarn-sangue-anao-vigor-do-cla",
+      "name": "Vigor do Clã",
+      "kind": "raceFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "raceFeatures",
       "id": "race-feature-elfo-cineria",
       "name": "Cinéria",
       "kind": "raceFeature",
@@ -3590,6 +3750,16 @@
       "reason": "missing-full-rule-description, missing-full-rule-page",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/elfo-species",
       "descriptionSource": "inline-bold-subrule"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "race-feature-erthari-humanos-da-terra-determinacao-comum",
+      "name": "Determinação Comum",
+      "kind": "raceFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "descriptionSource": "section-body"
     },
     {
       "type": "raceFeatures",
@@ -3623,6 +3793,16 @@
     },
     {
       "type": "raceFeatures",
+      "id": "race-feature-goruun-sangue-orc-sangue-orquico",
+      "name": "Sangue Órquico",
+      "kind": "raceFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "raceFeatures",
       "id": "race-feature-humano-cineria",
       "name": "Cinéria",
       "kind": "raceFeature",
@@ -3630,6 +3810,16 @@
       "reason": "missing-full-rule-description, missing-full-rule-page",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
       "descriptionSource": "inline-bold-subrule"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "race-feature-humano-determinacao-comum",
+      "name": "Determinação Comum",
+      "kind": "raceFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "descriptionSource": "section-body"
     },
     {
       "type": "raceFeatures",
@@ -3643,6 +3833,16 @@
     },
     {
       "type": "raceFeatures",
+      "id": "race-feature-humano-poliglota",
+      "name": "Poliglota",
+      "kind": "raceFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "raceFeatures",
       "id": "race-feature-humano-regras",
       "name": "Regras",
       "kind": "raceFeature",
@@ -3650,6 +3850,46 @@
       "reason": "missing-full-rule-description, missing-full-rule-page",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
       "descriptionSource": "inline-bold-subrule"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "race-feature-humano-sangue-anao",
+      "name": "Sangue Anão",
+      "kind": "raceFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "race-feature-humano-sangue-elfico",
+      "name": "Sangue Élfico",
+      "kind": "raceFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "race-feature-humano-sangue-orquico",
+      "name": "Sangue Órquico",
+      "kind": "raceFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "race-feature-humano-vigor-do-cla",
+      "name": "Vigor do Clã",
+      "kind": "raceFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "descriptionSource": "section-body"
     },
     {
       "type": "raceFeatures",
@@ -3673,6 +3913,16 @@
     },
     {
       "type": "raceFeatures",
+      "id": "race-feature-infernal-poderes-da-essencia",
+      "name": "Poderes da Essência",
+      "kind": "raceFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/infernal-article",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "raceFeatures",
       "id": "race-feature-infernal-regras",
       "name": "Regras",
       "kind": "raceFeature",
@@ -3680,6 +3930,96 @@
       "reason": "missing-full-rule-description, missing-full-rule-page",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/infernal-article",
       "descriptionSource": "inline-bold-subrule"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "race-feature-opcao-a-linhagens-humanas-determinacao-comum",
+      "name": "Determinação Comum",
+      "kind": "raceFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "race-feature-opcao-a-linhagens-humanas-sangue-anao",
+      "name": "Sangue Anão",
+      "kind": "raceFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "race-feature-opcao-a-linhagens-humanas-sangue-elfico",
+      "name": "Sangue Élfico",
+      "kind": "raceFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "race-feature-opcao-a-linhagens-humanas-sangue-orquico",
+      "name": "Sangue Órquico",
+      "kind": "raceFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "race-feature-opcao-a-linhagens-humanas-vigor-do-cla",
+      "name": "Vigor do Clã",
+      "kind": "raceFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "race-feature-opcao-a-linhagens-tribais-escalada-agil",
+      "name": "Escalada Ágil",
+      "kind": "raceFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/orcs-species",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "race-feature-opcao-a-linhagens-tribais-estrutura-poderosa",
+      "name": "Estrutura Poderosa",
+      "kind": "raceFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/orcs-species",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "race-feature-opcao-a-linhagens-tribais-vigor-da-montanha",
+      "name": "Vigor da Montanha",
+      "kind": "raceFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/orcs-species",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "race-feature-orc-cinza-espirito-da-sombra-escalada-agil",
+      "name": "Escalada Ágil",
+      "kind": "raceFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/orcs-species",
+      "descriptionSource": "section-body"
     },
     {
       "type": "raceFeatures",
@@ -3703,6 +4043,26 @@
     },
     {
       "type": "raceFeatures",
+      "id": "race-feature-orcs-escalada-agil",
+      "name": "Escalada Ágil",
+      "kind": "raceFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/orcs-species",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "race-feature-orcs-estrutura-poderosa",
+      "name": "Estrutura Poderosa",
+      "kind": "raceFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/orcs-species",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "raceFeatures",
       "id": "race-feature-orcs-regras",
       "name": "Regras",
       "kind": "raceFeature",
@@ -3710,6 +4070,26 @@
       "reason": "missing-full-rule-description, missing-full-rule-page",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/orcs-species",
       "descriptionSource": "inline-bold-subrule"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "race-feature-orcs-vigor-da-montanha",
+      "name": "Vigor da Montanha",
+      "kind": "raceFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/orcs-species",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "raceFeatures",
+      "id": "race-feature-salarin-sangue-elfico-sangue-elfico",
+      "name": "Sangue Élfico",
+      "kind": "raceFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "descriptionSource": "section-body"
     },
     {
       "type": "raceFeatures",
@@ -3920,246 +4300,6 @@
       "reason": "missing-full-rule-page, missing-full-rule-description",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/talentos-category",
       "descriptionSource": "section-body"
-    },
-    {
-      "type": "feats",
-      "id": "feat-feature-adepto-da-hemomancia-aumento-de-atributo",
-      "name": "Aumento de Atributo",
-      "kind": "feat",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/talentos-category",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "feats",
-      "id": "feat-feature-adepto-de-metamagia-aumento-de-atributo",
-      "name": "Aumento de Atributo",
-      "kind": "feat",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/talentos-category",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "feats",
-      "id": "feat-feature-adepto-mistico-aumento-de-atributo",
-      "name": "Aumento de Atributo",
-      "kind": "feat",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/talentos-category",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "feats",
-      "id": "feat-feature-ator-aumento-de-atributo",
-      "name": "Aumento de Atributo",
-      "kind": "feat",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/talentos-category",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "feats",
-      "id": "feat-feature-carisma-aumento-de-atributo",
-      "name": "Aumento de Atributo",
-      "kind": "feat",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/talentos-category",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "feats",
-      "id": "feat-feature-destreza-aumento-de-atributo",
-      "name": "Aumento de Atributo",
-      "kind": "feat",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/talentos-category",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "feats",
-      "id": "feat-feature-determinacao-da-cavalaria-aumento-de-atributo",
-      "name": "Aumento de Atributo",
-      "kind": "feat",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/talentos-category",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "feats",
-      "id": "feat-feature-duelista-defensivo-aumento-de-atributo",
-      "name": "Aumento de Atributo",
-      "kind": "feat",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/talentos-category",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "feats",
-      "id": "feat-feature-duravel-aumento-de-atributo",
-      "name": "Aumento de Atributo",
-      "kind": "feat",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/talentos-category",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "feats",
-      "id": "feat-feature-especialista-em-besta-aumento-de-atributo",
-      "name": "Aumento de Atributo",
-      "kind": "feat",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/talentos-category",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "feats",
-      "id": "feat-feature-espreitador-aumento-de-atributo",
-      "name": "Aumento de Atributo",
-      "kind": "feat",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/talentos-category",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "feats",
-      "id": "feat-feature-forca-aumento-de-atributo",
-      "name": "Aumento de Atributo",
-      "kind": "feat",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/talentos-category",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "feats",
-      "id": "feat-feature-forca-ou-carisma-aumento-de-atributo",
-      "name": "Aumento de Atributo",
-      "kind": "feat",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/talentos-category",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "feats",
-      "id": "feat-feature-guerreiro-hemomante-aumento-de-atributo",
-      "name": "Aumento de Atributo",
-      "kind": "feat",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/talentos-category",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "feats",
-      "id": "feat-feature-iniciado-artifice-aumento-de-atributo",
-      "name": "Aumento de Atributo",
-      "kind": "feat",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/talentos-category",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "feats",
-      "id": "feat-feature-linguista-aumento-de-atributo",
-      "name": "Aumento de Atributo",
-      "kind": "feat",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/talentos-category",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "feats",
-      "id": "feat-feature-marca-anomala-maior-aumento-de-atributo",
-      "name": "Aumento de Atributo",
-      "kind": "feat",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/talentos-category",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "feats",
-      "id": "feat-feature-mente-afiada-aumento-de-atributo",
-      "name": "Aumento de Atributo",
-      "kind": "feat",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/talentos-category",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "feats",
-      "id": "feat-feature-mestre-atirador-de-elite-aumento-de-atributo",
-      "name": "Aumento de Atributo",
-      "kind": "feat",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/talentos-category",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "feats",
-      "id": "feat-feature-mestre-de-armas-grandes-aumento-de-atributo",
-      "name": "Aumento de Atributo",
-      "kind": "feat",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/talentos-category",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "feats",
-      "id": "feat-feature-mestre-de-escudo-aumento-de-atributo",
-      "name": "Aumento de Atributo",
-      "kind": "feat",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/talentos-category",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "feats",
-      "id": "feat-feature-mestre-pistoleiro-aumento-de-atributo",
-      "name": "Aumento de Atributo",
-      "kind": "feat",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/talentos-category",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "feats",
-      "id": "feat-feature-sacrificio-vital-aumento-de-atributo",
-      "name": "Aumento de Atributo",
-      "kind": "feat",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/talentos-category",
-      "descriptionSource": "inline-bold-subrule"
-    },
-    {
-      "type": "feats",
-      "id": "feat-feature-sobrevivente-carmesim-aumento-de-atributo",
-      "name": "Aumento de Atributo",
-      "kind": "feat",
-      "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
-      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/talentos-category",
-      "descriptionSource": "inline-bold-subrule"
     },
     {
       "type": "feats",
@@ -4517,7 +4657,7 @@
       "name": "Forma Selvagem Perene",
       "kind": "subclassFeature",
       "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
       "descriptionSource": "section-body"
     },
@@ -4563,6 +4703,26 @@
     },
     {
       "type": "subclassFeatures",
+      "id": "subclass-feature-alma-da-natureza-seiva-lenta",
+      "name": "Seiva Lenta",
+      "kind": "subclassFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "subclass-feature-arquidruida-forma-selvagem-perene",
+      "name": "Forma Selvagem Perene",
+      "kind": "subclassFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "subclassFeatures",
       "id": "subclass-feature-canalizar-divindade-santuario-do-amanhecer-cessa-a-condicao-amedrontado",
       "name": "Cessa a condição Amedrontado",
       "kind": "subclassFeature",
@@ -4573,6 +4733,106 @@
     },
     {
       "type": "subclassFeatures",
+      "id": "subclass-feature-circulo-da-lua-armadura-da-lua",
+      "name": "Armadura da Lua",
+      "kind": "subclassFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "subclass-feature-circulo-da-lua-nivel-de-desafio-maximo",
+      "name": "Nível de Desafio Máximo",
+      "kind": "subclassFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "subclass-feature-circulo-da-lua-surto-de-instinto",
+      "name": "Surto de Instinto",
+      "kind": "subclassFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "subclass-feature-circulo-da-lua-vigor-lunar",
+      "name": "Vigor Lunar",
+      "kind": "subclassFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "subclass-feature-circulo-da-terra-forma-selvagem-perene",
+      "name": "Forma Selvagem Perene",
+      "kind": "subclassFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "subclass-feature-circulo-da-terra-seiva-lenta",
+      "name": "Seiva Lenta",
+      "kind": "subclassFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "subclass-feature-circulo-das-estrelas-beneficios-coroados",
+      "name": "Benefícios Coroados",
+      "kind": "subclassFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "subclass-feature-circulo-das-mares-mare-de-retorno",
+      "name": "Maré de Retorno",
+      "kind": "subclassFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "subclass-feature-circulo-das-mares-pulmoes-de-mare",
+      "name": "Pulmões de Maré",
+      "kind": "subclassFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "subclass-feature-circulo-das-mares-truque-da-corrente",
+      "name": "Truque da Corrente",
+      "kind": "subclassFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "subclassFeatures",
       "id": "subclass-feature-circulo-do-pastor-elemental-ficha-familiar-primal",
       "name": "Ficha - Familiar Primal",
       "kind": "subclassFeature",
@@ -4580,6 +4840,46 @@
       "reason": "missing-full-rule-description, missing-full-rule-page",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
       "descriptionSource": "inline-bold-subrule"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "subclass-feature-circulo-dos-esporos-esporos-mortais",
+      "name": "Esporos Mortais",
+      "kind": "subclassFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "subclass-feature-corona-borealis-beneficios-coroados",
+      "name": "Benefícios Coroados",
+      "kind": "subclassFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "subclass-feature-discipulo-das-aguas-pulmoes-de-mare",
+      "name": "Pulmões de Maré",
+      "kind": "subclassFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "subclass-feature-discipulo-das-aguas-truque-da-corrente",
+      "name": "Truque da Corrente",
+      "kind": "subclassFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "descriptionSource": "section-body"
     },
     {
       "type": "subclassFeatures",
@@ -4603,11 +4903,51 @@
     },
     {
       "type": "subclassFeatures",
+      "id": "subclass-feature-forma-selvagem-ancia-surto-de-instinto",
+      "name": "Surto de Instinto",
+      "kind": "subclassFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "subclass-feature-formas-lunares-armadura-da-lua",
+      "name": "Armadura da Lua",
+      "kind": "subclassFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "subclass-feature-formas-lunares-nivel-de-desafio-maximo",
+      "name": "Nível de Desafio Máximo",
+      "kind": "subclassFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "subclass-feature-formas-lunares-vigor-lunar",
+      "name": "Vigor Lunar",
+      "kind": "subclassFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "descriptionSource": "section-body"
+    },
+    {
+      "type": "subclassFeatures",
       "id": "subclass-feature-furia-devastadora-arma-leve",
       "name": "Arma Leve",
       "kind": "subclassFeature",
       "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/barbaro-article",
       "descriptionSource": "inline-bold-subrule"
     },
@@ -4620,6 +4960,16 @@
       "reason": "missing-full-rule-description, missing-full-rule-page",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/barbaro-article",
       "descriptionSource": "inline-bold-subrule"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "subclass-feature-hospedeiro-fungico-esporos-mortais",
+      "name": "Esporos Mortais",
+      "kind": "subclassFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "descriptionSource": "section-body"
     },
     {
       "type": "subclassFeatures",
@@ -4667,9 +5017,19 @@
       "name": "Frequência",
       "kind": "subclassFeature",
       "descriptionStatus": "needs-review",
-      "reason": "missing-full-rule-description, missing-full-rule-page",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bardo-article",
       "descriptionSource": "inline-bold-subrule"
+    },
+    {
+      "type": "subclassFeatures",
+      "id": "subclass-feature-surto-selvagem-aura-de-mare-mare-de-retorno",
+      "name": "Maré de Retorno",
+      "kind": "subclassFeature",
+      "descriptionStatus": "needs-review",
+      "reason": "summary-card-used-no-full-description, missing-full-rule-description",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "descriptionSource": "section-body"
     },
     {
       "type": "spellOverrides",

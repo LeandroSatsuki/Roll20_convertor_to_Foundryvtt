@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-10T04:02:17.617Z",
+  "generatedAt": "2026-05-10T13:15:34.029Z",
   "policy": "coverage-by-class-not-character",
   "classes": [
     {
@@ -22,7 +22,7 @@
       "featureCount": 23,
       "sourceFileName": "data\\HTML BONFIRE\\classes\\Bárbaro in Bonfire Tales RPG _ World Anvil.html",
       "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/barbaro-article",
-      "descriptionStatus": "complete"
+      "descriptionStatus": "needs-review"
     },
     {
       "classId": "bardo",

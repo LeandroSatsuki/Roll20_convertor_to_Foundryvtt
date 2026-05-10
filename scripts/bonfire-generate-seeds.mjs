@@ -2,6 +2,7 @@ import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { extractInlineSubRules } from './bonfire/extractInlineSubRules.mjs'
+import { extractSectionBodyCandidates, selectBonfireSectionCandidate } from './bonfire/resolveAmbiguousSections.mjs'
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const dataDir = path.join(repoRoot, 'data')
@@ -114,6 +115,7 @@ ensureDir(path.join(dataDir, 'bonfire', 'raw'))
 
 const htmlFiles = collectHtmlFiles(dataDir)
 const sourceIndex = buildSourceIndex(htmlFiles)
+const sourceFileCandidateCache = new Map()
 const categoryFiles = discoverCategoryFiles()
 const parseErrors = []
 const missingSourcePages = []
@@ -132,6 +134,8 @@ const subclasses = []
 const subclassFeatures = []
 const spellOverrides = []
 const essenceFeatures = []
+
+console.log(`[bonfire] HTMLs indexados: ${htmlFiles.length}`)
 
 for (const file of categoryFiles.classes) {
   try {
@@ -703,6 +707,7 @@ function entity({ id, name, aliases, kind, sourceUrl, descriptionHtml, descripti
     descriptionSource,
     sourceUrl,
     sourceFile,
+    context: extra,
   })
   return {
     id: slug(id || name),
@@ -920,10 +925,15 @@ function collectDescriptionCoverageReport(seeds, index, previous = {}) {
         name: entry.name,
         kind: entry.kind,
         parentName: entry.parentName ?? entry.className ?? entry.subclassName ?? entry.raceName ?? entry.backgroundName ?? null,
+        className: entry.className ?? null,
+        raceName: entry.raceName ?? null,
+        subclassName: entry.subclassName ?? null,
+        backgroundName: entry.backgroundName ?? null,
         sourceUrl: entry.sourceUrl ?? null,
         sourceFile: entry.sourceFileName ?? null,
         currentDescriptionSource: entry.descriptionSource ?? 'unknown',
         currentStatus: entry.descriptionStatus ?? 'missing',
+        shortDescription: entry.shortDescription ?? null,
         candidateHtmlFiles: candidates.slice(0, 5).map((candidate) => candidate.relativePath),
         candidateSections: Array.from(
           new Set(
@@ -994,12 +1004,19 @@ function collectRemainingDescriptionWarnings(seeds, descriptionCoverageReport) {
         warningCode: 'BONFIRE_DESCRIPTION_EXACT_TEXT_REQUIRED',
       })))
 
-  const entries = [
-    ...coverageItems.map((entry) => classifyRemainingDescriptionWarning(entry)),
-    ...exactTextRequiredEntries.map((entry) => classifyRemainingDescriptionWarning(entry)),
-  ]
-    .filter(Boolean)
-    .sort((left, right) => left.name.localeCompare(right.name))
+  const allItems = [...coverageItems, ...exactTextRequiredEntries]
+  const entries = []
+  let autoResolvedCount = 0
+  let manualReviewCount = 0
+  for (let index = 0; index < allItems.length; index += 1) {
+    if (index > 0 && index % 100 === 0) console.log(`[bonfire] ambiguous sections analisadas: ${index}/${allItems.length}`)
+    const classified = classifyRemainingDescriptionWarning(allItems[index])
+    if (!classified) continue
+    if (classified.nextAction === 'auto-resolved') autoResolvedCount += 1
+    if (classified.nextAction === 'review-manually') manualReviewCount += 1
+    entries.push(classified)
+  }
+  entries.sort((left, right) => left.name.localeCompare(right.name))
 
   const summary = {
     totalWarnings: entries.length,
@@ -1008,6 +1025,8 @@ function collectRemainingDescriptionWarnings(seeds, descriptionCoverageReport) {
     ambiguousSectionCount: entries.filter((entry) => entry.classification === 'ambiguous-section').length,
     exactTextRequiredCount: entries.filter((entry) => entry.classification === 'exact-text-required').length,
     validPlaceholderCount: entries.filter((entry) => entry.classification === 'valid-placeholder').length,
+    autoResolvedCount,
+    manualReviewCount,
   }
 
   return {
@@ -1020,41 +1039,88 @@ function collectRemainingDescriptionWarnings(seeds, descriptionCoverageReport) {
 function classifyRemainingDescriptionWarning(entry) {
   if (!entry?.name) return null
   const name = String(entry.name)
-  const candidateHtmlFiles = Array.isArray(entry.candidateHtmlFiles) ? entry.candidateHtmlFiles : []
-  const candidateSections = Array.isArray(entry.candidateSections) ? entry.candidateSections : []
+  const rule = {
+    name,
+    kind: entry.kind ?? 'unknown',
+    parentName: entry.parentName ?? null,
+    className: entry.className ?? null,
+    raceName: entry.raceName ?? null,
+    subclassName: entry.subclassName ?? null,
+    backgroundName: entry.backgroundName ?? null,
+    sourceUrl: entry.sourceUrl ?? null,
+    sourceFile: entry.sourceFile ?? null,
+    shortDescription: entry.shortDescription ?? null,
+  }
+  const candidates = collectSectionCandidatesForRule(rule).slice(0, 20)
+  const { selectedCandidate, scoredCandidates } = selectBonfireSectionCandidate(rule, candidates)
   const warningCode = entry.warningCode
     ?? (entry.reason === 'exact-text-required' ? 'BONFIRE_DESCRIPTION_EXACT_TEXT_REQUIRED' : 'BONFIRE_DESCRIPTION_SUMMARY_ONLY')
 
   let classification = 'valid-placeholder'
   let nextAction = 'keep-placeholder'
   let reason = entry.reason ?? 'needs-review'
+  let resolutionStatus = 'still-ambiguous'
 
   if (isStructuralSiteNoise(name) || looksLikeProgressionArtifactName(name)) {
     classification = 'structural-site-noise'
     nextAction = 'ignore-noise'
     reason = looksLikeProgressionArtifactName(name) ? 'progression-or-table-artifact' : 'site-navigation-or-generic-heading'
+    resolutionStatus = 'resolved'
   } else if (warningCode === 'BONFIRE_DESCRIPTION_EXACT_TEXT_REQUIRED') {
     classification = 'exact-text-required'
     nextAction = 'review-manually'
-  } else if (candidateHtmlFiles.length > 1 || candidateSections.length > 1) {
+  } else if (selectedCandidate) {
     classification = 'ambiguous-section'
     nextAction = 'review-manually'
-    reason = 'multiple-candidate-sections'
+    reason = 'candidate-section-found-but-exactness-not-proven'
+    resolutionStatus = 'still-ambiguous'
   } else if (String(entry.currentStatus) === 'missing' || String(entry.reason).includes('missing-full')) {
     classification = 'missing-full-rule-source'
     nextAction = 'provide-html'
     reason = entry.reason ?? 'missing-full-rule-source'
+    resolutionStatus = 'missing-source'
+  } else if (scoredCandidates.length > 1) {
+    classification = 'ambiguous-section'
+    nextAction = 'review-manually'
+    reason = 'multiple-candidate-sections'
   }
 
   return {
     name,
     kind: entry.kind ?? 'unknown',
     parentName: entry.parentName ?? null,
+    className: entry.className ?? null,
+    raceName: entry.raceName ?? null,
+    subclassName: entry.subclassName ?? null,
+    backgroundName: entry.backgroundName ?? null,
     sourceUrl: entry.sourceUrl ?? null,
     sourceFile: entry.sourceFile ?? null,
     warningCode,
     classification,
     reason,
+    candidateSections: scoredCandidates.map((candidate) => ({
+      heading: candidate.heading,
+      headingLevel: candidate.headingLevel,
+      parentHeading: candidate.parentHeading ?? null,
+      nearestArticleTitle: candidate.nearestArticleTitle ?? null,
+      textPreview: candidate.textPreview ?? '',
+      textLength: candidate.textLength ?? 0,
+      score: candidate.score,
+      reasons: candidate.reasons ?? [],
+    })),
+    selectedCandidate: selectedCandidate
+      ? {
+          heading: selectedCandidate.heading,
+          headingLevel: selectedCandidate.headingLevel,
+          parentHeading: selectedCandidate.parentHeading ?? null,
+          nearestArticleTitle: selectedCandidate.nearestArticleTitle ?? null,
+          textPreview: selectedCandidate.textPreview ?? '',
+          textLength: selectedCandidate.textLength ?? 0,
+          score: selectedCandidate.score,
+          reasons: selectedCandidate.reasons ?? [],
+        }
+      : null,
+    resolutionStatus,
     nextAction,
   }
 }
@@ -1083,6 +1149,98 @@ function buildDescriptionCoverageSummaryFromValidation(report) {
     missingCount: null,
     previewRejectedWarningCount,
     exactTextRequiredCount,
+  }
+}
+
+function collectSectionCandidatesForRule(rule) {
+  const files = new Set()
+  if (rule.sourceFile) files.add(path.resolve(repoRoot, rule.sourceFile))
+  for (const candidate of findCandidateSourceEntries(rule, sourceIndex).slice(0, 8)) files.add(candidate.file)
+
+  const candidates = []
+  const nameKey = slug(rule.name)
+  const parentKey = slug(rule.parentName ?? '')
+  for (const file of files) {
+    if (!existsSync(file)) continue
+    const bundle = getSourceFileCandidateBundle(file)
+    if (slug(bundle.pageTitle) === nameKey || slug(bundle.pageH1) === nameKey) {
+      candidates.push(buildArticleBodyCandidate(bundle))
+    }
+    const directMatches = bundle.candidatesByHeading.get(nameKey) ?? []
+    const parentMatches = parentKey ? (bundle.candidatesByParent.get(parentKey) ?? []) : []
+    const selected = directMatches.length ? directMatches : parentMatches.length ? parentMatches : bundle.candidates.slice(0, 12)
+    candidates.push(...selected)
+  }
+
+  return candidates
+}
+
+function getSourceFileCandidateBundle(file) {
+  const resolved = path.resolve(file)
+  const cached = sourceFileCandidateCache.get(resolved)
+  if (cached) return cached
+
+  const html = readFileSync(resolved, 'utf8')
+  const article = cleanHtml(html)
+  const pageTitle = cleanTitle(extractTitle(html) || titleFromFile(resolved))
+  const pageH1 = htmlToText(attr(article, /<h1\b[^>]*>([\s\S]*?)<\/h1>/i) ?? '')
+  const sourceUrl = extractSourceUrl(html) ?? null
+  const sourceFile = path.relative(repoRoot, resolved)
+  const candidates = extractSectionBodyCandidates({
+    html: article,
+    pageTitle,
+    pageH1,
+    sourceUrl,
+    sourceFile,
+    rule: { name: '__no-article-candidate__' },
+  })
+  const candidatesByHeading = new Map()
+  const candidatesByParent = new Map()
+  for (const candidate of candidates) {
+    const headingKey = slug(candidate.heading)
+    if (!candidatesByHeading.has(headingKey)) candidatesByHeading.set(headingKey, [])
+    candidatesByHeading.get(headingKey).push(candidate)
+    const parentKey = slug(candidate.parentHeading ?? '')
+    if (parentKey) {
+      if (!candidatesByParent.has(parentKey)) candidatesByParent.set(parentKey, [])
+      candidatesByParent.get(parentKey).push(candidate)
+    }
+  }
+
+  const bundle = {
+    html,
+    article,
+    pageTitle,
+    pageH1,
+    sourceUrl,
+    sourceFile,
+    candidates,
+    candidatesByHeading,
+    candidatesByParent,
+  }
+  sourceFileCandidateCache.set(resolved, bundle)
+  return bundle
+}
+
+function buildArticleBodyCandidate(bundle) {
+  const headings = extractHeadings(bundle.article)
+  const bodyHtml = sanitizeDescriptionHtml(bundle.article.slice((headings.find((heading) => heading.level === 1)?.end) ?? 0, ((headings.find((heading) => heading.level === 1)?.end) ?? 0) + 6000))
+  const text = cleanText(htmlToText(bodyHtml))
+  return {
+    heading: bundle.pageTitle || bundle.pageH1,
+    headingLevel: 'article',
+    parentHeading: null,
+    nearestArticleTitle: bundle.pageTitle || bundle.pageH1 || '',
+    pageTitle: bundle.pageTitle,
+    pageH1: bundle.pageH1,
+    sourceUrl: bundle.sourceUrl,
+    sourceFile: bundle.sourceFile,
+    descriptionSource: 'article-body',
+    descriptionHtml: bodyHtml,
+    text,
+    textPreview: text.length > 180 ? `${text.slice(0, 177)}...` : text,
+    textLength: text.length,
+    immediateBody: true,
   }
 }
 
@@ -1366,15 +1524,48 @@ function shortDescription(description) {
   return sentence.trim() || ''
 }
 
-function buildSeedDescription({ name, kind, descriptionHtml, descriptionText, shortDescription: previewText, descriptionSource, sourceUrl, sourceFile }) {
+function buildSeedDescription({ name, kind, descriptionHtml, descriptionText, shortDescription: previewText, descriptionSource, sourceUrl, sourceFile, context = {} }) {
   const fullTextCandidate = cleanText(descriptionText || '')
   const previewCandidate = cleanText(previewText || '')
   const sanitizedHtml = descriptionHtml ? sanitizeDescriptionHtml(descriptionHtml) : null
   const inferredPreviewSource = inferPreviewSource(descriptionSource, sanitizedHtml, sourceFile)
-  const fullSource = tryResolveDetailedSource({ name, kind, sourceUrl, sourceFile, descriptionSource: inferredPreviewSource })
-  const resolvedHtml = fullSource?.descriptionHtml ?? sanitizedHtml
-  const resolvedText = cleanText(fullSource?.descriptionText ?? fullTextCandidate)
-  const resolvedSource = fullSource?.descriptionSource ?? inferredPreviewSource
+  const ruleContext = {
+    name,
+    kind,
+    sourceUrl,
+    sourceFile: sourceFile ? path.relative(repoRoot, sourceFile) : null,
+    descriptionSource: inferredPreviewSource,
+    shortDescription: previewCandidate || null,
+    parentName: context.parentName ?? null,
+    className: context.className ?? null,
+    raceName: context.raceName ?? null,
+    subclassName: context.subclassName ?? null,
+    backgroundName: context.backgroundName ?? null,
+  }
+  let fullSource = tryResolveDetailedSource(ruleContext)
+  let resolvedHtml = fullSource?.descriptionHtml ?? sanitizedHtml
+  let resolvedText = cleanText(fullSource?.descriptionText ?? fullTextCandidate)
+  let resolvedSource = fullSource?.descriptionSource ?? inferredPreviewSource
+
+  const shouldTryContextualResolution =
+    (!resolvedText
+      || containsUiJunk(resolvedText)
+      || !isLikelyCompleteRuleText(resolvedText, resolvedHtml, resolvedSource)
+      || (
+        ['inline-bold-subrule', 'section-body'].includes(resolvedSource)
+        && resolvedText.length < 140
+        && Boolean(ruleContext.parentName || ruleContext.className || ruleContext.raceName || ruleContext.subclassName || ruleContext.backgroundName)
+      ))
+
+  if (shouldTryContextualResolution && sourceFile) {
+    const contextualSource = tryResolveDetailedSource({ ...ruleContext, descriptionSource: resolvedSource })
+    if (contextualSource) {
+      fullSource = contextualSource
+      resolvedHtml = contextualSource.descriptionHtml ?? resolvedHtml
+      resolvedText = cleanText(contextualSource.descriptionText ?? resolvedText)
+      resolvedSource = contextualSource.descriptionSource ?? resolvedSource
+    }
+  }
 
   if (!resolvedText) {
     return {
@@ -1501,38 +1692,53 @@ function inferPreviewSource(descriptionSource, html, sourceFile) {
   return descriptionSource ?? 'unknown'
 }
 
-function tryResolveDetailedSource({ name, kind, sourceUrl, sourceFile, descriptionSource }) {
-  if (descriptionSource !== 'card-summary' && descriptionSource !== 'category-preview' && descriptionSource !== 'manual-review' && descriptionSource !== 'unknown') return null
-  const currentFile = sourceFile ? path.resolve(sourceFile) : null
-  if (currentFile && existsSync(currentFile)) {
-    const currentMatch = extractDetailedRuleFromFile(currentFile, name)
-    if (currentMatch) return currentMatch
+function tryResolveDetailedSource(rule) {
+  const sourceFile = rule.sourceFile ? path.resolve(repoRoot, rule.sourceFile) : null
+  const sectionCandidates = collectSectionCandidatesForRule(rule)
+  const { selectedCandidate, scoredCandidates } = selectBonfireSectionCandidate(rule, sectionCandidates)
+
+  if (selectedCandidate?.text) {
+    return {
+      descriptionHtml: selectedCandidate.descriptionHtml,
+      descriptionText: cleanText(selectedCandidate.text),
+      descriptionSource: selectedCandidate.descriptionSource,
+    }
   }
-  const candidates = findCandidateSourceEntries({ name, kind, sourceUrl, sourceFile }, sourceIndex)
-  if (!candidates.length) {
+
+  const candidates = findCandidateSourceEntries(rule, sourceIndex)
+  if (!candidates.length && !sourceFile) {
     missingSourcePages.push({
-      name,
-      kind,
-      categorySourceUrl: sourceUrl ?? null,
+      name: rule.name,
+      kind: rule.kind,
+      categorySourceUrl: rule.sourceUrl ?? null,
       expectedSourceUrl: null,
-      sourceFile: sourceFile ? path.relative(repoRoot, sourceFile) : null,
+      sourceFile: rule.sourceFile ?? null,
       reason: 'full-rule-html-not-found',
     })
     return null
   }
-  for (const candidate of candidates) {
-    const detailed = extractDetailedRuleFromFile(candidate.file, name)
-    if (detailed) return detailed
+
+  if (scoredCandidates.length) {
+    const [best, second] = scoredCandidates
+    if (best && second && best.score - second.score < 40) {
+      return null
+    }
+    if (best) {
+      return null
+    }
   }
-  missingSourcePages.push({
-    name,
-    kind,
-    categorySourceUrl: sourceUrl ?? null,
-    expectedSourceUrl: candidates[0]?.sourceUrl || null,
-    sourceFile: sourceFile ? path.relative(repoRoot, sourceFile) : null,
-    categoryPreview: null,
-    reason: 'full-rule-html-not-found',
-  })
+
+  if (candidates.length) {
+    missingSourcePages.push({
+      name: rule.name,
+      kind: rule.kind,
+      categorySourceUrl: rule.sourceUrl ?? null,
+      expectedSourceUrl: candidates[0]?.sourceUrl || null,
+      sourceFile: rule.sourceFile ?? null,
+      categoryPreview: rule.shortDescription ?? null,
+      reason: 'full-rule-html-not-found',
+    })
+  }
   return null
 }
 
@@ -1555,7 +1761,8 @@ function findCandidateSourceEntries(entry, index) {
   const nameKey = slug(entry.name)
   const parentKey = slug(entry.parentName ?? entry.className ?? entry.subclassName ?? entry.raceName ?? entry.backgroundName ?? '')
   const sourceUrlKey = slug(entry.sourceUrl ?? '')
-  const sourceFileKey = slug(path.basename(entry.sourceFile ?? entry.sourceFileName ?? '', path.extname(entry.sourceFile ?? entry.sourceFileName ?? '')))
+  const sourceFileRaw = entry.sourceFile ?? entry.sourceFileName ?? ''
+  const sourceFileKey = slug(path.basename(sourceFileRaw, path.extname(sourceFileRaw)))
   const kindKey = slug(entry.kind)
   return index
     .map((candidate) => {

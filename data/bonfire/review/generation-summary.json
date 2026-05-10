@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-10T04:02:20.703Z",
+  "generatedAt": "2026-05-10T13:15:40.920Z",
   "sourceRoots": [
     "data\\HTML BONFIRE\\classes",
     "data\\HTML BONFIRE\\racas",
@@ -31,7 +31,7 @@
     "missing": 0
   },
   "reviewCounts": {
-    "needsReview": 482,
+    "needsReview": 518,
     "missingRules": 0,
     "missingSourcePages": 0,
     "missingClassFixtures": 13,
@@ -46,28 +46,30 @@
   },
   "descriptionCoverage": {
     "before": {
-      "totalBonfireRules": 7283,
-      "completeCount": 6793,
+      "totalBonfireRules": 7256,
+      "completeCount": 6738,
       "summaryOnlyCount": 0,
-      "needsReviewCount": 376,
+      "needsReviewCount": 404,
       "missingCount": 114,
       "previewRejectedWarningCount": 0
     },
     "after": {
       "totalBonfireRules": 7256,
-      "completeCount": 6774,
+      "completeCount": 6738,
       "summaryOnlyCount": 0,
-      "needsReviewCount": 368,
+      "needsReviewCount": 404,
       "missingCount": 114,
       "previewRejectedWarningCount": 0
     }
   },
   "remainingDescriptionWarnings": {
-    "totalWarnings": 482,
+    "totalWarnings": 518,
     "structuralSiteNoiseCount": 0,
-    "missingFullRuleSourceCount": 1,
-    "ambiguousSectionCount": 481,
+    "missingFullRuleSourceCount": 419,
+    "ambiguousSectionCount": 99,
     "exactTextRequiredCount": 0,
-    "validPlaceholderCount": 0
+    "validPlaceholderCount": 0,
+    "autoResolvedCount": 0,
+    "manualReviewCount": 99
   }
 }
