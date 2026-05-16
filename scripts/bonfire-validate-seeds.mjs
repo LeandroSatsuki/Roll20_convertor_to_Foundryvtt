@@ -44,6 +44,8 @@ const missingSourcePages = existsSync(path.join(reviewDir, 'missing-source-pages
 const subrulesReview = existsSync(path.join(reviewDir, 'subrules-review.json')) ? readJson(path.join(reviewDir, 'subrules-review.json')) : null
 const descriptionCoverage = existsSync(path.join(reviewDir, 'description-coverage-report.json')) ? readJson(path.join(reviewDir, 'description-coverage-report.json')) : null
 const remainingDescriptionWarnings = existsSync(path.join(reviewDir, 'remaining-description-warnings.json')) ? readJson(path.join(reviewDir, 'remaining-description-warnings.json')) : null
+const missingSourceAcquisitionPlan = existsSync(path.join(reviewDir, 'missing-source-acquisition-plan.json')) ? readJson(path.join(reviewDir, 'missing-source-acquisition-plan.json')) : null
+const missingSourcePlanQualityReport = existsSync(path.join(reviewDir, 'missing-source-plan-quality-report.json')) ? readJson(path.join(reviewDir, 'missing-source-plan-quality-report.json')) : null
 
 const errors = []
 const warnings = []
@@ -102,6 +104,8 @@ if (!missingSourcePages?.items) errors.push('missing-source-pages.json missing i
 if (!subrulesReview?.items) errors.push('subrules-review.json missing items array')
 if (!descriptionCoverage?.items) errors.push('description-coverage-report.json missing items array')
 if (!remainingDescriptionWarnings?.entries) errors.push('remaining-description-warnings.json missing entries array')
+if (!missingSourceAcquisitionPlan?.byPriority) errors.push('missing-source-acquisition-plan.json missing byPriority array')
+if (!missingSourcePlanQualityReport?.entries) errors.push('missing-source-plan-quality-report.json missing entries array')
 
 const uniqueErrors = Array.from(new Set(errors))
 const uniqueWarnings = Array.from(new Set(warnings))
@@ -119,6 +123,8 @@ const report = {
   subRulesCount: subrulesReview?.items?.filter((entry) => entry.reason === null)?.length ?? 0,
   descriptionCoveragePendingCount: descriptionCoverage?.items?.length ?? 0,
   remainingDescriptionWarningsCount: remainingDescriptionWarnings?.entries?.length ?? 0,
+  missingSourceAcquisitionPlanCount: missingSourceAcquisitionPlan?.byPriority?.length ?? 0,
+  missingSourcePlanQualityReportCount: missingSourcePlanQualityReport?.entries?.length ?? 0,
 }
 
 writeFileSync(path.join(reviewDir, 'validation-report.json'), `${JSON.stringify(report, null, 2)}\n`, 'utf8')

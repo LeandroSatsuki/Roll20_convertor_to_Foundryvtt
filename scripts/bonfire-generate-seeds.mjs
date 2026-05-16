@@ -9,6 +9,7 @@ const dataDir = path.join(repoRoot, 'data')
 const classIndexPath = path.join(dataDir, 'bonfire', 'class-index.json')
 const generatedDir = path.join(dataDir, 'bonfire', 'generated')
 const reviewDir = path.join(dataDir, 'bonfire', 'review')
+const docsDir = path.join(repoRoot, 'docs')
 
 const classDefaults = {
   artificer: { hitDie: 'd8', savingThrows: ['con', 'int'], spellcasting: { type: 'half', ability: 'int' } },
@@ -111,6 +112,7 @@ for (const entry of classIndex) {
 
 ensureDir(generatedDir)
 ensureDir(reviewDir)
+ensureDir(docsDir)
 ensureDir(path.join(dataDir, 'bonfire', 'raw'))
 
 const htmlFiles = collectHtmlFiles(dataDir)
@@ -215,6 +217,8 @@ const descriptionCoverageReport = collectDescriptionCoverageReport(deduped, sour
   previousDescriptionCoverageReport,
 })
 const remainingDescriptionWarnings = collectRemainingDescriptionWarnings(deduped, descriptionCoverageReport)
+const missingSourceAcquisitionPlan = collectMissingSourceAcquisitionPlan(remainingDescriptionWarnings)
+const missingSourcePlanQualityReport = collectMissingSourcePlanQualityReport(missingSourceAcquisitionPlan, remainingDescriptionWarnings)
 
 writeJson(path.join(generatedDir, 'classes.seed.json'), deduped.classes)
 writeJson(path.join(generatedDir, 'class-features.seed.json'), deduped.classFeatures)
@@ -232,6 +236,8 @@ writeJson(path.join(reviewDir, 'needs-review.json'), needsReview)
 writeJson(path.join(reviewDir, 'missing-rules.json'), missingRules)
 writeJson(path.join(reviewDir, 'description-coverage-report.json'), descriptionCoverageReport)
 writeJson(path.join(reviewDir, 'remaining-description-warnings.json'), remainingDescriptionWarnings)
+writeJson(path.join(reviewDir, 'missing-source-acquisition-plan.json'), missingSourceAcquisitionPlan)
+writeJson(path.join(reviewDir, 'missing-source-plan-quality-report.json'), missingSourcePlanQualityReport)
 writeJson(path.join(reviewDir, 'missing-source-pages.json'), {
   generatedAt: new Date().toISOString(),
   items: dedupeMissingSourcePages(missingSourcePages),
@@ -241,6 +247,8 @@ writeJson(path.join(reviewDir, 'subrules-review.json'), {
   items: dedupeSubrulesReview(subrulesReview),
 })
 writeJson(path.join(reviewDir, 'source-index.json'), { generatedAt: new Date().toISOString(), entries: sourceIndex })
+writeText(path.join(reviewDir, 'missing-source-acquisition-plan.csv'), renderMissingSourceAcquisitionPlanCsv(missingSourcePlanQualityReport))
+writeText(path.join(docsDir, 'bonfire-missing-source-acquisition-plan.md'), renderMissingSourceAcquisitionPlanMarkdown(missingSourcePlanQualityReport))
 writeJson(path.join(reviewDir, 'missing-from-current-sheet.json'), {
   generatedAt: new Date().toISOString(),
   note: 'Runtime sheet-specific missing rules are appended by the UI/export flow. Seed generation does not patch by character.',
@@ -1034,6 +1042,522 @@ function collectRemainingDescriptionWarnings(seeds, descriptionCoverageReport) {
     summary,
     entries,
   }
+}
+
+function collectMissingSourceAcquisitionPlan(remainingDescriptionWarnings) {
+  const entries = Array.isArray(remainingDescriptionWarnings?.entries) ? remainingDescriptionWarnings.entries : []
+  const fixtureContext = collectFixtureContext()
+  const coverageReport = existsSync(path.join(reviewDir, 'coverage-report.json')) ? readJson(path.join(reviewDir, 'coverage-report.json')) : null
+  const fixtureSourceUrls = new Set(
+    (coverageReport?.classes ?? [])
+      .filter((entry) => fixtureContext.fixtureClassIds.has(slug(entry.classId)) || fixtureContext.fixtureClassIds.has(slug(entry.className)))
+      .map((entry) => entry.sourceUrl)
+      .filter(Boolean),
+  )
+  const missingEntries = entries.filter((entry) => entry.classification === 'missing-full-rule-source')
+  const ambiguousEntries = entries.filter((entry) => entry.classification === 'ambiguous-section')
+  const exactTextRequiredEntries = parseValidationExactTextWarnings(previousValidationReport)
+
+  const grouped = new Map()
+  for (const entry of missingEntries) {
+    const groupKey = buildAcquisitionGroupKey(entry)
+    const existing = grouped.get(groupKey) ?? {
+      priority: 'low',
+      reason: 'single-rule-missing-source',
+      sourceUrl: entry.sourceUrl ?? null,
+      suggestedLocalPath: inferSuggestedLocalPath(entry),
+      sourceFile: entry.sourceFile ?? null,
+      pageKind: inferPlanPageKind(entry),
+      parentName: entry.parentName ?? null,
+      className: entry.className ?? null,
+      raceName: entry.raceName ?? null,
+      subclassName: entry.subclassName ?? null,
+      backgroundName: entry.backgroundName ?? null,
+      affectedRulesCount: 0,
+      affectedRules: [],
+    }
+
+    existing.affectedRules.push({
+      name: entry.name,
+      kind: entry.kind ?? 'unknown',
+      parentName: entry.parentName ?? null,
+      className: entry.className ?? null,
+      raceName: entry.raceName ?? null,
+      subclassName: entry.subclassName ?? null,
+      backgroundName: entry.backgroundName ?? null,
+      reason: entry.reason ?? 'missing-full-rule-source',
+    })
+    existing.affectedRulesCount += 1
+    grouped.set(groupKey, existing)
+  }
+
+  const byPriority = Array.from(grouped.values())
+    .map((group) => {
+      group.affectedRules.sort((left, right) =>
+        (left.parentName ?? '').localeCompare(right.parentName ?? '')
+        || left.name.localeCompare(right.name))
+
+      const affectsFixtures = group.affectedRules.some((rule) => ruleTouchesFixtureContext(rule, fixtureContext, fixtureSourceUrls, group))
+      const priority = group.affectedRulesCount >= 5 || affectsFixtures
+        ? 'high'
+        : group.affectedRulesCount >= 2
+          ? 'medium'
+          : 'low'
+
+      const reason = affectsFixtures
+        ? 'appears-in-current-fixtures-or-many-rules'
+        : group.affectedRulesCount >= 5
+          ? 'affects-many-rules'
+          : group.affectedRulesCount >= 2
+            ? 'resolves-multiple-rules'
+            : 'single-rule-missing-source'
+
+      return {
+        ...group,
+        priority,
+        reason,
+      }
+    })
+    .sort(compareAcquisitionPlanEntries)
+
+  const topStillAmbiguous = ambiguousEntries
+    .slice()
+    .sort((left, right) =>
+      (right.candidateSections?.[0]?.score ?? -Infinity) - (left.candidateSections?.[0]?.score ?? -Infinity)
+      || left.name.localeCompare(right.name))
+    .slice(0, 20)
+    .map((entry) => ({
+      name: entry.name,
+      kind: entry.kind ?? 'unknown',
+      parentName: entry.parentName ?? null,
+      sourceUrl: entry.sourceUrl ?? null,
+      sourceFile: entry.sourceFile ?? null,
+      warningCode: entry.warningCode ?? 'BONFIRE_DESCRIPTION_SUMMARY_ONLY',
+      reason: entry.reason ?? 'candidate-section-found-but-exactness-not-proven',
+      nextAction: 'manual-review',
+      topCandidateScore: entry.candidateSections?.[0]?.score ?? null,
+      topCandidateHeading: entry.candidateSections?.[0]?.heading ?? null,
+    }))
+
+  const exactTextRequired = exactTextRequiredEntries
+    .slice()
+    .sort((left, right) => left.name.localeCompare(right.name))
+    .map((entry) => ({
+      name: entry.name,
+      kind: entry.kind ?? 'unknown',
+      parentName: entry.parentName ?? null,
+      sourceUrl: entry.sourceUrl ?? null,
+      sourceFile: entry.sourceFile ?? null,
+      warningCode: entry.warningCode ?? 'BONFIRE_DESCRIPTION_EXACT_TEXT_REQUIRED',
+      reason: entry.reason ?? 'exact-text-required',
+      nextAction: 'review-manually',
+    }))
+
+  return {
+    generatedAt: new Date().toISOString(),
+    summary: {
+      missingFullRuleSourceCount: missingEntries.length,
+      ambiguousSectionCount: ambiguousEntries.length,
+      exactTextRequiredCount: exactTextRequiredEntries.length,
+      uniqueMissingUrlsCount: new Set(byPriority.map((entry) => entry.sourceUrl).filter(Boolean)).size,
+      uniqueParentPagesCount: new Set(byPriority.map((entry) => entry.suggestedLocalPath).filter(Boolean)).size,
+    },
+    byPriority,
+    topStillAmbiguous,
+    exactTextRequired,
+  }
+}
+
+function collectMissingSourcePlanQualityReport(plan, remainingDescriptionWarnings) {
+  const entries = []
+
+  for (const planEntry of plan.byPriority ?? []) {
+    const localSources = resolvePlanLocalSources(planEntry)
+    const actionableRules = []
+    const noiseRules = []
+
+    for (const rule of planEntry.affectedRules ?? []) {
+      if (isPlanStructuralNoiseRuleName(rule.name)) noiseRules.push(rule)
+      else actionableRules.push(rule)
+    }
+
+    if (noiseRules.length) {
+      entries.push({
+        name: planEntry.parentName ?? planEntry.sourceUrl ?? 'structural-noise',
+        sourceUrl: planEntry.sourceUrl ?? null,
+        suggestedLocalPath: planEntry.suggestedLocalPath ?? null,
+        currentSourceFile: localSources[0] ?? planEntry.sourceFile ?? null,
+        affectedRulesCount: noiseRules.length,
+        classification: 'structural-noise-ignore',
+        reason: 'affected rules are structural site chrome or category labels',
+        nextAction: 'ignore',
+        affectedRules: noiseRules,
+      })
+    }
+
+    if (!actionableRules.length) continue
+
+    entries.push({
+      name: planEntry.parentName ?? planEntry.sourceUrl ?? actionableRules[0]?.name ?? 'missing-source',
+      sourceUrl: planEntry.sourceUrl ?? null,
+      suggestedLocalPath: planEntry.suggestedLocalPath ?? null,
+      currentSourceFile: localSources[0] ?? planEntry.sourceFile ?? null,
+      affectedRulesCount: actionableRules.length,
+      classification: localSources.length ? 'source-present-needs-parser-fix' : 'source-missing-user-action-required',
+      reason: localSources.length
+        ? 'local HTML already exists; exact section/body extraction still needs improvement'
+        : 'no reliable local HTML found for this source URL',
+      nextAction: localSources.length ? 'fix-parser' : 'save-html',
+      affectedRules: actionableRules,
+    })
+  }
+
+  const groupedAmbiguous = groupQualityEntries(
+    (Array.isArray(remainingDescriptionWarnings?.entries) ? remainingDescriptionWarnings.entries : [])
+      .filter((entry) => entry.classification === 'ambiguous-section')
+      .map((entry) => {
+        const localSources = resolvePlanLocalSources(entry)
+        return {
+          name: entry.parentName ?? entry.name,
+          sourceUrl: entry.sourceUrl ?? null,
+          suggestedLocalPath: inferSuggestedLocalPath(entry),
+          currentSourceFile: localSources[0] ?? entry.sourceFile ?? null,
+          affectedRulesCount: 1,
+          classification: 'ambiguous-manual-review',
+          reason: entry.reason ?? 'multiple plausible sections still need manual confirmation',
+          nextAction: 'manual-review',
+          affectedRules: [{
+            name: entry.name,
+            kind: entry.kind ?? 'unknown',
+            parentName: entry.parentName ?? null,
+            className: entry.className ?? null,
+            raceName: entry.raceName ?? null,
+            subclassName: entry.subclassName ?? null,
+            backgroundName: entry.backgroundName ?? null,
+            reason: entry.reason ?? 'candidate-section-found-but-exactness-not-proven',
+          }],
+        }
+      }),
+  )
+
+  const groupedExact = groupQualityEntries(
+    (plan.exactTextRequired ?? []).map((entry) => {
+      const localSources = resolvePlanLocalSources(entry)
+      return {
+        name: entry.parentName ?? entry.name,
+        sourceUrl: entry.sourceUrl ?? null,
+        suggestedLocalPath: inferSuggestedLocalPath(entry),
+        currentSourceFile: localSources[0] ?? entry.sourceFile ?? null,
+        affectedRulesCount: 1,
+        classification: 'exact-text-required-manual-check',
+        reason: entry.reason ?? 'source exists but exact full text still needs confirmation',
+        nextAction: 'manual-review',
+        affectedRules: [{
+          name: entry.name,
+          kind: entry.kind ?? 'unknown',
+          parentName: entry.parentName ?? null,
+          className: null,
+          raceName: null,
+          subclassName: null,
+          backgroundName: null,
+          reason: entry.reason ?? 'exact-text-required',
+        }],
+      }
+    }),
+  )
+
+  const combinedEntries = [
+    ...entries,
+    ...groupedAmbiguous,
+    ...groupedExact,
+  ]
+    .sort(compareQualityReportEntries)
+
+  return {
+    generatedAt: new Date().toISOString(),
+    summary: {
+      totalEntries: combinedEntries.length,
+      sourcePresentNeedsParserFixCount: combinedEntries.filter((entry) => entry.classification === 'source-present-needs-parser-fix').length,
+      sourceMissingUserActionRequiredCount: combinedEntries.filter((entry) => entry.classification === 'source-missing-user-action-required').length,
+      structuralNoiseIgnoreCount: combinedEntries.filter((entry) => entry.classification === 'structural-noise-ignore').length,
+      ambiguousManualReviewCount: combinedEntries.filter((entry) => entry.classification === 'ambiguous-manual-review').length,
+      exactTextRequiredManualCheckCount: combinedEntries.filter((entry) => entry.classification === 'exact-text-required-manual-check').length,
+    },
+    entries: combinedEntries,
+  }
+}
+
+function groupQualityEntries(entries) {
+  const grouped = new Map()
+  for (const entry of entries) {
+    const key = [
+      entry.classification,
+      entry.sourceUrl ?? '',
+      entry.currentSourceFile ?? '',
+      entry.suggestedLocalPath ?? '',
+      entry.name ?? '',
+    ].join('::')
+    const existing = grouped.get(key) ?? { ...entry, affectedRules: [], affectedRulesCount: 0 }
+    existing.affectedRules.push(...(entry.affectedRules ?? []))
+    existing.affectedRulesCount = existing.affectedRules.length
+    grouped.set(key, existing)
+  }
+  return Array.from(grouped.values())
+}
+
+function resolvePlanLocalSources(entry) {
+  const candidates = new Set()
+  const addIfExists = (relativePath) => {
+    if (!relativePath) return
+    const resolved = path.resolve(repoRoot, String(relativePath).replaceAll('/', path.sep).replaceAll('\\', path.sep))
+    if (existsSync(resolved)) candidates.add(path.relative(repoRoot, resolved).replaceAll('/', '\\'))
+  }
+
+  addIfExists(entry.currentSourceFile)
+  addIfExists(entry.sourceFile)
+  addIfExists(entry.suggestedLocalPath)
+
+  const sourceUrl = entry.sourceUrl ? String(entry.sourceUrl) : null
+  if (sourceUrl) {
+    for (const indexed of sourceIndex) {
+      if (indexed.sourceUrl === sourceUrl) {
+        candidates.add(path.relative(repoRoot, indexed.file).replaceAll('/', '\\'))
+      }
+    }
+  }
+
+  const baseName = path.basename(String(entry.currentSourceFile ?? entry.sourceFile ?? entry.suggestedLocalPath ?? ''))
+  if (baseName) {
+    for (const indexed of sourceIndex) {
+      if (path.basename(indexed.file) === baseName) {
+        candidates.add(path.relative(repoRoot, indexed.file).replaceAll('/', '\\'))
+      }
+    }
+  }
+
+  return Array.from(candidates)
+}
+
+function isPlanStructuralNoiseRuleName(name) {
+  const key = slug(name)
+  if (!key) return true
+  if (isStructuralSiteNoise(name) || looksLikeProgressionArtifactName(name)) return true
+  const noiseKeys = new Set([
+    'development',
+    'events',
+    'our-shop',
+    'reaching-out',
+    'resources',
+    'who-we-are',
+    'legal',
+    'find-your-way',
+    'find-your-way!',
+    'get-the-news',
+    'bestiario',
+    'mercado',
+    'mestres',
+    'mundo',
+    'sistema',
+    'regras',
+    'cineria',
+    'comentarios',
+    'tags',
+    'search',
+    'navigation',
+    'table-of-contents',
+    'related-articles',
+  ])
+  return noiseKeys.has(key)
+}
+
+function compareQualityReportEntries(left, right) {
+  const rank = {
+    'source-missing-user-action-required': 0,
+    'source-present-needs-parser-fix': 1,
+    'ambiguous-manual-review': 2,
+    'exact-text-required-manual-check': 3,
+    'structural-noise-ignore': 4,
+  }
+  return (rank[left.classification] ?? 9) - (rank[right.classification] ?? 9)
+    || right.affectedRulesCount - left.affectedRulesCount
+    || (left.sourceUrl ?? '').localeCompare(right.sourceUrl ?? '')
+    || (left.name ?? '').localeCompare(right.name ?? '')
+}
+
+function parseValidationExactTextWarnings(validationReport) {
+  const warnings = Array.isArray(validationReport?.warnings) ? validationReport.warnings : []
+  return warnings
+    .filter((warning) => String(warning).startsWith('BONFIRE_DESCRIPTION_EXACT_TEXT_REQUIRED: '))
+    .map((warning) => {
+      const text = String(warning)
+      const name = text
+        .replace(/^BONFIRE_DESCRIPTION_EXACT_TEXT_REQUIRED:\s*/, '')
+        .replace(/: complete description looks too short or non-mechanical for a final rule text$/, '')
+        .trim()
+      return {
+        name,
+        kind: 'unknown',
+        parentName: null,
+        sourceUrl: null,
+        sourceFile: null,
+        warningCode: 'BONFIRE_DESCRIPTION_EXACT_TEXT_REQUIRED',
+        reason: 'exact-text-required',
+      }
+    })
+}
+
+function collectFixtureContext() {
+  const fixtureClassIds = new Set()
+  const fixtureDir = path.join(repoRoot, 'tests', 'fixtures', 'characters', 'classes')
+  if (!existsSync(fixtureDir)) return { fixtureClassIds, fixtureFileNames: [] }
+  const fixtureFileNames = readdirSync(fixtureDir).filter((name) => /\.xlsx$/i.test(name))
+  for (const name of fixtureFileNames) {
+    const match = name.match(/^([^-]+)-level\d+/i)
+    if (!match) continue
+    fixtureClassIds.add(slug(match[1]))
+  }
+  return { fixtureClassIds, fixtureFileNames }
+}
+
+function buildAcquisitionGroupKey(entry) {
+  return [
+    entry.sourceUrl ?? '',
+    inferSuggestedLocalPath(entry),
+    inferPlanPageKind(entry),
+  ].join('::')
+}
+
+function inferPlanPageKind(entry) {
+  const kind = String(entry?.kind ?? '').toLowerCase()
+  if (kind.includes('class') || kind.includes('subclass')) return 'class'
+  if (kind.includes('race')) return 'race'
+  if (kind.includes('background')) return 'background'
+  if (kind.includes('feat')) return 'feat'
+  if (kind.includes('spell')) return 'spell-override'
+  return 'custom-bonfire'
+}
+
+function inferSuggestedLocalPath(entry) {
+  const sourceFile = String(entry?.sourceFile ?? '')
+  if (sourceFile) return sourceFile.replaceAll('/', '\\')
+
+  const kind = inferPlanPageKind(entry)
+  const baseDir = kind === 'class'
+    ? 'data\\Classes'
+    : kind === 'race'
+      ? 'data\\Raças'
+      : kind === 'background'
+        ? 'data\\Antecedentes'
+        : kind === 'feat'
+          ? 'data\\Talentos'
+          : 'data\\Ajustes Bonfire'
+  const slugName = slug(entry?.parentName ?? entry?.name ?? 'missing-rule') || 'missing-rule'
+  return `${baseDir}\\${slugName}.html`
+}
+
+function ruleTouchesFixtureContext(rule, fixtureContext, fixtureSourceUrls, group) {
+  const contextualValues = [
+    rule.className,
+    rule.raceName,
+    rule.subclassName,
+    rule.backgroundName,
+    rule.parentName,
+    group.className,
+    group.raceName,
+    group.subclassName,
+    group.backgroundName,
+    group.parentName,
+  ].filter(Boolean).map((value) => slug(value))
+
+  if (contextualValues.some((value) => fixtureContext.fixtureClassIds.has(value))) return true
+  if (group.sourceUrl && fixtureSourceUrls.has(group.sourceUrl)) return true
+  if (group.sourceFile && contextualValues.some((value) => slug(group.sourceFile).includes(value))) return true
+  return false
+}
+
+function compareAcquisitionPlanEntries(left, right) {
+  const priorityRank = { high: 0, medium: 1, low: 2 }
+  return (priorityRank[left.priority] ?? 9) - (priorityRank[right.priority] ?? 9)
+    || right.affectedRulesCount - left.affectedRulesCount
+    || (left.sourceUrl ?? '').localeCompare(right.sourceUrl ?? '')
+    || (left.suggestedLocalPath ?? '').localeCompare(right.suggestedLocalPath ?? '')
+}
+
+function renderMissingSourceAcquisitionPlanMarkdown(report) {
+  const lines = [
+    '# Bonfire Missing Source Acquisition Plan',
+    '',
+    `Generated at: ${report.generatedAt}`,
+    '',
+    '## Summary',
+    '',
+    `- Total entries: ${report.summary.totalEntries}`,
+    `- Ação do usuário: ${report.summary.sourceMissingUserActionRequiredCount}`,
+    `- Ação técnica: ${report.summary.sourcePresentNeedsParserFixCount}`,
+    `- Revisão manual (ambiguous): ${report.summary.ambiguousManualReviewCount}`,
+    `- Revisão manual (exact text): ${report.summary.exactTextRequiredManualCheckCount}`,
+    `- Ignorados como ruído estrutural: ${report.summary.structuralNoiseIgnoreCount}`,
+    '',
+    'Instruction for user-action entries: open the page in a browser, press Ctrl+S, and save the full HTML at the suggested local path.',
+    '',
+  ]
+
+  appendQualityMarkdownSection(lines, report.entries, 'source-missing-user-action-required', 'Ação do usuário: salvar HTML faltante')
+  appendQualityMarkdownSection(lines, report.entries, 'source-present-needs-parser-fix', 'Ação técnica: parser precisa ler melhor HTML já existente')
+  appendQualityMarkdownSection(lines, report.entries, 'ambiguous-manual-review', 'Revisão manual: seções ambíguas')
+  appendQualityMarkdownSection(lines, report.entries, 'exact-text-required-manual-check', 'Revisão manual: texto exato ainda precisa confirmação')
+  appendQualityMarkdownSection(lines, report.entries, 'structural-noise-ignore', 'Ignorados como ruído estrutural')
+
+  return `${lines.join('\n').trim()}\n`
+}
+
+function appendQualityMarkdownSection(lines, entries, classification, title) {
+  const filtered = entries.filter((entry) => entry.classification === classification)
+  lines.push(`## ${title}`)
+  lines.push('')
+  if (!filtered.length) {
+    lines.push('- None')
+    lines.push('')
+    return
+  }
+
+  for (const entry of filtered) {
+    lines.push(`### ${entry.sourceUrl ?? entry.suggestedLocalPath ?? entry.name}`)
+    lines.push('')
+    lines.push(`- Classification: ${entry.classification}`)
+    lines.push(`- Affected rules: ${entry.affectedRulesCount}`)
+    lines.push(`- Reason: ${entry.reason}`)
+    if (entry.currentSourceFile) lines.push(`- Current source file: ${entry.currentSourceFile}`)
+    if (entry.suggestedLocalPath) lines.push(`- Suggested local path: ${entry.suggestedLocalPath}`)
+    if (entry.sourceUrl) lines.push(`- Source URL: ${entry.sourceUrl}`)
+    lines.push(`- Next action: ${entry.nextAction}`)
+    const examples = entry.affectedRules.slice(0, 10).map((rule) => `${rule.name} (${rule.kind})`)
+    if (examples.length) lines.push(`- Example rules: ${examples.join('; ')}`)
+    lines.push('')
+  }
+}
+
+function renderMissingSourceAcquisitionPlanCsv(report) {
+  const lines = ['priority,sourceUrl,suggestedLocalPath,currentSourceFile,affectedRulesCount,exampleRules,classification,nextAction']
+  for (const entry of report.entries) {
+    const exampleRules = entry.affectedRules.slice(0, 5).map((rule) => rule.name).join(' | ')
+    lines.push([
+      csvCell(entry.priority ?? ''),
+      csvCell(entry.sourceUrl ?? ''),
+      csvCell(entry.suggestedLocalPath ?? ''),
+      csvCell(entry.currentSourceFile ?? ''),
+      csvCell(String(entry.affectedRulesCount)),
+      csvCell(exampleRules),
+      csvCell(entry.classification ?? ''),
+      csvCell(entry.nextAction ?? ''),
+    ].join(','))
+  }
+  return `${lines.join('\n')}\n`
+}
+
+function csvCell(value) {
+  const text = String(value ?? '')
+  return `"${text.replaceAll('"', '""')}"`
 }
 
 function classifyRemainingDescriptionWarning(entry) {
@@ -1947,6 +2471,11 @@ function readJson(file) {
 function writeJson(file, value) {
   ensureDir(path.dirname(file))
   writeFileSync(file, `${JSON.stringify(value, null, 2)}\n`, 'utf8')
+}
+
+function writeText(file, value) {
+  ensureDir(path.dirname(file))
+  writeFileSync(file, value, 'utf8')
 }
 
 function ensureDir(dir) {

@@ -1,0 +1,4986 @@
+{
+  "generatedAt": "2026-05-16T13:33:19.332Z",
+  "summary": {
+    "missingFullRuleSourceCount": 419,
+    "ambiguousSectionCount": 99,
+    "exactTextRequiredCount": 14,
+    "uniqueMissingUrlsCount": 25,
+    "uniqueParentPagesCount": 25
+  },
+  "byPriority": [
+    {
+      "priority": "high",
+      "reason": "appears-in-current-fixtures-or-many-rules",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/artificer-article",
+      "suggestedLocalPath": "data\\HTML BONFIRE\\classes\\Artificer in Bonfire Tales RPG _ World Anvil.html",
+      "sourceFile": "data\\HTML BONFIRE\\classes\\Artificer in Bonfire Tales RPG _ World Anvil.html",
+      "pageKind": "class",
+      "parentName": "5º",
+      "className": "Artificer",
+      "raceName": null,
+      "subclassName": null,
+      "backgroundName": null,
+      "affectedRulesCount": 42,
+      "affectedRules": [
+        {
+          "name": "Artificer",
+          "kind": "class",
+          "parentName": null,
+          "className": null,
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "blight",
+          "kind": "classFeature",
+          "parentName": "13º",
+          "className": "Artificer",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "cloudkill",
+          "kind": "classFeature",
+          "parentName": "17º",
+          "className": "Artificer",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "healing word",
+          "kind": "classFeature",
+          "parentName": "3º",
+          "className": "Artificer",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "acid arrow",
+          "kind": "classFeature",
+          "parentName": "5º",
+          "className": "Artificer",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "gaseous form",
+          "kind": "classFeature",
+          "parentName": "9º",
+          "className": "Artificer",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Braços",
+          "kind": "classFeature",
+          "parentName": "Aprimorado",
+          "className": "Artificer",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Cabeça",
+          "kind": "classFeature",
+          "parentName": "Aprimorado",
+          "className": "Artificer",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Pernas",
+          "kind": "classFeature",
+          "parentName": "Aprimorado",
+          "className": "Artificer",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Tronco",
+          "kind": "classFeature",
+          "parentName": "Aprimorado",
+          "className": "Artificer",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Debilitar",
+          "kind": "classFeature",
+          "parentName": "Armadurista",
+          "className": "Artificer",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Vexar",
+          "kind": "classFeature",
+          "parentName": "Armadurista",
+          "className": "Artificer",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Artificer",
+          "kind": "classFeature",
+          "parentName": "Artificer",
+          "className": "Artificer",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Atributo Primário",
+          "kind": "classFeature",
+          "parentName": "Artificer",
+          "className": "Artificer",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Bola de Fogo",
+          "kind": "classFeature",
+          "parentName": "Artificer",
+          "className": "Artificer",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Braços",
+          "kind": "classFeature",
+          "parentName": "Artificer",
+          "className": "Artificer",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Cabeça",
+          "kind": "classFeature",
+          "parentName": "Artificer",
+          "className": "Artificer",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Debilitar",
+          "kind": "classFeature",
+          "parentName": "Artificer",
+          "className": "Artificer",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Development",
+          "kind": "classFeature",
+          "parentName": "Artificer",
+          "className": "Artificer",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Disguise Self",
+          "kind": "classFeature",
+          "parentName": "Artificer",
+          "className": "Artificer",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "EVENTS",
+          "kind": "classFeature",
+          "parentName": "Artificer",
+          "className": "Artificer",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Greater Invisibility",
+          "kind": "classFeature",
+          "parentName": "Artificer",
+          "className": "Artificer",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Invisibility",
+          "kind": "classFeature",
+          "parentName": "Artificer",
+          "className": "Artificer",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Our Shop",
+          "kind": "classFeature",
+          "parentName": "Artificer",
+          "className": "Artificer",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Pernas",
+          "kind": "classFeature",
+          "parentName": "Artificer",
+          "className": "Artificer",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "REACHING OUT",
+          "kind": "classFeature",
+          "parentName": "Artificer",
+          "className": "Artificer",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Resources",
+          "kind": "classFeature",
+          "parentName": "Artificer",
+          "className": "Artificer",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Tronco",
+          "kind": "classFeature",
+          "parentName": "Artificer",
+          "className": "Artificer",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Vexar",
+          "kind": "classFeature",
+          "parentName": "Artificer",
+          "className": "Artificer",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "WHO WE ARE",
+          "kind": "classFeature",
+          "parentName": "Artificer",
+          "className": "Artificer",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Braços",
+          "kind": "classFeature",
+          "parentName": "Físico Modular",
+          "className": "Artificer",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Cabeça",
+          "kind": "classFeature",
+          "parentName": "Físico Modular",
+          "className": "Artificer",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Pernas",
+          "kind": "classFeature",
+          "parentName": "Físico Modular",
+          "className": "Artificer",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Tronco",
+          "kind": "classFeature",
+          "parentName": "Físico Modular",
+          "className": "Artificer",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Disguise Self",
+          "kind": "classFeature",
+          "parentName": "Infusões de 11º Nível",
+          "className": "Artificer",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Greater Invisibility",
+          "kind": "classFeature",
+          "parentName": "Infusões de 11º Nível",
+          "className": "Artificer",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Invisibility",
+          "kind": "classFeature",
+          "parentName": "Infusões de 11º Nível",
+          "className": "Artificer",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Bola de Fogo",
+          "kind": "classFeature",
+          "parentName": "Infusões de 5º Nível",
+          "className": "Artificer",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Debilitar",
+          "kind": "classFeature",
+          "parentName": "Manoplas de Energia",
+          "className": "Artificer",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Vexar",
+          "kind": "classFeature",
+          "parentName": "Manoplas de Energia",
+          "className": "Artificer",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Debilitar",
+          "kind": "classFeature",
+          "parentName": "Modos das Manoplas",
+          "className": "Artificer",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Vexar",
+          "kind": "classFeature",
+          "parentName": "Modos das Manoplas",
+          "className": "Artificer",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        }
+      ]
+    },
+    {
+      "priority": "high",
+      "reason": "appears-in-current-fixtures-or-many-rules",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/orcs-species",
+      "suggestedLocalPath": "data\\HTML BONFIRE\\racas\\Orcs Species in Bonfire Tales RPG _ World Anvil.html",
+      "sourceFile": "data\\HTML BONFIRE\\racas\\Orcs Species in Bonfire Tales RPG _ World Anvil.html",
+      "pageKind": "race",
+      "parentName": "Orcs",
+      "className": null,
+      "raceName": "Orcs",
+      "subclassName": null,
+      "backgroundName": null,
+      "affectedRulesCount": 25,
+      "affectedRules": [
+        {
+          "name": "Orcs",
+          "kind": "race",
+          "parentName": null,
+          "className": null,
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Estrutura Poderosa",
+          "kind": "raceFeature",
+          "parentName": "Opção A: Linhagens Tribais",
+          "className": null,
+          "raceName": "Opção A: Linhagens Tribais",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-description"
+        },
+        {
+          "name": "Avatar da Destruição",
+          "kind": "raceFeature",
+          "parentName": "Orcs",
+          "className": null,
+          "raceName": "Orcs",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Bestiário",
+          "kind": "raceFeature",
+          "parentName": "Orcs",
+          "className": null,
+          "raceName": "Orcs",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Cinéria",
+          "kind": "raceFeature",
+          "parentName": "Orcs",
+          "className": null,
+          "raceName": "Orcs",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Cinéria",
+          "kind": "raceFeature",
+          "parentName": "Orcs",
+          "className": null,
+          "raceName": "Orcs",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Development",
+          "kind": "raceFeature",
+          "parentName": "Orcs",
+          "className": null,
+          "raceName": "Orcs",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Development",
+          "kind": "raceFeature",
+          "parentName": "Orcs",
+          "className": null,
+          "raceName": "Orcs",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "EVENTS",
+          "kind": "raceFeature",
+          "parentName": "Orcs",
+          "className": null,
+          "raceName": "Orcs",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Mercado",
+          "kind": "raceFeature",
+          "parentName": "Orcs",
+          "className": null,
+          "raceName": "Orcs",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Mestres",
+          "kind": "raceFeature",
+          "parentName": "Orcs",
+          "className": null,
+          "raceName": "Orcs",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Missões e Ranks",
+          "kind": "raceFeature",
+          "parentName": "Orcs",
+          "className": null,
+          "raceName": "Orcs",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Mundo",
+          "kind": "raceFeature",
+          "parentName": "Orcs",
+          "className": null,
+          "raceName": "Orcs",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Orc Branco",
+          "kind": "raceFeature",
+          "parentName": "Orcs",
+          "className": null,
+          "raceName": "Orcs",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Orc Cinza",
+          "kind": "raceFeature",
+          "parentName": "Orcs",
+          "className": null,
+          "raceName": "Orcs",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Orc Negro",
+          "kind": "raceFeature",
+          "parentName": "Orcs",
+          "className": null,
+          "raceName": "Orcs",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Orc Verde",
+          "kind": "raceFeature",
+          "parentName": "Orcs",
+          "className": null,
+          "raceName": "Orcs",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Our Shop",
+          "kind": "raceFeature",
+          "parentName": "Orcs",
+          "className": null,
+          "raceName": "Orcs",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Passo na Mata",
+          "kind": "raceFeature",
+          "parentName": "Orcs",
+          "className": null,
+          "raceName": "Orcs",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "REACHING OUT",
+          "kind": "raceFeature",
+          "parentName": "Orcs",
+          "className": null,
+          "raceName": "Orcs",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Regras",
+          "kind": "raceFeature",
+          "parentName": "Orcs",
+          "className": null,
+          "raceName": "Orcs",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Regras",
+          "kind": "raceFeature",
+          "parentName": "Orcs",
+          "className": null,
+          "raceName": "Orcs",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Resources",
+          "kind": "raceFeature",
+          "parentName": "Orcs",
+          "className": null,
+          "raceName": "Orcs",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Sistema",
+          "kind": "raceFeature",
+          "parentName": "Orcs",
+          "className": null,
+          "raceName": "Orcs",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "WHO WE ARE",
+          "kind": "raceFeature",
+          "parentName": "Orcs",
+          "className": null,
+          "raceName": "Orcs",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        }
+      ]
+    },
+    {
+      "priority": "high",
+      "reason": "appears-in-current-fixtures-or-many-rules",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/celestial-article",
+      "suggestedLocalPath": "data\\HTML BONFIRE\\essencia\\Celestial in Bonfire Tales RPG _ World Anvil.html",
+      "sourceFile": "data\\HTML BONFIRE\\essencia\\Celestial in Bonfire Tales RPG _ World Anvil.html",
+      "pageKind": "race",
+      "parentName": "Celestial",
+      "className": null,
+      "raceName": "Celestial",
+      "subclassName": null,
+      "backgroundName": null,
+      "affectedRulesCount": 23,
+      "affectedRules": [
+        {
+          "name": "Bestiário",
+          "kind": "raceFeature",
+          "parentName": "Celestial",
+          "className": null,
+          "raceName": "Celestial",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Campeão",
+          "kind": "raceFeature",
+          "parentName": "Celestial",
+          "className": null,
+          "raceName": "Celestial",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Cinéria",
+          "kind": "raceFeature",
+          "parentName": "Celestial",
+          "className": null,
+          "raceName": "Celestial",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Cinéria",
+          "kind": "raceFeature",
+          "parentName": "Celestial",
+          "className": null,
+          "raceName": "Celestial",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Corrompido",
+          "kind": "raceFeature",
+          "parentName": "Celestial",
+          "className": null,
+          "raceName": "Celestial",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Development",
+          "kind": "raceFeature",
+          "parentName": "Celestial",
+          "className": null,
+          "raceName": "Celestial",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Development",
+          "kind": "raceFeature",
+          "parentName": "Celestial",
+          "className": null,
+          "raceName": "Celestial",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "EVENTS",
+          "kind": "raceFeature",
+          "parentName": "Celestial",
+          "className": null,
+          "raceName": "Celestial",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Evolução da Essência",
+          "kind": "raceFeature",
+          "parentName": "Celestial",
+          "className": null,
+          "raceName": "Celestial",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Flagelado",
+          "kind": "raceFeature",
+          "parentName": "Celestial",
+          "className": null,
+          "raceName": "Celestial",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Glória e Valor",
+          "kind": "raceFeature",
+          "parentName": "Celestial",
+          "className": null,
+          "raceName": "Celestial",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Mercado",
+          "kind": "raceFeature",
+          "parentName": "Celestial",
+          "className": null,
+          "raceName": "Celestial",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Mestres",
+          "kind": "raceFeature",
+          "parentName": "Celestial",
+          "className": null,
+          "raceName": "Celestial",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Missões e Ranks",
+          "kind": "raceFeature",
+          "parentName": "Celestial",
+          "className": null,
+          "raceName": "Celestial",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Mundo",
+          "kind": "raceFeature",
+          "parentName": "Celestial",
+          "className": null,
+          "raceName": "Celestial",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Our Shop",
+          "kind": "raceFeature",
+          "parentName": "Celestial",
+          "className": null,
+          "raceName": "Celestial",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Protetor",
+          "kind": "raceFeature",
+          "parentName": "Celestial",
+          "className": null,
+          "raceName": "Celestial",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "REACHING OUT",
+          "kind": "raceFeature",
+          "parentName": "Celestial",
+          "className": null,
+          "raceName": "Celestial",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Regras",
+          "kind": "raceFeature",
+          "parentName": "Celestial",
+          "className": null,
+          "raceName": "Celestial",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Regras",
+          "kind": "raceFeature",
+          "parentName": "Celestial",
+          "className": null,
+          "raceName": "Celestial",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Resources",
+          "kind": "raceFeature",
+          "parentName": "Celestial",
+          "className": null,
+          "raceName": "Celestial",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Sistema",
+          "kind": "raceFeature",
+          "parentName": "Celestial",
+          "className": null,
+          "raceName": "Celestial",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "WHO WE ARE",
+          "kind": "raceFeature",
+          "parentName": "Celestial",
+          "className": null,
+          "raceName": "Celestial",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        }
+      ]
+    },
+    {
+      "priority": "high",
+      "reason": "appears-in-current-fixtures-or-many-rules",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/elfo-species",
+      "suggestedLocalPath": "data\\HTML BONFIRE\\racas\\Elfo - Bonfire Tales RPG.html",
+      "sourceFile": "data\\HTML BONFIRE\\racas\\Elfo - Bonfire Tales RPG.html",
+      "pageKind": "race",
+      "parentName": "Elfo",
+      "className": null,
+      "raceName": "Elfo",
+      "subclassName": null,
+      "backgroundName": null,
+      "affectedRulesCount": 23,
+      "affectedRules": [
+        {
+          "name": "Elfo",
+          "kind": "race",
+          "parentName": null,
+          "className": null,
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Aetherin",
+          "kind": "raceFeature",
+          "parentName": "Elfo",
+          "className": null,
+          "raceName": "Elfo",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Bestiário",
+          "kind": "raceFeature",
+          "parentName": "Elfo",
+          "className": null,
+          "raceName": "Elfo",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Cinéria",
+          "kind": "raceFeature",
+          "parentName": "Elfo",
+          "className": null,
+          "raceName": "Elfo",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Cinéria",
+          "kind": "raceFeature",
+          "parentName": "Elfo",
+          "className": null,
+          "raceName": "Elfo",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Development",
+          "kind": "raceFeature",
+          "parentName": "Elfo",
+          "className": null,
+          "raceName": "Elfo",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Development",
+          "kind": "raceFeature",
+          "parentName": "Elfo",
+          "className": null,
+          "raceName": "Elfo",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "EVENTS",
+          "kind": "raceFeature",
+          "parentName": "Elfo",
+          "className": null,
+          "raceName": "Elfo",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Lunareth",
+          "kind": "raceFeature",
+          "parentName": "Elfo",
+          "className": null,
+          "raceName": "Elfo",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Mercado",
+          "kind": "raceFeature",
+          "parentName": "Elfo",
+          "className": null,
+          "raceName": "Elfo",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Mestres",
+          "kind": "raceFeature",
+          "parentName": "Elfo",
+          "className": null,
+          "raceName": "Elfo",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Missões e Ranks",
+          "kind": "raceFeature",
+          "parentName": "Elfo",
+          "className": null,
+          "raceName": "Elfo",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Mundo",
+          "kind": "raceFeature",
+          "parentName": "Elfo",
+          "className": null,
+          "raceName": "Elfo",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Noctelar",
+          "kind": "raceFeature",
+          "parentName": "Elfo",
+          "className": null,
+          "raceName": "Elfo",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Our Shop",
+          "kind": "raceFeature",
+          "parentName": "Elfo",
+          "className": null,
+          "raceName": "Elfo",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "REACHING OUT",
+          "kind": "raceFeature",
+          "parentName": "Elfo",
+          "className": null,
+          "raceName": "Elfo",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Regras",
+          "kind": "raceFeature",
+          "parentName": "Elfo",
+          "className": null,
+          "raceName": "Elfo",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Regras",
+          "kind": "raceFeature",
+          "parentName": "Elfo",
+          "className": null,
+          "raceName": "Elfo",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Resources",
+          "kind": "raceFeature",
+          "parentName": "Elfo",
+          "className": null,
+          "raceName": "Elfo",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Sangue de Mana",
+          "kind": "raceFeature",
+          "parentName": "Elfo",
+          "className": null,
+          "raceName": "Elfo",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Sistema",
+          "kind": "raceFeature",
+          "parentName": "Elfo",
+          "className": null,
+          "raceName": "Elfo",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Solariin",
+          "kind": "raceFeature",
+          "parentName": "Elfo",
+          "className": null,
+          "raceName": "Elfo",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "WHO WE ARE",
+          "kind": "raceFeature",
+          "parentName": "Elfo",
+          "className": null,
+          "raceName": "Elfo",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        }
+      ]
+    },
+    {
+      "priority": "high",
+      "reason": "affects-many-rules",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/infernal-article",
+      "suggestedLocalPath": "data\\HTML BONFIRE\\essencia\\Infero - Bonfire Tales.html",
+      "sourceFile": "data\\HTML BONFIRE\\essencia\\Infero - Bonfire Tales.html",
+      "pageKind": "race",
+      "parentName": "Infernal",
+      "className": null,
+      "raceName": "Infernal",
+      "subclassName": null,
+      "backgroundName": null,
+      "affectedRulesCount": 22,
+      "affectedRules": [
+        {
+          "name": "Bestiário",
+          "kind": "raceFeature",
+          "parentName": "Infernal",
+          "className": null,
+          "raceName": "Infernal",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Cinéria",
+          "kind": "raceFeature",
+          "parentName": "Infernal",
+          "className": null,
+          "raceName": "Infernal",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Cinéria",
+          "kind": "raceFeature",
+          "parentName": "Infernal",
+          "className": null,
+          "raceName": "Infernal",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Decreto: Exílio Abrasador",
+          "kind": "raceFeature",
+          "parentName": "Infernal",
+          "className": null,
+          "raceName": "Infernal",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Development",
+          "kind": "raceFeature",
+          "parentName": "Infernal",
+          "className": null,
+          "raceName": "Infernal",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Development",
+          "kind": "raceFeature",
+          "parentName": "Infernal",
+          "className": null,
+          "raceName": "Infernal",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "EVENTS",
+          "kind": "raceFeature",
+          "parentName": "Infernal",
+          "className": null,
+          "raceName": "Infernal",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Evolução da Essência",
+          "kind": "raceFeature",
+          "parentName": "Infernal",
+          "className": null,
+          "raceName": "Infernal",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Infero Anão",
+          "kind": "raceFeature",
+          "parentName": "Infernal",
+          "className": null,
+          "raceName": "Infernal",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Infero Elfo",
+          "kind": "raceFeature",
+          "parentName": "Infernal",
+          "className": null,
+          "raceName": "Infernal",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Infero Humano",
+          "kind": "raceFeature",
+          "parentName": "Infernal",
+          "className": null,
+          "raceName": "Infernal",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Mercado",
+          "kind": "raceFeature",
+          "parentName": "Infernal",
+          "className": null,
+          "raceName": "Infernal",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Mestres",
+          "kind": "raceFeature",
+          "parentName": "Infernal",
+          "className": null,
+          "raceName": "Infernal",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Missões e Ranks",
+          "kind": "raceFeature",
+          "parentName": "Infernal",
+          "className": null,
+          "raceName": "Infernal",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Mundo",
+          "kind": "raceFeature",
+          "parentName": "Infernal",
+          "className": null,
+          "raceName": "Infernal",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Our Shop",
+          "kind": "raceFeature",
+          "parentName": "Infernal",
+          "className": null,
+          "raceName": "Infernal",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "REACHING OUT",
+          "kind": "raceFeature",
+          "parentName": "Infernal",
+          "className": null,
+          "raceName": "Infernal",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Regras",
+          "kind": "raceFeature",
+          "parentName": "Infernal",
+          "className": null,
+          "raceName": "Infernal",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Regras",
+          "kind": "raceFeature",
+          "parentName": "Infernal",
+          "className": null,
+          "raceName": "Infernal",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Resources",
+          "kind": "raceFeature",
+          "parentName": "Infernal",
+          "className": null,
+          "raceName": "Infernal",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Sistema",
+          "kind": "raceFeature",
+          "parentName": "Infernal",
+          "className": null,
+          "raceName": "Infernal",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "WHO WE ARE",
+          "kind": "raceFeature",
+          "parentName": "Infernal",
+          "className": null,
+          "raceName": "Infernal",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        }
+      ]
+    },
+    {
+      "priority": "high",
+      "reason": "appears-in-current-fixtures-or-many-rules",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "suggestedLocalPath": "data\\HTML BONFIRE\\racas\\Humano Species in Bonfire Tales RPG _ World Anvil.html",
+      "sourceFile": "data\\HTML BONFIRE\\racas\\Humano Species in Bonfire Tales RPG _ World Anvil.html",
+      "pageKind": "race",
+      "parentName": "Humano",
+      "className": null,
+      "raceName": "Humano",
+      "subclassName": null,
+      "backgroundName": null,
+      "affectedRulesCount": 21,
+      "affectedRules": [
+        {
+          "name": "Auge do Potencial",
+          "kind": "raceFeature",
+          "parentName": "Humano",
+          "className": null,
+          "raceName": "Humano",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Bestiário",
+          "kind": "raceFeature",
+          "parentName": "Humano",
+          "className": null,
+          "raceName": "Humano",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Cinéria",
+          "kind": "raceFeature",
+          "parentName": "Humano",
+          "className": null,
+          "raceName": "Humano",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Cinéria",
+          "kind": "raceFeature",
+          "parentName": "Humano",
+          "className": null,
+          "raceName": "Humano",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Development",
+          "kind": "raceFeature",
+          "parentName": "Humano",
+          "className": null,
+          "raceName": "Humano",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Development",
+          "kind": "raceFeature",
+          "parentName": "Humano",
+          "className": null,
+          "raceName": "Humano",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Durkarn",
+          "kind": "raceFeature",
+          "parentName": "Humano",
+          "className": null,
+          "raceName": "Humano",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Erthari",
+          "kind": "raceFeature",
+          "parentName": "Humano",
+          "className": null,
+          "raceName": "Humano",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "EVENTS",
+          "kind": "raceFeature",
+          "parentName": "Humano",
+          "className": null,
+          "raceName": "Humano",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Mercado",
+          "kind": "raceFeature",
+          "parentName": "Humano",
+          "className": null,
+          "raceName": "Humano",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Mestres",
+          "kind": "raceFeature",
+          "parentName": "Humano",
+          "className": null,
+          "raceName": "Humano",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Missões e Ranks",
+          "kind": "raceFeature",
+          "parentName": "Humano",
+          "className": null,
+          "raceName": "Humano",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Mundo",
+          "kind": "raceFeature",
+          "parentName": "Humano",
+          "className": null,
+          "raceName": "Humano",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Our Shop",
+          "kind": "raceFeature",
+          "parentName": "Humano",
+          "className": null,
+          "raceName": "Humano",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "REACHING OUT",
+          "kind": "raceFeature",
+          "parentName": "Humano",
+          "className": null,
+          "raceName": "Humano",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Regras",
+          "kind": "raceFeature",
+          "parentName": "Humano",
+          "className": null,
+          "raceName": "Humano",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Regras",
+          "kind": "raceFeature",
+          "parentName": "Humano",
+          "className": null,
+          "raceName": "Humano",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Resources",
+          "kind": "raceFeature",
+          "parentName": "Humano",
+          "className": null,
+          "raceName": "Humano",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Sálarin",
+          "kind": "raceFeature",
+          "parentName": "Humano",
+          "className": null,
+          "raceName": "Humano",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Sistema",
+          "kind": "raceFeature",
+          "parentName": "Humano",
+          "className": null,
+          "raceName": "Humano",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "WHO WE ARE",
+          "kind": "raceFeature",
+          "parentName": "Humano",
+          "className": null,
+          "raceName": "Humano",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        }
+      ]
+    },
+    {
+      "priority": "high",
+      "reason": "affects-many-rules",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/anao-species",
+      "suggestedLocalPath": "data\\HTML BONFIRE\\racas\\Anões.html",
+      "sourceFile": "data\\HTML BONFIRE\\racas\\Anões.html",
+      "pageKind": "race",
+      "parentName": "Anão",
+      "className": null,
+      "raceName": "Anão",
+      "subclassName": null,
+      "backgroundName": null,
+      "affectedRulesCount": 19,
+      "affectedRules": [
+        {
+          "name": "Bestiário",
+          "kind": "raceFeature",
+          "parentName": "Anão",
+          "className": null,
+          "raceName": "Anão",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Cinéria",
+          "kind": "raceFeature",
+          "parentName": "Anão",
+          "className": null,
+          "raceName": "Anão",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Cinéria",
+          "kind": "raceFeature",
+          "parentName": "Anão",
+          "className": null,
+          "raceName": "Anão",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Development",
+          "kind": "raceFeature",
+          "parentName": "Anão",
+          "className": null,
+          "raceName": "Anão",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Development",
+          "kind": "raceFeature",
+          "parentName": "Anão",
+          "className": null,
+          "raceName": "Anão",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "EVENTS",
+          "kind": "raceFeature",
+          "parentName": "Anão",
+          "className": null,
+          "raceName": "Anão",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Mercado",
+          "kind": "raceFeature",
+          "parentName": "Anão",
+          "className": null,
+          "raceName": "Anão",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Mestres",
+          "kind": "raceFeature",
+          "parentName": "Anão",
+          "className": null,
+          "raceName": "Anão",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Missões e Ranks",
+          "kind": "raceFeature",
+          "parentName": "Anão",
+          "className": null,
+          "raceName": "Anão",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Montanha",
+          "kind": "raceFeature",
+          "parentName": "Anão",
+          "className": null,
+          "raceName": "Anão",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Mundo",
+          "kind": "raceFeature",
+          "parentName": "Anão",
+          "className": null,
+          "raceName": "Anão",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Our Shop",
+          "kind": "raceFeature",
+          "parentName": "Anão",
+          "className": null,
+          "raceName": "Anão",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "REACHING OUT",
+          "kind": "raceFeature",
+          "parentName": "Anão",
+          "className": null,
+          "raceName": "Anão",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Regras",
+          "kind": "raceFeature",
+          "parentName": "Anão",
+          "className": null,
+          "raceName": "Anão",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Regras",
+          "kind": "raceFeature",
+          "parentName": "Anão",
+          "className": null,
+          "raceName": "Anão",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Resources",
+          "kind": "raceFeature",
+          "parentName": "Anão",
+          "className": null,
+          "raceName": "Anão",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Sistema",
+          "kind": "raceFeature",
+          "parentName": "Anão",
+          "className": null,
+          "raceName": "Anão",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Terremoto Ancestral",
+          "kind": "raceFeature",
+          "parentName": "Anão",
+          "className": null,
+          "raceName": "Anão",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "WHO WE ARE",
+          "kind": "raceFeature",
+          "parentName": "Anão",
+          "className": null,
+          "raceName": "Anão",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        }
+      ]
+    },
+    {
+      "priority": "high",
+      "reason": "appears-in-current-fixtures-or-many-rules",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/clerigo-article",
+      "suggestedLocalPath": "data\\HTML BONFIRE\\classes\\Clérigo in Bonfire Tales RPG _ World Anvil.html",
+      "sourceFile": "data\\HTML BONFIRE\\classes\\Clérigo in Bonfire Tales RPG _ World Anvil.html",
+      "pageKind": "class",
+      "parentName": "Manto do Ciclone",
+      "className": "Clérigo",
+      "raceName": null,
+      "subclassName": "Domínio da Vida",
+      "backgroundName": null,
+      "affectedRulesCount": 18,
+      "affectedRules": [
+        {
+          "name": "Clérigo",
+          "kind": "class",
+          "parentName": null,
+          "className": null,
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Cessa a condição Amedrontado",
+          "kind": "subclassFeature",
+          "parentName": "Canalizar Divindade: Santuário do Amanhecer",
+          "className": "Clérigo",
+          "raceName": null,
+          "subclassName": "Domínio da Luz",
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Característica de Domínio Divino",
+          "kind": "subclassFeature",
+          "parentName": "Clérigo",
+          "className": "Clérigo",
+          "raceName": null,
+          "subclassName": "Domínio da Vida",
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Cessa a condição Amedrontado",
+          "kind": "classFeature",
+          "parentName": "Clérigo",
+          "className": "Clérigo",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Clérigo",
+          "kind": "classFeature",
+          "parentName": "Clérigo",
+          "className": "Clérigo",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Development",
+          "kind": "subclassFeature",
+          "parentName": "Clérigo",
+          "className": "Clérigo",
+          "raceName": null,
+          "subclassName": "Domínio da Vida",
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "EVENTS",
+          "kind": "subclassFeature",
+          "parentName": "Clérigo",
+          "className": "Clérigo",
+          "raceName": null,
+          "subclassName": "Domínio da Vida",
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Ferramentas",
+          "kind": "classFeature",
+          "parentName": "Clérigo",
+          "className": "Clérigo",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Our Shop",
+          "kind": "subclassFeature",
+          "parentName": "Clérigo",
+          "className": "Clérigo",
+          "raceName": null,
+          "subclassName": "Domínio da Vida",
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "REACHING OUT",
+          "kind": "subclassFeature",
+          "parentName": "Clérigo",
+          "className": "Clérigo",
+          "raceName": null,
+          "subclassName": "Domínio da Vida",
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Resources",
+          "kind": "subclassFeature",
+          "parentName": "Clérigo",
+          "className": "Clérigo",
+          "raceName": null,
+          "subclassName": "Domínio da Vida",
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Testes de Resistência",
+          "kind": "classFeature",
+          "parentName": "Clérigo",
+          "className": "Clérigo",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "WHO WE ARE",
+          "kind": "subclassFeature",
+          "parentName": "Clérigo",
+          "className": "Clérigo",
+          "raceName": null,
+          "subclassName": "Domínio da Vida",
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Cessa a condição Amedrontado",
+          "kind": "subclassFeature",
+          "parentName": "Domínio da Luz",
+          "className": "Clérigo",
+          "raceName": null,
+          "subclassName": "Domínio da Luz",
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Blade of Disaster",
+          "kind": "subclassFeature",
+          "parentName": "Manto do Ciclone",
+          "className": "Clérigo",
+          "raceName": null,
+          "subclassName": "Domínio da Vida",
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Chain Lightning",
+          "kind": "subclassFeature",
+          "parentName": "Manto do Ciclone",
+          "className": "Clérigo",
+          "raceName": null,
+          "subclassName": "Domínio da Vida",
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Control Weather",
+          "kind": "subclassFeature",
+          "parentName": "Manto do Ciclone",
+          "className": "Clérigo",
+          "raceName": null,
+          "subclassName": "Domínio da Vida",
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Whirlwind",
+          "kind": "subclassFeature",
+          "parentName": "Manto do Ciclone",
+          "className": "Clérigo",
+          "raceName": null,
+          "subclassName": "Domínio da Vida",
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        }
+      ]
+    },
+    {
+      "priority": "high",
+      "reason": "appears-in-current-fixtures-or-many-rules",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "suggestedLocalPath": "data\\HTML BONFIRE\\classes\\Druida in Bonfire Tales RPG _ World Anvil.html",
+      "sourceFile": "data\\HTML BONFIRE\\classes\\Druida in Bonfire Tales RPG _ World Anvil.html",
+      "pageKind": "class",
+      "parentName": "Druida",
+      "className": "Druida",
+      "raceName": null,
+      "subclassName": null,
+      "backgroundName": null,
+      "affectedRulesCount": 18,
+      "affectedRules": [
+        {
+          "name": "Druida",
+          "kind": "class",
+          "parentName": null,
+          "className": null,
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Ficha - Familiar Primal",
+          "kind": "subclassFeature",
+          "parentName": "Círculo do Pastor Elemental",
+          "className": "Druida",
+          "raceName": null,
+          "subclassName": "Círculo do Pastor Elemental",
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Armaduras",
+          "kind": "classFeature",
+          "parentName": "Druida",
+          "className": "Druida",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Armas",
+          "kind": "classFeature",
+          "parentName": "Druida",
+          "className": "Druida",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Atributo Primário",
+          "kind": "classFeature",
+          "parentName": "Druida",
+          "className": "Druida",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Dado de Vida",
+          "kind": "classFeature",
+          "parentName": "Druida",
+          "className": "Druida",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Development",
+          "kind": "subclassFeature",
+          "parentName": "Druida",
+          "className": "Druida",
+          "raceName": null,
+          "subclassName": "Círculo da Terra",
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Druida",
+          "kind": "classFeature",
+          "parentName": "Druida",
+          "className": "Druida",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "EVENTS",
+          "kind": "subclassFeature",
+          "parentName": "Druida",
+          "className": "Druida",
+          "raceName": null,
+          "subclassName": "Círculo da Terra",
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Ferramentas",
+          "kind": "classFeature",
+          "parentName": "Druida",
+          "className": "Druida",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Ficha - Familiar Primal",
+          "kind": "classFeature",
+          "parentName": "Druida",
+          "className": "Druida",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Ficha - Familiar Primal",
+          "kind": "subclassFeature",
+          "parentName": "Druida",
+          "className": "Druida",
+          "raceName": null,
+          "subclassName": "Círculo do Pastor Elemental",
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Our Shop",
+          "kind": "subclassFeature",
+          "parentName": "Druida",
+          "className": "Druida",
+          "raceName": null,
+          "subclassName": "Círculo da Terra",
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "REACHING OUT",
+          "kind": "subclassFeature",
+          "parentName": "Druida",
+          "className": "Druida",
+          "raceName": null,
+          "subclassName": "Círculo da Terra",
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Resources",
+          "kind": "subclassFeature",
+          "parentName": "Druida",
+          "className": "Druida",
+          "raceName": null,
+          "subclassName": "Círculo da Terra",
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Testes de Resistência",
+          "kind": "classFeature",
+          "parentName": "Druida",
+          "className": "Druida",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "WHO WE ARE",
+          "kind": "subclassFeature",
+          "parentName": "Druida",
+          "className": "Druida",
+          "raceName": null,
+          "subclassName": "Círculo da Terra",
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Ficha - Familiar Primal",
+          "kind": "subclassFeature",
+          "parentName": "Familiar Primal",
+          "className": "Druida",
+          "raceName": null,
+          "subclassName": "Círculo do Pastor Elemental",
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        }
+      ]
+    },
+    {
+      "priority": "high",
+      "reason": "appears-in-current-fixtures-or-many-rules",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bestial-article",
+      "suggestedLocalPath": "data\\HTML BONFIRE\\essencia\\Bestial in Bonfire Tales RPG _ World Anvil.html",
+      "sourceFile": "data\\HTML BONFIRE\\essencia\\Bestial in Bonfire Tales RPG _ World Anvil.html",
+      "pageKind": "race",
+      "parentName": "Bestial",
+      "className": null,
+      "raceName": "Bestial",
+      "subclassName": null,
+      "backgroundName": null,
+      "affectedRulesCount": 17,
+      "affectedRules": [
+        {
+          "name": "Bestiário",
+          "kind": "raceFeature",
+          "parentName": "Bestial",
+          "className": null,
+          "raceName": "Bestial",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Cinéria",
+          "kind": "raceFeature",
+          "parentName": "Bestial",
+          "className": null,
+          "raceName": "Bestial",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Cinéria",
+          "kind": "raceFeature",
+          "parentName": "Bestial",
+          "className": null,
+          "raceName": "Bestial",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Development",
+          "kind": "raceFeature",
+          "parentName": "Bestial",
+          "className": null,
+          "raceName": "Bestial",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Development",
+          "kind": "raceFeature",
+          "parentName": "Bestial",
+          "className": null,
+          "raceName": "Bestial",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "EVENTS",
+          "kind": "raceFeature",
+          "parentName": "Bestial",
+          "className": null,
+          "raceName": "Bestial",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Mercado",
+          "kind": "raceFeature",
+          "parentName": "Bestial",
+          "className": null,
+          "raceName": "Bestial",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Mestres",
+          "kind": "raceFeature",
+          "parentName": "Bestial",
+          "className": null,
+          "raceName": "Bestial",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Missões e Ranks",
+          "kind": "raceFeature",
+          "parentName": "Bestial",
+          "className": null,
+          "raceName": "Bestial",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Mundo",
+          "kind": "raceFeature",
+          "parentName": "Bestial",
+          "className": null,
+          "raceName": "Bestial",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Our Shop",
+          "kind": "raceFeature",
+          "parentName": "Bestial",
+          "className": null,
+          "raceName": "Bestial",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "REACHING OUT",
+          "kind": "raceFeature",
+          "parentName": "Bestial",
+          "className": null,
+          "raceName": "Bestial",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Regras",
+          "kind": "raceFeature",
+          "parentName": "Bestial",
+          "className": null,
+          "raceName": "Bestial",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Regras",
+          "kind": "raceFeature",
+          "parentName": "Bestial",
+          "className": null,
+          "raceName": "Bestial",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Resources",
+          "kind": "raceFeature",
+          "parentName": "Bestial",
+          "className": null,
+          "raceName": "Bestial",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Sistema",
+          "kind": "raceFeature",
+          "parentName": "Bestial",
+          "className": null,
+          "raceName": "Bestial",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "WHO WE ARE",
+          "kind": "raceFeature",
+          "parentName": "Bestial",
+          "className": null,
+          "raceName": "Bestial",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        }
+      ]
+    },
+    {
+      "priority": "high",
+      "reason": "appears-in-current-fixtures-or-many-rules",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/draconica-article",
+      "suggestedLocalPath": "data\\HTML BONFIRE\\essencia\\Dracônica in Bonfire Tales RPG _ World Anvil.html",
+      "sourceFile": "data\\HTML BONFIRE\\essencia\\Dracônica in Bonfire Tales RPG _ World Anvil.html",
+      "pageKind": "race",
+      "parentName": "Dracônica",
+      "className": null,
+      "raceName": "Dracônica",
+      "subclassName": null,
+      "backgroundName": null,
+      "affectedRulesCount": 17,
+      "affectedRules": [
+        {
+          "name": "Bestiário",
+          "kind": "raceFeature",
+          "parentName": "Dracônica",
+          "className": null,
+          "raceName": "Dracônica",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Cinéria",
+          "kind": "raceFeature",
+          "parentName": "Dracônica",
+          "className": null,
+          "raceName": "Dracônica",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Cinéria",
+          "kind": "raceFeature",
+          "parentName": "Dracônica",
+          "className": null,
+          "raceName": "Dracônica",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Development",
+          "kind": "raceFeature",
+          "parentName": "Dracônica",
+          "className": null,
+          "raceName": "Dracônica",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Development",
+          "kind": "raceFeature",
+          "parentName": "Dracônica",
+          "className": null,
+          "raceName": "Dracônica",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "EVENTS",
+          "kind": "raceFeature",
+          "parentName": "Dracônica",
+          "className": null,
+          "raceName": "Dracônica",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Mercado",
+          "kind": "raceFeature",
+          "parentName": "Dracônica",
+          "className": null,
+          "raceName": "Dracônica",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Mestres",
+          "kind": "raceFeature",
+          "parentName": "Dracônica",
+          "className": null,
+          "raceName": "Dracônica",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Missões e Ranks",
+          "kind": "raceFeature",
+          "parentName": "Dracônica",
+          "className": null,
+          "raceName": "Dracônica",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Mundo",
+          "kind": "raceFeature",
+          "parentName": "Dracônica",
+          "className": null,
+          "raceName": "Dracônica",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Our Shop",
+          "kind": "raceFeature",
+          "parentName": "Dracônica",
+          "className": null,
+          "raceName": "Dracônica",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "REACHING OUT",
+          "kind": "raceFeature",
+          "parentName": "Dracônica",
+          "className": null,
+          "raceName": "Dracônica",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Regras",
+          "kind": "raceFeature",
+          "parentName": "Dracônica",
+          "className": null,
+          "raceName": "Dracônica",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Regras",
+          "kind": "raceFeature",
+          "parentName": "Dracônica",
+          "className": null,
+          "raceName": "Dracônica",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Resources",
+          "kind": "raceFeature",
+          "parentName": "Dracônica",
+          "className": null,
+          "raceName": "Dracônica",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Sistema",
+          "kind": "raceFeature",
+          "parentName": "Dracônica",
+          "className": null,
+          "raceName": "Dracônica",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "WHO WE ARE",
+          "kind": "raceFeature",
+          "parentName": "Dracônica",
+          "className": null,
+          "raceName": "Dracônica",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        }
+      ]
+    },
+    {
+      "priority": "high",
+      "reason": "appears-in-current-fixtures-or-many-rules",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/vampiro-article",
+      "suggestedLocalPath": "data\\HTML BONFIRE\\essencia\\Vampiro in Bonfire Tales RPG _ World Anvil.html",
+      "sourceFile": "data\\HTML BONFIRE\\essencia\\Vampiro in Bonfire Tales RPG _ World Anvil.html",
+      "pageKind": "race",
+      "parentName": "Vampiro",
+      "className": null,
+      "raceName": "Vampiro",
+      "subclassName": null,
+      "backgroundName": null,
+      "affectedRulesCount": 17,
+      "affectedRules": [
+        {
+          "name": "Bestiário",
+          "kind": "raceFeature",
+          "parentName": "Vampiro",
+          "className": null,
+          "raceName": "Vampiro",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Cinéria",
+          "kind": "raceFeature",
+          "parentName": "Vampiro",
+          "className": null,
+          "raceName": "Vampiro",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Cinéria",
+          "kind": "raceFeature",
+          "parentName": "Vampiro",
+          "className": null,
+          "raceName": "Vampiro",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Development",
+          "kind": "raceFeature",
+          "parentName": "Vampiro",
+          "className": null,
+          "raceName": "Vampiro",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Development",
+          "kind": "raceFeature",
+          "parentName": "Vampiro",
+          "className": null,
+          "raceName": "Vampiro",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "EVENTS",
+          "kind": "raceFeature",
+          "parentName": "Vampiro",
+          "className": null,
+          "raceName": "Vampiro",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Mercado",
+          "kind": "raceFeature",
+          "parentName": "Vampiro",
+          "className": null,
+          "raceName": "Vampiro",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Mestres",
+          "kind": "raceFeature",
+          "parentName": "Vampiro",
+          "className": null,
+          "raceName": "Vampiro",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Missões e Ranks",
+          "kind": "raceFeature",
+          "parentName": "Vampiro",
+          "className": null,
+          "raceName": "Vampiro",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Mundo",
+          "kind": "raceFeature",
+          "parentName": "Vampiro",
+          "className": null,
+          "raceName": "Vampiro",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Our Shop",
+          "kind": "raceFeature",
+          "parentName": "Vampiro",
+          "className": null,
+          "raceName": "Vampiro",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "REACHING OUT",
+          "kind": "raceFeature",
+          "parentName": "Vampiro",
+          "className": null,
+          "raceName": "Vampiro",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Regras",
+          "kind": "raceFeature",
+          "parentName": "Vampiro",
+          "className": null,
+          "raceName": "Vampiro",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Regras",
+          "kind": "raceFeature",
+          "parentName": "Vampiro",
+          "className": null,
+          "raceName": "Vampiro",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Resources",
+          "kind": "raceFeature",
+          "parentName": "Vampiro",
+          "className": null,
+          "raceName": "Vampiro",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Sistema",
+          "kind": "raceFeature",
+          "parentName": "Vampiro",
+          "className": null,
+          "raceName": "Vampiro",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "WHO WE ARE",
+          "kind": "raceFeature",
+          "parentName": "Vampiro",
+          "className": null,
+          "raceName": "Vampiro",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        }
+      ]
+    },
+    {
+      "priority": "high",
+      "reason": "appears-in-current-fixtures-or-many-rules",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/essencia-elemental-category",
+      "suggestedLocalPath": "data\\HTML BONFIRE\\essencia\\Essência Elemental in Bonfire Tales RPG.html",
+      "sourceFile": "data\\HTML BONFIRE\\essencia\\Essência Elemental in Bonfire Tales RPG.html",
+      "pageKind": "race",
+      "parentName": "Essência Elemental",
+      "className": null,
+      "raceName": "Essência Elemental",
+      "subclassName": null,
+      "backgroundName": null,
+      "affectedRulesCount": 17,
+      "affectedRules": [
+        {
+          "name": "Bestiário",
+          "kind": "raceFeature",
+          "parentName": "Essência Elemental",
+          "className": null,
+          "raceName": "Essência Elemental",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Cinéria",
+          "kind": "raceFeature",
+          "parentName": "Essência Elemental",
+          "className": null,
+          "raceName": "Essência Elemental",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Cinéria",
+          "kind": "raceFeature",
+          "parentName": "Essência Elemental",
+          "className": null,
+          "raceName": "Essência Elemental",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Development",
+          "kind": "raceFeature",
+          "parentName": "Essência Elemental",
+          "className": null,
+          "raceName": "Essência Elemental",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Development",
+          "kind": "raceFeature",
+          "parentName": "Essência Elemental",
+          "className": null,
+          "raceName": "Essência Elemental",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "EVENTS",
+          "kind": "raceFeature",
+          "parentName": "Essência Elemental",
+          "className": null,
+          "raceName": "Essência Elemental",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Mercado",
+          "kind": "raceFeature",
+          "parentName": "Essência Elemental",
+          "className": null,
+          "raceName": "Essência Elemental",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Mestres",
+          "kind": "raceFeature",
+          "parentName": "Essência Elemental",
+          "className": null,
+          "raceName": "Essência Elemental",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Missões e Ranks",
+          "kind": "raceFeature",
+          "parentName": "Essência Elemental",
+          "className": null,
+          "raceName": "Essência Elemental",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Mundo",
+          "kind": "raceFeature",
+          "parentName": "Essência Elemental",
+          "className": null,
+          "raceName": "Essência Elemental",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Our Shop",
+          "kind": "raceFeature",
+          "parentName": "Essência Elemental",
+          "className": null,
+          "raceName": "Essência Elemental",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "REACHING OUT",
+          "kind": "raceFeature",
+          "parentName": "Essência Elemental",
+          "className": null,
+          "raceName": "Essência Elemental",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Regras",
+          "kind": "raceFeature",
+          "parentName": "Essência Elemental",
+          "className": null,
+          "raceName": "Essência Elemental",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Regras",
+          "kind": "raceFeature",
+          "parentName": "Essência Elemental",
+          "className": null,
+          "raceName": "Essência Elemental",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Resources",
+          "kind": "raceFeature",
+          "parentName": "Essência Elemental",
+          "className": null,
+          "raceName": "Essência Elemental",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Sistema",
+          "kind": "raceFeature",
+          "parentName": "Essência Elemental",
+          "className": null,
+          "raceName": "Essência Elemental",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "WHO WE ARE",
+          "kind": "raceFeature",
+          "parentName": "Essência Elemental",
+          "className": null,
+          "raceName": "Essência Elemental",
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        }
+      ]
+    },
+    {
+      "priority": "high",
+      "reason": "appears-in-current-fixtures-or-many-rules",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/bardo-article",
+      "suggestedLocalPath": "data\\HTML BONFIRE\\classes\\Bardo in Bonfire Tales RPG _ World Anvil.html",
+      "sourceFile": "data\\HTML BONFIRE\\classes\\Bardo in Bonfire Tales RPG _ World Anvil.html",
+      "pageKind": "class",
+      "parentName": "Bardo",
+      "className": "Bardo",
+      "raceName": null,
+      "subclassName": null,
+      "backgroundName": null,
+      "affectedRulesCount": 15,
+      "affectedRules": [
+        {
+          "name": "Armaduras",
+          "kind": "classFeature",
+          "parentName": "Bardo",
+          "className": "Bardo",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Armas",
+          "kind": "classFeature",
+          "parentName": "Bardo",
+          "className": "Bardo",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Atributo Primário",
+          "kind": "classFeature",
+          "parentName": "Bardo",
+          "className": "Bardo",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Bardo",
+          "kind": "classFeature",
+          "parentName": "Bardo",
+          "className": "Bardo",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Característica de Colégio",
+          "kind": "subclassFeature",
+          "parentName": "Bardo",
+          "className": "Bardo",
+          "raceName": null,
+          "subclassName": "Colégio Skald",
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Característica de Colégio",
+          "kind": "subclassFeature",
+          "parentName": "Bardo",
+          "className": "Bardo",
+          "raceName": null,
+          "subclassName": "Colégio Skald",
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Característica de Colégio",
+          "kind": "subclassFeature",
+          "parentName": "Bardo",
+          "className": "Bardo",
+          "raceName": null,
+          "subclassName": "Colégio Skald",
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Dado de Vida",
+          "kind": "classFeature",
+          "parentName": "Bardo",
+          "className": "Bardo",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Development",
+          "kind": "subclassFeature",
+          "parentName": "Bardo",
+          "className": "Bardo",
+          "raceName": null,
+          "subclassName": "Colégio Skald",
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "EVENTS",
+          "kind": "subclassFeature",
+          "parentName": "Bardo",
+          "className": "Bardo",
+          "raceName": null,
+          "subclassName": "Colégio Skald",
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Our Shop",
+          "kind": "subclassFeature",
+          "parentName": "Bardo",
+          "className": "Bardo",
+          "raceName": null,
+          "subclassName": "Colégio Skald",
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "REACHING OUT",
+          "kind": "subclassFeature",
+          "parentName": "Bardo",
+          "className": "Bardo",
+          "raceName": null,
+          "subclassName": "Colégio Skald",
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Resources",
+          "kind": "subclassFeature",
+          "parentName": "Bardo",
+          "className": "Bardo",
+          "raceName": null,
+          "subclassName": "Colégio Skald",
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Testes de Resistência",
+          "kind": "classFeature",
+          "parentName": "Bardo",
+          "className": "Bardo",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "WHO WE ARE",
+          "kind": "subclassFeature",
+          "parentName": "Bardo",
+          "className": "Bardo",
+          "raceName": null,
+          "subclassName": "Colégio Skald",
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        }
+      ]
+    },
+    {
+      "priority": "high",
+      "reason": "affects-many-rules",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/magias-category",
+      "suggestedLocalPath": "data\\HTML BONFIRE\\ajustes\\Lista de Magias e Modificações in Bonfire Tales RPG.html",
+      "sourceFile": "data\\HTML BONFIRE\\ajustes\\Lista de Magias e Modificações in Bonfire Tales RPG.html",
+      "pageKind": "spell-override",
+      "parentName": null,
+      "className": null,
+      "raceName": null,
+      "subclassName": null,
+      "backgroundName": null,
+      "affectedRulesCount": 15,
+      "affectedRules": [
+        {
+          "name": "Bestiário",
+          "kind": "spellOverride",
+          "parentName": null,
+          "className": null,
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Cinéria",
+          "kind": "spellOverride",
+          "parentName": null,
+          "className": null,
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Development",
+          "kind": "spellOverride",
+          "parentName": null,
+          "className": null,
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "EVENTS",
+          "kind": "spellOverride",
+          "parentName": null,
+          "className": null,
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Livros com Magias Liberadas",
+          "kind": "spellOverride",
+          "parentName": null,
+          "className": null,
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Mercado",
+          "kind": "spellOverride",
+          "parentName": null,
+          "className": null,
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Mestres",
+          "kind": "spellOverride",
+          "parentName": null,
+          "className": null,
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Missões e Ranks",
+          "kind": "spellOverride",
+          "parentName": null,
+          "className": null,
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Mundo",
+          "kind": "spellOverride",
+          "parentName": null,
+          "className": null,
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Our Shop",
+          "kind": "spellOverride",
+          "parentName": null,
+          "className": null,
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "REACHING OUT",
+          "kind": "spellOverride",
+          "parentName": null,
+          "className": null,
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Regras",
+          "kind": "spellOverride",
+          "parentName": null,
+          "className": null,
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Resources",
+          "kind": "spellOverride",
+          "parentName": null,
+          "className": null,
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Sistema",
+          "kind": "spellOverride",
+          "parentName": null,
+          "className": null,
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "WHO WE ARE",
+          "kind": "spellOverride",
+          "parentName": null,
+          "className": null,
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        }
+      ]
+    },
+    {
+      "priority": "high",
+      "reason": "appears-in-current-fixtures-or-many-rules",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mago-article",
+      "suggestedLocalPath": "data\\HTML BONFIRE\\classes\\Mago in Bonfire Tales RPG _ World Anvil.html",
+      "sourceFile": "data\\HTML BONFIRE\\classes\\Mago in Bonfire Tales RPG _ World Anvil.html",
+      "pageKind": "class",
+      "parentName": "Mago",
+      "className": "Mago",
+      "raceName": null,
+      "subclassName": null,
+      "backgroundName": null,
+      "affectedRulesCount": 14,
+      "affectedRules": [
+        {
+          "name": "Mago",
+          "kind": "class",
+          "parentName": null,
+          "className": null,
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Armaduras",
+          "kind": "classFeature",
+          "parentName": "Mago",
+          "className": "Mago",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Armas",
+          "kind": "classFeature",
+          "parentName": "Mago",
+          "className": "Mago",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Atributo Primário",
+          "kind": "classFeature",
+          "parentName": "Mago",
+          "className": "Mago",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Dado de Vida",
+          "kind": "classFeature",
+          "parentName": "Mago",
+          "className": "Mago",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Development",
+          "kind": "classFeature",
+          "parentName": "Mago",
+          "className": "Mago",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "EVENTS",
+          "kind": "classFeature",
+          "parentName": "Mago",
+          "className": "Mago",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Ferramentas",
+          "kind": "classFeature",
+          "parentName": "Mago",
+          "className": "Mago",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Mago",
+          "kind": "classFeature",
+          "parentName": "Mago",
+          "className": "Mago",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Our Shop",
+          "kind": "classFeature",
+          "parentName": "Mago",
+          "className": "Mago",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "REACHING OUT",
+          "kind": "classFeature",
+          "parentName": "Mago",
+          "className": "Mago",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Resources",
+          "kind": "classFeature",
+          "parentName": "Mago",
+          "className": "Mago",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Testes de Resistência",
+          "kind": "classFeature",
+          "parentName": "Mago",
+          "className": "Mago",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "WHO WE ARE",
+          "kind": "classFeature",
+          "parentName": "Mago",
+          "className": "Mago",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        }
+      ]
+    },
+    {
+      "priority": "high",
+      "reason": "appears-in-current-fixtures-or-many-rules",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/monge-article",
+      "suggestedLocalPath": "data\\HTML BONFIRE\\classes\\Monge in Bonfire Tales RPG _ World Anvil.html",
+      "sourceFile": "data\\HTML BONFIRE\\classes\\Monge in Bonfire Tales RPG _ World Anvil.html",
+      "pageKind": "class",
+      "parentName": "Monge",
+      "className": "Monge",
+      "raceName": null,
+      "subclassName": null,
+      "backgroundName": null,
+      "affectedRulesCount": 14,
+      "affectedRules": [
+        {
+          "name": "Monge",
+          "kind": "class",
+          "parentName": null,
+          "className": null,
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Ativação",
+          "kind": "classFeature",
+          "parentName": "Explosão de Alma",
+          "className": "Monge",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-description"
+        },
+        {
+          "name": "Armaduras",
+          "kind": "classFeature",
+          "parentName": "Monge",
+          "className": "Monge",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Atributo Primário",
+          "kind": "classFeature",
+          "parentName": "Monge",
+          "className": "Monge",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Dado de Vida",
+          "kind": "classFeature",
+          "parentName": "Monge",
+          "className": "Monge",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Development",
+          "kind": "classFeature",
+          "parentName": "Monge",
+          "className": "Monge",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Estilos de Ki",
+          "kind": "classFeature",
+          "parentName": "Monge",
+          "className": "Monge",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "EVENTS",
+          "kind": "classFeature",
+          "parentName": "Monge",
+          "className": "Monge",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Monge",
+          "kind": "classFeature",
+          "parentName": "Monge",
+          "className": "Monge",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Our Shop",
+          "kind": "classFeature",
+          "parentName": "Monge",
+          "className": "Monge",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "REACHING OUT",
+          "kind": "classFeature",
+          "parentName": "Monge",
+          "className": "Monge",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Resources",
+          "kind": "classFeature",
+          "parentName": "Monge",
+          "className": "Monge",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Testes de Resistência",
+          "kind": "classFeature",
+          "parentName": "Monge",
+          "className": "Monge",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "WHO WE ARE",
+          "kind": "classFeature",
+          "parentName": "Monge",
+          "className": "Monge",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        }
+      ]
+    },
+    {
+      "priority": "high",
+      "reason": "affects-many-rules",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/c/talentos-category",
+      "suggestedLocalPath": "data\\HTML BONFIRE\\talentos\\Talentos in Bonfire Tales RPG.html",
+      "sourceFile": "data\\HTML BONFIRE\\talentos\\Talentos in Bonfire Tales RPG.html",
+      "pageKind": "feat",
+      "parentName": null,
+      "className": null,
+      "raceName": null,
+      "subclassName": null,
+      "backgroundName": null,
+      "affectedRulesCount": 14,
+      "affectedRules": [
+        {
+          "name": "Bestiário",
+          "kind": "feat",
+          "parentName": null,
+          "className": null,
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Cinéria",
+          "kind": "feat",
+          "parentName": null,
+          "className": null,
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Development",
+          "kind": "feat",
+          "parentName": null,
+          "className": null,
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "EVENTS",
+          "kind": "feat",
+          "parentName": null,
+          "className": null,
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Mercado",
+          "kind": "feat",
+          "parentName": null,
+          "className": null,
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Mestres",
+          "kind": "feat",
+          "parentName": null,
+          "className": null,
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Missões e Ranks",
+          "kind": "feat",
+          "parentName": null,
+          "className": null,
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Mundo",
+          "kind": "feat",
+          "parentName": null,
+          "className": null,
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Our Shop",
+          "kind": "feat",
+          "parentName": null,
+          "className": null,
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "REACHING OUT",
+          "kind": "feat",
+          "parentName": null,
+          "className": null,
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Regras",
+          "kind": "feat",
+          "parentName": null,
+          "className": null,
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Resources",
+          "kind": "feat",
+          "parentName": null,
+          "className": null,
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Sistema",
+          "kind": "feat",
+          "parentName": null,
+          "className": null,
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "WHO WE ARE",
+          "kind": "feat",
+          "parentName": null,
+          "className": null,
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        }
+      ]
+    },
+    {
+      "priority": "high",
+      "reason": "appears-in-current-fixtures-or-many-rules",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mistico-article",
+      "suggestedLocalPath": "data\\HTML BONFIRE\\classes\\Místico in Bonfire Tales RPG _ World Anvil.html",
+      "sourceFile": "data\\HTML BONFIRE\\classes\\Místico in Bonfire Tales RPG _ World Anvil.html",
+      "pageKind": "class",
+      "parentName": "Espirito Familiar Místico",
+      "className": "Místico",
+      "raceName": null,
+      "subclassName": null,
+      "backgroundName": null,
+      "affectedRulesCount": 13,
+      "affectedRules": [
+        {
+          "name": "Místico",
+          "kind": "class",
+          "parentName": null,
+          "className": null,
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Aberração",
+          "kind": "classFeature",
+          "parentName": "Espirito Familiar Místico",
+          "className": "Místico",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Ações",
+          "kind": "classFeature",
+          "parentName": "Místico",
+          "className": "Místico",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Armas",
+          "kind": "classFeature",
+          "parentName": "Místico",
+          "className": "Místico",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Development",
+          "kind": "classFeature",
+          "parentName": "Místico",
+          "className": "Místico",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "EVENTS",
+          "kind": "classFeature",
+          "parentName": "Místico",
+          "className": "Místico",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Ferramentas",
+          "kind": "classFeature",
+          "parentName": "Místico",
+          "className": "Místico",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Místico",
+          "kind": "classFeature",
+          "parentName": "Místico",
+          "className": "Místico",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Our Shop",
+          "kind": "classFeature",
+          "parentName": "Místico",
+          "className": "Místico",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "REACHING OUT",
+          "kind": "classFeature",
+          "parentName": "Místico",
+          "className": "Místico",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Resources",
+          "kind": "classFeature",
+          "parentName": "Místico",
+          "className": "Místico",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Testes de Resistência",
+          "kind": "classFeature",
+          "parentName": "Místico",
+          "className": "Místico",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "WHO WE ARE",
+          "kind": "classFeature",
+          "parentName": "Místico",
+          "className": "Místico",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        }
+      ]
+    },
+    {
+      "priority": "high",
+      "reason": "appears-in-current-fixtures-or-many-rules",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/paladino-article",
+      "suggestedLocalPath": "data\\HTML BONFIRE\\classes\\Paladino in Bonfire Tales RPG _ World Anvil.html",
+      "sourceFile": "data\\HTML BONFIRE\\classes\\Paladino in Bonfire Tales RPG _ World Anvil.html",
+      "pageKind": "class",
+      "parentName": "Paladino",
+      "className": "Paladino",
+      "raceName": null,
+      "subclassName": null,
+      "backgroundName": null,
+      "affectedRulesCount": 13,
+      "affectedRules": [
+        {
+          "name": "Aprimoramento",
+          "kind": "classFeature",
+          "parentName": "Paladino",
+          "className": "Paladino",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Development",
+          "kind": "classFeature",
+          "parentName": "Paladino",
+          "className": "Paladino",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "EVENTS",
+          "kind": "classFeature",
+          "parentName": "Paladino",
+          "className": "Paladino",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Ferramentas",
+          "kind": "classFeature",
+          "parentName": "Paladino",
+          "className": "Paladino",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Our Shop",
+          "kind": "classFeature",
+          "parentName": "Paladino",
+          "className": "Paladino",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Paladino",
+          "kind": "classFeature",
+          "parentName": "Paladino",
+          "className": "Paladino",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "REACHING OUT",
+          "kind": "classFeature",
+          "parentName": "Paladino",
+          "className": "Paladino",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Resources",
+          "kind": "classFeature",
+          "parentName": "Paladino",
+          "className": "Paladino",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Testes de Resistência",
+          "kind": "classFeature",
+          "parentName": "Paladino",
+          "className": "Paladino",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "WHO WE ARE",
+          "kind": "classFeature",
+          "parentName": "Paladino",
+          "className": "Paladino",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Aprimoramento",
+          "kind": "classFeature",
+          "parentName": "Primordial",
+          "className": "Paladino",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Aprimoramento",
+          "kind": "classFeature",
+          "parentName": "Princípios do Primordial",
+          "className": "Paladino",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Usos/Recargas",
+          "kind": "classFeature",
+          "parentName": "Princípios do Primordial",
+          "className": "Paladino",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        }
+      ]
+    },
+    {
+      "priority": "high",
+      "reason": "appears-in-current-fixtures-or-many-rules",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/feiticeiro-article",
+      "suggestedLocalPath": "data\\HTML BONFIRE\\classes\\Feiticeiro in Bonfire Tales RPG _ World Anvil.html",
+      "sourceFile": "data\\HTML BONFIRE\\classes\\Feiticeiro in Bonfire Tales RPG _ World Anvil.html",
+      "pageKind": "class",
+      "parentName": "Feiticeiro",
+      "className": "Feiticeiro",
+      "raceName": null,
+      "subclassName": null,
+      "backgroundName": null,
+      "affectedRulesCount": 11,
+      "affectedRules": [
+        {
+          "name": "Armaduras",
+          "kind": "classFeature",
+          "parentName": "Feiticeiro",
+          "className": "Feiticeiro",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Development",
+          "kind": "classFeature",
+          "parentName": "Feiticeiro",
+          "className": "Feiticeiro",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "EVENTS",
+          "kind": "classFeature",
+          "parentName": "Feiticeiro",
+          "className": "Feiticeiro",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Feiticeiro",
+          "kind": "classFeature",
+          "parentName": "Feiticeiro",
+          "className": "Feiticeiro",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Metamagia Sempre Preparada: Feitiço Sutil",
+          "kind": "classFeature",
+          "parentName": "Feiticeiro",
+          "className": "Feiticeiro",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Metamagia Suprema",
+          "kind": "classFeature",
+          "parentName": "Feiticeiro",
+          "className": "Feiticeiro",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Our Shop",
+          "kind": "classFeature",
+          "parentName": "Feiticeiro",
+          "className": "Feiticeiro",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "REACHING OUT",
+          "kind": "classFeature",
+          "parentName": "Feiticeiro",
+          "className": "Feiticeiro",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Resources",
+          "kind": "classFeature",
+          "parentName": "Feiticeiro",
+          "className": "Feiticeiro",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Testes de Resistência",
+          "kind": "classFeature",
+          "parentName": "Feiticeiro",
+          "className": "Feiticeiro",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "WHO WE ARE",
+          "kind": "classFeature",
+          "parentName": "Feiticeiro",
+          "className": "Feiticeiro",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        }
+      ]
+    },
+    {
+      "priority": "high",
+      "reason": "appears-in-current-fixtures-or-many-rules",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/guerreiro-article",
+      "suggestedLocalPath": "data\\HTML BONFIRE\\classes\\Guerreiro in Bonfire Tales RPG _ World Anvil.html",
+      "sourceFile": "data\\HTML BONFIRE\\classes\\Guerreiro in Bonfire Tales RPG _ World Anvil.html",
+      "pageKind": "class",
+      "parentName": "Guerreiro",
+      "className": "Guerreiro",
+      "raceName": null,
+      "subclassName": null,
+      "backgroundName": null,
+      "affectedRulesCount": 9,
+      "affectedRules": [
+        {
+          "name": "Limite",
+          "kind": "classFeature",
+          "parentName": "Golpe Rápido",
+          "className": "Guerreiro",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-description"
+        },
+        {
+          "name": "Development",
+          "kind": "classFeature",
+          "parentName": "Guerreiro",
+          "className": "Guerreiro",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "EVENTS",
+          "kind": "classFeature",
+          "parentName": "Guerreiro",
+          "className": "Guerreiro",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Fundamentos de Batalha",
+          "kind": "classFeature",
+          "parentName": "Guerreiro",
+          "className": "Guerreiro",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Our Shop",
+          "kind": "classFeature",
+          "parentName": "Guerreiro",
+          "className": "Guerreiro",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "REACHING OUT",
+          "kind": "classFeature",
+          "parentName": "Guerreiro",
+          "className": "Guerreiro",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Resources",
+          "kind": "classFeature",
+          "parentName": "Guerreiro",
+          "className": "Guerreiro",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "WHO WE ARE",
+          "kind": "classFeature",
+          "parentName": "Guerreiro",
+          "className": "Guerreiro",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Limite",
+          "kind": "classFeature",
+          "parentName": "Tiro Poderoso",
+          "className": "Guerreiro",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-description"
+        }
+      ]
+    },
+    {
+      "priority": "high",
+      "reason": "appears-in-current-fixtures-or-many-rules",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/cacador-article",
+      "suggestedLocalPath": "data\\HTML BONFIRE\\classes\\Caçador in Bonfire Tales RPG _ World Anvil.html",
+      "sourceFile": "data\\HTML BONFIRE\\classes\\Caçador in Bonfire Tales RPG _ World Anvil.html",
+      "pageKind": "class",
+      "parentName": null,
+      "className": null,
+      "raceName": null,
+      "subclassName": null,
+      "backgroundName": null,
+      "affectedRulesCount": 8,
+      "affectedRules": [
+        {
+          "name": "Caçador",
+          "kind": "class",
+          "parentName": null,
+          "className": null,
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Caçador",
+          "kind": "classFeature",
+          "parentName": "Caçador",
+          "className": "Caçador",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Development",
+          "kind": "classFeature",
+          "parentName": "Caçador",
+          "className": "Caçador",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "EVENTS",
+          "kind": "classFeature",
+          "parentName": "Caçador",
+          "className": "Caçador",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Our Shop",
+          "kind": "classFeature",
+          "parentName": "Caçador",
+          "className": "Caçador",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "REACHING OUT",
+          "kind": "classFeature",
+          "parentName": "Caçador",
+          "className": "Caçador",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Resources",
+          "kind": "classFeature",
+          "parentName": "Caçador",
+          "className": "Caçador",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "WHO WE ARE",
+          "kind": "classFeature",
+          "parentName": "Caçador",
+          "className": "Caçador",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        }
+      ]
+    },
+    {
+      "priority": "high",
+      "reason": "appears-in-current-fixtures-or-many-rules",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/barbaro-article",
+      "suggestedLocalPath": "data\\HTML BONFIRE\\classes\\Bárbaro in Bonfire Tales RPG _ World Anvil.html",
+      "sourceFile": "data\\HTML BONFIRE\\classes\\Bárbaro in Bonfire Tales RPG _ World Anvil.html",
+      "pageKind": "class",
+      "parentName": "Bárbaro",
+      "className": "Bárbaro",
+      "raceName": null,
+      "subclassName": "Caminho da Feitiçaria Selvagem",
+      "backgroundName": null,
+      "affectedRulesCount": 7,
+      "affectedRules": [
+        {
+          "name": "Development",
+          "kind": "subclassFeature",
+          "parentName": "Bárbaro",
+          "className": "Bárbaro",
+          "raceName": null,
+          "subclassName": "Caminho da Feitiçaria Selvagem",
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "EVENTS",
+          "kind": "subclassFeature",
+          "parentName": "Bárbaro",
+          "className": "Bárbaro",
+          "raceName": null,
+          "subclassName": "Caminho da Feitiçaria Selvagem",
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Our Shop",
+          "kind": "subclassFeature",
+          "parentName": "Bárbaro",
+          "className": "Bárbaro",
+          "raceName": null,
+          "subclassName": "Caminho da Feitiçaria Selvagem",
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "REACHING OUT",
+          "kind": "subclassFeature",
+          "parentName": "Bárbaro",
+          "className": "Bárbaro",
+          "raceName": null,
+          "subclassName": "Caminho da Feitiçaria Selvagem",
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Resources",
+          "kind": "subclassFeature",
+          "parentName": "Bárbaro",
+          "className": "Bárbaro",
+          "raceName": null,
+          "subclassName": "Caminho da Feitiçaria Selvagem",
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "WHO WE ARE",
+          "kind": "subclassFeature",
+          "parentName": "Bárbaro",
+          "className": "Bárbaro",
+          "raceName": null,
+          "subclassName": "Caminho da Feitiçaria Selvagem",
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Sucesso",
+          "kind": "subclassFeature",
+          "parentName": "Golpe Dissipador",
+          "className": "Bárbaro",
+          "raceName": null,
+          "subclassName": "Caminho da Feitiçaria Selvagem",
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        }
+      ]
+    },
+    {
+      "priority": "high",
+      "reason": "appears-in-current-fixtures-or-many-rules",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/ladino-article",
+      "suggestedLocalPath": "data\\HTML BONFIRE\\classes\\Ladino in Bonfire Tales RPG _ World Anvil.html",
+      "sourceFile": "data\\HTML BONFIRE\\classes\\Ladino in Bonfire Tales RPG _ World Anvil.html",
+      "pageKind": "class",
+      "parentName": "Ladino",
+      "className": "Ladino",
+      "raceName": null,
+      "subclassName": null,
+      "backgroundName": null,
+      "affectedRulesCount": 7,
+      "affectedRules": [
+        {
+          "name": "Development",
+          "kind": "classFeature",
+          "parentName": "Ladino",
+          "className": "Ladino",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "EVENTS",
+          "kind": "classFeature",
+          "parentName": "Ladino",
+          "className": "Ladino",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Our Shop",
+          "kind": "classFeature",
+          "parentName": "Ladino",
+          "className": "Ladino",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "REACHING OUT",
+          "kind": "classFeature",
+          "parentName": "Ladino",
+          "className": "Ladino",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Resources",
+          "kind": "classFeature",
+          "parentName": "Ladino",
+          "className": "Ladino",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "WHO WE ARE",
+          "kind": "classFeature",
+          "parentName": "Ladino",
+          "className": "Ladino",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        },
+        {
+          "name": "Sucesso (dela)",
+          "kind": "classFeature",
+          "parentName": "Ladrão de Feitiços",
+          "className": "Ladino",
+          "raceName": null,
+          "subclassName": null,
+          "backgroundName": null,
+          "reason": "missing-full-page"
+        }
+      ]
+    }
+  ],
+  "topStillAmbiguous": [
+    {
+      "name": "Bárbaro",
+      "kind": "classFeature",
+      "parentName": "Bárbaro",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/barbaro-article",
+      "sourceFile": "data\\HTML BONFIRE\\classes\\Bárbaro in Bonfire Tales RPG _ World Anvil.html",
+      "warningCode": "BONFIRE_DESCRIPTION_SUMMARY_ONLY",
+      "reason": "candidate-section-found-but-exactness-not-proven",
+      "nextAction": "manual-review",
+      "topCandidateScore": 340,
+      "topCandidateHeading": "Bárbaro"
+    },
+    {
+      "name": "Espirito Familiar Místico",
+      "kind": "classFeature",
+      "parentName": "Místico",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mistico-article",
+      "sourceFile": "data\\HTML BONFIRE\\classes\\Místico in Bonfire Tales RPG _ World Anvil.html",
+      "warningCode": "BONFIRE_DESCRIPTION_SUMMARY_ONLY",
+      "reason": "candidate-section-found-but-exactness-not-proven",
+      "nextAction": "manual-review",
+      "topCandidateScore": 340,
+      "topCandidateHeading": "Espirito Familiar Místico"
+    },
+    {
+      "name": "Esporos Mortais",
+      "kind": "classFeature",
+      "parentName": "Druida",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "sourceFile": "data\\HTML BONFIRE\\classes\\Druida in Bonfire Tales RPG _ World Anvil.html",
+      "warningCode": "BONFIRE_DESCRIPTION_SUMMARY_ONLY",
+      "reason": "candidate-section-found-but-exactness-not-proven",
+      "nextAction": "manual-review",
+      "topCandidateScore": 340,
+      "topCandidateHeading": "Esporos Mortais"
+    },
+    {
+      "name": "Esporos Mortais",
+      "kind": "subclassFeature",
+      "parentName": "Hospedeiro Fúngico",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "sourceFile": "data\\HTML BONFIRE\\classes\\Druida in Bonfire Tales RPG _ World Anvil.html",
+      "warningCode": "BONFIRE_DESCRIPTION_SUMMARY_ONLY",
+      "reason": "candidate-section-found-but-exactness-not-proven",
+      "nextAction": "manual-review",
+      "topCandidateScore": 340,
+      "topCandidateHeading": "Esporos Mortais"
+    },
+    {
+      "name": "Fala das Bestas",
+      "kind": "classFeature",
+      "parentName": "Druida",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "sourceFile": "data\\HTML BONFIRE\\classes\\Druida in Bonfire Tales RPG _ World Anvil.html",
+      "warningCode": "BONFIRE_DESCRIPTION_SUMMARY_ONLY",
+      "reason": "candidate-section-found-but-exactness-not-proven",
+      "nextAction": "manual-review",
+      "topCandidateScore": 340,
+      "topCandidateHeading": "Fala das Bestas"
+    },
+    {
+      "name": "Fala das Bestas",
+      "kind": "classFeature",
+      "parentName": "Vínculo Natural",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "sourceFile": "data\\HTML BONFIRE\\classes\\Druida in Bonfire Tales RPG _ World Anvil.html",
+      "warningCode": "BONFIRE_DESCRIPTION_SUMMARY_ONLY",
+      "reason": "candidate-section-found-but-exactness-not-proven",
+      "nextAction": "manual-review",
+      "topCandidateScore": 340,
+      "topCandidateHeading": "Fala das Bestas"
+    },
+    {
+      "name": "Guerreiro",
+      "kind": "classFeature",
+      "parentName": "Guerreiro",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/guerreiro-article",
+      "sourceFile": "data\\HTML BONFIRE\\classes\\Guerreiro in Bonfire Tales RPG _ World Anvil.html",
+      "warningCode": "BONFIRE_DESCRIPTION_SUMMARY_ONLY",
+      "reason": "candidate-section-found-but-exactness-not-proven",
+      "nextAction": "manual-review",
+      "topCandidateScore": 340,
+      "topCandidateHeading": "Guerreiro"
+    },
+    {
+      "name": "Habilidades de Monge",
+      "kind": "classFeature",
+      "parentName": "Monge",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/monge-article",
+      "sourceFile": "data\\HTML BONFIRE\\classes\\Monge in Bonfire Tales RPG _ World Anvil.html",
+      "warningCode": "BONFIRE_DESCRIPTION_SUMMARY_ONLY",
+      "reason": "candidate-section-found-but-exactness-not-proven",
+      "nextAction": "manual-review",
+      "topCandidateScore": 340,
+      "topCandidateHeading": "Habilidades de Monge"
+    },
+    {
+      "name": "Ladino",
+      "kind": "classFeature",
+      "parentName": "Ladino",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/ladino-article",
+      "sourceFile": "data\\HTML BONFIRE\\classes\\Ladino in Bonfire Tales RPG _ World Anvil.html",
+      "warningCode": "BONFIRE_DESCRIPTION_SUMMARY_ONLY",
+      "reason": "candidate-section-found-but-exactness-not-proven",
+      "nextAction": "manual-review",
+      "topCandidateScore": 340,
+      "topCandidateHeading": "Ladino"
+    },
+    {
+      "name": "Magia Aprendida",
+      "kind": "classFeature",
+      "parentName": "Druida",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "sourceFile": "data\\HTML BONFIRE\\classes\\Druida in Bonfire Tales RPG _ World Anvil.html",
+      "warningCode": "BONFIRE_DESCRIPTION_SUMMARY_ONLY",
+      "reason": "candidate-section-found-but-exactness-not-proven",
+      "nextAction": "manual-review",
+      "topCandidateScore": 340,
+      "topCandidateHeading": "Magia Aprendida"
+    },
+    {
+      "name": "Magia Aprendida",
+      "kind": "classFeature",
+      "parentName": "Surto Selvagem: Elo Primal",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "sourceFile": "data\\HTML BONFIRE\\classes\\Druida in Bonfire Tales RPG _ World Anvil.html",
+      "warningCode": "BONFIRE_DESCRIPTION_SUMMARY_ONLY",
+      "reason": "candidate-section-found-but-exactness-not-proven",
+      "nextAction": "manual-review",
+      "topCandidateScore": 340,
+      "topCandidateHeading": "Magia Aprendida"
+    },
+    {
+      "name": "Magia Aprendida",
+      "kind": "classFeature",
+      "parentName": "Surto Selvagem",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "sourceFile": "data\\HTML BONFIRE\\classes\\Druida in Bonfire Tales RPG _ World Anvil.html",
+      "warningCode": "BONFIRE_DESCRIPTION_SUMMARY_ONLY",
+      "reason": "candidate-section-found-but-exactness-not-proven",
+      "nextAction": "manual-review",
+      "topCandidateScore": 340,
+      "topCandidateHeading": "Magia Aprendida"
+    },
+    {
+      "name": "Surto de Instinto",
+      "kind": "subclassFeature",
+      "parentName": "Forma Selvagem Anciã",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "sourceFile": "data\\HTML BONFIRE\\classes\\Druida in Bonfire Tales RPG _ World Anvil.html",
+      "warningCode": "BONFIRE_DESCRIPTION_SUMMARY_ONLY",
+      "reason": "candidate-section-found-but-exactness-not-proven",
+      "nextAction": "manual-review",
+      "topCandidateScore": 340,
+      "topCandidateHeading": "Surto de Instinto"
+    },
+    {
+      "name": "Aberração",
+      "kind": "classFeature",
+      "parentName": "Ações",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/mistico-article",
+      "sourceFile": "data\\HTML BONFIRE\\classes\\Místico in Bonfire Tales RPG _ World Anvil.html",
+      "warningCode": "BONFIRE_DESCRIPTION_SUMMARY_ONLY",
+      "reason": "candidate-section-found-but-exactness-not-proven",
+      "nextAction": "manual-review",
+      "topCandidateScore": 320,
+      "topCandidateHeading": "Aberração"
+    },
+    {
+      "name": "Determinação Comum",
+      "kind": "raceFeature",
+      "parentName": "Humano",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "sourceFile": "data\\HTML BONFIRE\\racas\\Humano Species in Bonfire Tales RPG _ World Anvil.html",
+      "warningCode": "BONFIRE_DESCRIPTION_SUMMARY_ONLY",
+      "reason": "candidate-section-found-but-exactness-not-proven",
+      "nextAction": "manual-review",
+      "topCandidateScore": 320,
+      "topCandidateHeading": "Determinação Comum"
+    },
+    {
+      "name": "Determinação Comum",
+      "kind": "raceFeature",
+      "parentName": "Erthari (Humanos da Terra)",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "sourceFile": "data\\HTML BONFIRE\\racas\\Humano Species in Bonfire Tales RPG _ World Anvil.html",
+      "warningCode": "BONFIRE_DESCRIPTION_SUMMARY_ONLY",
+      "reason": "candidate-section-found-but-exactness-not-proven",
+      "nextAction": "manual-review",
+      "topCandidateScore": 320,
+      "topCandidateHeading": "Determinação Comum"
+    },
+    {
+      "name": "Determinação Comum",
+      "kind": "raceFeature",
+      "parentName": "Humano",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "sourceFile": "data\\HTML BONFIRE\\racas\\Humano Species in Bonfire Tales RPG _ World Anvil.html",
+      "warningCode": "BONFIRE_DESCRIPTION_SUMMARY_ONLY",
+      "reason": "candidate-section-found-but-exactness-not-proven",
+      "nextAction": "manual-review",
+      "topCandidateScore": 320,
+      "topCandidateHeading": "Determinação Comum"
+    },
+    {
+      "name": "Poliglota",
+      "kind": "raceFeature",
+      "parentName": "Humano",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "sourceFile": "data\\HTML BONFIRE\\racas\\Humano Species in Bonfire Tales RPG _ World Anvil.html",
+      "warningCode": "BONFIRE_DESCRIPTION_SUMMARY_ONLY",
+      "reason": "candidate-section-found-but-exactness-not-proven",
+      "nextAction": "manual-review",
+      "topCandidateScore": 320,
+      "topCandidateHeading": "Poliglota"
+    },
+    {
+      "name": "Poliglota",
+      "kind": "raceFeature",
+      "parentName": "Humano",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/humano-species",
+      "sourceFile": "data\\HTML BONFIRE\\racas\\Humano Species in Bonfire Tales RPG _ World Anvil.html",
+      "warningCode": "BONFIRE_DESCRIPTION_SUMMARY_ONLY",
+      "reason": "candidate-section-found-but-exactness-not-proven",
+      "nextAction": "manual-review",
+      "topCandidateScore": 320,
+      "topCandidateHeading": "Poliglota"
+    },
+    {
+      "name": "Reservatório Primal",
+      "kind": "classFeature",
+      "parentName": "Druida",
+      "sourceUrl": "https://www.worldanvil.com/w/bonfire-tales-rpg-bonfire-tales/a/druida-article",
+      "sourceFile": "data\\HTML BONFIRE\\classes\\Druida in Bonfire Tales RPG _ World Anvil.html",
+      "warningCode": "BONFIRE_DESCRIPTION_SUMMARY_ONLY",
+      "reason": "candidate-section-found-but-exactness-not-proven",
+      "nextAction": "manual-review",
+      "topCandidateScore": 320,
+      "topCandidateHeading": "Reservatório Primal"
+    }
+  ],
+  "exactTextRequired": [
+    {
+      "name": "Aetherin (Arcano)",
+      "kind": "unknown",
+      "parentName": null,
+      "sourceUrl": null,
+      "sourceFile": null,
+      "warningCode": "BONFIRE_DESCRIPTION_EXACT_TEXT_REQUIRED",
+      "reason": "exact-text-required",
+      "nextAction": "review-manually"
+    },
+    {
+      "name": "Clã Rubedo (Os Hemomantes)",
+      "kind": "unknown",
+      "parentName": null,
+      "sourceUrl": null,
+      "sourceFile": null,
+      "warningCode": "BONFIRE_DESCRIPTION_EXACT_TEXT_REQUIRED",
+      "reason": "exact-text-required",
+      "nextAction": "review-manually"
+    },
+    {
+      "name": "Clã Sybaris (Os Artistas da Sedução)",
+      "kind": "unknown",
+      "parentName": null,
+      "sourceUrl": null,
+      "sourceFile": null,
+      "warningCode": "BONFIRE_DESCRIPTION_EXACT_TEXT_REQUIRED",
+      "reason": "exact-text-required",
+      "nextAction": "review-manually"
+    },
+    {
+      "name": "Clã Tenebrus (Os Ocultos)",
+      "kind": "unknown",
+      "parentName": null,
+      "sourceUrl": null,
+      "sourceFile": null,
+      "warningCode": "BONFIRE_DESCRIPTION_EXACT_TEXT_REQUIRED",
+      "reason": "exact-text-required",
+      "nextAction": "review-manually"
+    },
+    {
+      "name": "Clã Vesánio (Os Profetas Quebrados)",
+      "kind": "unknown",
+      "parentName": null,
+      "sourceUrl": null,
+      "sourceFile": null,
+      "warningCode": "BONFIRE_DESCRIPTION_EXACT_TEXT_REQUIRED",
+      "reason": "exact-text-required",
+      "nextAction": "review-manually"
+    },
+    {
+      "name": "Maré à Vontade",
+      "kind": "unknown",
+      "parentName": null,
+      "sourceUrl": null,
+      "sourceFile": null,
+      "warningCode": "BONFIRE_DESCRIPTION_EXACT_TEXT_REQUIRED",
+      "reason": "exact-text-required",
+      "nextAction": "review-manually"
+    },
+    {
+      "name": "Máscara da Piedade - Defina a aparência da máscara (ou role 1d6)",
+      "kind": "unknown",
+      "parentName": null,
+      "sourceUrl": null,
+      "sourceFile": null,
+      "warningCode": "BONFIRE_DESCRIPTION_EXACT_TEXT_REQUIRED",
+      "reason": "exact-text-required",
+      "nextAction": "review-manually"
+    },
+    {
+      "name": "Modo Infiltrador — Controle de Propulsão",
+      "kind": "unknown",
+      "parentName": null,
+      "sourceUrl": null,
+      "sourceFile": null,
+      "warningCode": "BONFIRE_DESCRIPTION_EXACT_TEXT_REQUIRED",
+      "reason": "exact-text-required",
+      "nextAction": "review-manually"
+    },
+    {
+      "name": "ND Máximo do Familiar",
+      "kind": "unknown",
+      "parentName": null,
+      "sourceUrl": null,
+      "sourceFile": null,
+      "warningCode": "BONFIRE_DESCRIPTION_EXACT_TEXT_REQUIRED",
+      "reason": "exact-text-required",
+      "nextAction": "review-manually"
+    },
+    {
+      "name": "O Protetor",
+      "kind": "unknown",
+      "parentName": null,
+      "sourceUrl": null,
+      "sourceFile": null,
+      "warningCode": "BONFIRE_DESCRIPTION_EXACT_TEXT_REQUIRED",
+      "reason": "exact-text-required",
+      "nextAction": "review-manually"
+    },
+    {
+      "name": "O Purificador",
+      "kind": "unknown",
+      "parentName": null,
+      "sourceUrl": null,
+      "sourceFile": null,
+      "warningCode": "BONFIRE_DESCRIPTION_EXACT_TEXT_REQUIRED",
+      "reason": "exact-text-required",
+      "nextAction": "review-manually"
+    },
+    {
+      "name": "Ritual de Conjuração",
+      "kind": "unknown",
+      "parentName": null,
+      "sourceUrl": null,
+      "sourceFile": null,
+      "warningCode": "BONFIRE_DESCRIPTION_EXACT_TEXT_REQUIRED",
+      "reason": "exact-text-required",
+      "nextAction": "review-manually"
+    },
+    {
+      "name": "Segredos Místicos de 9º Nível",
+      "kind": "unknown",
+      "parentName": null,
+      "sourceUrl": null,
+      "sourceFile": null,
+      "warningCode": "BONFIRE_DESCRIPTION_EXACT_TEXT_REQUIRED",
+      "reason": "exact-text-required",
+      "nextAction": "review-manually"
+    },
+    {
+      "name": "Sylvanar (Floresta)",
+      "kind": "unknown",
+      "parentName": null,
+      "sourceUrl": null,
+      "sourceFile": null,
+      "warningCode": "BONFIRE_DESCRIPTION_EXACT_TEXT_REQUIRED",
+      "reason": "exact-text-required",
+      "nextAction": "review-manually"
+    }
+  ]
+}

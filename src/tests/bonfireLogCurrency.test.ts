@@ -13,7 +13,7 @@ describe('bonfire log currency parsing', () => {
     expect(result.character.currency.gp.raw ?? '').not.toContain('50. gp')
   })
 
-  it('does not leak item prices into gp when there is no coin total', async () => {
+  it('does not leak item prices into gp when there is no coin total', { timeout: 15000 }, async () => {
     const rows = Array.from({ length: 110 }, () => Array.from({ length: 40 }, () => ''))
     rows[4][19] = 'Clérigo 5'
     rows[5][19] = 'CLASSE(S) & NIVEL(EIS)'

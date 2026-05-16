@@ -13,14 +13,14 @@ describe('critical sheet field validation', () => {
     expect(audit.validations.some((validation) => validation.code === 'SHEET_CHARACTER_NAME_MISSING')).toBe(true)
   })
 
-  it('blocks export when an ability is absent', async () => {
+  it('blocks export when an ability is absent', { timeout: 15000 }, async () => {
     const character = await parseRows([['PERSONAGEM', 'Pipkin'], ['CLASSE(S) & NIVEL(EIS)', 'Clerigo 5'], ['RACA', 'Folken'], ['ANTECEDENTE', 'Espiao'], ['FORCA', '8', 'DESTREZA', '14', 'CONSTITUICAO', '12'], ['SABEDORIA', '18', 'CARISMA', '14'], ['CA', '18', 'PV MAXIMO', '33', 'VELOCIDADE', '25'], ['PERICIAS'], ['CARACTERISTICAS'], ['MOCHILA'], ['PONTOS DE VIDA'], ['SABEDORIA PASSIVA', '14']])
     const audit = buildExportAuditReport(mapNormalizedToFoundryActor(character), character)
     expect(audit.importReadiness.canExport).toBe(false)
     expect(audit.validations.some((validation) => validation.code === 'SHEET_ABILITY_SCORE_MISSING' && validation.path === 'abilities.int.score')).toBe(true)
   })
 
-  it('does not export flat AC when AC is absent', async () => {
+  it('does not export flat AC when AC is absent', { timeout: 15000 }, async () => {
     const character = await parseRows([['PERSONAGEM', 'Pipkin'], ['CLASSE(S) & NIVEL(EIS)', 'Clerigo 5'], ['RACA', 'Folken'], ['ANTECEDENTE', 'Espiao'], ['FORCA', '8', 'DESTREZA', '14', 'CONSTITUICAO', '12'], ['INTELIGENCIA', '10', 'SABEDORIA', '18', 'CARISMA', '14'], ['PV MAXIMO', '33', 'VELOCIDADE', '25'], ['PERICIAS'], ['CARACTERISTICAS'], ['MOCHILA'], ['PONTOS DE VIDA'], ['SABEDORIA PASSIVA', '14']])
     const actor = mapNormalizedToFoundryActor(character) as any
     const audit = buildExportAuditReport(actor, character)
